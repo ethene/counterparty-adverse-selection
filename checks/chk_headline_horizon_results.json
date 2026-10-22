@@ -95,8 +95,8 @@
     "idle_exemptions_note": "these files carry a blanket ALLOW entry they no longer need: every literal in them is now recognised as a ladder read. The entry is dead weight and a standing blind spot, because a lone rung added to any of them would be exempted rather than flagged. Delete them as they are confirmed unnecessary.",
     "unparsable": [],
     "run": {
-      "runtime_s": 1.287,
-      "finished_utc": "2026-10-22T09:37:39Z",
+      "runtime_s": 1.0,
+      "finished_utc": "2026-10-22T09:41:26Z",
       "python": "3.12.11",
       "platform": "macOS-15.7.2-arm64-arm-64bit",
       "packages": {}

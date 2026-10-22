@@ -50,7 +50,7 @@
         "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
       }
     },
-    "runtime_seconds_of_selftest": 11.0,
+    "runtime_seconds_of_selftest": 9.1,
     "baseline_note": "a declared debt of 1, read from this gate's own constant rather than spelled again here, because a number written twice is a number that comes apart. It stood at 9 in the committed tree of 2026-08-14 and came down in three measured steps -- six to a basename constant taught to resolve through the script index, one to a fixture name shared by two notebook gates, one to an assertion that demanded a live counter-example the tree no longer holds. It may only ever be lowered; the run prints the lower number it would accept whenever the debt comes in under it",
     "declared_debt": [
       {
@@ -62,8 +62,8 @@
     "n_calibration_cases": 5,
     "n_calibration_failed": 0,
     "run": {
-      "runtime_s": 10.997,
-      "finished_utc": "2026-10-22T09:37:50Z",
+      "runtime_s": 9.144,
+      "finished_utc": "2026-10-22T09:41:36Z",
       "python": "3.12.11",
       "platform": "macOS-15.7.2-arm64-arm-64bit",
       "packages": {}
@@ -98,7 +98,7 @@
   "n_undeclared_under_ceiling": 0,
   "instrument": {
     "exit_code": 1,
-    "seconds": 11.0,
+    "seconds": 9.1,
     "closing_word": "FAIL",
     "unreadable": [],
     "disagreements": []

@@ -56,8 +56,8 @@
     "n_calibration_failed": 0,
     "blind_to": "pins for which no artifact records a version: lz4, matplotlib, pyarrow",
     "run": {
-      "runtime_s": 0.376,
-      "finished_utc": "2026-10-22T09:37:37Z",
+      "runtime_s": 0.315,
+      "finished_utc": "2026-10-22T09:41:25Z",
       "python": "3.12.11",
       "platform": "macOS-15.7.2-arm64-arm-64bit",
       "packages": {}

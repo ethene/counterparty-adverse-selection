@@ -36,56 +36,56 @@
       {
         "name": "chk_academic_header_results.json",
         "bytes": 4275,
-        "sha256": "503d176ac718879524b1b14d7a940109f3880fe5602f54730f55619f3e70123a",
+        "sha256": "a26b1c027fcc6026ed0563969a34aa01f2ab10a49840084055c1af69db7e9b9e",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_book_orientation_results.json",
         "bytes": 9298,
-        "sha256": "58f4f2a5079403629c97c3ca12bfe13ae35a4f00ca1ac0f6f8adf54b87d68ace",
+        "sha256": "104d9d3c854eb898c29e74d55295806af8701600329bbd27e6e2ef271d90f35e",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_build_selftest_results.json",
         "bytes": 6015,
-        "sha256": "36c5e67219d7195b0c22c0d8adfd05ff13b1affcae66b3dd697826e7ace07006",
+        "sha256": "d1f702f93e742c9b45ed7386d95a305698dfffa89125f6df70f09414bbf9de4a",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_closedpnl_results.json",
         "bytes": 8242,
-        "sha256": "ca4d0cc80ff5d1916d082d35113540c7408ac9def6276ee3417ef5c57d744fdc",
+        "sha256": "398c516fb39d8ce837b5414f840d61b1139f5fbbb93c6d92423c558c598b9412",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_contrast_hygiene_results.json",
         "bytes": 183015,
-        "sha256": "02dc55eadf2a9105d14273c2485ff94a31eec638d8aee630e2d8b66b24b7ddab",
+        "sha256": "d662c8b763d8800a077dc93aa4a0ff6e1fe4d44215e043906811197d8932913e",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_decision_lookahead_results.json",
-        "bytes": 94742,
-        "sha256": "65181b6a0abf272d88cc35d9a86f536ec66781ee8b1d08ffda74920c05f91e3b",
+        "bytes": 94743,
+        "sha256": "7752fafd5a9e96cd4ae56524afaeda12ec380a51aadd30ecf689f3b278f3ecdf",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_dir_vs_startpos_results.json",
         "bytes": 6949,
-        "sha256": "f308a91943d7d9b5a229e85e41b77d0d0e0069e5c80a5268adec19557364d294",
+        "sha256": "d62f1bbb5392ed5a33a7c0b0e62d752185ffa494973fdd6010177eae274e5133",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_expensive_edits_results.json",
         "bytes": 6360,
-        "sha256": "a6bb0f330a5195aa2a20e53ce75871895aa0aaea5dd095bfeab03b66dba693a1",
+        "sha256": "9d19b036caaba3a5cd08d29b479863d19796d9860d3337c4ee7f4bb3a7f473a2",
         "present": true,
         "kind": "file"
       },
@@ -99,14 +99,14 @@
       {
         "name": "chk_headline_horizon_results.json",
         "bytes": 7286,
-        "sha256": "f0ecce339d17898004625b951951f8d9fbf68444cb34fac4a2a73b2481966922",
+        "sha256": "347f3e1070ea8e1da7d0b22335ca070bf40206febdabe9b7222e9811abd8cc05",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_input_freshness_results.json",
-        "bytes": 516900,
-        "sha256": "513f189b4425b7a1a08d26b8a7f653493e865366c7749cff2c010089de4da631",
+        "bytes": 517683,
+        "sha256": "790e3806e513e2da95449a76f9a461e4686502d51868b8f6ed4b1fb8dd153f0c",
         "present": true,
         "kind": "file"
       },
@@ -119,57 +119,57 @@
       },
       {
         "name": "chk_maker_attribution_results.json",
-        "bytes": 4662,
-        "sha256": "ecbab0732626cd9530e4f773f29e1138de36bd35eebab4f947664954b166b084",
+        "bytes": 4661,
+        "sha256": "626df39762208da704f1c06d9623ad531d81d08c542293ae57aa8ddc29f66e1f",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_no_abs_paths_results.json",
         "bytes": 2187,
-        "sha256": "98a89b390bcd3ff73ce51e127d8115d110ec8f08323e209a141b593cb0828fcc",
+        "sha256": "a2c13dc102d2ba0e1be1ce615024cc41f2d1633f8abcc2d5cc0d4cad2465c1d0",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_notebook_expectations_results.json",
         "bytes": 4435,
-        "sha256": "7ab7a7b445a442b88f0a61a1fb5b0e8c88ad413ec6a27205a2376295d2d381ab",
+        "sha256": "c0a5eb18e8834ae1347b4cb48bf07ad733125895fd12b293c63f74d1d26a3b37",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_notebook_pointer_table_results.json",
-        "bytes": 39894,
-        "sha256": "92b2ecc4cb2950287c1cebc950601742725d294b2555694ad5670a23bdeb1782",
+        "bytes": 39895,
+        "sha256": "d8129ab78e855d98341b049a30fd3ed84fb95245bd65adf0420a71d3a5e0a3f5",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_pinned_versions_results.json",
         "bytes": 15700,
-        "sha256": "6f3e5d24b2dd9126e853a030801bf740371ba2180afd2c38e704fca9fee1e890",
+        "sha256": "535e15138efefd94e48dc70bd3179acc7aeff58a6b7a13998905f4762127e194",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_producer_committed_results.json",
-        "bytes": 71902,
-        "sha256": "6116dee85ea678b3eafa39a6b7ccff5958ebb7b704a67b3256e126b74f1288da",
+        "bytes": 74047,
+        "sha256": "3d2e14285d1d8b2f94a446383c5c59ea5a20be143472c082c2e67c74cd4b8fee",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_prose_numbers_results.json",
-        "bytes": 2576,
-        "sha256": "35b4ee83e021c79e23c4c206ed6961c1f799d3779778ff27a78ff23cdb5905a6",
+        "bytes": 2575,
+        "sha256": "18ed48363b9061d66ad06ad5122272082a9188c446182bba02b1453f9024a470",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_requirements_census_results.json",
         "bytes": 5463,
-        "sha256": "619b4b1d2988b5c8b7016e240c9c6994d1e2660c9417154a705e63ea2be3346e",
+        "sha256": "5abd47358aacc80b287a782ca83ad46516bd2c08b443b86725d5f66ffafb672b",
         "present": true,
         "kind": "file"
       },
@@ -182,15 +182,15 @@
       },
       {
         "name": "chk_run_happened_results.json",
-        "bytes": 158741,
-        "sha256": "5736145c184339d156f67e77655bd33cffb17d8c04d75124973a9419ee8459eb",
+        "bytes": 158739,
+        "sha256": "bf608c8214b407129d018141cf7b4e8f03bbf732ba20c9f66363f2c85daca3f6",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_settings_home_results.json",
         "bytes": 14234,
-        "sha256": "d834dc92f277ece88efaaf66dd552c9275376f9a1134362b146e15f3bb01ca5a",
+        "sha256": "3cd2de2195e37a1cca4bff4028766536bce25323e4261d3d1a468e6c1fe920d4",
         "present": true,
         "kind": "file"
       },
@@ -204,14 +204,14 @@
       {
         "name": "join_nolookahead_results.json",
         "bytes": 5890,
-        "sha256": "5c9574cb098854fb4eb12cf6ddadbffb2f81800c294cc329451982f388a060d4",
+        "sha256": "6fcd6f9fd6e9d9587df4ede72fce96eb4e72b75ed23ad7c599c7f20acbb8a6fa",
         "present": true,
         "kind": "file"
       },
       {
         "name": "run_all_checks_results.json",
-        "bytes": 23999,
-        "sha256": "b70084ef4e2496b2f810f89b8a0f7f338a401d5c0b30549d287bac2616b100c9",
+        "bytes": 23994,
+        "sha256": "0479bf14dde037d2acdde5a0f6f61f0b4674bae71afccfe0e474016c91c0e8c1",
         "present": true,
         "kind": "file"
       },
@@ -920,8 +920,8 @@
       "the tree moves while this runs: a producing script was seen changing between two runs three minutes apart, so every count here is a snapshot of the moment it was taken"
     ],
     "run": {
-      "runtime_s": 0.168,
-      "finished_utc": "2026-10-22T09:37:36Z",
+      "runtime_s": 0.135,
+      "finished_utc": "2026-10-22T09:41:24Z",
       "python": "3.12.11",
       "platform": "macOS-15.7.2-arm64-arm-64bit",
       "packages": {}
@@ -2224,7 +2224,7 @@
     "gated": false,
     "why_not_gated": "it moves for reasons that are not staleness. Rewriting an artifact without changing it makes a stale file look fresh; editing a comment in a producer makes a correct artifact look stale",
     "n_comparable": 105,
-    "n_artifact_older": 65,
+    "n_artifact_older": 64,
     "rows": [
       {
         "file": "build_diagram_results.json",
@@ -2242,49 +2242,49 @@
         "file": "checks/chk_academic_header_results.json",
         "producer": "checks/chk_academic_header.py",
         "artifact_older": false,
-        "behind_hours": -16.04
+        "behind_hours": -16.1
       },
       {
         "file": "checks/chk_book_orientation_results.json",
         "producer": "checks/chk_book_orientation.py",
         "artifact_older": false,
-        "behind_hours": -15.92
+        "behind_hours": -16.03
       },
       {
         "file": "checks/chk_build_selftest_results.json",
         "producer": "checks/chk_build_selftest.py",
         "artifact_older": false,
-        "behind_hours": -16.01
+        "behind_hours": -16.13
       },
       {
         "file": "checks/chk_closedpnl_results.json",
         "producer": "checks/chk_closedpnl.py",
         "artifact_older": false,
-        "behind_hours": -15.92
+        "behind_hours": -16.03
       },
       {
         "file": "checks/chk_contrast_hygiene_results.json",
         "producer": "checks/chk_contrast_hygiene.py",
         "artifact_older": false,
-        "behind_hours": -16.01
+        "behind_hours": -16.13
       },
       {
         "file": "checks/chk_decision_lookahead_results.json",
         "producer": "checks/chk_decision_lookahead.py",
         "artifact_older": false,
-        "behind_hours": -16.02
+        "behind_hours": -16.13
       },
       {
         "file": "checks/chk_dir_vs_startpos_results.json",
         "producer": "checks/chk_dir_vs_startpos.py",
         "artifact_older": false,
-        "behind_hours": -16.02
+        "behind_hours": -16.13
       },
       {
         "file": "checks/chk_expensive_edits_results.json",
         "producer": "probes/probe_F_hlp_liq.py",
         "artifact_older": false,
-        "behind_hours": -15.95
+        "behind_hours": -16.07
       },
       {
         "file": "checks/chk_field_hygiene_results.json",
@@ -2296,13 +2296,13 @@
         "file": "checks/chk_headline_horizon_results.json",
         "producer": "checks/chk_headline_horizon.py",
         "artifact_older": false,
-        "behind_hours": -15.98
+        "behind_hours": -16.09
       },
       {
         "file": "checks/chk_input_freshness_results.json",
         "producer": "checks/chk_input_freshness.py",
         "artifact_older": false,
-        "behind_hours": -0.73
+        "behind_hours": -0.84
       },
       {
         "file": "checks/chk_liquidation_field_results.json",
@@ -2314,49 +2314,49 @@
         "file": "checks/chk_maker_attribution_results.json",
         "producer": "checks/chk_maker_attribution.py",
         "artifact_older": false,
-        "behind_hours": -16.04
+        "behind_hours": -16.15
       },
       {
         "file": "checks/chk_no_abs_paths_results.json",
         "producer": "checks/chk_no_abs_paths.py",
         "artifact_older": false,
-        "behind_hours": -0.81
+        "behind_hours": -0.87
       },
       {
         "file": "checks/chk_notebook_expectations_results.json",
         "producer": "checks/chk_notebook_expectations.py",
         "artifact_older": false,
-        "behind_hours": -0.02
+        "behind_hours": -0.03
       },
       {
         "file": "checks/chk_notebook_pointer_table_results.json",
         "producer": "checks/chk_notebook_pointer_table.py",
         "artifact_older": false,
-        "behind_hours": -15.92
+        "behind_hours": -16.03
       },
       {
         "file": "checks/chk_pinned_versions_results.json",
         "producer": "checks/chk_pinned_versions.py",
         "artifact_older": false,
-        "behind_hours": -16.0
+        "behind_hours": -16.12
       },
       {
         "file": "checks/chk_producer_committed_results.json",
         "producer": "checks/chk_producer_committed.py",
         "artifact_older": false,
-        "behind_hours": -15.31
+        "behind_hours": -15.37
       },
       {
         "file": "checks/chk_prose_numbers_results.json",
         "producer": "checks/chk_prose_numbers.py",
         "artifact_older": false,
-        "behind_hours": -15.81
+        "behind_hours": -15.93
       },
       {
         "file": "checks/chk_requirements_census_results.json",
         "producer": "checks/chk_requirements_census.py",
         "artifact_older": false,
-        "behind_hours": -15.66
+        "behind_hours": -15.78
       },
       {
         "file": "checks/chk_rowcounts_determinism_results.json",
@@ -2368,13 +2368,13 @@
         "file": "checks/chk_run_happened_results.json",
         "producer": "checks/chk_run_happened.py",
         "artifact_older": false,
-        "behind_hours": -16.05
+        "behind_hours": -16.16
       },
       {
         "file": "checks/chk_settings_home_results.json",
         "producer": "checks/chk_settings_home.py",
         "artifact_older": false,
-        "behind_hours": -16.11
+        "behind_hours": -16.17
       },
       {
         "file": "checks/chk_side_signconv_results.json",
@@ -2386,13 +2386,13 @@
         "file": "checks/join_nolookahead_results.json",
         "producer": "checks/chk_join_nolookahead.py",
         "artifact_older": false,
-        "behind_hours": -16.05
+        "behind_hours": -16.16
       },
       {
         "file": "checks/run_all_checks_results.json",
         "producer": "checks/chk_notebook_expectations.py",
-        "artifact_older": true,
-        "behind_hours": 0.06
+        "artifact_older": false,
+        "behind_hours": -0.06
       },
       {
         "file": "data/check_first_results.json",

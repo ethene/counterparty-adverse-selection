@@ -78,8 +78,8 @@
     ],
     "schema_ref": "Zenodo 18184441 SCHEMA.md Section 4: 'user = Ethereum address of the order owner'",
     "run": {
-      "runtime_s": 43.28,
-      "finished_utc": "2026-10-22T09:39:17Z",
+      "runtime_s": 35.084,
+      "finished_utc": "2026-10-22T09:42:45Z",
       "python": "3.12.11",
       "platform": "macOS-15.7.2-arm64-arm-64bit",
       "packages": {}

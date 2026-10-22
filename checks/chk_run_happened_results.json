@@ -45,8 +45,8 @@
     "reference_utc": null,
     "question_put": "the producer-hash leg only; whether any run happened was NOT ASKED because no reference moment was given",
     "run": {
-      "runtime_s": 7.9,
-      "finished_utc": "2026-10-22T09:38:05Z",
+      "runtime_s": 6.427,
+      "finished_utc": "2026-10-22T09:41:47Z",
       "python": "3.12.11",
       "platform": "macOS-15.7.2-arm64-arm-64bit",
       "packages": {}
@@ -139,7 +139,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:37:33Z",
+          "recorded_finish_utc": "2026-10-22T09:41:21Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -162,7 +162,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:31:37Z",
+          "recorded_finish_utc": "2026-10-22T09:38:32Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -185,7 +185,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:37:50Z",
+          "recorded_finish_utc": "2026-10-22T09:41:36Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -208,7 +208,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:31:39Z",
+          "recorded_finish_utc": "2026-10-22T09:38:33Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -231,7 +231,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:31:15Z",
+          "recorded_finish_utc": "2026-10-22T09:38:09Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -254,7 +254,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:31:35Z",
+          "recorded_finish_utc": "2026-10-22T09:38:29Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -277,7 +277,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:31:35Z",
+          "recorded_finish_utc": "2026-10-22T09:38:29Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -300,7 +300,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:37:39Z",
+          "recorded_finish_utc": "2026-10-22T09:41:26Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -352,7 +352,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:37:39Z",
+          "recorded_finish_utc": "2026-10-22T09:41:26Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -375,7 +375,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:32:28Z",
+          "recorded_finish_utc": "2026-10-22T09:39:33Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -421,7 +421,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:32:13Z",
+          "recorded_finish_utc": "2026-10-22T09:39:17Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -444,7 +444,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:37:33Z",
+          "recorded_finish_utc": "2026-10-22T09:41:21Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -467,7 +467,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:37:32Z",
+          "recorded_finish_utc": "2026-10-22T09:38:07Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -490,7 +490,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:31:14Z",
+          "recorded_finish_utc": "2026-10-22T09:38:09Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -513,7 +513,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:37:37Z",
+          "recorded_finish_utc": "2026-10-22T09:41:25Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -536,7 +536,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:37:37Z",
+          "recorded_finish_utc": "2026-10-22T09:41:24Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -559,7 +559,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:37:57Z",
+          "recorded_finish_utc": "2026-10-22T09:41:41Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -582,7 +582,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:37:56Z",
+          "recorded_finish_utc": "2026-10-22T09:41:40Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -628,7 +628,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:31:10Z",
+          "recorded_finish_utc": "2026-10-22T09:38:05Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -651,7 +651,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:37:35Z",
+          "recorded_finish_utc": "2026-10-22T09:41:23Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -697,7 +697,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:31:15Z",
+          "recorded_finish_utc": "2026-10-22T09:38:09Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {
@@ -720,7 +720,7 @@
       "legs": {
         "finished_after_reference": {
           "asked": false,
-          "recorded_finish_utc": "2026-10-22T09:32:28Z",
+          "recorded_finish_utc": "2026-10-22T09:39:33Z",
           "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
         },
         "producer_hash_matches_disk": {

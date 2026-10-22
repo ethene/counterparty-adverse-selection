@@ -45,63 +45,27 @@
     "object_format": "sha1",
     "resolution_method": "content-census",
     "resolution_probe": "`git cat-file -e` refused 37764a17beab..., a content sha256 this database demonstrably holds, so a recorded hash is not an object name here; every blob was read once and indexed by the sha256 of its bytes instead",
-    "n_blobs": 450,
-    "n_distinct_contents": 450,
+    "n_blobs": 265,
+    "n_distinct_contents": 265,
     "n_json_walked": 106,
     "n_with_producer_hash": 105,
     "n_excused": 0,
-    "n_certified_prior_history": 63,
+    "n_certified_prior_history": 64,
     "n_baseline_declared": 0,
     "n_baseline_spent": 0,
     "n_calibration_cases": 5,
     "n_calibration_failed": 0,
     "run": {
-      "runtime_s": 0.681,
-      "finished_utc": "2026-10-22T09:37:37Z",
+      "runtime_s": 0.301,
+      "finished_utc": "2026-10-22T09:41:24Z",
       "python": "3.12.11",
       "platform": "macOS-15.7.2-arm64-arm-64bit",
       "packages": {}
     }
   },
-  "verdict": "FAIL",
-  "n_findings": 5,
-  "findings": [
-    {
-      "file": "checks/chk_notebook_expectations_results.json",
-      "line": 0,
-      "rule": "PRODUCER-NEVER-COMMITTED",
-      "detail": "this file was computed by a version of chk_notebook_expectations.py whose bytes this repository does not hold: those bytes are in the working tree as chk_notebook_expectations.py and have simply never been saved, so saving them repairs this",
-      "source": "1a915288869fc0da16c8c8de7363a047..."
-    },
-    {
-      "file": "notebooks/notebook_book_meta.json",
-      "line": 0,
-      "rule": "PRODUCER-NEVER-COMMITTED",
-      "detail": "this file was computed by a version of make_notebook_book.py whose bytes this repository does not hold: those bytes are in the working tree as make_notebook_book.py and have simply never been saved, so saving them repairs this",
-      "source": "c2af513a76778361d66bfd1df3165922..."
-    },
-    {
-      "file": "notebooks/notebook_data_meta.json",
-      "line": 0,
-      "rule": "PRODUCER-NEVER-COMMITTED",
-      "detail": "this file was computed by a version of make_notebook_data.py whose bytes this repository does not hold: those bytes are in the working tree as make_notebook_data.py and have simply never been saved, so saving them repairs this",
-      "source": "afb09997b914b4330a65e5c148b20eea..."
-    },
-    {
-      "file": "notebooks/notebook_expected.json",
-      "line": 0,
-      "rule": "PRODUCER-NEVER-COMMITTED",
-      "detail": "this file was computed by a version of make_notebook_data.py whose bytes this repository does not hold: those bytes are in the working tree as make_notebook_data.py and have simply never been saved, so saving them repairs this",
-      "source": "afb09997b914b4330a65e5c148b20eea..."
-    },
-    {
-      "file": "notebooks/notebook_fills_meta.json",
-      "line": 0,
-      "rule": "PRODUCER-NEVER-COMMITTED",
-      "detail": "this file was computed by a version of make_notebook_fills.py whose bytes this repository does not hold: those bytes are in the working tree as make_notebook_fills.py and have simply never been saved, so saving them repairs this",
-      "source": "93904d41e93dc08d4f38fc09a8f38f5d..."
-    }
-  ],
+  "verdict": "PASS",
+  "n_findings": 0,
+  "findings": [],
   "excused_by_baseline": [],
   "certified_prior_history_not_shipped": [
     {
@@ -792,6 +756,17 @@
       "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
       "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: as_quoter.py moved from ebd2eebbd6a6 to the bytes on disk 69ff7a618087, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
       "source": "ebd2eebbd6a65ed8d2c0927a2df30980...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "quoters/gm_quoter_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: gm_quoter.py moved from 61e983c1157d to the bytes on disk 9740a2884176, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "61e983c1157dff948302df0f4b49c1fb...",
       "certificate": {
         "issued_utc": "2026-08-01T00:00:00Z",
         "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."

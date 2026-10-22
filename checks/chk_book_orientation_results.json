@@ -71,8 +71,8 @@
       "the derived leg is circular: it restates levels[1] > levels[0] under the orientation it assumes, so it can refute but never confirm"
     ],
     "run": {
-      "runtime_s": 2.125,
-      "finished_utc": "2026-10-22T09:38:32Z",
+      "runtime_s": 1.824,
+      "finished_utc": "2026-10-22T09:42:09Z",
       "python": "3.12.11",
       "platform": "macOS-15.7.2-arm64-arm-64bit",
       "packages": {

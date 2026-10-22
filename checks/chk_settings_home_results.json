@@ -351,8 +351,8 @@
     ],
     "unparsable_cells": [],
     "run": {
-      "runtime_s": 2.357,
-      "finished_utc": "2026-10-22T09:37:35Z",
+      "runtime_s": 1.881,
+      "finished_utc": "2026-10-22T09:41:23Z",
       "python": "3.12.11",
       "platform": "macOS-15.7.2-arm64-arm-64bit",
       "packages": {}

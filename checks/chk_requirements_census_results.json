@@ -57,13 +57,13 @@
         "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
       }
     },
-    "runtime_seconds_of_census": 0.8,
+    "runtime_seconds_of_census": 0.7,
     "date_stamp_note": "findings whose two sides are equal once every date in them is blanked are counted apart and never fail this gate. The census renders the block with the date of the run that renders it and then compares the whole line, so the day after a regeneration it reports one such finding with the tree unmoved. Measured on a copy of this tree on 2026-08-30 by moving the stored date back one day: the census exits 1 and names that line. Arming this rule is a decision for the owner of the census, not for this gate; the repair is to render the stamp outside the compared region or to compare each line with its date blanked",
     "n_calibration_cases": 6,
     "n_calibration_failed": 0,
     "run": {
-      "runtime_s": 5.895,
-      "finished_utc": "2026-10-22T09:37:56Z",
+      "runtime_s": 4.832,
+      "finished_utc": "2026-10-22T09:41:40Z",
       "python": "3.12.11",
       "platform": "macOS-15.7.2-arm64-arm-64bit",
       "packages": {}
@@ -98,7 +98,7 @@
   "counts_disagreeing": [],
   "instrument": {
     "exit_code": 0,
-    "seconds": 0.8,
+    "seconds": 0.7,
     "opening_word": "PASS",
     "opening_number": 127,
     "unreadable": [],

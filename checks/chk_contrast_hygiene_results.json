@@ -65,8 +65,8 @@
       "a confound entering through a shared input rather than through the arms: two arms reading one stale column agree perfectly, and that is chk_input_freshness's question"
     ],
     "run": {
-      "runtime_s": 0.169,
-      "finished_utc": "2026-10-22T09:38:09Z",
+      "runtime_s": 0.142,
+      "finished_utc": "2026-10-22T09:41:51Z",
       "python": "3.12.11",
       "platform": "macOS-15.7.2-arm64-arm-64bit",
       "packages": {}

@@ -6,7 +6,7 @@
       "script": "chk_notebook_expectations.py",
       "sha256": "1a915288869fc0da16c8c8de7363a047ba6ae3d459207764081a00799c30c01f",
       "bytes": 64739,
-      "bytes_in_object_db": "absent",
+      "bytes_in_object_db": "present",
       "object_format": "sha1",
       "object_id": "39afeac90bb87d433901c3e2ea69f217f5bf14ac",
       "unasked_because": null
@@ -78,8 +78,8 @@
     "producer_on_disk": false,
     "path_separator": ".",
     "run": {
-      "runtime_s": 2.394,
-      "finished_utc": "2026-10-22T09:38:07Z",
+      "runtime_s": 1.923,
+      "finished_utc": "2026-10-22T09:41:49Z",
       "python": "3.12.11",
       "platform": "macOS-15.7.2-arm64-arm-64bit",
       "packages": {}

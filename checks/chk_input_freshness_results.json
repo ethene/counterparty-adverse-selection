@@ -36,63 +36,63 @@
       {
         "name": "chk_academic_header_results.json",
         "bytes": 4275,
-        "sha256": "503d176ac718879524b1b14d7a940109f3880fe5602f54730f55619f3e70123a",
+        "sha256": "a26b1c027fcc6026ed0563969a34aa01f2ab10a49840084055c1af69db7e9b9e",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_artifact_provenance_results.json",
-        "bytes": 141451,
-        "sha256": "46d437ef4ee21b3d74b857accc7cae9115b5c70f45369b9704cc7953cd9953ac",
+        "bytes": 141453,
+        "sha256": "6c302fcb13537efd262a11dea1131b63d26bfb4daa2baf8a6bc69fd8e79e6580",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_book_orientation_results.json",
         "bytes": 9298,
-        "sha256": "104d9d3c854eb898c29e74d55295806af8701600329bbd27e6e2ef271d90f35e",
+        "sha256": "c9589e959e314b35f7d2faa45c5b1cb8e11f48d3cacee4088bbe4f6808b94c72",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_build_selftest_results.json",
-        "bytes": 6015,
-        "sha256": "d1f702f93e742c9b45ed7386d95a305698dfffa89125f6df70f09414bbf9de4a",
+        "bytes": 6012,
+        "sha256": "19251c47b14533404459559f7e73c21e64b8a740991a83fdd67ae9e7b3a09854",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_closedpnl_results.json",
         "bytes": 8242,
-        "sha256": "398c516fb39d8ce837b5414f840d61b1139f5fbbb93c6d92423c558c598b9412",
+        "sha256": "181440c3113dd71c663df1a0e5f0473ac1d683c9249bf2e187c43c3b91bd63cc",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_contrast_hygiene_results.json",
         "bytes": 183015,
-        "sha256": "d662c8b763d8800a077dc93aa4a0ff6e1fe4d44215e043906811197d8932913e",
+        "sha256": "53d99c6ffe354207e5786324d4c7f548fa32265482135df15bd9f5cd3cf83bb0",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_decision_lookahead_results.json",
         "bytes": 94743,
-        "sha256": "7752fafd5a9e96cd4ae56524afaeda12ec380a51aadd30ecf689f3b278f3ecdf",
+        "sha256": "9c1a479e0a5534822efe1f282a2efc9a332658025e5d1a42f25a8822888c7dc5",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_dir_vs_startpos_results.json",
         "bytes": 6949,
-        "sha256": "d62f1bbb5392ed5a33a7c0b0e62d752185ffa494973fdd6010177eae274e5133",
+        "sha256": "9bf339e493f7ee8ba2c6df2ba1e7e78eb8f35aef1d08aa091f0b61e583dcc98b",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_expensive_edits_results.json",
         "bytes": 6360,
-        "sha256": "9d19b036caaba3a5cd08d29b479863d19796d9860d3337c4ee7f4bb3a7f473a2",
+        "sha256": "cdcdf5248a8edbac4682fd565706c1b3e4e3833aae25aa50d0e548fd7a8183e4",
         "present": true,
         "kind": "file"
       },
@@ -105,8 +105,8 @@
       },
       {
         "name": "chk_headline_horizon_results.json",
-        "bytes": 7286,
-        "sha256": "347f3e1070ea8e1da7d0b22335ca070bf40206febdabe9b7222e9811abd8cc05",
+        "bytes": 7284,
+        "sha256": "4528d4706de596fb745ad60c3196d8ee830b9647eae7266e27202bdba98577b0",
         "present": true,
         "kind": "file"
       },
@@ -119,57 +119,57 @@
       },
       {
         "name": "chk_maker_attribution_results.json",
-        "bytes": 4661,
-        "sha256": "626df39762208da704f1c06d9623ad531d81d08c542293ae57aa8ddc29f66e1f",
+        "bytes": 4662,
+        "sha256": "66fc2bfd4771257f9fe6990eff503d2b663d843bf0d45c9f1d783a5be591c4f4",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_no_abs_paths_results.json",
         "bytes": 2187,
-        "sha256": "98a89b390bcd3ff73ce51e127d8115d110ec8f08323e209a141b593cb0828fcc",
+        "sha256": "a2c13dc102d2ba0e1be1ce615024cc41f2d1633f8abcc2d5cc0d4cad2465c1d0",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_notebook_expectations_results.json",
-        "bytes": 4435,
-        "sha256": "c0a5eb18e8834ae1347b4cb48bf07ad733125895fd12b293c63f74d1d26a3b37",
+        "bytes": 4436,
+        "sha256": "c5033bbb80b4916e6145a3e9ed0047d1fc877e7a82cf7cfddcdbec66497e2fb4",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_notebook_pointer_table_results.json",
         "bytes": 39895,
-        "sha256": "d8129ab78e855d98341b049a30fd3ed84fb95245bd65adf0420a71d3a5e0a3f5",
+        "sha256": "d8920f8182aabe7a90426ef47fed40ec6b06262493408326b399bbddc141d941",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_pinned_versions_results.json",
         "bytes": 15700,
-        "sha256": "535e15138efefd94e48dc70bd3179acc7aeff58a6b7a13998905f4762127e194",
+        "sha256": "6646a49db7295115997a95a54dc7672bca8a60b0031e0c8be5a8c7698a9034b8",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_producer_committed_results.json",
-        "bytes": 74047,
-        "sha256": "3d2e14285d1d8b2f94a446383c5c59ea5a20be143472c082c2e67c74cd4b8fee",
+        "bytes": 72968,
+        "sha256": "6e8365ad0be300ab329cd65910a574f1305e78224eee45d382c168879ad52966",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_prose_numbers_results.json",
-        "bytes": 2575,
-        "sha256": "18ed48363b9061d66ad06ad5122272082a9188c446182bba02b1453f9024a470",
+        "bytes": 2576,
+        "sha256": "0672c810c0e3558553ad84786551fdfbe3701693830bd41dfce5a015f257ffc6",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_requirements_census_results.json",
         "bytes": 5463,
-        "sha256": "5abd47358aacc80b287a782ca83ad46516bd2c08b443b86725d5f66ffafb672b",
+        "sha256": "0f918107f544c5376fd19c1780098e58e1a7860c15a06734f1064c38f6b12eee",
         "present": true,
         "kind": "file"
       },
@@ -182,15 +182,15 @@
       },
       {
         "name": "chk_run_happened_results.json",
-        "bytes": 158739,
-        "sha256": "bf608c8214b407129d018141cf7b4e8f03bbf732ba20c9f66363f2c85daca3f6",
+        "bytes": 158741,
+        "sha256": "2569cd53c97fb4acfa29d76f39f5ec2b3a44abac445a775c138d46c8d7f2087c",
         "present": true,
         "kind": "file"
       },
       {
         "name": "chk_settings_home_results.json",
         "bytes": 14234,
-        "sha256": "d834dc92f277ece88efaaf66dd552c9275376f9a1134362b146e15f3bb01ca5a",
+        "sha256": "3cd2de2195e37a1cca4bff4028766536bce25323e4261d3d1a468e6c1fe920d4",
         "present": true,
         "kind": "file"
       },
@@ -204,14 +204,14 @@
       {
         "name": "join_nolookahead_results.json",
         "bytes": 5890,
-        "sha256": "6fcd6f9fd6e9d9587df4ede72fce96eb4e72b75ed23ad7c599c7f20acbb8a6fa",
+        "sha256": "8bc2ba732ce1b8fd597005dbf94edd3aebd9676d096ab7265a18c6558e3f7b64",
         "present": true,
         "kind": "file"
       },
       {
         "name": "run_all_checks_results.json",
-        "bytes": 23999,
-        "sha256": "b70084ef4e2496b2f810f89b8a0f7f338a401d5c0b30549d287bac2616b100c9",
+        "bytes": 23994,
+        "sha256": "0479bf14dde037d2acdde5a0f6f61f0b4674bae71afccfe0e474016c91c0e8c1",
         "present": true,
         "kind": "file"
       },
@@ -810,8 +810,8 @@
       "an input the producer never declared is invisible here, because this gate reads what an artifact SAYS it read"
     ],
     "run": {
-      "runtime_s": 15.348,
-      "finished_utc": "2026-10-22T09:39:33Z",
+      "runtime_s": 10.841,
+      "finished_utc": "2026-10-22T09:42:56Z",
       "python": "3.12.11",
       "platform": "macOS-15.7.2-arm64-arm-64bit",
       "packages": {}
@@ -1009,11 +1009,11 @@
     }
   },
   "tally": {
-    "matches": 366,
+    "matches": 367,
     "rewritten_same_numbers": 13,
     "moved_neutrally_certified": 2,
-    "diverged": 3,
-    "diverged_body_unknown": 2,
+    "diverged": 4,
+    "diverged_body_unknown": 0,
     "absent_from_disk": 0,
     "no_hash_recorded": 49,
     "remote_address": 45
@@ -1030,10 +1030,10 @@
       {
         "artifact": "checks/chk_artifact_provenance_results.json",
         "input": "chk_book_orientation_results.json",
-        "recorded_sha256": "58f4f2a5079403629c97c3ca12bfe13ae35a4f00ca1ac0f6f8adf54b87d68ace",
+        "recorded_sha256": "104d9d3c854eb898c29e74d55295806af8701600329bbd27e6e2ef271d90f35e",
         "recorded_bytes": 9298,
         "present_when_written": true,
-        "on_disk_sha256": "104d9d3c854eb898c29e74d55295806af8701600329bbd27e6e2ef271d90f35e",
+        "on_disk_sha256": "c9589e959e314b35f7d2faa45c5b1cb8e11f48d3cacee4088bbe4f6808b94c72",
         "on_disk_bytes": 9298,
         "where": "checks/chk_book_orientation_results.json",
         "resolved_by": "the producer's own directory",
@@ -1047,16 +1047,16 @@
           "run"
         ],
         "state": "rewritten_same_numbers",
-        "why": "chk_book_orientation_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (58f4f2a50794 against 104d9d3c854e) and agree exactly once _meta is taken off, at 07a7e0aa9a99. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+        "why": "chk_book_orientation_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (104d9d3c854e against c9589e959e31) and agree exactly once _meta is taken off, at 07a7e0aa9a99. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
         "producer": "checks/chk_artifact_provenance.py"
       },
       {
         "artifact": "checks/chk_artifact_provenance_results.json",
         "input": "chk_closedpnl_results.json",
-        "recorded_sha256": "ca4d0cc80ff5d1916d082d35113540c7408ac9def6276ee3417ef5c57d744fdc",
+        "recorded_sha256": "398c516fb39d8ce837b5414f840d61b1139f5fbbb93c6d92423c558c598b9412",
         "recorded_bytes": 8242,
         "present_when_written": true,
-        "on_disk_sha256": "398c516fb39d8ce837b5414f840d61b1139f5fbbb93c6d92423c558c598b9412",
+        "on_disk_sha256": "181440c3113dd71c663df1a0e5f0473ac1d683c9249bf2e187c43c3b91bd63cc",
         "on_disk_bytes": 8242,
         "where": "checks/chk_closedpnl_results.json",
         "resolved_by": "the producer's own directory",
@@ -1070,16 +1070,16 @@
           "run"
         ],
         "state": "rewritten_same_numbers",
-        "why": "chk_closedpnl_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (ca4d0cc80ff5 against 398c516fb39d) and agree exactly once _meta is taken off, at a218ea9ed739. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+        "why": "chk_closedpnl_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (398c516fb39d against 181440c3113d) and agree exactly once _meta is taken off, at a218ea9ed739. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
         "producer": "checks/chk_artifact_provenance.py"
       },
       {
         "artifact": "checks/chk_artifact_provenance_results.json",
         "input": "chk_contrast_hygiene_results.json",
-        "recorded_sha256": "02dc55eadf2a9105d14273c2485ff94a31eec638d8aee630e2d8b66b24b7ddab",
+        "recorded_sha256": "d662c8b763d8800a077dc93aa4a0ff6e1fe4d44215e043906811197d8932913e",
         "recorded_bytes": 183015,
         "present_when_written": true,
-        "on_disk_sha256": "d662c8b763d8800a077dc93aa4a0ff6e1fe4d44215e043906811197d8932913e",
+        "on_disk_sha256": "53d99c6ffe354207e5786324d4c7f548fa32265482135df15bd9f5cd3cf83bb0",
         "on_disk_bytes": 183015,
         "where": "checks/chk_contrast_hygiene_results.json",
         "resolved_by": "the producer's own directory",
@@ -1093,16 +1093,16 @@
           "run"
         ],
         "state": "rewritten_same_numbers",
-        "why": "chk_contrast_hygiene_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (02dc55eadf2a against d662c8b763d8) and agree exactly once _meta is taken off, at 634559001f01. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+        "why": "chk_contrast_hygiene_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (d662c8b763d8 against 53d99c6ffe35) and agree exactly once _meta is taken off, at 634559001f01. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
         "producer": "checks/chk_artifact_provenance.py"
       },
       {
         "artifact": "checks/chk_artifact_provenance_results.json",
         "input": "chk_decision_lookahead_results.json",
-        "recorded_sha256": "65181b6a0abf272d88cc35d9a86f536ec66781ee8b1d08ffda74920c05f91e3b",
-        "recorded_bytes": 94742,
+        "recorded_sha256": "7752fafd5a9e96cd4ae56524afaeda12ec380a51aadd30ecf689f3b278f3ecdf",
+        "recorded_bytes": 94743,
         "present_when_written": true,
-        "on_disk_sha256": "7752fafd5a9e96cd4ae56524afaeda12ec380a51aadd30ecf689f3b278f3ecdf",
+        "on_disk_sha256": "9c1a479e0a5534822efe1f282a2efc9a332658025e5d1a42f25a8822888c7dc5",
         "on_disk_bytes": 94743,
         "where": "checks/chk_decision_lookahead_results.json",
         "resolved_by": "the producer's own directory",
@@ -1116,16 +1116,16 @@
           "run"
         ],
         "state": "rewritten_same_numbers",
-        "why": "chk_decision_lookahead_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (65181b6a0abf against 7752fafd5a9e) and agree exactly once _meta is taken off, at c90ad982049e. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+        "why": "chk_decision_lookahead_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (7752fafd5a9e against 9c1a479e0a55) and agree exactly once _meta is taken off, at c90ad982049e. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
         "producer": "checks/chk_artifact_provenance.py"
       },
       {
         "artifact": "checks/chk_artifact_provenance_results.json",
         "input": "chk_dir_vs_startpos_results.json",
-        "recorded_sha256": "f308a91943d7d9b5a229e85e41b77d0d0e0069e5c80a5268adec19557364d294",
+        "recorded_sha256": "d62f1bbb5392ed5a33a7c0b0e62d752185ffa494973fdd6010177eae274e5133",
         "recorded_bytes": 6949,
         "present_when_written": true,
-        "on_disk_sha256": "d62f1bbb5392ed5a33a7c0b0e62d752185ffa494973fdd6010177eae274e5133",
+        "on_disk_sha256": "9bf339e493f7ee8ba2c6df2ba1e7e78eb8f35aef1d08aa091f0b61e583dcc98b",
         "on_disk_bytes": 6949,
         "where": "checks/chk_dir_vs_startpos_results.json",
         "resolved_by": "the producer's own directory",
@@ -1139,16 +1139,16 @@
           "run"
         ],
         "state": "rewritten_same_numbers",
-        "why": "chk_dir_vs_startpos_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (f308a91943d7 against d62f1bbb5392) and agree exactly once _meta is taken off, at d0d576abc7d1. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+        "why": "chk_dir_vs_startpos_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (d62f1bbb5392 against 9bf339e493f7) and agree exactly once _meta is taken off, at d0d576abc7d1. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
         "producer": "checks/chk_artifact_provenance.py"
       },
       {
         "artifact": "checks/chk_artifact_provenance_results.json",
         "input": "chk_expensive_edits_results.json",
-        "recorded_sha256": "a6bb0f330a5195aa2a20e53ce75871895aa0aaea5dd095bfeab03b66dba693a1",
+        "recorded_sha256": "9d19b036caaba3a5cd08d29b479863d19796d9860d3337c4ee7f4bb3a7f473a2",
         "recorded_bytes": 6360,
         "present_when_written": true,
-        "on_disk_sha256": "9d19b036caaba3a5cd08d29b479863d19796d9860d3337c4ee7f4bb3a7f473a2",
+        "on_disk_sha256": "cdcdf5248a8edbac4682fd565706c1b3e4e3833aae25aa50d0e548fd7a8183e4",
         "on_disk_bytes": 6360,
         "where": "checks/chk_expensive_edits_results.json",
         "resolved_by": "the producer's own directory",
@@ -1162,17 +1162,17 @@
           "run"
         ],
         "state": "rewritten_same_numbers",
-        "why": "chk_expensive_edits_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (a6bb0f330a51 against 9d19b036caab) and agree exactly once _meta is taken off, at ebcf05d02225. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+        "why": "chk_expensive_edits_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (9d19b036caab against cdcdf5248a8e) and agree exactly once _meta is taken off, at ebcf05d02225. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
         "producer": "checks/chk_artifact_provenance.py"
       },
       {
         "artifact": "checks/chk_artifact_provenance_results.json",
         "input": "chk_headline_horizon_results.json",
-        "recorded_sha256": "f0ecce339d17898004625b951951f8d9fbf68444cb34fac4a2a73b2481966922",
+        "recorded_sha256": "347f3e1070ea8e1da7d0b22335ca070bf40206febdabe9b7222e9811abd8cc05",
         "recorded_bytes": 7286,
         "present_when_written": true,
-        "on_disk_sha256": "347f3e1070ea8e1da7d0b22335ca070bf40206febdabe9b7222e9811abd8cc05",
-        "on_disk_bytes": 7286,
+        "on_disk_sha256": "4528d4706de596fb745ad60c3196d8ee830b9647eae7266e27202bdba98577b0",
+        "on_disk_bytes": 7284,
         "where": "checks/chk_headline_horizon_results.json",
         "resolved_by": "the producer's own directory",
         "resolved_root": null,
@@ -1185,17 +1185,17 @@
           "run"
         ],
         "state": "rewritten_same_numbers",
-        "why": "chk_headline_horizon_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (f0ecce339d17 against 347f3e1070ea) and agree exactly once _meta is taken off, at c00c69d045bc. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+        "why": "chk_headline_horizon_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (347f3e1070ea against 4528d4706de5) and agree exactly once _meta is taken off, at c00c69d045bc. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
         "producer": "checks/chk_artifact_provenance.py"
       },
       {
         "artifact": "checks/chk_artifact_provenance_results.json",
         "input": "chk_maker_attribution_results.json",
-        "recorded_sha256": "ecbab0732626cd9530e4f773f29e1138de36bd35eebab4f947664954b166b084",
-        "recorded_bytes": 4662,
+        "recorded_sha256": "626df39762208da704f1c06d9623ad531d81d08c542293ae57aa8ddc29f66e1f",
+        "recorded_bytes": 4661,
         "present_when_written": true,
-        "on_disk_sha256": "626df39762208da704f1c06d9623ad531d81d08c542293ae57aa8ddc29f66e1f",
-        "on_disk_bytes": 4661,
+        "on_disk_sha256": "66fc2bfd4771257f9fe6990eff503d2b663d843bf0d45c9f1d783a5be591c4f4",
+        "on_disk_bytes": 4662,
         "where": "checks/chk_maker_attribution_results.json",
         "resolved_by": "the producer's own directory",
         "resolved_root": null,
@@ -1208,16 +1208,40 @@
           "run"
         ],
         "state": "rewritten_same_numbers",
-        "why": "chk_maker_attribution_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (ecbab0732626 against 626df3976220) and agree exactly once _meta is taken off, at 7cad77190828. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+        "why": "chk_maker_attribution_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (626df3976220 against 66fc2bfd4771) and agree exactly once _meta is taken off, at 7cad77190828. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+        "producer": "checks/chk_artifact_provenance.py"
+      },
+      {
+        "artifact": "checks/chk_artifact_provenance_results.json",
+        "input": "chk_notebook_expectations_results.json",
+        "recorded_sha256": "c0a5eb18e8834ae1347b4cb48bf07ad733125895fd12b293c63f74d1d26a3b37",
+        "recorded_bytes": 4435,
+        "present_when_written": true,
+        "on_disk_sha256": "c5033bbb80b4916e6145a3e9ed0047d1fc877e7a82cf7cfddcdbec66497e2fb4",
+        "on_disk_bytes": 4436,
+        "where": "checks/chk_notebook_expectations_results.json",
+        "resolved_by": "the producer's own directory",
+        "resolved_root": null,
+        "ambiguous_in": null,
+        "ambiguity_survives_hashing": null,
+        "recorded_body_sha256": "31361ec0baf5e625a4abde20ba58f7ff8acd2279ea7045886782deb2ac13d3b7",
+        "on_disk_body_sha256": "31361ec0baf5e625a4abde20ba58f7ff8acd2279ea7045886782deb2ac13d3b7",
+        "recorded_state_found_in": "among the objects carrying this input's basename",
+        "meta_fields_that_moved": [
+          "producer",
+          "run"
+        ],
+        "state": "rewritten_same_numbers",
+        "why": "chk_notebook_expectations_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (c0a5eb18e883 against c5033bbb80b4) and agree exactly once _meta is taken off, at 31361ec0baf5. What moved inside _meta is producer, run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
         "producer": "checks/chk_artifact_provenance.py"
       },
       {
         "artifact": "checks/chk_artifact_provenance_results.json",
         "input": "chk_notebook_pointer_table_results.json",
-        "recorded_sha256": "92b2ecc4cb2950287c1cebc950601742725d294b2555694ad5670a23bdeb1782",
-        "recorded_bytes": 39894,
+        "recorded_sha256": "d8129ab78e855d98341b049a30fd3ed84fb95245bd65adf0420a71d3a5e0a3f5",
+        "recorded_bytes": 39895,
         "present_when_written": true,
-        "on_disk_sha256": "d8129ab78e855d98341b049a30fd3ed84fb95245bd65adf0420a71d3a5e0a3f5",
+        "on_disk_sha256": "d8920f8182aabe7a90426ef47fed40ec6b06262493408326b399bbddc141d941",
         "on_disk_bytes": 39895,
         "where": "checks/chk_notebook_pointer_table_results.json",
         "resolved_by": "the producer's own directory",
@@ -1228,20 +1252,19 @@
         "on_disk_body_sha256": "acbfc5ab74171180db6dd4f935460d79c6e564ea6fe15dbeb5e46f6cf907fa55",
         "recorded_state_found_in": "among the objects carrying this input's basename",
         "meta_fields_that_moved": [
-          "inputs",
           "run"
         ],
         "state": "rewritten_same_numbers",
-        "why": "chk_notebook_pointer_table_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (92b2ecc4cb29 against d8129ab78e85) and agree exactly once _meta is taken off, at acbfc5ab7417. What moved inside _meta is inputs, run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+        "why": "chk_notebook_pointer_table_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (d8129ab78e85 against d8920f8182aa) and agree exactly once _meta is taken off, at acbfc5ab7417. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
         "producer": "checks/chk_artifact_provenance.py"
       },
       {
         "artifact": "checks/chk_artifact_provenance_results.json",
         "input": "chk_pinned_versions_results.json",
-        "recorded_sha256": "6f3e5d24b2dd9126e853a030801bf740371ba2180afd2c38e704fca9fee1e890",
+        "recorded_sha256": "535e15138efefd94e48dc70bd3179acc7aeff58a6b7a13998905f4762127e194",
         "recorded_bytes": 15700,
         "present_when_written": true,
-        "on_disk_sha256": "535e15138efefd94e48dc70bd3179acc7aeff58a6b7a13998905f4762127e194",
+        "on_disk_sha256": "6646a49db7295115997a95a54dc7672bca8a60b0031e0c8be5a8c7698a9034b8",
         "on_disk_bytes": 15700,
         "where": "checks/chk_pinned_versions_results.json",
         "resolved_by": "the producer's own directory",
@@ -1255,17 +1278,17 @@
           "run"
         ],
         "state": "rewritten_same_numbers",
-        "why": "chk_pinned_versions_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (6f3e5d24b2dd against 535e15138efe) and agree exactly once _meta is taken off, at 4fc8a51196db. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+        "why": "chk_pinned_versions_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (535e15138efe against 6646a49db729) and agree exactly once _meta is taken off, at 4fc8a51196db. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
         "producer": "checks/chk_artifact_provenance.py"
       },
       {
         "artifact": "checks/chk_artifact_provenance_results.json",
         "input": "chk_prose_numbers_results.json",
-        "recorded_sha256": "35b4ee83e021c79e23c4c206ed6961c1f799d3779778ff27a78ff23cdb5905a6",
-        "recorded_bytes": 2576,
+        "recorded_sha256": "18ed48363b9061d66ad06ad5122272082a9188c446182bba02b1453f9024a470",
+        "recorded_bytes": 2575,
         "present_when_written": true,
-        "on_disk_sha256": "18ed48363b9061d66ad06ad5122272082a9188c446182bba02b1453f9024a470",
-        "on_disk_bytes": 2575,
+        "on_disk_sha256": "0672c810c0e3558553ad84786551fdfbe3701693830bd41dfce5a015f257ffc6",
+        "on_disk_bytes": 2576,
         "where": "checks/chk_prose_numbers_results.json",
         "resolved_by": "the producer's own directory",
         "resolved_root": null,
@@ -1278,39 +1301,16 @@
           "run"
         ],
         "state": "rewritten_same_numbers",
-        "why": "chk_prose_numbers_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (35b4ee83e021 against 18ed48363b90) and agree exactly once _meta is taken off, at cb27611f0385. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
-        "producer": "checks/chk_artifact_provenance.py"
-      },
-      {
-        "artifact": "checks/chk_artifact_provenance_results.json",
-        "input": "chk_requirements_census_results.json",
-        "recorded_sha256": "619b4b1d2988b5c8b7016e240c9c6994d1e2660c9417154a705e63ea2be3346e",
-        "recorded_bytes": 5463,
-        "present_when_written": true,
-        "on_disk_sha256": "5abd47358aacc80b287a782ca83ad46516bd2c08b443b86725d5f66ffafb672b",
-        "on_disk_bytes": 5463,
-        "where": "checks/chk_requirements_census_results.json",
-        "resolved_by": "the producer's own directory",
-        "resolved_root": null,
-        "ambiguous_in": null,
-        "ambiguity_survives_hashing": null,
-        "recorded_body_sha256": "97e3f7c43b9b302b0bd3658d1d8723c8860f3bc2e123001f5eefeebd45321f29",
-        "on_disk_body_sha256": "97e3f7c43b9b302b0bd3658d1d8723c8860f3bc2e123001f5eefeebd45321f29",
-        "recorded_state_found_in": "among the objects carrying this input's basename",
-        "meta_fields_that_moved": [
-          "run"
-        ],
-        "state": "rewritten_same_numbers",
-        "why": "chk_requirements_census_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (619b4b1d2988 against 5abd47358aac) and agree exactly once _meta is taken off, at 97e3f7c43b9b. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+        "why": "chk_prose_numbers_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (18ed48363b90 against 0672c810c0e3) and agree exactly once _meta is taken off, at cb27611f0385. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
         "producer": "checks/chk_artifact_provenance.py"
       },
       {
         "artifact": "checks/chk_artifact_provenance_results.json",
         "input": "join_nolookahead_results.json",
-        "recorded_sha256": "5c9574cb098854fb4eb12cf6ddadbffb2f81800c294cc329451982f388a060d4",
+        "recorded_sha256": "6fcd6f9fd6e9d9587df4ede72fce96eb4e72b75ed23ad7c599c7f20acbb8a6fa",
         "recorded_bytes": 5890,
         "present_when_written": true,
-        "on_disk_sha256": "6fcd6f9fd6e9d9587df4ede72fce96eb4e72b75ed23ad7c599c7f20acbb8a6fa",
+        "on_disk_sha256": "8bc2ba732ce1b8fd597005dbf94edd3aebd9676d096ab7265a18c6558e3f7b64",
         "on_disk_bytes": 5890,
         "where": "checks/join_nolookahead_results.json",
         "resolved_by": "the producer's own directory",
@@ -1324,7 +1324,7 @@
           "run"
         ],
         "state": "rewritten_same_numbers",
-        "why": "join_nolookahead_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (5c9574cb0988 against 6fcd6f9fd6e9) and agree exactly once _meta is taken off, at 6a23cc5b6a8d. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+        "why": "join_nolookahead_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (6fcd6f9fd6e9 against 8bc2ba732ce1) and agree exactly once _meta is taken off, at 6a23cc5b6a8d. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
         "producer": "checks/chk_artifact_provenance.py"
       }
     ],
@@ -1338,133 +1338,119 @@
       "run_date"
     ],
     "why_an_allow_list": "identical numbers under a changed settings fingerprint or scope are a different question with the same digits, so those two are not on the list; and a deny-list would pass a record shape added after it was written, silently",
-    "recorded_state_recovered_from": "419 objects of this repository's history are reachable, carrying 275 distinct basenames",
-    "n_blobs_hashed": 550,
+    "recorded_state_recovered_from": "278 objects of this repository's history are reachable, carrying 275 distinct basenames",
+    "n_blobs_hashed": 30,
     "added": "2026-08-11, after recomputing six nodes reported 16 diverged edges over 6 artifacts of which 11 stood on results files whose numbers had not moved by one digit: ws1_horizon_results.json 1498 leaves, t3_results.json 327, as_quoter_results.json 184, m2_figure_results.json 40, ws2_hard_classifier_results.json 29, toxicity_frame_results.json 4, zero moved in each",
     "not_a_match": "the consumer has still not been re-run against the bytes now on disk, and the artifact standing on a rewrite is named above; what changed is that this is no longer reported in the same words as a stale figure"
   },
   "diverged": {
-    "n_edges": 5,
-    "n_artifacts": 2,
+    "n_edges": 4,
+    "n_artifacts": 1,
     "artifacts": [
-      "checks/chk_artifact_provenance_results.json",
-      "checks/run_all_checks_results.json"
+      "checks/chk_artifact_provenance_results.json"
     ],
     "edges": [
       {
         "artifact": "checks/chk_artifact_provenance_results.json",
         "input": "chk_build_selftest_results.json",
-        "recorded_sha256": "36c5e67219d7195b0c22c0d8adfd05ff13b1affcae66b3dd697826e7ace07006",
+        "recorded_sha256": "d1f702f93e742c9b45ed7386d95a305698dfffa89125f6df70f09414bbf9de4a",
         "recorded_bytes": 6015,
         "present_when_written": true,
-        "on_disk_sha256": "d1f702f93e742c9b45ed7386d95a305698dfffa89125f6df70f09414bbf9de4a",
-        "on_disk_bytes": 6015,
+        "on_disk_sha256": "19251c47b14533404459559f7e73c21e64b8a740991a83fdd67ae9e7b3a09854",
+        "on_disk_bytes": 6012,
         "where": "checks/chk_build_selftest_results.json",
         "resolved_by": "the producer's own directory",
         "resolved_root": null,
         "ambiguous_in": null,
         "ambiguity_survives_hashing": null,
-        "recorded_body_sha256": "ec0d4491e60935a88612de861c1dc366a57c77c73e6e13b79fe3dfb7ef95a1fd",
-        "on_disk_body_sha256": "858b8448c8ee41a326416dae28af9ae10e71b888f3de432492546a436fee3e35",
+        "recorded_body_sha256": "858b8448c8ee41a326416dae28af9ae10e71b888f3de432492546a436fee3e35",
+        "on_disk_body_sha256": "8215883a8f30fc02d4e2a19c540865b4ac47513abb979daaa3b3948522a6abc2",
         "recorded_state_found_in": "among the objects carrying this input's basename",
         "meta_fields_that_moved": [
           "run",
           "runtime_seconds_of_selftest"
         ],
         "state": "diverged",
-        "why": "this artifact was computed from chk_build_selftest_results.json whose content hashed ec0d4491e609, and the content of the file on disk is 858b8448c8ee: every figure here stands on numbers that no longer exist",
-        "producer": "checks/chk_artifact_provenance.py"
-      },
-      {
-        "artifact": "checks/chk_artifact_provenance_results.json",
-        "input": "chk_notebook_expectations_results.json",
-        "recorded_sha256": "7ab7a7b445a442b88f0a61a1fb5b0e8c88ad413ec6a27205a2376295d2d381ab",
-        "recorded_bytes": 4435,
-        "present_when_written": true,
-        "on_disk_sha256": "c0a5eb18e8834ae1347b4cb48bf07ad733125895fd12b293c63f74d1d26a3b37",
-        "on_disk_bytes": 4435,
-        "where": "checks/chk_notebook_expectations_results.json",
-        "resolved_by": "the producer's own directory",
-        "resolved_root": null,
-        "ambiguous_in": null,
-        "ambiguity_survives_hashing": null,
-        "recorded_body_sha256": null,
-        "on_disk_body_sha256": "31361ec0baf5e625a4abde20ba58f7ff8acd2279ea7045886782deb2ac13d3b7",
-        "recorded_state_found_in": null,
-        "meta_fields_that_moved": null,
-        "state": "diverged_body_unknown",
-        "why": "this artifact was computed from chk_notebook_expectations_results.json at 7ab7a7b445a4 and the file on disk is c0a5eb18e883. Whether the numbers moved cannot be told apart from whether the file was merely rewritten, because no object of this repository's history carries the recorded byte-state, so the document it stands for cannot be read. 419 objects of this repository's history are reachable, carrying 275 distinct basenames. The comparison is unmade rather than passed, and this edge is counted with the divergences",
+        "why": "this artifact was computed from chk_build_selftest_results.json whose content hashed 858b8448c8ee, and the content of the file on disk is 8215883a8f30: every figure here stands on numbers that no longer exist",
         "producer": "checks/chk_artifact_provenance.py"
       },
       {
         "artifact": "checks/chk_artifact_provenance_results.json",
         "input": "chk_producer_committed_results.json",
-        "recorded_sha256": "6116dee85ea678b3eafa39a6b7ccff5958ebb7b704a67b3256e126b74f1288da",
-        "recorded_bytes": 71902,
+        "recorded_sha256": "3d2e14285d1d8b2f94a446383c5c59ea5a20be143472c082c2e67c74cd4b8fee",
+        "recorded_bytes": 74047,
         "present_when_written": true,
-        "on_disk_sha256": "3d2e14285d1d8b2f94a446383c5c59ea5a20be143472c082c2e67c74cd4b8fee",
-        "on_disk_bytes": 74047,
+        "on_disk_sha256": "6e8365ad0be300ab329cd65910a574f1305e78224eee45d382c168879ad52966",
+        "on_disk_bytes": 72968,
         "where": "checks/chk_producer_committed_results.json",
         "resolved_by": "the producer's own directory",
         "resolved_root": null,
         "ambiguous_in": null,
         "ambiguity_survives_hashing": null,
-        "recorded_body_sha256": null,
-        "on_disk_body_sha256": "7e2d10a655640cbccc574ee2e19664d3a95243118fb6534d3d3686682cac1851",
-        "recorded_state_found_in": null,
-        "meta_fields_that_moved": null,
-        "state": "diverged_body_unknown",
-        "why": "this artifact was computed from chk_producer_committed_results.json at 6116dee85ea6 and the file on disk is 3d2e14285d1d. Whether the numbers moved cannot be told apart from whether the file was merely rewritten, because no object of this repository's history carries the recorded byte-state, so the document it stands for cannot be read. 419 objects of this repository's history are reachable, carrying 275 distinct basenames. The comparison is unmade rather than passed, and this edge is counted with the divergences",
+        "recorded_body_sha256": "7e2d10a655640cbccc574ee2e19664d3a95243118fb6534d3d3686682cac1851",
+        "on_disk_body_sha256": "eb5d7a621ec17478f4477b5a93b0e547c7e442b1268dbf9ab199af432ce80caa",
+        "recorded_state_found_in": "among the objects carrying this input's basename",
+        "meta_fields_that_moved": [
+          "n_blobs",
+          "n_certified_prior_history",
+          "n_distinct_contents",
+          "run"
+        ],
+        "state": "diverged",
+        "why": "this artifact was computed from chk_producer_committed_results.json whose content hashed 7e2d10a65564, and the content of the file on disk is eb5d7a621ec1: every figure here stands on numbers that no longer exist",
+        "producer": "checks/chk_artifact_provenance.py"
+      },
+      {
+        "artifact": "checks/chk_artifact_provenance_results.json",
+        "input": "chk_requirements_census_results.json",
+        "recorded_sha256": "5abd47358aacc80b287a782ca83ad46516bd2c08b443b86725d5f66ffafb672b",
+        "recorded_bytes": 5463,
+        "present_when_written": true,
+        "on_disk_sha256": "0f918107f544c5376fd19c1780098e58e1a7860c15a06734f1064c38f6b12eee",
+        "on_disk_bytes": 5463,
+        "where": "checks/chk_requirements_census_results.json",
+        "resolved_by": "the producer's own directory",
+        "resolved_root": null,
+        "ambiguous_in": null,
+        "ambiguity_survives_hashing": null,
+        "recorded_body_sha256": "97e3f7c43b9b302b0bd3658d1d8723c8860f3bc2e123001f5eefeebd45321f29",
+        "on_disk_body_sha256": "4d75d9cbb3e21656319f67eab36b0ece4d077f6ced65a3a09b8787af77adb662",
+        "recorded_state_found_in": "among the objects carrying this input's basename",
+        "meta_fields_that_moved": [
+          "run",
+          "runtime_seconds_of_census"
+        ],
+        "state": "diverged",
+        "why": "this artifact was computed from chk_requirements_census_results.json whose content hashed 97e3f7c43b9b, and the content of the file on disk is 4d75d9cbb3e2: every figure here stands on numbers that no longer exist",
         "producer": "checks/chk_artifact_provenance.py"
       },
       {
         "artifact": "checks/chk_artifact_provenance_results.json",
         "input": "chk_run_happened_results.json",
-        "recorded_sha256": "5736145c184339d156f67e77655bd33cffb17d8c04d75124973a9419ee8459eb",
-        "recorded_bytes": 158741,
+        "recorded_sha256": "bf608c8214b407129d018141cf7b4e8f03bbf732ba20c9f66363f2c85daca3f6",
+        "recorded_bytes": 158739,
         "present_when_written": true,
-        "on_disk_sha256": "bf608c8214b407129d018141cf7b4e8f03bbf732ba20c9f66363f2c85daca3f6",
-        "on_disk_bytes": 158739,
+        "on_disk_sha256": "2569cd53c97fb4acfa29d76f39f5ec2b3a44abac445a775c138d46c8d7f2087c",
+        "on_disk_bytes": 158741,
         "where": "checks/chk_run_happened_results.json",
         "resolved_by": "the producer's own directory",
         "resolved_root": null,
         "ambiguous_in": null,
         "ambiguity_survives_hashing": null,
-        "recorded_body_sha256": "09d3a0a348b1771f2cb142fda3cc2a2537e146bb8330b5b303ba28b6cb7a2794",
-        "on_disk_body_sha256": "1734fb3d8de31a5dc314f303d79ce214054bc21decf586e5e8bfacfb146aaebe",
+        "recorded_body_sha256": "1734fb3d8de31a5dc314f303d79ce214054bc21decf586e5e8bfacfb146aaebe",
+        "on_disk_body_sha256": "beac133faf52423dff55ac2b07229033899c30ad7922ff5d1d24fe64b99b2184",
         "recorded_state_found_in": "among the objects carrying this input's basename",
         "meta_fields_that_moved": [
           "run"
         ],
         "state": "diverged",
-        "why": "this artifact was computed from chk_run_happened_results.json whose content hashed 09d3a0a348b1, and the content of the file on disk is 1734fb3d8de3: every figure here stands on numbers that no longer exist",
+        "why": "this artifact was computed from chk_run_happened_results.json whose content hashed 1734fb3d8de3, and the content of the file on disk is beac133faf52: every figure here stands on numbers that no longer exist",
         "producer": "checks/chk_artifact_provenance.py"
-      },
-      {
-        "artifact": "checks/run_all_checks_results.json",
-        "input": "chk_notebook_expectations.py",
-        "recorded_sha256": "1d274bef3a895c931f521b2463ade1be9a02f6a280467301a6c9f8c6d8aec348",
-        "recorded_bytes": 64739,
-        "present_when_written": true,
-        "on_disk_sha256": "1a915288869fc0da16c8c8de7363a047ba6ae3d459207764081a00799c30c01f",
-        "on_disk_bytes": 64739,
-        "where": "checks/chk_notebook_expectations.py",
-        "resolved_by": "the producer's own directory",
-        "resolved_root": null,
-        "ambiguous_in": null,
-        "ambiguity_survives_hashing": null,
-        "recorded_body_sha256": null,
-        "on_disk_body_sha256": null,
-        "recorded_state_found_in": null,
-        "meta_fields_that_moved": null,
-        "state": "diverged",
-        "why": "this artifact was computed from chk_notebook_expectations.py at 1d274bef3a89 and the file on disk is 1a915288869f. There is no separable content to compare here, because it is not a JSON document, so the whole file is its content, so the bytes ARE the content and this is a change in what the artifact stands on",
-        "producer": "checks/run_all_checks.py"
       }
     ],
     "counts_two_states": {
-      "diverged": 3,
-      "diverged_body_unknown": 2,
+      "diverged": 4,
+      "diverged_body_unknown": 0,
       "why_together": "an artifact whose recorded byte-state this repository cannot produce has not been shown to stand on its input; the comparison is unmade, and an unmade comparison is counted as debt rather than as a pass"
     },
     "declared_debt": [
@@ -1474,7 +1460,8 @@
     ],
     "outside_the_declared_debt": [],
     "declared_and_now_repaid": [
-      "checks/chk_side_signconv_results.json"
+      "checks/chk_side_signconv_results.json",
+      "checks/run_all_checks_results.json"
     ],
     "declared_and_now_repaid_predicate": "declared, still naming an artifact of the population, and not among the artifacts standing on a moved input. The middle clause was added 2026-08-12 and it is not decoration: without it an entry whose address the restructuring emptied -- commit 9d52367 of 2026-08-11 -- comes out in this list, which is a broken line reported as finished work",
     "declared_debt_matching_nothing": [],
@@ -1511,11 +1498,9 @@
     ],
     "why_a_list_and_not_a_count": "both counts move on a tree where nothing was recomputed: four runs on 2026-08-03 gave 30, 33, 36 and 28 edges over 7 artifacts and then 6, because a results file is an artifact with declared inputs and also a file the battery rewrites. A ceiling of 7 would pass a genuine seventh whenever run_all_checks_results.json happens to be fresh",
     "standing_on_data": {
-      "n_edges": 1,
-      "n_artifacts": 1,
-      "artifacts": [
-        "checks/run_all_checks_results.json"
-      ],
+      "n_edges": 0,
+      "n_artifacts": 0,
+      "artifacts": [],
       "means": "a backlog somebody works off by recomputing the artifact"
     },
     "standing_on_the_tree": {
@@ -1575,7 +1560,7 @@
     },
     "anchor": {
       "chosen_by": "the first, in sorted order by artifact then by input name, of the input records this run judged as matches while carrying a recorded hash and resolving to a file on disk",
-      "population": 366,
+      "population": 367,
       "artifact": "build_diagram_results.json",
       "input": "_groups.py",
       "resolved_to": "run/_groups.py",
@@ -1624,23 +1609,23 @@
       },
       "second_sign": {
         "exercised": true,
-        "chosen_by": "the first input record, in sorted order by artifact then by input name, that resolves to a document on disk carrying a _meta block and for which this repository's history holds an earlier byte-state of the same name",
-        "n_inputs_examined": 16,
+        "chosen_by": "HANDMADE: the first matched JSON input with a run clock and a number, in sorted order; its two earlier states were made from the file on disk and committed to a temporary git, because this repository's history holds no earlier state",
+        "n_inputs_examined": 25,
         "silent": {
           "artifact": "checks/chk_artifact_provenance_results.json",
-          "input": "chk_expensive_edits_results.json",
-          "resolved_to": "checks/chk_expensive_edits_results.json",
-          "earlier_state": "a6bb0f330a5195aa2a20e53ce75871895aa0aaea5dd095bfeab03b66dba693a1",
+          "input": "as_quoter_results.json",
+          "resolved_to": "quoters/as_quoter_results.json",
+          "earlier_state": "f026c59f190391bc86ecfca04e6fee4e20fe6395d2421c3f2daeb9aa389600d4",
           "read": "rewritten_same_numbers",
-          "content": "ebcf05d02225 on both sides"
+          "content": "dee0f7de7639 on both sides"
         },
         "firing": {
           "artifact": "checks/chk_artifact_provenance_results.json",
-          "input": "chk_expensive_edits_results.json",
-          "resolved_to": "checks/chk_expensive_edits_results.json",
-          "earlier_state": "6cd0e9066252f0a0b5475107aed0df6770c5be4b9067b8a8528d5967e9747a7d",
+          "input": "as_quoter_results.json",
+          "resolved_to": "quoters/as_quoter_results.json",
+          "earlier_state": "3d28def4c474a0b85d101e886b5fad90a85cb749eca5ac2c5369dbc4f72d6ac6",
           "read": "diverged",
-          "content": "f852f0246872 against ebcf05d02225"
+          "content": "b0051679ca7d against dee0f7de7639"
         },
         "meta_fields_the_silent_half_moved": [
           "run"
@@ -2695,10 +2680,10 @@
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_academic_header_results.json",
-      "recorded_sha256": "503d176ac718879524b1b14d7a940109f3880fe5602f54730f55619f3e70123a",
+      "recorded_sha256": "a26b1c027fcc6026ed0563969a34aa01f2ab10a49840084055c1af69db7e9b9e",
       "recorded_bytes": 4275,
       "present_when_written": true,
-      "on_disk_sha256": "503d176ac718879524b1b14d7a940109f3880fe5602f54730f55619f3e70123a",
+      "on_disk_sha256": "a26b1c027fcc6026ed0563969a34aa01f2ab10a49840084055c1af69db7e9b9e",
       "on_disk_bytes": 4275,
       "where": "checks/chk_academic_header_results.json",
       "resolved_by": "the producer's own directory",
@@ -2716,10 +2701,10 @@
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_book_orientation_results.json",
-      "recorded_sha256": "58f4f2a5079403629c97c3ca12bfe13ae35a4f00ca1ac0f6f8adf54b87d68ace",
+      "recorded_sha256": "104d9d3c854eb898c29e74d55295806af8701600329bbd27e6e2ef271d90f35e",
       "recorded_bytes": 9298,
       "present_when_written": true,
-      "on_disk_sha256": "104d9d3c854eb898c29e74d55295806af8701600329bbd27e6e2ef271d90f35e",
+      "on_disk_sha256": "c9589e959e314b35f7d2faa45c5b1cb8e11f48d3cacee4088bbe4f6808b94c72",
       "on_disk_bytes": 9298,
       "where": "checks/chk_book_orientation_results.json",
       "resolved_by": "the producer's own directory",
@@ -2733,40 +2718,40 @@
         "run"
       ],
       "state": "rewritten_same_numbers",
-      "why": "chk_book_orientation_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (58f4f2a50794 against 104d9d3c854e) and agree exactly once _meta is taken off, at 07a7e0aa9a99. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+      "why": "chk_book_orientation_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (104d9d3c854e against c9589e959e31) and agree exactly once _meta is taken off, at 07a7e0aa9a99. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
       "producer": "checks/chk_artifact_provenance.py"
     },
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_build_selftest_results.json",
-      "recorded_sha256": "36c5e67219d7195b0c22c0d8adfd05ff13b1affcae66b3dd697826e7ace07006",
+      "recorded_sha256": "d1f702f93e742c9b45ed7386d95a305698dfffa89125f6df70f09414bbf9de4a",
       "recorded_bytes": 6015,
       "present_when_written": true,
-      "on_disk_sha256": "d1f702f93e742c9b45ed7386d95a305698dfffa89125f6df70f09414bbf9de4a",
-      "on_disk_bytes": 6015,
+      "on_disk_sha256": "19251c47b14533404459559f7e73c21e64b8a740991a83fdd67ae9e7b3a09854",
+      "on_disk_bytes": 6012,
       "where": "checks/chk_build_selftest_results.json",
       "resolved_by": "the producer's own directory",
       "resolved_root": null,
       "ambiguous_in": null,
       "ambiguity_survives_hashing": null,
-      "recorded_body_sha256": "ec0d4491e60935a88612de861c1dc366a57c77c73e6e13b79fe3dfb7ef95a1fd",
-      "on_disk_body_sha256": "858b8448c8ee41a326416dae28af9ae10e71b888f3de432492546a436fee3e35",
+      "recorded_body_sha256": "858b8448c8ee41a326416dae28af9ae10e71b888f3de432492546a436fee3e35",
+      "on_disk_body_sha256": "8215883a8f30fc02d4e2a19c540865b4ac47513abb979daaa3b3948522a6abc2",
       "recorded_state_found_in": "among the objects carrying this input's basename",
       "meta_fields_that_moved": [
         "run",
         "runtime_seconds_of_selftest"
       ],
       "state": "diverged",
-      "why": "this artifact was computed from chk_build_selftest_results.json whose content hashed ec0d4491e609, and the content of the file on disk is 858b8448c8ee: every figure here stands on numbers that no longer exist",
+      "why": "this artifact was computed from chk_build_selftest_results.json whose content hashed 858b8448c8ee, and the content of the file on disk is 8215883a8f30: every figure here stands on numbers that no longer exist",
       "producer": "checks/chk_artifact_provenance.py"
     },
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_closedpnl_results.json",
-      "recorded_sha256": "ca4d0cc80ff5d1916d082d35113540c7408ac9def6276ee3417ef5c57d744fdc",
+      "recorded_sha256": "398c516fb39d8ce837b5414f840d61b1139f5fbbb93c6d92423c558c598b9412",
       "recorded_bytes": 8242,
       "present_when_written": true,
-      "on_disk_sha256": "398c516fb39d8ce837b5414f840d61b1139f5fbbb93c6d92423c558c598b9412",
+      "on_disk_sha256": "181440c3113dd71c663df1a0e5f0473ac1d683c9249bf2e187c43c3b91bd63cc",
       "on_disk_bytes": 8242,
       "where": "checks/chk_closedpnl_results.json",
       "resolved_by": "the producer's own directory",
@@ -2780,16 +2765,16 @@
         "run"
       ],
       "state": "rewritten_same_numbers",
-      "why": "chk_closedpnl_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (ca4d0cc80ff5 against 398c516fb39d) and agree exactly once _meta is taken off, at a218ea9ed739. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+      "why": "chk_closedpnl_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (398c516fb39d against 181440c3113d) and agree exactly once _meta is taken off, at a218ea9ed739. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
       "producer": "checks/chk_artifact_provenance.py"
     },
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_contrast_hygiene_results.json",
-      "recorded_sha256": "02dc55eadf2a9105d14273c2485ff94a31eec638d8aee630e2d8b66b24b7ddab",
+      "recorded_sha256": "d662c8b763d8800a077dc93aa4a0ff6e1fe4d44215e043906811197d8932913e",
       "recorded_bytes": 183015,
       "present_when_written": true,
-      "on_disk_sha256": "d662c8b763d8800a077dc93aa4a0ff6e1fe4d44215e043906811197d8932913e",
+      "on_disk_sha256": "53d99c6ffe354207e5786324d4c7f548fa32265482135df15bd9f5cd3cf83bb0",
       "on_disk_bytes": 183015,
       "where": "checks/chk_contrast_hygiene_results.json",
       "resolved_by": "the producer's own directory",
@@ -2803,16 +2788,16 @@
         "run"
       ],
       "state": "rewritten_same_numbers",
-      "why": "chk_contrast_hygiene_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (02dc55eadf2a against d662c8b763d8) and agree exactly once _meta is taken off, at 634559001f01. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+      "why": "chk_contrast_hygiene_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (d662c8b763d8 against 53d99c6ffe35) and agree exactly once _meta is taken off, at 634559001f01. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
       "producer": "checks/chk_artifact_provenance.py"
     },
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_decision_lookahead_results.json",
-      "recorded_sha256": "65181b6a0abf272d88cc35d9a86f536ec66781ee8b1d08ffda74920c05f91e3b",
-      "recorded_bytes": 94742,
+      "recorded_sha256": "7752fafd5a9e96cd4ae56524afaeda12ec380a51aadd30ecf689f3b278f3ecdf",
+      "recorded_bytes": 94743,
       "present_when_written": true,
-      "on_disk_sha256": "7752fafd5a9e96cd4ae56524afaeda12ec380a51aadd30ecf689f3b278f3ecdf",
+      "on_disk_sha256": "9c1a479e0a5534822efe1f282a2efc9a332658025e5d1a42f25a8822888c7dc5",
       "on_disk_bytes": 94743,
       "where": "checks/chk_decision_lookahead_results.json",
       "resolved_by": "the producer's own directory",
@@ -2826,16 +2811,16 @@
         "run"
       ],
       "state": "rewritten_same_numbers",
-      "why": "chk_decision_lookahead_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (65181b6a0abf against 7752fafd5a9e) and agree exactly once _meta is taken off, at c90ad982049e. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+      "why": "chk_decision_lookahead_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (7752fafd5a9e against 9c1a479e0a55) and agree exactly once _meta is taken off, at c90ad982049e. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
       "producer": "checks/chk_artifact_provenance.py"
     },
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_dir_vs_startpos_results.json",
-      "recorded_sha256": "f308a91943d7d9b5a229e85e41b77d0d0e0069e5c80a5268adec19557364d294",
+      "recorded_sha256": "d62f1bbb5392ed5a33a7c0b0e62d752185ffa494973fdd6010177eae274e5133",
       "recorded_bytes": 6949,
       "present_when_written": true,
-      "on_disk_sha256": "d62f1bbb5392ed5a33a7c0b0e62d752185ffa494973fdd6010177eae274e5133",
+      "on_disk_sha256": "9bf339e493f7ee8ba2c6df2ba1e7e78eb8f35aef1d08aa091f0b61e583dcc98b",
       "on_disk_bytes": 6949,
       "where": "checks/chk_dir_vs_startpos_results.json",
       "resolved_by": "the producer's own directory",
@@ -2849,16 +2834,16 @@
         "run"
       ],
       "state": "rewritten_same_numbers",
-      "why": "chk_dir_vs_startpos_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (f308a91943d7 against d62f1bbb5392) and agree exactly once _meta is taken off, at d0d576abc7d1. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+      "why": "chk_dir_vs_startpos_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (d62f1bbb5392 against 9bf339e493f7) and agree exactly once _meta is taken off, at d0d576abc7d1. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
       "producer": "checks/chk_artifact_provenance.py"
     },
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_expensive_edits_results.json",
-      "recorded_sha256": "a6bb0f330a5195aa2a20e53ce75871895aa0aaea5dd095bfeab03b66dba693a1",
+      "recorded_sha256": "9d19b036caaba3a5cd08d29b479863d19796d9860d3337c4ee7f4bb3a7f473a2",
       "recorded_bytes": 6360,
       "present_when_written": true,
-      "on_disk_sha256": "9d19b036caaba3a5cd08d29b479863d19796d9860d3337c4ee7f4bb3a7f473a2",
+      "on_disk_sha256": "cdcdf5248a8edbac4682fd565706c1b3e4e3833aae25aa50d0e548fd7a8183e4",
       "on_disk_bytes": 6360,
       "where": "checks/chk_expensive_edits_results.json",
       "resolved_by": "the producer's own directory",
@@ -2872,7 +2857,7 @@
         "run"
       ],
       "state": "rewritten_same_numbers",
-      "why": "chk_expensive_edits_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (a6bb0f330a51 against 9d19b036caab) and agree exactly once _meta is taken off, at ebcf05d02225. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+      "why": "chk_expensive_edits_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (9d19b036caab against cdcdf5248a8e) and agree exactly once _meta is taken off, at ebcf05d02225. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
       "producer": "checks/chk_artifact_provenance.py"
     },
     {
@@ -2899,11 +2884,11 @@
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_headline_horizon_results.json",
-      "recorded_sha256": "f0ecce339d17898004625b951951f8d9fbf68444cb34fac4a2a73b2481966922",
+      "recorded_sha256": "347f3e1070ea8e1da7d0b22335ca070bf40206febdabe9b7222e9811abd8cc05",
       "recorded_bytes": 7286,
       "present_when_written": true,
-      "on_disk_sha256": "347f3e1070ea8e1da7d0b22335ca070bf40206febdabe9b7222e9811abd8cc05",
-      "on_disk_bytes": 7286,
+      "on_disk_sha256": "4528d4706de596fb745ad60c3196d8ee830b9647eae7266e27202bdba98577b0",
+      "on_disk_bytes": 7284,
       "where": "checks/chk_headline_horizon_results.json",
       "resolved_by": "the producer's own directory",
       "resolved_root": null,
@@ -2916,17 +2901,17 @@
         "run"
       ],
       "state": "rewritten_same_numbers",
-      "why": "chk_headline_horizon_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (f0ecce339d17 against 347f3e1070ea) and agree exactly once _meta is taken off, at c00c69d045bc. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+      "why": "chk_headline_horizon_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (347f3e1070ea against 4528d4706de5) and agree exactly once _meta is taken off, at c00c69d045bc. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
       "producer": "checks/chk_artifact_provenance.py"
     },
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_input_freshness_results.json",
-      "recorded_sha256": "513f189b4425b7a1a08d26b8a7f653493e865366c7749cff2c010089de4da631",
-      "recorded_bytes": 516900,
+      "recorded_sha256": "790e3806e513e2da95449a76f9a461e4686502d51868b8f6ed4b1fb8dd153f0c",
+      "recorded_bytes": 517683,
       "present_when_written": true,
-      "on_disk_sha256": "513f189b4425b7a1a08d26b8a7f653493e865366c7749cff2c010089de4da631",
-      "on_disk_bytes": 516900,
+      "on_disk_sha256": "790e3806e513e2da95449a76f9a461e4686502d51868b8f6ed4b1fb8dd153f0c",
+      "on_disk_bytes": 517683,
       "where": "checks/chk_input_freshness_results.json",
       "resolved_by": "the producer's own directory",
       "resolved_root": null,
@@ -2964,11 +2949,11 @@
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_maker_attribution_results.json",
-      "recorded_sha256": "ecbab0732626cd9530e4f773f29e1138de36bd35eebab4f947664954b166b084",
-      "recorded_bytes": 4662,
+      "recorded_sha256": "626df39762208da704f1c06d9623ad531d81d08c542293ae57aa8ddc29f66e1f",
+      "recorded_bytes": 4661,
       "present_when_written": true,
-      "on_disk_sha256": "626df39762208da704f1c06d9623ad531d81d08c542293ae57aa8ddc29f66e1f",
-      "on_disk_bytes": 4661,
+      "on_disk_sha256": "66fc2bfd4771257f9fe6990eff503d2b663d843bf0d45c9f1d783a5be591c4f4",
+      "on_disk_bytes": 4662,
       "where": "checks/chk_maker_attribution_results.json",
       "resolved_by": "the producer's own directory",
       "resolved_root": null,
@@ -2981,16 +2966,16 @@
         "run"
       ],
       "state": "rewritten_same_numbers",
-      "why": "chk_maker_attribution_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (ecbab0732626 against 626df3976220) and agree exactly once _meta is taken off, at 7cad77190828. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+      "why": "chk_maker_attribution_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (626df3976220 against 66fc2bfd4771) and agree exactly once _meta is taken off, at 7cad77190828. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
       "producer": "checks/chk_artifact_provenance.py"
     },
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_no_abs_paths_results.json",
-      "recorded_sha256": "98a89b390bcd3ff73ce51e127d8115d110ec8f08323e209a141b593cb0828fcc",
+      "recorded_sha256": "a2c13dc102d2ba0e1be1ce615024cc41f2d1633f8abcc2d5cc0d4cad2465c1d0",
       "recorded_bytes": 2187,
       "present_when_written": true,
-      "on_disk_sha256": "98a89b390bcd3ff73ce51e127d8115d110ec8f08323e209a141b593cb0828fcc",
+      "on_disk_sha256": "a2c13dc102d2ba0e1be1ce615024cc41f2d1633f8abcc2d5cc0d4cad2465c1d0",
       "on_disk_bytes": 2187,
       "where": "checks/chk_no_abs_paths_results.json",
       "resolved_by": "the producer's own directory",
@@ -3008,31 +2993,34 @@
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_notebook_expectations_results.json",
-      "recorded_sha256": "7ab7a7b445a442b88f0a61a1fb5b0e8c88ad413ec6a27205a2376295d2d381ab",
+      "recorded_sha256": "c0a5eb18e8834ae1347b4cb48bf07ad733125895fd12b293c63f74d1d26a3b37",
       "recorded_bytes": 4435,
       "present_when_written": true,
-      "on_disk_sha256": "c0a5eb18e8834ae1347b4cb48bf07ad733125895fd12b293c63f74d1d26a3b37",
-      "on_disk_bytes": 4435,
+      "on_disk_sha256": "c5033bbb80b4916e6145a3e9ed0047d1fc877e7a82cf7cfddcdbec66497e2fb4",
+      "on_disk_bytes": 4436,
       "where": "checks/chk_notebook_expectations_results.json",
       "resolved_by": "the producer's own directory",
       "resolved_root": null,
       "ambiguous_in": null,
       "ambiguity_survives_hashing": null,
-      "recorded_body_sha256": null,
+      "recorded_body_sha256": "31361ec0baf5e625a4abde20ba58f7ff8acd2279ea7045886782deb2ac13d3b7",
       "on_disk_body_sha256": "31361ec0baf5e625a4abde20ba58f7ff8acd2279ea7045886782deb2ac13d3b7",
-      "recorded_state_found_in": null,
-      "meta_fields_that_moved": null,
-      "state": "diverged_body_unknown",
-      "why": "this artifact was computed from chk_notebook_expectations_results.json at 7ab7a7b445a4 and the file on disk is c0a5eb18e883. Whether the numbers moved cannot be told apart from whether the file was merely rewritten, because no object of this repository's history carries the recorded byte-state, so the document it stands for cannot be read. 419 objects of this repository's history are reachable, carrying 275 distinct basenames. The comparison is unmade rather than passed, and this edge is counted with the divergences",
+      "recorded_state_found_in": "among the objects carrying this input's basename",
+      "meta_fields_that_moved": [
+        "producer",
+        "run"
+      ],
+      "state": "rewritten_same_numbers",
+      "why": "chk_notebook_expectations_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (c0a5eb18e883 against c5033bbb80b4) and agree exactly once _meta is taken off, at 31361ec0baf5. What moved inside _meta is producer, run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
       "producer": "checks/chk_artifact_provenance.py"
     },
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_notebook_pointer_table_results.json",
-      "recorded_sha256": "92b2ecc4cb2950287c1cebc950601742725d294b2555694ad5670a23bdeb1782",
-      "recorded_bytes": 39894,
+      "recorded_sha256": "d8129ab78e855d98341b049a30fd3ed84fb95245bd65adf0420a71d3a5e0a3f5",
+      "recorded_bytes": 39895,
       "present_when_written": true,
-      "on_disk_sha256": "d8129ab78e855d98341b049a30fd3ed84fb95245bd65adf0420a71d3a5e0a3f5",
+      "on_disk_sha256": "d8920f8182aabe7a90426ef47fed40ec6b06262493408326b399bbddc141d941",
       "on_disk_bytes": 39895,
       "where": "checks/chk_notebook_pointer_table_results.json",
       "resolved_by": "the producer's own directory",
@@ -3043,20 +3031,19 @@
       "on_disk_body_sha256": "acbfc5ab74171180db6dd4f935460d79c6e564ea6fe15dbeb5e46f6cf907fa55",
       "recorded_state_found_in": "among the objects carrying this input's basename",
       "meta_fields_that_moved": [
-        "inputs",
         "run"
       ],
       "state": "rewritten_same_numbers",
-      "why": "chk_notebook_pointer_table_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (92b2ecc4cb29 against d8129ab78e85) and agree exactly once _meta is taken off, at acbfc5ab7417. What moved inside _meta is inputs, run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+      "why": "chk_notebook_pointer_table_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (d8129ab78e85 against d8920f8182aa) and agree exactly once _meta is taken off, at acbfc5ab7417. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
       "producer": "checks/chk_artifact_provenance.py"
     },
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_pinned_versions_results.json",
-      "recorded_sha256": "6f3e5d24b2dd9126e853a030801bf740371ba2180afd2c38e704fca9fee1e890",
+      "recorded_sha256": "535e15138efefd94e48dc70bd3179acc7aeff58a6b7a13998905f4762127e194",
       "recorded_bytes": 15700,
       "present_when_written": true,
-      "on_disk_sha256": "535e15138efefd94e48dc70bd3179acc7aeff58a6b7a13998905f4762127e194",
+      "on_disk_sha256": "6646a49db7295115997a95a54dc7672bca8a60b0031e0c8be5a8c7698a9034b8",
       "on_disk_bytes": 15700,
       "where": "checks/chk_pinned_versions_results.json",
       "resolved_by": "the producer's own directory",
@@ -3070,38 +3057,43 @@
         "run"
       ],
       "state": "rewritten_same_numbers",
-      "why": "chk_pinned_versions_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (6f3e5d24b2dd against 535e15138efe) and agree exactly once _meta is taken off, at 4fc8a51196db. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+      "why": "chk_pinned_versions_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (535e15138efe against 6646a49db729) and agree exactly once _meta is taken off, at 4fc8a51196db. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
       "producer": "checks/chk_artifact_provenance.py"
     },
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_producer_committed_results.json",
-      "recorded_sha256": "6116dee85ea678b3eafa39a6b7ccff5958ebb7b704a67b3256e126b74f1288da",
-      "recorded_bytes": 71902,
+      "recorded_sha256": "3d2e14285d1d8b2f94a446383c5c59ea5a20be143472c082c2e67c74cd4b8fee",
+      "recorded_bytes": 74047,
       "present_when_written": true,
-      "on_disk_sha256": "3d2e14285d1d8b2f94a446383c5c59ea5a20be143472c082c2e67c74cd4b8fee",
-      "on_disk_bytes": 74047,
+      "on_disk_sha256": "6e8365ad0be300ab329cd65910a574f1305e78224eee45d382c168879ad52966",
+      "on_disk_bytes": 72968,
       "where": "checks/chk_producer_committed_results.json",
       "resolved_by": "the producer's own directory",
       "resolved_root": null,
       "ambiguous_in": null,
       "ambiguity_survives_hashing": null,
-      "recorded_body_sha256": null,
-      "on_disk_body_sha256": "7e2d10a655640cbccc574ee2e19664d3a95243118fb6534d3d3686682cac1851",
-      "recorded_state_found_in": null,
-      "meta_fields_that_moved": null,
-      "state": "diverged_body_unknown",
-      "why": "this artifact was computed from chk_producer_committed_results.json at 6116dee85ea6 and the file on disk is 3d2e14285d1d. Whether the numbers moved cannot be told apart from whether the file was merely rewritten, because no object of this repository's history carries the recorded byte-state, so the document it stands for cannot be read. 419 objects of this repository's history are reachable, carrying 275 distinct basenames. The comparison is unmade rather than passed, and this edge is counted with the divergences",
+      "recorded_body_sha256": "7e2d10a655640cbccc574ee2e19664d3a95243118fb6534d3d3686682cac1851",
+      "on_disk_body_sha256": "eb5d7a621ec17478f4477b5a93b0e547c7e442b1268dbf9ab199af432ce80caa",
+      "recorded_state_found_in": "among the objects carrying this input's basename",
+      "meta_fields_that_moved": [
+        "n_blobs",
+        "n_certified_prior_history",
+        "n_distinct_contents",
+        "run"
+      ],
+      "state": "diverged",
+      "why": "this artifact was computed from chk_producer_committed_results.json whose content hashed 7e2d10a65564, and the content of the file on disk is eb5d7a621ec1: every figure here stands on numbers that no longer exist",
       "producer": "checks/chk_artifact_provenance.py"
     },
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_prose_numbers_results.json",
-      "recorded_sha256": "35b4ee83e021c79e23c4c206ed6961c1f799d3779778ff27a78ff23cdb5905a6",
-      "recorded_bytes": 2576,
+      "recorded_sha256": "18ed48363b9061d66ad06ad5122272082a9188c446182bba02b1453f9024a470",
+      "recorded_bytes": 2575,
       "present_when_written": true,
-      "on_disk_sha256": "18ed48363b9061d66ad06ad5122272082a9188c446182bba02b1453f9024a470",
-      "on_disk_bytes": 2575,
+      "on_disk_sha256": "0672c810c0e3558553ad84786551fdfbe3701693830bd41dfce5a015f257ffc6",
+      "on_disk_bytes": 2576,
       "where": "checks/chk_prose_numbers_results.json",
       "resolved_by": "the producer's own directory",
       "resolved_root": null,
@@ -3114,16 +3106,16 @@
         "run"
       ],
       "state": "rewritten_same_numbers",
-      "why": "chk_prose_numbers_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (35b4ee83e021 against 18ed48363b90) and agree exactly once _meta is taken off, at cb27611f0385. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+      "why": "chk_prose_numbers_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (18ed48363b90 against 0672c810c0e3) and agree exactly once _meta is taken off, at cb27611f0385. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
       "producer": "checks/chk_artifact_provenance.py"
     },
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_requirements_census_results.json",
-      "recorded_sha256": "619b4b1d2988b5c8b7016e240c9c6994d1e2660c9417154a705e63ea2be3346e",
+      "recorded_sha256": "5abd47358aacc80b287a782ca83ad46516bd2c08b443b86725d5f66ffafb672b",
       "recorded_bytes": 5463,
       "present_when_written": true,
-      "on_disk_sha256": "5abd47358aacc80b287a782ca83ad46516bd2c08b443b86725d5f66ffafb672b",
+      "on_disk_sha256": "0f918107f544c5376fd19c1780098e58e1a7860c15a06734f1064c38f6b12eee",
       "on_disk_bytes": 5463,
       "where": "checks/chk_requirements_census_results.json",
       "resolved_by": "the producer's own directory",
@@ -3131,13 +3123,14 @@
       "ambiguous_in": null,
       "ambiguity_survives_hashing": null,
       "recorded_body_sha256": "97e3f7c43b9b302b0bd3658d1d8723c8860f3bc2e123001f5eefeebd45321f29",
-      "on_disk_body_sha256": "97e3f7c43b9b302b0bd3658d1d8723c8860f3bc2e123001f5eefeebd45321f29",
+      "on_disk_body_sha256": "4d75d9cbb3e21656319f67eab36b0ece4d077f6ced65a3a09b8787af77adb662",
       "recorded_state_found_in": "among the objects carrying this input's basename",
       "meta_fields_that_moved": [
-        "run"
+        "run",
+        "runtime_seconds_of_census"
       ],
-      "state": "rewritten_same_numbers",
-      "why": "chk_requirements_census_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (619b4b1d2988 against 5abd47358aac) and agree exactly once _meta is taken off, at 97e3f7c43b9b. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+      "state": "diverged",
+      "why": "this artifact was computed from chk_requirements_census_results.json whose content hashed 97e3f7c43b9b, and the content of the file on disk is 4d75d9cbb3e2: every figure here stands on numbers that no longer exist",
       "producer": "checks/chk_artifact_provenance.py"
     },
     {
@@ -3164,33 +3157,33 @@
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_run_happened_results.json",
-      "recorded_sha256": "5736145c184339d156f67e77655bd33cffb17d8c04d75124973a9419ee8459eb",
-      "recorded_bytes": 158741,
+      "recorded_sha256": "bf608c8214b407129d018141cf7b4e8f03bbf732ba20c9f66363f2c85daca3f6",
+      "recorded_bytes": 158739,
       "present_when_written": true,
-      "on_disk_sha256": "bf608c8214b407129d018141cf7b4e8f03bbf732ba20c9f66363f2c85daca3f6",
-      "on_disk_bytes": 158739,
+      "on_disk_sha256": "2569cd53c97fb4acfa29d76f39f5ec2b3a44abac445a775c138d46c8d7f2087c",
+      "on_disk_bytes": 158741,
       "where": "checks/chk_run_happened_results.json",
       "resolved_by": "the producer's own directory",
       "resolved_root": null,
       "ambiguous_in": null,
       "ambiguity_survives_hashing": null,
-      "recorded_body_sha256": "09d3a0a348b1771f2cb142fda3cc2a2537e146bb8330b5b303ba28b6cb7a2794",
-      "on_disk_body_sha256": "1734fb3d8de31a5dc314f303d79ce214054bc21decf586e5e8bfacfb146aaebe",
+      "recorded_body_sha256": "1734fb3d8de31a5dc314f303d79ce214054bc21decf586e5e8bfacfb146aaebe",
+      "on_disk_body_sha256": "beac133faf52423dff55ac2b07229033899c30ad7922ff5d1d24fe64b99b2184",
       "recorded_state_found_in": "among the objects carrying this input's basename",
       "meta_fields_that_moved": [
         "run"
       ],
       "state": "diverged",
-      "why": "this artifact was computed from chk_run_happened_results.json whose content hashed 09d3a0a348b1, and the content of the file on disk is 1734fb3d8de3: every figure here stands on numbers that no longer exist",
+      "why": "this artifact was computed from chk_run_happened_results.json whose content hashed 1734fb3d8de3, and the content of the file on disk is beac133faf52: every figure here stands on numbers that no longer exist",
       "producer": "checks/chk_artifact_provenance.py"
     },
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "chk_settings_home_results.json",
-      "recorded_sha256": "d834dc92f277ece88efaaf66dd552c9275376f9a1134362b146e15f3bb01ca5a",
+      "recorded_sha256": "3cd2de2195e37a1cca4bff4028766536bce25323e4261d3d1a468e6c1fe920d4",
       "recorded_bytes": 14234,
       "present_when_written": true,
-      "on_disk_sha256": "d834dc92f277ece88efaaf66dd552c9275376f9a1134362b146e15f3bb01ca5a",
+      "on_disk_sha256": "3cd2de2195e37a1cca4bff4028766536bce25323e4261d3d1a468e6c1fe920d4",
       "on_disk_bytes": 14234,
       "where": "checks/chk_settings_home_results.json",
       "resolved_by": "the producer's own directory",
@@ -3229,10 +3222,10 @@
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "join_nolookahead_results.json",
-      "recorded_sha256": "5c9574cb098854fb4eb12cf6ddadbffb2f81800c294cc329451982f388a060d4",
+      "recorded_sha256": "6fcd6f9fd6e9d9587df4ede72fce96eb4e72b75ed23ad7c599c7f20acbb8a6fa",
       "recorded_bytes": 5890,
       "present_when_written": true,
-      "on_disk_sha256": "6fcd6f9fd6e9d9587df4ede72fce96eb4e72b75ed23ad7c599c7f20acbb8a6fa",
+      "on_disk_sha256": "8bc2ba732ce1b8fd597005dbf94edd3aebd9676d096ab7265a18c6558e3f7b64",
       "on_disk_bytes": 5890,
       "where": "checks/join_nolookahead_results.json",
       "resolved_by": "the producer's own directory",
@@ -3246,17 +3239,17 @@
         "run"
       ],
       "state": "rewritten_same_numbers",
-      "why": "join_nolookahead_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (5c9574cb0988 against 6fcd6f9fd6e9) and agree exactly once _meta is taken off, at 6a23cc5b6a8d. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
+      "why": "join_nolookahead_results.json was rewritten and its numbers were not: the recorded state and the file on disk differ as bytes (6fcd6f9fd6e9 against 8bc2ba732ce1) and agree exactly once _meta is taken off, at 6a23cc5b6a8d. What moved inside _meta is run, and every one of those is on the allow-list. The recorded state was found among the objects carrying this input's basename",
       "producer": "checks/chk_artifact_provenance.py"
     },
     {
       "artifact": "checks/chk_artifact_provenance_results.json",
       "input": "run_all_checks_results.json",
-      "recorded_sha256": "b70084ef4e2496b2f810f89b8a0f7f338a401d5c0b30549d287bac2616b100c9",
-      "recorded_bytes": 23999,
+      "recorded_sha256": "0479bf14dde037d2acdde5a0f6f61f0b4674bae71afccfe0e474016c91c0e8c1",
+      "recorded_bytes": 23994,
       "present_when_written": true,
-      "on_disk_sha256": "b70084ef4e2496b2f810f89b8a0f7f338a401d5c0b30549d287bac2616b100c9",
-      "on_disk_bytes": 23999,
+      "on_disk_sha256": "0479bf14dde037d2acdde5a0f6f61f0b4674bae71afccfe0e474016c91c0e8c1",
+      "on_disk_bytes": 23994,
       "where": "checks/run_all_checks_results.json",
       "resolved_by": "the producer's own directory",
       "resolved_root": null,
@@ -6181,7 +6174,7 @@
     {
       "artifact": "checks/run_all_checks_results.json",
       "input": "chk_notebook_expectations.py",
-      "recorded_sha256": "1d274bef3a895c931f521b2463ade1be9a02f6a280467301a6c9f8c6d8aec348",
+      "recorded_sha256": "1a915288869fc0da16c8c8de7363a047ba6ae3d459207764081a00799c30c01f",
       "recorded_bytes": 64739,
       "present_when_written": true,
       "on_disk_sha256": "1a915288869fc0da16c8c8de7363a047ba6ae3d459207764081a00799c30c01f",
@@ -6195,8 +6188,8 @@
       "on_disk_body_sha256": null,
       "recorded_state_found_in": null,
       "meta_fields_that_moved": null,
-      "state": "diverged",
-      "why": "this artifact was computed from chk_notebook_expectations.py at 1d274bef3a89 and the file on disk is 1a915288869f. There is no separable content to compare here, because it is not a JSON document, so the whole file is its content, so the bytes ARE the content and this is a change in what the artifact stands on",
+      "state": "matches",
+      "why": "the file this artifact was computed from is unchanged",
       "producer": "checks/run_all_checks.py"
     },
     {
