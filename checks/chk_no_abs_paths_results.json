@@ -49,8 +49,8 @@
       ".aws": "the shared credentials directory the AWS SDK defines for itself, in the same place under every user's home. Naming it tells a reader where their own credentials go and records nothing about the machine this ran on"
     },
     "run": {
-      "runtime_s": 0.186,
-      "finished_utc": "2026-10-22T09:41:21Z",
+      "runtime_s": 0.32,
+      "finished_utc": "2026-10-22T09:46:38Z",
       "python": "3.12.11",
       "platform": "macOS-15.7.2-arm64-arm-64bit",
       "packages": {}

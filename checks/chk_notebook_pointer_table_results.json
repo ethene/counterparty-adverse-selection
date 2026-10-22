@@ -14,8 +14,8 @@
     "inputs": [
       {
         "name": "counterparty_adverse_selection.ipynb",
-        "bytes": 523802,
-        "sha256": "33a28397b5a885224344ad96b8f6de633245a10d0f3603683bcda889e47206e6",
+        "bytes": 524120,
+        "sha256": "fe07ebe235af5cf3ec6780459bb6f7d20e63e2daa020d1ea02242d53a4adf3de",
         "present": true,
         "kind": "file"
       },
@@ -65,8 +65,8 @@
       ".streams."
     ],
     "run": {
-      "runtime_s": 1.142,
-      "finished_utc": "2026-10-22T09:41:51Z",
+      "runtime_s": 1.227,
+      "finished_utc": "2026-10-22T09:46:38Z",
       "python": "3.12.11",
       "platform": "macOS-15.7.2-arm64-arm-64bit",
       "packages": {}

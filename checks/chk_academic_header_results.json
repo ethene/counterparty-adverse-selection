@@ -52,8 +52,8 @@
     "n_calibration_cases": 7,
     "n_calibration_failed": 0,
     "run": {
-      "runtime_s": 0.045,
-      "finished_utc": "2026-10-22T09:41:21Z",
+      "runtime_s": 0.043,
+      "finished_utc": "2026-10-22T09:46:39Z",
       "python": "3.12.11",
       "platform": "macOS-15.7.2-arm64-arm-64bit",
       "packages": {}
