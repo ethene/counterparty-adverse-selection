@@ -1,0 +1,120 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "notebook_fills_meta.json",
+    "producer": {
+      "script": "make_notebook_fills.py",
+      "sha256": "93904d41e93dc08d4f38fc09a8f38f5d33cf6a62dc67a97bdb88570154730530",
+      "bytes": 10004,
+      "bytes_in_object_db": "absent",
+      "object_format": "sha1",
+      "object_id": "edb28857aff0c41eaea60582adc4f481b35da7bb",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_BTC_202512.npz",
+        "bytes": 40637417,
+        "sha256": "5a85bdecf4d5b3664676bdfc896889cf2d323d7887d391038cc5bba37334810a",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_ETH_202512.npz",
+        "bytes": 35916228,
+        "sha256": "82797c01d0f9c55d21f3b9d1f9616cfa63f67a5c64b37cbda9a70c4167240a27",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 collapsed taker trades, one per (block hash, taker), carrying 45,849 taker and 9,367 maker pseudonyms",
+      "window": "December 2025, days 4 to 13",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "run": {
+      "runtime_s": 7.293,
+      "finished_utc": "2026-10-22T09:36:42Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "object": "Raw-ish per-fill inputs for the reproducibility notebook; the notebook recomputes markout and book features from these plus the L2 mid series, so no markout is precomputed here.",
+  "author": "Dmitry Stakhin",
+  "companion_files": [
+    "notebook_book_BTC.npz",
+    "notebook_book_ETH.npz"
+  ],
+  "window": {
+    "coins": [
+      "BTC",
+      "ETH"
+    ],
+    "days_dec2025": [
+      4,
+      13
+    ]
+  },
+  "n_rows": 2480267,
+  "n_takers": 45849,
+  "n_makers": 9367,
+  "deidentified": "taker_code and maker_code are pseudonyms, re-indexed contiguous integers; the hex address map is not shipped, so the linkage to on-chain addresses is not distributed here, but a reader holding the public source data can re-derive it, because the Hyperliquid node data the fills were built from, and the open deposit of the same trades by Albers et al. (Zenodo 18184441), carry the same fills with their addresses",
+  "columns": {
+    "block_time_ms": "int64",
+    "entry_px": "float64",
+    "taker_code": "int32",
+    "maker_code": "int32",
+    "coin": "int8",
+    "day": "int16",
+    "notional": "float32",
+    "taker_side": "int8",
+    "start_pos": "float32",
+    "is_open": "int8",
+    "mo1": "float32",
+    "mo10": "float32",
+    "mo60": "float32",
+    "closed_pnl": "float32"
+  },
+  "sha256": "d3eda96099c0e5349ef73b4926439a7c66b661a2c11c7e6d760b8e460bc6d76c",
+  "size_mb": 50.6,
+  "doi": "10.5281/zenodo.23540388",
+  "zenodo_url": "https://zenodo.org/records/23540388/files/notebook_fills.npz?download=1"
+}

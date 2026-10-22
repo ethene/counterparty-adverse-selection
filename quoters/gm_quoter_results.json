@@ -1,0 +1,434 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "gm_quoter_results.json",
+    "producer": {
+      "script": "gm_quoter.py",
+      "sha256": "61e983c1157dff948302df0f4b49c1fb49d9e3b30aced53e8f7eecded649b3e7",
+      "bytes": 58436
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 collapsed taker fills, row-aligned across the two intermediates ({'coin': True, 'day': True, 'taker_side': True, 'notional': True}); no wallet floor is applied and no counterparty identity field is read at all. pi is estimated over 50 equal-count buckets per (coin, day), each needing at least 5 fills",
+      "window": "10 days present in the input, day-of-month 4..13; early [4, 5, 6, 7, 8], late [9, 10, 11, 12, 13]",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 60,
+      "is_headline_horizon": false,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "mid",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260623,
+      "n_perm": null,
+      "n_boot": null,
+      "rank_floor_fills": null,
+      "j_horizon_s": 60,
+      "early_days": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "late_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "override_reasons": {
+        "horizon_s": "this file is stamped at 60s because J -- the SIZE of the informed jump, read as mean|a_mid| -- needs the window by which the permanent revision has finished. That is a magnitude, not a ranking, so it is not the 10s scoring window and is_headline_horizon is correctly false here",
+        "master_seed": "the streams here are seeded 20260623, not the declared 20260620; settings.MASTER_SEED carries the state 'target', so adopting it is a measured change owed its own recompute",
+        "n_perm": "no permutation test and no bootstrap run in this file, so neither declared resampling budget applies",
+        "n_boot": "see n_perm",
+        "rank_floor_fills": "no wallet floor applies: this quoter reads no counterparty identity at all, so it never ranks or gates a per-wallet population"
+      },
+      "overridden": [
+        "early_days",
+        "j_horizon_s",
+        "late_days",
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "override_reasons",
+        "rank_floor_fills"
+      ]
+    },
+    "object": "Glosten-Milgrom (1985) information-based market-level-toxicity counterparty-blind maker (one quoter in the bake-off)",
+    "author": "Dmitry Stakhin",
+    "date": "2026-06-23",
+    "track": "11",
+    "seed": 20260623,
+    "n_rows": 2480267,
+    "row_alignment_ok": {
+      "coin": true,
+      "day": true,
+      "taker_side": true,
+      "notional": true
+    },
+    "env_slice": {
+      "sliced": false,
+      "days": null,
+      "coins": null
+    },
+    "coin_names": {
+      "0": "BTC",
+      "1": "ETH",
+      "2": "SOL"
+    },
+    "early_days": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "late_days": [
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "split_rule": "The early and late halves are DERIVED from the days present, by settings.split_early_late: first ceil(n/2) days early, the rest late. They used to be the hardcoded day-of-month tuples (4,5,6,7,8) and (9,10,11,12,13), which are correct only for a window opening on the 4th and closing on the 13th. This input does open on the 4th, so the derived split reproduces those tuples exactly and no number moved.",
+    "closed_form": {
+      "half_spread": "half_spread = pi * J  (pi = P(informed), J = E[|adverse move|])",
+      "quotes": "bid = mid - pi*J ; ask = mid + pi*J ; total = 2*pi*J",
+      "pi_estimator": "VPIN/PIN proxy: mean over equal-count buckets of |sum(sign_taker)|/n per (coin, day); MARKET-LEVEL, no identity",
+      "J_estimator": "mean(|a_mid_{h}|) per coin (book-mid markout magnitude)"
+    },
+    "uses_counterparty_identity": false,
+    "identity_fields_loaded": "none (taker_id / maker_id deliberately NOT read)",
+    "units": "pi dimensionless in [0,1); J in price units (or bps); half_spread = pi*J in the same units; bps form directly comparable to spread_entry_bps/2.",
+    "sign_convention": "taker_side 1=buy-aggressor(+1)/0=sell-aggressor(-1); positive a_mid markout = adverse for the passive maker; pi=0 => half_spread=0; half_spread widens in pi and J.",
+    "counterfactual_only": "markout-based counterfactual overlay, NOT a matching engine (no queue / fill-probability / requote); the only fill-awareness is the maker_econ-style recapture APPROXIMATION (fraction f at +h bps minus penalty c).",
+    "cost_not_alpha": "every quoter is expected net-NEGATIVE at every maker-fee tier; GM is never framed as profitable/alpha/edge/Sharpe; GM cannot reach the counterparty term's (whale-driven, fragile, ETH-tilted) cost reduction.",
+    "lineage": "the adverse-selection-aware quoting leg is owned by Barzykin-Bergault-Gueant-Lemmel (arXiv:2508.20225); GM (1985) is the founding information-based spread the lineage descends from, used here as the book-only baseline, not as new quoting theory.",
+    "fee_schedule": {
+      "base": 1.5,
+      "t3": 0.4,
+      "t4_0fee": 0.0,
+      "rebate1": -0.1,
+      "rebate2": -0.2,
+      "rebate3": -0.3
+    },
+    "fee_tiers": [
+      "base",
+      "t3",
+      "t4_0fee",
+      "rebate1",
+      "rebate2",
+      "rebate3"
+    ],
+    "no_repull": "computed entirely on-disk from the two npz; no S3 re-pull.",
+    "run": {
+      "runtime_s": 1.118,
+      "finished_utc": "2026-08-13T09:41:27Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "selftest_flags": {
+    "pi0_half_spread_is_zero": true,
+    "pi0_quotes_collapse_to_mid": true,
+    "half_spread_increasing_in_pi": true,
+    "higher_informed_prob_wider_spread": true,
+    "half_spread_increasing_in_adverse_move": true,
+    "quotes_symmetric_about_mid": true,
+    "half_spread_equals_pi_times_J": true,
+    "bps_and_price_forms_agree": true,
+    "vpin_imbalance_bounds": true,
+    "toxic_tape_wider_than_benign_tape": true,
+    "vectorized_half_spread_consistent": true,
+    "all_passed": true
+  },
+  "pi_estimation_vpin_pin": {
+    "method": "VPIN/PIN proxy: per (coin, day), equal-COUNT bucket fills in arrival order into N_VPIN_BUCKETS buckets, pi = mean over buckets of |sum(sign)|/n (absolute buy/sell imbalance). MARKET-LEVEL toxicity only -- NO counterparty identity. Count clock substitutes for the volume clock (notional heavy-tailed). No lookahead: each (coin, day) pi uses that day's fills only.",
+    "n_vpin_buckets": 50,
+    "min_fills_per_bucket": 5,
+    "per_session_pi": {
+      "BTC_d4": 0.09599493831066117,
+      "BTC_d5": 0.0971497285008361,
+      "BTC_d6": 0.12994069598299207,
+      "BTC_d7": 0.1203009077926746,
+      "BTC_d8": 0.0756257976383709,
+      "BTC_d9": 0.09108258005803617,
+      "BTC_d10": 0.07516687366223607,
+      "BTC_d11": 0.07120297557506537,
+      "BTC_d12": 0.08906860617975422,
+      "BTC_d13": 0.08918224374495563,
+      "ETH_d4": 0.17324394029231752,
+      "ETH_d5": 0.16620737365630833,
+      "ETH_d6": 0.22990518364615983,
+      "ETH_d7": 0.43343654433155565,
+      "ETH_d8": 0.16553831585912632,
+      "ETH_d9": 0.30423726066678514,
+      "ETH_d10": 0.18943591944418986,
+      "ETH_d11": 0.2409619068779522,
+      "ETH_d12": 0.20532650409893013,
+      "ETH_d13": 0.12492153108366855
+    },
+    "per_coin_summary": {
+      "BTC": {
+        "coin_code": 0,
+        "n_sessions": 10,
+        "pi_median": 0.0901324119014959,
+        "pi_mean": 0.09347153474455824,
+        "pi_p10": 0.074770483853519,
+        "pi_p90": 0.12126488661170635
+      },
+      "ETH": {
+        "coin_code": 1,
+        "n_sessions": 10,
+        "pi_median": 0.19738121177155998,
+        "pi_mean": 0.22332144799569936,
+        "pi_p10": 0.16147663738158055,
+        "pi_p90": 0.3171571890332621
+      }
+    }
+  },
+  "adverse_move_J": {
+    "method": "J = E[|adverse move|] read off the EXEC->mid book-mid markout a_mid_{h}: per coin, J_bps = mean(|a_mid_{h}|) (positive a_mid is adverse for the maker; |.| is the GM jump magnitude regardless of direction). MARKET-LEVEL, NOT counterparty-conditioned. J_price = J_bps/1e4 * mid.",
+    "horizon_s": 60,
+    "per_coin": {
+      "BTC": {
+        "coin_code": 0,
+        "horizon_s": 60,
+        "J_bps": 6.363583848708485,
+        "J_price": 57.949976318263815,
+        "mid_ref_price": 91065.0,
+        "n_fills": 1199264
+      },
+      "ETH": {
+        "coin_code": 1,
+        "horizon_s": 60,
+        "J_bps": 10.527783728088325,
+        "J_price": 3.307829647365352,
+        "mid_ref_price": 3142.0,
+        "n_fills": 1277798
+      }
+    }
+  },
+  "gm_spread_vs_real": {
+    "formula": "gm_half_spread_bps = pi * J_bps ; gm_total_spread_bps = 2 * pi * J_bps",
+    "interpretation": "GM prices the ADVERSE-SELECTION share of the spread only (no inventory, no processing cost), from MARKET-LEVEL toxicity (pi) and the average informed move (J). It is the book-only-information baseline; it cannot price WHO the counterparty is, which is the gap the counterparty-resolved term fills. No profit/alpha claim.",
+    "pi_grid": [
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5
+    ],
+    "per_coin": {
+      "BTC": {
+        "coin_code": 0,
+        "pi_median_used": 0.0901324119014959,
+        "J_bps_used": 6.363583848708485,
+        "gm_half_spread_bps": 0.5735651606214998,
+        "gm_total_spread_bps": 1.1471303212429995,
+        "observed_bbo_half_spread_bps": 0.05525197833776474,
+        "gm_half_minus_observed_half_bps": 0.518313182283735,
+        "gm_half_spread_over_pi_grid_bps": {
+          "pi_0.05": 0.31817919243542425,
+          "pi_0.10": 0.6363583848708485,
+          "pi_0.20": 1.272716769741697,
+          "pi_0.30": 1.9090751546125455,
+          "pi_0.50": 3.1817919243542425
+        }
+      },
+      "ETH": {
+        "coin_code": 1,
+        "pi_median_used": 0.19738121177155998,
+        "J_bps_used": 10.527783728088325,
+        "gm_half_spread_bps": 2.077986709518985,
+        "gm_total_spread_bps": 4.15597341903797,
+        "observed_bbo_half_spread_bps": 0.16019736230373383,
+        "gm_half_minus_observed_half_bps": 1.9177893472152512,
+        "gm_half_spread_over_pi_grid_bps": {
+          "pi_0.05": 0.5263891864044162,
+          "pi_0.10": 1.0527783728088325,
+          "pi_0.20": 2.105556745617665,
+          "pi_0.30": 3.1583351184264976,
+          "pi_0.50": 5.2638918640441625
+        }
+      }
+    }
+  },
+  "gm_net_economics": {
+    "label": "GM net-economics counterfactual on the LATE half. net_MID_GM = h_GM - a_mid (GM model half-spread as income minus realized book-mid markout); net_PRINT = -a_print (maker_econ measure 1). COUNTERFACTUAL, not a fill model. Every tier expected net-NEGATIVE = COST, never alpha.",
+    "horizon_s": 60,
+    "recapture_approx": {
+      "f": 0.5,
+      "penalty_bps": 0.0,
+      "note": "maker_econ-style fill-aware APPROXIMATION (recapture fraction f of would-be fills at the wider GM quote minus a per-requote penalty); labelled an approximation, NOT a matching-engine fill model."
+    },
+    "by_coin": {
+      "BTC": {
+        "n_late_fills": 587657,
+        "pi_median_used": 0.0901324119014959,
+        "J_bps_used": 6.363583848708485,
+        "gm_half_spread_income_vw_bps": 0.5735651606214999,
+        "gross_prefee_net_MID_GM_vw_bps": -1.4526532432251054,
+        "gross_prefee_net_PRINT_vw_bps": -0.7037521380606827,
+        "by_fee_tier": {
+          "base": {
+            "maker_fee_bps": 1.5,
+            "net_PRINT_vw_bps": -2.203752138060683,
+            "net_MID_GM_vw_bps": -2.952653243225105
+          },
+          "t3": {
+            "maker_fee_bps": 0.4,
+            "net_PRINT_vw_bps": -1.1037521380606827,
+            "net_MID_GM_vw_bps": -1.852653243225105
+          },
+          "t4_0fee": {
+            "maker_fee_bps": 0.0,
+            "net_PRINT_vw_bps": -0.7037521380606827,
+            "net_MID_GM_vw_bps": -1.4526532432251054
+          },
+          "rebate1": {
+            "maker_fee_bps": -0.1,
+            "net_PRINT_vw_bps": -0.6037521380606826,
+            "net_MID_GM_vw_bps": -1.3526532432251053
+          },
+          "rebate2": {
+            "maker_fee_bps": -0.2,
+            "net_PRINT_vw_bps": -0.5037521380606826,
+            "net_MID_GM_vw_bps": -1.2526532432251052
+          },
+          "rebate3": {
+            "maker_fee_bps": -0.3,
+            "net_PRINT_vw_bps": -0.4037521380606826,
+            "net_MID_GM_vw_bps": -1.1526532432251049
+          }
+        },
+        "all_tiers_net_negative_MID_GM": true
+      },
+      "ETH": {
+        "n_late_fills": 647120,
+        "pi_median_used": 0.19738121177155998,
+        "J_bps_used": 10.527783728088325,
+        "gm_half_spread_income_vw_bps": 2.077986709518985,
+        "gross_prefee_net_MID_GM_vw_bps": -0.6850134935869824,
+        "gross_prefee_net_PRINT_vw_bps": -0.2867263009540023,
+        "by_fee_tier": {
+          "base": {
+            "maker_fee_bps": 1.5,
+            "net_PRINT_vw_bps": -1.7867263009540026,
+            "net_MID_GM_vw_bps": -2.1850134935869825
+          },
+          "t3": {
+            "maker_fee_bps": 0.4,
+            "net_PRINT_vw_bps": -0.6867263009540023,
+            "net_MID_GM_vw_bps": -1.0850134935869822
+          },
+          "t4_0fee": {
+            "maker_fee_bps": 0.0,
+            "net_PRINT_vw_bps": -0.2867263009540023,
+            "net_MID_GM_vw_bps": -0.6850134935869824
+          },
+          "rebate1": {
+            "maker_fee_bps": -0.1,
+            "net_PRINT_vw_bps": -0.1867263009540023,
+            "net_MID_GM_vw_bps": -0.5850134935869823
+          },
+          "rebate2": {
+            "maker_fee_bps": -0.2,
+            "net_PRINT_vw_bps": -0.08672630095400233,
+            "net_MID_GM_vw_bps": -0.4850134935869826
+          },
+          "rebate3": {
+            "maker_fee_bps": -0.3,
+            "net_PRINT_vw_bps": 0.013273699045997619,
+            "net_MID_GM_vw_bps": -0.38501349358698234
+          }
+        },
+        "all_tiers_net_negative_MID_GM": true
+      },
+      "pooled": {
+        "n_late_fills": 1234777,
+        "pi_median_used": "per-fill coin pi",
+        "J_bps_used": "per-fill coin J",
+        "gm_half_spread_income_vw_bps": 1.1811243688627735,
+        "gross_prefee_net_MID_GM_vw_bps": -1.1428335130073624,
+        "gross_prefee_net_PRINT_vw_bps": -0.535338154454437,
+        "by_fee_tier": {
+          "base": {
+            "maker_fee_bps": 1.5,
+            "net_PRINT_vw_bps": -2.035338154454437,
+            "net_MID_GM_vw_bps": -2.6428335130073624
+          },
+          "t3": {
+            "maker_fee_bps": 0.4,
+            "net_PRINT_vw_bps": -0.935338154454437,
+            "net_MID_GM_vw_bps": -1.5428335130073625
+          },
+          "t4_0fee": {
+            "maker_fee_bps": 0.0,
+            "net_PRINT_vw_bps": -0.535338154454437,
+            "net_MID_GM_vw_bps": -1.1428335130073624
+          },
+          "rebate1": {
+            "maker_fee_bps": -0.1,
+            "net_PRINT_vw_bps": -0.4353381544544371,
+            "net_MID_GM_vw_bps": -1.0428335130073623
+          },
+          "rebate2": {
+            "maker_fee_bps": -0.2,
+            "net_PRINT_vw_bps": -0.3353381544544372,
+            "net_MID_GM_vw_bps": -0.9428335130073624
+          },
+          "rebate3": {
+            "maker_fee_bps": -0.3,
+            "net_PRINT_vw_bps": -0.235338154454437,
+            "net_MID_GM_vw_bps": -0.8428335130073623
+          }
+        },
+        "all_tiers_net_negative_MID_GM": true
+      }
+    }
+  },
+  "bakeoff_mapping_note": {
+    "role": "GM is the INFORMATION-based, book-only-toxicity quoter in the bake-off, between the inventory-only Avellaneda-Stoikov maker (as_quoter.py) and the counterparty-toxicity-conditioned skew overlay (t1_*/maker_econ.py). GM prices the adverse-selection share of the spread from MARKET-LEVEL flow toxicity (a VPIN/PIN proxy) and the average informed move, with NO counterparty identity.",
+    "hard_limit": "GM quotes ONE spread to every counterparty given the market-level pi; it cannot reach the per-counterparty idiosyncratic adverse selection the wallet-resolved term reaches, BY CONSTRUCTION -- that is the point of the bake-off. The idiosyncratic component is not recoverable from the pooled book-only signal GM uses.",
+    "expected_ranking": "On adverse-selection-cost reduction the expected ordering is: symmetric A-S (no AS term) <= GM (market-level AS term) <= counterparty-resolved overlay (market + idiosyncratic AS). GM is expected to IMPROVE on symmetric A-S by pricing average toxicity, yet fall SHORT of the counterparty term because it is blind to who trades. All three are expected net-NEGATIVE at every maker-fee tier (COST, not alpha); GM vs A-S may be a near-tie when the market-level toxicity signal is weak, which is itself a reportable finding.",
+    "what_gm_is_not": "GM produces a spread, never an alpha, a P&L, or a Sharpe. It is a baseline quoter, and the counterparty-resolved term is measured against it as well as against A-S."
+  }
+}

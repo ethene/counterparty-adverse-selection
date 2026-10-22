@@ -1,0 +1,425 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "m7_size_results.json",
+    "producer": {
+      "script": "m7_size.py",
+      "sha256": "78ec040ed22b0f3fb20fbc2a1539265b843b90e11a6c7fa25406e1d02b411cb1",
+      "bytes": 20095
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,479,016 rows of the trade-print panel with a finite 60s markout and a notional above zero; the unit of analysis is the fill, so no wallet floor, no seed and no resampling enter this file",
+      "window": "10 days present in the input, day-of-month 4-13; the calendar dates of the window are declared by its producer, build_quickwin_markouts.py",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 60,
+      "is_headline_horizon": false,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "object": "M7 size structure of toxicity (notional deciles)",
+    "markout_sign": "signed taker markout in bps; positive = taker profited = maker adversely selected",
+    "n_deciles": 10,
+    "decile_basis": "per-coin notional quantiles (pooled uses pooled notional)",
+    "top_pct": 0.01,
+    "top1pct_caveat": "the 60s markout rises across deciles (D10 > D1), so toxicity grows with size; the low-markout dip is confined to the extreme top 1% on an EQUAL-weight basis only -- dollar-weighted the top-1% gap collapses, so report both and do not generalize 'big fills are safe'",
+    "row_filter": "finite 60s markout and notional > 0",
+    "n_trades_valid": 2479016,
+    "horizon_note": "the decile table reports both windows (10s and 60s); the gradient, its monotonicity flag and the top-1%-vs-rest cells are on the 60s companion window, which is why every one of their keys names it",
+    "run": {
+      "runtime_s": 1.345,
+      "finished_utc": "2026-08-21T18:17:14Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "BTC": {
+    "n_trades": 1200302,
+    "deciles": [
+      {
+        "decile": 1,
+        "n": 120015,
+        "total_notional": 1285085.7558606267,
+        "min_notional": 0.8773699998855591,
+        "max_notional": 13.397850036621094,
+        "mean_markout_bps_10s": 0.5470584479188983,
+        "mean_markout_bps_60s": 0.5330635357063441
+      },
+      {
+        "decile": 2,
+        "n": 120044,
+        "total_notional": 2432877.8728866577,
+        "min_notional": 13.39799976348877,
+        "max_notional": 30.123390197753906,
+        "mean_markout_bps_10s": 0.6424353560799811,
+        "mean_markout_bps_60s": 0.6612946683851946
+      },
+      {
+        "decile": 3,
+        "n": 120032,
+        "total_notional": 6302605.470472336,
+        "min_notional": 30.12405014038086,
+        "max_notional": 83.17308807373047,
+        "mean_markout_bps_10s": 0.5682943468394456,
+        "mean_markout_bps_60s": 0.69794472076546
+      },
+      {
+        "decile": 4,
+        "n": 120030,
+        "total_notional": 13386248.57383728,
+        "min_notional": 83.17491149902344,
+        "max_notional": 150.76258850097656,
+        "mean_markout_bps_10s": 0.4162430131488719,
+        "mean_markout_bps_60s": 0.37997511560383784
+      },
+      {
+        "decile": 5,
+        "n": 120030,
+        "total_notional": 28380832.193252563,
+        "min_notional": 150.76287841796875,
+        "max_notional": 380.0769348144531,
+        "mean_markout_bps_10s": 0.14140261393357406,
+        "mean_markout_bps_60s": 0.1272023198455041
+      },
+      {
+        "decile": 6,
+        "n": 120030,
+        "total_notional": 74048377.16030884,
+        "min_notional": 380.0785217285156,
+        "max_notional": 885.91455078125,
+        "mean_markout_bps_10s": 0.33729225915905636,
+        "mean_markout_bps_60s": 0.07352856406600854
+      },
+      {
+        "decile": 7,
+        "n": 119993,
+        "total_notional": 152749132.3798828,
+        "min_notional": 885.921142578125,
+        "max_notional": 1851.1171875,
+        "mean_markout_bps_10s": 0.5093750764187013,
+        "mean_markout_bps_60s": 0.19248964633251134
+      },
+      {
+        "decile": 8,
+        "n": 120067,
+        "total_notional": 374772833.5611572,
+        "min_notional": 1851.1199951171875,
+        "max_notional": 5235.32958984375,
+        "mean_markout_bps_10s": 0.3112207826340653,
+        "mean_markout_bps_60s": 0.18901568501416177
+      },
+      {
+        "decile": 9,
+        "n": 120030,
+        "total_notional": 1473272042.0576172,
+        "min_notional": 5235.40380859375,
+        "max_notional": 22938.341796875,
+        "mean_markout_bps_10s": 0.5104875228467443,
+        "mean_markout_bps_60s": 0.48005262603790844
+      },
+      {
+        "decile": 10,
+        "n": 120031,
+        "total_notional": 25635491909.76367,
+        "min_notional": 22938.5,
+        "max_notional": 35383184.0,
+        "mean_markout_bps_10s": 0.6150380266613079,
+        "mean_markout_bps_60s": 0.5747464939442872
+      }
+    ],
+    "markout_gradient_60s": {
+      "strictly_increasing": false,
+      "strictly_decreasing": false,
+      "monotone": false,
+      "direction": "non-monotone",
+      "last_minus_first_bps": 0.0416829582379431
+    },
+    "top1pct_vs_rest": {
+      "pct": 0.01,
+      "n_top": 12004,
+      "n_rest": 1188298,
+      "notional_threshold": 397452.71875,
+      "top_mean_markout_bps_60s": 0.07986530347740871,
+      "rest_mean_markout_bps_60s": 0.39407563225231623,
+      "top_mean_markout_bps_10s": 0.07523469120084293,
+      "rest_mean_markout_bps_10s": 0.46376561250055837,
+      "top_wmean_markout_bps_60s": 0.5645382397569639,
+      "rest_wmean_markout_bps_60s": 0.502131812616503,
+      "top_total_notional": 16459228068.65625,
+      "rest_total_notional": 11302893876.132698,
+      "top_minus_rest_markout_bps_60s": -0.3142103287749075,
+      "top_minus_rest_wmean_markout_bps_60s": 0.06240642714046096
+    }
+  },
+  "ETH": {
+    "n_trades": 1278714,
+    "deciles": [
+      {
+        "decile": 1,
+        "n": 127872,
+        "total_notional": 1464686.6088549197,
+        "min_notional": 0.29194000363349915,
+        "max_notional": 17.5699405670166,
+        "mean_markout_bps_10s": 0.0712503682965254,
+        "mean_markout_bps_60s": 0.0887438828593923
+      },
+      {
+        "decile": 2,
+        "n": 127871,
+        "total_notional": 4514599.699453354,
+        "min_notional": 17.570249557495117,
+        "max_notional": 70.61151885986328,
+        "mean_markout_bps_10s": 0.4253713801857432,
+        "mean_markout_bps_60s": 0.548028404383628
+      },
+      {
+        "decile": 3,
+        "n": 127871,
+        "total_notional": 18641581.63508606,
+        "min_notional": 70.61370086669922,
+        "max_notional": 247.6140594482422,
+        "mean_markout_bps_10s": 0.11680824173585708,
+        "mean_markout_bps_60s": 0.14594976572725896
+      },
+      {
+        "decile": 4,
+        "n": 127871,
+        "total_notional": 46587310.410583496,
+        "min_notional": 247.61807250976562,
+        "max_notional": 501.1347961425781,
+        "mean_markout_bps_10s": 0.6269016566096545,
+        "mean_markout_bps_60s": 0.7663277925858153
+      },
+      {
+        "decile": 5,
+        "n": 127823,
+        "total_notional": 69718972.40603638,
+        "min_notional": 501.135009765625,
+        "max_notional": 618.4963989257812,
+        "mean_markout_bps_10s": 0.9713669788067688,
+        "mean_markout_bps_60s": 0.7499843749945185
+      },
+      {
+        "decile": 6,
+        "n": 127909,
+        "total_notional": 88009901.47058105,
+        "min_notional": 618.4970703125,
+        "max_notional": 813.980712890625,
+        "mean_markout_bps_10s": 0.7638824168830752,
+        "mean_markout_bps_60s": 0.8240740770618586
+      },
+      {
+        "decile": 7,
+        "n": 127878,
+        "total_notional": 122134391.18286133,
+        "min_notional": 813.9816284179688,
+        "max_notional": 1002.9835815429688,
+        "mean_markout_bps_10s": 0.7440854721853462,
+        "mean_markout_bps_60s": 1.1971218213750636
+      },
+      {
+        "decile": 8,
+        "n": 127874,
+        "total_notional": 188979835.81585693,
+        "min_notional": 1002.9840087890625,
+        "max_notional": 2499.75390625,
+        "mean_markout_bps_10s": 0.6734265853684341,
+        "mean_markout_bps_60s": 1.1303784146051274
+      },
+      {
+        "decile": 9,
+        "n": 127873,
+        "total_notional": 673796043.6535645,
+        "min_notional": 2499.7548828125,
+        "max_notional": 9931.8515625,
+        "mean_markout_bps_10s": 0.7033324855372988,
+        "mean_markout_bps_60s": 0.9127556914480661
+      },
+      {
+        "decile": 10,
+        "n": 127872,
+        "total_notional": 16638485499.30371,
+        "min_notional": 9931.943359375,
+        "max_notional": 29097704.0,
+        "mean_markout_bps_10s": 0.76181001819938,
+        "mean_markout_bps_60s": 0.8717781926088286
+      }
+    ],
+    "markout_gradient_60s": {
+      "strictly_increasing": false,
+      "strictly_decreasing": false,
+      "monotone": false,
+      "direction": "non-monotone",
+      "last_minus_first_bps": 0.7830343097494363
+    },
+    "top1pct_vs_rest": {
+      "pct": 0.01,
+      "n_top": 12788,
+      "n_rest": 1265926,
+      "notional_threshold": 216606.265625,
+      "top_mean_markout_bps_60s": 0.0504754591612852,
+      "rest_mean_markout_bps_60s": 0.7303185877388508,
+      "top_mean_markout_bps_10s": 0.12158548489684087,
+      "rest_mean_markout_bps_10s": 0.5905048796169446,
+      "top_wmean_markout_bps_60s": 0.3693125628591936,
+      "rest_wmean_markout_bps_60s": 0.9759564681234192,
+      "top_total_notional": 11356564119.890625,
+      "rest_total_notional": 6495768702.295964,
+      "top_minus_rest_markout_bps_60s": -0.6798431285775657,
+      "top_minus_rest_wmean_markout_bps_60s": -0.6066439052642256
+    }
+  },
+  "pooled": {
+    "n_trades": 2479016,
+    "deciles": [
+      {
+        "decile": 1,
+        "n": 247901,
+        "total_notional": 2724722.145191163,
+        "min_notional": 0.29194000363349915,
+        "max_notional": 14.847000122070312,
+        "mean_markout_bps_10s": 0.3048181506801623,
+        "mean_markout_bps_60s": 0.31018657968655533
+      },
+      {
+        "decile": 2,
+        "n": 247901,
+        "total_notional": 6277711.8318367,
+        "min_notional": 14.847299575805664,
+        "max_notional": 41.86214828491211,
+        "mean_markout_bps_10s": 0.5969194151566072,
+        "mean_markout_bps_60s": 0.6556794432713864
+      },
+      {
+        "decile": 3,
+        "n": 247902,
+        "total_notional": 19355905.723171234,
+        "min_notional": 41.862300872802734,
+        "max_notional": 119.02442932128906,
+        "mean_markout_bps_10s": 0.4221250004491394,
+        "mean_markout_bps_60s": 0.49763779750062376
+      },
+      {
+        "decile": 4,
+        "n": 247901,
+        "total_notional": 48643282.04233551,
+        "min_notional": 119.02494812011719,
+        "max_notional": 299.9973449707031,
+        "mean_markout_bps_10s": 0.1377765888362927,
+        "mean_markout_bps_60s": 0.13318568936291092
+      },
+      {
+        "decile": 5,
+        "n": 247903,
+        "total_notional": 109056128.03024292,
+        "min_notional": 299.99761962890625,
+        "max_notional": 552.8973999023438,
+        "mean_markout_bps_10s": 0.6433380976214785,
+        "mean_markout_bps_60s": 0.5474966787147605
+      },
+      {
+        "decile": 6,
+        "n": 247900,
+        "total_notional": 168479220.77001953,
+        "min_notional": 552.8988647460938,
+        "max_notional": 840.2994995117188,
+        "mean_markout_bps_10s": 0.7151236589997885,
+        "mean_markout_bps_60s": 0.662515788379017
+      },
+      {
+        "decile": 7,
+        "n": 247903,
+        "total_notional": 245822317.74743652,
+        "min_notional": 840.2999877929688,
+        "max_notional": 1242.278564453125,
+        "mean_markout_bps_10s": 0.6793511063021321,
+        "mean_markout_bps_60s": 0.999172153775801
+      },
+      {
+        "decile": 8,
+        "n": 247901,
+        "total_notional": 531883718.3823242,
+        "min_notional": 1242.2802734375,
+        "max_notional": 3462.44970703125,
+        "mean_markout_bps_10s": 0.49073384599526965,
+        "mean_markout_bps_60s": 0.47867678697444077
+      },
+      {
+        "decile": 9,
+        "n": 247902,
+        "total_notional": 1974483219.6408691,
+        "min_notional": 3462.466064453125,
+        "max_notional": 16142.9033203125,
+        "mean_markout_bps_10s": 0.5794299286935501,
+        "mean_markout_bps_60s": 0.6389289794978683
+      },
+      {
+        "decile": 10,
+        "n": 247902,
+        "total_notional": 42507728540.66211,
+        "min_notional": 16143.044921875,
+        "max_notional": 35383184.0,
+        "mean_markout_bps_10s": 0.6787759921535567,
+        "mean_markout_bps_60s": 0.7013803844075641
+      }
+    ],
+    "markout_gradient_60s": {
+      "strictly_increasing": false,
+      "strictly_decreasing": false,
+      "monotone": false,
+      "direction": "non-monotone",
+      "last_minus_first_bps": 0.3911938047210088
+    },
+    "top1pct_vs_rest": {
+      "pct": 0.01,
+      "n_top": 24791,
+      "n_rest": 2454225,
+      "notional_threshold": 303740.78125,
+      "top_mean_markout_bps_60s": 0.060984496153294564,
+      "rest_mean_markout_bps_60s": 0.567552237788555,
+      "top_mean_markout_bps_10s": 0.17087198520930041,
+      "rest_mean_markout_bps_10s": 0.5284149151222324,
+      "top_wmean_markout_bps_60s": 0.4885340765103978,
+      "rest_wmean_markout_bps_60s": 0.6726820844388581,
+      "top_total_notional": 28145354702.40625,
+      "rest_total_notional": 17469100064.569286,
+      "top_minus_rest_markout_bps_60s": -0.5065677416352604,
+      "top_minus_rest_wmean_markout_bps_60s": -0.1841480079284603
+    }
+  }
+}

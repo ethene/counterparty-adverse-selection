@@ -1,0 +1,423 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "calib_print_vs_mid_results.json",
+    "producer": {
+      "script": "calib_print_vs_mid.py",
+      "sha256": "5e64583d8f7f7f0b6183403db5b1ea027d18fc84a976f1829b460684076aa4e6",
+      "bytes": 10425,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "a561b79946e2a2cb69545488c2f90175ef418901",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 row-aligned fills carried by both the trade-print and the book-mid file; the trade-level correlations use every row with a finite markout on both sides, and the per-counterparty rank correlations use wallets at the [20, 50, 100] fill floors, taker side and maker side separately",
+      "window": "10 days present in the input, day-of-month 4-13; every rung of the declared ladder [1, 10, 60] s is reported, and the headline verdict key is read at 60 s, which is the companion rung and not the 10 s the work scores at",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 60,
+      "is_headline_horizon": false,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "mid",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "rank_floor_fills": [
+        20,
+        50,
+        100
+      ],
+      "overridden": [
+        "rank_floor_fills"
+      ]
+    },
+    "run": {
+      "runtime_s": 10.521,
+      "finished_utc": "2026-08-30T09:36:15Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6",
+        "scipy": "1.18.0"
+      }
+    }
+  },
+  "n_rows": 2480267,
+  "by_coin": {
+    "BTC": {
+      "n": 1200863,
+      "horizons": {
+        "h1": {
+          "n_valid": 1199458,
+          "trade_pearson": 0.7357,
+          "trade_spearman": 0.7365,
+          "vw_mean_print_bps": 0.0623,
+          "vw_mean_mid_bps": 1.409,
+          "mid_over_print_level_ratio": 22.6158,
+          "taker_rank": {
+            "K20": {
+              "n_counterparties_ge_k": 6556,
+              "spearman_ew": 0.6511,
+              "pearson_ew": 0.7207,
+              "spearman_vw": 0.6239,
+              "p_ew": 0.0
+            },
+            "K50": {
+              "n_counterparties_ge_k": 2555,
+              "spearman_ew": 0.6628,
+              "pearson_ew": 0.8412,
+              "spearman_vw": 0.6083,
+              "p_ew": 0.0
+            },
+            "K100": {
+              "n_counterparties_ge_k": 1132,
+              "spearman_ew": 0.7291,
+              "pearson_ew": 0.8837,
+              "spearman_vw": 0.6642,
+              "p_ew": 0.0
+            }
+          },
+          "maker_rank": {
+            "K20": {
+              "n_counterparties_ge_k": 1507,
+              "spearman_ew": 0.8539,
+              "pearson_ew": 0.7538,
+              "spearman_vw": 0.8067,
+              "p_ew": 0.0
+            },
+            "K50": {
+              "n_counterparties_ge_k": 837,
+              "spearman_ew": 0.8325,
+              "pearson_ew": 0.7267,
+              "spearman_vw": 0.7776,
+              "p_ew": 0.0
+            },
+            "K100": {
+              "n_counterparties_ge_k": 540,
+              "spearman_ew": 0.8468,
+              "pearson_ew": 0.8204,
+              "spearman_vw": 0.7896,
+              "p_ew": 0.0
+            }
+          }
+        },
+        "h10": {
+          "n_valid": 1199268,
+          "trade_pearson": 0.9497,
+          "trade_spearman": 0.9426,
+          "vw_mean_print_bps": 0.4233,
+          "vw_mean_mid_bps": 1.6623,
+          "mid_over_print_level_ratio": 3.9274,
+          "taker_rank": {
+            "K20": {
+              "n_counterparties_ge_k": 6555,
+              "spearman_ew": 0.9397,
+              "pearson_ew": 0.8826,
+              "spearman_vw": 0.9322,
+              "p_ew": 0.0
+            },
+            "K50": {
+              "n_counterparties_ge_k": 2555,
+              "spearman_ew": 0.9243,
+              "pearson_ew": 0.8604,
+              "spearman_vw": 0.9161,
+              "p_ew": 0.0
+            },
+            "K100": {
+              "n_counterparties_ge_k": 1132,
+              "spearman_ew": 0.934,
+              "pearson_ew": 0.8723,
+              "spearman_vw": 0.9174,
+              "p_ew": 0.0
+            }
+          },
+          "maker_rank": {
+            "K20": {
+              "n_counterparties_ge_k": 1507,
+              "spearman_ew": 0.8935,
+              "pearson_ew": 0.8894,
+              "spearman_vw": 0.8946,
+              "p_ew": 0.0
+            },
+            "K50": {
+              "n_counterparties_ge_k": 838,
+              "spearman_ew": 0.8761,
+              "pearson_ew": 0.8483,
+              "spearman_vw": 0.8834,
+              "p_ew": 0.0
+            },
+            "K100": {
+              "n_counterparties_ge_k": 540,
+              "spearman_ew": 0.8911,
+              "pearson_ew": 0.8887,
+              "spearman_vw": 0.8959,
+              "p_ew": 0.0
+            }
+          }
+        },
+        "h60": {
+          "n_valid": 1198821,
+          "trade_pearson": 0.9893,
+          "trade_spearman": 0.9845,
+          "vw_mean_print_bps": 0.5423,
+          "vw_mean_mid_bps": 1.798,
+          "mid_over_print_level_ratio": 3.3155,
+          "taker_rank": {
+            "K20": {
+              "n_counterparties_ge_k": 6554,
+              "spearman_ew": 0.9706,
+              "pearson_ew": 0.9642,
+              "spearman_vw": 0.9666,
+              "p_ew": 0.0
+            },
+            "K50": {
+              "n_counterparties_ge_k": 2553,
+              "spearman_ew": 0.9414,
+              "pearson_ew": 0.8978,
+              "spearman_vw": 0.9343,
+              "p_ew": 0.0
+            },
+            "K100": {
+              "n_counterparties_ge_k": 1132,
+              "spearman_ew": 0.8939,
+              "pearson_ew": 0.8323,
+              "spearman_vw": 0.88,
+              "p_ew": 0.0
+            }
+          },
+          "maker_rank": {
+            "K20": {
+              "n_counterparties_ge_k": 1507,
+              "spearman_ew": 0.9596,
+              "pearson_ew": 0.9654,
+              "spearman_vw": 0.9646,
+              "p_ew": 0.0
+            },
+            "K50": {
+              "n_counterparties_ge_k": 838,
+              "spearman_ew": 0.9525,
+              "pearson_ew": 0.9578,
+              "spearman_vw": 0.9525,
+              "p_ew": 0.0
+            },
+            "K100": {
+              "n_counterparties_ge_k": 540,
+              "spearman_ew": 0.9434,
+              "pearson_ew": 0.9596,
+              "spearman_vw": 0.9453,
+              "p_ew": 0.0
+            }
+          }
+        }
+      }
+    },
+    "ETH": {
+      "n": 1279404,
+      "horizons": {
+        "h1": {
+          "n_valid": 1277817,
+          "trade_pearson": 0.6613,
+          "trade_spearman": 0.6825,
+          "vw_mean_print_bps": 0.0127,
+          "vw_mean_mid_bps": 2.6078,
+          "mid_over_print_level_ratio": 206.0138,
+          "taker_rank": {
+            "K20": {
+              "n_counterparties_ge_k": 3792,
+              "spearman_ew": 0.6878,
+              "pearson_ew": 0.6686,
+              "spearman_vw": 0.6591,
+              "p_ew": 0.0
+            },
+            "K50": {
+              "n_counterparties_ge_k": 1780,
+              "spearman_ew": 0.7018,
+              "pearson_ew": 0.8075,
+              "spearman_vw": 0.6759,
+              "p_ew": 0.0
+            },
+            "K100": {
+              "n_counterparties_ge_k": 963,
+              "spearman_ew": 0.8027,
+              "pearson_ew": 0.8988,
+              "spearman_vw": 0.7502,
+              "p_ew": 0.0
+            }
+          },
+          "maker_rank": {
+            "K20": {
+              "n_counterparties_ge_k": 1462,
+              "spearman_ew": 0.7936,
+              "pearson_ew": 0.8066,
+              "spearman_vw": 0.8081,
+              "p_ew": 0.0
+            },
+            "K50": {
+              "n_counterparties_ge_k": 884,
+              "spearman_ew": 0.8106,
+              "pearson_ew": 0.813,
+              "spearman_vw": 0.8015,
+              "p_ew": 0.0
+            },
+            "K100": {
+              "n_counterparties_ge_k": 599,
+              "spearman_ew": 0.8035,
+              "pearson_ew": 0.8192,
+              "spearman_vw": 0.7877,
+              "p_ew": 0.0
+            }
+          }
+        },
+        "h10": {
+          "n_valid": 1277694,
+          "trade_pearson": 0.9339,
+          "trade_spearman": 0.8989,
+          "vw_mean_print_bps": 0.6623,
+          "vw_mean_mid_bps": 3.1365,
+          "mid_over_print_level_ratio": 4.7355,
+          "taker_rank": {
+            "K20": {
+              "n_counterparties_ge_k": 3791,
+              "spearman_ew": 0.9283,
+              "pearson_ew": 0.8908,
+              "spearman_vw": 0.9138,
+              "p_ew": 0.0
+            },
+            "K50": {
+              "n_counterparties_ge_k": 1780,
+              "spearman_ew": 0.916,
+              "pearson_ew": 0.8573,
+              "spearman_vw": 0.8976,
+              "p_ew": 0.0
+            },
+            "K100": {
+              "n_counterparties_ge_k": 963,
+              "spearman_ew": 0.9409,
+              "pearson_ew": 0.8672,
+              "spearman_vw": 0.9001,
+              "p_ew": 0.0
+            }
+          },
+          "maker_rank": {
+            "K20": {
+              "n_counterparties_ge_k": 1462,
+              "spearman_ew": 0.8659,
+              "pearson_ew": 0.9338,
+              "spearman_vw": 0.8886,
+              "p_ew": 0.0
+            },
+            "K50": {
+              "n_counterparties_ge_k": 884,
+              "spearman_ew": 0.8912,
+              "pearson_ew": 0.9466,
+              "spearman_vw": 0.8822,
+              "p_ew": 0.0
+            },
+            "K100": {
+              "n_counterparties_ge_k": 599,
+              "spearman_ew": 0.8812,
+              "pearson_ew": 0.9433,
+              "spearman_vw": 0.8621,
+              "p_ew": 0.0
+            }
+          }
+        },
+        "h60": {
+          "n_valid": 1277248,
+          "trade_pearson": 0.9848,
+          "trade_spearman": 0.9763,
+          "vw_mean_print_bps": 0.6132,
+          "vw_mean_mid_bps": 3.1269,
+          "mid_over_print_level_ratio": 5.0995,
+          "taker_rank": {
+            "K20": {
+              "n_counterparties_ge_k": 3791,
+              "spearman_ew": 0.9733,
+              "pearson_ew": 0.9734,
+              "spearman_vw": 0.9704,
+              "p_ew": 0.0
+            },
+            "K50": {
+              "n_counterparties_ge_k": 1781,
+              "spearman_ew": 0.96,
+              "pearson_ew": 0.9409,
+              "spearman_vw": 0.9598,
+              "p_ew": 0.0
+            },
+            "K100": {
+              "n_counterparties_ge_k": 963,
+              "spearman_ew": 0.9495,
+              "pearson_ew": 0.9279,
+              "spearman_vw": 0.9587,
+              "p_ew": 0.0
+            }
+          },
+          "maker_rank": {
+            "K20": {
+              "n_counterparties_ge_k": 1462,
+              "spearman_ew": 0.963,
+              "pearson_ew": 0.9886,
+              "spearman_vw": 0.9645,
+              "p_ew": 0.0
+            },
+            "K50": {
+              "n_counterparties_ge_k": 880,
+              "spearman_ew": 0.9513,
+              "pearson_ew": 0.9888,
+              "spearman_vw": 0.9544,
+              "p_ew": 0.0
+            },
+            "K100": {
+              "n_counterparties_ge_k": 599,
+              "spearman_ew": 0.9368,
+              "pearson_ew": 0.984,
+              "spearman_vw": 0.942,
+              "p_ew": 0.0
+            }
+          }
+        }
+      }
+    }
+  },
+  "verdict_taker_rank_spearman_h60_K50_ew": {
+    "BTC": 0.9414,
+    "ETH": 0.96
+  },
+  "interpretation": "rank rho >= ~0.8 at 60s -> trade-print proxy preserves the per-counterparty toxicity RANKING -> wide panel (Aug/Oct/SOL/cross-section) usable for the decomposition. Lower -> restrict headline to Dec book-mid; print-panel = robustness."
+}

@@ -1,0 +1,362 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_rowcounts_determinism_results.json",
+    "producer": {
+      "script": "chk_rowcounts_determinism.py",
+      "sha256": "a8328bdf57d98b95031f6d22658d870a3af1c3858a3c228252a58571ddbe451d",
+      "bytes": 41903,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "6dff6914cdae529ba1d856688255c1710cd59218",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "panel_markouts.npz",
+        "bytes": 482588572,
+        "sha256": "c6a37132cf1d0c62bdb2169668c89af20a7b6fb8811fd8132cc7c9b0b607a04b",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "build_quickwin_markouts.py",
+        "bytes": 40621,
+        "sha256": "4e52b09780010c19b258dc093e8a2485fbeec38365402e40186a674977c2f8e7",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "the row counts of the three markout slices named in inputs, plus one re-parsed day compared against the stored slice of it",
+      "window": "the span each slice carries; the determinism leg re-parses one day of it",
+      "coins": "every coin present in the slices; the counts are compared per coin and are not restricted to one"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "run": {
+      "runtime_s": 20.143,
+      "finished_utc": "2026-10-21T18:17:58Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "check": "rowcounts_determinism",
+  "checks": [
+    {
+      "name": "hard_asserts",
+      "assumption": "documented counts are code-enforced: quickwin==2480267; the panel CONTAINS the analysed windows [202508, 202510, 202512] and their subset is exactly 10455129 rows, per-coin {'BTC': 3736972, 'ETH': 4356836, 'SOL': 2361321}; quickwin/_mid share taker_id/coin/day element-wise",
+      "method": "runtime assert (raise on mismatch) on local npz only; runs under --smoke too; panel asserts are scoped to the canonical windows, the artifact total is recorded not pinned",
+      "observed": {
+        "quickwin_rows": 2480267,
+        "panel_rows_on_disk": 26035902,
+        "panel_rows_analysed": 10455129,
+        "panel_per_coin_analysed": {
+          "BTC": 3736972,
+          "ETH": 4356836,
+          "SOL": 2361321
+        },
+        "panel_periods_on_disk": [
+          202508,
+          202509,
+          202510,
+          202511,
+          202512,
+          202601,
+          202603,
+          202605
+        ],
+        "panel_periods_analysed": [
+          202508,
+          202510,
+          202512
+        ],
+        "mid_rows": 2480267
+      },
+      "verdict": "confirmed",
+      "note": "all hard asserts passed -> the analysed counts are enforced, not merely measured; the artifact may hold extra windows"
+    },
+    {
+      "name": "quickwin_row_count_assert",
+      "assumption": "quickwin_markouts.npz has exactly 2480267 rows",
+      "method": "len(taker_id) of quickwin_markouts.npz; hard assert == documented",
+      "observed": {
+        "rows": 2480267,
+        "expected": 2480267
+      },
+      "verdict": "confirmed",
+      "note": "documented count reproduced exactly"
+    },
+    {
+      "name": "panel_row_count_measured",
+      "assumption": "the ANALYSED panel (windows [202508, 202510, 202512]) has 10455129 rows; the artifact on disk may hold additional windows from a later rebuild",
+      "method": "len(taker_id) of panel_markouts.npz, and the same count restricted to the canonical windows the readers pin",
+      "observed": {
+        "rows_on_disk": 26035902,
+        "rows_analysed": 10455129,
+        "expected_analysed": 10455129,
+        "periods_on_disk": [
+          202508,
+          202509,
+          202510,
+          202511,
+          202512,
+          202601,
+          202603,
+          202605
+        ],
+        "matches_claim": true
+      },
+      "verdict": "confirmed",
+      "note": "analysed-subset count equals the reported number; the artifact holds 8 window(s) in total"
+    },
+    {
+      "name": "quickwin_mid_row_count",
+      "assumption": "quickwin_markouts_mid.npz is one aligned row per quickwin trade",
+      "method": "len(taker_id) of quickwin_markouts_mid.npz vs quickwin",
+      "observed": {
+        "rows_mid": 2480267,
+        "rows_quickwin": 2480267,
+        "equal_length": true
+      },
+      "verdict": "confirmed",
+      "note": "mid file has the same number of rows as quickwin"
+    },
+    {
+      "name": "panel_period_dtype",
+      "assumption": "panel_markouts.npz stores `period` as int64 (canonical builder panel_persistence.py)",
+      "method": "read panel_markouts.npz['period'].dtype",
+      "observed": {
+        "period_dtype_on_disk": "int64",
+        "expected": "int64",
+        "canonical_builder": "panel_persistence.py",
+        "note_on_drift": "panel_build.py / manifest schema_note say int32 -- documentation drift only; readers cast to int64 and the YYYYMM values fit both"
+      },
+      "verdict": "confirmed",
+      "note": "panel `period` is int64 on disk, matching the canonical panel_persistence.py output"
+    },
+    {
+      "name": "panel_coin_has_sol",
+      "assumption": "panel includes coin==2 (SOL) with a positive row count",
+      "method": "np.unique(coin) value-counts on panel_markouts.npz",
+      "observed": {
+        "coin_counts": {
+          "BTC": 11205275,
+          "ETH": 9351786,
+          "SOL": 5478841
+        },
+        "sol_rows": 5478841,
+        "periods": [
+          202508,
+          202509,
+          202510,
+          202511,
+          202512,
+          202601,
+          202603,
+          202605
+        ],
+        "per_coin_period": {
+          "202508": {
+            "BTC": 814777,
+            "ETH": 1462641,
+            "SOL": 733734
+          },
+          "202509": {
+            "BTC": 727516,
+            "ETH": 1010559,
+            "SOL": 635744
+          },
+          "202510": {
+            "BTC": 1721332,
+            "ETH": 1614791,
+            "SOL": 1120170
+          },
+          "202511": {
+            "BTC": 2022864,
+            "ETH": 1630961,
+            "SOL": 862100
+          },
+          "202512": {
+            "BTC": 1200863,
+            "ETH": 1279404,
+            "SOL": 507417
+          },
+          "202601": {
+            "BTC": 1118856,
+            "ETH": 858925,
+            "SOL": 565922
+          },
+          "202603": {
+            "BTC": 1947220,
+            "ETH": 843482,
+            "SOL": 559914
+          },
+          "202605": {
+            "BTC": 1651847,
+            "ETH": 651023,
+            "SOL": 493840
+          }
+        }
+      },
+      "verdict": "confirmed",
+      "note": "SOL present with 5478841 rows across 8 periods"
+    },
+    {
+      "name": "panel_december_matches_quickwin",
+      "assumption": "panel's December (202512) BTC+ETH rows equal the standalone quickwin BTC+ETH counts (same parse)",
+      "method": "per-(coin) count on panel period==202512 vs quickwin per-coin count",
+      "observed": {
+        "panel_dec_BTC": 1200863,
+        "quickwin_BTC": 1200863,
+        "BTC_match": true,
+        "panel_dec_ETH": 1279404,
+        "quickwin_ETH": 1279404,
+        "ETH_match": true
+      },
+      "verdict": "confirmed",
+      "note": "panel December BTC/ETH counts reproduce the 2-coin quickwin numbers exactly"
+    },
+    {
+      "name": "quickwin_mid_alignment",
+      "assumption": "quickwin_markouts_mid.npz is in the SAME row order as quickwin (taker_id/coin/day identical element-wise) -- assumed by the _mid build, never validated",
+      "method": "np.array_equal on taker_id, coin, day across the two files",
+      "observed": {
+        "rows": 2480267,
+        "columns": {
+          "taker_id": {
+            "identical": true,
+            "n_mismatch": 0
+          },
+          "coin": {
+            "identical": true,
+            "n_mismatch": 0
+          },
+          "day": {
+            "identical": true,
+            "n_mismatch": 0
+          }
+        }
+      },
+      "verdict": "confirmed",
+      "note": "all three key columns are element-wise identical -> the files are row-aligned"
+    },
+    {
+      "name": "determinism_reparse",
+      "assumption": "re-walking December day 20251204 / BTC through the ORIGINAL build_quickwin_markouts.parse_day reproduces the stored npz slice (row count + WHOLE-ROW joint multiset of the load-bearing columns)",
+      "method": "bq.parse_day -> bq.compute_markouts_all, then compare (1) row count and (2) the JOINT-TUPLE multiset over the load-bearing columns (entry_px, mo1/mo10/mo60, start_pos, taker_side): both sides are lexsorted by the SAME tolerance-quantized key over ALL columns and compared ROW-BY-ROW, so cross-column row-pairing is preserved and a row-assembly scramble cannot pass; rows are NOT keyed by taker_id (global in the npz, local on a standalone re-parse)",
+      "observed": {
+        "reparse_day": "20251204",
+        "reparse_coin": "BTC",
+        "stored_rows": 136265,
+        "reparse_rows": 136265,
+        "count_match": true,
+        "hours_reparsed": 24,
+        "columns": {
+          "entry_px": {
+            "reparse_n_nan": 0,
+            "stored_n_nan": 0,
+            "nan_match": true,
+            "max_joint_paired_abs_diff": 0.0,
+            "tol": 0.01,
+            "values_identical": true,
+            "ok": true
+          },
+          "mo1": {
+            "reparse_n_nan": 1,
+            "stored_n_nan": 1,
+            "nan_match": true,
+            "max_joint_paired_abs_diff": 0.0,
+            "tol": 0.01,
+            "values_identical": true,
+            "ok": true
+          },
+          "mo10": {
+            "reparse_n_nan": 3,
+            "stored_n_nan": 3,
+            "nan_match": true,
+            "max_joint_paired_abs_diff": 0.0,
+            "tol": 0.01,
+            "values_identical": true,
+            "ok": true
+          },
+          "mo60": {
+            "reparse_n_nan": 33,
+            "stored_n_nan": 33,
+            "nan_match": true,
+            "max_joint_paired_abs_diff": 0.0,
+            "tol": 0.01,
+            "values_identical": true,
+            "ok": true
+          },
+          "start_pos": {
+            "reparse_n_nan": 0,
+            "stored_n_nan": 0,
+            "nan_match": true,
+            "max_joint_paired_abs_diff": 0.0,
+            "tol": 0.001,
+            "values_identical": true,
+            "ok": true
+          },
+          "taker_side": {
+            "reparse_n_nan": 0,
+            "stored_n_nan": 0,
+            "nan_match": true,
+            "max_joint_paired_abs_diff": 0.0,
+            "tol": 0.0,
+            "values_identical": true,
+            "ok": true
+          }
+        },
+        "all_columns_match": true,
+        "comparison": "joint-tuple lexicographic multiset (row-paired)",
+        "reparse_joint_sha256": "4a1b756d669b304b",
+        "stored_joint_sha256": "4a1b756d669b304b"
+      },
+      "verdict": "confirmed",
+      "note": "re-parse reproduced the stored day/coin slice exactly: identical row count and an identical WHOLE-ROW joint multiset over every load-bearing column (NaN counts match) -> the stored npz IS a deterministic product of parse_day"
+    }
+  ],
+  "overall_verdict": "confirmed",
+  "smoke": false
+}

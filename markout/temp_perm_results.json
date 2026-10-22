@@ -1,0 +1,560 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "temp_perm_results.json",
+    "producer": {
+      "script": "temp_perm_decomp.py",
+      "sha256": "708c5e809f040fc0c43c603d7b605698d7ab026433ea28ab6d63716e2c22f142",
+      "bytes": 48810,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "8ab23202e58da453bb87b9350995e15949ae4bc8",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 rows of the book-mid panel reduced to per-wallet loadings; a wallet enters the split-half block only with at least 20 fills in EACH half, and the rank cells run over [50, 100] fills",
+      "window": "10 days present in the input, day-of-month 4-13; the split is odd/even WITHIN wallet rather than early against late, so every day enters both halves",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 60,
+      "is_headline_horizon": false,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "mid",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "permanent_leg_horizon_s": 60,
+      "temporary_leg_horizons_s": [
+        1,
+        60
+      ],
+      "temporary10_leg_horizons_s": [
+        10,
+        60
+      ],
+      "mid_columns": [
+        "mo1_mid",
+        "mo10_mid",
+        "mo60_mid"
+      ],
+      "k_half_min": 20,
+      "gap_max_ms": 5000.0,
+      "corr_perm_temp_max": -0.5,
+      "whale_drop": {
+        "k": 10,
+        "criterion": "fill_count",
+        "key": "drop_top10_by_fill_count"
+      },
+      "master_seed": 20260620,
+      "n_perm": 2000,
+      "p_floor": 0.0004997501249375312,
+      "settings_not_used": [
+        "n_boot",
+        "rank_floor_fills"
+      ],
+      "overridden": [
+        "corr_perm_temp_max",
+        "gap_max_ms",
+        "k_half_min",
+        "master_seed",
+        "mid_columns",
+        "n_perm",
+        "p_floor",
+        "permanent_leg_horizon_s",
+        "settings_not_used",
+        "temporary10_leg_horizons_s",
+        "temporary_leg_horizons_s",
+        "whale_drop"
+      ]
+    },
+    "object": "Huang-Stoll/Hasbrouck temporary-vs-permanent mid-impact decomposition + per-counterparty loadings",
+    "seed": 20260620,
+    "decomposition": {
+      "mean_permanent_fill_bps_60s_mid": "mo60_mid (long-horizon >=60s signed mid move; non-reverting information component)",
+      "mean_temporary_fill_bps_1s_minus_60s_mid": "mo1_mid - mo60_mid (Huang-Stoll realized-spread: early effective impact minus permanent; the reverting transient own-impact)",
+      "temporary10_bps_10s_minus_60s_mid": "mo10_mid - mo60_mid (reversion remaining at 10s)",
+      "identity": "permanent + temporary == mo1_mid by construction",
+      "sign": "positive = taker profited = maker adversely selected"
+    },
+    "toxicity_score": "established per-counterparty score = per-wallet mean mo60_mid (the i3/ks2 ranking statistic at the 60s window)",
+    "toxicity_score_window_note": "This object ranks wallets on the 60s book mid because that is where its permanent leg is defined. The study's HEADLINE window is 10s, so these rank correlations are not the headline persistence figures and must not be quoted as them. Every field name states the window it belongs to.",
+    "field_suffix_style": "explicit",
+    "field_suffix_note": "A leg built from ONE window carries that window ('_60s'); a leg built from a DIFFERENCE of two carries both ('_1s_minus_60s'); every one of them ends in the lens '_mid', because these are book-mid numbers and the trade-print markout of the same fill is a different quantity.",
+    "identity_guard": "naive same-sample perm correlation is ~tautological (toxicity IS the wallet mean mo60 = permanent loading); the SPLIT-SAMPLE odd/even block (toxicity on half A, loadings on half B) is the honest headline",
+    "K_list": [
+      50,
+      100
+    ],
+    "k_half_min": 20,
+    "n_perm": 2000,
+    "p_floor": 0.0004997501249375312,
+    "n_drop_whales": 10,
+    "gap_max_ms": 5000.0,
+    "n_takers_mapped": 45849,
+    "n_rows_total": 2480267,
+    "prediction": "rank_corr(toxicity, permanent) > rank_corr(toxicity, temporary) out-of-half, gap outside the permutation null -> per-counterparty toxicity loads on the PERMANENT (information) leg, not transient own-impact",
+    "decomposition_verdict": "FAILED - the permanent (mo60) and temporary (mo1 - mo60) legs are strongly NEGATIVELY correlated at fill level (~ -0.96 on this sample; see each slice's decomposition_diagnostics.fill_corr_permanent_temporary_60s_vs_1s_minus_60s_mid) and mid impact grows monotonically with horizon, so 'temporary' captures continued price discovery (drift), not reverting own-impact. The Huang-Stoll / Hasbrouck permanent-vs-transient LABEL does not apply on this sample. The only surviving, usable signal is the odd/even split-half persistence of the 60s markout, which merely corroborates ks2_persistence_10day and is NOT an independent permanent-impact result. Accordingly the per-slice 'permanent_beats_temporary' and 'loads_on_permanent_not_temporary' flags are gated on decomposition_valid and read False.",
+    "run": {
+      "runtime_s": 80.113,
+      "finished_utc": "2026-08-29T09:59:47Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "BTC": {
+    "decomposition_diagnostics": {
+      "n_fills": 1198971,
+      "fill_corr_permanent_temporary_60s_vs_1s_minus_60s_mid": -0.9759610122307458,
+      "mean_permanent_fill_bps_60s_mid": 0.8211285839575172,
+      "mean_temporary_fill_bps_1s_minus_60s_mid": -0.10914047982319261,
+      "impact_grows_monotonically": true,
+      "decomposition_valid": false
+    },
+    "K50": {
+      "n_wallets": 2559,
+      "min_fills_K": 50,
+      "mean_permanent_loading_bps_60s_mid": 0.2681881749880487,
+      "std_permanent_loading_bps_60s_mid": 1.5003518155105515,
+      "mean_temporary_loading_bps_1s_minus_60s_mid": 0.06298750434226445,
+      "std_temporary_loading_bps_1s_minus_60s_mid": 1.2625597137094402,
+      "mean_temporary10_loading_bps_10s_minus_60s_mid": 0.08367205948296055,
+      "std_temporary10_loading_bps_10s_minus_60s_mid": 1.1627352181182005,
+      "naive_same_sample": {
+        "rank_corr_toxicity_vs_permanent_60s_mid": 1.0,
+        "rank_corr_toxicity_vs_temporary_1s_minus_60s_mid": -0.8289719473914446,
+        "rank_corr_toxicity_vs_temporary10_10s_minus_60s_mid": -0.6825447722452238,
+        "perm_minus_temp_gap_60s_vs_1s_minus_60s_mid": 1.8289719473914445,
+        "caveat": "toxicity == per-wallet mean mo60_mid == permanent loading on the SAME fills, so the perm correlation is near-tautological (~1); read the split-sample block, not this, as the headline"
+      },
+      "whale_robustness_naive_gap_drop_top10_by_fill_count": {
+        "full_gap_60s_vs_1s_minus_60s_mid": 1.8289719473914445,
+        "dropped_gap_60s_vs_1s_minus_60s_mid": 1.8291062666428193,
+        "sign_preserved": true,
+        "n_whales_dropped": 10,
+        "n_wallets_after_drop": 2549,
+        "criterion": "fill_count"
+      },
+      "split_sample_headline": {
+        "n_wallets": 3290,
+        "k_half_min": 20,
+        "rank_corr_toxicityA_vs_permB_60s_mid": 0.19708188901557072,
+        "rank_corr_toxicityA_vs_tempB_1s_minus_60s_mid": -0.054239147491875264,
+        "perm_minus_temp_gap_60s_vs_1s_minus_60s_mid": 0.25132103650744597,
+        "perm_permutation_p_two_sided": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "perm_null_mean_gap": 0.0005972963697299769,
+        "perm_null_std_gap": 0.033332031642921645,
+        "perm_gap_procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 1e-12,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "temp_perm_decomp",
+            "perm_minus_temp_gap"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.25132103650744597,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": 0.0005972963697299769,
+          "null_sd": 0.03334036777701294,
+          "null_p95": 0.055546428952564765,
+          "n_draws_substituted_zero": 0,
+          "failed_draw_policy": "a draw whose statistic is undefined is REPLACED BY 0.0 before counting, not dropped; the module's n_draws_dropped therefore describes the array it was handed and is zero by construction"
+        },
+        "decomposition_valid": false,
+        "permanent_beats_temporary": false,
+        "gap_outside_null_p_le_0p05": true,
+        "loads_on_permanent_not_temporary": false,
+        "decomposition_verdict": "FAILED - permanent (mo60) and temporary (mo1 - mo60) are -0.98-correlated at fill level and mid impact grows monotonically with horizon, so 'temporary' is continued price discovery (drift), not reverting own-impact. Not an independent permanent-vs-transient split; the only surviving signal is the odd/even split-half persistence of the 60s markout, which corroborates ks2_persistence_10day and is NOT an independent permanent-impact result."
+      }
+    },
+    "K100": {
+      "n_wallets": 1132,
+      "min_fills_K": 100,
+      "mean_permanent_loading_bps_60s_mid": 0.4779496309935078,
+      "std_permanent_loading_bps_60s_mid": 1.6683847176573556,
+      "mean_temporary_loading_bps_1s_minus_60s_mid": 0.09930080316439584,
+      "std_temporary_loading_bps_1s_minus_60s_mid": 1.2291168406930706,
+      "mean_temporary10_loading_bps_10s_minus_60s_mid": 0.14655604111390413,
+      "std_temporary10_loading_bps_10s_minus_60s_mid": 1.1314645997825763,
+      "naive_same_sample": {
+        "rank_corr_toxicity_vs_permanent_60s_mid": 1.0,
+        "rank_corr_toxicity_vs_temporary_1s_minus_60s_mid": -0.6413624325754748,
+        "rank_corr_toxicity_vs_temporary10_10s_minus_60s_mid": -0.4517002987643135,
+        "perm_minus_temp_gap_60s_vs_1s_minus_60s_mid": 1.6413624325754748,
+        "caveat": "toxicity == per-wallet mean mo60_mid == permanent loading on the SAME fills, so the perm correlation is near-tautological (~1); read the split-sample block, not this, as the headline"
+      },
+      "whale_robustness_naive_gap_drop_top10_by_fill_count": {
+        "full_gap_60s_vs_1s_minus_60s_mid": 1.6413624325754748,
+        "dropped_gap_60s_vs_1s_minus_60s_mid": 1.640391067166279,
+        "sign_preserved": true,
+        "n_whales_dropped": 10,
+        "n_wallets_after_drop": 1122,
+        "criterion": "fill_count"
+      },
+      "split_sample_headline": {
+        "n_wallets": 3290,
+        "k_half_min": 20,
+        "rank_corr_toxicityA_vs_permB_60s_mid": 0.1906343091705239,
+        "rank_corr_toxicityA_vs_tempB_1s_minus_60s_mid": -0.04949106618481594,
+        "perm_minus_temp_gap_60s_vs_1s_minus_60s_mid": 0.24012537535533984,
+        "perm_permutation_p_two_sided": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "perm_null_mean_gap": 2.037903741835978e-05,
+        "perm_null_std_gap": 0.03371959143590276,
+        "perm_gap_procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 1e-12,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "temp_perm_decomp",
+            "perm_minus_temp_gap"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.24012537535533984,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": 2.037903741835978e-05,
+          "null_sd": 0.033728024496291184,
+          "null_p95": 0.0540815003952296,
+          "n_draws_substituted_zero": 0,
+          "failed_draw_policy": "a draw whose statistic is undefined is REPLACED BY 0.0 before counting, not dropped; the module's n_draws_dropped therefore describes the array it was handed and is zero by construction"
+        },
+        "decomposition_valid": false,
+        "permanent_beats_temporary": false,
+        "gap_outside_null_p_le_0p05": true,
+        "loads_on_permanent_not_temporary": false,
+        "decomposition_verdict": "FAILED - permanent (mo60) and temporary (mo1 - mo60) are -0.98-correlated at fill level and mid impact grows monotonically with horizon, so 'temporary' is continued price discovery (drift), not reverting own-impact. Not an independent permanent-vs-transient split; the only surviving signal is the odd/even split-half persistence of the 60s markout, which corroborates ks2_persistence_10day and is NOT an independent permanent-impact result."
+      }
+    }
+  },
+  "ETH": {
+    "decomposition_diagnostics": {
+      "n_fills": 1277179,
+      "fill_corr_permanent_temporary_60s_vs_1s_minus_60s_mid": -0.9727551122703441,
+      "mean_permanent_fill_bps_60s_mid": 1.8633777740610094,
+      "mean_temporary_fill_bps_1s_minus_60s_mid": -0.27316654001036644,
+      "impact_grows_monotonically": true,
+      "decomposition_valid": false
+    },
+    "K50": {
+      "n_wallets": 1782,
+      "min_fills_K": 50,
+      "mean_permanent_loading_bps_60s_mid": 0.5227482144813267,
+      "std_permanent_loading_bps_60s_mid": 2.532392759399408,
+      "mean_temporary_loading_bps_1s_minus_60s_mid": -0.07613721048877446,
+      "std_temporary_loading_bps_1s_minus_60s_mid": 2.07207447074299,
+      "mean_temporary10_loading_bps_10s_minus_60s_mid": -0.0911509177425399,
+      "std_temporary10_loading_bps_10s_minus_60s_mid": 1.879790059047958,
+      "naive_same_sample": {
+        "rank_corr_toxicity_vs_permanent_60s_mid": 1.0,
+        "rank_corr_toxicity_vs_temporary_1s_minus_60s_mid": -0.9001146258331925,
+        "rank_corr_toxicity_vs_temporary10_10s_minus_60s_mid": -0.8046633408506083,
+        "perm_minus_temp_gap_60s_vs_1s_minus_60s_mid": 1.9001146258331925,
+        "caveat": "toxicity == per-wallet mean mo60_mid == permanent loading on the SAME fills, so the perm correlation is near-tautological (~1); read the split-sample block, not this, as the headline"
+      },
+      "whale_robustness_naive_gap_drop_top10_by_fill_count": {
+        "full_gap_60s_vs_1s_minus_60s_mid": 1.9001146258331925,
+        "dropped_gap_60s_vs_1s_minus_60s_mid": 1.9011082459247173,
+        "sign_preserved": true,
+        "n_whales_dropped": 10,
+        "n_wallets_after_drop": 1772,
+        "criterion": "fill_count"
+      },
+      "split_sample_headline": {
+        "n_wallets": 2147,
+        "k_half_min": 20,
+        "rank_corr_toxicityA_vs_permB_60s_mid": 0.3132732784897593,
+        "rank_corr_toxicityA_vs_tempB_1s_minus_60s_mid": -0.20582883148099163,
+        "perm_minus_temp_gap_60s_vs_1s_minus_60s_mid": 0.5191021099707509,
+        "perm_permutation_p_two_sided": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "perm_null_mean_gap": -0.001815722981473272,
+        "perm_null_std_gap": 0.04287524361220868,
+        "perm_gap_procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 1e-12,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "temp_perm_decomp",
+            "perm_minus_temp_gap"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.5191021099707509,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": -0.001815722981473272,
+          "null_sd": 0.04288596644434137,
+          "null_p95": 0.067905800713867,
+          "n_draws_substituted_zero": 0,
+          "failed_draw_policy": "a draw whose statistic is undefined is REPLACED BY 0.0 before counting, not dropped; the module's n_draws_dropped therefore describes the array it was handed and is zero by construction"
+        },
+        "decomposition_valid": false,
+        "permanent_beats_temporary": false,
+        "gap_outside_null_p_le_0p05": true,
+        "loads_on_permanent_not_temporary": false,
+        "decomposition_verdict": "FAILED - permanent (mo60) and temporary (mo1 - mo60) are -0.97-correlated at fill level and mid impact grows monotonically with horizon, so 'temporary' is continued price discovery (drift), not reverting own-impact. Not an independent permanent-vs-transient split; the only surviving signal is the odd/even split-half persistence of the 60s markout, which corroborates ks2_persistence_10day and is NOT an independent permanent-impact result."
+      }
+    },
+    "K100": {
+      "n_wallets": 963,
+      "min_fills_K": 100,
+      "mean_permanent_loading_bps_60s_mid": 0.7817823437245269,
+      "std_permanent_loading_bps_60s_mid": 2.750789333634327,
+      "mean_temporary_loading_bps_1s_minus_60s_mid": -0.12066540413524406,
+      "std_temporary_loading_bps_1s_minus_60s_mid": 2.041389745641189,
+      "mean_temporary10_loading_bps_10s_minus_60s_mid": -0.10393065967656595,
+      "std_temporary10_loading_bps_10s_minus_60s_mid": 1.7557070112020756,
+      "naive_same_sample": {
+        "rank_corr_toxicity_vs_permanent_60s_mid": 1.0,
+        "rank_corr_toxicity_vs_temporary_1s_minus_60s_mid": -0.8405482453258465,
+        "rank_corr_toxicity_vs_temporary10_10s_minus_60s_mid": -0.748887287375673,
+        "perm_minus_temp_gap_60s_vs_1s_minus_60s_mid": 1.8405482453258464,
+        "caveat": "toxicity == per-wallet mean mo60_mid == permanent loading on the SAME fills, so the perm correlation is near-tautological (~1); read the split-sample block, not this, as the headline"
+      },
+      "whale_robustness_naive_gap_drop_top10_by_fill_count": {
+        "full_gap_60s_vs_1s_minus_60s_mid": 1.8405482453258464,
+        "dropped_gap_60s_vs_1s_minus_60s_mid": 1.8420345587798563,
+        "sign_preserved": true,
+        "n_whales_dropped": 10,
+        "n_wallets_after_drop": 953,
+        "criterion": "fill_count"
+      },
+      "split_sample_headline": {
+        "n_wallets": 2147,
+        "k_half_min": 20,
+        "rank_corr_toxicityA_vs_permB_60s_mid": 0.340569356560094,
+        "rank_corr_toxicityA_vs_tempB_1s_minus_60s_mid": -0.2311204867962439,
+        "perm_minus_temp_gap_60s_vs_1s_minus_60s_mid": 0.5716898433563379,
+        "perm_permutation_p_two_sided": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "perm_null_mean_gap": 0.0018170466534116244,
+        "perm_null_std_gap": 0.04228774148350561,
+        "perm_gap_procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 1e-12,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "temp_perm_decomp",
+            "perm_minus_temp_gap"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.5716898433563379,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": 0.0018170466534116244,
+          "null_sd": 0.04229831738500483,
+          "null_p95": 0.0714240574196656,
+          "n_draws_substituted_zero": 0,
+          "failed_draw_policy": "a draw whose statistic is undefined is REPLACED BY 0.0 before counting, not dropped; the module's n_draws_dropped therefore describes the array it was handed and is zero by construction"
+        },
+        "decomposition_valid": false,
+        "permanent_beats_temporary": false,
+        "gap_outside_null_p_le_0p05": true,
+        "loads_on_permanent_not_temporary": false,
+        "decomposition_verdict": "FAILED - permanent (mo60) and temporary (mo1 - mo60) are -0.97-correlated at fill level and mid impact grows monotonically with horizon, so 'temporary' is continued price discovery (drift), not reverting own-impact. Not an independent permanent-vs-transient split; the only surviving signal is the odd/even split-half persistence of the 60s markout, which corroborates ks2_persistence_10day and is NOT an independent permanent-impact result."
+      }
+    }
+  },
+  "pooled": {
+    "decomposition_diagnostics": {
+      "n_fills": 2476150,
+      "fill_corr_permanent_temporary_60s_vs_1s_minus_60s_mid": -0.9730069718946843,
+      "mean_permanent_fill_bps_60s_mid": 1.3587126472683781,
+      "mean_temporary_fill_bps_1s_minus_60s_mid": -0.19374385180138234,
+      "impact_grows_monotonically": true,
+      "decomposition_valid": false
+    },
+    "K50": {
+      "n_wallets": 4287,
+      "min_fills_K": 50,
+      "mean_permanent_loading_bps_60s_mid": 0.29421135772748597,
+      "std_permanent_loading_bps_60s_mid": 1.8820968353175171,
+      "mean_temporary_loading_bps_1s_minus_60s_mid": -0.019073057964995425,
+      "std_temporary_loading_bps_1s_minus_60s_mid": 1.61471515392257,
+      "mean_temporary10_loading_bps_10s_minus_60s_mid": -0.01873771512673697,
+      "std_temporary10_loading_bps_10s_minus_60s_mid": 1.4378498026270636,
+      "naive_same_sample": {
+        "rank_corr_toxicity_vs_permanent_60s_mid": 1.0,
+        "rank_corr_toxicity_vs_temporary_1s_minus_60s_mid": -0.9275029355228367,
+        "rank_corr_toxicity_vs_temporary10_10s_minus_60s_mid": -0.8165369394220702,
+        "perm_minus_temp_gap_60s_vs_1s_minus_60s_mid": 1.9275029355228366,
+        "caveat": "toxicity == per-wallet mean mo60_mid == permanent loading on the SAME fills, so the perm correlation is near-tautological (~1); read the split-sample block, not this, as the headline"
+      },
+      "whale_robustness_naive_gap_drop_top10_by_fill_count": {
+        "full_gap_60s_vs_1s_minus_60s_mid": 1.9275029355228366,
+        "dropped_gap_60s_vs_1s_minus_60s_mid": 1.9278138897057153,
+        "sign_preserved": true,
+        "n_whales_dropped": 10,
+        "n_wallets_after_drop": 4277,
+        "criterion": "fill_count"
+      },
+      "split_sample_headline": {
+        "n_wallets": 5333,
+        "k_half_min": 20,
+        "rank_corr_toxicityA_vs_permB_60s_mid": 0.20167566503857423,
+        "rank_corr_toxicityA_vs_tempB_1s_minus_60s_mid": -0.13013493052894495,
+        "perm_minus_temp_gap_60s_vs_1s_minus_60s_mid": 0.3318105955675192,
+        "perm_permutation_p_two_sided": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "perm_null_mean_gap": 0.0009334951303218147,
+        "perm_null_std_gap": 0.02709818739146189,
+        "perm_gap_procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 1e-12,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "temp_perm_decomp",
+            "perm_minus_temp_gap"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.3318105955675192,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": 0.0009334951303218147,
+          "null_sd": 0.027104964479823808,
+          "null_p95": 0.045832364251729873,
+          "n_draws_substituted_zero": 0,
+          "failed_draw_policy": "a draw whose statistic is undefined is REPLACED BY 0.0 before counting, not dropped; the module's n_draws_dropped therefore describes the array it was handed and is zero by construction"
+        },
+        "decomposition_valid": false,
+        "permanent_beats_temporary": false,
+        "gap_outside_null_p_le_0p05": true,
+        "loads_on_permanent_not_temporary": false,
+        "decomposition_verdict": "FAILED - permanent (mo60) and temporary (mo1 - mo60) are -0.97-correlated at fill level and mid impact grows monotonically with horizon, so 'temporary' is continued price discovery (drift), not reverting own-impact. Not an independent permanent-vs-transient split; the only surviving signal is the odd/even split-half persistence of the 60s markout, which corroborates ks2_persistence_10day and is NOT an independent permanent-impact result."
+      }
+    },
+    "K100": {
+      "n_wallets": 2014,
+      "min_fills_K": 100,
+      "mean_permanent_loading_bps_60s_mid": 0.41659868792216254,
+      "std_permanent_loading_bps_60s_mid": 2.015301750892442,
+      "mean_temporary_loading_bps_1s_minus_60s_mid": -0.0035957560732855455,
+      "std_temporary_loading_bps_1s_minus_60s_mid": 1.5301197296897844,
+      "mean_temporary10_loading_bps_10s_minus_60s_mid": 0.009567020881400672,
+      "std_temporary10_loading_bps_10s_minus_60s_mid": 1.303861386841945,
+      "naive_same_sample": {
+        "rank_corr_toxicity_vs_permanent_60s_mid": 1.0,
+        "rank_corr_toxicity_vs_temporary_1s_minus_60s_mid": -0.8729056067318058,
+        "rank_corr_toxicity_vs_temporary10_10s_minus_60s_mid": -0.7558585818475738,
+        "perm_minus_temp_gap_60s_vs_1s_minus_60s_mid": 1.872905606731806,
+        "caveat": "toxicity == per-wallet mean mo60_mid == permanent loading on the SAME fills, so the perm correlation is near-tautological (~1); read the split-sample block, not this, as the headline"
+      },
+      "whale_robustness_naive_gap_drop_top10_by_fill_count": {
+        "full_gap_60s_vs_1s_minus_60s_mid": 1.872905606731806,
+        "dropped_gap_60s_vs_1s_minus_60s_mid": 1.8733187941891425,
+        "sign_preserved": true,
+        "n_whales_dropped": 10,
+        "n_wallets_after_drop": 2004,
+        "criterion": "fill_count"
+      },
+      "split_sample_headline": {
+        "n_wallets": 5333,
+        "k_half_min": 20,
+        "rank_corr_toxicityA_vs_permB_60s_mid": 0.19116368869411668,
+        "rank_corr_toxicityA_vs_tempB_1s_minus_60s_mid": -0.1185196149270505,
+        "perm_minus_temp_gap_60s_vs_1s_minus_60s_mid": 0.3096833036211672,
+        "perm_permutation_p_two_sided": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "perm_null_mean_gap": -0.00044140368690497213,
+        "perm_null_std_gap": 0.026779353380317783,
+        "perm_gap_procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 1e-12,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "temp_perm_decomp",
+            "perm_minus_temp_gap"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.3096833036211672,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": -0.00044140368690497213,
+          "null_sd": 0.026786050730273767,
+          "null_p95": 0.04367275128335457,
+          "n_draws_substituted_zero": 0,
+          "failed_draw_policy": "a draw whose statistic is undefined is REPLACED BY 0.0 before counting, not dropped; the module's n_draws_dropped therefore describes the array it was handed and is zero by construction"
+        },
+        "decomposition_valid": false,
+        "permanent_beats_temporary": false,
+        "gap_outside_null_p_le_0p05": true,
+        "loads_on_permanent_not_temporary": false,
+        "decomposition_verdict": "FAILED - permanent (mo60) and temporary (mo1 - mo60) are -0.97-correlated at fill level and mid impact grows monotonically with horizon, so 'temporary' is continued price discovery (drift), not reverting own-impact. Not an independent permanent-vs-transient split; the only surviving signal is the odd/even split-half persistence of the 60s markout, which corroborates ks2_persistence_10day and is NOT an independent permanent-impact result."
+      }
+    }
+  }
+}

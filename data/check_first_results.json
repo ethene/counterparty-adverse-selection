@@ -1,0 +1,278 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "check_first_results.json",
+    "producer": {
+      "script": "check_first.py",
+      "sha256": "fb605eee015606e66dd7ad67700cf29c38971d69e1346e52a01a55040c719340",
+      "bytes": 33161,
+      "bytes_in_object_db": "absent",
+      "object_format": "sha1",
+      "object_id": "c01a128dafcb356ab7d387d40ae85ae476b4e05b",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "t3_results.json",
+        "bytes": 25756,
+        "sha256": "62c3d5c26b443e962b48ab68f983673d526140055f0da127ebaa0f63e67757fd",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "i4_midmarkout_results.json",
+        "bytes": 7739,
+        "sha256": "d14945ddff3f45fd83f18e32815c1388bf28cc2ad19a67cd7801be81298c6103",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "data_acquisition_log.md",
+        "bytes": 32099,
+        "sha256": "6a8e05be68d569b15ac9a03fb5317fc2ef8a0a540e1d39c1dd5acb21c5af8a6d",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 rows of quickwin_markouts.npz against 2,480,267 rows of quickwin_markouts_mid.npz, compared element-wise on 10 stable key columns",
+      "window": "10 distinct days read from the persisted day column: 2025-12-04..2025-12-13",
+      "coins": "n/a: every check is over the whole file; nothing here is cut by coin"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260620,
+      "n_perm": null,
+      "n_boot": null,
+      "rank_floor_fills": null,
+      "override_reasons": {
+        "lens": "check 3 recomputes the pooled adverse-selection cost on the trade-print column mo10; the book-mid intermediate is opened for its schema and its row keys only, never for a markout value",
+        "master_seed": "bound from settings.MASTER_SEED and unchanged; no generator is drawn in this file at all",
+        "n_perm": "no permutation test and no bootstrap run in this gate",
+        "n_boot": "see n_perm",
+        "rank_floor_fills": "no wallet floor applies: every check is over all rows, and no per-wallet population is gated"
+      },
+      "overridden": [
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "override_reasons",
+        "rank_floor_fills"
+      ]
+    },
+    "object": "read-only repro/integrity gate for the markout intermediates",
+    "data_root": "03_code",
+    "repo_root": "..",
+    "note": "light gate; no heavy compute, no raw-archive access",
+    "run": {
+      "runtime_s": 0.612,
+      "finished_utc": "2026-10-21T17:50:56Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "check1_schema_and_days": {
+    "print": {
+      "file": "quickwin_markouts.npz",
+      "present": true,
+      "rows": 2480267,
+      "n_columns": 14,
+      "columns": [
+        "taker_id",
+        "coin",
+        "day",
+        "entry_px",
+        "mo1",
+        "mo10",
+        "mo60",
+        "notional",
+        "is_open",
+        "start_pos",
+        "taker_side",
+        "closed_pnl",
+        "dir_code",
+        "maker_id"
+      ],
+      "day_nums": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "day_dates": [
+        "2025-12-04",
+        "2025-12-05",
+        "2025-12-06",
+        "2025-12-07",
+        "2025-12-08",
+        "2025-12-09",
+        "2025-12-10",
+        "2025-12-11",
+        "2025-12-12",
+        "2025-12-13"
+      ],
+      "n_days": 10
+    },
+    "mid": {
+      "file": "quickwin_markouts_mid.npz",
+      "present": true,
+      "rows": 2480267,
+      "n_columns": 21,
+      "columns": [
+        "taker_id",
+        "coin",
+        "day",
+        "entry_px",
+        "notional",
+        "is_open",
+        "start_pos",
+        "taker_side",
+        "closed_pnl",
+        "dir_code",
+        "maker_id",
+        "mo1_mid",
+        "mo10_mid",
+        "mo60_mid",
+        "imb_entry",
+        "spread_entry_bps",
+        "micro_dev_bps",
+        "gap_entry_ms",
+        "gap_h1_ms",
+        "gap_h10_ms",
+        "gap_h60_ms"
+      ],
+      "day_nums": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "day_dates": [
+        "2025-12-04",
+        "2025-12-05",
+        "2025-12-06",
+        "2025-12-07",
+        "2025-12-08",
+        "2025-12-09",
+        "2025-12-10",
+        "2025-12-11",
+        "2025-12-12",
+        "2025-12-13"
+      ],
+      "n_days": 10
+    },
+    "print_day_coverage_verdict": "FULL_10_DAYS (Dec 4-13)"
+  },
+  "check2_row_alignment": {
+    "checked": true,
+    "passed": true,
+    "keys_compared": [
+      "coin",
+      "day",
+      "dir_code",
+      "entry_px",
+      "is_open",
+      "maker_id",
+      "notional",
+      "start_pos",
+      "taker_id",
+      "taker_side"
+    ],
+    "match_fraction_by_key": {
+      "taker_id": 1.0,
+      "coin": 1.0,
+      "day": 1.0,
+      "taker_side": 1.0,
+      "dir_code": 1.0,
+      "is_open": 1.0,
+      "maker_id": 1.0,
+      "entry_px": 1.0,
+      "notional": 1.0,
+      "start_pos": 1.0
+    },
+    "worst_match_fraction": 1.0,
+    "floor": 0.999999
+  },
+  "check3_t3_divisor": {
+    "checked": true,
+    "metric": "pooled signed 10s adverse-selection cost (USD), column mo10",
+    "pooled_total_cost_usd_recomputed": 2376244.05,
+    "n_days_from_npz": 10,
+    "per_day_corrected_usd": 237624.41,
+    "per_day_if_divided_by_10_usd": 237624.41,
+    "t3_recorded_window_days": 10,
+    "t3_recorded_key": "total_cost_usd_10s",
+    "t3_recorded_total_cost_usd": 2376244.05,
+    "t3_recorded_cost_per_day_usd": 237624.41,
+    "recomputed_vs_t3_abs_usd": 0.0,
+    "recomputed_matches_t3": true,
+    "divisor_matches_npz": true
+  },
+  "check4_text_consistency": {
+    "log_file": "data_acquisition_log.md",
+    "log_records_l2book_pull": true,
+    "log_records_bookmid_execution": true,
+    "log_still_frames_bookmid_as_future": false,
+    "bookmid_execution_artifact_present": true,
+    "bookmid_execution_artifact_detail": {
+      "file": "i4_midmarkout_results.json",
+      "total_rows": 2480267,
+      "row_aligned_to_print_npz": true,
+      "print_twin_arm": "shipped_artifact",
+      "n_days_resolved": 10,
+      "vw_mean_mo10_mid_bps": 2.2388012821934655
+    }
+  },
+  "ok": true,
+  "discrepancies": [],
+  "unaskable": [],
+  "discrepancies_found": [],
+  "verdict": "PASS"
+}

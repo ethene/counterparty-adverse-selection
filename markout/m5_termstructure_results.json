@@ -1,0 +1,225 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "m5_termstructure_results.json",
+    "producer": {
+      "script": "m5_termstructure.py",
+      "sha256": "a2c609914960cd125aa6c139821537bfe62ccf9165299063a3ca59ec6e5408d0",
+      "bytes": 25766
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,231 rows of the trade-print panel with at least one finite rung and a finite non-negative notional; the per-wallet monotonicity statistic gates at 50 fills, and no randomness or resampling enters this file",
+      "window": "10 days present in the input, day-of-month 4-13; the calendar dates of the window are declared by its producer, build_quickwin_markouts.py",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "rank_floor_fills": 50,
+      "overridden": [
+        "rank_floor_fills"
+      ]
+    },
+    "object": "M5 markout term-structure (toxicity curve over horizon)",
+    "horizons": [
+      "1s",
+      "10s",
+      "60s"
+    ],
+    "markout_sign": "signed taker markout in bps; positive = taker profited = maker adversely selected",
+    "shape_rule": "rising/falling if |60s-1s slope| > 0.05 bps, else flat",
+    "min_trades_per_wallet": 50,
+    "monotonic_null": 0.16666666666666666,
+    "weighted_curve_caveat": "raw notional-weighted slope is largely a low-1s-anchor artefact of the top-0.1%-notional fills; trimmed (drop top 0.1% by notional) and 99%-winsorized weighted curves are reported alongside it and are NOT billed as the single honest curve",
+    "per_wallet_caveat": "rising and falling per-wallet fractions are descriptive only; strict-falling exceeds strict-rising on this data, so the ordering does not establish a per-counterparty rising property",
+    "n_trades_valid": 2480231,
+    "horizons_reported_s": [
+      1,
+      10,
+      60
+    ],
+    "slope_endpoints_s": [
+      1,
+      60
+    ],
+    "run": {
+      "runtime_s": 2.322,
+      "finished_utc": "2026-08-21T18:17:17Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "BTC": {
+    "curve": {
+      "n_trades": 1200841,
+      "mean_markout_bps": {
+        "1s": 0.2427611941039094,
+        "10s": 0.4597806193467621,
+        "60s": 0.390933272424028
+      },
+      "weighted_mean_markout_bps": {
+        "1s": 0.06293732177657009,
+        "10s": 0.42189005934134716,
+        "60s": 0.5391304836582037
+      },
+      "trimmed_weighted_mean_markout_bps": {
+        "1s": 0.17230278796591503,
+        "10s": 0.26347566819661467,
+        "60s": 0.20958068595341317
+      },
+      "winsorized_weighted_mean_markout_bps": {
+        "1s": 0.07350308277578274,
+        "10s": 0.435220570826243,
+        "60s": 0.4948862705690614
+      },
+      "trim_top_notional_frac": 0.001,
+      "winsor_tail": 0.005,
+      "mean_curve_shape": "rising",
+      "weighted_curve_shape": "rising",
+      "trimmed_weighted_curve_shape": "flat",
+      "winsorized_weighted_curve_shape": "rising",
+      "mean_strictly_rising": false,
+      "weighted_strictly_rising": true,
+      "slope_60s_minus_1s_mean_bps": 0.14817207832011858,
+      "slope_60s_minus_1s_weighted_bps": 0.47619316188163363,
+      "slope_60s_minus_1s_trimmed_weighted_bps": 0.03727789798749814,
+      "slope_60s_minus_1s_winsorized_weighted_bps": 0.42138318779327866
+    },
+    "per_wallet_monotonicity": {
+      "n_wallets_ge_min": 2559,
+      "min_trades": 50,
+      "monotonic_null": 0.16666666666666666,
+      "frac_monotonic_rising": 0.22665103556076593,
+      "n_monotonic_rising": 580,
+      "frac_monotonic_falling": 0.25400547088706527,
+      "n_monotonic_falling": 650
+    }
+  },
+  "ETH": {
+    "curve": {
+      "n_trades": 1279390,
+      "mean_markout_bps": {
+        "1s": 0.4539224991239921,
+        "10s": 0.5859591382996755,
+        "60s": 0.7235196992241009
+      },
+      "weighted_mean_markout_bps": {
+        "1s": 0.013370740997685447,
+        "10s": 0.6745791442001057,
+        "60s": 0.5900466558488011
+      },
+      "trimmed_weighted_mean_markout_bps": {
+        "1s": 0.27512738585130164,
+        "10s": 0.36587083184552593,
+        "60s": 0.41518024984347507
+      },
+      "winsorized_weighted_mean_markout_bps": {
+        "1s": 0.1759293596432007,
+        "10s": 0.796777260385472,
+        "60s": 0.6193936624056328
+      },
+      "trim_top_notional_frac": 0.001,
+      "winsor_tail": 0.005,
+      "mean_curve_shape": "rising",
+      "weighted_curve_shape": "rising",
+      "trimmed_weighted_curve_shape": "rising",
+      "winsorized_weighted_curve_shape": "rising",
+      "mean_strictly_rising": true,
+      "weighted_strictly_rising": false,
+      "slope_60s_minus_1s_mean_bps": 0.2695972001001088,
+      "slope_60s_minus_1s_weighted_bps": 0.5766759148511157,
+      "slope_60s_minus_1s_trimmed_weighted_bps": 0.14005286399217343,
+      "slope_60s_minus_1s_winsorized_weighted_bps": 0.4434643027624321
+    },
+    "per_wallet_monotonicity": {
+      "n_wallets_ge_min": 1782,
+      "min_trades": 50,
+      "monotonic_null": 0.16666666666666666,
+      "frac_monotonic_rising": 0.2356902356902357,
+      "n_monotonic_rising": 420,
+      "frac_monotonic_falling": 0.27441077441077444,
+      "n_monotonic_falling": 489
+    }
+  },
+  "pooled": {
+    "curve": {
+      "n_trades": 2480231,
+      "mean_markout_bps": {
+        "1s": 0.3516855894645204,
+        "10s": 0.5248676482219847,
+        "60s": 0.5624863887247007
+      },
+      "weighted_mean_markout_bps": {
+        "1s": 0.04354075469409141,
+        "10s": 0.5207814264018941,
+        "60s": 0.5590577732996529
+      },
+      "trimmed_weighted_mean_markout_bps": {
+        "1s": 0.21376667009848152,
+        "10s": 0.3094387353513092,
+        "60s": 0.2803763679751138
+      },
+      "winsorized_weighted_mean_markout_bps": {
+        "1s": 0.12142254601037544,
+        "10s": 0.5757595171495744,
+        "60s": 0.5689765017743362
+      },
+      "trim_top_notional_frac": 0.001,
+      "winsor_tail": 0.005,
+      "mean_curve_shape": "rising",
+      "weighted_curve_shape": "rising",
+      "trimmed_weighted_curve_shape": "rising",
+      "winsorized_weighted_curve_shape": "rising",
+      "mean_strictly_rising": true,
+      "weighted_strictly_rising": true,
+      "slope_60s_minus_1s_mean_bps": 0.2108007992601803,
+      "slope_60s_minus_1s_weighted_bps": 0.5155170186055615,
+      "slope_60s_minus_1s_trimmed_weighted_bps": 0.06660969787663226,
+      "slope_60s_minus_1s_winsorized_weighted_bps": 0.4475539557639608
+    },
+    "per_wallet_monotonicity": {
+      "n_wallets_ge_min": 4287,
+      "min_trades": 50,
+      "monotonic_null": 0.16666666666666666,
+      "frac_monotonic_rising": 0.23536272451597853,
+      "n_monotonic_rising": 1009,
+      "frac_monotonic_falling": 0.2603219034289713,
+      "n_monotonic_falling": 1116
+    }
+  }
+}

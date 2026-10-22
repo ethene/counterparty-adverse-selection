@@ -1,0 +1,185 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_dir_vs_startpos_results.json",
+    "producer": {
+      "script": "chk_dir_vs_startpos.py",
+      "sha256": "18723cac8c8aa747703844c9f08bafb6dc9a5fcb58771ced8e8b274670c76a9a",
+      "bytes": 18134,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "9e51eb4fef4ae40de9cc21ed8d60a590c43654f3",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 taker fills of the 2,480,267 in quickwin_markouts.npz",
+      "window": "the span of quickwin_markouts.npz; the check reads the slice whole and does not cut it by date",
+      "coins": "every coin present in quickwin_markouts.npz; the agreement of direction with the pre-trade position is not cut by coin"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "run": {
+      "runtime_s": 0.223,
+      "finished_utc": "2026-10-22T09:38:29Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "check": "chk_dir_vs_startpos",
+  "smoke": false,
+  "rows_total": 2480267,
+  "rows_used": 2480267,
+  "checks": [
+    {
+      "name": "dir_code_implies_is_open",
+      "assumption": "is_open == 1 iff dir_code in {0=Open Long,1=Open Short}",
+      "method": "compare is_open to (dir_code in {0,1}) row-by-row",
+      "observed": {
+        "rows": 2480267,
+        "mismatches": 0,
+        "mismatch_frac": 0.0
+      },
+      "verdict": "confirmed",
+      "note": "is_open is a deterministic function of dir_code; any mismatch means the two were not read from the same leg"
+    },
+    {
+      "name": "dir_x_startpos_crosstab",
+      "assumption": "start_pos sign convention: + = long, - = short (pre-trade inventory)",
+      "method": "cross-tabulate dir_code against sign(start_pos) with a near-zero bucket |start_pos| < 1e-09; report fractions over finite rows",
+      "observed": {
+        "Open Long": {
+          "code": 0,
+          "n_rows": 539228,
+          "n_start_pos_positive": 358649,
+          "n_start_pos_near_zero": 180579,
+          "n_start_pos_negative": 0,
+          "n_start_pos_nan": 0,
+          "frac_positive": 0.6651156839036548,
+          "frac_near_zero": 0.33488431609634517,
+          "frac_negative": 0.0
+        },
+        "Open Short": {
+          "code": 1,
+          "n_rows": 727979,
+          "n_start_pos_positive": 0,
+          "n_start_pos_near_zero": 122279,
+          "n_start_pos_negative": 605700,
+          "n_start_pos_nan": 0,
+          "frac_positive": 0.0,
+          "frac_near_zero": 0.1679705046436779,
+          "frac_negative": 0.8320294953563221
+        },
+        "Close Long": {
+          "code": 2,
+          "n_rows": 534781,
+          "n_start_pos_positive": 534781,
+          "n_start_pos_near_zero": 0,
+          "n_start_pos_negative": 0,
+          "n_start_pos_nan": 0,
+          "frac_positive": 1.0,
+          "frac_near_zero": 0.0,
+          "frac_negative": 0.0
+        },
+        "Close Short": {
+          "code": 3,
+          "n_rows": 634960,
+          "n_start_pos_positive": 0,
+          "n_start_pos_near_zero": 0,
+          "n_start_pos_negative": 634960,
+          "n_start_pos_nan": 0,
+          "frac_positive": 0.0,
+          "frac_near_zero": 0.0,
+          "frac_negative": 1.0
+        },
+        "unknown": {
+          "code": -1,
+          "n_rows": 43319,
+          "n_start_pos_positive": 21517,
+          "n_start_pos_near_zero": 0,
+          "n_start_pos_negative": 21802,
+          "n_start_pos_nan": 0,
+          "frac_positive": 0.496710450379741,
+          "frac_near_zero": 0.0,
+          "frac_negative": 0.503289549620259
+        }
+      },
+      "verdict": "confirmed",
+      "note": "descriptive cross-tab; the directional expectation is evaluated in the close_fills_reduce_inventory check"
+    },
+    {
+      "name": "close_fills_reduce_inventory",
+      "assumption": "Close Long => start_pos > 0 (was long); Close Short => start_pos < 0 (was short). A pass means BOTH the dir map and the start_pos sign are read consistently.",
+      "method": "among dir_code==Close Long rows, fraction with start_pos>0; among dir_code==Close Short rows, fraction with start_pos<0; each expected cell must exceed 0.7",
+      "observed": {
+        "close_long_n": 534781,
+        "close_long_frac_positive_expected": 1.0,
+        "close_long_dominant_sign": "positive",
+        "close_long_dominant_frac": 1.0,
+        "close_short_n": 634960,
+        "close_short_frac_negative_expected": 1.0,
+        "close_short_dominant_sign": "negative",
+        "close_short_dominant_frac": 1.0,
+        "threshold": 0.7
+      },
+      "verdict": "confirmed",
+      "note": "the decisive field-semantics ground-truth: two independent JSON keys read from the same upstream fill object (dir string, startPosition number) must agree on the close direction; blind to a common-mode upstream error (closedPnl is a third-key corroborant)"
+    },
+    {
+      "name": "opens_diagnostic",
+      "assumption": "Open-from-flat => start_pos ~ 0; extensions of an existing position legitimately make opens nonzero same-sign",
+      "method": "report near-zero / same-sign / opposite-sign fractions for opens",
+      "observed": {
+        "open_long": {
+          "n_rows": 539228,
+          "frac_near_zero": 0.33488431609634517,
+          "frac_positive_same_sign": 0.6651156839036548,
+          "frac_negative_opposite": 0.0
+        },
+        "open_short": {
+          "n_rows": 727979,
+          "frac_near_zero": 0.1679705046436779,
+          "frac_negative_same_sign": 0.8320294953563221,
+          "frac_positive_opposite": 0.0
+        }
+      },
+      "verdict": "uncertain",
+      "note": "informational only; opens mix flat-opens and extensions so no clean directional expectation, NOT used in overall_verdict"
+    }
+  ],
+  "overall_verdict": "confirmed"
+}

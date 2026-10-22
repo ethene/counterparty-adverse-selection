@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper it accompanies, and the software itself."
+title: "counterparty-adverse-selection: code and results for Counterparty-Resolved Adverse Selection and Quote Design on a Transparent Perpetual Exchange"
+type: software
+authors:
+  - family-names: Stakhin
+    given-names: Dmitry
+license: MIT
+repository-code: "https://github.com/ethene/counterparty-adverse-selection"
+keywords:
+  - market microstructure
+  - adverse selection
+  - market making
+  - decentralised exchange
+  - Hyperliquid
+preferred-citation:
+  type: article
+  title: "Counterparty-Resolved Adverse Selection and Quote Design on a Transparent Perpetual Exchange"
+  authors:
+    - family-names: Stakhin
+      given-names: Dmitry
+    - family-names: Zaman
+      given-names: Saad
+  year: 2026
+  journal: "SSRN Electronic Journal"
+  notes: "Preprint"

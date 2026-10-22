@@ -1,0 +1,460 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_pinned_versions_results.json",
+    "producer": {
+      "script": "chk_pinned_versions.py",
+      "sha256": "e3b23dfff57e2b3803034836b14a1b33dbbbd2e3b107c6a41211b684dc3f315c",
+      "bytes": 50582,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "7eb5f75090183ca70a76aa4ae506d3eff3865344",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "requirements.txt",
+        "bytes": 7076,
+        "sha256": "92185fcb2c021053926208d739010191c82031ac4d8af16c8c8e75799e6fddc6",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "107 shipped .json files carrying a _meta block; 90 (artifact, package) version records judged against 2 of the 5 pins in requirements.txt. The other 3 are recorded by no artifact at all, so no verdict here covers them",
+      "window": "n/a: this gate reads the repository as it stands now, not a period of market data",
+      "coins": "n/a: this gate reads recorded version strings and touches no market data"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "baseline_note": "a declared debt of 0 artifacts, named one by one in this gate's own DECLARED_DEBT rather than counted, so that a repaired entry replaced by a fresh violation cannot pass under an unmoved total. empty as of 2026-08-29, lowered from six and before that from ten. Every artifact this tree ships now records a version its pin admits: 107 of 107 satisfied, 0 violated. The last six were recomputed under the pinned resolve on 2026-08-29 in runs of 14, 15, 54, 86, 722 and 1615 seconds against recorded costs of 11.1, 13.9, 49.1, 84.2, 699.2 and 1617.0. Nothing moved: 3242 content leaves compared before and after at a relative tolerance of 1e-12, declared before the runs, and 0 moved; 0 leaves vanished; the 33 that appeared are provenance fields artifact.py did not write when these files were last built. The four inputs were hashed before the runs and all four matched what the artifacts recorded, so any move would have been attributable to the library and not to the data. This ceiling may only be lowered, and it is now at its floor: a violation from here is a regression, not a debt.",
+    "declared_debt": [],
+    "n_calibration_cases": 25,
+    "n_calibration_failed": 0,
+    "blind_to": "pins for which no artifact records a version: lz4, matplotlib, pyarrow",
+    "run": {
+      "runtime_s": 0.376,
+      "finished_utc": "2026-10-22T09:37:37Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {}
+    }
+  },
+  "verdict": "PASS",
+  "n_artifacts": 107,
+  "n_with_version_record": 84,
+  "n_package_records_judged": 90,
+  "n_satisfied": 90,
+  "n_violated": 0,
+  "n_unpinned": 0,
+  "n_uncomparable": 0,
+  "n_no_record": 23,
+  "n_no_record_but_producer_uses_pinned": 0,
+  "n_pins": 5,
+  "n_pins_asked": 2,
+  "n_pins_asked_by_nothing": 3,
+  "baseline": 0,
+  "violated": [],
+  "undeclared_violations": [],
+  "unpinned": [],
+  "uncomparable": [],
+  "no_record": [
+    {
+      "file": "build_diagram_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "build_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/NEUTRAL_EDITS.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": false
+    },
+    {
+      "file": "checks/chk_academic_header_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/chk_artifact_provenance_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/chk_build_selftest_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/chk_contrast_hygiene_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/chk_expensive_edits_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/chk_headline_horizon_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/chk_input_freshness_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/chk_maker_attribution_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/chk_no_abs_paths_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/chk_notebook_expectations_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/chk_notebook_pointer_table_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/chk_pinned_versions_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/chk_producer_committed_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/chk_prose_numbers_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/chk_requirements_census_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/chk_run_happened_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/chk_settings_home_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "checks/run_all_checks_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "data_register_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    },
+    {
+      "file": "money/sensitivity_rollup_results.json",
+      "line": "_meta.run.packages",
+      "detail": "no version record: this artifact was never asked which libraries computed it",
+      "producer_imports_pinned": [],
+      "producer_resolved": true
+    }
+  ],
+  "pins": {
+    "numpy": "==2.4.6",
+    "matplotlib": "==3.11.0",
+    "scipy": "==1.18.0",
+    "pyarrow": ">=15",
+    "lz4": ">=4"
+  },
+  "pins_unreadable": [],
+  "pins_unwitnessed": [
+    {
+      "distribution": "lz4",
+      "import_name": "lz4",
+      "specifier": ">=4",
+      "why": "artifact.py does not stamp it: the block it writes names numpy, pandas, scikit-learn, scipy, statsmodels"
+    },
+    {
+      "distribution": "matplotlib",
+      "import_name": "matplotlib",
+      "specifier": "==3.11.0",
+      "why": "artifact.py does not stamp it: the block it writes names numpy, pandas, scikit-learn, scipy, statsmodels"
+    },
+    {
+      "distribution": "pyarrow",
+      "import_name": "pyarrow",
+      "specifier": ">=15",
+      "why": "artifact.py does not stamp it: the block it writes names numpy, pandas, scikit-learn, scipy, statsmodels"
+    }
+  ],
+  "packages_stamped_by_artifact_module": [
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "scipy",
+    "statsmodels"
+  ],
+  "non_artifact_json": [],
+  "calibration": [
+    {
+      "predicate": "exact pin",
+      "case": "must stay silent: recorded equals the pin",
+      "got": "True",
+      "want": "True",
+      "ok": true
+    },
+    {
+      "predicate": "exact pin",
+      "case": "must fire: recorded is a later release than the pin",
+      "got": "False",
+      "want": "False",
+      "ok": true
+    },
+    {
+      "predicate": "exact pin",
+      "case": "must stay silent: 2.4.6.0 and 2.4.6 are one release",
+      "got": "True",
+      "want": "True",
+      "ok": true
+    },
+    {
+      "predicate": "exact pin",
+      "case": "must fire: recorded is an earlier release than the pin",
+      "got": "False",
+      "want": "False",
+      "ok": true
+    },
+    {
+      "predicate": "range",
+      "case": "must stay silent: inside both bounds",
+      "got": "True",
+      "want": "True",
+      "ok": true
+    },
+    {
+      "predicate": "range",
+      "case": "must fire: at or above the upper bound",
+      "got": "False",
+      "want": "False",
+      "ok": true
+    },
+    {
+      "predicate": "range",
+      "case": "must fire: below the lower bound",
+      "got": "False",
+      "want": "False",
+      "ok": true
+    },
+    {
+      "predicate": "compatible release",
+      "case": "must stay silent: inside the series",
+      "got": "True",
+      "want": "True",
+      "ok": true
+    },
+    {
+      "predicate": "compatible release",
+      "case": "must fire: outside the series",
+      "got": "False",
+      "want": "False",
+      "ok": true
+    },
+    {
+      "predicate": "uncomparable",
+      "case": "must refuse: a pre-release suffix this gate does not order",
+      "got": "None",
+      "want": "None",
+      "ok": true
+    },
+    {
+      "predicate": "uncomparable",
+      "case": "must refuse: a wildcard clause",
+      "got": "None",
+      "want": "None",
+      "ok": true
+    },
+    {
+      "predicate": "uncomparable",
+      "case": "must refuse: arbitrary-string equality",
+      "got": "None",
+      "want": "None",
+      "ok": true
+    },
+    {
+      "predicate": "name map",
+      "case": "must translate: the import name sklearn is scikit-learn",
+      "got": "'scikit-learn'",
+      "want": "'scikit-learn'",
+      "ok": true
+    },
+    {
+      "predicate": "name map",
+      "case": "must not invent: an unknown import name has no distribution",
+      "got": "None",
+      "want": "None",
+      "ok": true
+    },
+    {
+      "predicate": "sorter",
+      "case": "must fire once: one fixture records a version outside its pin",
+      "got": "1",
+      "want": "1",
+      "ok": true
+    },
+    {
+      "predicate": "sorter",
+      "case": "must stay silent: the fixture inside its pin is not a finding",
+      "got": "['fixture_bad.json']",
+      "want": "['fixture_bad.json']",
+      "ok": true
+    },
+    {
+      "predicate": "sorter",
+      "case": "must fire: a recorded package nothing pins is its own outcome",
+      "got": "['fixture_unpinned.json']",
+      "want": "['fixture_unpinned.json']",
+      "ok": true
+    },
+    {
+      "predicate": "sorter",
+      "case": "must fire: an artifact with no record is not a pass",
+      "got": "['fixture_silent.json']",
+      "want": "['fixture_silent.json']",
+      "ok": true
+    },
+    {
+      "predicate": "declared debt",
+      "case": "must stay silent: a violation the declaration names",
+      "got": "0",
+      "want": "0",
+      "ok": true
+    },
+    {
+      "predicate": "declared debt",
+      "case": "must fire: the same violation in a file not named",
+      "got": "1",
+      "want": "1",
+      "ok": true
+    },
+    {
+      "predicate": "declared debt",
+      "case": "must fire: a named file violating on another version",
+      "got": "1",
+      "want": "1",
+      "ok": true
+    },
+    {
+      "predicate": "gate population",
+      "case": "must fire: a pin no artifact records is named unasked",
+      "got": "['lz4']",
+      "want": "['lz4']",
+      "ok": true
+    },
+    {
+      "predicate": "gate population",
+      "case": "must stay silent: a pin an artifact records is asked",
+      "got": "[]",
+      "want": "[]",
+      "ok": true
+    },
+    {
+      "predicate": "live tree",
+      "case": "must stay silent: checks/chk_book_orientation_results.json recorded numpy 2.4.6",
+      "got": "True",
+      "want": "True",
+      "ok": true
+    },
+    {
+      "predicate": "live tree",
+      "case": "no artifact in this tree violates a pin, so the firing half has no live case left. That is this gate's purpose reached, and the fixtures above still hold it armed",
+      "got": "None",
+      "want": "None",
+      "ok": true
+    }
+  ]
+}

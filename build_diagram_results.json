@@ -1,0 +1,610 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "build_diagram_results.json",
+    "producer": {
+      "script": "build_diagram.py",
+      "sha256": "5ca5052100df354bd8fbb674ef0e780af3cbd8ee20fe1cc27f8e6a75e4c74a79",
+      "bytes": 80557,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "66e5e6fae964437f882d8f104e6633c886d6144a",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "build.py",
+        "bytes": 221494,
+        "sha256": "552762fbad319ac5cbba235cb1ecfddd8584ee7f49d80ac6d4a0b65f82ead04b",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "_groups.py",
+        "bytes": 56284,
+        "sha256": "0637f2284f71b226bc799afc58dea792d0368f3f1dde76ada56fd031f8b803ba",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "126 tracked scripts of this repository, of which 105 produce an artifact and are nodes of the dependency graph; the 9 declared groups claim 102 of those nodes and 3 are claimed by none. The two hashed inputs are the DECLARATIONS this run stands on -- the graph deriver and the group table -- and not the population: an edit to any other scanned script moves these counts without moving either hash, which is what the digest under scanned_scripts is for",
+      "window": "n/a: this artifact describes the repository at the moment of the run and covers no period of market data",
+      "coins": "n/a: the unit here is a script and an edge between scripts, not a trade"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "scoring_settings_apply": false,
+      "overrides_note": "This producer measures the repository and not the market. No markout is computed here, so horizon_s, lens and every fill floor in this block state what settings.py declares and say nothing about this artifact; they are left at the declaration rather than overridden to some value, because inventing a horizon for a count of edges would be a correct number about the wrong thing. What this run genuinely stands on is the pair of declarations recorded as inputs.",
+      "overridden": [
+        "overrides_note",
+        "scoring_settings_apply"
+      ]
+    },
+    "run": {
+      "runtime_s": 9.928,
+      "finished_utc": "2026-10-21T18:10:50Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {}
+    }
+  },
+  "boxes": {
+    "n_groups_declared": 9,
+    "n_scripts_claimed_by_a_group": 102,
+    "n_groups_walking_the_archive": 5,
+    "by_group": [
+      {
+        "group": "data",
+        "step": "1, the data",
+        "entry_point": "run/data.py",
+        "question": "what was parsed out of the public archive, over which windows and coins, and does the parse still reproduce",
+        "n_scripts": 11,
+        "n_scripts_walking_the_archive": 7,
+        "scripts": [
+          "data/build_quickwin_markouts.py",
+          "data/build_toxicity_frame.py",
+          "data/check_first.py",
+          "data/d1_book_shape_figure.py",
+          "data/d2_fill_tape_figure.py",
+          "data/i4_l2_mid.py",
+          "data/i4_midmarkout.py",
+          "data/killswitch1_repeat_density.py",
+          "data/panel_build.py",
+          "data/panel_persistence.py --build",
+          "data/panel_rebuild_v2.py"
+        ]
+      },
+      {
+        "group": "markout",
+        "step": "2, the harm of one trade",
+        "entry_point": "run/markout.py",
+        "question": "how large the harm to the maker who filled a trade is, and how it is shaped -- over the horizon, over the trade size, over the taker's inventory and over the side",
+        "n_scripts": 8,
+        "n_scripts_walking_the_archive": 0,
+        "scripts": [
+          "markout/confound_asymmetry.py",
+          "markout/m2_figure.py",
+          "markout/m5_termstructure.py",
+          "markout/m6_inventory.py",
+          "markout/temp_perm_decomp.py",
+          "markout/ws1_horizon_persistence.py",
+          "markout/ws1_markout_curve_figure.py",
+          "markout/ws1_plot.py"
+        ]
+      },
+      {
+        "group": "persistence",
+        "step": "3, the wallet's score and whether it holds",
+        "entry_point": "run/persistence.py",
+        "question": "whether the harm is a stable trait of the wallet rather than a property of one window: does a wallet scored in one window keep its rank in a disjoint later one, and how much of the cross-sectional variance is a per-wallet component at all",
+        "n_scripts": 13,
+        "n_scripts_walking_the_archive": 3,
+        "scripts": [
+          "data/panel_persistence.py --analyze",
+          "persistence/forward_toxicity.py",
+          "persistence/i2_walletfe.py",
+          "persistence/ks2_markout_multiday.py",
+          "persistence/ks2_persistence_10day.py",
+          "persistence/m9_crossasset.py",
+          "persistence/panel_analyze.py",
+          "persistence/panel_common_idio.py",
+          "persistence/panel_extended.py",
+          "persistence/three_coin_persistence.py",
+          "persistence/ws2_hard_classifier.py",
+          "persistence/ws3_plot.py",
+          "persistence/ws3_taker_pnl.py"
+        ]
+      },
+      {
+        "group": "identity",
+        "step": "4 with 4A, what the name adds over the public book",
+        "entry_point": "run/identity.py",
+        "question": "whether a maker who sees only public information -- the trade tape, and then the full order book -- could have recovered what the counterparty's identity gives, and whether the identity term survives the controls that would explain it away",
+        "n_scripts": 9,
+        "n_scripts_walking_the_archive": 1,
+        "scripts": [
+          "identity/follow_the_informed_oos.py",
+          "identity/i3_book_comparator.py --stage feats",
+          "identity/i3_book_comparator.py --stage test",
+          "identity/i3_depth_control.py",
+          "identity/i3_nonrecoverability_oos.py --source mid",
+          "identity/i3_nonrecoverability_oos.py --source trade",
+          "identity/i3_pretrade_vs_identity_figure.py",
+          "identity/i5_exclusion.py",
+          "identity/own_size_control.py"
+        ]
+      },
+      {
+        "group": "quoters",
+        "step": "5, the quoting models",
+        "entry_point": "run/quoters.py",
+        "question": "what the standard quoting models do on this fill set, and what the counterparty-resolved term changes about the quote they set",
+        "n_scripts": 5,
+        "n_scripts_walking_the_archive": 0,
+        "scripts": [
+          "quoters/as_quoter.py",
+          "quoters/gm_quoter.py",
+          "quoters/mm_bakeoff.py",
+          "quoters/mm_bakeoff_reference_figure.py",
+          "quoters/t1_toxicity_skew_backtest.py"
+        ]
+      },
+      {
+        "group": "money",
+        "step": "6, the money",
+        "entry_point": "run/money.py",
+        "question": "what the harm is worth in currency: how large the maker's loss to adverse selection is over the window, where it is concentrated, and what a policy that acts on the counterparty changes about it",
+        "n_scripts": 9,
+        "n_scripts_walking_the_archive": 0,
+        "scripts": [
+          "money/m11_concentration.py",
+          "money/m4_realizedpnl.py",
+          "money/m7_size.py",
+          "money/m8_makerside.py",
+          "money/m9_decile_economics_figure.py",
+          "money/maker_econ.py",
+          "money/maker_econ_b2.py",
+          "money/sensitivity_rollup.py",
+          "money/t3_capacity.py"
+        ]
+      },
+      {
+        "group": "controls",
+        "step": "7, the controls and probes",
+        "entry_point": "run/controls.py",
+        "question": "whether each result is explained by something other than what it is claimed to be explained by",
+        "n_scripts": 17,
+        "n_scripts_walking_the_archive": 1,
+        "scripts": [
+          "probes/c2_bookstate_control.py",
+          "probes/c_matched_precision.py",
+          "probes/calib_print_vs_mid.py",
+          "probes/connected_set_b1.py",
+          "probes/decay_curve.py",
+          "probes/decile_overlap.py",
+          "probes/eb_scoring.py",
+          "probes/flat_surcharge_control.py",
+          "probes/kss_decomp_c.py",
+          "probes/kss_decomp_c_bookmid.py",
+          "probes/persistence_crosswindow.py",
+          "probes/probe_D_funding.py",
+          "probes/probe_E_lag_resolution.py",
+          "probes/probe_E_leadlag.py",
+          "probes/probe_F_hlp_liq.py",
+          "probes/probe_G_horizon.py",
+          "probes/survivorship_census.py"
+        ]
+      },
+      {
+        "group": "notebook",
+        "step": "8, the build and the repository",
+        "entry_point": "run/notebook.py",
+        "question": "what the reproducibility notebook downloads and what it asserts against, so that a reader with no archive access and no repository beside them recomputes the reported numbers and is told, per number, whether it came out the same",
+        "n_scripts": 3,
+        "n_scripts_walking_the_archive": 0,
+        "scripts": [
+          "notebook_build/make_notebook_book.py",
+          "notebook_build/make_notebook_data.py",
+          "notebook_build/make_notebook_fills.py"
+        ]
+      },
+      {
+        "group": "gates",
+        "step": "7, the other half: the gates",
+        "entry_point": "run/gates.py",
+        "question": "whether the raw parse is right byte for byte, and whether the repository still holds against its own rules",
+        "n_scripts": 27,
+        "n_scripts_walking_the_archive": 6,
+        "scripts": [
+          "checks/chk_academic_header.py",
+          "checks/chk_artifact_provenance.py",
+          "checks/chk_book_orientation.py",
+          "checks/chk_build_selftest.py",
+          "checks/chk_closedpnl.py",
+          "checks/chk_contrast_hygiene.py",
+          "checks/chk_decision_lookahead.py",
+          "checks/chk_dir_vs_startpos.py",
+          "checks/chk_expensive_edits.py",
+          "checks/chk_field_hygiene.py",
+          "checks/chk_headline_horizon.py",
+          "checks/chk_input_freshness.py",
+          "checks/chk_join_nolookahead.py",
+          "checks/chk_liquidation_field.py",
+          "checks/chk_maker_attribution.py",
+          "checks/chk_no_abs_paths.py",
+          "checks/chk_notebook_expectations.py",
+          "checks/chk_notebook_pointer_table.py",
+          "checks/chk_pinned_versions.py",
+          "checks/chk_producer_committed.py",
+          "checks/chk_prose_numbers.py",
+          "checks/chk_requirements_census.py",
+          "checks/chk_rowcounts_determinism.py",
+          "checks/chk_run_happened.py",
+          "checks/chk_settings_home.py",
+          "checks/chk_side_signconv.py",
+          "checks/run_all_checks.py"
+        ]
+      }
+    ]
+  },
+  "arrows": {
+    "n_arrows_drawn": 27,
+    "n_distinct_artifacts_crossing_a_boundary": 32,
+    "each": [
+      {
+        "from": "data",
+        "to": "controls",
+        "read_edges": 22,
+        "distinct_artifacts": 7,
+        "artifacts": [
+          "maker_map.json",
+          "mid_series_*.npz",
+          "panel_markouts.npz",
+          "panel_markouts_v2.npz",
+          "quickwin_markouts.npz",
+          "quickwin_markouts_mid.npz",
+          "toxicity_frame_results.json"
+        ]
+      },
+      {
+        "from": "data",
+        "to": "persistence",
+        "read_edges": 16,
+        "distinct_artifacts": 6,
+        "artifacts": [
+          "mid_series_*.npz",
+          "panel_markouts.npz",
+          "panel_markouts_v2.npz",
+          "quickwin_markouts.npz",
+          "quickwin_markouts_mid.npz",
+          "quickwin_taker_map.json"
+        ]
+      },
+      {
+        "from": "data",
+        "to": "money",
+        "read_edges": 10,
+        "distinct_artifacts": 3,
+        "artifacts": [
+          "maker_map.json",
+          "quickwin_markouts.npz",
+          "quickwin_markouts_mid.npz"
+        ]
+      },
+      {
+        "from": "data",
+        "to": "markout",
+        "read_edges": 9,
+        "distinct_artifacts": 4,
+        "artifacts": [
+          "mid_series_*.npz",
+          "quickwin_markouts.npz",
+          "quickwin_markouts_mid.npz",
+          "quickwin_taker_map.json"
+        ]
+      },
+      {
+        "from": "data",
+        "to": "identity",
+        "read_edges": 9,
+        "distinct_artifacts": 3,
+        "artifacts": [
+          "quickwin_markouts.npz",
+          "quickwin_markouts_mid.npz",
+          "quickwin_taker_map.json"
+        ]
+      },
+      {
+        "from": "data",
+        "to": "gates",
+        "read_edges": 9,
+        "distinct_artifacts": 4,
+        "artifacts": [
+          "mid_series_*.npz",
+          "panel_markouts.npz",
+          "quickwin_markouts.npz",
+          "quickwin_markouts_mid.npz"
+        ]
+      },
+      {
+        "from": "data",
+        "to": "quoters",
+        "read_edges": 8,
+        "distinct_artifacts": 3,
+        "artifacts": [
+          "quickwin_markouts.npz",
+          "quickwin_markouts_mid.npz",
+          "quickwin_taker_map.json"
+        ]
+      },
+      {
+        "from": "data",
+        "to": "notebook",
+        "read_edges": 6,
+        "distinct_artifacts": 5,
+        "artifacts": [
+          "i4_midmarkout_results.json",
+          "mid_series_*.npz",
+          "quickwin_markouts.npz",
+          "quickwin_markouts_mid.npz",
+          "quickwin_pass_summary.json"
+        ]
+      },
+      {
+        "from": "persistence",
+        "to": "notebook",
+        "read_edges": 5,
+        "distinct_artifacts": 5,
+        "artifacts": [
+          "ks2_persistence_10day_results.json",
+          "ks2_persistence_mid_results.json",
+          "three_coin_persistence_results.json",
+          "ws2_hard_classifier_results.json",
+          "ws3_taker_pnl_results.json"
+        ]
+      },
+      {
+        "from": "identity",
+        "to": "notebook",
+        "read_edges": 4,
+        "distinct_artifacts": 4,
+        "artifacts": [
+          "book_feats_*.npz",
+          "follow_the_informed_oos_results.json",
+          "i3_book_nonrecoverability_results.json",
+          "i3_depth_control_results.json"
+        ]
+      },
+      {
+        "from": "quoters",
+        "to": "notebook",
+        "read_edges": 3,
+        "distinct_artifacts": 3,
+        "artifacts": [
+          "as_quoter_results.json",
+          "mm_bakeoff_results.json",
+          "t1_backtest_results.json"
+        ]
+      },
+      {
+        "from": "money",
+        "to": "notebook",
+        "read_edges": 3,
+        "distinct_artifacts": 3,
+        "artifacts": [
+          "m11_results.json",
+          "maker_econ_results.json",
+          "t3_results.json"
+        ]
+      },
+      {
+        "from": "markout",
+        "to": "controls",
+        "read_edges": 2,
+        "distinct_artifacts": 2,
+        "artifacts": [
+          "m2_figure_results.json",
+          "ws1_horizon_results.json"
+        ]
+      },
+      {
+        "from": "markout",
+        "to": "notebook",
+        "read_edges": 2,
+        "distinct_artifacts": 2,
+        "artifacts": [
+          "m2_figure_results.json",
+          "ws1_horizon_results.json"
+        ]
+      },
+      {
+        "from": "persistence",
+        "to": "controls",
+        "read_edges": 2,
+        "distinct_artifacts": 2,
+        "artifacts": [
+          "ws2_hard_classifier_results.json",
+          "ws3_taker_pnl_results.json"
+        ]
+      },
+      {
+        "from": "quoters",
+        "to": "money",
+        "read_edges": 2,
+        "distinct_artifacts": 2,
+        "artifacts": [
+          "as_quoter_results.json",
+          "mm_bakeoff_results.json"
+        ]
+      },
+      {
+        "from": "controls",
+        "to": "notebook",
+        "read_edges": 2,
+        "distinct_artifacts": 2,
+        "artifacts": [
+          "flat_surcharge_control_results.json",
+          "survivorship_census_results.json"
+        ]
+      },
+      {
+        "from": "notebook",
+        "to": "gates",
+        "read_edges": 2,
+        "distinct_artifacts": 1,
+        "artifacts": [
+          "notebook_expected.json"
+        ]
+      },
+      {
+        "from": "markout",
+        "to": "money",
+        "read_edges": 1,
+        "distinct_artifacts": 1,
+        "artifacts": [
+          "ws1_horizon_results.json"
+        ]
+      },
+      {
+        "from": "identity",
+        "to": "data",
+        "read_edges": 1,
+        "distinct_artifacts": 1,
+        "artifacts": [
+          "book_feats_*.npz"
+        ]
+      },
+      {
+        "from": "identity",
+        "to": "money",
+        "read_edges": 1,
+        "distinct_artifacts": 1,
+        "artifacts": [
+          "i3_book_nonrecoverability_results.json"
+        ]
+      },
+      {
+        "from": "quoters",
+        "to": "controls",
+        "read_edges": 1,
+        "distinct_artifacts": 1,
+        "artifacts": [
+          "mm_bakeoff_results.json"
+        ]
+      },
+      {
+        "from": "money",
+        "to": "data",
+        "read_edges": 1,
+        "distinct_artifacts": 1,
+        "artifacts": [
+          "t3_results.json"
+        ]
+      },
+      {
+        "from": "money",
+        "to": "controls",
+        "read_edges": 1,
+        "distinct_artifacts": 1,
+        "artifacts": [
+          "t3_results.json"
+        ]
+      },
+      {
+        "from": "money",
+        "to": "gates",
+        "read_edges": 1,
+        "distinct_artifacts": 1,
+        "artifacts": [
+          "m4_realizedpnl_results.json"
+        ]
+      },
+      {
+        "from": "notebook",
+        "to": "markout",
+        "read_edges": 1,
+        "distinct_artifacts": 1,
+        "artifacts": [
+          "notebook_fills.npz"
+        ]
+      },
+      {
+        "from": "notebook",
+        "to": "identity",
+        "read_edges": 1,
+        "distinct_artifacts": 1,
+        "artifacts": [
+          "notebook_fills.npz"
+        ]
+      }
+    ]
+  },
+  "read_edges": {
+    "total": 146,
+    "inside_one_group": 21,
+    "across_two_groups": 125,
+    "touching_an_unclaimed_node": 0,
+    "buckets_sum_to_total": true
+  },
+  "graph": {
+    "scripts_scanned": 126,
+    "producer_nodes": 105,
+    "artifacts_produced": 144,
+    "tape_nodes": 19,
+    "cycles": 0
+  },
+  "unclaimed_producer_nodes": [
+    "build_diagram.py",
+    "data_register.py",
+    "prose_assemble.py"
+  ],
+  "group_entries_the_graph_does_not_hold": [],
+  "nodes_claimed_by_two_groups": [],
+  "drawn_flowchart_sha256": "a619b4cd4d7ed736b06aa86ee2eefaa4a0a108184e65150ffba01b8418844316",
+  "picture": {
+    "file": "pipeline_diagram.png",
+    "present": true,
+    "sha256": "8d7d641dbf75988559d6249be7a11777ad84e9372450289397894d048a59d16b",
+    "pixels": "2352x3210",
+    "what_this_is": "the flowchart above, rendered by mermaid-cli at scale 3 on a white ground and committed to this repository. It is committed rather than built on demand because mermaid-cli is a Node program and requirements.txt declares Python packages, so a stranger who installs the requirements can read the picture without being able to render it. Refresh it with --png"
+  },
+  "drawing_settings": {
+    "direction": "TB",
+    "declared_font_px": 28,
+    "node_spacing_px": 20,
+    "rank_spacing_px": 25,
+    "png_scale": 3,
+    "what_this_buys": "type of 8.40 pt on the 5.532-inch text column of the report template, against 7.24 pt at the 24 px this drawing carried until 2026-08-08 and 3.40 pt under the left-to-right layout before that, on body text of 11 pt. The figure is then 196 mm tall and leaves 51 mm of the 247 mm text block for its caption. The size on the page is the declared font times 398.3 divided by the width of the rendered drawing in its own units, so it is a property of the layout and not of these settings: the same 24 px read 9.14 pt while the drawing was 1046 units wide and 7.24 pt once the graph had widened it to 1320 without either setting moving. The figures here were measured on 2026-08-08 and are taken again by `build_diagram.py --measure`, which renders the flowchart and reads the width back off it rather than trusting this sentence"
+  },
+  "scanned_scripts": {
+    "n_scripts": 126,
+    "n_unreadable": 0,
+    "unreadable": [],
+    "sha256": "da42ba20bd7ce2662780936aa8e30b0cebae49271874957d94c94318de046c26",
+    "what_this_is": "sha256 over the sorted lines '<script path relative to the repository root> <sha256 of its bytes>', one line per script build.py scanned. It moves when any scanned script changes, is added or is removed, and it moves for no other reason."
+  },
+  "what_the_number_on_an_arrow_counts": "READ EDGES crossing that group boundary: one for each pair of an artifact and a script of another group that reads it, so an artifact read by three scripts of one group counts three. The count of distinct artifacts is carried beside it because the two answer different questions."
+}

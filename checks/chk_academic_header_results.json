@@ -1,0 +1,116 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_academic_header_results.json",
+    "producer": {
+      "script": "chk_academic_header.py",
+      "sha256": "0df094518ed77dbbb9a1f6e5975e5ab09c8d8918cd19994aa2fa4c4a62db5201",
+      "bytes": 14214,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "9a56baf4702e41b65d246e82426780bf094636c7",
+      "unasked_because": null
+    },
+    "inputs": [],
+    "scope": {
+      "population": "128 shipped .py and .ipynb files",
+      "window": "n/a: this gate reads the repository as it stands now, not a period of market data",
+      "coins": "n/a: this gate reads file text and touches no market data"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "n_files_scanned": 128,
+    "head_lines": 12,
+    "required_parts": [
+      "Counterparty\\s+adverse\\s+selection\\s+on\\s+Hyperliquid",
+      "\\bAuthors?\\s*[:\\-]\\s*\\S",
+      "\\bDate\\s*[:\\-]?\\s*\\d{4}-\\d{2}-\\d{2}"
+    ],
+    "n_calibration_cases": 7,
+    "n_calibration_failed": 0,
+    "run": {
+      "runtime_s": 0.058,
+      "finished_utc": "2026-10-22T09:37:33Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {}
+    }
+  },
+  "verdict": "PASS",
+  "n_findings": 0,
+  "findings": [],
+  "calibration": [
+    {
+      "predicate": "header present",
+      "case": "must stay silent: template punctuation",
+      "got": "[]",
+      "want": "[]",
+      "ok": true
+    },
+    {
+      "predicate": "header present",
+      "case": "must stay silent: the punctuation live files use",
+      "got": "[]",
+      "want": "[]",
+      "ok": true
+    },
+    {
+      "predicate": "author missing",
+      "case": "must fire: study and date named, no author",
+      "got": "['\\\\bAuthors?\\\\s*[:\\\\-]\\\\s*\\\\S']",
+      "want": "['\\\\bAuthors?\\\\s*[:\\\\-]\\\\s*\\\\S']",
+      "ok": true
+    },
+    {
+      "predicate": "header absent",
+      "case": "must fire: no header at all",
+      "got": "['Counterparty\\\\s+adverse\\\\s+selection\\\\s+on\\\\s+Hyperliquid', '\\\\bAuthors?\\\\s*[:\\\\-]\\\\s*\\\\S', '\\\\bDate\\\\s*[:\\\\-]?\\\\s*\\\\d{4}-\\\\d{2}-\\\\d{2}']",
+      "want": "['Counterparty\\\\s+adverse\\\\s+selection\\\\s+on\\\\s+Hyperliquid', '\\\\bAuthors?\\\\s*[:\\\\-]\\\\s*\\\\S', '\\\\bDate\\\\s*[:\\\\-]?\\\\s*\\\\d{4}-\\\\d{2}-\\\\d{2}']",
+      "ok": true
+    },
+    {
+      "predicate": "region is bounded",
+      "case": "must fire: header written past the opening lines",
+      "got": "['Counterparty\\\\s+adverse\\\\s+selection\\\\s+on\\\\s+Hyperliquid', '\\\\bAuthors?\\\\s*[:\\\\-]\\\\s*\\\\S', '\\\\bDate\\\\s*[:\\\\-]?\\\\s*\\\\d{4}-\\\\d{2}-\\\\d{2}']",
+      "want": "['Counterparty\\\\s+adverse\\\\s+selection\\\\s+on\\\\s+Hyperliquid', '\\\\bAuthors?\\\\s*[:\\\\-]\\\\s*\\\\S', '\\\\bDate\\\\s*[:\\\\-]?\\\\s*\\\\d{4}-\\\\d{2}-\\\\d{2}']",
+      "ok": true
+    },
+    {
+      "predicate": "notebook opening",
+      "case": "must stay silent: title cell plus first code cell",
+      "got": "[]",
+      "want": "[]",
+      "ok": true
+    },
+    {
+      "predicate": "notebook opening",
+      "case": "must fire: author and date past the first code cell",
+      "got": "['\\\\bAuthors?\\\\s*[:\\\\-]\\\\s*\\\\S', '\\\\bDate\\\\s*[:\\\\-]?\\\\s*\\\\d{4}-\\\\d{2}-\\\\d{2}']",
+      "want": "['\\\\bAuthors?\\\\s*[:\\\\-]\\\\s*\\\\S', '\\\\bDate\\\\s*[:\\\\-]?\\\\s*\\\\d{4}-\\\\d{2}-\\\\d{2}']",
+      "ok": true
+    }
+  ]
+}

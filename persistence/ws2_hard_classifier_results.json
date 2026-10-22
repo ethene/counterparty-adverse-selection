@@ -1,0 +1,117 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "ws2_hard_classifier_results.json",
+    "producer": {
+      "script": "ws2_hard_classifier.py",
+      "sha256": "2aece70fd60f626cd30732db26e4b017ca39b11e58b4a511bb918cedf35b096e",
+      "bytes": 33859
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 fills of the book-mid panel aggregated to wallet-coin units; 5,539 units are eligible, needing at least 10 fills in EACH half with a finite mean in both",
+      "window": "10 days present in the input, day-of-month 4-13, split early [4, 5, 6, 7, 8] against late [9, 10, 11, 12, 13]",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "mid",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": null,
+      "persistence_floor_fills": null,
+      "whale_drop_k": null,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260620,
+      "n_perm": 2000,
+      "n_boot": null,
+      "rank_floor_fills": 10,
+      "early_late_split": "settings.split_early_late over the days present: early [4, 5, 6, 7, 8], late [9, 10, 11, 12, 13]",
+      "p_floor": 0.0004997501249375312,
+      "overrides_note": "rank_floor_fills 10, the loosest rung of settings.RANK_FLOOR_SENSITIVITY and NOT the declared 50: at ten fills a per-wallet mean is mostly noise, which is why this file shrinks thin wallets to the population mean rather than ranking them raw; master_seed is settings.MASTER_SEED and is stated as a CONFIRMATION rather than a deviation, the placebo stream being derived from it and the name of the draw through settings.rng, where this file used to declare 20260619; n_perm is settings.N_PERM and is likewise stated as a CONFIRMATION rather than a deviation, so the floor is 1/(N_PERM+1) and not the 0.00498 the earlier 200-draw artifact reported; no bootstrap is drawn, so n_boot does not apply; there is one test here, not a family, so no FDR level applies, and no whale-drop arm runs. The halves are cut by settings.split_early_late over the days present, which on this input returns the same 4-8 / 9-13 the file used to type",
+      "overridden": [
+        "early_late_split",
+        "fdr_alpha",
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "overrides_note",
+        "p_floor",
+        "persistence_floor_fills",
+        "rank_floor_fills",
+        "whale_drop_k"
+      ]
+    },
+    "run": {
+      "runtime_s": 3.689,
+      "finished_utc": "2026-08-11T12:24:07Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "score_horizon_s": 10,
+  "score_column": "mo10_mid",
+  "K": 10,
+  "n_eligible": 5539,
+  "shrinkage": {
+    "mu_bps": 1.6620231328139639,
+    "var_within": 41.26053494341194,
+    "var_between": 2.4142834861068345,
+    "n0_credibility": 17.090178175366983,
+    "mean_weight": 0.6425806852546773
+  },
+  "significance": {
+    "n_sig_toxic": 814,
+    "frac_sig_toxic": 0.14695793464524282
+  },
+  "oos_validity": {
+    "auc_shrunk": 0.7113039479449178,
+    "auc_raw_meanscore": 0.7331778729690878,
+    "auc_placebo_mean": 0.5000715158109709,
+    "auc_p": 0.0004997501249375312,
+    "auc_p_floor": 0.0004997501249375312,
+    "auc_p_is_floor": true,
+    "youden_threshold_bps": 1.6817785270386045,
+    "youden_flag_fraction": 0.11410001805380032
+  },
+  "economic": {
+    "median_half_spread_bps": 0.15753737092018127,
+    "rebate_bps": 0.3,
+    "breakeven_bps": 0.45753737092018126,
+    "n_econ_toxic": 3696,
+    "econ_flag_fraction": 0.6672684600108323
+  },
+  "capture_curve_share_of_late_cost": {
+    "5pct": 0.33962024958037607,
+    "10pct": 0.7640562757485982,
+    "20pct": 0.8192961354209926,
+    "30pct": 0.8638248784295579,
+    "50pct": 0.8969421955115318
+  },
+  "capture_at_youden": 0.7755491999255716,
+  "capture_at_econ": 0.9284499043753296,
+  "liquidation_anchor": "DEFERRED - flag dropped at npz-persist and ~0% on BTC/ETH; needs targeted re-pull",
+  "interpretation": "Toxic/not is now a principled rule, not a flat decile: a Buhlmann-shrunk 10s score (thin wallets pulled to the mean), a per-wallet significance filter, and a cutoff set by out-of-sample validity (AUC predicting the costliest late decile) and by economic break-even (markout above half-spread+rebate = unprofitable to serve). The captured-cost curve is smooth, so the conclusion does not hinge on an exact percentile."
+}

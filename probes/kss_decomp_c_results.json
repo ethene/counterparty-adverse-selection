@@ -1,0 +1,184 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "kss_decomp_c_results.json",
+    "producer": {
+      "script": "kss_decomp_c.py",
+      "sha256": "87cd3696394c3f18822bd2c48f7e6ede37d4197a508b61c3af24e50d245ff4c3",
+      "bytes": 16865,
+      "bytes_in_object_db": "absent",
+      "object_format": "sha1",
+      "object_id": "0c7b9dd25a8a837ab5682e52c1d8936534436ee9",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "panel_markouts.npz",
+        "bytes": 482588572,
+        "sha256": "c6a37132cf1d0c62bdb2169668c89af20a7b6fb8811fd8132cc7c9b0b607a04b",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "26,035,902 panel fills, every row of the input; 305,481 takers and 63,905 makers over 240 period x coin x day groups, no fill floor. The de-biased decomposition is reported at BOTH rungs, under the keys mo60 and mo10, each on its own finite-markout subset",
+      "window": "8 monthly windows pooled, 202508 to 202605, each contributing day-of-month 4-15",
+      "coins": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 60,
+      "is_headline_horizon": false,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 690,
+      "overridden": [
+        "master_seed"
+      ]
+    },
+    "run": {
+      "runtime_s": 354.324,
+      "finished_utc": "2026-08-30T06:46:46Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "n_fills": 26035902,
+  "n_takers": 305481,
+  "n_makers": 63905,
+  "n_groups": 240,
+  "planted_sim": {
+    "planted": {
+      "Va": 4.0,
+      "Vp": 2.0,
+      "Ve": 80.0
+    },
+    "plugin_var_alpha": 5.2188,
+    "plugin_var_psi": 2.8884,
+    "split_var_alpha": 4.2806,
+    "split_var_psi": 2.6926,
+    "VERDICT": "PASS: split recovers planted (plug-in over-states)"
+  },
+  "mo60": {
+    "plugin": {
+      "var_y": 608.1607,
+      "share_common_mu": 0.0004,
+      "share_taker_alpha": 0.0462,
+      "share_maker_psi": 0.0994,
+      "share_2cov_alpha_psi": 0.0085,
+      "share_residual": 0.8449,
+      "corr_alpha_psi": 0.0623,
+      "_raw": {
+        "var_alpha": 28.102,
+        "var_psi": 60.462,
+        "cov": 2.57,
+        "var_common": 0.2348,
+        "var_resid": 513.8626
+      }
+    },
+    "split": {
+      "coverage_fills": 0.9944,
+      "var_alpha_debiased": 2.6624,
+      "var_psi_debiased": 46.467,
+      "cov_debiased": 0.2815,
+      "share_taker_alpha": 0.0044,
+      "share_maker_psi": 0.0764,
+      "share_2cov": 0.0009,
+      "iters": [
+        34,
+        47
+      ],
+      "deltas": [
+        8e-06,
+        8e-06
+      ]
+    },
+    "placebo_maker": {
+      "plugin_share_maker": 0.0024,
+      "split_share_maker": -0.0
+    },
+    "whale_drop": {
+      "dropped_top_k": 10,
+      "kept_fill_share": 0.7237,
+      "split_share_taker": 0.0061,
+      "split_share_maker": 0.0878
+    },
+    "solver": {
+      "iters": 34,
+      "delta": 8.054884029107257e-06
+    }
+  },
+  "mo10": {
+    "plugin": {
+      "var_y": 120.6786,
+      "share_common_mu": 0.001,
+      "share_taker_alpha": 0.0558,
+      "share_maker_psi": 0.0933,
+      "share_2cov_alpha_psi": 0.0133,
+      "share_residual": 0.8356,
+      "corr_alpha_psi": 0.0924,
+      "_raw": {
+        "var_alpha": 6.7375,
+        "var_psi": 11.2545,
+        "cov": 0.8044,
+        "var_common": 0.1165,
+        "var_resid": 100.8414
+      }
+    },
+    "split": {
+      "coverage_fills": 0.9944,
+      "var_alpha_debiased": 1.1321,
+      "var_psi_debiased": 7.6435,
+      "cov_debiased": 0.3579,
+      "share_taker_alpha": 0.0094,
+      "share_maker_psi": 0.0633,
+      "share_2cov": 0.0059,
+      "iters": [
+        44,
+        34
+      ],
+      "deltas": [
+        9e-06,
+        9e-06
+      ]
+    },
+    "placebo_maker": {
+      "plugin_share_maker": 0.0024,
+      "split_share_maker": -0.0
+    },
+    "whale_drop": {
+      "dropped_top_k": 10,
+      "kept_fill_share": 0.7237,
+      "split_share_taker": 0.0097,
+      "split_share_maker": 0.0734
+    },
+    "solver": {
+      "iters": 33,
+      "delta": 8.704519063762461e-06
+    }
+  }
+}

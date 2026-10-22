@@ -1,0 +1,597 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "t3_results.json",
+    "producer": {
+      "script": "t3_capacity.py",
+      "sha256": "94506df942db4c45d44386c7354cd856e5188bb56c08abfb78edb70009df578c",
+      "bytes": 56482
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 rows of the trade-print panel aggregated to per-wallet gross cost; a wallet is ranked only if it has at least 50 trades in the early half, and the late half it is measured on is disjoint from it",
+      "window": "10 resolved days in the input, early [4, 5, 6, 7, 8] against late [9, 10, 11, 12, 13], derived from the days present by settings.split_early_late",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260620,
+      "n_perm": null,
+      "n_boot": 2000,
+      "rank_floor_fills": 50,
+      "bootstrap_seed": 20260619,
+      "random_floor_draws": 1000,
+      "whale_drop_criterion": "gross_cost",
+      "whale_drop_ladder": [
+        10,
+        50,
+        100
+      ],
+      "early_days": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "late_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "override_reasons": {
+        "n_boot": "the run drew 2000 resamples, which IS the declared 2000: stated as a CONFIRMATION and not as a deviation. It was 1000 until 2026-07-31, half the declaration, so the two endpoints of the interval moved with the adoption and the share they bracket did not",
+        "n_perm": "no permutation test runs in this file; the random floor is a selection draw, not a label permutation, so the declared permutation budget does not apply",
+        "bootstrap_seed": "the file draws TWO streams. The random floor is seeded 20260620, which is the declared master seed. The bootstrap is seeded 20260619 and is reported here rather than folded in, because folding it in moves the published interval."
+      },
+      "overridden": [
+        "bootstrap_seed",
+        "early_days",
+        "late_days",
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "override_reasons",
+        "random_floor_draws",
+        "rank_floor_fills",
+        "whale_drop_criterion",
+        "whale_drop_ladder"
+      ]
+    },
+    "object": "T3 - economic magnitude of avoidable adverse-selection cost",
+    "window_days": 10,
+    "horizon_note": "The 10s window is the HEADLINE (the horizon study ws1_horizon_persistence.py selects it as the scoring window); the 60s window is the robustness COMPANION. EVERY key whose value depends on the window states that window: the headline carries the _10s suffix and the companion carries _60s, and NO key is left unsuffixed. Until 2026-07-30 the companion keys here were unsuffixed while panel_analyze.py left the HEADLINE unsuffixed, so a key spelled cost_bps meant 10s in one artifact and 60s in the other. The convention is now declared once in settings.FIELD_SUFFIX_STYLE and every key is built by settings.field_name. Old spelling -> new: cost_bps -> cost_bps_60s, total_cost_usd -> total_cost_usd_60s, cost_per_day_usd -> cost_per_day_usd_60s, raw_mean_markout_bps -> raw_mean_markout_bps_60s, avoidable -> avoidable_60s, avoidable_share_oos_top10pct -> avoidable_share_oos_top10pct_60s, avoidable_share_oos_top50 -> avoidable_share_oos_top50_60s, and inside each avoidable block every key gains its window. No VALUE moved.",
+    "markout_sign": "signed taker markout bps; positive = taker profited = maker adverse-selected; positive total cost = maker loss",
+    "early_days": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "late_days": [
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "split_rule": "The early and late halves are DERIVED from the days present, by settings.split_early_late: first ceil(n/2) days early, the rest late. They used to be the hardcoded day-of-month tuples (4,5,6,7,8) and (9,10,11,12,13), which are correct only for a window that opens on the 4th and closes on the 13th. This input does open on the 4th, so the derived split reproduces those tuples exactly and no number moved; a twelve-day window would have been split three-against-seven, or had two of its days discarded outright.",
+    "avoidable_definition": "OUT-OF-SAMPLE share, computed at BOTH windows. Over wallets with >= 50 trades in the EARLY half (days 4-8), rank wallets by their EARLY gross cost, then MEASURE the share of LATE (days 9-13) gross POSITIVE cost captured by the early-ranked top decile / top-50. HEADLINE cell = rank on 10s, measure on 10s (key avoidable_share_oos_top10pct_10s). COMPANION cell = rank on 60s, measure on 60s (key avoidable_share_oos_top10pct_60s). Each cell uses ONE window for both the ranking and the measurement, so NEITHER cell is a mixed-window hybrid. The ranking half (early) and the measurement half (late) are DISJOINT, so the share is honest and is NOT bounded toward 100% by construction. Reported beside a random-selection floor (same cut sizes) and a rank-on-late oracle ceiling.",
+    "avoidable_base": "gross positive per-wallet LATE (days 9-13) cost, taken at the same window as the ranking: the 10s late cost for the headline cell and the 60s late cost for the companion cell; net/gross ratio reported per slice and per window",
+    "in_sample_note": "avoidable_10s.in_sample_concentration_10s retains the OLD rank-and-measure-on-the-same-all-days-cost number as a DIAGNOSTIC only; it is bounded toward 100% by construction and is NOT the avoidable share.",
+    "random_floor_and_oracle": "random-selection floor = 1000 random wallet sets of the same cut size (seed 20260620, mean + p95); oracle ceiling = rank-on-late selection (best achievable)",
+    "robustness": "all on the OOS LATE-cost base: drop-top-10/50/100 wallets by gross_cost (the largest per-wallet signed cost in the measurement half, NOT the largest by notional -- dropping by notional answers 'is this a volume artifact', dropping by cost answers 'is this ten wallets'), single-wallet leave-one-out of the largest such wallet, and a 2000-resample bootstrap 95% CI (seed 20260619). The ladder keys name the count and the criterion together: drop_top10_by_gross_cost, drop_top50_by_gross_cost, drop_top100_by_gross_cost.",
+    "whale_rule": "RULE: never present a point avoidable-% without its whale-dropped companion. The companions are the drop-top-10/50/100 ladder, dropped by GROSS COST (the largest per-wallet signed cost in the measurement half, not the largest by notional), and the leave-one-out of the single largest such wallet. Both are reported beside every headline share.",
+    "npz_path": "quickwin_markouts.npz",
+    "fee_note": "GROSS, UPPER-BOUND avoidable cost - NOT a net trading edge or alpha. The raw volume-weighted mean markout is sub-1 bps, while perp taker fees (~2.5-4.5 bps) plus funding swamp it. This is a recurring, partly-avoidable COST that counterparty screening can reduce, not money a maker earns by trading.",
+    "run": {
+      "runtime_s": 4.083,
+      "finished_utc": "2026-08-11T12:24:23Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "BTC": {
+    "total_cost_usd_10s": 1171650.97,
+    "cost_per_day_usd_10s": 117165.1,
+    "cost_bps_10s": 0.4219,
+    "total_cost_usd_60s": 1496740.62,
+    "cost_per_day_usd_60s": 149674.06,
+    "cost_bps_60s": 0.5391,
+    "avoidable_share_oos_top10pct_10s": 0.8984,
+    "avoidable_share_oos_top50_10s": 0.8913,
+    "avoidable_share_oos_top10pct_60s": 0.8921,
+    "avoidable_share_oos_top50_60s": 0.8585,
+    "raw_mean_markout_bps_60s": 0.5391,
+    "taker_fee_band_bps": [
+      2.5,
+      4.5
+    ],
+    "fee_note": "GROSS, UPPER-BOUND avoidable cost - NOT a net trading edge or alpha. The raw volume-weighted mean markout is sub-1 bps, while perp taker fees (~2.5-4.5 bps) plus funding swamp it. This is a recurring, partly-avoidable COST that counterparty screening can reduce, not money a maker earns by trading.",
+    "avoidable_10s": {
+      "_gross_positive_late_cost_usd_10s": 699934.6,
+      "_net_signed_late_cost_usd_10s": 534123.39,
+      "net_over_gross_ratio_late_10s": 0.7631,
+      "n_ranked_wallets_10s": 1234,
+      "n_top_decile_wallets_10s": 123,
+      "n_top_n_wallets_10s": 50,
+      "avoidable_share_oos_top10pct_10s": 0.8984,
+      "avoidable_share_oos_top50_10s": 0.8913,
+      "random_floor_top10pct_10s": {
+        "mean": 0.0957,
+        "p95": 0.2914,
+        "n_draws": 1000,
+        "seed": 20260620
+      },
+      "random_floor_top50_10s": {
+        "mean": 0.0384,
+        "p95": 0.1849,
+        "n_draws": 1000,
+        "seed": 20260620
+      },
+      "oracle_ceiling_top10pct_10s": 0.9914,
+      "oracle_ceiling_top50_10s": 0.9793,
+      "whale_drop_ladder_top10pct_10s": {
+        "drop_top10_by_gross_cost": 0.5698,
+        "drop_top50_by_gross_cost": 0.3055,
+        "drop_top100_by_gross_cost": 0.4111
+      },
+      "whale_drop_ladder_top50_10s": {
+        "drop_top10_by_gross_cost": 0.5443,
+        "drop_top50_by_gross_cost": 0.1285,
+        "drop_top100_by_gross_cost": 0.0974
+      },
+      "leave_one_out_largest_10s": {
+        "wallet_id": 31,
+        "wallet_late_cost_usd": 169343.17,
+        "wallet_late_cost_share_of_gross": 0.2419,
+        "top10pct_before": 0.8984,
+        "top10pct_after": 0.8662,
+        "top50_before": 0.8913,
+        "top50_after": 0.8568
+      },
+      "bootstrap_ci_oos_top10pct_10s": {
+        "lo": 0.7482,
+        "hi": 0.9591,
+        "n_resamples": 2000,
+        "seed": 20260619
+      },
+      "in_sample_concentration_10s": {
+        "note": "DIAGNOSTIC ONLY - rank and measure on the SAME all-days cost; bounded toward 100% by construction, NOT the avoidable number.",
+        "share_top10pct": 0.9923,
+        "share_top50": 0.9843,
+        "_gross_positive_all_cost_usd": 1438502.76
+      },
+      "whale_rule": "RULE: never present a point avoidable-% without its whale-dropped companion. The companions are the drop-top-10/50/100 ladder, dropped by GROSS COST (the largest per-wallet signed cost in the measurement half, not the largest by notional), and the leave-one-out of the single largest such wallet. Both are reported beside every headline share."
+    },
+    "avoidable_60s": {
+      "_gross_positive_late_cost_usd_60s": 973070.08,
+      "_net_signed_late_cost_usd_60s": 700942.07,
+      "net_over_gross_ratio_late_60s": 0.7203,
+      "n_ranked_wallets_60s": 1234,
+      "n_top_decile_wallets_60s": 123,
+      "n_top_n_wallets_60s": 50,
+      "avoidable_share_oos_top10pct_60s": 0.8921,
+      "avoidable_share_oos_top50_60s": 0.8585,
+      "random_floor_top10pct_60s": {
+        "mean": 0.0956,
+        "p95": 0.3275,
+        "n_draws": 1000,
+        "seed": 20260620
+      },
+      "random_floor_top50_60s": {
+        "mean": 0.0367,
+        "p95": 0.2007,
+        "n_draws": 1000,
+        "seed": 20260620
+      },
+      "oracle_ceiling_top10pct_60s": 0.9952,
+      "oracle_ceiling_top50_60s": 0.9755,
+      "whale_drop_ladder_top10pct_60s": {
+        "drop_top10_by_gross_cost": 0.7548,
+        "drop_top50_by_gross_cost": 0.3803,
+        "drop_top100_by_gross_cost": 0.166
+      },
+      "whale_drop_ladder_top50_60s": {
+        "drop_top10_by_gross_cost": 0.6072,
+        "drop_top50_by_gross_cost": 0.2317,
+        "drop_top100_by_gross_cost": 0.0339
+      },
+      "leave_one_out_largest_60s": {
+        "wallet_id": 19906,
+        "wallet_late_cost_usd": 288564.13,
+        "wallet_late_cost_share_of_gross": 0.2966,
+        "top10pct_before": 0.8921,
+        "top10pct_after": 0.8471,
+        "top50_before": 0.8585,
+        "top50_after": 0.7989
+      },
+      "bootstrap_ci_oos_top10pct_60s": {
+        "lo": 0.7002,
+        "hi": 0.9591,
+        "n_resamples": 2000,
+        "seed": 20260619
+      },
+      "in_sample_concentration_60s": {
+        "note": "DIAGNOSTIC ONLY - rank and measure on the SAME all-days cost; bounded toward 100% by construction, NOT the avoidable number.",
+        "share_top10pct": 0.994,
+        "share_top50": 0.9737,
+        "_gross_positive_all_cost_usd": 1779742.15
+      },
+      "whale_rule": "RULE: never present a point avoidable-% without its whale-dropped companion. The companions are the drop-top-10/50/100 ladder, dropped by GROSS COST (the largest per-wallet signed cost in the measurement half, not the largest by notional), and the leave-one-out of the single largest such wallet. Both are reported beside every headline share."
+    },
+    "_diag": {
+      "n_rows_10s": 1200779,
+      "n_rows_60s": 1200302,
+      "total_notional_usd_10s": 27771476161.84,
+      "total_notional_usd_60s": 27762121944.79,
+      "n_ranked_wallets_10s": 1234,
+      "n_ranked_wallets_60s": 1234,
+      "n_top_decile_wallets_10s": 123,
+      "n_top_decile_wallets_60s": 123,
+      "n_top_n_wallets_10s": 50,
+      "n_top_n_wallets_60s": 50,
+      "early_days_used": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "late_days_used": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    }
+  },
+  "ETH": {
+    "total_cost_usd_10s": 1204593.08,
+    "cost_per_day_usd_10s": 120459.31,
+    "cost_bps_10s": 0.6746,
+    "total_cost_usd_60s": 1053370.93,
+    "cost_per_day_usd_60s": 105337.09,
+    "cost_bps_60s": 0.59,
+    "avoidable_share_oos_top10pct_10s": 0.8874,
+    "avoidable_share_oos_top50_10s": 0.8801,
+    "avoidable_share_oos_top10pct_60s": 0.8423,
+    "avoidable_share_oos_top50_60s": 0.8349,
+    "raw_mean_markout_bps_60s": 0.59,
+    "taker_fee_band_bps": [
+      2.5,
+      4.5
+    ],
+    "fee_note": "GROSS, UPPER-BOUND avoidable cost - NOT a net trading edge or alpha. The raw volume-weighted mean markout is sub-1 bps, while perp taker fees (~2.5-4.5 bps) plus funding swamp it. This is a recurring, partly-avoidable COST that counterparty screening can reduce, not money a maker earns by trading.",
+    "avoidable_10s": {
+      "_gross_positive_late_cost_usd_10s": 719499.76,
+      "_net_signed_late_cost_usd_10s": 581194.25,
+      "net_over_gross_ratio_late_10s": 0.8078,
+      "n_ranked_wallets_10s": 926,
+      "n_top_decile_wallets_10s": 92,
+      "n_top_n_wallets_10s": 50,
+      "avoidable_share_oos_top10pct_10s": 0.8874,
+      "avoidable_share_oos_top50_10s": 0.8801,
+      "random_floor_top10pct_10s": {
+        "mean": 0.1,
+        "p95": 0.2981,
+        "n_draws": 1000,
+        "seed": 20260620
+      },
+      "random_floor_top50_10s": {
+        "mean": 0.0545,
+        "p95": 0.2411,
+        "n_draws": 1000,
+        "seed": 20260620
+      },
+      "oracle_ceiling_top10pct_10s": 0.9835,
+      "oracle_ceiling_top50_10s": 0.9717,
+      "whale_drop_ladder_top10pct_10s": {
+        "drop_top10_by_gross_cost": 0.7208,
+        "drop_top50_by_gross_cost": 0.3557,
+        "drop_top100_by_gross_cost": 0.4895
+      },
+      "whale_drop_ladder_top50_10s": {
+        "drop_top10_by_gross_cost": 0.6906,
+        "drop_top50_by_gross_cost": 0.1667,
+        "drop_top100_by_gross_cost": 0.2635
+      },
+      "leave_one_out_largest_10s": {
+        "wallet_id": 15299,
+        "wallet_late_cost_usd": 170451.9,
+        "wallet_late_cost_share_of_gross": 0.2369,
+        "top10pct_before": 0.8874,
+        "top10pct_after": 0.8525,
+        "top50_before": 0.8801,
+        "top50_after": 0.8428
+      },
+      "bootstrap_ci_oos_top10pct_10s": {
+        "lo": 0.7037,
+        "hi": 0.9584,
+        "n_resamples": 2000,
+        "seed": 20260619
+      },
+      "in_sample_concentration_10s": {
+        "note": "DIAGNOSTIC ONLY - rank and measure on the SAME all-days cost; bounded toward 100% by construction, NOT the avoidable number.",
+        "share_top10pct": 0.984,
+        "share_top50": 0.9743,
+        "_gross_positive_all_cost_usd": 1301270.13
+      },
+      "whale_rule": "RULE: never present a point avoidable-% without its whale-dropped companion. The companions are the drop-top-10/50/100 ladder, dropped by GROSS COST (the largest per-wallet signed cost in the measurement half, not the largest by notional), and the leave-one-out of the single largest such wallet. Both are reported beside every headline share."
+    },
+    "avoidable_60s": {
+      "_gross_positive_late_cost_usd_60s": 866503.42,
+      "_net_signed_late_cost_usd_60s": 513298.34,
+      "net_over_gross_ratio_late_60s": 0.5924,
+      "n_ranked_wallets_60s": 926,
+      "n_top_decile_wallets_60s": 92,
+      "n_top_n_wallets_60s": 50,
+      "avoidable_share_oos_top10pct_60s": 0.8423,
+      "avoidable_share_oos_top50_60s": 0.8349,
+      "random_floor_top10pct_60s": {
+        "mean": 0.1003,
+        "p95": 0.2922,
+        "n_draws": 1000,
+        "seed": 20260620
+      },
+      "random_floor_top50_60s": {
+        "mean": 0.0541,
+        "p95": 0.2416,
+        "n_draws": 1000,
+        "seed": 20260620
+      },
+      "oracle_ceiling_top10pct_60s": 0.9793,
+      "oracle_ceiling_top50_60s": 0.9583,
+      "whale_drop_ladder_top10pct_60s": {
+        "drop_top10_by_gross_cost": 0.6589,
+        "drop_top50_by_gross_cost": 0.2408,
+        "drop_top100_by_gross_cost": 0.3324
+      },
+      "whale_drop_ladder_top50_60s": {
+        "drop_top10_by_gross_cost": 0.6414,
+        "drop_top50_by_gross_cost": 0.143,
+        "drop_top100_by_gross_cost": 0.1805
+      },
+      "leave_one_out_largest_60s": {
+        "wallet_id": 15299,
+        "wallet_late_cost_usd": 205373.6,
+        "wallet_late_cost_share_of_gross": 0.237,
+        "top10pct_before": 0.8423,
+        "top10pct_after": 0.7934,
+        "top50_before": 0.8349,
+        "top50_after": 0.7836
+      },
+      "bootstrap_ci_oos_top10pct_60s": {
+        "lo": 0.6348,
+        "hi": 0.9325,
+        "n_resamples": 2000,
+        "seed": 20260619
+      },
+      "in_sample_concentration_60s": {
+        "note": "DIAGNOSTIC ONLY - rank and measure on the SAME all-days cost; bounded toward 100% by construction, NOT the avoidable number.",
+        "share_top10pct": 0.9791,
+        "share_top50": 0.9651,
+        "_gross_positive_all_cost_usd": 1734577.2
+      },
+      "whale_rule": "RULE: never present a point avoidable-% without its whale-dropped companion. The companions are the drop-top-10/50/100 ladder, dropped by GROSS COST (the largest per-wallet signed cost in the measurement half, not the largest by notional), and the leave-one-out of the single largest such wallet. Both are reported beside every headline share."
+    },
+    "_diag": {
+      "n_rows_10s": 1279313,
+      "n_rows_60s": 1278714,
+      "total_notional_usd_10s": 17856957061.85,
+      "total_notional_usd_60s": 17852332822.19,
+      "n_ranked_wallets_10s": 926,
+      "n_ranked_wallets_60s": 926,
+      "n_top_decile_wallets_10s": 92,
+      "n_top_decile_wallets_60s": 92,
+      "n_top_n_wallets_10s": 50,
+      "n_top_n_wallets_60s": 50,
+      "early_days_used": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "late_days_used": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    }
+  },
+  "pooled": {
+    "total_cost_usd_10s": 2376244.05,
+    "cost_per_day_usd_10s": 237624.41,
+    "cost_bps_10s": 0.5208,
+    "total_cost_usd_60s": 2550111.55,
+    "cost_per_day_usd_60s": 255011.16,
+    "cost_bps_60s": 0.5591,
+    "avoidable_share_oos_top10pct_10s": 0.9104,
+    "avoidable_share_oos_top50_10s": 0.881,
+    "avoidable_share_oos_top10pct_60s": 0.8742,
+    "avoidable_share_oos_top50_60s": 0.8078,
+    "raw_mean_markout_bps_60s": 0.5591,
+    "taker_fee_band_bps": [
+      2.5,
+      4.5
+    ],
+    "fee_note": "GROSS, UPPER-BOUND avoidable cost - NOT a net trading edge or alpha. The raw volume-weighted mean markout is sub-1 bps, while perp taker fees (~2.5-4.5 bps) plus funding swamp it. This is a recurring, partly-avoidable COST that counterparty screening can reduce, not money a maker earns by trading.",
+    "avoidable_10s": {
+      "_gross_positive_late_cost_usd_10s": 1458754.87,
+      "_net_signed_late_cost_usd_10s": 1113657.83,
+      "net_over_gross_ratio_late_10s": 0.7634,
+      "n_ranked_wallets_10s": 2070,
+      "n_top_decile_wallets_10s": 207,
+      "n_top_n_wallets_10s": 50,
+      "avoidable_share_oos_top10pct_10s": 0.9104,
+      "avoidable_share_oos_top50_10s": 0.881,
+      "random_floor_top10pct_10s": {
+        "mean": 0.0993,
+        "p95": 0.2415,
+        "n_draws": 1000,
+        "seed": 20260620
+      },
+      "random_floor_top50_10s": {
+        "mean": 0.0256,
+        "p95": 0.1184,
+        "n_draws": 1000,
+        "seed": 20260620
+      },
+      "oracle_ceiling_top10pct_10s": 0.9914,
+      "oracle_ceiling_top50_10s": 0.9557,
+      "whale_drop_ladder_top10pct_10s": {
+        "drop_top10_by_gross_cost": 0.7068,
+        "drop_top50_by_gross_cost": 0.5243,
+        "drop_top100_by_gross_cost": 0.6073
+      },
+      "whale_drop_ladder_top50_10s": {
+        "drop_top10_by_gross_cost": 0.6181,
+        "drop_top50_by_gross_cost": 0.2086,
+        "drop_top100_by_gross_cost": 0.0835
+      },
+      "leave_one_out_largest_10s": {
+        "wallet_id": 15299,
+        "wallet_late_cost_usd": 170451.9,
+        "wallet_late_cost_share_of_gross": 0.1168,
+        "top10pct_before": 0.9104,
+        "top10pct_after": 0.8986,
+        "top50_before": 0.881,
+        "top50_after": 0.868
+      },
+      "bootstrap_ci_oos_top10pct_10s": {
+        "lo": 0.8192,
+        "hi": 0.9553,
+        "n_resamples": 2000,
+        "seed": 20260619
+      },
+      "in_sample_concentration_10s": {
+        "note": "DIAGNOSTIC ONLY - rank and measure on the SAME all-days cost; bounded toward 100% by construction, NOT the avoidable number.",
+        "share_top10pct": 0.9935,
+        "share_top50": 0.9631,
+        "_gross_positive_all_cost_usd": 2830488.46
+      },
+      "whale_rule": "RULE: never present a point avoidable-% without its whale-dropped companion. The companions are the drop-top-10/50/100 ladder, dropped by GROSS COST (the largest per-wallet signed cost in the measurement half, not the largest by notional), and the leave-one-out of the single largest such wallet. Both are reported beside every headline share."
+    },
+    "avoidable_60s": {
+      "_gross_positive_late_cost_usd_60s": 1832247.83,
+      "_net_signed_late_cost_usd_60s": 1126110.78,
+      "net_over_gross_ratio_late_60s": 0.6146,
+      "n_ranked_wallets_60s": 2069,
+      "n_top_decile_wallets_60s": 206,
+      "n_top_n_wallets_60s": 50,
+      "avoidable_share_oos_top10pct_60s": 0.8742,
+      "avoidable_share_oos_top50_60s": 0.8078,
+      "random_floor_top10pct_60s": {
+        "mean": 0.1011,
+        "p95": 0.2501,
+        "n_draws": 1000,
+        "seed": 20260620
+      },
+      "random_floor_top50_60s": {
+        "mean": 0.0274,
+        "p95": 0.1227,
+        "n_draws": 1000,
+        "seed": 20260620
+      },
+      "oracle_ceiling_top10pct_60s": 0.9904,
+      "oracle_ceiling_top50_60s": 0.9245,
+      "whale_drop_ladder_top10pct_60s": {
+        "drop_top10_by_gross_cost": 0.6332,
+        "drop_top50_by_gross_cost": 0.3563,
+        "drop_top100_by_gross_cost": 0.3743
+      },
+      "whale_drop_ladder_top50_60s": {
+        "drop_top10_by_gross_cost": 0.5142,
+        "drop_top50_by_gross_cost": 0.1501,
+        "drop_top100_by_gross_cost": 0.0465
+      },
+      "leave_one_out_largest_60s": {
+        "wallet_id": 19906,
+        "wallet_late_cost_usd": 288564.13,
+        "wallet_late_cost_share_of_gross": 0.1575,
+        "top10pct_before": 0.8742,
+        "top10pct_after": 0.8509,
+        "top50_before": 0.8078,
+        "top50_after": 0.7918
+      },
+      "bootstrap_ci_oos_top10pct_60s": {
+        "lo": 0.7625,
+        "hi": 0.931,
+        "n_resamples": 2000,
+        "seed": 20260619
+      },
+      "in_sample_concentration_60s": {
+        "note": "DIAGNOSTIC ONLY - rank and measure on the SAME all-days cost; bounded toward 100% by construction, NOT the avoidable number.",
+        "share_top10pct": 0.9885,
+        "share_top50": 0.9335,
+        "_gross_positive_all_cost_usd": 3454835.37
+      },
+      "whale_rule": "RULE: never present a point avoidable-% without its whale-dropped companion. The companions are the drop-top-10/50/100 ladder, dropped by GROSS COST (the largest per-wallet signed cost in the measurement half, not the largest by notional), and the leave-one-out of the single largest such wallet. Both are reported beside every headline share."
+    },
+    "_diag": {
+      "n_rows_10s": 2480092,
+      "n_rows_60s": 2479016,
+      "total_notional_usd_10s": 45628433223.69,
+      "total_notional_usd_60s": 45614454766.98,
+      "n_ranked_wallets_10s": 2070,
+      "n_ranked_wallets_60s": 2069,
+      "n_top_decile_wallets_10s": 207,
+      "n_top_decile_wallets_60s": 206,
+      "n_top_n_wallets_10s": 50,
+      "n_top_n_wallets_60s": 50,
+      "early_days_used": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "late_days_used": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    }
+  }
+}

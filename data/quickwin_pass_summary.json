@@ -1,0 +1,689 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "quickwin_pass_summary.json",
+    "producer": {
+      "script": "build_quickwin_markouts.py",
+      "sha256": "7a77a582d2432e34a1eed21e3775d9102c1f18ca415126f0fc294b93c52afa7a",
+      "bytes": 40769
+    },
+    "inputs": [
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251204/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251205/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251206/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251207/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251208/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251209/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251210/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251211/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251212/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251213/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 collapsed taker trades, one row per (hash, taker) sweep with a size-weighted VWAP entry, over 45,849 distinct taker wallets and 9,367 distinct makers; no wallet floor and no eligibility filter is applied by this pass",
+      "window": "10 of 10 requested days resolved: 20251204, 20251205, 20251206, 20251207, 20251208, 20251209, 20251210, 20251211, 20251212, 20251213",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260619,
+      "horizons_written_s": [
+        1,
+        10,
+        60
+      ],
+      "n_perm": null,
+      "n_boot": null,
+      "rank_floor_fills": null,
+      "override_reasons": {
+        "horizon_s": "this pass marks every rung and scores at none; the headline window is stamped so the artifact can be compared with the analysis files that do score, and horizons_written_s is what the npz actually carries",
+        "master_seed": "the module fixes numpy's global seed at 20260619, not the declared 20260620. Nothing in this pass draws from it -- the parse, the collapse and the markout join are deterministic -- so it is recorded as what the run set rather than as what it used",
+        "n_perm": "no permutation test and no bootstrap run in this pass",
+        "n_boot": "see n_perm",
+        "rank_floor_fills": "no wallet floor applies: this pass emits every collapsed trade and the consumers gate their own populations"
+      },
+      "overridden": [
+        "horizons_written_s",
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "override_reasons",
+        "rank_floor_fills"
+      ]
+    },
+    "run": {
+      "runtime_s": 175.355,
+      "finished_utc": "2026-08-20T19:30:29Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "config": {
+    "days_requested": [
+      "20251204",
+      "20251205",
+      "20251206",
+      "20251207",
+      "20251208",
+      "20251209",
+      "20251210",
+      "20251211",
+      "20251212",
+      "20251213"
+    ],
+    "days_resolved": [
+      "20251204",
+      "20251205",
+      "20251206",
+      "20251207",
+      "20251208",
+      "20251209",
+      "20251210",
+      "20251211",
+      "20251212",
+      "20251213"
+    ],
+    "n_days_resolved": 10,
+    "days_retried": [],
+    "download_notes": [
+      "20251204: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+      "20251205: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+      "20251206: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+      "20251207: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+      "20251208: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+      "20251209: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+      "20251210: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+      "20251211: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+      "20251212: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+      "20251213: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)"
+    ],
+    "coins": [
+      "BTC",
+      "ETH"
+    ],
+    "coin_code": {
+      "BTC": 0,
+      "ETH": 1
+    },
+    "horizons_s": [
+      1,
+      10,
+      60
+    ],
+    "clock_source": "native block_time (ns), node_fills_by_block",
+    "dedup": "one obs per (hash, taker), size-weighted VWAP entry",
+    "markout_sign": "signed taker markout bps; positive = taker profited = maker adverse-selected",
+    "rng_seed": 20260619,
+    "npz_path": "quickwin_markouts.npz",
+    "map_path": "quickwin_taker_map.json",
+    "maker_map_path": "maker_map.json",
+    "summary_path": "quickwin_pass_summary.json",
+    "extra_fields": {
+      "closed_pnl": "sum of taker-leg closedPnl over collapsed legs (float32)",
+      "dir_code": "0=Open Long,1=Open Short,2=Close Long,3=Close Short,-1=unknown",
+      "maker_id": "first-seen maker code (crossed=false, same hash); -1 if none"
+    }
+  },
+  "hours_by_day": {
+    "20251204": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23"
+    ],
+    "20251205": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23"
+    ],
+    "20251206": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23"
+    ],
+    "20251207": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23"
+    ],
+    "20251208": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23"
+    ],
+    "20251209": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23"
+    ],
+    "20251210": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23"
+    ],
+    "20251211": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23"
+    ],
+    "20251212": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23"
+    ],
+    "20251213": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23"
+    ]
+  },
+  "slices": [
+    {
+      "coin": "BTC",
+      "day": 4,
+      "collapsed_trades": 136265,
+      "rows_kept": 136265,
+      "mo1_mean_bps": 0.24364871006447522,
+      "mo10_mean_bps": 0.4804043477539137,
+      "mo60_mean_bps": 0.4781296508999791
+    },
+    {
+      "coin": "ETH",
+      "day": 4,
+      "collapsed_trades": 124235,
+      "rows_kept": 124235,
+      "mo1_mean_bps": 0.590028790956948,
+      "mo10_mean_bps": 0.6495917097544636,
+      "mo60_mean_bps": 0.9025545964225619
+    },
+    {
+      "coin": "BTC",
+      "day": 5,
+      "collapsed_trades": 141255,
+      "rows_kept": 141255,
+      "mo1_mean_bps": 0.23389221522269485,
+      "mo10_mean_bps": 0.39974694120833953,
+      "mo60_mean_bps": 0.23962735886488154
+    },
+    {
+      "coin": "ETH",
+      "day": 5,
+      "collapsed_trades": 144432,
+      "rows_kept": 144432,
+      "mo1_mean_bps": 0.4553414511201387,
+      "mo10_mean_bps": 0.35770434248395766,
+      "mo60_mean_bps": -0.030050151012765265
+    },
+    {
+      "coin": "BTC",
+      "day": 6,
+      "collapsed_trades": 66190,
+      "rows_kept": 66190,
+      "mo1_mean_bps": 0.2001632249871535,
+      "mo10_mean_bps": 0.4475923762877394,
+      "mo60_mean_bps": 0.36919678534349865
+    },
+    {
+      "coin": "ETH",
+      "day": 6,
+      "collapsed_trades": 58374,
+      "rows_kept": 58374,
+      "mo1_mean_bps": 0.33052380605559,
+      "mo10_mean_bps": 0.7965766316935249,
+      "mo60_mean_bps": 0.6469547870626656
+    },
+    {
+      "coin": "BTC",
+      "day": 7,
+      "collapsed_trades": 130338,
+      "rows_kept": 130338,
+      "mo1_mean_bps": 0.22808299904398824,
+      "mo10_mean_bps": 0.3601948262915207,
+      "mo60_mean_bps": 0.3344949521162444
+    },
+    {
+      "coin": "ETH",
+      "day": 7,
+      "collapsed_trades": 186816,
+      "rows_kept": 186816,
+      "mo1_mean_bps": 0.32302777808499666,
+      "mo10_mean_bps": 0.4860458688764988,
+      "mo60_mean_bps": 1.3969067392594345
+    },
+    {
+      "coin": "BTC",
+      "day": 8,
+      "collapsed_trades": 139158,
+      "rows_kept": 139158,
+      "mo1_mean_bps": 0.2805385986632276,
+      "mo10_mean_bps": 0.5338027717307755,
+      "mo60_mean_bps": 0.4676201252808659
+    },
+    {
+      "coin": "ETH",
+      "day": 8,
+      "collapsed_trades": 118427,
+      "rows_kept": 118427,
+      "mo1_mean_bps": 0.5403281374435182,
+      "mo10_mean_bps": 0.5389366791954399,
+      "mo60_mean_bps": 0.565130933742798
+    },
+    {
+      "coin": "BTC",
+      "day": 9,
+      "collapsed_trades": 148856,
+      "rows_kept": 148856,
+      "mo1_mean_bps": 0.259803073177046,
+      "mo10_mean_bps": 0.5064936956491437,
+      "mo60_mean_bps": 0.44459523209351315
+    },
+    {
+      "coin": "ETH",
+      "day": 9,
+      "collapsed_trades": 159933,
+      "rows_kept": 159933,
+      "mo1_mean_bps": 0.5680111692838702,
+      "mo10_mean_bps": 0.7694768508382982,
+      "mo60_mean_bps": 1.012469997534113
+    },
+    {
+      "coin": "BTC",
+      "day": 10,
+      "collapsed_trades": 145596,
+      "rows_kept": 145596,
+      "mo1_mean_bps": 0.2986088194835905,
+      "mo10_mean_bps": 0.5943280969514222,
+      "mo60_mean_bps": 0.3614996310292156
+    },
+    {
+      "coin": "ETH",
+      "day": 10,
+      "collapsed_trades": 165341,
+      "rows_kept": 165341,
+      "mo1_mean_bps": 0.5200960727102446,
+      "mo10_mean_bps": 0.7003291674513691,
+      "mo60_mean_bps": 0.2549957631573925
+    },
+    {
+      "coin": "BTC",
+      "day": 11,
+      "collapsed_trades": 147285,
+      "rows_kept": 147285,
+      "mo1_mean_bps": 0.23183437284261424,
+      "mo10_mean_bps": 0.4684592503501589,
+      "mo60_mean_bps": 0.4648712034548475
+    },
+    {
+      "coin": "ETH",
+      "day": 11,
+      "collapsed_trades": 164122,
+      "rows_kept": 164122,
+      "mo1_mean_bps": 0.45938251576664624,
+      "mo10_mean_bps": 0.623012732874231,
+      "mo60_mean_bps": 0.9042100707235391
+    },
+    {
+      "coin": "BTC",
+      "day": 12,
+      "collapsed_trades": 104649,
+      "rows_kept": 104649,
+      "mo1_mean_bps": 0.22931187738285663,
+      "mo10_mean_bps": 0.39706393920345046,
+      "mo60_mean_bps": 0.40949542348241763
+    },
+    {
+      "coin": "ETH",
+      "day": 12,
+      "collapsed_trades": 119979,
+      "rows_kept": 119979,
+      "mo1_mean_bps": 0.321094563253194,
+      "mo10_mean_bps": 0.5139885417488417,
+      "mo60_mean_bps": 0.6465588600972725
+    },
+    {
+      "coin": "BTC",
+      "day": 13,
+      "collapsed_trades": 41271,
+      "rows_kept": 41271,
+      "mo1_mean_bps": 0.07208686733885315,
+      "mo10_mean_bps": 0.16652148208028308,
+      "mo60_mean_bps": 0.17453358496205493
+    },
+    {
+      "coin": "ETH",
+      "day": 13,
+      "collapsed_trades": 37745,
+      "rows_kept": 37745,
+      "mo1_mean_bps": 0.19328368952408503,
+      "mo10_mean_bps": 0.3554565339434742,
+      "mo60_mean_bps": 0.5882099156440226
+    }
+  ],
+  "total_rows": 2480267,
+  "rows_per_coin": {
+    "BTC": 1200863,
+    "ETH": 1279404
+  },
+  "n_unique_takers": 45849,
+  "n_unique_makers": 9367,
+  "n_rows_no_maker": 0,
+  "per_coin": {
+    "BTC": {
+      "rows": 1200863,
+      "mo1_mean_bps": 0.24276119470596313,
+      "mo10_mean_bps": 0.45978057384490967,
+      "mo60_mean_bps": 0.3909332752227783
+    },
+    "ETH": {
+      "rows": 1279404,
+      "mo1_mean_bps": 0.4539225101470947,
+      "mo10_mean_bps": 0.5859591364860535,
+      "mo60_mean_bps": 0.7235196828842163
+    }
+  },
+  "issues": [
+    "20251204: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+    "20251205: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+    "20251206: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+    "20251207: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+    "20251208: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+    "20251209: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+    "20251210: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+    "20251211: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+    "20251212: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)",
+    "20251213: reused 24 local .lz4 already on disk (CAP_RAW_CACHE)"
+  ]
+}

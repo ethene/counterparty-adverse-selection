@@ -1,0 +1,267 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "forward_toxicity_results.json",
+    "producer": {
+      "script": "forward_toxicity.py",
+      "sha256": "6f87afe3577e18ab864c2bb766a8b82af15a35a982af6c443e7f98392bbb241d",
+      "bytes": 28824
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "quickwin_taker_map.json",
+        "bytes": 2418975,
+        "sha256": "116ce63018fd37c6219e518901583fdc75859f8199a84f80f344fdabfe394315",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "2026-06-20.ndjson.gz",
+        "bytes": 14576156,
+        "sha256": "448f59890a72305988c533f06429ac23a3bf2f5de12a65c5615e6d2656a1b6a0",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "2026-06-21.ndjson.gz",
+        "bytes": 21529829,
+        "sha256": "438ad8da908e4793f5f809a66bf45048c706eb8c2507585578bce55d3e47cb47",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "2026-06-22.ndjson.gz",
+        "bytes": 35264068,
+        "sha256": "f3c971d8696b4f98edcc515f26840f43ca3f5e9506123e98bcbb0acf462f0b95",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "2026-06-23.ndjson.gz",
+        "bytes": 34178617,
+        "sha256": "6e71ffe3666501342f63d25cb17b3c257fd83a14adcd488811ae08751bdfd024",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,159,569 forward trade prints; wallets ranked at a 10-fill forward floor and 5 per half for the within-window read. The frozen December set is 1,768 wallets, the top 9 percent by per-coin mean headline markout at a 10-fill December floor, out of 45,849 wallets seen in December",
+      "window": "forward days read: 2026-06-20, 2026-06-21, 2026-06-22, 2026-06-23; the toxic set is frozen from the December 2025 design window and is never re-estimated here",
+      "coins": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260623,
+      "n_perm": 1000,
+      "n_boot": null,
+      "rank_floor_fills": 10,
+      "december_floor_fills": 10,
+      "override_reasons": {
+        "lens": "the forward feed carries trade prints only -- no book, so no mid -- and the December set is frozen off the trade-print column; this exhibit has no book-mid arm at all",
+        "master_seed": "the placebo stream is np.random.default_rng(20260623) drawn once and shared across the three horizons, not settings.MASTER_SEED 20260620 and not a per-cell stream; adopting either re-draws every placebo p in this file",
+        "n_perm": "1000 draws, not the declared 2000. The floor is 1/1001 = 0.000999, and the denominator here is the REQUESTED budget rather than the count of finite draws",
+        "n_boot": "no bootstrap is drawn in this file",
+        "rank_floor_fills": "10 forward fills, not the declared 50: the forward window is four days against December's ten, so the December floor would empty the ranked set"
+      },
+      "overridden": [
+        "december_floor_fills",
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "override_reasons",
+        "rank_floor_fills"
+      ]
+    },
+    "run": {
+      "runtime_s": 9.991,
+      "finished_utc": "2026-08-04T06:16:31Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "config": {
+    "forward_dir": "forward_cache",
+    "days_read": [
+      {
+        "file": "2026-06-20.ndjson.gz",
+        "day": "2026-06-20",
+        "rows_read": 284959,
+        "ended_cleanly": true,
+        "how_it_broke": null
+      },
+      {
+        "file": "2026-06-21.ndjson.gz",
+        "day": "2026-06-21",
+        "rows_read": 450398,
+        "ended_cleanly": true,
+        "how_it_broke": null
+      },
+      {
+        "file": "2026-06-22.ndjson.gz",
+        "day": "2026-06-22",
+        "rows_read": 722048,
+        "ended_cleanly": true,
+        "how_it_broke": null
+      },
+      {
+        "file": "2026-06-23.ndjson.gz",
+        "day": "2026-06-23",
+        "rows_read": 702164,
+        "ended_cleanly": true,
+        "how_it_broke": null
+      }
+    ],
+    "prints_read_total": 2159569,
+    "every_day_ended_cleanly": true,
+    "open_tail_allowed_by_declaration": false,
+    "coins": [
+      "BTC",
+      "ETH",
+      "SOL"
+    ],
+    "horizons_ms": {
+      "mo1": 1000,
+      "mo10": 10000,
+      "mo60": 60000
+    },
+    "min_fills_fwd": 10,
+    "dec_toxic_q": 0.9,
+    "early_days": [
+      "2026-06-20",
+      "2026-06-21"
+    ],
+    "late_days": [
+      "2026-06-22",
+      "2026-06-23"
+    ],
+    "nperm": 1000,
+    "rng_seed": 20260623
+  },
+  "n_trades": {
+    "BTC": 1277377,
+    "ETH": 484299,
+    "SOL": 397893
+  },
+  "sanity": {
+    "BTC": {
+      "mo1": {
+        "buy_fwd_ret_bps": 0.34342995557312317,
+        "sell_fwd_ret_bps": -0.312018516618674
+      },
+      "mo10": {
+        "buy_fwd_ret_bps": 0.5933592485899275,
+        "sell_fwd_ret_bps": -0.5926703915062815
+      },
+      "mo60": {
+        "buy_fwd_ret_bps": 0.5990749643631932,
+        "sell_fwd_ret_bps": -0.578695615971589
+      }
+    },
+    "ETH": {
+      "mo1": {
+        "buy_fwd_ret_bps": 0.33763971294767886,
+        "sell_fwd_ret_bps": -0.24864843721721788
+      },
+      "mo10": {
+        "buy_fwd_ret_bps": 0.5989664865151774,
+        "sell_fwd_ret_bps": -0.47609012615104784
+      },
+      "mo60": {
+        "buy_fwd_ret_bps": 0.2721517558137978,
+        "sell_fwd_ret_bps": -0.6280805521154394
+      }
+    },
+    "SOL": {
+      "mo1": {
+        "buy_fwd_ret_bps": 0.28864545026936533,
+        "sell_fwd_ret_bps": -0.47598292585739105
+      },
+      "mo10": {
+        "buy_fwd_ret_bps": 0.47835359143687034,
+        "sell_fwd_ret_bps": -0.5741015682321619
+      },
+      "mo60": {
+        "buy_fwd_ret_bps": 0.46425615641770734,
+        "sell_fwd_ret_bps": -0.6543013593269346
+      }
+    },
+    "BTC_mo10_sign_ok": true
+  },
+  "within_persistence": {
+    "mo1": {
+      "n_wallets_common": 7329,
+      "spearman_early_late": 0.14342882806599036
+    },
+    "mo10": {
+      "n_wallets_common": 7329,
+      "spearman_early_late": 0.0695016158777393
+    },
+    "mo60": {
+      "n_wallets_common": 7328,
+      "spearman_early_late": 0.030077171241598838
+    }
+  },
+  "cross_window": {
+    "n_dec_toxic_wallets": 1768,
+    "n_dec_all_wallets": 45849,
+    "mo1": {
+      "n_dec_toxic_in_fwd": 188,
+      "n_dec_rest_in_fwd": 1837,
+      "dec_toxic_fwd_markout_bps": 0.8529893509008417,
+      "dec_rest_fwd_markout_bps": -0.3368841303701092,
+      "gap_bps": 1.189873481270951,
+      "placebo_p": 0.000999000999000999,
+      "null_gap_mean": -0.0025858828471156245
+    },
+    "mo10": {
+      "n_dec_toxic_in_fwd": 188,
+      "n_dec_rest_in_fwd": 1837,
+      "dec_toxic_fwd_markout_bps": 0.5933770361245051,
+      "dec_rest_fwd_markout_bps": -0.5372849662283967,
+      "gap_bps": 1.130662002352902,
+      "placebo_p": 0.000999000999000999,
+      "null_gap_mean": 0.002489111549945006
+    },
+    "mo60": {
+      "n_dec_toxic_in_fwd": 188,
+      "n_dec_rest_in_fwd": 1835,
+      "dec_toxic_fwd_markout_bps": 0.4213869225127062,
+      "dec_rest_fwd_markout_bps": -0.3902599321834878,
+      "gap_bps": 0.811646854696194,
+      "placebo_p": 0.007992007992007992,
+      "null_gap_mean": -0.00035657837619964194
+    }
+  }
+}

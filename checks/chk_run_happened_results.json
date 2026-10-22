@@ -1,0 +1,2966 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_run_happened_results.json",
+    "producer": {
+      "script": "chk_run_happened.py",
+      "sha256": "4db795aed059aa8a96ec661a57fa58b38364642f5b801b605e049494cd2d4512",
+      "bytes": 24426,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "5de8c0fb8624c55ed56389d8878edf7c1904a59f",
+      "unasked_because": null
+    },
+    "inputs": [],
+    "scope": {
+      "population": "106 git-tracked results files, 1 dropped by the .gitignore predicate",
+      "window": "n/a: this gate reads run records as they stand now, not a period of market data",
+      "coins": "n/a: this gate reads file metadata and touches no market data"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "reference_utc": null,
+    "question_put": "the producer-hash leg only; whether any run happened was NOT ASKED because no reference moment was given",
+    "run": {
+      "runtime_s": 7.9,
+      "finished_utc": "2026-10-22T09:38:05Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {}
+    }
+  },
+  "verdict": "UNCERTAIN",
+  "reference_utc": null,
+  "reference_given": false,
+  "question_put": "the producer-hash leg only; whether any run happened was NOT ASKED because no reference moment was given",
+  "tally": {
+    "ran": 41,
+    "kind_not_answerable": 1,
+    "neutral_by_certificate": 64
+  },
+  "records": [
+    {
+      "artifact": "build_diagram_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-21T18:10:50Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "build_diagram.py",
+          "recorded_sha256": "5ca5052100df",
+          "on_disk_sha256": "5ca5052100df"
+        }
+      },
+      "why": [],
+      "place": "build_diagram_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "build_diagram.py"
+    },
+    {
+      "artifact": "build_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-21T18:12:14Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "build.py",
+          "recorded_sha256": "552762fbad31",
+          "on_disk_sha256": "552762fbad31"
+        }
+      },
+      "why": [],
+      "place": "build_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "build.py"
+    },
+    {
+      "artifact": "checks/NEUTRAL_EDITS.json",
+      "reference_utc": null,
+      "verdict": "kind_not_answerable",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": null,
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": false,
+          "why": "names no producer in the canonical _meta.producer record, so it cannot be told from the code that wrote it"
+        }
+      },
+      "why": [
+        "names no producer in the canonical _meta.producer record, so it cannot be told from the code that wrote it",
+        "declares record_kind='hand_register': the file is maintained by hand and no program writes it, so it has no producer to name and no hash to compare; asking which script wrote it has no answer rather than a missing one"
+      ],
+      "place": "NEUTRAL_EDITS.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": null,
+      "record_kind": "hand_register"
+    },
+    {
+      "artifact": "checks/chk_academic_header_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:37:33Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_academic_header.py",
+          "recorded_sha256": "0df094518ed7",
+          "on_disk_sha256": "0df094518ed7"
+        }
+      },
+      "why": [],
+      "place": "chk_academic_header_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_academic_header.py"
+    },
+    {
+      "artifact": "checks/chk_book_orientation_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:31:37Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_book_orientation.py",
+          "recorded_sha256": "59733078bcfc",
+          "on_disk_sha256": "59733078bcfc"
+        }
+      },
+      "why": [],
+      "place": "chk_book_orientation_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_book_orientation.py"
+    },
+    {
+      "artifact": "checks/chk_build_selftest_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:37:50Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_build_selftest.py",
+          "recorded_sha256": "9bf30a0257fb",
+          "on_disk_sha256": "9bf30a0257fb"
+        }
+      },
+      "why": [],
+      "place": "chk_build_selftest_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_build_selftest.py"
+    },
+    {
+      "artifact": "checks/chk_closedpnl_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:31:39Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_closedpnl.py",
+          "recorded_sha256": "29e5b4d0fa71",
+          "on_disk_sha256": "29e5b4d0fa71"
+        }
+      },
+      "why": [],
+      "place": "chk_closedpnl_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_closedpnl.py"
+    },
+    {
+      "artifact": "checks/chk_contrast_hygiene_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:31:15Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_contrast_hygiene.py",
+          "recorded_sha256": "69f867e85932",
+          "on_disk_sha256": "69f867e85932"
+        }
+      },
+      "why": [],
+      "place": "chk_contrast_hygiene_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_contrast_hygiene.py"
+    },
+    {
+      "artifact": "checks/chk_decision_lookahead_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:31:35Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_decision_lookahead.py",
+          "recorded_sha256": "d75514ede362",
+          "on_disk_sha256": "d75514ede362"
+        }
+      },
+      "why": [],
+      "place": "chk_decision_lookahead_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_decision_lookahead.py"
+    },
+    {
+      "artifact": "checks/chk_dir_vs_startpos_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:31:35Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_dir_vs_startpos.py",
+          "recorded_sha256": "18723cac8c8a",
+          "on_disk_sha256": "18723cac8c8a"
+        }
+      },
+      "why": [],
+      "place": "chk_dir_vs_startpos_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_dir_vs_startpos.py"
+    },
+    {
+      "artifact": "checks/chk_expensive_edits_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:37:39Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_expensive_edits.py",
+          "recorded_sha256": "37764a17beab",
+          "on_disk_sha256": "37764a17beab"
+        }
+      },
+      "why": [],
+      "place": "chk_expensive_edits_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_expensive_edits.py"
+    },
+    {
+      "artifact": "checks/chk_field_hygiene_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-29T19:04:22Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "checks/chk_field_hygiene.py",
+          "recorded_sha256": "80094a002c70",
+          "on_disk_sha256": "a904d0cd4e0e",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used checks/chk_field_hygiene.py at 80094a002c70 and the file on disk is a904d0cd4e0e, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "chk_field_hygiene_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_field_hygiene.py"
+    },
+    {
+      "artifact": "checks/chk_headline_horizon_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:37:39Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_headline_horizon.py",
+          "recorded_sha256": "50133389b851",
+          "on_disk_sha256": "50133389b851"
+        }
+      },
+      "why": [],
+      "place": "chk_headline_horizon_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_headline_horizon.py"
+    },
+    {
+      "artifact": "checks/chk_input_freshness_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:32:28Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_input_freshness.py",
+          "recorded_sha256": "ce2481ead7da",
+          "on_disk_sha256": "ce2481ead7da"
+        }
+      },
+      "why": [],
+      "place": "chk_input_freshness_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_input_freshness.py"
+    },
+    {
+      "artifact": "checks/chk_liquidation_field_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-21T18:29:39Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_liquidation_field.py",
+          "recorded_sha256": "446e2e061460",
+          "on_disk_sha256": "446e2e061460"
+        }
+      },
+      "why": [],
+      "place": "chk_liquidation_field_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_liquidation_field.py"
+    },
+    {
+      "artifact": "checks/chk_maker_attribution_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:32:13Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_maker_attribution.py",
+          "recorded_sha256": "9f891842bfbd",
+          "on_disk_sha256": "9f891842bfbd"
+        }
+      },
+      "why": [],
+      "place": "chk_maker_attribution_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_maker_attribution.py"
+    },
+    {
+      "artifact": "checks/chk_no_abs_paths_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:37:33Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_no_abs_paths.py",
+          "recorded_sha256": "32ce3464b464",
+          "on_disk_sha256": "32ce3464b464"
+        }
+      },
+      "why": [],
+      "place": "chk_no_abs_paths_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_no_abs_paths.py"
+    },
+    {
+      "artifact": "checks/chk_notebook_expectations_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:37:32Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_notebook_expectations.py",
+          "recorded_sha256": "1a915288869f",
+          "on_disk_sha256": "1a915288869f"
+        }
+      },
+      "why": [],
+      "place": "chk_notebook_expectations_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_notebook_expectations.py"
+    },
+    {
+      "artifact": "checks/chk_notebook_pointer_table_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:31:14Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_notebook_pointer_table.py",
+          "recorded_sha256": "c89a523c6493",
+          "on_disk_sha256": "c89a523c6493"
+        }
+      },
+      "why": [],
+      "place": "chk_notebook_pointer_table_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_notebook_pointer_table.py"
+    },
+    {
+      "artifact": "checks/chk_pinned_versions_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:37:37Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_pinned_versions.py",
+          "recorded_sha256": "e3b23dfff57e",
+          "on_disk_sha256": "e3b23dfff57e"
+        }
+      },
+      "why": [],
+      "place": "chk_pinned_versions_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_pinned_versions.py"
+    },
+    {
+      "artifact": "checks/chk_producer_committed_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:37:37Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_producer_committed.py",
+          "recorded_sha256": "744663fbf960",
+          "on_disk_sha256": "744663fbf960"
+        }
+      },
+      "why": [],
+      "place": "chk_producer_committed_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_producer_committed.py"
+    },
+    {
+      "artifact": "checks/chk_prose_numbers_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:37:57Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_prose_numbers.py",
+          "recorded_sha256": "1e527a505476",
+          "on_disk_sha256": "1e527a505476"
+        }
+      },
+      "why": [],
+      "place": "chk_prose_numbers_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_prose_numbers.py"
+    },
+    {
+      "artifact": "checks/chk_requirements_census_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:37:56Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_requirements_census.py",
+          "recorded_sha256": "668ccba9341b",
+          "on_disk_sha256": "668ccba9341b"
+        }
+      },
+      "why": [],
+      "place": "chk_requirements_census_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_requirements_census.py"
+    },
+    {
+      "artifact": "checks/chk_rowcounts_determinism_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-21T18:17:58Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_rowcounts_determinism.py",
+          "recorded_sha256": "a8328bdf57d9",
+          "on_disk_sha256": "a8328bdf57d9"
+        }
+      },
+      "why": [],
+      "place": "chk_rowcounts_determinism_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_rowcounts_determinism.py"
+    },
+    {
+      "artifact": "checks/chk_run_happened_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:31:10Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_run_happened.py",
+          "recorded_sha256": "4db795aed059",
+          "on_disk_sha256": "4db795aed059"
+        }
+      },
+      "why": [],
+      "place": "chk_run_happened_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_run_happened.py"
+    },
+    {
+      "artifact": "checks/chk_settings_home_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:37:35Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_settings_home.py",
+          "recorded_sha256": "29b91ea4c287",
+          "on_disk_sha256": "29b91ea4c287"
+        }
+      },
+      "why": [],
+      "place": "chk_settings_home_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_settings_home.py"
+    },
+    {
+      "artifact": "checks/chk_side_signconv_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-21T18:18:34Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_side_signconv.py",
+          "recorded_sha256": "7b43d75e2984",
+          "on_disk_sha256": "7b43d75e2984"
+        }
+      },
+      "why": [],
+      "place": "chk_side_signconv_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_side_signconv.py"
+    },
+    {
+      "artifact": "checks/join_nolookahead_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:31:15Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/chk_join_nolookahead.py",
+          "recorded_sha256": "78aee27e98fe",
+          "on_disk_sha256": "78aee27e98fe"
+        }
+      },
+      "why": [],
+      "place": "join_nolookahead_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "chk_join_nolookahead.py"
+    },
+    {
+      "artifact": "checks/run_all_checks_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:32:28Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "checks/run_all_checks.py",
+          "recorded_sha256": "4b764708fde4",
+          "on_disk_sha256": "4b764708fde4"
+        }
+      },
+      "why": [],
+      "place": "run_all_checks_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "run_all_checks.py"
+    },
+    {
+      "artifact": "data/check_first_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-21T17:50:56Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "data/check_first.py",
+          "recorded_sha256": "fb605eee0156",
+          "on_disk_sha256": "fb605eee0156"
+        }
+      },
+      "why": [],
+      "place": "check_first_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "check_first.py"
+    },
+    {
+      "artifact": "data/d1_book_shape_figure_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-26T15:45:06Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "data/d1_book_shape_figure.py",
+          "recorded_sha256": "3d61852aad40",
+          "on_disk_sha256": "cb1d01fe379e",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used data/d1_book_shape_figure.py at 3d61852aad40 and the file on disk is cb1d01fe379e, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "d1_book_shape_figure_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "d1_book_shape_figure.py"
+    },
+    {
+      "artifact": "data/d2_fill_tape_figure_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-30T06:40:09Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "data/d2_fill_tape_figure.py",
+          "recorded_sha256": "1330d5042f5a",
+          "on_disk_sha256": "231729a52eff",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used data/d2_fill_tape_figure.py at 1330d5042f5a and the file on disk is 231729a52eff, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "d2_fill_tape_figure_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "d2_fill_tape_figure.py"
+    },
+    {
+      "artifact": "data/i4_midmarkout_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-11T17:39:51Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "data/i4_midmarkout.py",
+          "recorded_sha256": "51f4da06d83c",
+          "on_disk_sha256": "d1926d619fad",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used data/i4_midmarkout.py at 51f4da06d83c and the file on disk is d1926d619fad, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "i4_midmarkout_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "i4_midmarkout.py"
+    },
+    {
+      "artifact": "data/panel_persistence_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-30T06:54:08Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "data/panel_persistence.py",
+          "recorded_sha256": "678b57e536c1",
+          "on_disk_sha256": "96f014e8116a",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used data/panel_persistence.py at 678b57e536c1 and the file on disk is 96f014e8116a, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "panel_persistence_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "panel_persistence.py"
+    },
+    {
+      "artifact": "data/panel_v2_manifest.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-29T18:36:00Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "data/panel_rebuild_v2.py",
+          "recorded_sha256": "ed30258d90b6",
+          "on_disk_sha256": "32a535c1487a",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used data/panel_rebuild_v2.py at ed30258d90b6 and the file on disk is 32a535c1487a, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "panel_v2_manifest.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "panel_rebuild_v2.py"
+    },
+    {
+      "artifact": "data/quickwin_pass_summary.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-20T19:30:29Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "data/build_quickwin_markouts.py",
+          "recorded_sha256": "7a77a582d243",
+          "on_disk_sha256": "4e52b0978001",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used data/build_quickwin_markouts.py at 7a77a582d243 and the file on disk is 4e52b0978001, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "quickwin_pass_summary.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "build_quickwin_markouts.py"
+    },
+    {
+      "artifact": "data/toxicity_frame_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-11T12:24:30Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "data/build_toxicity_frame.py",
+          "recorded_sha256": "ec43af9db750",
+          "on_disk_sha256": "3e9bc721c8d7",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used data/build_toxicity_frame.py at ec43af9db750 and the file on disk is 3e9bc721c8d7, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "toxicity_frame_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "build_toxicity_frame.py"
+    },
+    {
+      "artifact": "data_register_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-21T18:12:24Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "data_register.py",
+          "recorded_sha256": "0a95eb3e52d6",
+          "on_disk_sha256": "0a95eb3e52d6"
+        }
+      },
+      "why": [],
+      "place": "data_register_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "data_register.py"
+    },
+    {
+      "artifact": "identity/follow_the_informed_oos_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-28T21:20:40Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "identity/follow_the_informed_oos.py",
+          "recorded_sha256": "4ccf3b10f4db",
+          "on_disk_sha256": "3aac88175f1f",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used identity/follow_the_informed_oos.py at 4ccf3b10f4db and the file on disk is 3aac88175f1f, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "follow_the_informed_oos_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "follow_the_informed_oos.py"
+    },
+    {
+      "artifact": "identity/i3_book_nonrecoverability_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-10T07:37:23Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "identity/i3_book_comparator.py",
+          "recorded_sha256": "4a59c8df075f",
+          "on_disk_sha256": "439c5b318f50",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used identity/i3_book_comparator.py at 4a59c8df075f and the file on disk is 439c5b318f50, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "i3_book_nonrecoverability_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "i3_book_comparator.py"
+    },
+    {
+      "artifact": "identity/i3_depth_control_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-13T10:13:13Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "identity/i3_depth_control.py",
+          "recorded_sha256": "5bc76bf9b7e5",
+          "on_disk_sha256": "f9f58d26edf6",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used identity/i3_depth_control.py at 5bc76bf9b7e5 and the file on disk is f9f58d26edf6, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "i3_depth_control_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "i3_depth_control.py"
+    },
+    {
+      "artifact": "identity/i3_nonrecoverability_mid_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-11T10:59:00Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "identity/i3_nonrecoverability_oos.py",
+          "recorded_sha256": "ba540f4d82ae",
+          "on_disk_sha256": "c085c9662f7b",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used identity/i3_nonrecoverability_oos.py at ba540f4d82ae and the file on disk is c085c9662f7b, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "i3_nonrecoverability_mid_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "i3_nonrecoverability_oos.py"
+    },
+    {
+      "artifact": "identity/i3_pretrade_vs_identity_figure_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-25T11:19:42Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "identity/i3_pretrade_vs_identity_figure.py",
+          "recorded_sha256": "257b4e988083",
+          "on_disk_sha256": "bea813a9a931",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used identity/i3_pretrade_vs_identity_figure.py at 257b4e988083 and the file on disk is bea813a9a931, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "i3_pretrade_vs_identity_figure_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "i3_pretrade_vs_identity_figure.py"
+    },
+    {
+      "artifact": "identity/i3_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-29T09:12:37Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "identity/i3_nonrecoverability_oos.py",
+          "recorded_sha256": "499f060ce98f",
+          "on_disk_sha256": "c085c9662f7b",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used identity/i3_nonrecoverability_oos.py at 499f060ce98f and the file on disk is c085c9662f7b, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "i3_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "i3_nonrecoverability_oos.py"
+    },
+    {
+      "artifact": "identity/i5_exclusion_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-11T10:52:08Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "identity/i5_exclusion.py",
+          "recorded_sha256": "073d1059915a",
+          "on_disk_sha256": "10fc694c772c",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used identity/i5_exclusion.py at 073d1059915a and the file on disk is 10fc694c772c, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "i5_exclusion_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "i5_exclusion.py"
+    },
+    {
+      "artifact": "identity/own_size_control_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-21T20:10:13Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "identity/own_size_control.py",
+          "recorded_sha256": "b9a7189bb197",
+          "on_disk_sha256": "b9a7189bb197"
+        }
+      },
+      "why": [],
+      "place": "own_size_control_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "own_size_control.py"
+    },
+    {
+      "artifact": "markout/confound_asymmetry_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-11T12:24:25Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "markout/confound_asymmetry.py",
+          "recorded_sha256": "6f815ea2bd30",
+          "on_disk_sha256": "51be7bcfa705",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used markout/confound_asymmetry.py at 6f815ea2bd30 and the file on disk is 51be7bcfa705, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "confound_asymmetry_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "confound_asymmetry.py"
+    },
+    {
+      "artifact": "markout/m2_figure_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-11T17:49:32Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "markout/m2_figure.py",
+          "recorded_sha256": "0bfed9d36d80",
+          "on_disk_sha256": "6cb9a19b2159",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used markout/m2_figure.py at 0bfed9d36d80 and the file on disk is 6cb9a19b2159, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "m2_figure_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "m2_figure.py"
+    },
+    {
+      "artifact": "markout/m5_termstructure_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-21T18:17:17Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "markout/m5_termstructure.py",
+          "recorded_sha256": "a2c609914960",
+          "on_disk_sha256": "0da6d46f1c97",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used markout/m5_termstructure.py at a2c609914960 and the file on disk is 0da6d46f1c97, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "m5_termstructure_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "m5_termstructure.py"
+    },
+    {
+      "artifact": "markout/m6_inventory_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-21T18:17:24Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "markout/m6_inventory.py",
+          "recorded_sha256": "f93455d16a69",
+          "on_disk_sha256": "2e5319cc0029",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used markout/m6_inventory.py at f93455d16a69 and the file on disk is 2e5319cc0029, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "m6_inventory_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "m6_inventory.py"
+    },
+    {
+      "artifact": "markout/temp_perm_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-29T09:59:47Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "markout/temp_perm_decomp.py",
+          "recorded_sha256": "708c5e809f04",
+          "on_disk_sha256": "b9f7399bcc91",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used markout/temp_perm_decomp.py at 708c5e809f04 and the file on disk is b9f7399bcc91, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "temp_perm_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "temp_perm_decomp.py"
+    },
+    {
+      "artifact": "markout/ws1_horizon_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-11T12:23:13Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "markout/ws1_horizon_persistence.py",
+          "recorded_sha256": "21010a5970a1",
+          "on_disk_sha256": "f09c353a32a6",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used markout/ws1_horizon_persistence.py at 21010a5970a1 and the file on disk is f09c353a32a6, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "ws1_horizon_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "ws1_horizon_persistence.py"
+    },
+    {
+      "artifact": "markout/ws1_markout_curve_figure_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-25T10:59:20Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "markout/ws1_markout_curve_figure.py",
+          "recorded_sha256": "06ac6ea0e104",
+          "on_disk_sha256": "a066921bf2cb",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used markout/ws1_markout_curve_figure.py at 06ac6ea0e104 and the file on disk is a066921bf2cb, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "ws1_markout_curve_figure_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "ws1_markout_curve_figure.py"
+    },
+    {
+      "artifact": "money/m11_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-21T18:17:12Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "money/m11_concentration.py",
+          "recorded_sha256": "57de3f7c7b5f",
+          "on_disk_sha256": "a430e9e89e2c",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used money/m11_concentration.py at 57de3f7c7b5f and the file on disk is a430e9e89e2c, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "m11_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "m11_concentration.py"
+    },
+    {
+      "artifact": "money/m4_realizedpnl_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-21T15:32:01Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "money/m4_realizedpnl.py",
+          "recorded_sha256": "10d1c088f0c6",
+          "on_disk_sha256": "29931409c59b",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used money/m4_realizedpnl.py at 10d1c088f0c6 and the file on disk is 29931409c59b, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "m4_realizedpnl_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "m4_realizedpnl.py"
+    },
+    {
+      "artifact": "money/m7_size_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-21T18:17:14Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "money/m7_size.py",
+          "recorded_sha256": "78ec040ed22b",
+          "on_disk_sha256": "bfcea028cd4f",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used money/m7_size.py at 78ec040ed22b and the file on disk is bfcea028cd4f, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "m7_size_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "m7_size.py"
+    },
+    {
+      "artifact": "money/m8_makerside_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-11T12:59:43Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "money/m8_makerside.py",
+          "recorded_sha256": "64c42e33bac4",
+          "on_disk_sha256": "18ed97beecfe",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used money/m8_makerside.py at 64c42e33bac4 and the file on disk is 18ed97beecfe, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "m8_makerside_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "m8_makerside.py"
+    },
+    {
+      "artifact": "money/m9_decile_economics_figure_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-28T21:22:23Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "money/m9_decile_economics_figure.py",
+          "recorded_sha256": "9297253dca36",
+          "on_disk_sha256": "abbd30a9080b",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used money/m9_decile_economics_figure.py at 9297253dca36 and the file on disk is abbd30a9080b, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "m9_decile_economics_figure_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "m9_decile_economics_figure.py"
+    },
+    {
+      "artifact": "money/maker_econ_b2_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-28T21:19:16Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "money/maker_econ_b2.py",
+          "recorded_sha256": "1acf6c196033",
+          "on_disk_sha256": "c4bf6312f1e8",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used money/maker_econ_b2.py at 1acf6c196033 and the file on disk is c4bf6312f1e8, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "maker_econ_b2_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "maker_econ_b2.py"
+    },
+    {
+      "artifact": "money/maker_econ_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-28T21:07:40Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "money/maker_econ.py",
+          "recorded_sha256": "af08b379e48b",
+          "on_disk_sha256": "68baa4c9df90",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used money/maker_econ.py at af08b379e48b and the file on disk is 68baa4c9df90, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "maker_econ_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "maker_econ.py"
+    },
+    {
+      "artifact": "money/sensitivity_rollup_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:26:07Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "money/sensitivity_rollup.py",
+          "recorded_sha256": "3dd8a4469a7c",
+          "on_disk_sha256": "3dd8a4469a7c"
+        }
+      },
+      "why": [],
+      "place": "sensitivity_rollup_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "sensitivity_rollup.py"
+    },
+    {
+      "artifact": "money/t3_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-11T12:24:23Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "money/t3_capacity.py",
+          "recorded_sha256": "94506df942db",
+          "on_disk_sha256": "7153ef9913c1",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used money/t3_capacity.py at 94506df942db and the file on disk is 7153ef9913c1, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "t3_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "t3_capacity.py"
+    },
+    {
+      "artifact": "notebooks/notebook_book_meta.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:36:53Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "notebook_build/make_notebook_book.py",
+          "recorded_sha256": "c2af513a7677",
+          "on_disk_sha256": "c2af513a7677"
+        }
+      },
+      "why": [],
+      "place": "notebook_book_meta.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "make_notebook_book.py"
+    },
+    {
+      "artifact": "notebooks/notebook_data_meta.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:37:00Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "notebook_build/make_notebook_data.py",
+          "recorded_sha256": "afb09997b914",
+          "on_disk_sha256": "afb09997b914"
+        }
+      },
+      "why": [],
+      "place": "notebook_data_meta.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "make_notebook_data.py"
+    },
+    {
+      "artifact": "notebooks/notebook_expected.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:37:00Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "notebook_build/make_notebook_data.py",
+          "recorded_sha256": "afb09997b914",
+          "on_disk_sha256": "afb09997b914"
+        }
+      },
+      "why": [],
+      "place": "notebook_expected.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "make_notebook_data.py"
+    },
+    {
+      "artifact": "notebooks/notebook_fills_meta.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:36:42Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "notebook_build/make_notebook_fills.py",
+          "recorded_sha256": "93904d41e93d",
+          "on_disk_sha256": "93904d41e93d"
+        }
+      },
+      "why": [],
+      "place": "notebook_fills_meta.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "make_notebook_fills.py"
+    },
+    {
+      "artifact": "persistence/forward_toxicity_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-04T06:16:31Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "persistence/forward_toxicity.py",
+          "recorded_sha256": "6f87afe3577e",
+          "on_disk_sha256": "93a73d853ead",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used persistence/forward_toxicity.py at 6f87afe3577e and the file on disk is 93a73d853ead, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "forward_toxicity_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "forward_toxicity.py"
+    },
+    {
+      "artifact": "persistence/i2_walletfe_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-29T09:25:35Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "persistence/i2_walletfe.py",
+          "recorded_sha256": "8d3105a9c1bf",
+          "on_disk_sha256": "550b7b3592f6",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used persistence/i2_walletfe.py at 8d3105a9c1bf and the file on disk is 550b7b3592f6, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "i2_walletfe_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "i2_walletfe.py"
+    },
+    {
+      "artifact": "persistence/ks2_multiday_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-20T19:35:18Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "persistence/ks2_markout_multiday.py",
+          "recorded_sha256": "ac4b16973a82",
+          "on_disk_sha256": "41227c39d7b3",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used persistence/ks2_markout_multiday.py at ac4b16973a82 and the file on disk is 41227c39d7b3, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "ks2_multiday_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "ks2_markout_multiday.py"
+    },
+    {
+      "artifact": "persistence/ks2_persistence_10day_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-20T19:33:47Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "persistence/ks2_persistence_10day.py",
+          "recorded_sha256": "4742b40dceae",
+          "on_disk_sha256": "65f6376a76c1",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used persistence/ks2_persistence_10day.py at 4742b40dceae and the file on disk is 65f6376a76c1, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "ks2_persistence_10day_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "ks2_persistence_10day.py"
+    },
+    {
+      "artifact": "persistence/ks2_persistence_mid_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-29T18:01:47Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "persistence/ks2_persistence_10day.py",
+          "recorded_sha256": "b6ff5e6cee58",
+          "on_disk_sha256": "65f6376a76c1",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used persistence/ks2_persistence_10day.py at b6ff5e6cee58 and the file on disk is 65f6376a76c1, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "ks2_persistence_mid_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "ks2_persistence_10day.py"
+    },
+    {
+      "artifact": "persistence/m9_crossasset_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-11T12:24:28Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "persistence/m9_crossasset.py",
+          "recorded_sha256": "7d544fabed0c",
+          "on_disk_sha256": "3907acb5c27d",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used persistence/m9_crossasset.py at 7d544fabed0c and the file on disk is 3907acb5c27d, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "m9_crossasset_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "m9_crossasset.py"
+    },
+    {
+      "artifact": "persistence/panel_analyze_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-28T21:21:45Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "persistence/panel_analyze.py",
+          "recorded_sha256": "257eeb65c1b0",
+          "on_disk_sha256": "6f65a217563b",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used persistence/panel_analyze.py at 257eeb65c1b0 and the file on disk is 6f65a217563b, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "panel_analyze_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "panel_analyze.py"
+    },
+    {
+      "artifact": "persistence/panel_common_idio_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-29T09:57:35Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "persistence/panel_common_idio.py",
+          "recorded_sha256": "b1994b9f2c1f",
+          "on_disk_sha256": "1d2cd011ec82",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used persistence/panel_common_idio.py at b1994b9f2c1f and the file on disk is 1d2cd011ec82, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "panel_common_idio_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "panel_common_idio.py"
+    },
+    {
+      "artifact": "persistence/panel_extended_results_h10_all.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-30T07:09:08Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "data/panel_persistence.py",
+          "recorded_sha256": "678b57e536c1",
+          "on_disk_sha256": "96f014e8116a",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used data/panel_persistence.py at 678b57e536c1 and the file on disk is 96f014e8116a, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "panel_extended_results_h10_all.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "panel_persistence.py"
+    },
+    {
+      "artifact": "persistence/panel_extended_results_h10_canonical.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-30T06:55:39Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "data/panel_persistence.py",
+          "recorded_sha256": "678b57e536c1",
+          "on_disk_sha256": "96f014e8116a",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used data/panel_persistence.py at 678b57e536c1 and the file on disk is 96f014e8116a, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "panel_extended_results_h10_canonical.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "panel_persistence.py"
+    },
+    {
+      "artifact": "persistence/panel_extended_results_h1_all.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-30T07:03:19Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "data/panel_persistence.py",
+          "recorded_sha256": "678b57e536c1",
+          "on_disk_sha256": "96f014e8116a",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used data/panel_persistence.py at 678b57e536c1 and the file on disk is 96f014e8116a, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "panel_extended_results_h1_all.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "panel_persistence.py"
+    },
+    {
+      "artifact": "persistence/panel_extended_results_h1_canonical.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-30T06:54:53Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "data/panel_persistence.py",
+          "recorded_sha256": "678b57e536c1",
+          "on_disk_sha256": "96f014e8116a",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used data/panel_persistence.py at 678b57e536c1 and the file on disk is 96f014e8116a, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "panel_extended_results_h1_canonical.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "panel_persistence.py"
+    },
+    {
+      "artifact": "persistence/panel_extended_results_h60_all.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-30T07:14:17Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "data/panel_persistence.py",
+          "recorded_sha256": "678b57e536c1",
+          "on_disk_sha256": "96f014e8116a",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used data/panel_persistence.py at 678b57e536c1 and the file on disk is 96f014e8116a, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "panel_extended_results_h60_all.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "panel_persistence.py"
+    },
+    {
+      "artifact": "persistence/panel_extended_results_h60_canonical.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-30T06:56:26Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "data/panel_persistence.py",
+          "recorded_sha256": "678b57e536c1",
+          "on_disk_sha256": "96f014e8116a",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used data/panel_persistence.py at 678b57e536c1 and the file on disk is 96f014e8116a, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "panel_extended_results_h60_canonical.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "panel_persistence.py"
+    },
+    {
+      "artifact": "persistence/panel_extended_results_h60_canonical_REPEAT.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-30T06:57:14Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "data/panel_persistence.py",
+          "recorded_sha256": "678b57e536c1",
+          "on_disk_sha256": "96f014e8116a",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used data/panel_persistence.py at 678b57e536c1 and the file on disk is 96f014e8116a, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "panel_extended_results_h60_canonical_REPEAT.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "panel_persistence.py"
+    },
+    {
+      "artifact": "persistence/three_coin_persistence_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-05T06:59:17Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "persistence/three_coin_persistence.py",
+          "recorded_sha256": "496e303bede6",
+          "on_disk_sha256": "2d5c50a5b605",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used persistence/three_coin_persistence.py at 496e303bede6 and the file on disk is 2d5c50a5b605, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "three_coin_persistence_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "three_coin_persistence.py"
+    },
+    {
+      "artifact": "persistence/ws2_hard_classifier_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-11T12:24:07Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "persistence/ws2_hard_classifier.py",
+          "recorded_sha256": "2aece70fd60f",
+          "on_disk_sha256": "e1927a44e6db",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used persistence/ws2_hard_classifier.py at 2aece70fd60f and the file on disk is e1927a44e6db, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "ws2_hard_classifier_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "ws2_hard_classifier.py"
+    },
+    {
+      "artifact": "persistence/ws3_taker_pnl_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-11T12:24:00Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "persistence/ws3_taker_pnl.py",
+          "recorded_sha256": "72c8f1b7a4c4",
+          "on_disk_sha256": "cb85c990ffa5",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used persistence/ws3_taker_pnl.py at 72c8f1b7a4c4 and the file on disk is cb85c990ffa5, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "ws3_taker_pnl_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "ws3_taker_pnl.py"
+    },
+    {
+      "artifact": "probes/c2_bookstate_control_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-04T15:46:45Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "probes/c2_bookstate_control.py",
+          "recorded_sha256": "19a9a4463747",
+          "on_disk_sha256": "13da96b7b38c",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used probes/c2_bookstate_control.py at 19a9a4463747 and the file on disk is 13da96b7b38c, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "c2_bookstate_control_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "c2_bookstate_control.py"
+    },
+    {
+      "artifact": "probes/c_matched_precision_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-29T17:57:51Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "probes/c_matched_precision.py",
+          "recorded_sha256": "79513a8d0e81",
+          "on_disk_sha256": "235ed042e817",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used probes/c_matched_precision.py at 79513a8d0e81 and the file on disk is 235ed042e817, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "c_matched_precision_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "c_matched_precision.py"
+    },
+    {
+      "artifact": "probes/calib_print_vs_mid_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-30T09:36:15Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "probes/calib_print_vs_mid.py",
+          "recorded_sha256": "5e64583d8f7f",
+          "on_disk_sha256": "55114e273a8d",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used probes/calib_print_vs_mid.py at 5e64583d8f7f and the file on disk is 55114e273a8d, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "calib_print_vs_mid_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "calib_print_vs_mid.py"
+    },
+    {
+      "artifact": "probes/connected_set_b1_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-30T09:37:04Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "probes/connected_set_b1.py",
+          "recorded_sha256": "b87bc0435a4a",
+          "on_disk_sha256": "9b561557299e",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used probes/connected_set_b1.py at b87bc0435a4a and the file on disk is 9b561557299e, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "connected_set_b1_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "connected_set_b1.py"
+    },
+    {
+      "artifact": "probes/decay_curve_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-04T15:48:06Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "probes/decay_curve.py",
+          "recorded_sha256": "080351d7b148",
+          "on_disk_sha256": "a8b82a62502b",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used probes/decay_curve.py at 080351d7b148 and the file on disk is a8b82a62502b, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "decay_curve_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "decay_curve.py"
+    },
+    {
+      "artifact": "probes/decile_overlap_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-11T12:59:46Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "probes/decile_overlap.py",
+          "recorded_sha256": "7726bcf6cb71",
+          "on_disk_sha256": "1c044325bc2a",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used probes/decile_overlap.py at 7726bcf6cb71 and the file on disk is 1c044325bc2a, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "decile_overlap_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "decile_overlap.py"
+    },
+    {
+      "artifact": "probes/eb_scoring_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-29T17:57:17Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "probes/eb_scoring.py",
+          "recorded_sha256": "2286365211bd",
+          "on_disk_sha256": "f8bb9ca49293",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used probes/eb_scoring.py at 2286365211bd and the file on disk is f8bb9ca49293, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "eb_scoring_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "eb_scoring.py"
+    },
+    {
+      "artifact": "probes/flat_surcharge_control_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:26:06Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "probes/flat_surcharge_control.py",
+          "recorded_sha256": "9158f89897a5",
+          "on_disk_sha256": "9158f89897a5"
+        }
+      },
+      "why": [],
+      "place": "flat_surcharge_control_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "flat_surcharge_control.py"
+    },
+    {
+      "artifact": "probes/kss_decomp_c_bookmid_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-12T15:20:09Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "probes/kss_decomp_c_bookmid.py",
+          "recorded_sha256": "925964ae53b7",
+          "on_disk_sha256": "2ac98473b063",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used probes/kss_decomp_c_bookmid.py at 925964ae53b7 and the file on disk is 2ac98473b063, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "kss_decomp_c_bookmid_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "kss_decomp_c_bookmid.py"
+    },
+    {
+      "artifact": "probes/kss_decomp_c_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-30T06:46:46Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "probes/kss_decomp_c.py",
+          "recorded_sha256": "87cd3696394c",
+          "on_disk_sha256": "1a9c935e7631",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used probes/kss_decomp_c.py at 87cd3696394c and the file on disk is 1a9c935e7631, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "kss_decomp_c_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "kss_decomp_c.py"
+    },
+    {
+      "artifact": "probes/persistence_crosswindow_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-04T15:47:12Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "probes/persistence_crosswindow.py",
+          "recorded_sha256": "8892abd5a53b",
+          "on_disk_sha256": "b8bed06d87f6",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used probes/persistence_crosswindow.py at 8892abd5a53b and the file on disk is b8bed06d87f6, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "persistence_crosswindow_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "persistence_crosswindow.py"
+    },
+    {
+      "artifact": "probes/probe_D_funding_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-21T17:53:34Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "probes/probe_D_funding.py",
+          "recorded_sha256": "b07ce93c16db",
+          "on_disk_sha256": "b07ce93c16db"
+        }
+      },
+      "why": [],
+      "place": "probe_D_funding_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "probe_D_funding.py"
+    },
+    {
+      "artifact": "probes/probe_E_lag_resolution_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-05T06:44:36Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "probes/probe_E_lag_resolution.py",
+          "recorded_sha256": "3bcba99557e5",
+          "on_disk_sha256": "dc2a2de1c8e0",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used probes/probe_E_lag_resolution.py at 3bcba99557e5 and the file on disk is dc2a2de1c8e0, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "probe_E_lag_resolution_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "probe_E_lag_resolution.py"
+    },
+    {
+      "artifact": "probes/probe_E_leadlag_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-04T02:13:28Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "probes/probe_E_leadlag.py",
+          "recorded_sha256": "726fbd231d4c",
+          "on_disk_sha256": "efe90a63acd1",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used probes/probe_E_leadlag.py at 726fbd231d4c and the file on disk is efe90a63acd1, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "probe_E_leadlag_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "probe_E_leadlag.py"
+    },
+    {
+      "artifact": "probes/probe_F_hlp_liq_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-04T04:43:22Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "probes/probe_F_hlp_liq.py",
+          "recorded_sha256": "f43afe800bb3",
+          "on_disk_sha256": "5f0b31051092",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used probes/probe_F_hlp_liq.py at f43afe800bb3 and the file on disk is 5f0b31051092, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "probe_F_hlp_liq_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "probe_F_hlp_liq.py"
+    },
+    {
+      "artifact": "probes/probe_G_horizon_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-13T12:27:17Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "probes/probe_G_horizon.py",
+          "recorded_sha256": "bfe2471a8ae7",
+          "on_disk_sha256": "0a6a143e5afc",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used probes/probe_G_horizon.py at bfe2471a8ae7 and the file on disk is 0a6a143e5afc, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "probe_G_horizon_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "probe_G_horizon.py"
+    },
+    {
+      "artifact": "probes/survivorship_census_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-21T18:10:40Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "probes/survivorship_census.py",
+          "recorded_sha256": "207f7adae3a4",
+          "on_disk_sha256": "207f7adae3a4"
+        }
+      },
+      "why": [],
+      "place": "survivorship_census_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "survivorship_census.py"
+    },
+    {
+      "artifact": "quoters/as_quoter_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-11T12:24:30Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "quoters/as_quoter.py",
+          "recorded_sha256": "ebd2eebbd6a6",
+          "on_disk_sha256": "69ff7a618087",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used quoters/as_quoter.py at ebd2eebbd6a6 and the file on disk is 69ff7a618087, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "as_quoter_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "as_quoter.py"
+    },
+    {
+      "artifact": "quoters/gm_quoter_results.json",
+      "reference_utc": null,
+      "verdict": "neutral_by_certificate",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-08-13T09:41:27Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": false,
+          "producer": "quoters/gm_quoter.py",
+          "recorded_sha256": "61e983c1157d",
+          "on_disk_sha256": "9740a2884176",
+          "excused_by_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      },
+      "why": [
+        "the run recorded here used quoters/gm_quoter.py at 61e983c1157d and the file on disk is 9740a2884176, so this file was NOT written by the bytes that are there now; checks/NEUTRAL_EDITS.json certifies that this exact pair of hashes cannot have moved a figure in it, which is a proof about the edit and not a record of a run"
+      ],
+      "place": "gm_quoter_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "gm_quoter.py"
+    },
+    {
+      "artifact": "quoters/mm_bakeoff_reference_figure_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:25:17Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "quoters/mm_bakeoff_reference_figure.py",
+          "recorded_sha256": "88cbdc36637e",
+          "on_disk_sha256": "88cbdc36637e"
+        }
+      },
+      "why": [],
+      "place": "mm_bakeoff_reference_figure_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "mm_bakeoff_reference_figure.py"
+    },
+    {
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-22T09:06:43Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "quoters/mm_bakeoff.py",
+          "recorded_sha256": "eda802802e8b",
+          "on_disk_sha256": "eda802802e8b"
+        }
+      },
+      "why": [],
+      "place": "mm_bakeoff_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "mm_bakeoff.py"
+    },
+    {
+      "artifact": "quoters/t1_backtest_results.json",
+      "reference_utc": null,
+      "verdict": "ran",
+      "legs": {
+        "finished_after_reference": {
+          "asked": false,
+          "recorded_finish_utc": "2026-10-21T17:51:53Z",
+          "why_not_asked": "no reference moment was given, so the question 'did anything run' was NOT PUT; pass one to ask it"
+        },
+        "producer_hash_matches_disk": {
+          "asked": true,
+          "answered": true,
+          "holds": true,
+          "producer": "quoters/t1_toxicity_skew_backtest.py",
+          "recorded_sha256": "3c7817ad19c7",
+          "on_disk_sha256": "3c7817ad19c7"
+        }
+      },
+      "why": [],
+      "place": "t1_backtest_results.json -> _meta.run.finished_utc and _meta.producer.sha256",
+      "producer": "t1_toxicity_skew_backtest.py"
+    }
+  ],
+  "blindness": {
+    "population_examined": 106,
+    "verdict_could_be_reached_for": 106,
+    "no_finish_time_recorded": {
+      "count": 1,
+      "files": [
+        "checks/NEUTRAL_EDITS.json"
+      ]
+    },
+    "no_producer_hash_recorded": {
+      "count": 1,
+      "files": [
+        "checks/NEUTRAL_EDITS.json"
+      ]
+    },
+    "outside_the_range_entirely": {
+      "count": 12,
+      "why": "an .npz, .png, .csv or .parquet has nowhere to carry a _meta block, so neither leg exists for it and this guard reports nothing about it at all",
+      "files": [
+        "data/d1_book_shape.png",
+        "data/d2_fill_tape.png",
+        "identity/i3_pretrade_vs_identity.png",
+        "markout/m2_fig1_counterparty_toxicity.png",
+        "markout/ws1_horizon_choice.png",
+        "markout/ws1_markout_curve.png",
+        "money/m9_decile_economics.png",
+        "notebooks/wallet_toxicity_frame.csv",
+        "persistence/ws2_hard_classifier.png",
+        "persistence/ws3_taker_pnl.png",
+        "pipeline_diagram.png",
+        "quoters/mm_bakeoff_reference.png"
+      ]
+    },
+    "reference_resolution_s": 1,
+    "reference_resolution_note": "finished_utc is written to whole seconds, so a run that ended inside the same second as the reference moment cannot be told from one that ended before it; the guard's time discrimination is 1 s and no finer",
+    "hash_covers_one_file_of": {
+      "median_modules_behind_an_artifact": 4,
+      "widest": {
+        "artifact": "notebooks/notebook_data_meta.json",
+        "modules": 12
+      },
+      "top_shared_modules": [
+        {
+          "module": "artifact.py",
+          "artifacts_it_reaches": 105
+        },
+        {
+          "module": "settings.py",
+          "artifacts_it_reaches": 105
+        },
+        {
+          "module": "panel_io.py",
+          "artifacts_it_reaches": 74
+        },
+        {
+          "module": "stats.py",
+          "artifacts_it_reaches": 47
+        },
+        {
+          "module": "checks/evidence.py",
+          "artifacts_it_reaches": 29
+        },
+        {
+          "module": "data/build_quickwin_markouts.py",
+          "artifacts_it_reaches": 24
+        }
+      ],
+      "why": "the producer hash covers the producer's own bytes. Every other module in that closure can be edited, move every number, and leave both legs of this guard holding"
+    },
+    "what_a_pass_still_permits": "a producer that reads a cache and rewrites its own artifact satisfies both legs; this guard proves a run occurred, never that a quantity was recomputed"
+  },
+  "population_dropped": [
+    {
+      "file": "checks/chk_artifact_provenance_results.json",
+      "rule": "this gate's own output"
+    }
+  ]
+}

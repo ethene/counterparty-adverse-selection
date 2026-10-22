@@ -1,0 +1,171 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "join_nolookahead_results.json",
+    "producer": {
+      "script": "chk_join_nolookahead.py",
+      "sha256": "78aee27e98fe974872215292563b69cf9be25a0021beea77845f4f9b5c217ce6",
+      "bytes": 18517,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "9050155bd9a039f4979fd1b3d4894c7beb7be019",
+      "unasked_because": null
+    },
+    "inputs": [],
+    "scope": {
+      "population": "7 hand-built join fixtures, not market data",
+      "window": "n/a: the fixtures carry synthetic timestamps chosen to put a forward reach within reach of the join",
+      "coins": "n/a: the fixtures carry no coin"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "run": {
+      "runtime_s": 0.049,
+      "finished_utc": "2026-10-22T09:38:09Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "check": "join_nolookahead",
+  "checks": [
+    {
+      "name": "price_at_interior_no_lookahead",
+      "assumption": "price_at returns the last print at-or-before q (side='right'-1); it must never reach forward to a later print",
+      "method": "price_at([10,20,30],[1,2,3], q=25)",
+      "observed": {
+        "got": 2.0,
+        "expected": 2.0,
+        "future_value_that_must_not_appear": 3.0
+      },
+      "verdict": "confirmed",
+      "note": "25 sits between print@20 and print@30; correct ref is 2.0. Getting 3.0 would be lookahead."
+    },
+    {
+      "name": "price_at_boundary_inclusive",
+      "assumption": "an exact-timestamp match is included as at-or-before (side='right' places q after the equal element, -1 lands on it)",
+      "method": "price_at([10,20,30],[1,2,3], q=30)",
+      "observed": {
+        "got": 3.0,
+        "expected": 3.0
+      },
+      "verdict": "confirmed",
+      "note": "q==last print picks that print, not nan."
+    },
+    {
+      "name": "price_at_before_first_nan",
+      "assumption": "a query before every print yields idx -1 -> nan (no price to carry back)",
+      "method": "price_at([10,20,30],[1,2,3], q=9); inspect searchsorted idx",
+      "observed": {
+        "got": "nan",
+        "searchsorted_idx": -1,
+        "expected": "nan"
+      },
+      "verdict": "confirmed",
+      "note": "idx=-1 -> nan, as required."
+    },
+    {
+      "name": "after_last_print_masked_nan",
+      "assumption": "price_at carries the last price forward, but the explicit tq>last_print mask blanks horizons past the last observed print",
+      "method": "price_at(q=35)==3.0 carried; then tq>last_print(30) guard -> nan",
+      "observed": {
+        "price_at_carried": 3.0,
+        "after_mask": "nan",
+        "last_print": 30
+      },
+      "verdict": "confirmed",
+      "note": "carry-forward is real but the mask removes it -> no fabricated future price."
+    },
+    {
+      "name": "entry_horizon_asymmetry",
+      "assumption": "entry uses searchsorted side='left'-1 (last STRICTLY BEFORE); horizon uses side='left' (first at-or-after t_fill+h*1000). These opposite sides are what make the join causal at both legs.",
+      "method": "fill exactly on snapshot t=3000 in grid [1000..5000]; entry_idx, horizon_idx(h=1), horizon_idx(h=0) checked vs hand value",
+      "observed": {
+        "entry_idx": 1,
+        "entry_expected": 1,
+        "horizon_h1_idx": 3,
+        "horizon_h1_expected": 3,
+        "horizon_h0_idx": 2,
+        "horizon_h0_expected": 2,
+        "entry_side": "left-1 (strictly before)",
+        "horizon_side": "left (at-or-after)"
+      },
+      "verdict": "confirmed",
+      "note": "entry lands strictly before the boundary; horizon lands on the at-or-after boundary; the two legs use opposite searchsorted sides as the code assumes."
+    },
+    {
+      "name": "horizon_out_of_range_invalid",
+      "assumption": "a horizon target past the last snapshot gives idx==n -> invalid (no future snapshot is invented)",
+      "method": "horizon_idx(t_fill=4500, h=1) -> target 5500 > last snapshot 5000",
+      "observed": {
+        "idx": 5,
+        "n_snapshots": 5,
+        "valid": false
+      },
+      "verdict": "confirmed",
+      "note": "out-of-range horizon correctly flagged invalid."
+    },
+    {
+      "name": "vectorized_markout_ref_batch",
+      "assumption": "the masked reference is monotone-step and never anticipates: [<10]->nan, [10,20)->1, [20,30)->2, ==30->3, [>30]->nan",
+      "method": "markout_ref over q=[9,10,15,20,25,30,31]",
+      "observed": {
+        "q": [
+          9,
+          10,
+          15,
+          20,
+          25,
+          30,
+          31
+        ],
+        "got": [
+          "nan",
+          1.0,
+          1.0,
+          2.0,
+          2.0,
+          3.0,
+          "nan"
+        ],
+        "expected": [
+          "nan",
+          1.0,
+          1.0,
+          2.0,
+          2.0,
+          3.0,
+          "nan"
+        ]
+      },
+      "verdict": "confirmed",
+      "note": "step-function join with no lookahead reproduced vectorized."
+    }
+  ],
+  "overall_verdict": "confirmed"
+}

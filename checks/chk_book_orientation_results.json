@@ -1,0 +1,269 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_book_orientation_results.json",
+    "producer": {
+      "script": "chk_book_orientation.py",
+      "sha256": "59733078bcfc7bd9d4b822b6bda8e760ad33afa079b116f1ca667abf12a82969",
+      "bytes": 27662,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "5e427f33ea100e63572deb2e60ee75ba27318c7d",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "mid_series_BTC.npz",
+        "bytes": 62888304,
+        "sha256": "c0c1890bdcf4f1ada237bfb9ef8122af8ea2418af1ea22a96d76bcdfa8ed7d8c",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "mid_series_ETH.npz",
+        "bytes": 62890344,
+        "sha256": "eb617dff3303dc678d6db75547a92ae612bd02f90d34ea91dec143acbdcbe436",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "l2_cache",
+        "bytes": null,
+        "sha256": null,
+        "present": true,
+        "kind": "directory"
+      }
+    ],
+    "scope": {
+      "population": "3,144,405 mid-series rows on the derived leg and 5,400 raw book snapshots on the monotonicity leg",
+      "window": "10 days of the local l2 cache sampled at [0, 11, 23] hours per cell; the mid series carry their own span",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "book",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "not_caught": [
+      "the derived leg is circular: it restates levels[1] > levels[0] under the orientation it assumes, so it can refute but never confirm"
+    ],
+    "run": {
+      "runtime_s": 2.125,
+      "finished_utc": "2026-10-22T09:38:32Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "check": "chk_book_orientation",
+  "mode": "full",
+  "non_circular_raw_leg_ran_and_passed": true,
+  "checks": [
+    {
+      "name": "derived_spread_positive",
+      "assumption": "mid_series spread = ask_px - bid_px > 0 (i.e. levels[0]=bids, levels[1]=asks gives bid < ask).",
+      "method": "Loaded mid_series_{BTC,ETH}.npz; counted rows with spread<=0 and the minimum/median spread per coin and overall. CIRCULAR by construction (spread := levels[1].px - levels[0].px): proves only ask>bid GIVEN the assumed orientation, never grounds the verdict.",
+      "circular": true,
+      "observed": {
+        "per_coin": {
+          "BTC": {
+            "rows": 1572177,
+            "spread_le0_count": 0,
+            "spread_le0_frac": 0.0,
+            "min_spread": 1.0,
+            "median_spread": 1.0,
+            "mid_min": 87676.5,
+            "mid_max": 94568.5,
+            "median_mid": 90495.5
+          },
+          "ETH": {
+            "rows": 1572228,
+            "spread_le0_count": 0,
+            "spread_le0_frac": 0.0,
+            "min_spread": 0.09999999999990905,
+            "median_spread": 0.09999999999990905,
+            "mid_min": 2914.2,
+            "mid_max": 3448.1499999999996,
+            "median_mid": 3130.95
+          }
+        },
+        "total_rows": 3144405,
+        "total_spread_le0": 0,
+        "total_spread_le0_frac": 0.0,
+        "global_min_spread": 0.09999999999990905,
+        "missing_coins": []
+      },
+      "verdict": "uncertain",
+      "note": "spread = ask - bid is strictly positive for ALL derived rows across 2 coins (3144405 rows) -> ask > bid GIVEN the assumed orientation. [CIRCULAR: spread := levels[1].px - levels[0].px, so this only restates levels[1]>levels[0] GIVEN the assumed orientation - it cannot catch a [0]/[1] swap.]"
+    },
+    {
+      "name": "mid_scale_sanity",
+      "assumption": "mid is a plausible price (no decimal/scale mis-read) and spread is a small fraction of mid.",
+      "method": "Per coin: median mid in a wide price band, all values finite, and median spread/mid <= 0.05.",
+      "observed": {
+        "per_coin": {
+          "BTC": {
+            "median_mid": 90495.5,
+            "mid_min": 87676.5,
+            "mid_max": 94568.5,
+            "price_band": [
+              1000.0,
+              10000000.0
+            ],
+            "median_in_band": true,
+            "all_finite": true,
+            "median_spread": 1.0,
+            "median_spread_frac_of_mid": 1.1050273218005316e-05,
+            "spread_ratio_ok": true
+          },
+          "ETH": {
+            "median_mid": 3130.95,
+            "mid_min": 2914.2,
+            "mid_max": 3448.1499999999996,
+            "price_band": [
+              100.0,
+              1000000.0
+            ],
+            "median_in_band": true,
+            "all_finite": true,
+            "median_spread": 0.09999999999990905,
+            "median_spread_frac_of_mid": 3.193918778642554e-05,
+            "spread_ratio_ok": true
+          }
+        },
+        "anomalous_coins": []
+      },
+      "verdict": "confirmed",
+      "note": "mid sits in a plausible order of magnitude per coin, is all-finite, and median spread is a small fraction of mid (no decimal/scale error)."
+    },
+    {
+      "name": "raw_ladder_monotonicity",
+      "assumption": "data['levels'][0]=bids (strictly descending ladder) and [1]=asks (strictly ascending ladder), with best-bid<best-ask and no crossed/equal book.",
+      "method": "Mirrored i4_l2_mid parsing (levels[0]=bids, levels[1]=asks, px via float) on raw l2_cache snapshots across ALL cached days, both coins, hours [0, 11, 23], up to 90/cell; tested ladder MONOTONICITY (non-circular), not a derived spread sign.",
+      "circular": false,
+      "observed": {
+        "snapshots_checked": 5400,
+        "inverted_bid_gt_ask": 0,
+        "inverted_frac": 0.0,
+        "crossed_or_equal_bid_ge_ask": 0,
+        "bids_not_descending": 0,
+        "asks_not_ascending": 0,
+        "cells_used": 60,
+        "distinct_cells": 60,
+        "distinct_days": 10,
+        "sample_hours": [
+          0,
+          11,
+          23
+        ],
+        "parse_skips": 0,
+        "per_coin": {
+          "BTC": {
+            "checked": 2700,
+            "inverted": 0,
+            "crossed_eq": 0,
+            "bids_not_desc": 0,
+            "asks_not_asc": 0
+          },
+          "ETH": {
+            "checked": 2700,
+            "inverted": 0,
+            "crossed_eq": 0,
+            "bids_not_desc": 0,
+            "asks_not_asc": 0
+          }
+        },
+        "examples": [
+          {
+            "day": "20251204",
+            "coin": "BTC",
+            "hour": 0,
+            "best_bid_px": 93397.0,
+            "best_ask_px": 93398.0,
+            "bids_descending": true,
+            "asks_ascending": true,
+            "bid_lt_ask": true
+          },
+          {
+            "day": "20251204",
+            "coin": "BTC",
+            "hour": 0,
+            "best_bid_px": 93398.0,
+            "best_ask_px": 93399.0,
+            "bids_descending": true,
+            "asks_ascending": true,
+            "bid_lt_ask": true
+          },
+          {
+            "day": "20251204",
+            "coin": "BTC",
+            "hour": 0,
+            "best_bid_px": 93398.0,
+            "best_ask_px": 93399.0,
+            "bids_descending": true,
+            "asks_ascending": true,
+            "bid_lt_ask": true
+          },
+          {
+            "day": "20251204",
+            "coin": "BTC",
+            "hour": 0,
+            "best_bid_px": 93390.0,
+            "best_ask_px": 93397.0,
+            "bids_descending": true,
+            "asks_ascending": true,
+            "bid_lt_ask": true
+          },
+          {
+            "day": "20251204",
+            "coin": "BTC",
+            "hour": 0,
+            "best_bid_px": 93390.0,
+            "best_ask_px": 93391.0,
+            "bids_descending": true,
+            "asks_ascending": true,
+            "bid_lt_ask": true
+          },
+          {
+            "day": "20251204",
+            "coin": "BTC",
+            "hour": 0,
+            "best_bid_px": 93390.0,
+            "best_ask_px": 93391.0,
+            "bids_descending": true,
+            "asks_ascending": true,
+            "bid_lt_ask": true
+          }
+        ]
+      },
+      "verdict": "confirmed",
+      "note": "ladder monotonicity holds on ALL 5400 raw snapshots across 60 (day,coin,hour) cells / 10 days: levels[0] strictly descending (bids), levels[1] strictly ascending (asks), best-bid < best-ask, none crossed/equal (0 inverted, 0 crossed/equal, 0 bids-not-desc, 0 asks-not-asc) -> levels[0]=bids, levels[1]=asks is GROUND-TRUTHED non-circularly."
+    }
+  ],
+  "overall_verdict": "confirmed"
+}

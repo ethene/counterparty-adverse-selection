@@ -1,0 +1,157 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "m6_inventory_results.json",
+    "producer": {
+      "script": "m6_inventory.py",
+      "sha256": "f93455d16a69a3da29a00ddefc8c49a7940f84f6a9d63d8c89de4db6547f2f80",
+      "bytes": 15854
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 rows of the trade-print panel; every fill with a finite markout and a finite start_pos enters, with no per-wallet fill floor, no resampling and no randomness",
+      "window": "10 days present in the input, day-of-month 4-13; the calendar dates of the window are declared by its producer, build_quickwin_markouts.py",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "object": "M6 - toxicity vs signed pre-trade inventory",
+    "markout_sign": "signed taker markout bps; positive = taker profited = maker adverse-selected",
+    "magnitude_test": "Spearman rho of the 60s and 10s taker markout vs |start_pos|, each under its own key",
+    "direction_test": "mean markout, accumulating (extend) vs reducing (cut), where extend = sign(start_pos) * [+1 buy-aggr / -1 sell-aggr] > 0",
+    "start_pos_coverage": "100% present; ~87.8% nonzero; start_pos==0 kept in the |start_pos| Spearman, excluded from the directional split",
+    "run": {
+      "runtime_s": 6.236,
+      "finished_utc": "2026-08-21T18:17:24Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "BTC": {
+    "n_rows": 1200863,
+    "n_start_pos_nonzero": 1000642,
+    "frac_start_pos_nonzero": 0.8332690739909548,
+    "magnitude": {
+      "spearman_markout_vs_abs_start_pos_60s": 0.049698068856564186,
+      "n_markout_60s": 1200302,
+      "spearman_markout_vs_abs_start_pos_10s": 0.14215453506583015,
+      "n_markout_10s": 1200779,
+      "note": "positive rho => bigger pre-trade inventory associates with more taker markout (more maker adverse selection)"
+    },
+    "direction": {
+      "accumulating": {
+        "n": 385672,
+        "mean_markout_bps_60s": 0.5063148972495675,
+        "mean_markout_bps_10s": 0.6812158455685217,
+        "definition": "taker trades SAME direction as existing inventory"
+      },
+      "reducing": {
+        "n": 614511,
+        "mean_markout_bps_60s": 0.4948100943955593,
+        "mean_markout_bps_10s": 0.49982560188395364,
+        "definition": "taker trades OPPOSITE direction to existing inventory"
+      },
+      "accumulate_minus_reduce_markout_bps_60s": 0.011504802854008178,
+      "accumulate_minus_reduce_markout_bps_10s": 0.18139024368456802,
+      "n_flat_excluded": 200221,
+      "note": "positive gap => fills that BUILD inventory carry higher taker markout than fills that CUT it; start_pos==0 rows excluded"
+    }
+  },
+  "ETH": {
+    "n_rows": 1279404,
+    "n_start_pos_nonzero": 1176767,
+    "frac_start_pos_nonzero": 0.9197774901438482,
+    "magnitude": {
+      "spearman_markout_vs_abs_start_pos_60s": 0.028059905945520068,
+      "n_markout_60s": 1278714,
+      "spearman_markout_vs_abs_start_pos_10s": 0.060669170331744786,
+      "n_markout_10s": 1279313,
+      "note": "positive rho => bigger pre-trade inventory associates with more taker markout (more maker adverse selection)"
+    },
+    "direction": {
+      "accumulating": {
+        "n": 578167,
+        "mean_markout_bps_60s": 1.2445345808852941,
+        "mean_markout_bps_10s": 0.7342292273185405,
+        "definition": "taker trades SAME direction as existing inventory"
+      },
+      "reducing": {
+        "n": 597948,
+        "mean_markout_bps_60s": 0.40444704697555667,
+        "mean_markout_bps_10s": 0.5879155608861437,
+        "definition": "taker trades OPPOSITE direction to existing inventory"
+      },
+      "accumulate_minus_reduce_markout_bps_60s": 0.8400875339097374,
+      "accumulate_minus_reduce_markout_bps_10s": 0.14631366643239674,
+      "n_flat_excluded": 102637,
+      "note": "positive gap => fills that BUILD inventory carry higher taker markout than fills that CUT it; start_pos==0 rows excluded"
+    }
+  },
+  "pooled": {
+    "n_rows": 2480267,
+    "n_start_pos_nonzero": 2177409,
+    "frac_start_pos_nonzero": 0.8778929849084796,
+    "magnitude": {
+      "spearman_markout_vs_abs_start_pos_60s": 0.032765655524753676,
+      "n_markout_60s": 2479016,
+      "spearman_markout_vs_abs_start_pos_10s": 0.07869950132537294,
+      "n_markout_10s": 2480092,
+      "note": "positive rho => bigger pre-trade inventory associates with more taker markout (more maker adverse selection)"
+    },
+    "direction": {
+      "accumulating": {
+        "n": 963839,
+        "mean_markout_bps_60s": 0.9491422364925503,
+        "mean_markout_bps_10s": 0.7130172994585641,
+        "definition": "taker trades SAME direction as existing inventory"
+      },
+      "reducing": {
+        "n": 1212459,
+        "mean_markout_bps_60s": 0.45024578048581415,
+        "mean_markout_bps_10s": 0.5432708905152855,
+        "definition": "taker trades OPPOSITE direction to existing inventory"
+      },
+      "accumulate_minus_reduce_markout_bps_60s": 0.4988964560067361,
+      "accumulate_minus_reduce_markout_bps_10s": 0.16974640894327853,
+      "n_flat_excluded": 302858,
+      "note": "positive gap => fills that BUILD inventory carry higher taker markout than fills that CUT it; start_pos==0 rows excluded"
+    }
+  }
+}

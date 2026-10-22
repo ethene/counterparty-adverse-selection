@@ -1,0 +1,839 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_producer_committed_results.json",
+    "producer": {
+      "script": "chk_producer_committed.py",
+      "sha256": "744663fbf960b7b30004b04ea77c97e3097f399e0ac871958972ad053b72d3a5",
+      "bytes": 30008,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "b616de436fb8ccc5057537fc886d57a06f0e6b43",
+      "unasked_because": null
+    },
+    "inputs": [],
+    "scope": {
+      "population": "105 shipped results files recording a producer hash, out of 106 .json files walked",
+      "window": "n/a: this gate reads the repository as it stands now, not a period of market data",
+      "coins": "n/a: this gate reads file text and touches no market data"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "object_format": "sha1",
+    "resolution_method": "content-census",
+    "resolution_probe": "`git cat-file -e` refused 37764a17beab..., a content sha256 this database demonstrably holds, so a recorded hash is not an object name here; every blob was read once and indexed by the sha256 of its bytes instead",
+    "n_blobs": 450,
+    "n_distinct_contents": 450,
+    "n_json_walked": 106,
+    "n_with_producer_hash": 105,
+    "n_excused": 0,
+    "n_certified_prior_history": 63,
+    "n_baseline_declared": 0,
+    "n_baseline_spent": 0,
+    "n_calibration_cases": 5,
+    "n_calibration_failed": 0,
+    "run": {
+      "runtime_s": 0.681,
+      "finished_utc": "2026-10-22T09:37:37Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {}
+    }
+  },
+  "verdict": "FAIL",
+  "n_findings": 5,
+  "findings": [
+    {
+      "file": "checks/chk_notebook_expectations_results.json",
+      "line": 0,
+      "rule": "PRODUCER-NEVER-COMMITTED",
+      "detail": "this file was computed by a version of chk_notebook_expectations.py whose bytes this repository does not hold: those bytes are in the working tree as chk_notebook_expectations.py and have simply never been saved, so saving them repairs this",
+      "source": "1a915288869fc0da16c8c8de7363a047..."
+    },
+    {
+      "file": "notebooks/notebook_book_meta.json",
+      "line": 0,
+      "rule": "PRODUCER-NEVER-COMMITTED",
+      "detail": "this file was computed by a version of make_notebook_book.py whose bytes this repository does not hold: those bytes are in the working tree as make_notebook_book.py and have simply never been saved, so saving them repairs this",
+      "source": "c2af513a76778361d66bfd1df3165922..."
+    },
+    {
+      "file": "notebooks/notebook_data_meta.json",
+      "line": 0,
+      "rule": "PRODUCER-NEVER-COMMITTED",
+      "detail": "this file was computed by a version of make_notebook_data.py whose bytes this repository does not hold: those bytes are in the working tree as make_notebook_data.py and have simply never been saved, so saving them repairs this",
+      "source": "afb09997b914b4330a65e5c148b20eea..."
+    },
+    {
+      "file": "notebooks/notebook_expected.json",
+      "line": 0,
+      "rule": "PRODUCER-NEVER-COMMITTED",
+      "detail": "this file was computed by a version of make_notebook_data.py whose bytes this repository does not hold: those bytes are in the working tree as make_notebook_data.py and have simply never been saved, so saving them repairs this",
+      "source": "afb09997b914b4330a65e5c148b20eea..."
+    },
+    {
+      "file": "notebooks/notebook_fills_meta.json",
+      "line": 0,
+      "rule": "PRODUCER-NEVER-COMMITTED",
+      "detail": "this file was computed by a version of make_notebook_fills.py whose bytes this repository does not hold: those bytes are in the working tree as make_notebook_fills.py and have simply never been saved, so saving them repairs this",
+      "source": "93904d41e93dc08d4f38fc09a8f38f5d..."
+    }
+  ],
+  "excused_by_baseline": [],
+  "certified_prior_history_not_shipped": [
+    {
+      "file": "checks/chk_field_hygiene_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: chk_field_hygiene.py moved from 80094a002c70 to the bytes on disk a904d0cd4e0e, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "80094a002c7049a12a96d321244c3f34...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "data/d1_book_shape_figure_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: d1_book_shape_figure.py moved from 3d61852aad40 to the bytes on disk cb1d01fe379e, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "3d61852aad408ebe22e36ddf0ffe150d...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "data/d2_fill_tape_figure_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: d2_fill_tape_figure.py moved from 1330d5042f5a to the bytes on disk 231729a52eff, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "1330d5042f5a1b05ff3c44f46dbf31af...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "data/i4_midmarkout_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: i4_midmarkout.py moved from 51f4da06d83c to the bytes on disk d1926d619fad, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "51f4da06d83c454969c071892fcbaf0f...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "data/panel_persistence_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: panel_persistence.py moved from 678b57e536c1 to the bytes on disk 96f014e8116a, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "678b57e536c1063bb972f19d59049ce0...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "data/panel_v2_manifest.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: panel_rebuild_v2.py moved from ed30258d90b6 to the bytes on disk 32a535c1487a, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "ed30258d90b69f3a0120e762867bd534...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "data/quickwin_pass_summary.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: build_quickwin_markouts.py moved from 7a77a582d243 to the bytes on disk 4e52b0978001, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "7a77a582d2432e34a1eed21e3775d910...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "data/toxicity_frame_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: build_toxicity_frame.py moved from ec43af9db750 to the bytes on disk 3e9bc721c8d7, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "ec43af9db750fd5880d0f1826c602c9f...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "identity/follow_the_informed_oos_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: follow_the_informed_oos.py moved from 4ccf3b10f4db to the bytes on disk 3aac88175f1f, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "4ccf3b10f4dbb894f3486a493ad246f4...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "identity/i3_book_nonrecoverability_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: i3_book_comparator.py moved from 4a59c8df075f to the bytes on disk 439c5b318f50, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "4a59c8df075f366dd81110578fe47cc7...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "identity/i3_depth_control_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: i3_depth_control.py moved from 5bc76bf9b7e5 to the bytes on disk f9f58d26edf6, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "5bc76bf9b7e5166cc95b26a4d9f1485a...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "identity/i3_nonrecoverability_mid_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: i3_nonrecoverability_oos.py moved from ba540f4d82ae to the bytes on disk c085c9662f7b, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "ba540f4d82aee1df65f50782d3ef23d7...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "identity/i3_pretrade_vs_identity_figure_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: i3_pretrade_vs_identity_figure.py moved from 257b4e988083 to the bytes on disk bea813a9a931, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "257b4e98808340c792a8e143922d54b0...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "identity/i3_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: i3_nonrecoverability_oos.py moved from 499f060ce98f to the bytes on disk c085c9662f7b, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "499f060ce98f6b0bfcc582ea635c769c...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "identity/i5_exclusion_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: i5_exclusion.py moved from 073d1059915a to the bytes on disk 10fc694c772c, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "073d1059915a2bf71b17ac8a94b6f3be...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "markout/confound_asymmetry_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: confound_asymmetry.py moved from 6f815ea2bd30 to the bytes on disk 51be7bcfa705, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "6f815ea2bd30e2c7a91ca5b231a5bcd0...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "markout/m2_figure_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: m2_figure.py moved from 0bfed9d36d80 to the bytes on disk 6cb9a19b2159, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "0bfed9d36d80a86de6d11baf6121bc04...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "markout/m5_termstructure_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: m5_termstructure.py moved from a2c609914960 to the bytes on disk 0da6d46f1c97, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "a2c609914960cd125aa6c139821537bf...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "markout/m6_inventory_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: m6_inventory.py moved from f93455d16a69 to the bytes on disk 2e5319cc0029, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "f93455d16a69a3da29a00ddefc8c49a7...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "markout/temp_perm_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: temp_perm_decomp.py moved from 708c5e809f04 to the bytes on disk b9f7399bcc91, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "708c5e809f040fc0c43c603d7b605698...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "markout/ws1_horizon_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: ws1_horizon_persistence.py moved from 21010a5970a1 to the bytes on disk f09c353a32a6, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "21010a5970a13927a90b79a32f834a9e...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "markout/ws1_markout_curve_figure_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: ws1_markout_curve_figure.py moved from 06ac6ea0e104 to the bytes on disk a066921bf2cb, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "06ac6ea0e10432372336be0f12394c95...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "money/m11_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: m11_concentration.py moved from 57de3f7c7b5f to the bytes on disk a430e9e89e2c, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "57de3f7c7b5fee6332964af808e33132...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "money/m4_realizedpnl_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: m4_realizedpnl.py moved from 10d1c088f0c6 to the bytes on disk 29931409c59b, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "10d1c088f0c6d73c5d4696fe769a487f...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "money/m7_size_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: m7_size.py moved from 78ec040ed22b to the bytes on disk bfcea028cd4f, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "78ec040ed22b0f3fb20fbc2a1539265b...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "money/m8_makerside_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: m8_makerside.py moved from 64c42e33bac4 to the bytes on disk 18ed97beecfe, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "64c42e33bac4fdd748445d2200241b1c...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "money/m9_decile_economics_figure_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: m9_decile_economics_figure.py moved from 9297253dca36 to the bytes on disk abbd30a9080b, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "9297253dca36ce1dfa9a64322bc4101d...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "money/maker_econ_b2_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: maker_econ_b2.py moved from 1acf6c196033 to the bytes on disk c4bf6312f1e8, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "1acf6c1960331efe12b1a45753693605...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "money/maker_econ_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: maker_econ.py moved from af08b379e48b to the bytes on disk 68baa4c9df90, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "af08b379e48bce71f733607e95799738...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "money/t3_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: t3_capacity.py moved from 94506df942db to the bytes on disk 7153ef9913c1, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "94506df942db4c45d44386c7354cd856...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/forward_toxicity_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: forward_toxicity.py moved from 6f87afe3577e to the bytes on disk 93a73d853ead, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "6f87afe3577e18ab864c2bb766a8b82a...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/i2_walletfe_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: i2_walletfe.py moved from 8d3105a9c1bf to the bytes on disk 550b7b3592f6, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "8d3105a9c1bf124841978c3fef797ef3...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/ks2_multiday_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: ks2_markout_multiday.py moved from ac4b16973a82 to the bytes on disk 41227c39d7b3, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "ac4b16973a82c7b104b9bee3a9ddf0f3...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/ks2_persistence_10day_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: ks2_persistence_10day.py moved from 4742b40dceae to the bytes on disk 65f6376a76c1, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "4742b40dceae6c9167f00f16e63d3d91...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/ks2_persistence_mid_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: ks2_persistence_10day.py moved from b6ff5e6cee58 to the bytes on disk 65f6376a76c1, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "b6ff5e6cee58b7ef3eaecab7b69ba4d1...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/m9_crossasset_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: m9_crossasset.py moved from 7d544fabed0c to the bytes on disk 3907acb5c27d, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "7d544fabed0c0c6cfa360f9fdcecabda...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/panel_analyze_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: panel_analyze.py moved from 257eeb65c1b0 to the bytes on disk 6f65a217563b, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "257eeb65c1b08b6167d8f15eed0d4084...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/panel_common_idio_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: panel_common_idio.py moved from b1994b9f2c1f to the bytes on disk 1d2cd011ec82, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "b1994b9f2c1f9f0380eea96ce330d313...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/panel_extended_results_h10_all.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: panel_persistence.py moved from 678b57e536c1 to the bytes on disk 96f014e8116a, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "678b57e536c1063bb972f19d59049ce0...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/panel_extended_results_h10_canonical.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: panel_persistence.py moved from 678b57e536c1 to the bytes on disk 96f014e8116a, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "678b57e536c1063bb972f19d59049ce0...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/panel_extended_results_h1_all.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: panel_persistence.py moved from 678b57e536c1 to the bytes on disk 96f014e8116a, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "678b57e536c1063bb972f19d59049ce0...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/panel_extended_results_h1_canonical.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: panel_persistence.py moved from 678b57e536c1 to the bytes on disk 96f014e8116a, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "678b57e536c1063bb972f19d59049ce0...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/panel_extended_results_h60_all.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: panel_persistence.py moved from 678b57e536c1 to the bytes on disk 96f014e8116a, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "678b57e536c1063bb972f19d59049ce0...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/panel_extended_results_h60_canonical.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: panel_persistence.py moved from 678b57e536c1 to the bytes on disk 96f014e8116a, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "678b57e536c1063bb972f19d59049ce0...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/panel_extended_results_h60_canonical_REPEAT.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: panel_persistence.py moved from 678b57e536c1 to the bytes on disk 96f014e8116a, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "678b57e536c1063bb972f19d59049ce0...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/three_coin_persistence_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: three_coin_persistence.py moved from 496e303bede6 to the bytes on disk 2d5c50a5b605, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "496e303bede62e0e498abe8fbb4b213b...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/ws2_hard_classifier_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: ws2_hard_classifier.py moved from 2aece70fd60f to the bytes on disk e1927a44e6db, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "2aece70fd60f626cd30732db26e4b017...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "persistence/ws3_taker_pnl_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: ws3_taker_pnl.py moved from 72c8f1b7a4c4 to the bytes on disk cb85c990ffa5, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "72c8f1b7a4c48ef79e27ca92b7edea21...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "probes/c2_bookstate_control_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: c2_bookstate_control.py moved from 19a9a4463747 to the bytes on disk 13da96b7b38c, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "19a9a4463747ae892df916e4b4ad06b6...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "probes/c_matched_precision_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: c_matched_precision.py moved from 79513a8d0e81 to the bytes on disk 235ed042e817, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "79513a8d0e81460eb339913fb0d97da7...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "probes/calib_print_vs_mid_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: calib_print_vs_mid.py moved from 5e64583d8f7f to the bytes on disk 55114e273a8d, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "5e64583d8f7f7f0b6183403db5b1ea02...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "probes/connected_set_b1_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: connected_set_b1.py moved from b87bc0435a4a to the bytes on disk 9b561557299e, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "b87bc0435a4a47ebda75e9be68b94eb6...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "probes/decay_curve_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: decay_curve.py moved from 080351d7b148 to the bytes on disk a8b82a62502b, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "080351d7b148c87c698ecc42ac265712...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "probes/decile_overlap_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: decile_overlap.py moved from 7726bcf6cb71 to the bytes on disk 1c044325bc2a, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "7726bcf6cb712d28d8624a7d1c3de5c5...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "probes/eb_scoring_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: eb_scoring.py moved from 2286365211bd to the bytes on disk f8bb9ca49293, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "2286365211bdd349b018d2bbb66c49ef...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "probes/kss_decomp_c_bookmid_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: kss_decomp_c_bookmid.py moved from 925964ae53b7 to the bytes on disk 2ac98473b063, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "925964ae53b71787375f64d59059146b...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "probes/kss_decomp_c_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: kss_decomp_c.py moved from 87cd3696394c to the bytes on disk 1a9c935e7631, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "87cd3696394c3f18822bd2c48f7e6ede...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "probes/persistence_crosswindow_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: persistence_crosswindow.py moved from 8892abd5a53b to the bytes on disk b8bed06d87f6, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "8892abd5a53b5afa82e089f37d983c4a...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "probes/probe_E_lag_resolution_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: probe_E_lag_resolution.py moved from 3bcba99557e5 to the bytes on disk dc2a2de1c8e0, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "3bcba99557e5e8b36f7f01e5ad9ba94b...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "probes/probe_E_leadlag_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: probe_E_leadlag.py moved from 726fbd231d4c to the bytes on disk efe90a63acd1, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "726fbd231d4ccbbc7e0d5ade70fdba81...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "probes/probe_F_hlp_liq_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: probe_F_hlp_liq.py moved from f43afe800bb3 to the bytes on disk 5f0b31051092, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "f43afe800bb360c405f1d2a6278731fa...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "probes/probe_G_horizon_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: probe_G_horizon.py moved from bfe2471a8ae7 to the bytes on disk 0a6a143e5afc, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "bfe2471a8ae762fc707d0240606b6bae...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    },
+    {
+      "file": "quoters/as_quoter_results.json",
+      "line": 0,
+      "rule": "PRODUCER-IN-UNSHIPPED-HISTORY-CERTIFIED",
+      "detail": "the prior history is not shipped; the link from the recorded producer to the one on disk is certified: as_quoter.py moved from ebd2eebbd6a6 to the bytes on disk 69ff7a618087, and checks/NEUTRAL_EDITS.json certifies that pair for this artifact",
+      "source": "ebd2eebbd6a65ed8d2c0927a2df30980...",
+      "certificate": {
+        "issued_utc": "2026-08-01T00:00:00Z",
+        "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+      }
+    }
+  ],
+  "baseline_entries_spent": [],
+  "calibration": [
+    {
+      "predicate": "a committed producer resolves",
+      "case": "must stay silent: the committed bytes of artifact.py",
+      "got": "resolves",
+      "want": "resolves",
+      "ok": true
+    },
+    {
+      "predicate": "an unsaved edit does not resolve",
+      "case": "must fire: the same bytes of artifact.py with one edit appended, which is the disease's own shape",
+      "got": "absent",
+      "want": "absent",
+      "ok": true
+    },
+    {
+      "predicate": "a hash of nothing does not resolve",
+      "case": "must fire: sixty-four zeros, which name no bytes at all",
+      "got": "absent",
+      "want": "absent",
+      "ok": true
+    },
+    {
+      "predicate": "a certified link is accepted",
+      "case": "must stay silent: build_diagram_results.json with the FROM hash its certificate names",
+      "got": "certified",
+      "want": "certified",
+      "ok": true
+    },
+    {
+      "predicate": "an uncertified hash is not accepted",
+      "case": "must fire: build_diagram_results.json with one hex digit of that FROM hash changed",
+      "got": "not certified",
+      "want": "not certified",
+      "ok": true
+    }
+  ]
+}

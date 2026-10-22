@@ -1,0 +1,127 @@
+# counterparty-adverse-selection: code for "Counterparty-Resolved Adverse Selection and
+# Quote Design on a Transparent Perpetual Exchange" (Stakhin and Zaman, 2026)
+# Python >= 3.11
+#
+# =============================================================================
+# INSTALL, one command, from this directory
+# =============================================================================
+#
+#   pip install -r requirements.txt
+#
+# =============================================================================
+# RUN, three routes, in the order a new reader should take them
+# =============================================================================
+#
+# 1. The reproduction notebook, which needs no account, no credentials and no
+#    payment. Open it locally or upload the single file to Google Colab and run all
+#    cells. It downloads about 190 MB from the public dataset named in README.md,
+#    recomputes the reported numbers from the per-fill data, and asserts each one
+#    against the committed expectations, failing the run if any check does not pass.
+#
+#      notebooks/counterparty_adverse_selection.ipynb
+#
+#    The 190 MB is declared by hand, not derived: it is the size of three files in a
+#    public archive (notebook_fills.npz, notebook_book_BTC.npz, notebook_book_ETH.npz),
+#    measured at 189,763,675 bytes, so build_requirements_census.py cannot reach it.
+#
+# 2. The integrity checks, offline, one command. They check the shipped tree against
+#    its own rules and print the expectation, fact and place on any failure. Add --data
+#    only after building quickwin_markouts.npz.
+#
+#      python3 checks/run_all_checks.py
+#
+# 3. The pipeline itself. It has nine groups and one entry point each. An entry
+#    point with no flags prints what it would recompute and what that would cost and
+#    computes nothing; --run recomputes the group, and --only brings one node or one
+#    named quantity up to date together with everything upstream of it.
+#
+#      python3 run/data.py            python3 run/money.py
+#      python3 run/markout.py         python3 run/controls.py
+#      python3 run/persistence.py     python3 run/gates.py
+#      python3 run/identity.py        python3 run/notebook.py
+#      python3 run/quoters.py
+#
+# =============================================================================
+# THE ENVIRONMENT THE REPORTED NUMBERS WERE PRODUCED IN
+# =============================================================================
+#
+# Every result was produced in an ephemeral, project-free environment created from
+# this file, with:
+#
+#   uv run --no-project --with-requirements requirements.txt python3 <script>.py
+#
+# The shorter form `uv run --no-project --with numpy python3 <script>.py` does not
+# honour the pins: it resolves numpy freshly on the day it runs (measured: 2.5.1
+# against the pinned 2.4.6, with nothing to announce it) and installs no matplotlib.
+# Some script headers still show the short form; this file governs.
+#
+# Exact pins cannot move. pyarrow and lz4 are ranges, so what they resolve to depends
+# on the package index on the day; no reported number passes through either. To see
+# what a range resolved to:
+#
+#   uv run --no-project --with-requirements requirements.txt python3 -c \
+#     "import importlib.metadata as m; print(m.version('pyarrow'))"
+#
+# Two system tools are needed by the routes that read the live archives, and neither
+# is installable from here: the AWS command-line client on PATH, and the lz4
+# command-line binary as a decompression fallback. See CONFIG.md for the archive setup.
+#
+# =============================================================================
+# WHICH FILES NEED WHAT
+#
+# The block below is written by build_requirements_census.py, which walks the syntax
+# tree of every shipped .py file, so the counts cannot go stale silently.
+#
+#   uv run --no-project python3 build_requirements_census.py           # check
+#   uv run --no-project python3 build_requirements_census.py --write   # regenerate
+# =============================================================================
+#
+# BEGIN DERIVED BLOCK
+# Everything down to END DERIVED BLOCK is written by build_requirements_census.py from
+# the syntax tree of every shipped .py file. A hand edit here is overwritten the next
+# time it runs, and running it without --write reports what moved instead of writing.
+#
+# WHICH FILES NEED WHAT, counted on 2026-10-21 by walking the syntax tree of all 127
+# shipped .py files rather than by searching for text. The two disagree, and the search
+# is the one that is wrong: a text search for the word matplotlib returns seven files
+# here and five of them import it, the other two carrying the word inside a docstring.
+#
+# numpy         82 files, the array type every computing script in the pipeline is
+#                  written in. Imported as numpy.
+# matplotlib    11 files, drawing the figures of the paper, and the notebook besides.
+#                  Imported as matplotlib, matplotlib.pyplot, matplotlib.ticker.
+# scipy          6 files, the statistical tests and the connected-component walk.
+#                  Imported as scipy, scipy.sparse, scipy.sparse.csgraph, scipy.stats.
+#                  persistence/three_coin_persistence.py, probes/calib_print_vs_mid.py,
+#                  probes/connected_set_b1.py, probes/decay_curve.py,
+#                  probes/persistence_crosswindow.py, probes/probe_D_funding.py.
+# lz4            3 files, reading the compressed archive files in process. Imported as
+#                  lz4.frame.
+#                  checks/chk_book_orientation.py, data/i4_l2_mid.py,
+#                  identity/i3_book_comparator.py.
+# pyarrow        2 files, reading and writing parquet. Imported as pyarrow,
+#                  pyarrow.parquet.
+#                  probes/probe_D_funding.py, probes/probe_D_pull.py.
+#
+# The count is over .py files, so the reproduction notebook is not in it. It imports
+# numpy and matplotlib itself, so a reader who trims the pins to the scripts listed
+# above would still have to keep those two.
+#
+# The pipeline has 9 groups and one entry point each, the ones listed under RUN above:
+# run/controls.py, run/data.py, run/gates.py, run/identity.py, run/markout.py,
+# run/money.py, run/notebook.py, run/persistence.py, run/quoters.py.
+#
+# Nothing else is installed. The 33 other modules these files import come with Python:
+# __future__, argparse, ast, collections, contextlib, csv, datetime, difflib, fnmatch,
+# glob, gzip, hashlib, importlib, inspect, io, itertools, json, math, os, platform,
+# pprint, re, shutil, struct, subprocess, sys, tarfile, tempfile, textwrap, time,
+# tokenize, urllib, zipfile.
+# END DERIVED BLOCK
+
+numpy==2.4.6
+matplotlib==3.11.0
+
+scipy==1.18.0    # probes (connected set and scipy.stats); pinned exactly because the
+#                  committed results files record 1.18.0
+pyarrow>=15      # probes/probe_D_pull.py, probes/probe_D_funding.py (parquet io)
+lz4>=4           # lz4.frame decompression in i4_l2_mid.py, checks/chk_book_orientation.py, i3_book_comparator.py (CLI fallback exists)

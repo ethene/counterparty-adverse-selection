@@ -1,0 +1,872 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "i5_exclusion_results.json",
+    "producer": {
+      "script": "i5_exclusion.py",
+      "sha256": "073d1059915a2bf71b17ac8a94b6f3be2d82586ca5949d465fb8cccbc2ce3ce2",
+      "bytes": 33946
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 rows of the trade-print panel, partitioned into extend and reduce fills; the unit of analysis is the fill, so no wallet fill floor gates this file",
+      "window": "10 days present in the input, day-of-month 4-13; the calendar dates of the window are declared by its producer, build_quickwin_markouts.py",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 60,
+      "is_headline_horizon": false,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": null,
+      "persistence_floor_fills": null,
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260619,
+      "n_perm": 2000,
+      "n_boot": null,
+      "rank_floor_fills": null,
+      "horizons_used_s": [
+        1,
+        10,
+        60
+      ],
+      "statistic_horizon_s": 60,
+      "whale_drop_criterion": "fill_count",
+      "p_floor": 0.0004997501249375312,
+      "overrides_note": "the test statistic is the extend-minus-reduce gap at the LONG COMPANION window, and the permanence ratio is a statement about the whole ladder, so is_headline_horizon is False on purpose and this file is NOT comparable cell-for-cell with a headline-window result; master_seed 20260619 not settings.MASTER_SEED 20260620; n_perm 2000 matches the declaration, so the floor 0.000500 clears a 48-cell corrected threshold of 0.00104; no bootstrap is drawn and no wallet floor or FDR family applies here; whales are dropped by FILL COUNT",
+      "overridden": [
+        "fdr_alpha",
+        "horizons_used_s",
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "overrides_note",
+        "p_floor",
+        "persistence_floor_fills",
+        "rank_floor_fills",
+        "statistic_horizon_s",
+        "whale_drop_criterion"
+      ]
+    },
+    "object": "I5 - pre-registered Kyle exclusion check (extend vs reduce)",
+    "is_open_encoding": "1 = opens/EXTENDS a position, 0 = closes/REDUCES",
+    "extend_reduce_note": "EXTEND (is_open==1) is NOT 'accumulate on information': it also contains open-from-flat (start_pos==0) fills, which on this dataset are ~24% of EXTEND and uninformed. Two splits are reported: (A) is_open as-is, (B) exclude open-from-flat.",
+    "markout_sign": "signed taker markout bps; positive = taker profited = maker adverse-selected",
+    "pre_registered_prediction": "EXTEND permanent (mo60/mo1 >= 1); REDUCE transient (mo60/mo1 < 1); extend-minus-reduce mo60 gap > 0 and outside the label-permuted null",
+    "splits": {
+      "A_is_open": "EXTEND = is_open==1 (incl open-from-flat), REDUCE = is_open==0",
+      "B_exclude_open_from_flat": "drop is_open==1 & start_pos==0; EXTEND = grow-from-position only, REDUCE = is_open==0"
+    },
+    "m6_i5_reconciliation": "BTC gap is negative under split A but positive under split B (open-from-flat fills are uninformed); split B reconciles I5 with M6's extend-leg reading",
+    "permutation": {
+      "n_perm": 2000,
+      "seed": 20260619,
+      "p_floor": 0.0004997501249375312,
+      "p_floor_note": "2000 draws cannot express a p below 0.000500; each slice carries perm_p_two_sided_is_floor saying whether its p is a measurement or that floor"
+    },
+    "whale_robustness": {
+      "n_drop_top_by_trade_count": 10,
+      "criterion": "fill_count"
+    },
+    "run": {
+      "runtime_s": 236.666,
+      "finished_utc": "2026-08-11T10:52:08Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "BTC": {
+    "n_rows": 1200863,
+    "n_open_from_flat": 200221,
+    "split_is_open": {
+      "n_rows": 1200863,
+      "n_extending": 586088,
+      "n_reducing": 614775,
+      "group_means": {
+        "extending": {
+          "n": 586088,
+          "mean_mo1_bps": 0.2146711260408332,
+          "n_mo1": 586076,
+          "mean_mo10_bps": 0.417774591567207,
+          "n_mo10": 586040,
+          "mean_mo60_bps": 0.2819636062008398,
+          "n_mo60": 585791,
+          "permanence_ratio_mo60_over_mo1": 1.3134677746424395
+        },
+        "reducing": {
+          "n": 614775,
+          "mean_mo1_bps": 0.2695403938471209,
+          "n_mo1": 614765,
+          "mean_mo10_bps": 0.49982560188395364,
+          "n_mo10": 614739,
+          "mean_mo60_bps": 0.4948100943955593,
+          "n_mo60": 614511,
+          "permanence_ratio_mo60_over_mo1": 1.8357548838346203
+        }
+      },
+      "permutation_placebo": {
+        "observed_gap_mo60_bps": -0.21284648819471946,
+        "perm_p_two_sided": 0.0004997501249375312,
+        "perm_p_two_sided_is_floor": true,
+        "p_floor": 0.0004997501249375312,
+        "n_perm": 2000,
+        "null_mean": -8.282323651557899e-06,
+        "null_std": 0.017000850211906563,
+        "n_scored": 1200302,
+        "n_extending": 585791,
+        "n_reducing": 614511,
+        "permutation_procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "i5_exclusion_extend_minus_reduce_gap",
+            "mo60"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": -0.21284648819471946,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": -8.282323651557899e-06,
+          "null_sd": 0.017005102018953635,
+          "null_p95": 0.02829668916251556
+        }
+      },
+      "whale_robustness": {
+        "full_gap_mo60_bps": -0.21284648819471946,
+        "dropped_gap_mo60_bps": -0.06894226619094546,
+        "whale_drop_criterion": "fill_count",
+        "sign_preserved": true,
+        "n_whales_dropped": 10,
+        "n_rows_after_drop": 910617,
+        "dropped_wallets": [
+          {
+            "taker_id": 31,
+            "trade_count": 78310
+          },
+          {
+            "taker_id": 63,
+            "trade_count": 36942
+          },
+          {
+            "taker_id": 642,
+            "trade_count": 29520
+          },
+          {
+            "taker_id": 18387,
+            "trade_count": 28895
+          },
+          {
+            "taker_id": 2,
+            "trade_count": 26204
+          },
+          {
+            "taker_id": 6,
+            "trade_count": 25463
+          },
+          {
+            "taker_id": 29,
+            "trade_count": 18917
+          },
+          {
+            "taker_id": 1,
+            "trade_count": 16466
+          },
+          {
+            "taker_id": 33,
+            "trade_count": 16347
+          },
+          {
+            "taker_id": 975,
+            "trade_count": 13182
+          }
+        ]
+      },
+      "verdict": {
+        "kyle_exclusion_identified": false,
+        "verdict": "REJECTED: Kyle exclusion pattern does not hold -> reduced-form (descriptive) reading",
+        "checks": {
+          "extending_permanent_ratio_ge_1": true,
+          "reducing_transient_ratio_lt_1": false,
+          "extend_minus_reduce_gap_positive": false,
+          "gap_outside_null_p_le_0p05": true
+        }
+      }
+    },
+    "split_exclude_open_from_flat": {
+      "n_rows": 1000642,
+      "n_extending": 385867,
+      "n_reducing": 614775,
+      "group_means": {
+        "extending": {
+          "n": 385867,
+          "mean_mo1_bps": 0.3595441506074766,
+          "n_mo1": 385860,
+          "mean_mo10_bps": 0.6812158455685217,
+          "n_mo10": 385838,
+          "mean_mo60_bps": 0.5063148972495675,
+          "n_mo60": 385672,
+          "permanence_ratio_mo60_over_mo1": 1.4082134180019639
+        },
+        "reducing": {
+          "n": 614775,
+          "mean_mo1_bps": 0.2695403938471209,
+          "n_mo1": 614765,
+          "mean_mo10_bps": 0.49982560188395364,
+          "n_mo10": 614739,
+          "mean_mo60_bps": 0.4948100943955593,
+          "n_mo60": 614511,
+          "permanence_ratio_mo60_over_mo1": 1.8357548838346203
+        }
+      },
+      "permutation_placebo": {
+        "observed_gap_mo60_bps": 0.011504802854008178,
+        "perm_p_two_sided": 0.5622188905547226,
+        "perm_p_two_sided_is_floor": false,
+        "p_floor": 0.0004997501249375312,
+        "n_perm": 2000,
+        "null_mean": 0.0007288773515952963,
+        "null_std": 0.01944887983000612,
+        "n_scored": 1000183,
+        "n_extending": 385672,
+        "n_reducing": 614511,
+        "permutation_procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "i5_exclusion_extend_minus_reduce_gap",
+            "mo60"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.011504802854008178,
+          "p": 0.5622188905547226,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": false,
+          "n_at_least_as_extreme": 1124,
+          "null_mean": 0.0007288773515952963,
+          "null_sd": 0.01945374387405616,
+          "null_p95": 0.03236038142459791
+        }
+      },
+      "whale_robustness": {
+        "full_gap_mo60_bps": 0.011504802854008178,
+        "dropped_gap_mo60_bps": 0.07400630672978036,
+        "whale_drop_criterion": "fill_count",
+        "sign_preserved": true,
+        "n_whales_dropped": 10,
+        "n_rows_after_drop": 725407,
+        "dropped_wallets": [
+          {
+            "taker_id": 31,
+            "trade_count": 78310
+          },
+          {
+            "taker_id": 642,
+            "trade_count": 29498
+          },
+          {
+            "taker_id": 18387,
+            "trade_count": 28867
+          },
+          {
+            "taker_id": 2,
+            "trade_count": 26204
+          },
+          {
+            "taker_id": 6,
+            "trade_count": 25463
+          },
+          {
+            "taker_id": 63,
+            "trade_count": 22013
+          },
+          {
+            "taker_id": 29,
+            "trade_count": 18917
+          },
+          {
+            "taker_id": 1,
+            "trade_count": 16451
+          },
+          {
+            "taker_id": 33,
+            "trade_count": 16330
+          },
+          {
+            "taker_id": 975,
+            "trade_count": 13182
+          }
+        ]
+      },
+      "verdict": {
+        "kyle_exclusion_identified": false,
+        "verdict": "REJECTED: Kyle exclusion pattern does not hold -> reduced-form (descriptive) reading",
+        "checks": {
+          "extending_permanent_ratio_ge_1": true,
+          "reducing_transient_ratio_lt_1": false,
+          "extend_minus_reduce_gap_positive": true,
+          "gap_outside_null_p_le_0p05": false
+        }
+      }
+    },
+    "m6_i5_reconciliation": {
+      "n_open_from_flat": 200221,
+      "frac_of_extend_group": 0.3416227597220895,
+      "open_from_flat_mean_mo60_bps": -0.15040918759357702,
+      "gap_mo60_split_is_open_bps": -0.21284648819471946,
+      "gap_mo60_split_exclude_open_from_flat_bps": 0.011504802854008178,
+      "sign_flips_between_splits": true,
+      "note": "is_open==1 mixes uninformed open-from-flat fills into EXTEND; excluding them (start_pos==0 opens) isolates grow-from-a-position flow. Where the gap flips from negative under the is_open split to positive under the exclude split, I5 RECONCILES with M6, which reads the extend leg as grow-from-position rather than open-from-flat."
+    }
+  },
+  "ETH": {
+    "n_rows": 1279404,
+    "n_open_from_flat": 102637,
+    "split_is_open": {
+      "n_rows": 1279404,
+      "n_extending": 681119,
+      "n_reducing": 598285,
+      "group_means": {
+        "extending": {
+          "n": 681119,
+          "mean_mo1_bps": 0.4097703878447094,
+          "n_mo1": 681111,
+          "mean_mo10_bps": 0.5842407447485136,
+          "n_mo10": 681089,
+          "mean_mo60_bps": 1.0037758434303516,
+          "n_mo60": 680766,
+          "permanence_ratio_mo60_over_mo1": 2.4496056162329434
+        },
+        "reducing": {
+          "n": 598285,
+          "mean_mo1_bps": 0.504187490316301,
+          "n_mo1": 598279,
+          "mean_mo10_bps": 0.5879155608861437,
+          "n_mo10": 598224,
+          "mean_mo60_bps": 0.40444704697555667,
+          "n_mo60": 597948,
+          "permanence_ratio_mo60_over_mo1": 0.8021758864382527
+        }
+      },
+      "permutation_placebo": {
+        "observed_gap_mo60_bps": 0.599328796454795,
+        "perm_p_two_sided": 0.0004997501249375312,
+        "perm_p_two_sided_is_floor": true,
+        "p_floor": 0.0004997501249375312,
+        "n_perm": 2000,
+        "null_mean": -0.0009899398287801502,
+        "null_std": 0.029964923219840175,
+        "n_scored": 1278714,
+        "n_extending": 680766,
+        "n_reducing": 597948,
+        "permutation_procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "i5_exclusion_extend_minus_reduce_gap",
+            "mo60"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.599328796454795,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": -0.0009899398287801502,
+          "null_sd": 0.029972417261027704,
+          "null_p95": 0.04691784545192524
+        }
+      },
+      "whale_robustness": {
+        "full_gap_mo60_bps": 0.599328796454795,
+        "dropped_gap_mo60_bps": 0.706783631484301,
+        "whale_drop_criterion": "fill_count",
+        "sign_preserved": true,
+        "n_whales_dropped": 10,
+        "n_rows_after_drop": 1092556,
+        "dropped_wallets": [
+          {
+            "taker_id": 11476,
+            "trade_count": 28505
+          },
+          {
+            "taker_id": 11488,
+            "trade_count": 23817
+          },
+          {
+            "taker_id": 6,
+            "trade_count": 23539
+          },
+          {
+            "taker_id": 11479,
+            "trade_count": 19300
+          },
+          {
+            "taker_id": 975,
+            "trade_count": 18313
+          },
+          {
+            "taker_id": 11475,
+            "trade_count": 17645
+          },
+          {
+            "taker_id": 12517,
+            "trade_count": 15916
+          },
+          {
+            "taker_id": 11483,
+            "trade_count": 13526
+          },
+          {
+            "taker_id": 11480,
+            "trade_count": 13336
+          },
+          {
+            "taker_id": 182,
+            "trade_count": 12951
+          }
+        ]
+      },
+      "verdict": {
+        "kyle_exclusion_identified": true,
+        "verdict": "IDENTIFIED: extending impact permanent, reducing impact transient, gap positive and outside the permuted null",
+        "checks": {
+          "extending_permanent_ratio_ge_1": true,
+          "reducing_transient_ratio_lt_1": true,
+          "extend_minus_reduce_gap_positive": true,
+          "gap_outside_null_p_le_0p05": true
+        }
+      }
+    },
+    "split_exclude_open_from_flat": {
+      "n_rows": 1176767,
+      "n_extending": 578482,
+      "n_reducing": 598285,
+      "group_means": {
+        "extending": {
+          "n": 578482,
+          "mean_mo1_bps": 0.5084980622332914,
+          "n_mo1": 578476,
+          "mean_mo10_bps": 0.7342292273185405,
+          "n_mo10": 578458,
+          "mean_mo60_bps": 1.2445345808852941,
+          "n_mo60": 578167,
+          "permanence_ratio_mo60_over_mo1": 2.4474716293300642
+        },
+        "reducing": {
+          "n": 598285,
+          "mean_mo1_bps": 0.504187490316301,
+          "n_mo1": 598279,
+          "mean_mo10_bps": 0.5879155608861437,
+          "n_mo10": 598224,
+          "mean_mo60_bps": 0.40444704697555667,
+          "n_mo60": 597948,
+          "permanence_ratio_mo60_over_mo1": 0.8021758864382527
+        }
+      },
+      "permutation_placebo": {
+        "observed_gap_mo60_bps": 0.8400875339097374,
+        "perm_p_two_sided": 0.0004997501249375312,
+        "perm_p_two_sided_is_floor": true,
+        "p_floor": 0.0004997501249375312,
+        "n_perm": 2000,
+        "null_mean": 0.0003741077290391663,
+        "null_std": 0.03061649124249785,
+        "n_scored": 1176115,
+        "n_extending": 578167,
+        "n_reducing": 597948,
+        "permutation_procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "i5_exclusion_extend_minus_reduce_gap",
+            "mo60"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.8400875339097374,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": 0.0003741077290391663,
+          "null_sd": 0.03062414823680101,
+          "null_p95": 0.05124220163050712
+        }
+      },
+      "whale_robustness": {
+        "full_gap_mo60_bps": 0.8400875339097374,
+        "dropped_gap_mo60_bps": 0.9488302622190236,
+        "whale_drop_criterion": "fill_count",
+        "sign_preserved": true,
+        "n_whales_dropped": 10,
+        "n_rows_after_drop": 989952,
+        "dropped_wallets": [
+          {
+            "taker_id": 11476,
+            "trade_count": 28505
+          },
+          {
+            "taker_id": 11488,
+            "trade_count": 23817
+          },
+          {
+            "taker_id": 6,
+            "trade_count": 23539
+          },
+          {
+            "taker_id": 11479,
+            "trade_count": 19300
+          },
+          {
+            "taker_id": 975,
+            "trade_count": 18313
+          },
+          {
+            "taker_id": 11475,
+            "trade_count": 17645
+          },
+          {
+            "taker_id": 12517,
+            "trade_count": 15916
+          },
+          {
+            "taker_id": 11483,
+            "trade_count": 13510
+          },
+          {
+            "taker_id": 11480,
+            "trade_count": 13319
+          },
+          {
+            "taker_id": 182,
+            "trade_count": 12951
+          }
+        ]
+      },
+      "verdict": {
+        "kyle_exclusion_identified": true,
+        "verdict": "IDENTIFIED: extending impact permanent, reducing impact transient, gap positive and outside the permuted null",
+        "checks": {
+          "extending_permanent_ratio_ge_1": true,
+          "reducing_transient_ratio_lt_1": true,
+          "extend_minus_reduce_gap_positive": true,
+          "gap_outside_null_p_le_0p05": true
+        }
+      }
+    },
+    "m6_i5_reconciliation": {
+      "n_open_from_flat": 102637,
+      "frac_of_extend_group": 0.15068879300092936,
+      "open_from_flat_mean_mo60_bps": -0.35295041080323414,
+      "gap_mo60_split_is_open_bps": 0.599328796454795,
+      "gap_mo60_split_exclude_open_from_flat_bps": 0.8400875339097374,
+      "sign_flips_between_splits": false,
+      "note": "is_open==1 mixes uninformed open-from-flat fills into EXTEND; excluding them (start_pos==0 opens) isolates grow-from-a-position flow. Where the gap flips from negative under the is_open split to positive under the exclude split, I5 RECONCILES with M6, which reads the extend leg as grow-from-position rather than open-from-flat."
+    }
+  },
+  "pooled": {
+    "n_rows": 2480267,
+    "n_open_from_flat": 302858,
+    "split_is_open": {
+      "n_rows": 2480267,
+      "n_extending": 1267207,
+      "n_reducing": 1213060,
+      "group_means": {
+        "extending": {
+          "n": 1267207,
+          "mean_mo1_bps": 0.31953666941091197,
+          "n_mo1": 1267187,
+          "mean_mo10_bps": 0.507251089859096,
+          "n_mo10": 1267129,
+          "mean_mo60_bps": 0.6699329036661619,
+          "n_mo60": 1266557,
+          "permanence_ratio_mo60_over_mo1": 2.0965759732716425
+        },
+        "reducing": {
+          "n": 1213060,
+          "mean_mo1_bps": 0.38526944425954174,
+          "n_mo1": 1213044,
+          "mean_mo10_bps": 0.5432708905152855,
+          "n_mo10": 1212963,
+          "mean_mo60_bps": 0.45024578048581415,
+          "n_mo60": 1212459,
+          "permanence_ratio_mo60_over_mo1": 1.1686516727303717
+        }
+      },
+      "permutation_placebo": {
+        "observed_gap_mo60_bps": 0.21968712318034772,
+        "perm_p_two_sided": 0.0004997501249375312,
+        "perm_p_two_sided_is_floor": true,
+        "p_floor": 0.0004997501249375312,
+        "n_perm": 2000,
+        "null_mean": -7.556923206450378e-05,
+        "null_std": 0.01735576729908561,
+        "n_scored": 2479016,
+        "n_extending": 1266557,
+        "n_reducing": 1212459,
+        "permutation_procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "i5_exclusion_extend_minus_reduce_gap",
+            "mo60"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.21968712318034772,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": -7.556923206450378e-05,
+          "null_sd": 0.017360107868691826,
+          "null_p95": 0.02770793733412091
+        }
+      },
+      "whale_robustness": {
+        "full_gap_mo60_bps": 0.21968712318034772,
+        "dropped_gap_mo60_bps": 0.32683678770397945,
+        "whale_drop_criterion": "fill_count",
+        "sign_preserved": true,
+        "n_whales_dropped": 10,
+        "n_rows_after_drop": 2125994,
+        "dropped_wallets": [
+          {
+            "taker_id": 31,
+            "trade_count": 78310
+          },
+          {
+            "taker_id": 6,
+            "trade_count": 49002
+          },
+          {
+            "taker_id": 63,
+            "trade_count": 36942
+          },
+          {
+            "taker_id": 975,
+            "trade_count": 31495
+          },
+          {
+            "taker_id": 18387,
+            "trade_count": 31178
+          },
+          {
+            "taker_id": 642,
+            "trade_count": 29520
+          },
+          {
+            "taker_id": 11476,
+            "trade_count": 28505
+          },
+          {
+            "taker_id": 2,
+            "trade_count": 26204
+          },
+          {
+            "taker_id": 11488,
+            "trade_count": 23817
+          },
+          {
+            "taker_id": 11479,
+            "trade_count": 19300
+          }
+        ]
+      },
+      "verdict": {
+        "kyle_exclusion_identified": false,
+        "verdict": "REJECTED: Kyle exclusion pattern does not hold -> reduced-form (descriptive) reading",
+        "checks": {
+          "extending_permanent_ratio_ge_1": true,
+          "reducing_transient_ratio_lt_1": false,
+          "extend_minus_reduce_gap_positive": true,
+          "gap_outside_null_p_le_0p05": true
+        }
+      }
+    },
+    "split_exclude_open_from_flat": {
+      "n_rows": 2177409,
+      "n_extending": 964349,
+      "n_reducing": 1213060,
+      "group_means": {
+        "extending": {
+          "n": 964349,
+          "mean_mo1_bps": 0.4488970970718364,
+          "n_mo1": 964336,
+          "mean_mo10_bps": 0.7130172994585641,
+          "n_mo10": 964296,
+          "mean_mo60_bps": 0.9491422364925503,
+          "n_mo60": 963839,
+          "permanence_ratio_mo60_over_mo1": 2.1143871116205064
+        },
+        "reducing": {
+          "n": 1213060,
+          "mean_mo1_bps": 0.38526944425954174,
+          "n_mo1": 1213044,
+          "mean_mo10_bps": 0.5432708905152855,
+          "n_mo10": 1212963,
+          "mean_mo60_bps": 0.45024578048581415,
+          "n_mo60": 1212459,
+          "permanence_ratio_mo60_over_mo1": 1.1686516727303717
+        }
+      },
+      "permutation_placebo": {
+        "observed_gap_mo60_bps": 0.4988964560067361,
+        "perm_p_two_sided": 0.0004997501249375312,
+        "perm_p_two_sided_is_floor": true,
+        "p_floor": 0.0004997501249375312,
+        "n_perm": 2000,
+        "null_mean": -0.00032412955091809954,
+        "null_std": 0.019169578905045784,
+        "n_scored": 2176298,
+        "n_extending": 963839,
+        "n_reducing": 1212459,
+        "permutation_procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "i5_exclusion_extend_minus_reduce_gap",
+            "mo60"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.4988964560067361,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": -0.00032412955091809954,
+          "null_sd": 0.019174373097669208,
+          "null_p95": 0.03152575589203829
+        }
+      },
+      "whale_robustness": {
+        "full_gap_mo60_bps": 0.4988964560067361,
+        "dropped_gap_mo60_bps": 0.6093735654107864,
+        "whale_drop_criterion": "fill_count",
+        "sign_preserved": true,
+        "n_whales_dropped": 10,
+        "n_rows_after_drop": 1838119,
+        "dropped_wallets": [
+          {
+            "taker_id": 31,
+            "trade_count": 78310
+          },
+          {
+            "taker_id": 6,
+            "trade_count": 49002
+          },
+          {
+            "taker_id": 975,
+            "trade_count": 31495
+          },
+          {
+            "taker_id": 18387,
+            "trade_count": 31146
+          },
+          {
+            "taker_id": 642,
+            "trade_count": 29498
+          },
+          {
+            "taker_id": 11476,
+            "trade_count": 28505
+          },
+          {
+            "taker_id": 2,
+            "trade_count": 26204
+          },
+          {
+            "taker_id": 11488,
+            "trade_count": 23817
+          },
+          {
+            "taker_id": 63,
+            "trade_count": 22013
+          },
+          {
+            "taker_id": 11479,
+            "trade_count": 19300
+          }
+        ]
+      },
+      "verdict": {
+        "kyle_exclusion_identified": false,
+        "verdict": "REJECTED: Kyle exclusion pattern does not hold -> reduced-form (descriptive) reading",
+        "checks": {
+          "extending_permanent_ratio_ge_1": true,
+          "reducing_transient_ratio_lt_1": false,
+          "extend_minus_reduce_gap_positive": true,
+          "gap_outside_null_p_le_0p05": true
+        }
+      }
+    },
+    "m6_i5_reconciliation": {
+      "n_open_from_flat": 302858,
+      "frac_of_extend_group": 0.23899647018995318,
+      "open_from_flat_mean_mo60_bps": -0.21905567363037565,
+      "gap_mo60_split_is_open_bps": 0.21968712318034772,
+      "gap_mo60_split_exclude_open_from_flat_bps": 0.4988964560067361,
+      "sign_flips_between_splits": false,
+      "note": "is_open==1 mixes uninformed open-from-flat fills into EXTEND; excluding them (start_pos==0 opens) isolates grow-from-a-position flow. Where the gap flips from negative under the is_open split to positive under the exclude split, I5 RECONCILES with M6, which reads the extend leg as grow-from-position rather than open-from-flat."
+    }
+  }
+}

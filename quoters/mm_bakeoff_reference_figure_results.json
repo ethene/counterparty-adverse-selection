@@ -1,0 +1,661 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "mm_bakeoff_reference_figure_results.json",
+    "producer": {
+      "script": "mm_bakeoff_reference_figure.py",
+      "sha256": "88cbdc36637e955804211c16a363d8a007604a8cabf58bc144986bf0528758ca",
+      "bytes": 45089,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "abf2d4871bb3424c54191395ba16219f6af8feef",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "mm_bakeoff_results.json",
+        "bytes": 953782,
+        "sha256": "45035be1920bedb3c921b11517c4f0b233b726053497e19cba1a97ebdf8d02c2",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "972 scored cells per reference price, being 9 quoting rules x 2 counterparty-selection rungs x 3 populations x 3 horizons x 6 maker fee rungs, every one of them read from mm_bakeoff_results.json. The fills underneath are that file's own: 2,480,267 row-aligned fills; every quoter is scored on the 1,234,777 LATE-half fills, and the identity quoters read a toxicity label frozen on the early half. The 50-early-fill floor selects 2,069 takers, of which 207 ca",
+      "window": "single December window; early days [4, 5, 6, 7, 8], late days [9, 10, 11, 12, 13]",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "mid",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": null,
+      "n_perm": null,
+      "n_boot": null,
+      "overrides_note": "this file draws and computes no new quantity of the market: every net figure is read from mm_bakeoff_results.json, and the only things computed here are counts, minima, maxima and medians over those figures, all of them deterministic. No random stream is drawn, so no seed, no permutation count and no bootstrap count applies, and each is stated as not applying rather than left to be read as the declaration. The horizon and the reference price are read from settings.py at run time and are never typed here; both reference prices are counted because the whole question is what changes between them",
+      "overridden": [
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "overrides_note"
+      ]
+    },
+    "run": {
+      "runtime_s": 0.472,
+      "finished_utc": "2026-10-22T09:25:17Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "what_this_answers": "whether the report's conclusion that no quoting rule is profitable is a property of the rules or of the choices the result is measured under. It is a property of the choices, and there are two of them. On the book mid no cell of the 972-cell grid is above zero on the notional-weighted column, and on the trade print 510 of them are. Of those, 442 need a fee rung at or below zero, so the fee schedule is the second and sharper dependence",
+  "figure": "mm_bakeoff_reference.png",
+  "grid": {
+    "rules": [
+      "as_symmetric",
+      "as_toxicity",
+      "as_toxicity_ew",
+      "as_toxicity_plus_global",
+      "bbgl",
+      "bbgl_flat",
+      "gm_vpin",
+      "naive_at_book",
+      "naive_const"
+    ],
+    "selection_rungs": [
+      "K10",
+      "K50"
+    ],
+    "populations": [
+      "BTC",
+      "ETH",
+      "pooled"
+    ],
+    "horizons": [
+      "h1",
+      "h10",
+      "h60"
+    ],
+    "fee_tiers": [
+      "base",
+      "t3",
+      "t4_0fee",
+      "rebate1",
+      "rebate2",
+      "rebate3"
+    ],
+    "maker_fee_bps_by_tier": {
+      "base": 1.5,
+      "t3": 0.4,
+      "t4_0fee": 0.0,
+      "rebate1": -0.1,
+      "rebate2": -0.2,
+      "rebate3": -0.3
+    },
+    "rebate_tiers": [
+      "rebate1",
+      "rebate2",
+      "rebate3"
+    ],
+    "subsidised_tiers": [
+      "t4_0fee",
+      "rebate1",
+      "rebate2",
+      "rebate3"
+    ],
+    "charged_tiers": [
+      "base",
+      "t3"
+    ],
+    "cells_per_measure": 972,
+    "address": "quoters[K][rule].net_by_coin[coin].by_horizon[h][measure].by_fee_tier[tier]",
+    "cells_are_not_independent": {
+      "why": "the pooled population is the union of ['BTC', 'ETH'], verified here by fill count at every horizon rather than assumed, so a third of the cells are re-aggregations of the other two thirds",
+      "disjoint_populations": [
+        "BTC",
+        "ETH"
+      ],
+      "cells_over_disjoint_populations_only": 648
+    }
+  },
+  "counts_by_measure": {
+    "net_PRINT": {
+      "all_populations": {
+        "net_vw_bps": {
+          "cells": 972,
+          "positive": 510,
+          "max": 1.8063907577588125,
+          "min": -2.209321306333359,
+          "cells_per_fee_tier": 162,
+          "positive_by_fee_tier": {
+            "base": 1,
+            "t3": 67,
+            "t4_0fee": 100,
+            "rebate1": 114,
+            "rebate2": 114,
+            "rebate3": 114
+          },
+          "positive_on_rebate_tiers": 342,
+          "positive_on_subsidised_tiers": 442,
+          "positive_on_charged_tiers": 68,
+          "positive_by_rule": {
+            "bbgl_flat": 90,
+            "as_toxicity_plus_global": 89,
+            "bbgl": 88,
+            "as_toxicity_ew": 83,
+            "as_toxicity": 62,
+            "gm_vpin": 32,
+            "as_symmetric": 22,
+            "naive_at_book": 22,
+            "naive_const": 22
+          },
+          "positive_by_horizon": {
+            "h1": 240,
+            "h10": 136,
+            "h60": 134
+          },
+          "positive_by_selection_rung": {
+            "K10": 257,
+            "K50": 253
+          },
+          "positive_by_population": {
+            "BTC": 152,
+            "ETH": 186,
+            "pooled": 172
+          }
+        },
+        "net_ew_bps": {
+          "cells": 972,
+          "positive": 386,
+          "max": 1.2076335687372854,
+          "min": -2.168973562992353,
+          "cells_per_fee_tier": 162,
+          "positive_by_fee_tier": {
+            "base": 0,
+            "t3": 38,
+            "t4_0fee": 78,
+            "rebate1": 78,
+            "rebate2": 90,
+            "rebate3": 102
+          },
+          "positive_on_rebate_tiers": 270,
+          "positive_on_subsidised_tiers": 348,
+          "positive_on_charged_tiers": 38,
+          "positive_by_rule": {
+            "as_toxicity_plus_global": 84,
+            "bbgl": 84,
+            "bbgl_flat": 80,
+            "as_toxicity_ew": 78,
+            "as_toxicity": 46,
+            "gm_vpin": 8,
+            "as_symmetric": 2,
+            "naive_at_book": 2,
+            "naive_const": 2
+          },
+          "positive_by_horizon": {
+            "h1": 138,
+            "h10": 120,
+            "h60": 128
+          },
+          "positive_by_selection_rung": {
+            "K10": 193,
+            "K50": 193
+          },
+          "positive_by_population": {
+            "BTC": 128,
+            "ETH": 132,
+            "pooled": 126
+          }
+        }
+      },
+      "disjoint_populations_only": {
+        "net_vw_bps": {
+          "cells": 648,
+          "positive": 338,
+          "max": 1.8063907577588125,
+          "min": -2.209321306333359,
+          "cells_per_fee_tier": 108,
+          "positive_by_fee_tier": {
+            "base": 1,
+            "t3": 43,
+            "t4_0fee": 66,
+            "rebate1": 76,
+            "rebate2": 76,
+            "rebate3": 76
+          },
+          "positive_on_rebate_tiers": 228,
+          "positive_on_subsidised_tiers": 294,
+          "positive_on_charged_tiers": 44,
+          "positive_by_rule": {
+            "bbgl_flat": 60,
+            "as_toxicity_plus_global": 59,
+            "bbgl": 58,
+            "as_toxicity_ew": 55,
+            "as_toxicity": 40,
+            "gm_vpin": 24,
+            "as_symmetric": 14,
+            "naive_at_book": 14,
+            "naive_const": 14
+          },
+          "positive_by_horizon": {
+            "h1": 158,
+            "h10": 91,
+            "h60": 89
+          },
+          "positive_by_selection_rung": {
+            "K10": 170,
+            "K50": 168
+          },
+          "positive_by_population": {
+            "BTC": 152,
+            "ETH": 186,
+            "pooled": 0
+          }
+        },
+        "net_ew_bps": {
+          "cells": 648,
+          "positive": 260,
+          "max": 1.2076335687372854,
+          "min": -2.168973562992353,
+          "cells_per_fee_tier": 108,
+          "positive_by_fee_tier": {
+            "base": 0,
+            "t3": 26,
+            "t4_0fee": 52,
+            "rebate1": 52,
+            "rebate2": 60,
+            "rebate3": 70
+          },
+          "positive_on_rebate_tiers": 182,
+          "positive_on_subsidised_tiers": 234,
+          "positive_on_charged_tiers": 26,
+          "positive_by_rule": {
+            "as_toxicity_plus_global": 56,
+            "bbgl": 56,
+            "bbgl_flat": 54,
+            "as_toxicity_ew": 52,
+            "as_toxicity": 30,
+            "gm_vpin": 6,
+            "as_symmetric": 2,
+            "naive_at_book": 2,
+            "naive_const": 2
+          },
+          "positive_by_horizon": {
+            "h1": 96,
+            "h10": 80,
+            "h60": 84
+          },
+          "positive_by_selection_rung": {
+            "K10": 130,
+            "K50": 130
+          },
+          "positive_by_population": {
+            "BTC": 128,
+            "ETH": 132,
+            "pooled": 0
+          }
+        }
+      }
+    },
+    "net_MID_lower": {
+      "all_populations": {
+        "net_vw_bps": {
+          "cells": 972,
+          "positive": 0,
+          "max": -0.2517388598676874,
+          "min": -4.317686043639787,
+          "cells_per_fee_tier": 162,
+          "positive_by_fee_tier": {
+            "base": 0,
+            "t3": 0,
+            "t4_0fee": 0,
+            "rebate1": 0,
+            "rebate2": 0,
+            "rebate3": 0
+          },
+          "positive_on_rebate_tiers": 0,
+          "positive_on_subsidised_tiers": 0,
+          "positive_on_charged_tiers": 0,
+          "positive_by_rule": {},
+          "positive_by_horizon": {
+            "h1": 0,
+            "h10": 0,
+            "h60": 0
+          },
+          "positive_by_selection_rung": {
+            "K10": 0,
+            "K50": 0
+          },
+          "positive_by_population": {
+            "BTC": 0,
+            "ETH": 0,
+            "pooled": 0
+          }
+        },
+        "net_ew_bps": {
+          "cells": 972,
+          "positive": 150,
+          "max": 0.6986083800679409,
+          "min": -2.946240828932125,
+          "cells_per_fee_tier": 162,
+          "positive_by_fee_tier": {
+            "base": 0,
+            "t3": 0,
+            "t4_0fee": 19,
+            "rebate1": 28,
+            "rebate2": 46,
+            "rebate3": 57
+          },
+          "positive_on_rebate_tiers": 131,
+          "positive_on_subsidised_tiers": 150,
+          "positive_on_charged_tiers": 0,
+          "positive_by_rule": {
+            "as_toxicity_plus_global": 44,
+            "bbgl": 44,
+            "bbgl_flat": 38,
+            "as_toxicity_ew": 24
+          },
+          "positive_by_horizon": {
+            "h1": 20,
+            "h10": 43,
+            "h60": 87
+          },
+          "positive_by_selection_rung": {
+            "K10": 76,
+            "K50": 74
+          },
+          "positive_by_population": {
+            "BTC": 67,
+            "ETH": 34,
+            "pooled": 49
+          }
+        }
+      },
+      "disjoint_populations_only": {
+        "net_vw_bps": {
+          "cells": 648,
+          "positive": 0,
+          "max": -0.2517388598676874,
+          "min": -4.317686043639787,
+          "cells_per_fee_tier": 108,
+          "positive_by_fee_tier": {
+            "base": 0,
+            "t3": 0,
+            "t4_0fee": 0,
+            "rebate1": 0,
+            "rebate2": 0,
+            "rebate3": 0
+          },
+          "positive_on_rebate_tiers": 0,
+          "positive_on_subsidised_tiers": 0,
+          "positive_on_charged_tiers": 0,
+          "positive_by_rule": {},
+          "positive_by_horizon": {
+            "h1": 0,
+            "h10": 0,
+            "h60": 0
+          },
+          "positive_by_selection_rung": {
+            "K10": 0,
+            "K50": 0
+          },
+          "positive_by_population": {
+            "BTC": 0,
+            "ETH": 0,
+            "pooled": 0
+          }
+        },
+        "net_ew_bps": {
+          "cells": 648,
+          "positive": 101,
+          "max": 0.6986083800679409,
+          "min": -2.946240828932125,
+          "cells_per_fee_tier": 108,
+          "positive_by_fee_tier": {
+            "base": 0,
+            "t3": 0,
+            "t4_0fee": 13,
+            "rebate1": 20,
+            "rebate2": 32,
+            "rebate3": 36
+          },
+          "positive_on_rebate_tiers": 88,
+          "positive_on_subsidised_tiers": 101,
+          "positive_on_charged_tiers": 0,
+          "positive_by_rule": {
+            "as_toxicity_plus_global": 30,
+            "bbgl": 30,
+            "bbgl_flat": 24,
+            "as_toxicity_ew": 17
+          },
+          "positive_by_horizon": {
+            "h1": 14,
+            "h10": 30,
+            "h60": 57
+          },
+          "positive_by_selection_rung": {
+            "K10": 51,
+            "K50": 50
+          },
+          "positive_by_population": {
+            "BTC": 67,
+            "ETH": 34,
+            "pooled": 0
+          }
+        }
+      }
+    }
+  },
+  "how_to_read_the_counts": "two choices decide every count here and both are spelled out rather than defaulted. The row set is either all 3 populations or only the 2 disjoint ones, and the summary statistic is either net_vw_bps, weighted by notional, or net_ew_bps, weighted per fill. The headline claim uses all populations and the notional weighting. It does not depend on the first choice and it does depend on the second: the book mid has 0 positive cells by notional but 150 per fill, so any sentence about it has to name which",
+  "predicate_calibration": {
+    "predicate": "net_vw_bps > 0",
+    "must_fire": {
+      "address": "K50.bbgl_flat.pooled.h10.net_PRINT.rebate3",
+      "value": 0.943561761323923,
+      "fired": true
+    },
+    "must_stay_silent": {
+      "address": "K50.bbgl_flat.pooled.h10.net_MID_lower.rebate3",
+      "value": -0.6358106402692831,
+      "fired": false
+    }
+  },
+  "distance_between_the_two_measures": {
+    "definition": "pre-fee gross on the trade print minus pre-fee gross on the book mid, pooled, notional-weighted",
+    "by_horizon_bps": {
+      "h1": 1.7601461420694604,
+      "h10": 1.579371714946974,
+      "h60": 1.6127726393876907
+    },
+    "spread_across_rules_bps": {
+      "h1": 9.603580375383558e-09,
+      "h10": 1.2773708113478222e-06,
+      "h60": 0.00010938037068575213
+    },
+    "spread_bound_from_unshared_rows_bps": {
+      "h1": 2.5818856292462463e-05,
+      "h10": 4.6483822289640264e-05,
+      "h60": 0.0021326980908334624
+    },
+    "unshared_rows": {
+      "h1": 5,
+      "h10": 9,
+      "h60": 413
+    },
+    "rows_scored": {
+      "h1": 1232548,
+      "h10": 1232286,
+      "h60": 1232513
+    },
+    "widest_mean_extra_half_spread_bps": 6.364595937112405,
+    "headline_bps": 1.579371714946974,
+    "fee_ladder_span_bps": 1.8,
+    "reading": "the distance does not grow with the horizon, so it is a difference in where the measurement starts and not a difference in drift. At the headline horizon it is 1.5794 bps against a fee schedule spanning 1.8 bps end to end. It is the same for every rule to within 1.3e-06 bps there, and the residue is accounted for: the two reference prices score row sets differing by 9 of 1,232,286 fills, and on those rows the quoted half-spread has nothing to cancel against. The spread across rules stays under that allowance at all three horizons and tracks the number of unshared rows in the same order"
+  },
+  "headline_slice_drawn": {
+    "selection_rung": "K50",
+    "population": "pooled",
+    "horizon": "h10",
+    "statistic": "net_vw_bps",
+    "by_measure": {
+      "net_PRINT": {
+        "min_by_tier": {
+          "base": -2.055276174755176,
+          "t3": -0.9552761747551763,
+          "t4_0fee": -0.5552761747551762,
+          "rebate1": -0.45527617475517623,
+          "rebate2": -0.3552761747551762,
+          "rebate3": -0.2552761747551762
+        },
+        "median_by_tier": {
+          "base": -1.5321450413328463,
+          "t3": -0.43214504133284626,
+          "t4_0fee": -0.03214504133284615,
+          "rebate1": 0.0678549586671538,
+          "rebate2": 0.16785495866715383,
+          "rebate3": 0.26785495866715386
+        },
+        "max_by_tier": {
+          "base": -0.856438238676077,
+          "t3": 0.24356176132392288,
+          "t4_0fee": 0.643561761323923,
+          "rebate1": 0.7435617613239228,
+          "rebate2": 0.8435617613239228,
+          "rebate3": 0.943561761323923
+        }
+      },
+      "net_MID_lower": {
+        "min_by_tier": {
+          "base": -3.634647339462557,
+          "t3": -2.534647339462557,
+          "t4_0fee": -2.134647339462557,
+          "rebate1": -2.034647339462557,
+          "rebate2": -1.9346473394625567,
+          "rebate3": -1.834647339462557
+        },
+        "median_by_tier": {
+          "base": -3.1115166884886616,
+          "t3": -2.0115166884886615,
+          "t4_0fee": -1.6115166884886611,
+          "rebate1": -1.511516688488661,
+          "rebate2": -1.4115166884886614,
+          "rebate3": -1.311516688488661
+        },
+        "max_by_tier": {
+          "base": -2.4358106402692834,
+          "t3": -1.335810640269283,
+          "t4_0fee": -0.9358106402692832,
+          "rebate1": -0.8358106402692832,
+          "rebate2": -0.7358106402692831,
+          "rebate3": -0.6358106402692831
+        }
+      }
+    }
+  },
+  "producer_header_count_recomputed": {
+    "why": "the header of mm_bakeoff.py states a count of positive trade-print cells over its own six-rule grid. It is recomputed here on the committed artifact, over exactly the population the header names, so that the two counts can be compared rather than assumed to agree",
+    "stated_in_mm_bakeoff_header": {
+      "population": "the six rules mm_bakeoff.py's header names, trade print only, over 2 selection rungs x 3 populations x 3 horizons x 6 fee rungs",
+      "positive_cells": 244,
+      "cells": 648,
+      "at_headline_horizon": 46,
+      "naive_at_book": 22,
+      "as_toxicity": 58,
+      "bbgl": 88
+    },
+    "recomputed_here": {
+      "positive_cells": 248,
+      "cells": 648,
+      "at_headline_horizon": 50,
+      "naive_at_book": 22,
+      "as_toxicity": 62,
+      "bbgl": 88
+    },
+    "fields_that_disagree": [
+      "as_toxicity",
+      "at_headline_horizon",
+      "positive_cells"
+    ],
+    "cells_that_crossed_zero": [
+      {
+        "selection_rung": "K10",
+        "rule": "as_toxicity",
+        "population": "BTC",
+        "horizon": "h10",
+        "measure": "net_PRINT",
+        "fee_tier": "rebate1",
+        "before": -0.008244577659338835,
+        "after": 0.02291115306021028
+      },
+      {
+        "selection_rung": "K10",
+        "rule": "as_toxicity",
+        "population": "ETH",
+        "horizon": "h10",
+        "measure": "net_PRINT",
+        "fee_tier": "t4_0fee",
+        "before": -0.020293288130089935,
+        "after": 0.03432855608760622
+      },
+      {
+        "selection_rung": "K50",
+        "rule": "as_toxicity",
+        "population": "BTC",
+        "horizon": "h10",
+        "measure": "net_PRINT",
+        "fee_tier": "rebate1",
+        "before": -0.008244577659338835,
+        "after": 0.02291115306021028
+      },
+      {
+        "selection_rung": "K50",
+        "rule": "as_toxicity",
+        "population": "ETH",
+        "horizon": "h10",
+        "measure": "net_PRINT",
+        "fee_tier": "t4_0fee",
+        "before": -0.020293288130089935,
+        "after": 0.03432855608760622
+      }
+    ],
+    "crossed_between_commits": {
+      "before": "2d6d4c7",
+      "after": "cb8fe74",
+      "what_changed": "the entry mid became a snapshot taken strictly before the fill"
+    },
+    "how_the_four_were_identified": "by diffing every one of the 1,296 leaves of this artifact across the two commits and keeping those whose sign changed, not by selecting addresses that looked likely. Selecting by fee rung and coin returns six, two of which were already above zero beforehand",
+    "reading": "the header's 244 and 46 belong to the artifact as it stood before the entry mid was moved; the four cells above crossed zero at that commit and have stayed above it since, which is 58 to 62 for as_toxicity and 46 to 50 at the headline horizon. The header's 22 for naive_at_book and 88 for bbgl still hold"
+  },
+  "where_the_positive_cells_sit": {
+    "at_the_base_rung": 1,
+    "at_the_discounted_rung": 67,
+    "on_rungs_the_venue_charges_for": 68,
+    "on_rungs_at_or_below_zero_fee": 442,
+    "on_the_three_rebate_rungs": 342,
+    "share_needing_zero_fee_or_a_rebate": 0.8666666666666667,
+    "reading": "positivity on the trade print is mostly a subsidised-rung phenomenon, and the statement has to be made in three parts because the two-part version of it is false. One positive cell sits at the base rung an ordinary maker pays. 67 sit at the 0.4 bps rung, which is a real and attainable rung of the schedule, so saying that only one positive cell survives at a genuine venue rung would be wrong. The remaining 442 need the venue to charge nothing or to pay. Reaching the rebate rungs is not a modelling choice: money/maker_econ.py records that six maker addresses of 9,367 in this window reached the turnover share the deepest rung asks for"
+  },
+  "caption_this_figure_needs": "Net maker result on one common set of late-window fills, under the two reference prices the same run publishes. Left: the reported slice, both coins pooled at 10 s and the 50-fill selection rung, each band spanning the worst and best of the eleven quoting rules across the venue's six maker fee rungs. Right: how many cells of the whole grid sit above zero at each rung. ALL COUNTS ARE NOTIONAL-WEIGHTED; the equal-weighted column of the same cells gives 386 and 150 instead, so the book mid is not free of positive cells per fill. The grid holds 972 cells per reference price but not that many independent measurements: the pooled population is the union of BTC and ETH, and over the 648 cells of those two alone the counts are 338 and 0. Shading marks the rungs where the maker is charged nothing or paid; 442 of the 510 positive cells lie inside it. No uncertainty band is drawn: the artifact carries a bootstrap interval per cell and 2,376 of them cannot be shown at this size."
+}

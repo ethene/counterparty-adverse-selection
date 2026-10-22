@@ -1,0 +1,687 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "decile_overlap_results.json",
+    "producer": {
+      "script": "decile_overlap.py",
+      "sha256": "7726bcf6cb712d28d8624a7d1c3de5c5a84500715e4cbcd81cf7a2e393128ff7",
+      "bytes": 34684
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "t3_results.json",
+        "bytes": 25756,
+        "sha256": "62c3d5c26b443e962b48ab68f983673d526140055f0da127ebaa0f63e67757fd",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "counterparties with at least 50 early-half fills, taken twice: once over the fills carrying a finite book-mid markout at the 10s horizon, which is the population maker_econ ranks by mean markout in bps, and once over the fills carrying a finite trade-print markout and notional, which is the population t3_capacity ranks by summed dollar cost. The two populations are reported separately and their difference is counted",
+      "window": "the ten resolved days of the headline window, split into the early ranking half and the disjoint late measurement half by settings.split_early_late; both producers derive the split from the days present and both are reported per slice",
+      "coins": [
+        "BTC",
+        "ETH",
+        "pooled"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "mid and print together",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "rank_floor_fills": [
+        50
+      ],
+      "master_seed": 20260620,
+      "n_perm": null,
+      "n_boot": 2000,
+      "override_reasons": {
+        "lens": "this file compares one selection taken on the book-mid lens against one taken on the trade-print lens, so neither name alone describes the run and the pair is stated instead",
+        "master_seed": "the declared master seed draws the fabricated values of the join-key calibration, which is the only random draw this file owns",
+        "n_perm": "no permutation test runs here; nothing is resampled to build a null",
+        "n_boot": "this file draws no bootstrap of its own. The figure is what t3_capacity._avoidable_block draws when it is called for its cut size, and it is stated so the call is visible"
+      },
+      "overridden": [
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "override_reasons",
+        "rank_floor_fills"
+      ]
+    },
+    "object": "overlap between the two selections this study has called the toxic decile: the rate-ranked one every persistence and quoting result is booked over, and the cost-ranked one the headline avoidable share stands on",
+    "producers_called": {
+      "rate": "maker_econ.build_toxicity_labels",
+      "cost": "t3_capacity._per_wallet_cost, _avoidable_block for the cut size, _top_by_dollar_cost_mask for the members, _selected_share for every cost share",
+      "why": "a check that reprints the rule it checks goes blind the moment the rule is repaired, so both selections are taken from the producers and only the counterfactual cut size of the ceil-against-floor block is computed here"
+    },
+    "not_published_here": "no wallet identifier appears in this artifact. It carries counts, shares and sums only",
+    "run": {
+      "runtime_s": 3.067,
+      "finished_utc": "2026-08-11T12:59:46Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "question": "How much of the study's rate-ranked toxic decile is the same set of counterparties as the cost-ranked one. The two are cut by different rules on different quantities and are not alternatives to each other: one answers who is dearest per fill and the other who is dearest in aggregate. Neither is corrected to the other here.",
+  "by_slice": {
+    "BTC": {
+      "populations": {
+        "n_ranked_by_rate": 1234,
+        "n_ranked_by_cost": 1234,
+        "n_ranked_by_both": 1234,
+        "n_ranked_by_rate_only": 0,
+        "n_ranked_by_cost_only": 0,
+        "predicate_rate": "at least 50 early fills carrying a finite 10s book-mid markout, counted by maker_econ.build_toxicity_labels",
+        "predicate_cost": "at least 50 early rows carrying a finite 10s trade-print markout and a finite notional, counted by t3_capacity._per_wallet_cost",
+        "why_they_differ": "the two lenses do not carry the same missing-value pattern, so a wallet can clear the same floor on one and miss it on the other; the floor itself is the same number on both sides"
+      },
+      "selections": {
+        "n_rate_set": 124,
+        "n_cost_set": 123,
+        "n_intersection": 41,
+        "shares_of_the_intersection": {
+          "share_of_rate_set": 0.3306,
+          "share_of_cost_set": 0.3333,
+          "jaccard": 0.199
+        },
+        "n_rate_set_outside_the_cost_ranked_population": 0,
+        "rule_rate": "top ceil(10% x N) by MEAN book-mid markout in bps over the early half (maker_econ.build_toxicity_labels, the cut at the ceil expression inside it)",
+        "rule_cost": "top max(1, floor(10% x N)) by SUMMED early dollar cost (t3_capacity._avoidable_block for the size, _top_by_dollar_cost_mask for the members)"
+      },
+      "dollar_cost_by_part": {
+        "_population": "the wallets t3_capacity ranks, because the per-wallet dollar cost vectors exist only there; a rate-set member outside this population is counted by n_rate_set_outside_the_cost_ranked_population and contributes nothing below",
+        "in_both_sets": {
+          "n_wallets": 41,
+          "late_gross_positive_cost_usd": 97651.48,
+          "share_of_late_gross_positive_cost": 0.1395,
+          "late_signed_cost_usd": 97651.48,
+          "early_gross_positive_cost_usd": 156625.6,
+          "share_of_early_gross_positive_cost": 0.1999
+        },
+        "rate_set_only": {
+          "n_wallets": 83,
+          "late_gross_positive_cost_usd": 4319.89,
+          "share_of_late_gross_positive_cost": 0.0062,
+          "late_signed_cost_usd": 4319.89,
+          "early_gross_positive_cost_usd": 3057.4,
+          "share_of_early_gross_positive_cost": 0.0039
+        },
+        "cost_set_only": {
+          "n_wallets": 82,
+          "late_gross_positive_cost_usd": 531195.33,
+          "share_of_late_gross_positive_cost": 0.7589,
+          "late_signed_cost_usd": 438339.01,
+          "early_gross_positive_cost_usd": 621324.89,
+          "share_of_early_gross_positive_cost": 0.7929
+        },
+        "in_neither_set": {
+          "n_wallets": 1028,
+          "late_gross_positive_cost_usd": 66767.9,
+          "share_of_late_gross_positive_cost": 0.0954,
+          "late_signed_cost_usd": -6186.98,
+          "early_gross_positive_cost_usd": 2574.11,
+          "share_of_early_gross_positive_cost": 0.0033
+        }
+      },
+      "mean_markout_bps_by_part": {
+        "_population": "every wallet either producer ranks in this slice, so the four parts below cover the union of the two ranked populations and not just one of them",
+        "in_both_sets": {
+          "n_wallets": 41,
+          "n_with_finite_score": 41,
+          "mean_early_markout_bps": 3.9855,
+          "median_early_markout_bps": 3.996,
+          "min_early_markout_bps": 2.9999,
+          "max_early_markout_bps": 10.0614
+        },
+        "rate_set_only": {
+          "n_wallets": 83,
+          "n_with_finite_score": 83,
+          "mean_early_markout_bps": 4.0831,
+          "median_early_markout_bps": 4.0237,
+          "min_early_markout_bps": 3.519,
+          "max_early_markout_bps": 6.4611
+        },
+        "cost_set_only": {
+          "n_wallets": 82,
+          "n_with_finite_score": 82,
+          "mean_early_markout_bps": 0.9853,
+          "median_early_markout_bps": 0.7602,
+          "min_early_markout_bps": -4.4769,
+          "max_early_markout_bps": 2.9656
+        },
+        "in_neither_set": {
+          "n_wallets": 1028,
+          "n_with_finite_score": 1028,
+          "mean_early_markout_bps": 0.0494,
+          "median_early_markout_bps": 0.0447,
+          "min_early_markout_bps": -2.2876,
+          "max_early_markout_bps": 2.8798
+        }
+      },
+      "what_each_set_captures_of_the_same_cost_base": {
+        "base": "gross POSITIVE late-half dollar cost over the 1234 wallets t3_capacity ranks, which is the base the published avoidable share stands on",
+        "captured_by_cost_set": 0.8984,
+        "captured_by_rate_set": 0.1457,
+        "captured_by_intersection": 0.1395,
+        "note": "the rate figure is a LOWER bound by exactly the 0 rate-set wallets this population does not carry",
+        "why_the_two_figures_differ": {
+          "k": 10,
+          "share_of_late_gross_positive_cost_held_by_k_largest": 0.8101,
+          "of_the_k_largest_in_rate_set": 2,
+          "of_the_k_largest_in_cost_set": 9,
+          "reading": "the cost-ranked cut is built to contain the largest, so it holds most of this base by construction; how many of them the rate-ranked cut happens to contain is what its captured share mostly is"
+        }
+      },
+      "which_side_is_a_published_cell": {
+        "rate_set": "maker_econ publishes ONE rate-ranked selection and it is the pooled one, so the pooled row here is the study's own set and the per-coin rows are the same rule applied to a coin slice, which no artifact of this tree publishes",
+        "cost_set": "t3_capacity publishes this selection per coin AND pooled, so every row here is a published cell on that side",
+        "consequence": "quote the pooled row when the sentence is about the study's toxic decile; a per-coin row compares one published set against a constructed one and says so"
+      },
+      "reproduction_of_the_published_share": {
+        "published": 0.8984,
+        "published_address": "t3_results.json#BTC.avoidable_share_oos_top10pct_10s",
+        "recomputed": 0.898437,
+        "atol": 5e-05,
+        "reproduced": true,
+        "means": "the cost set rebuilt here IS the set the published share stands on, so the overlap figures above are about that number and not about a lookalike selection"
+      },
+      "cut_rule_sensitivity": {
+        "cut_sizes": {
+          "rate_ceil": 124,
+          "rate_floor": 123,
+          "cost_floor": 123,
+          "cost_ceil": 124
+        },
+        "intersection_under_each_pairing": {
+          "as_the_producers_cut_it__rate_ceil_x_cost_floor": {
+            "n_rate_set": 124,
+            "n_cost_set": 123,
+            "n_intersection": 41
+          },
+          "rate_floor_x_cost_floor": {
+            "n_rate_set": 123,
+            "n_cost_set": 123,
+            "n_intersection": 40
+          },
+          "rate_ceil_x_cost_ceil": {
+            "n_rate_set": 124,
+            "n_cost_set": 124,
+            "n_intersection": 42
+          },
+          "rate_floor_x_cost_ceil": {
+            "n_rate_set": 123,
+            "n_cost_set": 124,
+            "n_intersection": 41
+          }
+        },
+        "wallets_the_rounding_moves": 2,
+        "intersection_as_the_producers_cut_it": 41
+      },
+      "window": {
+        "early_days": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "late_days": [
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      }
+    },
+    "ETH": {
+      "populations": {
+        "n_ranked_by_rate": 925,
+        "n_ranked_by_cost": 926,
+        "n_ranked_by_both": 925,
+        "n_ranked_by_rate_only": 0,
+        "n_ranked_by_cost_only": 1,
+        "predicate_rate": "at least 50 early fills carrying a finite 10s book-mid markout, counted by maker_econ.build_toxicity_labels",
+        "predicate_cost": "at least 50 early rows carrying a finite 10s trade-print markout and a finite notional, counted by t3_capacity._per_wallet_cost",
+        "why_they_differ": "the two lenses do not carry the same missing-value pattern, so a wallet can clear the same floor on one and miss it on the other; the floor itself is the same number on both sides"
+      },
+      "selections": {
+        "n_rate_set": 93,
+        "n_cost_set": 92,
+        "n_intersection": 41,
+        "shares_of_the_intersection": {
+          "share_of_rate_set": 0.4409,
+          "share_of_cost_set": 0.4457,
+          "jaccard": 0.2847
+        },
+        "n_rate_set_outside_the_cost_ranked_population": 0,
+        "rule_rate": "top ceil(10% x N) by MEAN book-mid markout in bps over the early half (maker_econ.build_toxicity_labels, the cut at the ceil expression inside it)",
+        "rule_cost": "top max(1, floor(10% x N)) by SUMMED early dollar cost (t3_capacity._avoidable_block for the size, _top_by_dollar_cost_mask for the members)"
+      },
+      "dollar_cost_by_part": {
+        "_population": "the wallets t3_capacity ranks, because the per-wallet dollar cost vectors exist only there; a rate-set member outside this population is counted by n_rate_set_outside_the_cost_ranked_population and contributes nothing below",
+        "in_both_sets": {
+          "n_wallets": 41,
+          "late_gross_positive_cost_usd": 339308.44,
+          "share_of_late_gross_positive_cost": 0.4716,
+          "late_signed_cost_usd": 332711.01,
+          "early_gross_positive_cost_usd": 328194.09,
+          "share_of_early_gross_positive_cost": 0.5071
+        },
+        "rate_set_only": {
+          "n_wallets": 52,
+          "late_gross_positive_cost_usd": 11027.05,
+          "share_of_late_gross_positive_cost": 0.0153,
+          "late_signed_cost_usd": 11027.05,
+          "early_gross_positive_cost_usd": 5235.81,
+          "share_of_early_gross_positive_cost": 0.0081
+        },
+        "cost_set_only": {
+          "n_wallets": 51,
+          "late_gross_positive_cost_usd": 299179.87,
+          "share_of_late_gross_positive_cost": 0.4158,
+          "late_signed_cost_usd": 282967.9,
+          "early_gross_positive_cost_usd": 308348.48,
+          "share_of_early_gross_positive_cost": 0.4765
+        },
+        "in_neither_set": {
+          "n_wallets": 782,
+          "late_gross_positive_cost_usd": 69984.4,
+          "share_of_late_gross_positive_cost": 0.0973,
+          "late_signed_cost_usd": -45511.71,
+          "early_gross_positive_cost_usd": 5372.94,
+          "share_of_early_gross_positive_cost": 0.0083
+        }
+      },
+      "mean_markout_bps_by_part": {
+        "_population": "every wallet either producer ranks in this slice, so the four parts below cover the union of the two ranked populations and not just one of them",
+        "in_both_sets": {
+          "n_wallets": 41,
+          "n_with_finite_score": 41,
+          "mean_early_markout_bps": 5.0367,
+          "median_early_markout_bps": 3.8861,
+          "min_early_markout_bps": 3.4354,
+          "max_early_markout_bps": 17.6357
+        },
+        "rate_set_only": {
+          "n_wallets": 52,
+          "n_with_finite_score": 52,
+          "mean_early_markout_bps": 4.0196,
+          "median_early_markout_bps": 3.6766,
+          "min_early_markout_bps": 3.429,
+          "max_early_markout_bps": 12.4992
+        },
+        "cost_set_only": {
+          "n_wallets": 51,
+          "n_with_finite_score": 51,
+          "mean_early_markout_bps": 1.5979,
+          "median_early_markout_bps": 1.3217,
+          "min_early_markout_bps": -0.4451,
+          "max_early_markout_bps": 3.4125
+        },
+        "in_neither_set": {
+          "n_wallets": 782,
+          "n_with_finite_score": 782,
+          "mean_early_markout_bps": 0.1155,
+          "median_early_markout_bps": 0.041,
+          "min_early_markout_bps": -37.3606,
+          "max_early_markout_bps": 3.4214
+        }
+      },
+      "what_each_set_captures_of_the_same_cost_base": {
+        "base": "gross POSITIVE late-half dollar cost over the 926 wallets t3_capacity ranks, which is the base the published avoidable share stands on",
+        "captured_by_cost_set": 0.8874,
+        "captured_by_rate_set": 0.4869,
+        "captured_by_intersection": 0.4716,
+        "note": "the rate figure is a LOWER bound by exactly the 0 rate-set wallets this population does not carry",
+        "why_the_two_figures_differ": {
+          "k": 10,
+          "share_of_late_gross_positive_cost_held_by_k_largest": 0.7986,
+          "of_the_k_largest_in_rate_set": 4,
+          "of_the_k_largest_in_cost_set": 8,
+          "reading": "the cost-ranked cut is built to contain the largest, so it holds most of this base by construction; how many of them the rate-ranked cut happens to contain is what its captured share mostly is"
+        }
+      },
+      "which_side_is_a_published_cell": {
+        "rate_set": "maker_econ publishes ONE rate-ranked selection and it is the pooled one, so the pooled row here is the study's own set and the per-coin rows are the same rule applied to a coin slice, which no artifact of this tree publishes",
+        "cost_set": "t3_capacity publishes this selection per coin AND pooled, so every row here is a published cell on that side",
+        "consequence": "quote the pooled row when the sentence is about the study's toxic decile; a per-coin row compares one published set against a constructed one and says so"
+      },
+      "reproduction_of_the_published_share": {
+        "published": 0.8874,
+        "published_address": "t3_results.json#ETH.avoidable_share_oos_top10pct_10s",
+        "recomputed": 0.887406,
+        "atol": 5e-05,
+        "reproduced": true,
+        "means": "the cost set rebuilt here IS the set the published share stands on, so the overlap figures above are about that number and not about a lookalike selection"
+      },
+      "cut_rule_sensitivity": {
+        "cut_sizes": {
+          "rate_ceil": 93,
+          "rate_floor": 92,
+          "cost_floor": 92,
+          "cost_ceil": 93
+        },
+        "intersection_under_each_pairing": {
+          "as_the_producers_cut_it__rate_ceil_x_cost_floor": {
+            "n_rate_set": 93,
+            "n_cost_set": 92,
+            "n_intersection": 41
+          },
+          "rate_floor_x_cost_floor": {
+            "n_rate_set": 92,
+            "n_cost_set": 92,
+            "n_intersection": 41
+          },
+          "rate_ceil_x_cost_ceil": {
+            "n_rate_set": 93,
+            "n_cost_set": 93,
+            "n_intersection": 42
+          },
+          "rate_floor_x_cost_ceil": {
+            "n_rate_set": 92,
+            "n_cost_set": 93,
+            "n_intersection": 42
+          }
+        },
+        "wallets_the_rounding_moves": 1,
+        "intersection_as_the_producers_cut_it": 41
+      },
+      "window": {
+        "early_days": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "late_days": [
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      }
+    },
+    "pooled": {
+      "populations": {
+        "n_ranked_by_rate": 2069,
+        "n_ranked_by_cost": 2070,
+        "n_ranked_by_both": 2069,
+        "n_ranked_by_rate_only": 0,
+        "n_ranked_by_cost_only": 1,
+        "predicate_rate": "at least 50 early fills carrying a finite 10s book-mid markout, counted by maker_econ.build_toxicity_labels",
+        "predicate_cost": "at least 50 early rows carrying a finite 10s trade-print markout and a finite notional, counted by t3_capacity._per_wallet_cost",
+        "why_they_differ": "the two lenses do not carry the same missing-value pattern, so a wallet can clear the same floor on one and miss it on the other; the floor itself is the same number on both sides"
+      },
+      "selections": {
+        "n_rate_set": 207,
+        "n_cost_set": 207,
+        "n_intersection": 141,
+        "shares_of_the_intersection": {
+          "share_of_rate_set": 0.6812,
+          "share_of_cost_set": 0.6812,
+          "jaccard": 0.5165
+        },
+        "n_rate_set_outside_the_cost_ranked_population": 0,
+        "rule_rate": "top ceil(10% x N) by MEAN book-mid markout in bps over the early half (maker_econ.build_toxicity_labels, the cut at the ceil expression inside it)",
+        "rule_cost": "top max(1, floor(10% x N)) by SUMMED early dollar cost (t3_capacity._avoidable_block for the size, _top_by_dollar_cost_mask for the members)"
+      },
+      "dollar_cost_by_part": {
+        "_population": "the wallets t3_capacity ranks, because the per-wallet dollar cost vectors exist only there; a rate-set member outside this population is counted by n_rate_set_outside_the_cost_ranked_population and contributes nothing below",
+        "in_both_sets": {
+          "n_wallets": 141,
+          "late_gross_positive_cost_usd": 1295529.45,
+          "share_of_late_gross_positive_cost": 0.8881,
+          "late_signed_cost_usd": 1258237.83,
+          "early_gross_positive_cost_usd": 1371667.84,
+          "share_of_early_gross_positive_cost": 0.9282
+        },
+        "rate_set_only": {
+          "n_wallets": 66,
+          "late_gross_positive_cost_usd": 11332.94,
+          "share_of_late_gross_positive_cost": 0.0078,
+          "late_signed_cost_usd": 10640.87,
+          "early_gross_positive_cost_usd": 2687.51,
+          "share_of_early_gross_positive_cost": 0.0018
+        },
+        "cost_set_only": {
+          "n_wallets": 66,
+          "late_gross_positive_cost_usd": 32587.72,
+          "share_of_late_gross_positive_cost": 0.0223,
+          "late_signed_cost_usd": -57077.52,
+          "early_gross_positive_cost_usd": 96696.35,
+          "share_of_early_gross_positive_cost": 0.0654
+        },
+        "in_neither_set": {
+          "n_wallets": 1797,
+          "late_gross_positive_cost_usd": 119304.75,
+          "share_of_late_gross_positive_cost": 0.0818,
+          "late_signed_cost_usd": -98143.35,
+          "early_gross_positive_cost_usd": 6684.5,
+          "share_of_early_gross_positive_cost": 0.0045
+        }
+      },
+      "mean_markout_bps_by_part": {
+        "_population": "every wallet either producer ranks in this slice, so the four parts below cover the union of the two ranked populations and not just one of them",
+        "in_both_sets": {
+          "n_wallets": 141,
+          "n_with_finite_score": 141,
+          "mean_early_markout_bps": 3.7705,
+          "median_early_markout_bps": 3.5837,
+          "min_early_markout_bps": 1.8381,
+          "max_early_markout_bps": 16.6775
+        },
+        "rate_set_only": {
+          "n_wallets": 66,
+          "n_with_finite_score": 66,
+          "mean_early_markout_bps": 3.0596,
+          "median_early_markout_bps": 2.8495,
+          "min_early_markout_bps": 1.7828,
+          "max_early_markout_bps": 10.972
+        },
+        "cost_set_only": {
+          "n_wallets": 66,
+          "n_with_finite_score": 66,
+          "mean_early_markout_bps": 0.8337,
+          "median_early_markout_bps": 0.7455,
+          "min_early_markout_bps": -0.5187,
+          "max_early_markout_bps": 1.7111
+        },
+        "in_neither_set": {
+          "n_wallets": 1797,
+          "n_with_finite_score": 1797,
+          "mean_early_markout_bps": 0.0057,
+          "median_early_markout_bps": 0.0417,
+          "min_early_markout_bps": -37.3606,
+          "max_early_markout_bps": 1.7714
+        }
+      },
+      "what_each_set_captures_of_the_same_cost_base": {
+        "base": "gross POSITIVE late-half dollar cost over the 2070 wallets t3_capacity ranks, which is the base the published avoidable share stands on",
+        "captured_by_cost_set": 0.9104,
+        "captured_by_rate_set": 0.8959,
+        "captured_by_intersection": 0.8881,
+        "note": "the rate figure is a LOWER bound by exactly the 0 rate-set wallets this population does not carry",
+        "why_the_two_figures_differ": {
+          "k": 10,
+          "share_of_late_gross_positive_cost_held_by_k_largest": 0.6982,
+          "of_the_k_largest_in_rate_set": 10,
+          "of_the_k_largest_in_cost_set": 10,
+          "reading": "the cost-ranked cut is built to contain the largest, so it holds most of this base by construction; how many of them the rate-ranked cut happens to contain is what its captured share mostly is"
+        }
+      },
+      "which_side_is_a_published_cell": {
+        "rate_set": "maker_econ publishes ONE rate-ranked selection and it is the pooled one, so the pooled row here is the study's own set and the per-coin rows are the same rule applied to a coin slice, which no artifact of this tree publishes",
+        "cost_set": "t3_capacity publishes this selection per coin AND pooled, so every row here is a published cell on that side",
+        "consequence": "quote the pooled row when the sentence is about the study's toxic decile; a per-coin row compares one published set against a constructed one and says so"
+      },
+      "reproduction_of_the_published_share": {
+        "published": 0.9104,
+        "published_address": "t3_results.json#pooled.avoidable_share_oos_top10pct_10s",
+        "recomputed": 0.910446,
+        "atol": 5e-05,
+        "reproduced": true,
+        "means": "the cost set rebuilt here IS the set the published share stands on, so the overlap figures above are about that number and not about a lookalike selection"
+      },
+      "cut_rule_sensitivity": {
+        "cut_sizes": {
+          "rate_ceil": 207,
+          "rate_floor": 206,
+          "cost_floor": 207,
+          "cost_ceil": 207
+        },
+        "intersection_under_each_pairing": {
+          "as_the_producers_cut_it__rate_ceil_x_cost_floor": {
+            "n_rate_set": 207,
+            "n_cost_set": 207,
+            "n_intersection": 141
+          },
+          "rate_floor_x_cost_floor": {
+            "n_rate_set": 206,
+            "n_cost_set": 207,
+            "n_intersection": 141
+          },
+          "rate_ceil_x_cost_ceil": {
+            "n_rate_set": 207,
+            "n_cost_set": 207,
+            "n_intersection": 141
+          },
+          "rate_floor_x_cost_ceil": {
+            "n_rate_set": 206,
+            "n_cost_set": 207,
+            "n_intersection": 141
+          }
+        },
+        "wallets_the_rounding_moves": 0,
+        "intersection_as_the_producers_cut_it": 141
+      },
+      "window": {
+        "early_days": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "late_days": [
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      }
+    }
+  },
+  "calibration": {
+    "must_find_full_overlap__rate_set_against_itself": {
+      "n_intersection": 207,
+      "expected": 207,
+      "shares": {
+        "share_of_rate_set": 1.0,
+        "share_of_cost_set": 1.0,
+        "jaccard": 1.0
+      },
+      "passed": true
+    },
+    "must_find_no_overlap__rate_set_against_its_complement": {
+      "n_intersection": 0,
+      "expected": 0,
+      "n_in_complement": 1862,
+      "passed": true
+    },
+    "must_find_full_overlap__cost_set_against_itself": {
+      "n_intersection": 207,
+      "expected": 207,
+      "passed": true
+    },
+    "must_find_no_overlap__cost_set_against_its_complement": {
+      "n_intersection": 0,
+      "expected": 0,
+      "n_in_complement": 1863,
+      "passed": true
+    },
+    "join_key_false_match_rate": {
+      "whole_wallet_identifier": {
+        "key": "taker_id (int64, whole field)",
+        "n_values": 2070,
+        "n_distinct_keys": 2070,
+        "wallets_merged_with_another_wallet": 0,
+        "note": "an identifier is compared whole, so two different wallets cannot share a key and no rounding can invent one. This is the key every join in this file uses."
+      },
+      "rounded_mean_markout_bps": {
+        "key": "round(early markout bps, 2)",
+        "decimals": 2,
+        "population": "the wallets t3_capacity ranks on the pooled slice, so both rounded keys below are measured over the same wallets and their two failure rates are comparable",
+        "n_values": 2070,
+        "n_distinct_keys": 451,
+        "wallets_merged_with_another_wallet": 1619,
+        "value_range": [
+          -37.3606,
+          16.6775
+        ],
+        "fabricated_values_drawn": 1000,
+        "fabricated_values_accepted": 87,
+        "false_match_rate": 0.087
+      },
+      "rounded_dollar_cost": {
+        "key": "round(early dollar cost, 2)",
+        "decimals": 2,
+        "population": "the wallets t3_capacity ranks on the pooled slice, so both rounded keys below are measured over the same wallets and their two failure rates are comparable",
+        "n_values": 2070,
+        "n_distinct_keys": 1496,
+        "wallets_merged_with_another_wallet": 574,
+        "value_range": [
+          -102435.241,
+          228785.9756
+        ],
+        "fabricated_values_drawn": 1000,
+        "fabricated_values_accepted": 0,
+        "false_match_rate": 0.0
+      },
+      "reading": "The two rounded keys fail in different directions on one and the same population, which is why both are shown. The score key lives in a narrow range, so a fabricated value lands on an occupied key often. The dollar key spans six orders of magnitude, so a fabricated value almost never lands on one, and it fails the other way instead: half the wallets sit within a few cents of zero and rounding merges them. A comparator that only ever cried wolf would have shown two high rates. A number is never a join key here."
+    }
+  },
+  "reading_rule": "Quote the two shares of the intersection together and never one alone: the share of the rate set that the cost set holds and the share of the cost set that the rate set holds are different numbers whenever the two cuts differ in size. Name the ranking beside any figure taken from here.",
+  "row_alignment_verified": {
+    "taker_id": true,
+    "coin": true,
+    "day": true
+  }
+}

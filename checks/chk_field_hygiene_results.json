@@ -1,0 +1,184 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_field_hygiene_results.json",
+    "producer": {
+      "script": "chk_field_hygiene.py",
+      "sha256": "80094a002c7049a12a96d321244c3f349d46d92c34e6a23b1e47da8974f2b65f",
+      "bytes": 50490,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "548bf16d9e829f3ef868e82b50efab1f01eb4d13",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "build_quickwin_markouts.py",
+        "bytes": 40769,
+        "sha256": "7a77a582d2432e34a1eed21e3775d9102c1f18ca415126f0fc294b93c52afa7a",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "ks2_persistence_10day.py",
+        "bytes": 59816,
+        "sha256": "b6ff5e6cee58b7ef3eaecab7b69ba4d1c318e12c2e349d8fd0aa4aff9bd9c5cb",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "203,024 raw fills re-walked",
+      "window": "ONE DAY, 20251204, bounded to at most 3 hours",
+      "coins": "every coin present in the walked hours; the hygiene legs count dropped and malformed records and are not cut by coin"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "run": {
+      "runtime_s": 25.358,
+      "finished_utc": "2026-08-29T19:04:22Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "check": "field_hygiene",
+  "mode": "full",
+  "config": {
+    "build_src": "build_quickwin_markouts.py",
+    "ks2_src": "ks2_persistence_10day.py",
+    "raw_rewalk_ran": true,
+    "rewalk_day": "20251204",
+    "rewalk_hours": [
+      0,
+      1,
+      2
+    ],
+    "drop_negligible_threshold": 0.0001
+  },
+  "checks": [
+    {
+      "name": "markout_formula_byte_identical",
+      "assumption": "ks2_persistence_10day.py carries a DUPLICATED (not imported) copy of the signed-markout formula identical to build_quickwin_markouts.py.",
+      "method": "Textually grepped the markout RHS 'taker_dir.astype(np.float64) * (ref - taker_px) / taker_px * 1e4' in both files and compared the whitespace-normalised line sets.",
+      "observed": {
+        "build_occurrences": 1,
+        "ks2_occurrences": 2,
+        "identical": true,
+        "rhs_expression": "taker_dir.astype(np.float64) * (ref - taker_px) / taker_px * 1e4",
+        "distinct_rhs": [
+          "taker_dir.astype(np.float64) * (ref - taker_px) / taker_px * 1e4"
+        ]
+      },
+      "verdict": "confirmed",
+      "note": "markout RHS expression is byte-identical wherever it appears in both parser copies (ks2 keeps an extra compute_markout60 with the same RHS; build keeps a docstring - neither changes the arithmetic)."
+    },
+    {
+      "name": "searchsorted_join_byte_identical",
+      "assumption": "the as-of (last-at-or-before) join 'np.searchsorted(print_ts, query_ns, side=\"right\") - 1' is duplicated identically in both parser copies.",
+      "method": "Textually grepped the searchsorted line in both files and compared the whitespace-normalised line sets; backstopped by comparing the full normalised source of price_at + compute_markouts_all.",
+      "observed": {
+        "build_occurrences": 1,
+        "ks2_occurrences": 1,
+        "identical": true,
+        "normalised_line": [
+          "idx = np.searchsorted(print_ts, query_ns, side=\"right\") - 1"
+        ],
+        "price_at_source_identical": true,
+        "compute_markouts_all_source_identical": true
+      },
+      "verdict": "confirmed",
+      "note": "as-of join + price_at + compute_markouts_all are byte-identical across the two copies."
+    },
+    {
+      "name": "parse_day_codeonly_diff",
+      "assumption": "build_quickwin_markouts.parse_day is 'copied verbatim' into ks2_persistence_10day.parse_day (per the docstring).",
+      "method": "Stripped docstrings/comments/blanks from BOTH parse_day sources and diffed code-line sets; asserted the load-bearing CORE anchors (VWAP print-path accumulation, crossed=true collapse, searchsorted join) are present in both, and allow-listed the one known benign divergence (ks2 drops the crossed=false maker branch + the extra retained taker fields). Any line outside the allow-list is flagged as a NEW divergence.",
+      "observed": {
+        "build_codeline_count": 146,
+        "ks2_codeline_count": 92,
+        "n_build_only_total": 59,
+        "n_build_only_allowlisted": 59,
+        "n_ks2_only_total": 7,
+        "n_ks2_only_allowlisted": 7,
+        "missing_core_anchors": [],
+        "new_build_only": [],
+        "new_ks2_only": [],
+        "core_identical": true,
+        "allowlisted_benign_only": true
+      },
+      "verdict": "confirmed",
+      "note": "parse_day is NOT verbatim-identical (build 146 code-lines vs ks2 92), but the ONLY divergence is the allow-listed benign one: ks2 omits the crossed=false maker branch + dominant-maker resolution and the extra retained fields (is_open/start_pos/side_b/closed_pnl/dir_code). The shared core - per-hash VWAP print-path accumulation, the crossed=true taker collapse and the markout/as-of-join - is identical."
+    },
+    {
+      "name": "crossed_silent_drop_fraction",
+      "assumption": "Every raw fill is routed to either the taker branch (crossed is True) or the maker branch (crossed is False); a fill with crossed absent/None contributes to NEITHER and is silently dropped from counterparty resolution.",
+      "method": "Re-walked 3 hour(s) of 20251204 (BTC+ETH) at the raw event level, mirroring parse_day's loop and the same coin / ZERO_HASH / None-hash guards; counted fills by crossed routing as a fraction of raw fills.",
+      "observed": {
+        "n_raw_fills": 203024,
+        "n_crossed_true": 101512,
+        "n_crossed_false": 101512,
+        "n_crossed_absent": 0,
+        "n_crossed_other": 0,
+        "frac_crossed_absent": 0.0,
+        "frac_crossed_other": 0.0,
+        "frac_routed": 1.0
+      },
+      "verdict": "confirmed",
+      "note": "crossed-absent fraction 0.00e+00 (+other 0.00e+00) is negligible: effectively no fill is silently dropped on the crossed routing."
+    },
+    {
+      "name": "size_nonpositive_fraction",
+      "assumption": "sz is read as float(f['sz']) unconditionally and is assumed strictly positive (no sz<=0 fills entering the VWAP / size-weighting).",
+      "method": "On the same raw re-walk, counted fills with sz<=0 and fills where px/sz are not float-parseable, as fractions of raw fills.",
+      "observed": {
+        "n_sz_nonpos": 0,
+        "n_sz_unparseable": 0,
+        "frac_sz_nonpos": 0.0,
+        "frac_sz_unparseable": 0.0
+      },
+      "verdict": "confirmed",
+      "note": "no non-positive or unparseable sizes in the sample - the VWAP / size-weighting inputs are clean."
+    },
+    {
+      "name": "maker_none_rate",
+      "assumption": "Most taker (hash,taker) sweeps have a crossed=false leg sharing the hash, so maker_id is resolved (maker_id == -1 only rarely). The FINAL artifacts show maker_id==-1 at 0.0.",
+      "method": "On the same raw re-walk, measured the fraction of distinct (hash,taker) takers with NO crossed=false leg sharing the hash within the walked window (these become maker_id == -1).",
+      "observed": {
+        "n_distinct_taker_keys": 38573,
+        "n_taker_keys_no_maker": 0,
+        "maker_none_rate": 0.0,
+        "note_window": "windowed to the walked hours; a maker leg in an un-walked hour of the same hash would lower this rate, so this is an UPPER bound on the true per-day rate."
+      },
+      "verdict": "confirmed",
+      "note": "maker-None rate 0.000 (upper bound on a 3-hour window) is small: maker resolution covers ~all taker sweeps, consistent with the 0.0 maker_id==-1 rate in the final npz."
+    }
+  ],
+  "overall_verdict": "confirmed",
+  "note": "BOTH halves ran and passed: load-bearing parser lines are identical (benign allow-listed parse_day divergence aside) AND the raw re-walk found negligible silent-drop / sz<=0."
+}

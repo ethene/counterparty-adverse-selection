@@ -1,0 +1,396 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_settings_home_results.json",
+    "producer": {
+      "script": "chk_settings_home.py",
+      "sha256": "29b91ea4c287adbece9af77fb96749895d893f43e2d9e23594db3a64a7bb3388",
+      "bytes": 77110,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "72b51b7bdab9d9e886a7ba0c3594df6fdbf06b60",
+      "unasked_because": null
+    },
+    "inputs": [],
+    "scope": {
+      "population": "127 shipped .py and every code cell of the 1 shipped .ipynb for rules 1, 2 and 4; 107 shipped .json for rule 3; the shipped notebooks for rule 5. A notebook finding points at file.ipynb#cellN and a line inside that cell",
+      "window": "n/a: this gate reads the repository as it stands now, not a period of market data",
+      "coins": "n/a: this gate reads declarations and touches no market data"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "scope_note": "counts are kept per scope and never blended: py debt is paid off by migrating a consumer to settings.py, notebook debt by mirroring or deleting a cell literal, and one blended number could be lowered by work on the other",
+    "n_py_scanned": 127,
+    "n_json_scanned": 107,
+    "n_notebooks_scanned": 1,
+    "n_notebook_code_cells": 25,
+    "fingerprint_census": {
+      "n_files_stamped": 106,
+      "n_fingerprint_blocks": 114,
+      "files_with_more_than_one_block": {
+        "money/sensitivity_rollup_results.json": 9
+      },
+      "own_results_files_counted": [
+        "checks/chk_academic_header_results.json",
+        "checks/chk_artifact_provenance_results.json",
+        "checks/chk_book_orientation_results.json",
+        "checks/chk_build_selftest_results.json",
+        "checks/chk_closedpnl_results.json",
+        "checks/chk_contrast_hygiene_results.json",
+        "checks/chk_decision_lookahead_results.json",
+        "checks/chk_dir_vs_startpos_results.json",
+        "checks/chk_expensive_edits_results.json",
+        "checks/chk_field_hygiene_results.json",
+        "checks/chk_headline_horizon_results.json",
+        "checks/chk_input_freshness_results.json",
+        "checks/chk_liquidation_field_results.json",
+        "checks/chk_maker_attribution_results.json",
+        "checks/chk_no_abs_paths_results.json",
+        "checks/chk_notebook_expectations_results.json",
+        "checks/chk_notebook_pointer_table_results.json",
+        "checks/chk_pinned_versions_results.json",
+        "checks/chk_producer_committed_results.json",
+        "checks/chk_prose_numbers_results.json",
+        "checks/chk_requirements_census_results.json",
+        "checks/chk_rowcounts_determinism_results.json",
+        "checks/chk_run_happened_results.json",
+        "checks/chk_settings_home_results.json",
+        "checks/chk_side_signconv_results.json",
+        "checks/join_nolookahead_results.json",
+        "checks/run_all_checks_results.json"
+      ],
+      "note": "files and blocks are different numbers: an artifact that stamps the fingerprint under both _meta and scope contributes one file and two blocks. own_results_files_counted names the check outputs inside the file count -- they carry a fingerprint because this gate writes one, and they are not artifacts the study produced."
+    },
+    "baseline_rule1": 0,
+    "baseline_rule2": 0,
+    "baseline_rule1_notebook": 0,
+    "baseline_rule4": 0,
+    "baseline_rule5": 0,
+    "baseline_rule6": 0,
+    "baseline_rule6_address": 0,
+    "setting_site_census": {
+      "n_sites_declared": 63,
+      "n_compared": 0,
+      "by_state": {
+        "migrated": 54,
+        "no_comparison_defined": 8,
+        "no_module_level_binding": 1
+      },
+      "by_resolution": {
+        "declared_path": 14,
+        "base_name": 49,
+        "unresolved": 0,
+        "ambiguous": 0
+      },
+      "n_resolved_by_base_name": 49,
+      "comparator": "settings.site_agrees, called rather than reimplemented",
+      "verified_today": "NOTHING. Every one of the 63 declared sites is migrated, holds no value, or binds no module-level name, so no comparison of values took place and this zero is the absence of a population rather than the absence of a disagreement. The rule is armed and idle: it compares the moment a literal is written back at a declared site. What the run DID verify is the address of every site, 63 of 63 resolved.",
+      "population_note": "n_compared is the population the disagreement count is taken over, and it is smaller than the number of declared sites by construction: a migrated site holds no literal and an override hook bound to None holds no value, so neither can agree or disagree. A zero over a zero population verifies nothing and this rule says so on screen rather than printing it green.",
+      "address_note": "n_resolved_by_base_name counts site keys whose declared path is not in the tree while a file of that base name is. The keys carry the flat layout the tree had before the scripts were grouped into directories; resolving by content rather than by the spelled path is what keeps 49 of them from reading as missing files."
+    },
+    "unarmed_baselines": [],
+    "unarmed_note": "a rule whose baseline is null reports its count and cannot fail the run; set the baseline to arm it",
+    "allow_list": {
+      "settings.py": "the single source of truth itself",
+      "persistence/forward_toxicity.py": "its window is a different one, so its day split is calendar dates rather than days of the month",
+      "probes/probe_G_horizon.py": "the horizon grid IS the object of study and is deliberately finer than the ladder"
+    },
+    "notebook_mirror": {
+      "SCORE_HORIZON_S": [
+        "value",
+        "HEADLINE_HORIZON_S"
+      ],
+      "LADDER_S": [
+        "value",
+        "LADDER_S"
+      ],
+      "COMPANION_HORIZON_S": [
+        "value",
+        "COMPANION_HORIZON_S"
+      ],
+      "K_LIST": [
+        "value",
+        "PERSISTENCE_FLOOR_FILLS"
+      ],
+      "MIN_EARLY_TRADES": [
+        "value",
+        "RANK_FLOOR_FILLS"
+      ],
+      "EARLY_DAYS": [
+        "split",
+        "early"
+      ],
+      "LATE_DAYS": [
+        "split",
+        "late"
+      ]
+    },
+    "notebook_mirrors_checked": [
+      {
+        "name": "COMPANION_HORIZON_S",
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 28,
+        "mirrors": "COMPANION_HORIZON_S",
+        "value": 60,
+        "agrees": true
+      },
+      {
+        "name": "EARLY_DAYS",
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 44,
+        "mirrors": "early",
+        "value": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "agrees": true
+      },
+      {
+        "name": "K_LIST",
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 43,
+        "mirrors": "PERSISTENCE_FLOOR_FILLS",
+        "value": [
+          50,
+          100
+        ],
+        "agrees": true
+      },
+      {
+        "name": "LADDER_S",
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 27,
+        "mirrors": "LADDER_S",
+        "value": [
+          1,
+          10,
+          60
+        ],
+        "agrees": true
+      },
+      {
+        "name": "LATE_DAYS",
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 45,
+        "mirrors": "late",
+        "value": [
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "agrees": true
+      },
+      {
+        "name": "MIN_EARLY_TRADES",
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 46,
+        "mirrors": "RANK_FLOOR_FILLS",
+        "value": 50,
+        "agrees": true
+      },
+      {
+        "name": "SCORE_HORIZON_S",
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 22,
+        "mirrors": "HEADLINE_HORIZON_S",
+        "value": 10,
+        "agrees": true
+      }
+    ],
+    "notebook_declarations_not_judged": [
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell3",
+        "line": 11,
+        "name": "ZENODO"
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell4",
+        "line": 7,
+        "name": "EXPECTED"
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 3,
+        "name": "RIDGE_LAMBDA"
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 4,
+        "name": "N_NL_BINS"
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 41,
+        "name": "HORIZON_GRID"
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 47,
+        "name": "TOP_DECILE"
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 48,
+        "name": "TOP_N"
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 49,
+        "name": "HEADLINE_MIN_FILLS"
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 50,
+        "name": "MAKER_FEE_BPS"
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 239,
+        "name": "_MS"
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 239,
+        "name": "_GAPMAX"
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 251,
+        "name": "_BOOK_SHIPPED"
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell7",
+        "line": 34,
+        "name": "COIN"
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell33",
+        "line": 144,
+        "name": "_AS_BUILT"
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell43",
+        "line": 72,
+        "name": "_rel"
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell45",
+        "line": 5,
+        "name": "_devL"
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell45",
+        "line": 19,
+        "name": "_lvl"
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell45",
+        "line": 94,
+        "name": "_pers"
+      }
+    ],
+    "notebook_declarations_not_judged_note": "top-level literals in notebook cells whose names are not in LOAD_BEARING, so RULE 1 says nothing about them. The coin map is the one that matters most: settings.py keys the code map BY ARTIFACT because a code valid in two files relabels BTC as ETH without raising, and the notebook types its own. Adding COIN to the coins family was measured on 2026-07-30 and costs 8 further findings in probes/ plus 1 in the notebook, which is a decision about the frozen debt figure and not a side effect of widening the scope.",
+    "setting_state": {
+      "HEADLINE_HORIZON_S": "in_force",
+      "LADDER_S": "in_force",
+      "COMPANION_HORIZON_S": "in_force",
+      "HEADLINE_LENS": "in_force",
+      "RELIABILITY_SEED": "in_force",
+      "FDR_ALPHA": "in_force",
+      "PERSISTENCE_FLOOR_FILLS": "in_force",
+      "DAY_FLOOR_FILLS": "in_force",
+      "WHALE_DROP_K": "in_force",
+      "COIN_CODES_BY_ARTIFACT": "in_force",
+      "MASTER_SEED": "target",
+      "N_PERM": "target",
+      "N_BOOT": "in_force",
+      "RANK_FLOOR_FILLS": "target",
+      "MIN_COMMON_WALLETS": "target",
+      "WHALE_DROP_CRITERIA": "target",
+      "FIELD_SUFFIX_STYLE": "target",
+      "split_early_late": "target",
+      "SEED_BY_PURPOSE": "in_force",
+      "PERM_DRAWS_BY_PURPOSE": "in_force",
+      "BOOT_DRAWS_BY_PURPOSE": "in_force",
+      "WALLET_FILL_FLOOR_BY_PURPOSE": "in_force",
+      "COIN_SYMBOLS_BY_ARTIFACT": "in_force"
+    },
+    "not_caught": [
+      "a name stating a setting its value does not come from",
+      "an input chosen by an `or` fallback, by a try/except, or by a glob that returns whichever shards are present",
+      "a filesystem test whose two branches bind DIFFERENT names that a later line then merges: RULE 4 pairs the branches by the names they assign, so an unshared name is invisible",
+      "a setting spelled inside a notebook cell that the parse could not read (see unparsable_cells)"
+    ],
+    "unparsable_cells": [],
+    "run": {
+      "runtime_s": 2.357,
+      "finished_utc": "2026-10-22T09:37:35Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {}
+    }
+  },
+  "verdict": "PASS",
+  "n_rule1_second_home": 0,
+  "n_rule1_by_declaration_kind": {
+    "declared_value": 0,
+    "override_hook_no_value": 0
+  },
+  "n_rule1_second_home_notebook": 0,
+  "n_rule2_key_collision": 0,
+  "n_rule2_key_collision_notebook": 0,
+  "n_rule3_stale_fingerprint": 0,
+  "n_rule4_input_chosen_by_disk": 0,
+  "n_rule4_input_chosen_by_disk_notebook": 0,
+  "n_rule5_notebook_mirror": 0,
+  "n_rule6_site_disagrees": 0,
+  "n_rule6_compared": 0,
+  "n_rule6_site_address_unresolved": 0,
+  "by_scope": {
+    "py": {
+      "rule1": 0,
+      "rule2": 0,
+      "rule4": 0,
+      "rule6": 0,
+      "rule6_address": 0
+    },
+    "notebook": {
+      "rule1": 0,
+      "rule2": 0,
+      "rule4": 0,
+      "rule5": 0
+    },
+    "json": {
+      "rule3": 0
+    }
+  },
+  "findings": []
+}

@@ -1,0 +1,433 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "d2_fill_tape_figure_results.json",
+    "producer": {
+      "script": "d2_fill_tape_figure.py",
+      "sha256": "1330d5042f5a1b05ff3c44f46dbf31afd8f96ffe811fb90b0b74e624e000c66e",
+      "bytes": 38201,
+      "bytes_in_object_db": "absent",
+      "object_format": "sha1",
+      "object_id": "3b9d4e0033d4094c32a6f7ddf64905f441bba1dd",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "quickwin_pass_summary.json",
+        "bytes": 16018,
+        "sha256": "0d2de79e7b8d23ac6fd786c4ba8e2d4c4bf3758801587098a8a0a8cea4bea242",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "every collapsed taker trade on the tape, 2,480,267 of them across 45,849 taker wallets and 9,367 maker wallets. No fill floor, no wallet floor and no horizon applies: this is the tape itself and not a slice of it, which makes it a WIDER population than any results block measured on ranked wallets. One row is one taker order after its sweep across resting quotes has been collapsed, so this count is trades and not printed fills",
+      "window": "single December window, days 4 to 13 of the month; days 4-8 label the wallets elsewhere in the report and the disjoint days 9-13 carry the measurement, and the panel draws the line between them",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "master_seed": null,
+      "n_perm": null,
+      "n_boot": null,
+      "rank_floor_fills": null,
+      "min_common_wallets": null,
+      "early_days": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "late_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "override_reasons": {
+        "lens": "no markout is drawn, so no reference price applies; the panels carry counts, turnover and trade size, none of which is measured against a price at a later moment",
+        "master_seed": "no random stream is drawn: every number is a count or a quantile of the whole population",
+        "n_perm": "no permutation null is computed here",
+        "n_boot": "no interval is computed here",
+        "rank_floor_fills": "no wallet floor applies: the figure draws every trade on the tape, which is the point of it",
+        "min_common_wallets": "no two-half wallet overlap is required: this file draws the halves side by side and joins nothing across them"
+      },
+      "overrides_note": "the horizon is stated by the fingerprint as the headline one and is not used: nothing on either panel is measured at a horizon. The day split is NOT typed in this file, it is settings.split_early_late over the days present, and the producer refuses to draw unless settings.day_split_agrees confirms the two tuples it is about to label",
+      "overridden": [
+        "early_days",
+        "late_days",
+        "master_seed",
+        "min_common_wallets",
+        "n_boot",
+        "n_perm",
+        "override_reasons",
+        "overrides_note",
+        "rank_floor_fills"
+      ]
+    },
+    "run": {
+      "runtime_s": 1.3,
+      "finished_utc": "2026-08-30T06:40:09Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "caption": "The window's two halves differ by one per cent in trade count, and trade size spans four decades.",
+  "caption_numbers_are_asserted": {
+    "half_gap_in_trade_count_pct": 0.8601433973777439,
+    "narrower_coin_spread_decades": 4.33504326635777,
+    "note": "the caption states one per cent and four decades; both are the rounded form of a quantity computed in this run, and the producer exits rather than drawing if either rounding stops holding. The gap quoted is by TRADE COUNT; by money the late half is heavier, and the caption says count for that reason rather than using one word for two different answers"
+  },
+  "figure": {
+    "file": "d2_fill_tape.png",
+    "panels": {
+      "left": {
+        "x": "day of month, the ten days of the December window",
+        "y_left": "trades per day per coin, thousands, drawn as bars",
+        "y_right": "turnover per day per coin, dollars billion, drawn as markers on a dashed line",
+        "annotation": "a dashed vertical between the last labelling day and the first measuring day"
+      },
+      "right": {
+        "x": "notional of a single collapsed taker trade, dollars, logarithmic",
+        "y": "share of that coin's trades falling in the bin, per cent",
+        "annotation": "a dotted vertical at each coin's median"
+      }
+    },
+    "size_in": {
+      "width": 5.53,
+      "height": 3.4,
+      "dpi": 200
+    },
+    "size_px": {
+      "width": 1106,
+      "height": 680
+    }
+  },
+  "tape": {
+    "n_fills": 2480267,
+    "n_takers": 45849,
+    "n_makers": 9367,
+    "days": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "coins": [
+      "BTC",
+      "ETH"
+    ],
+    "notional_usd_total": 45635871422.670395,
+    "unit": "one row is one taker order after the sweep across resting quotes has been collapsed, not one printed fill"
+  },
+  "agreement_with_published_figures": {
+    "checked": {
+      "fills": {
+        "published_text": "about 2.5 million",
+        "recomputed": 2480267,
+        "agrees": true
+      },
+      "takers": {
+        "published": 45849,
+        "recomputed": 45849,
+        "agrees": true
+      },
+      "makers": {
+        "published": 9367,
+        "recomputed": 9367,
+        "agrees": true
+      }
+    },
+    "note": "the three counts the report states about this tape, recomputed here from the packed array. A disagreement refuses to draw rather than annotating the picture, because a figure that draws one population under the name of another is the error hardest to see afterwards"
+  },
+  "left_panel_numbers": {
+    "per_day": [
+      {
+        "day": 4,
+        "BTC": {
+          "fills": 136265,
+          "notional_usd": 2805288529.6784678
+        },
+        "ETH": {
+          "fills": 124235,
+          "notional_usd": 1607313828.8322139
+        },
+        "half": "labelling"
+      },
+      {
+        "day": 5,
+        "BTC": {
+          "fills": 141255,
+          "notional_usd": 3383682565.4611454
+        },
+        "ETH": {
+          "fills": 144432,
+          "notional_usd": 2078095570.0126014
+        },
+        "half": "labelling"
+      },
+      {
+        "day": 6,
+        "BTC": {
+          "fills": 66190,
+          "notional_usd": 1082601546.7551112
+        },
+        "ETH": {
+          "fills": 58374,
+          "notional_usd": 569695254.9485617
+        },
+        "half": "labelling"
+      },
+      {
+        "day": 7,
+        "BTC": {
+          "fills": 130338,
+          "notional_usd": 2929438741.3910413
+        },
+        "ETH": {
+          "fills": 186816,
+          "notional_usd": 1899784220.3701503
+        },
+        "half": "labelling"
+      },
+      {
+        "day": 8,
+        "BTC": {
+          "fills": 139158,
+          "notional_usd": 2927554330.2990046
+        },
+        "ETH": {
+          "fills": 118427,
+          "notional_usd": 1781125014.3922591
+        },
+        "half": "labelling"
+      },
+      {
+        "day": 9,
+        "BTC": {
+          "fills": 148856,
+          "notional_usd": 3834310369.2569356
+        },
+        "ETH": {
+          "fills": 159933,
+          "notional_usd": 2770154938.603951
+        },
+        "half": "measuring"
+      },
+      {
+        "day": 10,
+        "BTC": {
+          "fills": 145596,
+          "notional_usd": 3915241453.93691
+        },
+        "ETH": {
+          "fills": 165341,
+          "notional_usd": 2578153841.017153
+        },
+        "half": "measuring"
+      },
+      {
+        "day": 11,
+        "BTC": {
+          "fills": 147285,
+          "notional_usd": 3867665315.3906875
+        },
+        "ETH": {
+          "fills": 164122,
+          "notional_usd": 2262555271.2028723
+        },
+        "half": "measuring"
+      },
+      {
+        "day": 12,
+        "BTC": {
+          "fills": 104649,
+          "notional_usd": 2562280496.9328613
+        },
+        "ETH": {
+          "fills": 119979,
+          "notional_usd": 1953974880.0501392
+        },
+        "half": "measuring"
+      },
+      {
+        "day": 13,
+        "BTC": {
+          "fills": 41271,
+          "notional_usd": 468701408.99713105
+        },
+        "ETH": {
+          "fills": 37745,
+          "notional_usd": 358253845.1411928
+        },
+        "half": "measuring"
+      }
+    ],
+    "halves": {
+      "early": {
+        "days": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "fills": 1245490,
+        "notional_usd": 21064579602.140556,
+        "takers": 32584,
+        "makers": 6176
+      },
+      "late": {
+        "days": [
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "fills": 1234777,
+        "notional_usd": 24571291820.529835,
+        "takers": 33364,
+        "makers": 6605
+      }
+    },
+    "late_over_early": {
+      "fills": 0.9913985660262226,
+      "notional": 1.166474351001666,
+      "note": "the comparability the out-of-sample design needs, as a ratio. Neither is a test and neither is claimed as one: the halves are two fixed calendar stretches and not a sample, so what these say is how alike the two stretches were and nothing about why"
+    },
+    "two_days_are_short_and_the_input_is_not": {
+      "short_days": [
+        6,
+        13
+      ],
+      "hourly_files_expected_per_day": 24,
+      "days_with_fewer": {},
+      "note": "two days carry roughly a third of a typical day's trades. That is the market and not a partial read: the builder recorded all 24 hourly source files on every one of the 10 days, and the row count of this array equals the count the builder wrote down. Both are asserted above and the producer exits rather than drawing if either fails"
+    }
+  },
+  "right_panel_numbers": {
+    "per_coin": {
+      "BTC": {
+        "n_fills": 1200863,
+        "quantiles_usd": {
+          "p0": 0.8773699998855591,
+          "p1": 10.017809867858887,
+          "p5": 11.101079940795898,
+          "p10": 13.39799976348877,
+          "p25": 49.26041030883789,
+          "p50": 379.772216796875,
+          "p75": 2885.198486328125,
+          "p90": 22933.994140625,
+          "p95": 58626.835546874965,
+          "p99": 397450.3937499996,
+          "p99.9": 2698525.6190000125,
+          "p100": 35383184.0
+        },
+        "mean_usd": 23130.66915884601,
+        "mean_over_median": 60.906691263351895,
+        "spread_decades_central_98pct": 4.598510146793215,
+        "share_of_fills_under_100_usd": 33.91311082113447,
+        "share_of_fills_over_10000_usd": 15.283342063166238,
+        "share_in_the_bin_above_10_usd": 10.817303888953195,
+        "share_under_10_usd": 0.9428219538781692,
+        "tallest_bin": {
+          "from_usd": 9.999999999999998,
+          "to_usd": 15.848931924611126,
+          "share_pct": 10.817303888953195
+        }
+      },
+      "ETH": {
+        "n_fills": 1279404,
+        "quantiles_usd": {
+          "p0": 0.29194000363349915,
+          "p1": 10.01471996307373,
+          "p5": 11.963290643692018,
+          "p10": 17.575210571289062,
+          "p25": 143.846923828125,
+          "p50": 618.5009765625,
+          "p75": 1358.7864990234375,
+          "p90": 9929.017871093736,
+          "p95": 31019.615234375,
+          "p99": 216611.78249999986,
+          "p99.9": 1656970.8523750096,
+          "p100": 29097704.0
+        },
+        "mean_usd": 13958.926706944088,
+        "mean_over_median": 22.56896469998302,
+        "spread_decades_central_98pct": 4.33504326635777,
+        "share_of_fills_under_100_usd": 22.539870127027896,
+        "share_of_fills_over_10000_usd": 9.82449640613911,
+        "share_in_the_bin_above_10_usd": 8.566332448546355,
+        "share_under_10_usd": 0.9337941729117621,
+        "tallest_bin": {
+          "from_usd": 398.1071705534969,
+          "to_usd": 630.957344480193,
+          "share_pct": 16.14759684978318
+        }
+      }
+    },
+    "bin_grid": {
+      "bins_per_decade": 5,
+      "n_bins": 41,
+      "lo_usd": 0.251188643150958,
+      "hi_usd": 39810717.05534969
+    },
+    "why_a_distribution_and_not_a_mean": "the mean of a trade's notional exceeds its median by a factor of 61 on BTC, 23 on ETH, so a single central figure describes no trade on this tape",
+    "what_this_panel_does_not_explain": "the report states elsewhere that the top decile of ranked wallets holds 56.2 per cent of the late-half fills. That is a property of how many fills each WALLET does; this panel measures how large each FILL is. They are different quantities on the same tape, and nothing here is drawn as a cause of the other",
+    "the_step_at_ten_dollars_is_observed_and_not_explained": "the bin immediately above ten dollars holds 10.8 per cent of BTC and 8.6 per cent of ETH trades, and below ten dollars the shares fall to 0.94 per cent on BTC and 0.93 per cent on ETH. A step that sharp is the signature of a rule rather than of behaviour, but no minimum order value is documented anywhere in this repository, so the step is recorded as measured and no cause is asserted for it. The step is not the same thing as the mode: the tallest bin is $10 to $16 on BTC at 10.8 per cent and $398 to $631 on ETH at 16.1 per cent, so the two coins put their mode in different places and only one of them puts it at the floor",
+    "deliberately_absent": "no cumulative-share curve against ranked counterparties and no single-number inequality index. That question was settled against drawing it, and a picture would reopen it without saying so. This panel is about the size of a trade and says nothing about who did it"
+  },
+  "predicate_calibration": {
+    "selector": "day == d over the day column of the packed array",
+    "must_find": {
+      "day": 4,
+      "rows": 260500
+    },
+    "must_stay_silent": {
+      "3": 0,
+      "14": 0
+    },
+    "note": "a per-day count is only evidence once the selector has been shown one day it has to find and two it has to miss. Both sides are asserted before any bar is drawn, so ten empty bars cannot be published as ten measured ones"
+  },
+  "what_is_not_drawn": {
+    "time_of_day": "the tape read here carries a day column and no intraday clock, so a day is the finest grain this file can draw. The companion array that does carry one holds a different population from the one the report publishes on, and a panel mixing two populations under one caption would be worse than no panel",
+    "the_resting_book": "this figure is the executed tape only. What was quoted and not hit is a separate question with its own figure",
+    "uncertainty": "nothing here is an estimate, so nothing carries an interval: every number is a count or a quantile of the whole population named in scope, and there is no sampling step to put a band on"
+  }
+}

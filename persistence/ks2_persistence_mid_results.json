@@ -1,0 +1,771 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "ks2_persistence_mid_results.json",
+    "producer": {
+      "script": "ks2_persistence_10day.py",
+      "sha256": "b6ff5e6cee58b7ef3eaecab7b69ba4d1c318e12c2e349d8fd0aa4aff9bd9c5cb",
+      "bytes": 59816,
+      "bytes_in_object_db": "absent",
+      "object_format": "sha1",
+      "object_id": "1683a3094e885e34a97f59cde391a85cb2ec8a2e",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 fills of the row-aligned book-mid intermediate; the per-day reads gate takers at 25 fills in the day and the pooled early-vs-late reads at (50, 100) fills in EACH half",
+      "window": "10 days resolved, 20251204 to 20251213; early=['20251204', '20251205', '20251206', '20251207', '20251208'], late=['20251209', '20251210', '20251211', '20251212', '20251213']",
+      "coins": [
+        "BTC",
+        "ETH"
+      ],
+      "days_requested": [
+        "20251204",
+        "20251205",
+        "20251206",
+        "20251207",
+        "20251208",
+        "20251209",
+        "20251210",
+        "20251211",
+        "20251212",
+        "20251213"
+      ],
+      "days_resolved": [
+        "20251204",
+        "20251205",
+        "20251206",
+        "20251207",
+        "20251208",
+        "20251209",
+        "20251210",
+        "20251211",
+        "20251212",
+        "20251213"
+      ],
+      "n_days_resolved": 10,
+      "markout_source": "mid",
+      "input_npz": "quickwin_markouts_mid.npz",
+      "K_day": 25,
+      "K_pool": [
+        50,
+        100
+      ],
+      "n_perm_varratio": 1000,
+      "n_perm_corr": 2000,
+      "p_floor_corr": 0.0004997501249375312,
+      "early": [
+        "20251204",
+        "20251205",
+        "20251206",
+        "20251207",
+        "20251208"
+      ],
+      "late": [
+        "20251209",
+        "20251210",
+        "20251211",
+        "20251212",
+        "20251213"
+      ],
+      "reliability_seed": 20240601,
+      "reliability_taker_set": "common (early-and-late intersection)",
+      "clock_source": "L2-mid markout (mo10_mid), quickwin_markouts_mid.npz",
+      "dedup": "row-aligned with quickwin_markouts.npz (one obs per fill)",
+      "method": "split-half (Spearman-Brown) reliability + disattenuated early-vs-late Spearman"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "mid",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "n_perm": {
+        "correlation_null": 2000,
+        "per_day_variance_ratio_null": 1000
+      },
+      "n_boot": "not drawn: this run builds no bootstrap interval",
+      "master_seed": {
+        "correlation_permutation_null": 424242,
+        "per_day_variance_ratio_null": "int(day) * 4 + (0 for BTC, 2 for ETH)"
+      },
+      "rank_floor_fills": 25,
+      "overridden": [
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "rank_floor_fills"
+      ]
+    },
+    "markout_source": "mid",
+    "n_perm_varratio": 1000,
+    "n_perm_corr": 2000,
+    "p_floor_corr": 0.0004997501249375312,
+    "run": {
+      "runtime_s": 30.574,
+      "finished_utc": "2026-08-29T18:01:47Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "slices": [
+    {
+      "coin": "BTC",
+      "day": "20251204",
+      "n_trades": 136265,
+      "n_takers": 11472,
+      "n_takers_geKday": 564,
+      "markout_mean_bps_1s_mid": 0.72215630659924,
+      "markout_median_bps_1s_mid": 0.0,
+      "markout_mean_bps_10s_mid": 0.9159039377368352,
+      "markout_median_bps_10s_mid": 0.43582242727279663,
+      "markout_mean_bps_60s_mid": 0.9157266504897377,
+      "markout_median_bps_60s_mid": 0.7493122518062592,
+      "ratio_real_over_perm": 13.310006580657209
+    },
+    {
+      "coin": "BTC",
+      "day": "20251205",
+      "n_trades": 141255,
+      "n_takers": 12746,
+      "n_takers_geKday": 619,
+      "markout_mean_bps_1s_mid": 0.7406623988264948,
+      "markout_median_bps_1s_mid": 0.0,
+      "markout_mean_bps_10s_mid": 0.8593350708448405,
+      "markout_median_bps_10s_mid": 0.3357639014720917,
+      "markout_mean_bps_60s_mid": 0.702423661567187,
+      "markout_median_bps_60s_mid": 0.5506880879402161,
+      "ratio_real_over_perm": 6.005302917563643
+    },
+    {
+      "coin": "BTC",
+      "day": "20251206",
+      "n_trades": 66190,
+      "n_takers": 7437,
+      "n_takers_geKday": 325,
+      "markout_mean_bps_1s_mid": 0.6093466472422951,
+      "markout_median_bps_1s_mid": 0.0,
+      "markout_mean_bps_10s_mid": 0.8390416756225066,
+      "markout_median_bps_10s_mid": 0.11164514720439911,
+      "markout_mean_bps_60s_mid": 0.7570135661755512,
+      "markout_median_bps_60s_mid": 0.3353135585784912,
+      "ratio_real_over_perm": 39.75847935740705
+    },
+    {
+      "coin": "BTC",
+      "day": "20251207",
+      "n_trades": 130338,
+      "n_takers": 10857,
+      "n_takers_geKday": 532,
+      "markout_mean_bps_1s_mid": 0.7881701854641782,
+      "markout_median_bps_1s_mid": 0.0,
+      "markout_mean_bps_10s_mid": 0.8752812322642782,
+      "markout_median_bps_10s_mid": 0.2236623615026474,
+      "markout_mean_bps_60s_mid": 0.8593586797165369,
+      "markout_median_bps_60s_mid": 0.44463464617729187,
+      "ratio_real_over_perm": 6.509630118390779
+    },
+    {
+      "coin": "BTC",
+      "day": "20251208",
+      "n_trades": 139158,
+      "n_takers": 10676,
+      "n_takers_geKday": 568,
+      "markout_mean_bps_1s_mid": 0.7394763562541721,
+      "markout_median_bps_1s_mid": 0.10953322052955627,
+      "markout_mean_bps_10s_mid": 0.9272334711652902,
+      "markout_median_bps_10s_mid": 0.5511433482170105,
+      "markout_mean_bps_60s_mid": 0.8651843296649969,
+      "markout_median_bps_60s_mid": 0.651002824306488,
+      "ratio_real_over_perm": 8.59653080843491
+    },
+    {
+      "coin": "BTC",
+      "day": "20251209",
+      "n_trades": 148856,
+      "n_takers": 12706,
+      "n_takers_geKday": 625,
+      "markout_mean_bps_1s_mid": 0.7051627209110821,
+      "markout_median_bps_1s_mid": 0.05329439416527748,
+      "markout_mean_bps_10s_mid": 0.900284988032418,
+      "markout_median_bps_10s_mid": 0.48346027731895447,
+      "markout_mean_bps_60s_mid": 0.838444098622409,
+      "markout_median_bps_60s_mid": 0.5523549914360046,
+      "ratio_real_over_perm": 6.691330347073537
+    },
+    {
+      "coin": "BTC",
+      "day": "20251210",
+      "n_trades": 145596,
+      "n_takers": 11417,
+      "n_takers_geKday": 619,
+      "markout_mean_bps_1s_mid": 0.8116039390826351,
+      "markout_median_bps_1s_mid": 0.0,
+      "markout_mean_bps_10s_mid": 1.0562884693851862,
+      "markout_median_bps_10s_mid": 0.48858344554901123,
+      "markout_mean_bps_60s_mid": 0.8328011652773026,
+      "markout_median_bps_60s_mid": 0.6493893265724182,
+      "ratio_real_over_perm": 7.636177989023162
+    },
+    {
+      "coin": "BTC",
+      "day": "20251211",
+      "n_trades": 147285,
+      "n_takers": 12372,
+      "n_takers_geKday": 630,
+      "markout_mean_bps_1s_mid": 0.6539326358532916,
+      "markout_median_bps_1s_mid": 0.0,
+      "markout_mean_bps_10s_mid": 0.8425423399098663,
+      "markout_median_bps_10s_mid": 0.4380369484424591,
+      "markout_mean_bps_60s_mid": 0.8486933555953108,
+      "markout_median_bps_60s_mid": 0.554412841796875,
+      "ratio_real_over_perm": 9.451336208609836
+    },
+    {
+      "coin": "BTC",
+      "day": "20251212",
+      "n_trades": 104649,
+      "n_takers": 10233,
+      "n_takers_geKday": 459,
+      "markout_mean_bps_1s_mid": 0.7115930909626865,
+      "markout_median_bps_1s_mid": 0.0,
+      "markout_mean_bps_10s_mid": 0.8413419953758089,
+      "markout_median_bps_10s_mid": 0.21704097092151642,
+      "markout_mean_bps_60s_mid": 0.8656681545258426,
+      "markout_median_bps_60s_mid": 0.44365325570106506,
+      "ratio_real_over_perm": 10.810645105298228
+    },
+    {
+      "coin": "BTC",
+      "day": "20251213",
+      "n_trades": 41271,
+      "n_takers": 5748,
+      "n_takers_geKday": 155,
+      "markout_mean_bps_1s_mid": 0.3019221640589045,
+      "markout_median_bps_1s_mid": 0.0,
+      "markout_mean_bps_10s_mid": 0.3984345704583508,
+      "markout_median_bps_10s_mid": 0.0,
+      "markout_mean_bps_60s_mid": 0.4056025040988783,
+      "markout_median_bps_60s_mid": 0.0,
+      "ratio_real_over_perm": 15.785627777182922
+    },
+    {
+      "coin": "ETH",
+      "day": "20251204",
+      "n_trades": 124235,
+      "n_takers": 7253,
+      "n_takers_geKday": 440,
+      "markout_mean_bps_1s_mid": 1.8454124335009028,
+      "markout_median_bps_1s_mid": 0.6384370923042297,
+      "markout_mean_bps_10s_mid": 1.8676516207819043,
+      "markout_median_bps_10s_mid": 1.2438777685165405,
+      "markout_mean_bps_60s_mid": 2.1589436216276243,
+      "markout_median_bps_60s_mid": 1.41251802444458,
+      "ratio_real_over_perm": 8.853079526235064
+    },
+    {
+      "coin": "ETH",
+      "day": "20251205",
+      "n_trades": 144432,
+      "n_takers": 6947,
+      "n_takers_geKday": 489,
+      "markout_mean_bps_1s_mid": 1.777807325833386,
+      "markout_median_bps_1s_mid": 0.6532852053642273,
+      "markout_mean_bps_10s_mid": 1.6564852905460645,
+      "markout_median_bps_10s_mid": 0.9774056673049927,
+      "markout_mean_bps_60s_mid": 1.3050744432171169,
+      "markout_median_bps_60s_mid": 0.9678980708122253,
+      "ratio_real_over_perm": 7.959897200400625
+    },
+    {
+      "coin": "ETH",
+      "day": "20251206",
+      "n_trades": 58374,
+      "n_takers": 4026,
+      "n_takers_geKday": 251,
+      "markout_mean_bps_1s_mid": 1.2380467172490792,
+      "markout_median_bps_1s_mid": 0.0,
+      "markout_mean_bps_10s_mid": 1.679083392090329,
+      "markout_median_bps_10s_mid": 0.658794105052948,
+      "markout_mean_bps_60s_mid": 1.5344571285608868,
+      "markout_median_bps_60s_mid": 0.9812419414520264,
+      "ratio_real_over_perm": 21.67956793359789
+    },
+    {
+      "coin": "ETH",
+      "day": "20251207",
+      "n_trades": 186816,
+      "n_takers": 6469,
+      "n_takers_geKday": 480,
+      "markout_mean_bps_1s_mid": 1.6524823425896302,
+      "markout_median_bps_1s_mid": 0.6373181939125061,
+      "markout_mean_bps_10s_mid": 1.8626412681992783,
+      "markout_median_bps_10s_mid": 0.9584511518478394,
+      "markout_mean_bps_60s_mid": 2.76812305998921,
+      "markout_median_bps_60s_mid": 1.2793654203414917,
+      "ratio_real_over_perm": 6.076736402484027
+    },
+    {
+      "coin": "ETH",
+      "day": "20251208",
+      "n_trades": 118427,
+      "n_takers": 5970,
+      "n_takers_geKday": 502,
+      "markout_mean_bps_1s_mid": 1.5796577453260858,
+      "markout_median_bps_1s_mid": 0.6391103863716125,
+      "markout_mean_bps_10s_mid": 1.5228882264039714,
+      "markout_median_bps_10s_mid": 0.95933997631073,
+      "markout_mean_bps_60s_mid": 1.5533328148759529,
+      "markout_median_bps_60s_mid": 1.265602469444275,
+      "ratio_real_over_perm": 6.740059666593476
+    },
+    {
+      "coin": "ETH",
+      "day": "20251209",
+      "n_trades": 159933,
+      "n_takers": 8075,
+      "n_takers_geKday": 535,
+      "markout_mean_bps_1s_mid": 1.6675754160918845,
+      "markout_median_bps_1s_mid": 0.8064776062965393,
+      "markout_mean_bps_10s_mid": 1.8760289006598967,
+      "markout_median_bps_10s_mid": 1.1172292232513428,
+      "markout_mean_bps_60s_mid": 2.1162091253508173,
+      "markout_median_bps_60s_mid": 0.9631900787353516,
+      "ratio_real_over_perm": 5.0678009119286305
+    },
+    {
+      "coin": "ETH",
+      "day": "20251210",
+      "n_trades": 165341,
+      "n_takers": 7654,
+      "n_takers_geKday": 519,
+      "markout_mean_bps_1s_mid": 1.8145364027805175,
+      "markout_median_bps_1s_mid": 0.9022420644760132,
+      "markout_mean_bps_10s_mid": 2.0408124051005303,
+      "markout_median_bps_10s_mid": 1.2034237384796143,
+      "markout_mean_bps_60s_mid": 1.5590499735657963,
+      "markout_median_bps_60s_mid": 0.9095456600189209,
+      "ratio_real_over_perm": 4.115523653645525
+    },
+    {
+      "coin": "ETH",
+      "day": "20251211",
+      "n_trades": 164122,
+      "n_takers": 7734,
+      "n_takers_geKday": 569,
+      "markout_mean_bps_1s_mid": 1.5251753275647744,
+      "markout_median_bps_1s_mid": 0.625596284866333,
+      "markout_mean_bps_10s_mid": 1.6615448852754748,
+      "markout_median_bps_10s_mid": 0.9406305551528931,
+      "markout_mean_bps_60s_mid": 1.937743508297924,
+      "markout_median_bps_60s_mid": 1.24986332654953,
+      "ratio_real_over_perm": 6.181942803585185
+    },
+    {
+      "coin": "ETH",
+      "day": "20251212",
+      "n_trades": 119979,
+      "n_takers": 7440,
+      "n_takers_geKday": 523,
+      "markout_mean_bps_1s_mid": 1.1418047299797423,
+      "markout_median_bps_1s_mid": 0.0,
+      "markout_mean_bps_10s_mid": 1.3119257144022656,
+      "markout_median_bps_10s_mid": 0.32517680525779724,
+      "markout_mean_bps_60s_mid": 1.4590481470220333,
+      "markout_median_bps_60s_mid": 0.6158298850059509,
+      "ratio_real_over_perm": 4.3605977977790475
+    },
+    {
+      "coin": "ETH",
+      "day": "20251213",
+      "n_trades": 37745,
+      "n_takers": 4310,
+      "n_takers_geKday": 212,
+      "markout_mean_bps_1s_mid": 0.7208971921460687,
+      "markout_median_bps_1s_mid": 0.0,
+      "markout_mean_bps_10s_mid": 0.9138643736077896,
+      "markout_median_bps_10s_mid": 0.0,
+      "markout_mean_bps_60s_mid": 1.1335920320264936,
+      "markout_median_bps_60s_mid": 0.3230339288711548,
+      "ratio_real_over_perm": 17.065941371632515
+    }
+  ],
+  "reliability": [
+    {
+      "coin": "BTC",
+      "half": "early",
+      "K": 50,
+      "reliability": 0.7828044779124746,
+      "n_takers": 644,
+      "r_half": 0.6431213915164117,
+      "taker_set": "common (early-and-late intersection)",
+      "seed": 20240601
+    },
+    {
+      "coin": "BTC",
+      "half": "late",
+      "K": 50,
+      "reliability": 0.7611605751368334,
+      "n_takers": 644,
+      "r_half": 0.614414233080212,
+      "taker_set": "common (early-and-late intersection)",
+      "seed": 20240601
+    },
+    {
+      "coin": "BTC",
+      "half": "early",
+      "K": 100,
+      "reliability": 0.9238503704362436,
+      "n_takers": 328,
+      "r_half": 0.8584776178483181,
+      "taker_set": "common (early-and-late intersection)",
+      "seed": 20240601
+    },
+    {
+      "coin": "BTC",
+      "half": "late",
+      "K": 100,
+      "reliability": 0.9171095542939969,
+      "n_takers": 328,
+      "r_half": 0.8469088982460055,
+      "taker_set": "common (early-and-late intersection)",
+      "seed": 20240601
+    },
+    {
+      "coin": "ETH",
+      "half": "early",
+      "K": 50,
+      "reliability": 0.7763875367139652,
+      "n_takers": 569,
+      "r_half": 0.6345044366653161,
+      "taker_set": "common (early-and-late intersection)",
+      "seed": 20240601
+    },
+    {
+      "coin": "ETH",
+      "half": "late",
+      "K": 50,
+      "reliability": 0.8208173293140376,
+      "n_takers": 569,
+      "r_half": 0.696090054339542,
+      "taker_set": "common (early-and-late intersection)",
+      "seed": 20240601
+    },
+    {
+      "coin": "ETH",
+      "half": "early",
+      "K": 100,
+      "reliability": 0.8941455787827899,
+      "n_takers": 338,
+      "r_half": 0.8085563177462428,
+      "taker_set": "common (early-and-late intersection)",
+      "seed": 20240601
+    },
+    {
+      "coin": "ETH",
+      "half": "late",
+      "K": 100,
+      "reliability": 0.911572123670053,
+      "n_takers": 338,
+      "r_half": 0.8375126579298657,
+      "taker_set": "common (early-and-late intersection)",
+      "seed": 20240601
+    }
+  ],
+  "persistence_pooled": [
+    {
+      "coin": "BTC",
+      "K": 50,
+      "n_counterparties": 644,
+      "spearman_obs": 0.6554443243597816,
+      "pvalue": 0.0004997501249375312,
+      "rel_early": 0.7828044779124746,
+      "rel_late": 0.7611605751368334,
+      "spearman_disattenuated": 0.8491237997326916,
+      "permutation": {
+        "procedure": "label permutation",
+        "side": "two_sided",
+        "n_draws_requested": 2000,
+        "n_draws_usable": 2000,
+        "n_draws_dropped": 0,
+        "tolerance_absolute": 1e-12,
+        "tolerance_relative": null,
+        "tolerance_rule": "absolute, stated by the caller",
+        "cell": [
+          "early_late_rank_persistence",
+          "BTC",
+          50
+        ],
+        "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+        "observed": 0.6554443243597816,
+        "p": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "p_is_floored": true,
+        "n_at_least_as_extreme": 0,
+        "null_mean": 0.0014342452828705178,
+        "null_sd": 0.0388010033773897,
+        "null_p95": 0.06407081315937205
+      },
+      "disatt_suppressed": false,
+      "q_value_bh": 0.0004997501249375312
+    },
+    {
+      "coin": "BTC",
+      "K": 100,
+      "n_counterparties": 328,
+      "spearman_obs": 0.8458893791135285,
+      "pvalue": 0.0004997501249375312,
+      "rel_early": 0.9238503704362436,
+      "rel_late": 0.9171095542939969,
+      "spearman_disattenuated": 0.9189717150145159,
+      "permutation": {
+        "procedure": "label permutation",
+        "side": "two_sided",
+        "n_draws_requested": 2000,
+        "n_draws_usable": 2000,
+        "n_draws_dropped": 0,
+        "tolerance_absolute": 1e-12,
+        "tolerance_relative": null,
+        "tolerance_rule": "absolute, stated by the caller",
+        "cell": [
+          "early_late_rank_persistence",
+          "BTC",
+          100
+        ],
+        "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+        "observed": 0.8458893791135285,
+        "p": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "p_is_floored": true,
+        "n_at_least_as_extreme": 0,
+        "null_mean": 0.0023375897180237244,
+        "null_sd": 0.05451899405725958,
+        "null_p95": 0.0905948849929368
+      },
+      "disatt_suppressed": false,
+      "q_value_bh": 0.0004997501249375312
+    },
+    {
+      "coin": "ETH",
+      "K": 50,
+      "n_counterparties": 569,
+      "spearman_obs": 0.6457198002556082,
+      "pvalue": 0.0004997501249375312,
+      "rel_early": 0.7763875367139652,
+      "rel_late": 0.8208173293140376,
+      "spearman_disattenuated": 0.8088752886493179,
+      "permutation": {
+        "procedure": "label permutation",
+        "side": "two_sided",
+        "n_draws_requested": 2000,
+        "n_draws_usable": 2000,
+        "n_draws_dropped": 0,
+        "tolerance_absolute": 1e-12,
+        "tolerance_relative": null,
+        "tolerance_rule": "absolute, stated by the caller",
+        "cell": [
+          "early_late_rank_persistence",
+          "ETH",
+          50
+        ],
+        "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+        "observed": 0.6457198002556082,
+        "p": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "p_is_floored": true,
+        "n_at_least_as_extreme": 0,
+        "null_mean": -0.0005273500777116679,
+        "null_sd": 0.04219460522824798,
+        "null_p95": 0.07001542833915897
+      },
+      "disatt_suppressed": false,
+      "q_value_bh": 0.0004997501249375312
+    },
+    {
+      "coin": "ETH",
+      "K": 100,
+      "n_counterparties": 338,
+      "spearman_obs": 0.8311096139045874,
+      "pvalue": 0.0004997501249375312,
+      "rel_early": 0.8941455787827899,
+      "rel_late": 0.911572123670053,
+      "spearman_disattenuated": 0.9205739292059325,
+      "permutation": {
+        "procedure": "label permutation",
+        "side": "two_sided",
+        "n_draws_requested": 2000,
+        "n_draws_usable": 2000,
+        "n_draws_dropped": 0,
+        "tolerance_absolute": 1e-12,
+        "tolerance_relative": null,
+        "tolerance_rule": "absolute, stated by the caller",
+        "cell": [
+          "early_late_rank_persistence",
+          "ETH",
+          100
+        ],
+        "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+        "observed": 0.8311096139045874,
+        "p": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "p_is_floored": true,
+        "n_at_least_as_extreme": 0,
+        "null_mean": -3.938754653930571e-05,
+        "null_sd": 0.05452617879779073,
+        "null_p95": 0.09091115185957556
+      },
+      "disatt_suppressed": false,
+      "q_value_bh": 0.0004997501249375312
+    }
+  ],
+  "persistence_pooled_fdr": {
+    "family": "persistence_pooled correlation p-values",
+    "family_size": 4,
+    "method": "Benjamini-Hochberg (numpy-only, step-up)",
+    "method_detail": "sort ascending, q_(i) = p_(i) * m / i, running minimum from the largest p downward, clipped to 1; NaN p-values are carried through and excluded from the family size",
+    "alpha": 0.05,
+    "n_survive_q_le_0.05": 4,
+    "n_perm_corr": 2000,
+    "p_floor": 0.0004997501249375312,
+    "threshold": 0.05,
+    "rank1_threshold": 0.0125,
+    "n_rejected": 4
+  },
+  "persistence_adjacent": [
+    {
+      "coin": "BTC",
+      "pair": "20251204->20251205",
+      "n": 310,
+      "spearman": 0.8012408574625159
+    },
+    {
+      "coin": "BTC",
+      "pair": "20251205->20251206",
+      "n": 242,
+      "spearman": 0.8150751828609241
+    },
+    {
+      "coin": "BTC",
+      "pair": "20251206->20251207",
+      "n": 243,
+      "spearman": 0.8024064121928006
+    },
+    {
+      "coin": "BTC",
+      "pair": "20251207->20251208",
+      "n": 294,
+      "spearman": 0.7782663154924723
+    },
+    {
+      "coin": "BTC",
+      "pair": "20251208->20251209",
+      "n": 340,
+      "spearman": 0.7756599767044596
+    },
+    {
+      "coin": "BTC",
+      "pair": "20251209->20251210",
+      "n": 342,
+      "spearman": 0.8091833816679628
+    },
+    {
+      "coin": "BTC",
+      "pair": "20251210->20251211",
+      "n": 339,
+      "spearman": 0.7996858145258418
+    },
+    {
+      "coin": "BTC",
+      "pair": "20251211->20251212",
+      "n": 294,
+      "spearman": 0.820010554114629
+    },
+    {
+      "coin": "BTC",
+      "pair": "20251212->20251213",
+      "n": 83,
+      "spearman": 0.772028882078838
+    },
+    {
+      "coin": "ETH",
+      "pair": "20251204->20251205",
+      "n": 283,
+      "spearman": 0.7908152622221564
+    },
+    {
+      "coin": "ETH",
+      "pair": "20251205->20251206",
+      "n": 210,
+      "spearman": 0.7916065476055498
+    },
+    {
+      "coin": "ETH",
+      "pair": "20251206->20251207",
+      "n": 210,
+      "spearman": 0.612539318999783
+    },
+    {
+      "coin": "ETH",
+      "pair": "20251207->20251208",
+      "n": 300,
+      "spearman": 0.657176190846565
+    },
+    {
+      "coin": "ETH",
+      "pair": "20251208->20251209",
+      "n": 308,
+      "spearman": 0.7844158308406751
+    },
+    {
+      "coin": "ETH",
+      "pair": "20251209->20251210",
+      "n": 309,
+      "spearman": 0.6517304493189241
+    },
+    {
+      "coin": "ETH",
+      "pair": "20251210->20251211",
+      "n": 311,
+      "spearman": 0.7223640222447401
+    },
+    {
+      "coin": "ETH",
+      "pair": "20251211->20251212",
+      "n": 323,
+      "spearman": 0.796969690495064
+    },
+    {
+      "coin": "ETH",
+      "pair": "20251212->20251213",
+      "n": 163,
+      "spearman": 0.7850516235223702
+    }
+  ],
+  "persistence_adjacent_note": "DESCRIPTIVE ONLY - no p-values are computed for adjacent-day pairs. The decisive inference is the pooled early-vs-late test with BH-FDR.",
+  "issues": []
+}

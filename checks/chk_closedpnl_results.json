@@ -1,0 +1,171 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_closedpnl_results.json",
+    "producer": {
+      "script": "chk_closedpnl.py",
+      "sha256": "29e5b4d0fa7156abeab69fcb8e3c54ac782380fd41bf629b9fe07ed79c390d25",
+      "bytes": 34737,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "059940869366be164b3cdcd025170cf83c8e9b06",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "m4_realizedpnl_results.json",
+        "bytes": 10456,
+        "sha256": "fb9552e73c076bbfe18737a50b0ac04742e34c4cfd45d6ffc421325e261888ee",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 taker fills of the 2,480,267 in quickwin_markouts.npz",
+      "window": "the span of quickwin_markouts.npz; this check reads the slice whole and does not cut it by date",
+      "coins": "every coin present in quickwin_markouts.npz; the check is a sign convention and is not cut by coin"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "run": {
+      "runtime_s": 1.365,
+      "finished_utc": "2026-10-22T09:38:33Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "check": "chk_closedpnl",
+  "mode": "full",
+  "n_rows_used": 2480267,
+  "n_rows_total_on_disk": 2480267,
+  "input_npz": "quickwin_markouts.npz",
+  "checks": [
+    {
+      "name": "opens_book_zero_realized_pnl",
+      "assumption": "closed_pnl ~ 0 on opens (is_open==1); realized PnL is booked only on closes/reduces (is_open==0)",
+      "method": "fraction of opens with |closed_pnl| < eps (eps=1e-6*median(notional)) and mean|closed_pnl| on opens vs closes",
+      "observed": {
+        "n_open": 1267207,
+        "n_close": 1213060,
+        "median_notional": 552.947509765625,
+        "eps": 0.0005529475097656249,
+        "frac_opens_within_eps": 0.9999992108629451,
+        "frac_closes_within_eps": 0.017120340296440408,
+        "mean_abs_closed_pnl_opens": 3.1458160093861884e-07,
+        "mean_abs_closed_pnl_closes": 160.2785046826429
+      },
+      "verdict": "confirmed",
+      "note": "0.999999 of opens sit within eps=0.000553 of zero; mean|closed_pnl| on closes (160.279) >> on opens (3.15e-07). closed_pnl is booked on closes, ~0 on opens. NOTE: this check is PROVABLY SIGN-BLIND - it is on |closed_pnl|, identical under a closed_pnl sign flip, so it contributes ZERO sign information; the sign is pinned by the A2 wallet-Spearman flip-test plus the external Hyperliquid doc."
+    },
+    {
+      "name": "sign_closed_pnl_vs_markout",
+      "assumption": "positive closed_pnl = taker realized a profit; the sign-sensitive per-wallet Spearman(sum closed_pnl over closes, mean mo60) is POSITIVE (reproduces the m4 ~+0.030) and FLIPS to its negative when closed_pnl is negated, proving the sign is genuinely selected",
+      "method": "DECISIVE: sign-sensitive per-wallet Spearman(sum closed_pnl over closes, mean mo60) with a closed_pnl-negation FLIP-TEST (pooled + per-coin), asserting sign(as_read)>0. The trade-grain per-decile mean / frac(closed_pnl>0) test is reported but is uninformative by construction (close PnL realizes on inventory opened earlier, not this trade's markout)",
+      "observed": {
+        "markout_column": "mo10",
+        "horizon_s": 10,
+        "m4_pooled_spearman_recorded": 0.03524429755926732,
+        "m4_vs_this_check_abs_gap": 0.0,
+        "reproduces_m4_pooled": true,
+        "n_closes_finite_mo60": 1212963,
+        "mo60_q10": -4.824303245544432,
+        "mo60_q90": 6.047391891479497,
+        "top_decile_mean_closed_pnl": -1.9625858344904534,
+        "bot_decile_mean_closed_pnl": -50.85863269601015,
+        "top_decile_median_closed_pnl": -0.17202000319957733,
+        "bot_decile_median_closed_pnl": -0.20900000631809235,
+        "top_decile_frac_closed_pnl_pos": 0.41090051691303164,
+        "bot_decile_frac_closed_pnl_pos": 0.4255340198026332,
+        "decile_frac_closed_pnl_pos": [
+          0.4255340198026332,
+          0.46147440970848175,
+          0.47289231124375486,
+          0.4792243767313019,
+          0.4756797309106498,
+          0.48544057512201555,
+          0.496830094726168,
+          0.4835975695217366,
+          0.47163620475024526,
+          0.41090051691303164
+        ],
+        "decile_mean_closed_pnl": [
+          -50.85863269601015,
+          -5.852447463284734,
+          19.25258901609244,
+          21.428270213286943,
+          20.918827956440147,
+          22.11405791889538,
+          24.023409255745406,
+          10.42760695589272,
+          26.86178866169653,
+          -1.9625858344904534
+        ],
+        "strict_top_pos_and_bot_neg": false,
+        "ordering_top_gt_bottom_mean": true,
+        "fracpos_top_gt_bottom": false,
+        "trade_grain_decile_test_informative": false,
+        "per_wallet_spearman_realized_vs_mo60": 0.03524429755926732,
+        "spearman_flip_test": {
+          "as_read": 0.03524429755926732,
+          "negated": -0.03524429755926732
+        },
+        "spearman_flip_test_clean": true,
+        "per_coin_spearman": {
+          "BTC": 0.047273420814925686,
+          "ETH": 0.024740569865744383
+        },
+        "n_wallets_corroboration": 45848
+      },
+      "verdict": "confirmed",
+      "note": "sign confirmed at the WALLET grain by a sign-sensitive statistic: per-wallet Spearman(sum closed_pnl over closes, mean mo10) = +0.0352 (m4 pooled +0.0352, gap 0.00000, agrees; per-coin BTC +0.0473, ETH +0.0247, both positive). FLIP-TEST: negating closed_pnl drives this Spearman to -0.0352 = exactly its negative, proving the sign is genuinely selected (not sign-blind). The strict trade-grain per-decile mean test (top -1.963, bottom -50.859) is UNINFORMATIVE BY CONSTRUCTION - a close-leg's closed_pnl realizes on inventory opened earlier, not on this trade's forward markout - so it is reported but not used as sign evidence. This pairs with the external Hyperliquid doc (closedPnl is profit-positive: +8722.99 on a winning Close Long, -2.5515 on a losing Close Short)."
+    },
+    {
+      "name": "partial_zero_sum_magnitude",
+      "assumption": "summing closed_pnl over the taker legs we hold is NOT exactly zero (we keep taker + dominant maker, not all legs) but the net should be a small, two-sided fraction of gross",
+      "method": "net sum / gross sum of |closed_pnl| over all finite taker legs",
+      "observed": {
+        "net_sum_closed_pnl_quote": 10473498.94023149,
+        "gross_sum_abs_closed_pnl_quote": 194427443.2889668,
+        "net_over_gross": 0.05386841879448729,
+        "n_pos_legs": 565681,
+        "n_neg_legs": 644466
+      },
+      "verdict": "confirmed",
+      "note": "net sum closed_pnl over taker legs = 10,473,498.94 on gross 194,427,443.29 (|net|/gross = 0.0539 <= 0.25). Small, two-sided as expected for a partial-leg subset; no runaway one-sided total. NOTE: |net|/gross is PROVABLY SIGN-BLIND - flipping the sign of closed_pnl leaves |net|/gross unchanged - so this check contributes ZERO sign information; the sign is pinned by the A2 wallet-Spearman flip-test plus the external Hyperliquid doc."
+    }
+  ],
+  "overall_verdict": "confirmed"
+}

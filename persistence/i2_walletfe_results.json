@@ -1,0 +1,941 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "i2_walletfe_results.json",
+    "producer": {
+      "script": "i2_walletfe.py",
+      "sha256": "8d3105a9c1bf124841978c3fef797ef3f97583a5c7b2920630d09d37b4e9ede6",
+      "bytes": 42660,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "3b2c79f9e12465d5f2786b9ae807eb618a6b85ad",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,092 rows of the trade-print panel with a finite markout, decomposed per wallet; this is a decomposition of the markout that exists rather than a re-selection of the sample, and the cells run over [30, 50, 100] fills",
+      "window": "10 days present in the input, day-of-month 4-13; this file makes no early-and-late split, so every day present enters every cell",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260620,
+      "n_perm": 2000,
+      "rank_floor_fills": [
+        30,
+        50,
+        100
+      ],
+      "n_boot": null,
+      "whale_drop_criterion": "fill_count",
+      "p_floor": 0.0004997501249375312,
+      "overrides_note": "master_seed 20260620 is settings.MASTER_SEED unchanged; n_perm 2000 is the declared budget, so every p is floored at 0.000500 and a floored p clears a 48-cell corrected threshold of 0.00104; rank_floor_fills (30, 50, 100) not the declared single 50; no bootstrap is drawn here, so n_boot does not apply; whales are dropped by FILL COUNT, which answers 'is this a few hyperactive accounts' and not 'is this a volume artifact'",
+      "overridden": [
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "overrides_note",
+        "p_floor",
+        "rank_floor_fills",
+        "whale_drop_criterion"
+      ]
+    },
+    "object": "I2 one-way counterparty (taker_id) fixed-effects variance decomposition of mo10",
+    "horizon_s": 10,
+    "model": "y_ij = mu + alpha_i + eps_ij ; target = Var(alpha)/Var(y)",
+    "estimator": "naive between-wallet variance (upward-biased) plus a split-half cross-wallet covariance bias correction (KSS-style spirit): Cov(halfA_mean, halfB_mean) across wallets is unbiased for Var(alpha) because half noise is independent",
+    "master_seed": 20260620,
+    "split_seeds": [
+      868994903,
+      2121061393,
+      1705320240,
+      1051228009,
+      269056115
+    ],
+    "n_split_seeds": 5,
+    "n_perm": 2000,
+    "K_values": [
+      30,
+      50,
+      100
+    ],
+    "n_drop_whales": 10,
+    "n_trades_valid": 2480092,
+    "interpretation_held": "The markout reference is a TRADE-PRINT VWAP, not a book mid, so the MAGNITUDE of the per-wallet fixed effect is entangled with bid-ask bounce and the maker's earned spread. This decomposition is a measurement of the variance structure; the adverse-selection INTERPRETATION of its magnitude is HELD pending the I4 book-mid check. I2 establishes only that a stable, label-real per-wallet component EXISTS, not that its size is all adverse selection.",
+    "run": {
+      "runtime_s": 722.301,
+      "finished_utc": "2026-08-29T09:25:35Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "BTC": {
+    "n_trades": 1200779,
+    "n_wallets_total": 35588,
+    "by_K": {
+      "30": {
+        "full": {
+          "K": 30,
+          "coverage": {
+            "n_wallets_retained": 4471,
+            "trades_covered": 1003166,
+            "trades_covered_frac": 0.8354293337908141,
+            "median_trades_per_wallet": 56.0,
+            "min_trades_per_wallet": 30,
+            "max_trades_per_wallet": 78307
+          },
+          "naive": {
+            "n_trades": 1003166,
+            "n_wallets": 4471,
+            "grand_mean_bps": 0.5823375757051825,
+            "total_var": 16.18890241673223,
+            "naive_between_var": 0.9349413636576992,
+            "within_var": 15.253961053074526,
+            "between_plus_within": 16.188902416732226,
+            "naive_idiosyncratic_share": 0.057751992049280595,
+            "bias_note": "naive_between_var = Var(alpha) + E[sigma_eps^2 / n_i] is UPWARD-biased for the true signal variance; corrected estimate is in split_half_corrected"
+          },
+          "split_half_corrected": {
+            "corrected_signal_var": 0.20892565018296252,
+            "corrected_signal_var_seed_std": 0.00651180246757231,
+            "corrected_idiosyncratic_share": 0.012905485795443733,
+            "per_seed_signal_var": [
+              0.21419894478745147,
+              0.20898468264120207,
+              0.21628235285821173,
+              0.2044753835279366,
+              0.20068688710001065
+            ],
+            "mean_halfmean_var_A": 0.8502136586194835,
+            "mean_halfmean_var_B": 0.8205287555832517,
+            "n_seeds_used": 5,
+            "note": "corrected_signal_var = mean over seeds of Cov(halfA_mean, halfB_mean) across wallets; the half-mean variances themselves are still noise-inflated and are shown only for reference"
+          },
+          "placebo": {
+            "p_value": 0.0004997501249375312,
+            "p_value_floor": 0.0004997501249375312,
+            "p_value_is_floor": true,
+            "p_value_floor_note": "p_value_is_floor True means no permutation beat the observed value, so the number is the budget's smallest expressible p and not a measurement of how small the p is",
+            "n_perm_valid": 2000,
+            "null_mean": 0.000519150404465887,
+            "null_std": 0.009973658404793685,
+            "null_p95": 0.016561519076135425,
+            "null_max": 0.03337855213420793,
+            "observed_outside_null": true,
+            "permutation_procedure": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 2000,
+              "n_draws_usable": 2000,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "i2_walletfe_label_permutation",
+                30
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 0.20892565018296252,
+              "p": 0.0004997501249375312,
+              "p_floor": 0.0004997501249375312,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": 0.000519150404465887,
+              "null_sd": 0.009973658404793685,
+              "null_p95": 0.016561519076135425
+            }
+          }
+        },
+        "drop_top10_by_fill_count": {
+          "coverage": {
+            "n_wallets_retained": 4461,
+            "trades_covered": 712944,
+            "trades_covered_frac": 0.5937345673100546,
+            "median_trades_per_wallet": 56.0,
+            "min_trades_per_wallet": 30,
+            "max_trades_per_wallet": 12195
+          },
+          "naive_idiosyncratic_share": 0.0438059216014909,
+          "corrected_idiosyncratic_share": 0.012624886154838488,
+          "corrected_signal_var": 0.20931992226320745,
+          "placebo_p_value": 0.0004997501249375312,
+          "placebo_p_value_floor": 0.0004997501249375312,
+          "placebo_p_value_is_floor": true
+        }
+      },
+      "50": {
+        "full": {
+          "K": 50,
+          "coverage": {
+            "n_wallets_retained": 2559,
+            "trades_covered": 930588,
+            "trades_covered_frac": 0.7749869043346028,
+            "median_trades_per_wallet": 89.0,
+            "min_trades_per_wallet": 50,
+            "max_trades_per_wallet": 78307
+          },
+          "naive": {
+            "n_trades": 930588,
+            "n_wallets": 2559,
+            "grand_mean_bps": 0.6336743032825285,
+            "total_var": 16.06884554976579,
+            "naive_between_var": 0.9303488130030001,
+            "within_var": 15.138496736762791,
+            "between_plus_within": 16.06884554976579,
+            "naive_idiosyncratic_share": 0.057897675979377394,
+            "bias_note": "naive_between_var = Var(alpha) + E[sigma_eps^2 / n_i] is UPWARD-biased for the true signal variance; corrected estimate is in split_half_corrected"
+          },
+          "split_half_corrected": {
+            "corrected_signal_var": 0.31979058843900937,
+            "corrected_signal_var_seed_std": 0.006302501982162937,
+            "corrected_idiosyncratic_share": 0.019901279618912665,
+            "per_seed_signal_var": [
+              0.3189718254679263,
+              0.31612141603809846,
+              0.31173937449803785,
+              0.32687125722089677,
+              0.3252490689700875
+            ],
+            "mean_halfmean_var_A": 0.6665937501770165,
+            "mean_halfmean_var_B": 0.6742416552974312,
+            "n_seeds_used": 5,
+            "note": "corrected_signal_var = mean over seeds of Cov(halfA_mean, halfB_mean) across wallets; the half-mean variances themselves are still noise-inflated and are shown only for reference"
+          },
+          "placebo": {
+            "p_value": 0.0004997501249375312,
+            "p_value_floor": 0.0004997501249375312,
+            "p_value_is_floor": true,
+            "p_value_floor_note": "p_value_is_floor True means no permutation beat the observed value, so the number is the budget's smallest expressible p and not a measurement of how small the p is",
+            "n_perm_valid": 2000,
+            "null_mean": 5.2584847376458705e-05,
+            "null_std": 0.007828186297392105,
+            "null_p95": 0.01279104339429728,
+            "null_max": 0.03013252925644015,
+            "observed_outside_null": true,
+            "permutation_procedure": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 2000,
+              "n_draws_usable": 2000,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "i2_walletfe_label_permutation",
+                50
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 0.31979058843900937,
+              "p": 0.0004997501249375312,
+              "p_floor": 0.0004997501249375312,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": 5.2584847376458705e-05,
+              "null_sd": 0.007828186297392105,
+              "null_p95": 0.01279104339429728
+            }
+          }
+        },
+        "drop_top10_by_fill_count": {
+          "coverage": {
+            "n_wallets_retained": 2549,
+            "trades_covered": 640366,
+            "trades_covered_frac": 0.5332921378538432,
+            "median_trades_per_wallet": 89.0,
+            "min_trades_per_wallet": 50,
+            "max_trades_per_wallet": 12195
+          },
+          "naive_idiosyncratic_share": 0.04444396465598809,
+          "corrected_idiosyncratic_share": 0.019097279284614594,
+          "corrected_signal_var": 0.31484817400905835,
+          "placebo_p_value": 0.0004997501249375312,
+          "placebo_p_value_floor": 0.0004997501249375312,
+          "placebo_p_value_is_floor": true
+        }
+      },
+      "100": {
+        "full": {
+          "K": 100,
+          "coverage": {
+            "n_wallets_retained": 1132,
+            "trades_covered": 832455,
+            "trades_covered_frac": 0.6932624571215852,
+            "median_trades_per_wallet": 195.0,
+            "min_trades_per_wallet": 100,
+            "max_trades_per_wallet": 78307
+          },
+          "naive": {
+            "n_trades": 832455,
+            "n_wallets": 1132,
+            "grand_mean_bps": 0.7192681457761865,
+            "total_var": 15.938162291791526,
+            "naive_between_var": 0.9251380403962315,
+            "within_var": 15.013024251395294,
+            "between_plus_within": 15.938162291791524,
+            "naive_idiosyncratic_share": 0.05804546493247193,
+            "bias_note": "naive_between_var = Var(alpha) + E[sigma_eps^2 / n_i] is UPWARD-biased for the true signal variance; corrected estimate is in split_half_corrected"
+          },
+          "split_half_corrected": {
+            "corrected_signal_var": 0.5002529478439699,
+            "corrected_signal_var_seed_std": 0.0039061501833608,
+            "corrected_idiosyncratic_share": 0.03138711594759016,
+            "per_seed_signal_var": [
+              0.4984545204563678,
+              0.49736444961074433,
+              0.5070217075387413,
+              0.49835437424788614,
+              0.5000696873661101
+            ],
+            "mean_halfmean_var_A": 0.6807748751439067,
+            "mean_halfmean_var_B": 0.6568818187335757,
+            "n_seeds_used": 5,
+            "note": "corrected_signal_var = mean over seeds of Cov(halfA_mean, halfB_mean) across wallets; the half-mean variances themselves are still noise-inflated and are shown only for reference"
+          },
+          "placebo": {
+            "p_value": 0.0004997501249375312,
+            "p_value_floor": 0.0004997501249375312,
+            "p_value_is_floor": true,
+            "p_value_floor_note": "p_value_is_floor True means no permutation beat the observed value, so the number is the budget's smallest expressible p and not a measurement of how small the p is",
+            "n_perm_valid": 2000,
+            "null_mean": -0.00013541931897329094,
+            "null_std": 0.005784343148513634,
+            "null_p95": 0.009205457673414977,
+            "null_max": 0.01866549910243458,
+            "observed_outside_null": true,
+            "permutation_procedure": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 2000,
+              "n_draws_usable": 2000,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "i2_walletfe_label_permutation",
+                100
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 0.5002529478439699,
+              "p": 0.0004997501249375312,
+              "p_floor": 0.0004997501249375312,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": -0.00013541931897329094,
+              "null_sd": 0.005784343148513634,
+              "null_p95": 0.009205457673414977
+            }
+          }
+        },
+        "drop_top10_by_fill_count": {
+          "coverage": {
+            "n_wallets_retained": 1122,
+            "trades_covered": 542233,
+            "trades_covered_frac": 0.45156769064082564,
+            "median_trades_per_wallet": 193.0,
+            "min_trades_per_wallet": 100,
+            "max_trades_per_wallet": 12195
+          },
+          "naive_idiosyncratic_share": 0.04617785981297067,
+          "corrected_idiosyncratic_share": 0.029479739358394395,
+          "corrected_signal_var": 0.4843908019886312,
+          "placebo_p_value": 0.0004997501249375312,
+          "placebo_p_value_floor": 0.0004997501249375312,
+          "placebo_p_value_is_floor": true
+        }
+      }
+    }
+  },
+  "ETH": {
+    "n_trades": 1279313,
+    "n_wallets_total": 23838,
+    "by_K": {
+      "30": {
+        "full": {
+          "K": 30,
+          "coverage": {
+            "n_wallets_retained": 2753,
+            "trades_covered": 1161469,
+            "trades_covered_frac": 0.9078849351175201,
+            "median_trades_per_wallet": 67.0,
+            "min_trades_per_wallet": 30,
+            "max_trades_per_wallet": 28505
+          },
+          "naive": {
+            "n_trades": 1161469,
+            "n_wallets": 2753,
+            "grand_mean_bps": 0.6856169807850179,
+            "total_var": 55.32458966487587,
+            "naive_between_var": 1.1966285536657213,
+            "within_var": 54.12796111121015,
+            "between_plus_within": 55.324589664875866,
+            "naive_idiosyncratic_share": 0.02162923504564968,
+            "bias_note": "naive_between_var = Var(alpha) + E[sigma_eps^2 / n_i] is UPWARD-biased for the true signal variance; corrected estimate is in split_half_corrected"
+          },
+          "split_half_corrected": {
+            "corrected_signal_var": 0.5113163635645783,
+            "corrected_signal_var_seed_std": 0.01694268780286182,
+            "corrected_idiosyncratic_share": 0.009242117594759128,
+            "per_seed_signal_var": [
+              0.5244397106558201,
+              0.49241455375013793,
+              0.5297244828106259,
+              0.4949989091309125,
+              0.5150041614753951
+            ],
+            "mean_halfmean_var_A": 2.4334904263355304,
+            "mean_halfmean_var_B": 2.436148932707481,
+            "n_seeds_used": 5,
+            "note": "corrected_signal_var = mean over seeds of Cov(halfA_mean, halfB_mean) across wallets; the half-mean variances themselves are still noise-inflated and are shown only for reference"
+          },
+          "placebo": {
+            "p_value": 0.0004997501249375312,
+            "p_value_floor": 0.0004997501249375312,
+            "p_value_is_floor": true,
+            "p_value_floor_note": "p_value_is_floor True means no permutation beat the observed value, so the number is the budget's smallest expressible p and not a measurement of how small the p is",
+            "n_perm_valid": 2000,
+            "null_mean": 0.0006238229076472777,
+            "null_std": 0.039626148529396825,
+            "null_p95": 0.06484467163813377,
+            "null_max": 0.1522905637699768,
+            "observed_outside_null": true,
+            "permutation_procedure": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 2000,
+              "n_draws_usable": 2000,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "i2_walletfe_label_permutation",
+                30
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 0.5113163635645783,
+              "p": 0.0004997501249375312,
+              "p_floor": 0.0004997501249375312,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": 0.0006238229076472777,
+              "null_sd": 0.039626148529396825,
+              "null_p95": 0.06484467163813377
+            }
+          }
+        },
+        "drop_top10_by_fill_count": {
+          "coverage": {
+            "n_wallets_retained": 2743,
+            "trades_covered": 974626,
+            "trades_covered_frac": 0.7618354538725082,
+            "median_trades_per_wallet": 67.0,
+            "min_trades_per_wallet": 30,
+            "max_trades_per_wallet": 10516
+          },
+          "naive_idiosyncratic_share": 0.016738502510478336,
+          "corrected_idiosyncratic_share": 0.008573346752094027,
+          "corrected_signal_var": 0.5028886463334235,
+          "placebo_p_value": 0.0004997501249375312,
+          "placebo_p_value_floor": 0.0004997501249375312,
+          "placebo_p_value_is_floor": true
+        }
+      },
+      "50": {
+        "full": {
+          "K": 50,
+          "coverage": {
+            "n_wallets_retained": 1782,
+            "trades_covered": 1124826,
+            "trades_covered_frac": 0.8792422182843448,
+            "median_trades_per_wallet": 110.0,
+            "min_trades_per_wallet": 50,
+            "max_trades_per_wallet": 28505
+          },
+          "naive": {
+            "n_trades": 1124826,
+            "n_wallets": 1782,
+            "grand_mean_bps": 0.7164503997566459,
+            "total_var": 55.05901905373574,
+            "naive_between_var": 1.1459743131220275,
+            "within_var": 53.91304474061371,
+            "between_plus_within": 55.05901905373573,
+            "naive_idiosyncratic_share": 0.020813562116019455,
+            "bias_note": "naive_between_var = Var(alpha) + E[sigma_eps^2 / n_i] is UPWARD-biased for the true signal variance; corrected estimate is in split_half_corrected"
+          },
+          "split_half_corrected": {
+            "corrected_signal_var": 0.7132500514700528,
+            "corrected_signal_var_seed_std": 0.010811895051695409,
+            "corrected_idiosyncratic_share": 0.01295428185478468,
+            "per_seed_signal_var": [
+              0.7181560530222524,
+              0.7287798085821124,
+              0.7129008549283168,
+              0.7027122180505898,
+              0.7037013227669929
+            ],
+            "mean_halfmean_var_A": 1.692524920938204,
+            "mean_halfmean_var_B": 1.7449735510695377,
+            "n_seeds_used": 5,
+            "note": "corrected_signal_var = mean over seeds of Cov(halfA_mean, halfB_mean) across wallets; the half-mean variances themselves are still noise-inflated and are shown only for reference"
+          },
+          "placebo": {
+            "p_value": 0.0004997501249375312,
+            "p_value_floor": 0.0004997501249375312,
+            "p_value_is_floor": true,
+            "p_value_floor_note": "p_value_is_floor True means no permutation beat the observed value, so the number is the budget's smallest expressible p and not a measurement of how small the p is",
+            "n_perm_valid": 2000,
+            "null_mean": -0.0003181882735307633,
+            "null_std": 0.028793409044138293,
+            "null_p95": 0.04803650064270678,
+            "null_max": 0.09748126958396452,
+            "observed_outside_null": true,
+            "permutation_procedure": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 2000,
+              "n_draws_usable": 2000,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "i2_walletfe_label_permutation",
+                50
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 0.7132500514700528,
+              "p": 0.0004997501249375312,
+              "p_floor": 0.0004997501249375312,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": -0.0003181882735307633,
+              "null_sd": 0.028793409044138293,
+              "null_p95": 0.04803650064270678
+            }
+          }
+        },
+        "drop_top10_by_fill_count": {
+          "coverage": {
+            "n_wallets_retained": 1772,
+            "trades_covered": 937983,
+            "trades_covered_frac": 0.7331927370393329,
+            "median_trades_per_wallet": 109.0,
+            "min_trades_per_wallet": 50,
+            "max_trades_per_wallet": 10516
+          },
+          "naive_idiosyncratic_share": 0.015833632551252384,
+          "corrected_idiosyncratic_share": 0.012075467753500354,
+          "corrected_signal_var": 0.7062001981399341,
+          "placebo_p_value": 0.0004997501249375312,
+          "placebo_p_value_floor": 0.0004997501249375312,
+          "placebo_p_value_is_floor": true
+        }
+      },
+      "100": {
+        "full": {
+          "K": 100,
+          "coverage": {
+            "n_wallets_retained": 963,
+            "trades_covered": 1068036,
+            "trades_covered_frac": 0.8348512052953421,
+            "median_trades_per_wallet": 245.0,
+            "min_trades_per_wallet": 100,
+            "max_trades_per_wallet": 28505
+          },
+          "naive": {
+            "n_trades": 1068036,
+            "n_wallets": 963,
+            "grand_mean_bps": 0.7676412525904095,
+            "total_var": 55.1344738924704,
+            "naive_between_var": 1.108766461707581,
+            "within_var": 54.02570743076283,
+            "between_plus_within": 55.13447389247041,
+            "naive_idiosyncratic_share": 0.020110221127166733,
+            "bias_note": "naive_between_var = Var(alpha) + E[sigma_eps^2 / n_i] is UPWARD-biased for the true signal variance; corrected estimate is in split_half_corrected"
+          },
+          "split_half_corrected": {
+            "corrected_signal_var": 1.20311677629318,
+            "corrected_signal_var_seed_std": 0.022910203560180416,
+            "corrected_idiosyncratic_share": 0.021821497356438676,
+            "per_seed_signal_var": [
+              1.1945566063963278,
+              1.2285395363758342,
+              1.2058270122100148,
+              1.1690299174615317,
+              1.2176308090221917
+            ],
+            "mean_halfmean_var_A": 1.7124761435808948,
+            "mean_halfmean_var_B": 1.6371889454927395,
+            "n_seeds_used": 5,
+            "note": "corrected_signal_var = mean over seeds of Cov(halfA_mean, halfB_mean) across wallets; the half-mean variances themselves are still noise-inflated and are shown only for reference"
+          },
+          "placebo": {
+            "p_value": 0.0004997501249375312,
+            "p_value_floor": 0.0004997501249375312,
+            "p_value_is_floor": true,
+            "p_value_floor_note": "p_value_is_floor True means no permutation beat the observed value, so the number is the budget's smallest expressible p and not a measurement of how small the p is",
+            "n_perm_valid": 2000,
+            "null_mean": 0.0003823245445475981,
+            "null_std": 0.018931221693182437,
+            "null_p95": 0.031447343605189124,
+            "null_max": 0.06084189061789345,
+            "observed_outside_null": true,
+            "permutation_procedure": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 2000,
+              "n_draws_usable": 2000,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "i2_walletfe_label_permutation",
+                100
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 1.20311677629318,
+              "p": 0.0004997501249375312,
+              "p_floor": 0.0004997501249375312,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": 0.0003823245445475981,
+              "null_sd": 0.018931221693182437,
+              "null_p95": 0.031447343605189124
+            }
+          }
+        },
+        "drop_top10_by_fill_count": {
+          "coverage": {
+            "n_wallets_retained": 953,
+            "trades_covered": 881193,
+            "trades_covered_frac": 0.6888017240503301,
+            "median_trades_per_wallet": 242.0,
+            "min_trades_per_wallet": 100,
+            "max_trades_per_wallet": 10516
+          },
+          "naive_idiosyncratic_share": 0.01512274004264261,
+          "corrected_idiosyncratic_share": 0.01978357678080818,
+          "corrected_signal_var": 1.1636117203689533,
+          "placebo_p_value": 0.0004997501249375312,
+          "placebo_p_value_floor": 0.0004997501249375312,
+          "placebo_p_value_is_floor": true
+        }
+      }
+    }
+  },
+  "pooled": {
+    "n_trades": 2480092,
+    "n_wallets_total": 45848,
+    "by_K": {
+      "30": {
+        "full": {
+          "K": 30,
+          "coverage": {
+            "n_wallets_retained": 6999,
+            "trades_covered": 2221184,
+            "trades_covered_frac": 0.8956054856029534,
+            "median_trades_per_wallet": 60.0,
+            "min_trades_per_wallet": 30,
+            "max_trades_per_wallet": 78307
+          },
+          "naive": {
+            "n_trades": 2221184,
+            "n_wallets": 6999,
+            "grand_mean_bps": 0.6158214899447274,
+            "total_var": 37.296756475063084,
+            "naive_between_var": 1.0580873251822476,
+            "within_var": 36.23866914988082,
+            "between_plus_within": 37.29675647506307,
+            "naive_idiosyncratic_share": 0.02836941935928647,
+            "bias_note": "naive_between_var = Var(alpha) + E[sigma_eps^2 / n_i] is UPWARD-biased for the true signal variance; corrected estimate is in split_half_corrected"
+          },
+          "split_half_corrected": {
+            "corrected_signal_var": 0.3021848133775335,
+            "corrected_signal_var_seed_std": 0.014304247837155663,
+            "corrected_idiosyncratic_share": 0.00810217407456267,
+            "per_seed_signal_var": [
+              0.3067821347534023,
+              0.3104661977999389,
+              0.3023140661246317,
+              0.2777349552752843,
+              0.3136267129344103
+            ],
+            "mean_halfmean_var_A": 1.4383402117781952,
+            "mean_halfmean_var_B": 1.4220178580221947,
+            "n_seeds_used": 5,
+            "note": "corrected_signal_var = mean over seeds of Cov(halfA_mean, halfB_mean) across wallets; the half-mean variances themselves are still noise-inflated and are shown only for reference"
+          },
+          "placebo": {
+            "p_value": 0.0004997501249375312,
+            "p_value_floor": 0.0004997501249375312,
+            "p_value_is_floor": true,
+            "p_value_floor_note": "p_value_is_floor True means no permutation beat the observed value, so the number is the budget's smallest expressible p and not a measurement of how small the p is",
+            "n_perm_valid": 2000,
+            "null_mean": -0.0007748410961862947,
+            "null_std": 0.017311405438260968,
+            "null_p95": 0.026610206117649,
+            "null_max": 0.06809385367871344,
+            "observed_outside_null": true,
+            "permutation_procedure": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 2000,
+              "n_draws_usable": 2000,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "i2_walletfe_label_permutation",
+                30
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 0.3021848133775335,
+              "p": 0.0004997501249375312,
+              "p_floor": 0.0004997501249375312,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": -0.0007748410961862947,
+              "null_sd": 0.017311405438260968,
+              "null_p95": 0.026610206117649
+            }
+          }
+        },
+        "drop_top10_by_fill_count": {
+          "coverage": {
+            "n_wallets_retained": 6989,
+            "trades_covered": 1866935,
+            "trades_covered_frac": 0.7527684456866923,
+            "median_trades_per_wallet": 60.0,
+            "min_trades_per_wallet": 30,
+            "max_trades_per_wallet": 18915
+          },
+          "naive_idiosyncratic_share": 0.02479677885151501,
+          "corrected_idiosyncratic_share": 0.007387169536163238,
+          "corrected_signal_var": 0.29447399154005605,
+          "placebo_p_value": 0.0004997501249375312,
+          "placebo_p_value_floor": 0.0004997501249375312,
+          "placebo_p_value_is_floor": true
+        }
+      },
+      "50": {
+        "full": {
+          "K": 50,
+          "coverage": {
+            "n_wallets_retained": 4287,
+            "trades_covered": 2118147,
+            "trades_covered_frac": 0.8540598493926839,
+            "median_trades_per_wallet": 94.0,
+            "min_trades_per_wallet": 50,
+            "max_trades_per_wallet": 78307
+          },
+          "naive": {
+            "n_trades": 2118147,
+            "n_wallets": 4287,
+            "grand_mean_bps": 0.654996346126689,
+            "total_var": 37.46001040378775,
+            "naive_between_var": 1.0251223613441434,
+            "within_var": 36.4348880424436,
+            "between_plus_within": 37.46001040378775,
+            "naive_idiosyncratic_share": 0.027365778874436423,
+            "bias_note": "naive_between_var = Var(alpha) + E[sigma_eps^2 / n_i] is UPWARD-biased for the true signal variance; corrected estimate is in split_half_corrected"
+          },
+          "split_half_corrected": {
+            "corrected_signal_var": 0.38571741488875766,
+            "corrected_signal_var_seed_std": 0.012641034033375988,
+            "corrected_idiosyncratic_share": 0.010296778103664276,
+            "per_seed_signal_var": [
+              0.3898219924012985,
+              0.37049239884587587,
+              0.3741706508214238,
+              0.39666018474008513,
+              0.39744184763510504
+            ],
+            "mean_halfmean_var_A": 1.02166015506381,
+            "mean_halfmean_var_B": 1.076058026819768,
+            "n_seeds_used": 5,
+            "note": "corrected_signal_var = mean over seeds of Cov(halfA_mean, halfB_mean) across wallets; the half-mean variances themselves are still noise-inflated and are shown only for reference"
+          },
+          "placebo": {
+            "p_value": 0.0004997501249375312,
+            "p_value_floor": 0.0004997501249375312,
+            "p_value_is_floor": true,
+            "p_value_floor_note": "p_value_is_floor True means no permutation beat the observed value, so the number is the budget's smallest expressible p and not a measurement of how small the p is",
+            "n_perm_valid": 2000,
+            "null_mean": 0.0003126722477403069,
+            "null_std": 0.01399710049343573,
+            "null_p95": 0.02274178608289213,
+            "null_max": 0.050771377918077225,
+            "observed_outside_null": true,
+            "permutation_procedure": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 2000,
+              "n_draws_usable": 2000,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "i2_walletfe_label_permutation",
+                50
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 0.38571741488875766,
+              "p": 0.0004997501249375312,
+              "p_floor": 0.0004997501249375312,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": 0.0003126722477403069,
+              "null_sd": 0.01399710049343573,
+              "null_p95": 0.02274178608289213
+            }
+          }
+        },
+        "drop_top10_by_fill_count": {
+          "coverage": {
+            "n_wallets_retained": 4277,
+            "trades_covered": 1763898,
+            "trades_covered_frac": 0.7112228094764227,
+            "median_trades_per_wallet": 94.0,
+            "min_trades_per_wallet": 50,
+            "max_trades_per_wallet": 18915
+          },
+          "naive_idiosyncratic_share": 0.02379776762655273,
+          "corrected_idiosyncratic_share": 0.009346145988629697,
+          "corrected_signal_var": 0.37591315311782725,
+          "placebo_p_value": 0.0004997501249375312,
+          "placebo_p_value_floor": 0.0004997501249375312,
+          "placebo_p_value_is_floor": true
+        }
+      },
+      "100": {
+        "full": {
+          "K": 100,
+          "coverage": {
+            "n_wallets_retained": 2014,
+            "trades_covered": 1960656,
+            "trades_covered_frac": 0.7905577696311266,
+            "median_trades_per_wallet": 199.5,
+            "min_trades_per_wallet": 100,
+            "max_trades_per_wallet": 78307
+          },
+          "naive": {
+            "n_trades": 1960656,
+            "n_wallets": 2014,
+            "grand_mean_bps": 0.7194024954950251,
+            "total_var": 37.89940717396054,
+            "naive_between_var": 1.0083397051532486,
+            "within_var": 36.8910674688073,
+            "between_plus_within": 37.89940717396055,
+            "naive_idiosyncratic_share": 0.026605685427344792,
+            "bias_note": "naive_between_var = Var(alpha) + E[sigma_eps^2 / n_i] is UPWARD-biased for the true signal variance; corrected estimate is in split_half_corrected"
+          },
+          "split_half_corrected": {
+            "corrected_signal_var": 0.7067968815121233,
+            "corrected_signal_var_seed_std": 0.015190209171429433,
+            "corrected_idiosyncratic_share": 0.018649285944444552,
+            "per_seed_signal_var": [
+              0.7193055175565166,
+              0.6816093908343597,
+              0.7177378082961408,
+              0.7053334560122412,
+              0.7099982348613577
+            ],
+            "mean_halfmean_var_A": 1.0137053844456385,
+            "mean_halfmean_var_B": 1.0176534408481774,
+            "n_seeds_used": 5,
+            "note": "corrected_signal_var = mean over seeds of Cov(halfA_mean, halfB_mean) across wallets; the half-mean variances themselves are still noise-inflated and are shown only for reference"
+          },
+          "placebo": {
+            "p_value": 0.0004997501249375312,
+            "p_value_floor": 0.0004997501249375312,
+            "p_value_is_floor": true,
+            "p_value_floor_note": "p_value_is_floor True means no permutation beat the observed value, so the number is the budget's smallest expressible p and not a measurement of how small the p is",
+            "n_perm_valid": 2000,
+            "null_mean": -0.0001700472614333143,
+            "null_std": 0.009869980417096157,
+            "null_p95": 0.015866395929782645,
+            "null_max": 0.03810140875366289,
+            "observed_outside_null": true,
+            "permutation_procedure": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 2000,
+              "n_draws_usable": 2000,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "i2_walletfe_label_permutation",
+                100
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 0.7067968815121233,
+              "p": 0.0004997501249375312,
+              "p_floor": 0.0004997501249375312,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": -0.0001700472614333143,
+              "null_sd": 0.009869980417096157,
+              "null_p95": 0.015866395929782645
+            }
+          }
+        },
+        "drop_top10_by_fill_count": {
+          "coverage": {
+            "n_wallets_retained": 2004,
+            "trades_covered": 1606407,
+            "trades_covered_frac": 0.6477207297148654,
+            "median_trades_per_wallet": 198.5,
+            "min_trades_per_wallet": 100,
+            "max_trades_per_wallet": 18915
+          },
+          "naive_idiosyncratic_share": 0.023167529773864163,
+          "corrected_idiosyncratic_share": 0.01688447485618481,
+          "corrected_signal_var": 0.693093692502244,
+          "placebo_p_value": 0.0004997501249375312,
+          "placebo_p_value_floor": 0.0004997501249375312,
+          "placebo_p_value_is_floor": true
+        }
+      }
+    }
+  }
+}

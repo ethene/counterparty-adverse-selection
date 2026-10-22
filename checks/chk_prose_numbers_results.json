@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_prose_numbers_results.json",
+    "producer": {
+      "script": "chk_prose_numbers.py",
+      "sha256": "1e527a5054768cad084cc6e4693bd73999b0b2dd5b44c51026813141d8bb66d4",
+      "bytes": 57757,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "8f636ec81064725011ab2d82e9c9fe1758079e2c",
+      "unasked_because": null
+    },
+    "inputs": [],
+    "scope": {
+      "population": "0 registry records: no register was named",
+      "window": "n/a: this gate reads recorded results, not market data",
+      "coins": "n/a: this gate reads recorded results, not market data"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "run": {
+      "runtime_s": 0.02,
+      "finished_utc": "2026-10-22T09:37:57Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {}
+    }
+  },
+  "check": "chk_prose_numbers",
+  "checks": [
+    {
+      "name": "registry_present",
+      "assumption": "a register of quantities (registry.json) was named, because every figure this gate compares is addressed by it",
+      "method": "read the path given by --registry PATH, or by the PROSE_REGISTRY environment variable; no other location is searched",
+      "observed": {
+        "registry_found": false,
+        "registry_named": false,
+        "looked_for": "registry.json"
+      },
+      "verdict": "SKIPPED_NO_REGISTRY",
+      "note": "the register of quantities belongs to the write-up and is not shipped with this repository, so no figure was compared either way. Name one with --registry PATH to run the comparison"
+    }
+  ],
+  "overall_verdict": "SKIPPED_NO_REGISTRY",
+  "skip_reason": "no register of quantities was named"
+}

@@ -1,0 +1,1197 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "panel_common_idio_results.json",
+    "producer": {
+      "script": "panel_common_idio.py",
+      "sha256": "b1994b9f2c1f9f0380eea96ce330d313737e190d6e2000fd2f923af7f875edb0",
+      "bytes": 66611,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "1dace68e1b6a3cb176c229a842b50d22583ef7cb",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "panel_markouts.npz",
+        "bytes": 482588572,
+        "sha256": "c6a37132cf1d0c62bdb2169668c89af20a7b6fb8811fd8132cc7c9b0b607a04b",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "quickwin_taker_map.json",
+        "bytes": 2418975,
+        "sha256": "116ce63018fd37c6219e518901583fdc75859f8199a84f80f344fdabfe394315",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "10454272 taker fills and 45849 wallets, restricted to wallets active in at least 2 windows; every cell repeated at each fill floor in [50, 100]",
+      "window": "3 ten-day windows: [202508, 202510, 202512]",
+      "coins": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "markout_column": "mo10",
+      "windows_analysed": [
+        202508,
+        202510,
+        202512
+      ],
+      "master_seed": 20260620,
+      "n_perm": 2000,
+      "p_floor": 0.0004997501249375312,
+      "n_split_seeds": 5,
+      "min_periods_per_wallet": 2,
+      "settings_not_used": [
+        "n_boot",
+        "rank_floor_fills"
+      ],
+      "overridden": [
+        "markout_column",
+        "master_seed",
+        "min_periods_per_wallet",
+        "n_perm",
+        "n_split_seeds",
+        "p_floor",
+        "settings_not_used",
+        "windows_analysed"
+      ]
+    },
+    "object": "panel common-vs-idiosyncratic variance decomposition of per-counterparty 10s toxicity (trade-print mo10)",
+    "horizon_s": 10,
+    "input_npz": "panel_markouts.npz",
+    "out_file": "panel_common_idio_results.json",
+    "model": "ybar_{i,t} = mu + c_t + a_i + u_{i,t}; common = Var(c_t), idiosyncratic = Var(a_i) after period demeaning, within = Var(u)",
+    "estimator": "period FE for the common component; naive between-wallet variance of period-demeaned cell means (upward-biased) plus a split-half cross-wallet covariance bias correction Cov(aHat_A, aHat_B) (KSS-style, noise cancels) for the idiosyncratic component",
+    "panel_periods_expected": [
+      202508,
+      202510,
+      202512
+    ],
+    "panel_periods_present": [
+      202508,
+      202510,
+      202512
+    ],
+    "coin_codes": {
+      "0": "BTC",
+      "1": "ETH",
+      "2": "SOL"
+    },
+    "min_periods": 2,
+    "K_list": [
+      50,
+      100
+    ],
+    "master_seed": 20260620,
+    "reliability_seed_base": 20240601,
+    "split_seeds": [
+      868994903,
+      2121061393,
+      1705320240,
+      1051228009,
+      269056115
+    ],
+    "reliability_seeds": [
+      347118170,
+      1700423308,
+      326417931,
+      1247403704,
+      661900767
+    ],
+    "seed_streams": "split_seeds drive the covariance bias correction and come from master_seed; reliability_seeds drive the reliability diagnostic and come from reliability_seed_base; the permutation nulls draw their own seeds from master_seed",
+    "n_split_seeds": 5,
+    "n_perm": 2000,
+    "p_floor": 0.0004997501249375312,
+    "n_drop_whales": 10,
+    "fdr_alpha": 0.05,
+    "markout_sign": "positive = taker profited = maker adversely selected (build convention)",
+    "n_takers_mapped": 45849,
+    "n_fills_valid": 10454272,
+    "interpretation_held": "The markout reference is the TRADE-PRINT mo10, not a book mid, so the MAGNITUDE of the idiosyncratic wallet effect a_i mixes adverse selection with bid-ask bounce and the maker's earned spread (same caveat as i2_walletfe.py). This object decomposes the VARIANCE STRUCTURE into a market-wide-COMMON (period) component and a wallet-stable IDIOSYNCRATIC component; it does NOT claim the idiosyncratic magnitude is all adverse selection. The book-mid attribution of the magnitude is a documented follow-on. What the panel adds over i2 is the SEPARATION of the wallet-stable part from the market-wide-common part, impossible within a single window.",
+    "headline_note": "HEADLINE = the PER-COIN split-half-corrected idiosyncratic share, and it is not one number: at the 50-fill floor 6.6% on BTC, 1.0% on ETH, 1.4% on SOL; at the 100-fill floor 29.8% on BTC, 1.4% on ETH, 2.0% on SOL. The POOLED cross-coin figure (1.3% at 50 fills, 1.6% at 100 fills) is a pooling / DENOMINATOR artifact and not the headline, though only against the coin whose own variance is smallest -- at the 50-fill floor it sits between two of the three per-coin shares rather than below all of them. The mechanism is the shared denominator: SOL's total per-cell variance is 5.0x at the 50-fill floor and 13.0x at the 100-fill floor of BTC's. Overlap works the same way and the population has to be named with it, because the populations disagree by a factor of four: 55.7% of the 151,558 wallets in the three-window panel touch exactly one coin, but only 12.4% of the 9,240 wallets that actually enter the pooled cell at the 50-fill floor do. Report the per-coin shares with the fill floor named beside them; treat the pooled share as a diluted lower bound only.",
+    "claim_note": "The claim is that a STATISTICALLY SEPARABLE / IDENTIFIED wallet-idiosyncratic component of per-counterparty toxicity exists (positive after the cross-wallet covariance bias correction, reliability>0, label-permutation p in the right tail with BH-FDR control). The MAGNITUDE is a small share BECAUSE roughly half of the total per-cell variance is irreducible within-cell sampling noise (the 'within' component); a small identified share does NOT imply economic dominance and we do NOT claim the idiosyncratic part dominates toxicity.",
+    "common_leg_note": "LIMITATION: the COMMON (period) leg is estimated on only THREE windows (202508/202510/202512), so Var(c_t) is under-identified and is EXCLUDED from the identification gate. The gate keys on the idiosyncratic leg only; the common share is reported for transparency, not claimed to be identified.",
+    "share_correction_method": "corrected_idio_share_10s_print = corrected_idio_var_10s_print / total_var_10s_print; corrected_idio_var_10s_print is bias-corrected by the cross-wallet half-mean covariance estimator, NOT by Spearman-Brown disattenuation. Reliability is a diagnostic / >0 gate only.",
+    "field_suffix_style": "explicit",
+    "field_suffix_note": "Every level, variance, share and reliability below carries _10s_print: the window it was measured on and the reference price it was measured against. Counts, p-values and q-values do not, because they describe the test rather than the markout.",
+    "fdr_summary": {
+      "procedure": "Benjamini-Hochberg step-up FDR",
+      "method": "sort ascending, q_(i) = p_(i) * m / i, running minimum from the largest p downward, clipped to 1; NaN p-values are carried through and excluded from the family size",
+      "alpha": 0.05,
+      "family": "panel idiosyncratic placebo p-values across {BTC,ETH,SOL,pooled} x K",
+      "family_size": 8,
+      "n_cells": 8,
+      "n_not_testable": 0,
+      "q": null,
+      "rejected": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "n_rejected": 8,
+      "threshold": 0.05,
+      "threshold_meaning": "the p-value cutoff actually applied: the largest rank k with p_(k) <= k*alpha/m, times alpha/m. With no rejection it is the rank-one bar the best cell failed",
+      "rank1_threshold": 0.00625,
+      "smallest_p": 0.0004997501249375312,
+      "largest_p_rejected": 0.0004997501249375312,
+      "q_note": "the q-values are on the cells, under placebo_q_value_bh; this block holds the procedure, the family and the cutoff applied to them",
+      "n_cells_idiosyncratic_identified_fdr": 8,
+      "n_perm": 2000,
+      "p_floor": 0.0004997501249375312
+    },
+    "run": {
+      "runtime_s": 1614.416,
+      "finished_utc": "2026-08-29T09:57:35Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "BTC": {
+    "n_fills": 3736703,
+    "n_wallets_total": 100955,
+    "periods_present": [
+      202508,
+      202510,
+      202512
+    ],
+    "by_K": {
+      "50": {
+        "full": {
+          "K": 50,
+          "coverage": {
+            "n_wallets_total": 100955,
+            "n_wallets_multiperiod_geK": 3750,
+            "n_fills_total": 3736703,
+            "n_fills_kept": 2028702,
+            "median_periods_per_kept_wallet": 2.0,
+            "median_fills_per_kept_wallet": 97.5,
+            "n_whales_dropped": 0
+          },
+          "naive": {
+            "n_cells": 8872,
+            "n_periods_present": 3,
+            "grand_mean_bps_10s_print": -0.08579500937177872,
+            "total_var_10s_print": 31.237361718327243,
+            "common_var_10s_print": 0.006539880738702899,
+            "idio_naive_var_10s_print": 13.878860110465185,
+            "within_var_10s_print": 17.351961727123353,
+            "common_share_10s_print": 0.00020936085440486773,
+            "idio_naive_share_10s_print": 0.4443032108669514,
+            "within_naive_share_10s_print": 0.5554874282786436,
+            "period_fe_bps_10s_print": {
+              "202508": 0.12458599893172229,
+              "202510": -0.06883428015197376,
+              "202512": -0.02450533498275448
+            },
+            "bias_note": "idio_naive_var_10s_print = Var(a_i) + E[Var(u)/n_i] is UPWARD-biased; the split-half-corrected idiosyncratic variance (noise cancelled in the cross-wallet covariance) is in split_half_corrected"
+          },
+          "split_half_corrected": {
+            "corrected_idio_var_10s_print": 2.049721238796125,
+            "corrected_idio_var_seed_std_10s_print": 0.09519445739478506,
+            "corrected_idio_share_10s_print": 0.06561761704713798,
+            "per_seed_idio_var_10s_print": [
+              2.0758021728602642,
+              2.030545750684876,
+              1.9350440254707786,
+              2.0134911299188003,
+              2.193723115045908
+            ],
+            "n_seeds_used": 5,
+            "note": "corrected_idio_var_10s_print = mean over seeds of Cov(aHat_A, aHat_B) across wallets, both halves period-demeaned by the SAME common FE; the within-cell noise cancels in the cross-wallet covariance"
+          },
+          "reliability": {
+            "reliability_10s_print": 0.3446986577689673,
+            "n_wallets": 3750,
+            "r_half_10s_print": 0.2083200228465794,
+            "reliability_seeds": [
+              347118170,
+              1700423308,
+              326417931,
+              1247403704,
+              661900767
+            ],
+            "n_seeds_used": 5,
+            "method": "Spearman-Brown on period-demeaned odd/even split, averaged over the reliability seed's own splits (settings.RELIABILITY_SEED), not over the master seed's; DIAGNOSTIC / >0 gate only, NOT applied to the corrected share"
+          },
+          "placebo": {
+            "p_value": 0.0004997501249375312,
+            "p_value_floor": 0.0004997501249375312,
+            "n_perm_valid": 2000,
+            "null_mean": -0.0022064679260034585,
+            "null_std": 0.07216322484078812,
+            "null_p95": 0.11569072708929176,
+            "null_max": 0.3090386598817524,
+            "observed_outside_null": true,
+            "procedure": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 2000,
+              "n_draws_usable": 2000,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "panel_common_idio",
+                "idio_var_label_perm"
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 2.049721238796125,
+              "p": 0.0004997501249375312,
+              "p_floor": 0.0004997501249375312,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": -0.0022064679260034585,
+              "null_sd": 0.07216322484078812,
+              "null_p95": 0.11569072708929176
+            }
+          },
+          "idiosyncratic_component_identified": true,
+          "read_inputs": {
+            "corrected_idio_share_10s_print": 0.06561761704713798,
+            "common_share_10s_print": 0.00020936085440486773,
+            "reliability_10s_print": 0.3446986577689673,
+            "placebo_p": 0.0004997501249375312,
+            "rule": "TRUE requires corrected_idio_share_10s_print>0 AND reliability_10s_print>0 AND placebo p<=0.05 (BH-q across the family applied in _meta)"
+          },
+          "placebo_q_value_bh": 0.0004997501249375312,
+          "idiosyncratic_component_identified_fdr": true
+        },
+        "drop_top10_by_fill_count": {
+          "coverage": {
+            "n_wallets_total": 100945,
+            "n_wallets_multiperiod_geK": 3741,
+            "n_fills_total": 3114161,
+            "n_fills_kept": 1443098,
+            "median_periods_per_kept_wallet": 2.0,
+            "median_fills_per_kept_wallet": 97.0,
+            "n_whales_dropped": 10
+          },
+          "common_share_10s_print": 0.00021370060262186811,
+          "idio_naive_share_10s_print": 0.44422683257932066,
+          "corrected_idio_share_10s_print": 0.06523770695457674,
+          "corrected_idio_var_10s_print": 2.042864484229682,
+          "reliability_10s_print": 0.34404043443363536,
+          "placebo_p_value": 0.0004997501249375312,
+          "idiosyncratic_component_identified": true
+        }
+      },
+      "100": {
+        "full": {
+          "K": 100,
+          "coverage": {
+            "n_wallets_total": 100955,
+            "n_wallets_multiperiod_geK": 1832,
+            "n_fills_total": 3736703,
+            "n_fills_kept": 1896380,
+            "median_periods_per_kept_wallet": 2.0,
+            "median_fills_per_kept_wallet": 185.0,
+            "n_whales_dropped": 0
+          },
+          "naive": {
+            "n_cells": 4419,
+            "n_periods_present": 3,
+            "grand_mean_bps_10s_print": 0.01789348401997491,
+            "total_var_10s_print": 12.182260999197382,
+            "common_var_10s_print": 0.00423966418284568,
+            "idio_naive_var_10s_print": 5.79620250854323,
+            "within_var_10s_print": 6.3818188264713065,
+            "common_share_10s_print": 0.00034801948366768753,
+            "idio_naive_share_10s_print": 0.4757903733079687,
+            "within_naive_share_10s_print": 0.5238616072083636,
+            "period_fe_bps_10s_print": {
+              "202508": 0.08823218187616716,
+              "202510": -0.06945330795949115,
+              "202512": 0.007730289564580346
+            },
+            "bias_note": "idio_naive_var_10s_print = Var(a_i) + E[Var(u)/n_i] is UPWARD-biased; the split-half-corrected idiosyncratic variance (noise cancelled in the cross-wallet covariance) is in split_half_corrected"
+          },
+          "split_half_corrected": {
+            "corrected_idio_var_10s_print": 3.6319300433957444,
+            "corrected_idio_var_seed_std_10s_print": 0.07953277149462212,
+            "corrected_idio_share_10s_print": 0.2981326736994907,
+            "per_seed_idio_var_10s_print": [
+              3.5694608696777084,
+              3.7158601201809365,
+              3.65695591612865,
+              3.52916185733786,
+              3.6882114536535657
+            ],
+            "n_seeds_used": 5,
+            "note": "corrected_idio_var_10s_print = mean over seeds of Cov(aHat_A, aHat_B) across wallets, both halves period-demeaned by the SAME common FE; the within-cell noise cancels in the cross-wallet covariance"
+          },
+          "reliability": {
+            "reliability_10s_print": 0.5110369415500764,
+            "n_wallets": 1832,
+            "r_half_10s_print": 0.3432922330279028,
+            "reliability_seeds": [
+              347118170,
+              1700423308,
+              326417931,
+              1247403704,
+              661900767
+            ],
+            "n_seeds_used": 5,
+            "method": "Spearman-Brown on period-demeaned odd/even split, averaged over the reliability seed's own splits (settings.RELIABILITY_SEED), not over the master seed's; DIAGNOSTIC / >0 gate only, NOT applied to the corrected share"
+          },
+          "placebo": {
+            "p_value": 0.0004997501249375312,
+            "p_value_floor": 0.0004997501249375312,
+            "n_perm_valid": 2000,
+            "null_mean": -4.2460326149462184e-05,
+            "null_std": 0.05123757090434542,
+            "null_p95": 0.08553342658991313,
+            "null_max": 0.18883635427251458,
+            "observed_outside_null": true,
+            "procedure": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 2000,
+              "n_draws_usable": 2000,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "panel_common_idio",
+                "idio_var_label_perm"
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 3.6319300433957444,
+              "p": 0.0004997501249375312,
+              "p_floor": 0.0004997501249375312,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": -4.2460326149462184e-05,
+              "null_sd": 0.05123757090434542,
+              "null_p95": 0.08553342658991313
+            }
+          },
+          "idiosyncratic_component_identified": true,
+          "read_inputs": {
+            "corrected_idio_share_10s_print": 0.2981326736994907,
+            "common_share_10s_print": 0.00034801948366768753,
+            "reliability_10s_print": 0.5110369415500764,
+            "placebo_p": 0.0004997501249375312,
+            "rule": "TRUE requires corrected_idio_share_10s_print>0 AND reliability_10s_print>0 AND placebo p<=0.05 (BH-q across the family applied in _meta)"
+          },
+          "placebo_q_value_bh": 0.0004997501249375312,
+          "idiosyncratic_component_identified_fdr": true
+        },
+        "drop_top10_by_fill_count": {
+          "coverage": {
+            "n_wallets_total": 100945,
+            "n_wallets_multiperiod_geK": 1823,
+            "n_fills_total": 3114161,
+            "n_fills_kept": 1310776,
+            "median_periods_per_kept_wallet": 2.0,
+            "median_fills_per_kept_wallet": 184.0,
+            "n_whales_dropped": 10
+          },
+          "common_share_10s_print": 0.00036432704574899716,
+          "idio_naive_share_10s_print": 0.47550170395558017,
+          "corrected_idio_share_10s_print": 0.2974796864212079,
+          "corrected_idio_var_10s_print": 3.639405680344436,
+          "reliability_10s_print": 0.5042832482150338,
+          "placebo_p_value": 0.0004997501249375312,
+          "idiosyncratic_component_identified": true
+        }
+      }
+    }
+  },
+  "ETH": {
+    "n_fills": 4356441,
+    "n_wallets_total": 80748,
+    "periods_present": [
+      202508,
+      202510,
+      202512
+    ],
+    "by_K": {
+      "50": {
+        "full": {
+          "K": 50,
+          "coverage": {
+            "n_wallets_total": 80748,
+            "n_wallets_multiperiod_geK": 2950,
+            "n_fills_total": 4356441,
+            "n_fills_kept": 2714885,
+            "median_periods_per_kept_wallet": 2.0,
+            "median_fills_per_kept_wallet": 107.0,
+            "n_whales_dropped": 0
+          },
+          "naive": {
+            "n_cells": 7069,
+            "n_periods_present": 3,
+            "grand_mean_bps_10s_print": -0.6635144688759104,
+            "total_var_10s_print": 129.52066114057422,
+            "common_var_10s_print": 0.48023736258812855,
+            "idio_naive_var_10s_print": 62.59183928043547,
+            "within_var_10s_print": 66.44858449755063,
+            "common_share_10s_print": 0.0037078050587381326,
+            "idio_naive_share_10s_print": 0.48325756469465453,
+            "within_naive_share_10s_print": 0.5130346302466074,
+            "period_fe_bps_10s_print": {
+              "202508": 0.6857694820479052,
+              "202510": -0.8505537425266939,
+              "202512": 0.37022315407396117
+            },
+            "bias_note": "idio_naive_var_10s_print = Var(a_i) + E[Var(u)/n_i] is UPWARD-biased; the split-half-corrected idiosyncratic variance (noise cancelled in the cross-wallet covariance) is in split_half_corrected"
+          },
+          "split_half_corrected": {
+            "corrected_idio_var_10s_print": 1.315971842553268,
+            "corrected_idio_var_seed_std_10s_print": 0.17434304643900814,
+            "corrected_idio_share_10s_print": 0.010160323696348249,
+            "per_seed_idio_var_10s_print": [
+              1.2198505341657935,
+              1.4981749687268238,
+              1.2356187088530781,
+              1.1224878907545561,
+              1.503727110266089
+            ],
+            "n_seeds_used": 5,
+            "note": "corrected_idio_var_10s_print = mean over seeds of Cov(aHat_A, aHat_B) across wallets, both halves period-demeaned by the SAME common FE; the within-cell noise cancels in the cross-wallet covariance"
+          },
+          "reliability": {
+            "reliability_10s_print": 0.3992621622589423,
+            "n_wallets": 2950,
+            "r_half_10s_print": 0.24953769236138817,
+            "reliability_seeds": [
+              347118170,
+              1700423308,
+              326417931,
+              1247403704,
+              661900767
+            ],
+            "n_seeds_used": 5,
+            "method": "Spearman-Brown on period-demeaned odd/even split, averaged over the reliability seed's own splits (settings.RELIABILITY_SEED), not over the master seed's; DIAGNOSTIC / >0 gate only, NOT applied to the corrected share"
+          },
+          "placebo": {
+            "p_value": 0.0004997501249375312,
+            "p_value_floor": 0.0004997501249375312,
+            "n_perm_valid": 2000,
+            "null_mean": 0.0025564271791031685,
+            "null_std": 0.07960404810211875,
+            "null_p95": 0.13726933333122532,
+            "null_max": 0.27514632305770487,
+            "observed_outside_null": true,
+            "procedure": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 2000,
+              "n_draws_usable": 2000,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "panel_common_idio",
+                "idio_var_label_perm"
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 1.315971842553268,
+              "p": 0.0004997501249375312,
+              "p_floor": 0.0004997501249375312,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": 0.0025564271791031685,
+              "null_sd": 0.07960404810211875,
+              "null_p95": 0.13726933333122532
+            }
+          },
+          "idiosyncratic_component_identified": true,
+          "read_inputs": {
+            "corrected_idio_share_10s_print": 0.010160323696348249,
+            "common_share_10s_print": 0.0037078050587381326,
+            "reliability_10s_print": 0.3992621622589423,
+            "placebo_p": 0.0004997501249375312,
+            "rule": "TRUE requires corrected_idio_share_10s_print>0 AND reliability_10s_print>0 AND placebo p<=0.05 (BH-q across the family applied in _meta)"
+          },
+          "placebo_q_value_bh": 0.0004997501249375312,
+          "idiosyncratic_component_identified_fdr": true
+        },
+        "drop_top10_by_fill_count": {
+          "coverage": {
+            "n_wallets_total": 80738,
+            "n_wallets_multiperiod_geK": 2941,
+            "n_fills_total": 3711241,
+            "n_fills_kept": 2132188,
+            "median_periods_per_kept_wallet": 2.0,
+            "median_fills_per_kept_wallet": 106.0,
+            "n_whales_dropped": 10
+          },
+          "common_share_10s_print": 0.003714640750994,
+          "idio_naive_share_10s_print": 0.48318817221070043,
+          "corrected_idio_share_10s_print": 0.011162472290434895,
+          "corrected_idio_var_10s_print": 1.4508967085270914,
+          "reliability_10s_print": 0.3938788567212452,
+          "placebo_p_value": 0.0004997501249375312,
+          "idiosyncratic_component_identified": true
+        }
+      },
+      "100": {
+        "full": {
+          "K": 100,
+          "coverage": {
+            "n_wallets_total": 80748,
+            "n_wallets_multiperiod_geK": 1567,
+            "n_fills_total": 4356441,
+            "n_fills_kept": 2619153,
+            "median_periods_per_kept_wallet": 2.0,
+            "median_fills_per_kept_wallet": 211.0,
+            "n_whales_dropped": 0
+          },
+          "naive": {
+            "n_cells": 3844,
+            "n_periods_present": 3,
+            "grand_mean_bps_10s_print": -0.45897278076985076,
+            "total_var_10s_print": 102.74697394203622,
+            "common_var_10s_print": 0.38384964372600994,
+            "idio_naive_var_10s_print": 50.79282544596769,
+            "within_var_10s_print": 51.570298852342525,
+            "common_share_10s_print": 0.0037358729799921433,
+            "idio_naive_share_10s_print": 0.49434862650672323,
+            "within_naive_share_10s_print": 0.5019155005132846,
+            "period_fe_bps_10s_print": {
+              "202508": 0.6658582016271597,
+              "202510": -0.7517347642003558,
+              "202512": 0.2447351016239228
+            },
+            "bias_note": "idio_naive_var_10s_print = Var(a_i) + E[Var(u)/n_i] is UPWARD-biased; the split-half-corrected idiosyncratic variance (noise cancelled in the cross-wallet covariance) is in split_half_corrected"
+          },
+          "split_half_corrected": {
+            "corrected_idio_var_10s_print": 1.433442441705856,
+            "corrected_idio_var_seed_std_10s_print": 0.0677593593385593,
+            "corrected_idio_share_10s_print": 0.01395118889354853,
+            "per_seed_idio_var_10s_print": [
+              1.381372573926544,
+              1.406112344550046,
+              1.421754855504066,
+              1.406109447609683,
+              1.5518629869389415
+            ],
+            "n_seeds_used": 5,
+            "note": "corrected_idio_var_10s_print = mean over seeds of Cov(aHat_A, aHat_B) across wallets, both halves period-demeaned by the SAME common FE; the within-cell noise cancels in the cross-wallet covariance"
+          },
+          "reliability": {
+            "reliability_10s_print": 0.5473378870780696,
+            "n_wallets": 1567,
+            "r_half_10s_print": 0.37691937578675594,
+            "reliability_seeds": [
+              347118170,
+              1700423308,
+              326417931,
+              1247403704,
+              661900767
+            ],
+            "n_seeds_used": 5,
+            "method": "Spearman-Brown on period-demeaned odd/even split, averaged over the reliability seed's own splits (settings.RELIABILITY_SEED), not over the master seed's; DIAGNOSTIC / >0 gate only, NOT applied to the corrected share"
+          },
+          "placebo": {
+            "p_value": 0.0004997501249375312,
+            "p_value_floor": 0.0004997501249375312,
+            "n_perm_valid": 2000,
+            "null_mean": -0.0009694472976199795,
+            "null_std": 0.053812058963969636,
+            "null_p95": 0.0847688601088866,
+            "null_max": 0.17298353563971341,
+            "observed_outside_null": true,
+            "procedure": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 2000,
+              "n_draws_usable": 2000,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "panel_common_idio",
+                "idio_var_label_perm"
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 1.433442441705856,
+              "p": 0.0004997501249375312,
+              "p_floor": 0.0004997501249375312,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": -0.0009694472976199795,
+              "null_sd": 0.053812058963969636,
+              "null_p95": 0.0847688601088866
+            }
+          },
+          "idiosyncratic_component_identified": true,
+          "read_inputs": {
+            "corrected_idio_share_10s_print": 0.01395118889354853,
+            "common_share_10s_print": 0.0037358729799921433,
+            "reliability_10s_print": 0.5473378870780696,
+            "placebo_p": 0.0004997501249375312,
+            "rule": "TRUE requires corrected_idio_share_10s_print>0 AND reliability_10s_print>0 AND placebo p<=0.05 (BH-q across the family applied in _meta)"
+          },
+          "placebo_q_value_bh": 0.0004997501249375312,
+          "idiosyncratic_component_identified_fdr": true
+        },
+        "drop_top10_by_fill_count": {
+          "coverage": {
+            "n_wallets_total": 80738,
+            "n_wallets_multiperiod_geK": 1558,
+            "n_fills_total": 3711241,
+            "n_fills_kept": 2036456,
+            "median_periods_per_kept_wallet": 2.0,
+            "median_fills_per_kept_wallet": 209.5,
+            "n_whales_dropped": 10
+          },
+          "common_share_10s_print": 0.0037508463567522804,
+          "idio_naive_share_10s_print": 0.4942114634196968,
+          "corrected_idio_share_10s_print": 0.014159890527680354,
+          "corrected_idio_var_10s_print": 1.464367868263724,
+          "reliability_10s_print": 0.5517761744777907,
+          "placebo_p_value": 0.0004997501249375312,
+          "idiosyncratic_component_identified": true
+        }
+      }
+    }
+  },
+  "SOL": {
+    "n_fills": 2361128,
+    "n_wallets_total": 64045,
+    "periods_present": [
+      202508,
+      202510,
+      202512
+    ],
+    "by_K": {
+      "50": {
+        "full": {
+          "K": 50,
+          "coverage": {
+            "n_wallets_total": 64045,
+            "n_wallets_multiperiod_geK": 1631,
+            "n_fills_total": 2361128,
+            "n_fills_kept": 1344146,
+            "median_periods_per_kept_wallet": 2.0,
+            "median_fills_per_kept_wallet": 101.0,
+            "n_whales_dropped": 0
+          },
+          "naive": {
+            "n_cells": 3800,
+            "n_periods_present": 3,
+            "grand_mean_bps_10s_print": -1.1951160692144143,
+            "total_var_10s_print": 156.41071826063967,
+            "common_var_10s_print": 1.3220582027279904,
+            "idio_naive_var_10s_print": 76.81956848637894,
+            "within_var_10s_print": 78.26909157153274,
+            "common_share_10s_print": 0.008452478304747244,
+            "idio_naive_share_10s_print": 0.49114005319231613,
+            "within_naive_share_10s_print": 0.5004074685029366,
+            "period_fe_bps_10s_print": {
+              "202508": 1.1709452153265374,
+              "202510": -1.3602162108963136,
+              "202512": 0.7033571928997349
+            },
+            "bias_note": "idio_naive_var_10s_print = Var(a_i) + E[Var(u)/n_i] is UPWARD-biased; the split-half-corrected idiosyncratic variance (noise cancelled in the cross-wallet covariance) is in split_half_corrected"
+          },
+          "split_half_corrected": {
+            "corrected_idio_var_10s_print": 2.1309785920526982,
+            "corrected_idio_var_seed_std_10s_print": 0.27539498091209513,
+            "corrected_idio_share_10s_print": 0.013624249129152891,
+            "per_seed_idio_var_10s_print": [
+              2.0622755750718573,
+              2.188990866145259,
+              1.8095363151626835,
+              2.5585816622664694,
+              2.035508541617221
+            ],
+            "n_seeds_used": 5,
+            "note": "corrected_idio_var_10s_print = mean over seeds of Cov(aHat_A, aHat_B) across wallets, both halves period-demeaned by the SAME common FE; the within-cell noise cancels in the cross-wallet covariance"
+          },
+          "reliability": {
+            "reliability_10s_print": 0.4260362605659064,
+            "n_wallets": 1631,
+            "r_half_10s_print": 0.2707571140044,
+            "reliability_seeds": [
+              347118170,
+              1700423308,
+              326417931,
+              1247403704,
+              661900767
+            ],
+            "n_seeds_used": 5,
+            "method": "Spearman-Brown on period-demeaned odd/even split, averaged over the reliability seed's own splits (settings.RELIABILITY_SEED), not over the master seed's; DIAGNOSTIC / >0 gate only, NOT applied to the corrected share"
+          },
+          "placebo": {
+            "p_value": 0.0004997501249375312,
+            "p_value_floor": 0.0004997501249375312,
+            "n_perm_valid": 2000,
+            "null_mean": -0.0035514707301433916,
+            "null_std": 0.13082264080381567,
+            "null_p95": 0.2150784093525707,
+            "null_max": 0.6222102391862664,
+            "observed_outside_null": true,
+            "procedure": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 2000,
+              "n_draws_usable": 2000,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "panel_common_idio",
+                "idio_var_label_perm"
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 2.1309785920526982,
+              "p": 0.0004997501249375312,
+              "p_floor": 0.0004997501249375312,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": -0.0035514707301433916,
+              "null_sd": 0.13082264080381567,
+              "null_p95": 0.2150784093525707
+            }
+          },
+          "idiosyncratic_component_identified": true,
+          "read_inputs": {
+            "corrected_idio_share_10s_print": 0.013624249129152891,
+            "common_share_10s_print": 0.008452478304747244,
+            "reliability_10s_print": 0.4260362605659064,
+            "placebo_p": 0.0004997501249375312,
+            "rule": "TRUE requires corrected_idio_share_10s_print>0 AND reliability_10s_print>0 AND placebo p<=0.05 (BH-q across the family applied in _meta)"
+          },
+          "placebo_q_value_bh": 0.0004997501249375312,
+          "idiosyncratic_component_identified_fdr": true
+        },
+        "drop_top10_by_fill_count": {
+          "coverage": {
+            "n_wallets_total": 64035,
+            "n_wallets_multiperiod_geK": 1623,
+            "n_fills_total": 1471013,
+            "n_fills_kept": 558340,
+            "median_periods_per_kept_wallet": 2.0,
+            "median_fills_per_kept_wallet": 101.0,
+            "n_whales_dropped": 10
+          },
+          "common_share_10s_print": 0.008439108094624871,
+          "idio_naive_share_10s_print": 0.490980609991081,
+          "corrected_idio_share_10s_print": 0.012824492701386574,
+          "corrected_idio_var_10s_print": 2.017279804713012,
+          "reliability_10s_print": 0.4294512217763488,
+          "placebo_p_value": 0.0004997501249375312,
+          "idiosyncratic_component_identified": true
+        }
+      },
+      "100": {
+        "full": {
+          "K": 100,
+          "coverage": {
+            "n_wallets_total": 64045,
+            "n_wallets_multiperiod_geK": 833,
+            "n_fills_total": 2361128,
+            "n_fills_kept": 1289644,
+            "median_periods_per_kept_wallet": 2.0,
+            "median_fills_per_kept_wallet": 190.0,
+            "n_whales_dropped": 0
+          },
+          "naive": {
+            "n_cells": 1979,
+            "n_periods_present": 3,
+            "grand_mean_bps_10s_print": -0.9877204212201958,
+            "total_var_10s_print": 158.24338530466187,
+            "common_var_10s_print": 1.1625422822905027,
+            "idio_naive_var_10s_print": 78.33426751184464,
+            "within_var_10s_print": 78.74657551052672,
+            "common_share_10s_print": 0.0073465458290865706,
+            "idio_naive_share_10s_print": 0.4950239617348284,
+            "within_naive_share_10s_print": 0.49762949243608506,
+            "period_fe_bps_10s_print": {
+              "202508": 1.097380439438028,
+              "202510": -1.2894553330027916,
+              "202512": 0.6333439467188116
+            },
+            "bias_note": "idio_naive_var_10s_print = Var(a_i) + E[Var(u)/n_i] is UPWARD-biased; the split-half-corrected idiosyncratic variance (noise cancelled in the cross-wallet covariance) is in split_half_corrected"
+          },
+          "split_half_corrected": {
+            "corrected_idio_var_10s_print": 3.2067478919683077,
+            "corrected_idio_var_seed_std_10s_print": 0.16509982119106026,
+            "corrected_idio_share_10s_print": 0.020264656786724067,
+            "per_seed_idio_var_10s_print": [
+              3.0982470978586174,
+              3.223752294464706,
+              3.128397802768248,
+              3.487129032960493,
+              3.0962132317894735
+            ],
+            "n_seeds_used": 5,
+            "note": "corrected_idio_var_10s_print = mean over seeds of Cov(aHat_A, aHat_B) across wallets, both halves period-demeaned by the SAME common FE; the within-cell noise cancels in the cross-wallet covariance"
+          },
+          "reliability": {
+            "reliability_10s_print": 0.6000158244142578,
+            "n_wallets": 833,
+            "r_half_10s_print": 0.4289931993826861,
+            "reliability_seeds": [
+              347118170,
+              1700423308,
+              326417931,
+              1247403704,
+              661900767
+            ],
+            "n_seeds_used": 5,
+            "method": "Spearman-Brown on period-demeaned odd/even split, averaged over the reliability seed's own splits (settings.RELIABILITY_SEED), not over the master seed's; DIAGNOSTIC / >0 gate only, NOT applied to the corrected share"
+          },
+          "placebo": {
+            "p_value": 0.0004997501249375312,
+            "p_value_floor": 0.0004997501249375312,
+            "n_perm_valid": 2000,
+            "null_mean": -0.0026254656483465314,
+            "null_std": 0.0857894535154771,
+            "null_p95": 0.13582054908217342,
+            "null_max": 0.3337552450077015,
+            "observed_outside_null": true,
+            "procedure": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 2000,
+              "n_draws_usable": 2000,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "panel_common_idio",
+                "idio_var_label_perm"
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 3.2067478919683077,
+              "p": 0.0004997501249375312,
+              "p_floor": 0.0004997501249375312,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": -0.0026254656483465314,
+              "null_sd": 0.0857894535154771,
+              "null_p95": 0.13582054908217342
+            }
+          },
+          "idiosyncratic_component_identified": true,
+          "read_inputs": {
+            "corrected_idio_share_10s_print": 0.020264656786724067,
+            "common_share_10s_print": 0.0073465458290865706,
+            "reliability_10s_print": 0.6000158244142578,
+            "placebo_p": 0.0004997501249375312,
+            "rule": "TRUE requires corrected_idio_share_10s_print>0 AND reliability_10s_print>0 AND placebo p<=0.05 (BH-q across the family applied in _meta)"
+          },
+          "placebo_q_value_bh": 0.0004997501249375312,
+          "idiosyncratic_component_identified_fdr": true
+        },
+        "drop_top10_by_fill_count": {
+          "coverage": {
+            "n_wallets_total": 64035,
+            "n_wallets_multiperiod_geK": 825,
+            "n_fills_total": 1471013,
+            "n_fills_kept": 503838,
+            "median_periods_per_kept_wallet": 2.0,
+            "median_fills_per_kept_wallet": 188.0,
+            "n_whales_dropped": 10
+          },
+          "common_share_10s_print": 0.007325141351817291,
+          "idio_naive_share_10s_print": 0.4947519193327603,
+          "corrected_idio_share_10s_print": 0.019815310293329183,
+          "corrected_idio_var_10s_print": 3.170311389720676,
+          "reliability_10s_print": 0.599313925059848,
+          "placebo_p_value": 0.0004997501249375312,
+          "idiosyncratic_component_identified": true
+        }
+      }
+    }
+  },
+  "pooled": {
+    "n_fills": 10454272,
+    "n_wallets_total": 151558,
+    "periods_present": [
+      202508,
+      202510,
+      202512
+    ],
+    "by_K": {
+      "50": {
+        "full": {
+          "K": 50,
+          "coverage": {
+            "n_wallets_total": 151558,
+            "n_wallets_multiperiod_geK": 9240,
+            "n_fills_total": 10454272,
+            "n_fills_kept": 6632141,
+            "median_periods_per_kept_wallet": 2.0,
+            "median_fills_per_kept_wallet": 102.0,
+            "n_whales_dropped": 0
+          },
+          "naive": {
+            "n_cells": 22042,
+            "n_periods_present": 3,
+            "grand_mean_bps_10s_print": -0.9447499419887028,
+            "total_var_10s_print": 129.29551513843285,
+            "common_var_10s_print": 0.8900245691438046,
+            "idio_naive_var_10s_print": 60.689835009512166,
+            "within_var_10s_print": 67.71565555977688,
+            "common_share_10s_print": 0.00688364610474603,
+            "idio_naive_share_10s_print": 0.46938855492809145,
+            "within_naive_share_10s_print": 0.5237277989671625,
+            "period_fe_bps_10s_print": {
+              "202508": 0.8803730327805658,
+              "202510": -1.1458258485830926,
+              "202512": 0.6502178128421717
+            },
+            "bias_note": "idio_naive_var_10s_print = Var(a_i) + E[Var(u)/n_i] is UPWARD-biased; the split-half-corrected idiosyncratic variance (noise cancelled in the cross-wallet covariance) is in split_half_corrected"
+          },
+          "split_half_corrected": {
+            "corrected_idio_var_10s_print": 1.713402253204475,
+            "corrected_idio_var_seed_std_10s_print": 0.17347640495018057,
+            "corrected_idio_share_10s_print": 0.01325183051685889,
+            "per_seed_idio_var_10s_print": [
+              1.9446894416364102,
+              1.5060228372706939,
+              1.824667734990169,
+              1.611461915650683,
+              1.6801693364744197
+            ],
+            "n_seeds_used": 5,
+            "note": "corrected_idio_var_10s_print = mean over seeds of Cov(aHat_A, aHat_B) across wallets, both halves period-demeaned by the SAME common FE; the within-cell noise cancels in the cross-wallet covariance"
+          },
+          "reliability": {
+            "reliability_10s_print": 0.4588571323294556,
+            "n_wallets": 9240,
+            "r_half_10s_print": 0.2977685160748048,
+            "reliability_seeds": [
+              347118170,
+              1700423308,
+              326417931,
+              1247403704,
+              661900767
+            ],
+            "n_seeds_used": 5,
+            "method": "Spearman-Brown on period-demeaned odd/even split, averaged over the reliability seed's own splits (settings.RELIABILITY_SEED), not over the master seed's; DIAGNOSTIC / >0 gate only, NOT applied to the corrected share"
+          },
+          "placebo": {
+            "p_value": 0.0004997501249375312,
+            "p_value_floor": 0.0004997501249375312,
+            "n_perm_valid": 2000,
+            "null_mean": -0.0009670361255814566,
+            "null_std": 0.05052012730846594,
+            "null_p95": 0.08081092798578873,
+            "null_max": 0.18284453089057148,
+            "observed_outside_null": true,
+            "procedure": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 2000,
+              "n_draws_usable": 2000,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "panel_common_idio",
+                "idio_var_label_perm"
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 1.713402253204475,
+              "p": 0.0004997501249375312,
+              "p_floor": 0.0004997501249375312,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": -0.0009670361255814566,
+              "null_sd": 0.05052012730846594,
+              "null_p95": 0.08081092798578873
+            }
+          },
+          "idiosyncratic_component_identified": true,
+          "read_inputs": {
+            "corrected_idio_share_10s_print": 0.01325183051685889,
+            "common_share_10s_print": 0.00688364610474603,
+            "reliability_10s_print": 0.4588571323294556,
+            "placebo_p": 0.0004997501249375312,
+            "rule": "TRUE requires corrected_idio_share_10s_print>0 AND reliability_10s_print>0 AND placebo p<=0.05 (BH-q across the family applied in _meta)"
+          },
+          "placebo_q_value_bh": 0.0004997501249375312,
+          "idiosyncratic_component_identified_fdr": true
+        },
+        "drop_top10_by_fill_count": {
+          "coverage": {
+            "n_wallets_total": 151548,
+            "n_wallets_multiperiod_geK": 9231,
+            "n_fills_total": 8895009,
+            "n_fills_kept": 5228084,
+            "median_periods_per_kept_wallet": 2.0,
+            "median_fills_per_kept_wallet": 102.0,
+            "n_whales_dropped": 10
+          },
+          "common_share_10s_print": 0.0068823813749294945,
+          "idio_naive_share_10s_print": 0.46937052461831996,
+          "corrected_idio_share_10s_print": 0.012208043130421863,
+          "corrected_idio_var_10s_print": 1.5802389943079056,
+          "reliability_10s_print": 0.46317136122225494,
+          "placebo_p_value": 0.0004997501249375312,
+          "idiosyncratic_component_identified": true
+        }
+      },
+      "100": {
+        "full": {
+          "K": 100,
+          "coverage": {
+            "n_wallets_total": 151558,
+            "n_wallets_multiperiod_geK": 4717,
+            "n_fills_total": 10454272,
+            "n_fills_kept": 6317755,
+            "median_periods_per_kept_wallet": 2.0,
+            "median_fills_per_kept_wallet": 192.0,
+            "n_whales_dropped": 0
+          },
+          "naive": {
+            "n_cells": 11491,
+            "n_periods_present": 3,
+            "grand_mean_bps_10s_print": -0.5575945333074852,
+            "total_var_10s_print": 66.52769690613962,
+            "common_var_10s_print": 0.29671535433736856,
+            "idio_naive_var_10s_print": 31.82361660916755,
+            "within_var_10s_print": 34.40736494263471,
+            "common_share_10s_print": 0.0044600274492590415,
+            "idio_naive_share_10s_print": 0.4783513948193005,
+            "within_naive_share_10s_print": 0.5171885777314406,
+            "period_fe_bps_10s_print": {
+              "202508": 0.5398240949198841,
+              "202510": -0.6645531967951765,
+              "202512": 0.3275982490545989
+            },
+            "bias_note": "idio_naive_var_10s_print = Var(a_i) + E[Var(u)/n_i] is UPWARD-biased; the split-half-corrected idiosyncratic variance (noise cancelled in the cross-wallet covariance) is in split_half_corrected"
+          },
+          "split_half_corrected": {
+            "corrected_idio_var_10s_print": 1.0332040827634446,
+            "corrected_idio_var_seed_std_10s_print": 0.1362129406753287,
+            "corrected_idio_share_10s_print": 0.015530435154265705,
+            "per_seed_idio_var_10s_print": [
+              1.192334962282784,
+              0.8800080006777697,
+              1.0508542400408631,
+              1.1328443908671284,
+              0.9099788199486772
+            ],
+            "n_seeds_used": 5,
+            "note": "corrected_idio_var_10s_print = mean over seeds of Cov(aHat_A, aHat_B) across wallets, both halves period-demeaned by the SAME common FE; the within-cell noise cancels in the cross-wallet covariance"
+          },
+          "reliability": {
+            "reliability_10s_print": 0.4863801600305295,
+            "n_wallets": 4717,
+            "r_half_10s_print": 0.32138793268388255,
+            "reliability_seeds": [
+              347118170,
+              1700423308,
+              326417931,
+              1247403704,
+              661900767
+            ],
+            "n_seeds_used": 5,
+            "method": "Spearman-Brown on period-demeaned odd/even split, averaged over the reliability seed's own splits (settings.RELIABILITY_SEED), not over the master seed's; DIAGNOSTIC / >0 gate only, NOT applied to the corrected share"
+          },
+          "placebo": {
+            "p_value": 0.0004997501249375312,
+            "p_value_floor": 0.0004997501249375312,
+            "n_perm_valid": 2000,
+            "null_mean": 0.0008294593399739385,
+            "null_std": 0.036919202863290236,
+            "null_p95": 0.06156287875797842,
+            "null_max": 0.11723528486070248,
+            "observed_outside_null": true,
+            "procedure": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 2000,
+              "n_draws_usable": 2000,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "panel_common_idio",
+                "idio_var_label_perm"
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 1.0332040827634446,
+              "p": 0.0004997501249375312,
+              "p_floor": 0.0004997501249375312,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": 0.0008294593399739385,
+              "null_sd": 0.036919202863290236,
+              "null_p95": 0.06156287875797842
+            }
+          },
+          "idiosyncratic_component_identified": true,
+          "read_inputs": {
+            "corrected_idio_share_10s_print": 0.015530435154265705,
+            "common_share_10s_print": 0.0044600274492590415,
+            "reliability_10s_print": 0.4863801600305295,
+            "placebo_p": 0.0004997501249375312,
+            "rule": "TRUE requires corrected_idio_share_10s_print>0 AND reliability_10s_print>0 AND placebo p<=0.05 (BH-q across the family applied in _meta)"
+          },
+          "placebo_q_value_bh": 0.0004997501249375312,
+          "idiosyncratic_component_identified_fdr": true
+        },
+        "drop_top10_by_fill_count": {
+          "coverage": {
+            "n_wallets_total": 151548,
+            "n_wallets_multiperiod_geK": 4708,
+            "n_fills_total": 8895009,
+            "n_fills_kept": 4913698,
+            "median_periods_per_kept_wallet": 2.0,
+            "median_fills_per_kept_wallet": 192.0,
+            "n_whales_dropped": 10
+          },
+          "common_share_10s_print": 0.004452425703271021,
+          "idio_naive_share_10s_print": 0.47830328054376203,
+          "corrected_idio_share_10s_print": 0.014190023993980505,
+          "corrected_idio_var_10s_print": 0.9460605490948198,
+          "reliability_10s_print": 0.48332940988185663,
+          "placebo_p_value": 0.0004997501249375312,
+          "idiosyncratic_component_identified": true
+        }
+      }
+    }
+  }
+}

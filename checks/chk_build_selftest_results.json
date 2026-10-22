@@ -1,0 +1,143 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_build_selftest_results.json",
+    "producer": {
+      "script": "chk_build_selftest.py",
+      "sha256": "9bf30a0257fb74381edf03693656a8fd77407267a347f97cdfed76b130e1631d",
+      "bytes": 33615,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "7d6993002ef435425e59eb945030daddfd9ac872",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "build.py",
+        "bytes": 221494,
+        "sha256": "552762fbad319ac5cbba235cb1ecfddd8584ee7f49d80ac6d4a0b65f82ead04b",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "the 77 assertions build.py's self-test printed on this run; it asserts about every tracked script of this tree through the graph it derives from their syntax",
+      "window": "n/a: this gate reads a program's output, not a period of market data",
+      "coins": "n/a: this gate reads no market data"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "runtime_seconds_of_selftest": 11.0,
+    "baseline_note": "a declared debt of 1, read from this gate's own constant rather than spelled again here, because a number written twice is a number that comes apart. It stood at 9 in the committed tree of 2026-08-14 and came down in three measured steps -- six to a basename constant taught to resolve through the script index, one to a fixture name shared by two notebook gates, one to an assertion that demanded a live counter-example the tree no longer holds. It may only ever be lowered; the run prints the lower number it would accept whenever the debt comes in under it",
+    "declared_debt": [
+      {
+        "fragment": "every I/O call is accounted for",
+        "why": "8 file operations fold to no constant, against build.py's own UNRESOLVED_IO_CEILING of 0. All eight are the same shape -- an open() whose path is a parameter of a general-purpose reader, so the folder has no constant to fold and none of the eight names an artifact. Two repairs are open and both are edits in build.py and build_declarations.py rather than here: teach the folder to bind the argument at the call site, or write the eight down with a reason each. Raising UNRESOLVED_IO_CEILING is not one of them",
+        "declared": "2026-08-14"
+      }
+    ],
+    "n_calibration_cases": 5,
+    "n_calibration_failed": 0,
+    "run": {
+      "runtime_s": 10.997,
+      "finished_utc": "2026-10-22T09:37:50Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {}
+    }
+  },
+  "verdict": "PASS_AT_BASELINE",
+  "n_assertions": 77,
+  "n_failing": 1,
+  "baseline": 1,
+  "failing": [
+    {
+      "file": "build.py",
+      "line": 3704,
+      "rule": "SELFTEST-ASSERTION-FAILED",
+      "detail": "every I/O call is accounted for, and the residue is at or under its declared ceiling",
+      "source": "8 unresolved against a ceiling of 0; 71 declared, 45 folded to something that is not an artifact, 12 into a checkpoint directory",
+      "declared": {
+        "fragment": "every I/O call is accounted for",
+        "why": "8 file operations fold to no constant, against build.py's own UNRESOLVED_IO_CEILING of 0. All eight are the same shape -- an open() whose path is a parameter of a general-purpose reader, so the folder has no constant to fold and none of the eight names an artifact. Two repairs are open and both are edits in build.py and build_declarations.py rather than here: teach the folder to bind the argument at the call site, or write the eight down with a reason each. Raising UNRESOLVED_IO_CEILING is not one of them",
+        "declared": "2026-08-14"
+      }
+    }
+  ],
+  "declared_debt_sizes": [
+    {
+      "fragment": "every I/O call is accounted for",
+      "admitted": 8,
+      "today": 8
+    }
+  ],
+  "declared_debt_grew": [],
+  "n_undeclared_under_ceiling": 0,
+  "instrument": {
+    "exit_code": 1,
+    "seconds": 11.0,
+    "closing_word": "FAIL",
+    "unreadable": [],
+    "disagreements": []
+  },
+  "calibration": [
+    {
+      "predicate": "the marker is read, not the sentence",
+      "case": "must stay silent: a line this run itself marked PASS",
+      "got": "[]",
+      "want": "[]",
+      "ok": true
+    },
+    {
+      "predicate": "the marker is read, not the sentence",
+      "case": "must fire: that same sentence with its one marker changed to FAIL",
+      "got": "['the graph reads every fixture producer out of its syntax tree']",
+      "want": "['the graph reads every fixture producer out of its syntax tree']",
+      "ok": true
+    },
+    {
+      "predicate": "only an assertion is counted",
+      "case": "must stay silent: the 30 lines of this run that are not assertions, banners and progress among them",
+      "got": "0",
+      "want": "0",
+      "ok": true
+    },
+    {
+      "predicate": "debt size, unchanged",
+      "case": "a debt reported at the size its entry admits is not a finding",
+      "got": "0",
+      "want": "0",
+      "ok": true
+    },
+    {
+      "predicate": "debt size, grown",
+      "case": "the same finding with its residue multiplied is reported",
+      "got": "1",
+      "want": "1",
+      "ok": true
+    }
+  ]
+}

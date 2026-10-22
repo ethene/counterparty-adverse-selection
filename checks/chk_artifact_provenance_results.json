@@ -1,0 +1,2868 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_artifact_provenance_results.json",
+    "producer": {
+      "script": "chk_artifact_provenance.py",
+      "sha256": "86eb1447798bf84f60985d002801670a42a386eed9d4a2facd8c7577bc611244",
+      "bytes": 121330,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "1d2094efa5b3440094f63584948377b5bb09496c",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "build_diagram_results.json",
+        "bytes": 21480,
+        "sha256": "e4194efd3e5cb0e3e27f6073cbdfcf69eff1095aec5970f177bb48cd1fb57115",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "build_results.json",
+        "bytes": 18732,
+        "sha256": "6ca11f6679bf9f11d02eae3e8a8be4a53fdae5755dbf252d44d341a84f2c2048",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "NEUTRAL_EDITS.json",
+        "bytes": 619586,
+        "sha256": "40cb22496d897c366e3b83167549784796ef92f8db2d6644ae81cf186f8e7956",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_academic_header_results.json",
+        "bytes": 4275,
+        "sha256": "503d176ac718879524b1b14d7a940109f3880fe5602f54730f55619f3e70123a",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_book_orientation_results.json",
+        "bytes": 9298,
+        "sha256": "58f4f2a5079403629c97c3ca12bfe13ae35a4f00ca1ac0f6f8adf54b87d68ace",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_build_selftest_results.json",
+        "bytes": 6015,
+        "sha256": "36c5e67219d7195b0c22c0d8adfd05ff13b1affcae66b3dd697826e7ace07006",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_closedpnl_results.json",
+        "bytes": 8242,
+        "sha256": "ca4d0cc80ff5d1916d082d35113540c7408ac9def6276ee3417ef5c57d744fdc",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_contrast_hygiene_results.json",
+        "bytes": 183015,
+        "sha256": "02dc55eadf2a9105d14273c2485ff94a31eec638d8aee630e2d8b66b24b7ddab",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_decision_lookahead_results.json",
+        "bytes": 94742,
+        "sha256": "65181b6a0abf272d88cc35d9a86f536ec66781ee8b1d08ffda74920c05f91e3b",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_dir_vs_startpos_results.json",
+        "bytes": 6949,
+        "sha256": "f308a91943d7d9b5a229e85e41b77d0d0e0069e5c80a5268adec19557364d294",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_expensive_edits_results.json",
+        "bytes": 6360,
+        "sha256": "a6bb0f330a5195aa2a20e53ce75871895aa0aaea5dd095bfeab03b66dba693a1",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_field_hygiene_results.json",
+        "bytes": 8768,
+        "sha256": "ad2fd6180f1ab75a955b448b908e4a32a0004aa16f0ac01c1950e4243fca5a9e",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_headline_horizon_results.json",
+        "bytes": 7286,
+        "sha256": "f0ecce339d17898004625b951951f8d9fbf68444cb34fac4a2a73b2481966922",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_input_freshness_results.json",
+        "bytes": 516900,
+        "sha256": "513f189b4425b7a1a08d26b8a7f653493e865366c7749cff2c010089de4da631",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_liquidation_field_results.json",
+        "bytes": 6404,
+        "sha256": "a2464a9a6312b706dfd839b4a31da99a17425f062e17f18e16c4e099513ab53e",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_maker_attribution_results.json",
+        "bytes": 4662,
+        "sha256": "ecbab0732626cd9530e4f773f29e1138de36bd35eebab4f947664954b166b084",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_no_abs_paths_results.json",
+        "bytes": 2187,
+        "sha256": "98a89b390bcd3ff73ce51e127d8115d110ec8f08323e209a141b593cb0828fcc",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_notebook_expectations_results.json",
+        "bytes": 4435,
+        "sha256": "7ab7a7b445a442b88f0a61a1fb5b0e8c88ad413ec6a27205a2376295d2d381ab",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_notebook_pointer_table_results.json",
+        "bytes": 39894,
+        "sha256": "92b2ecc4cb2950287c1cebc950601742725d294b2555694ad5670a23bdeb1782",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_pinned_versions_results.json",
+        "bytes": 15700,
+        "sha256": "6f3e5d24b2dd9126e853a030801bf740371ba2180afd2c38e704fca9fee1e890",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_producer_committed_results.json",
+        "bytes": 71902,
+        "sha256": "6116dee85ea678b3eafa39a6b7ccff5958ebb7b704a67b3256e126b74f1288da",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_prose_numbers_results.json",
+        "bytes": 2576,
+        "sha256": "35b4ee83e021c79e23c4c206ed6961c1f799d3779778ff27a78ff23cdb5905a6",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_requirements_census_results.json",
+        "bytes": 5463,
+        "sha256": "619b4b1d2988b5c8b7016e240c9c6994d1e2660c9417154a705e63ea2be3346e",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_rowcounts_determinism_results.json",
+        "bytes": 12532,
+        "sha256": "989ab028144edf48e4d547c3f15096478c0b723f5ba4c2969876833d5d65a4af",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_run_happened_results.json",
+        "bytes": 158741,
+        "sha256": "5736145c184339d156f67e77655bd33cffb17d8c04d75124973a9419ee8459eb",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_settings_home_results.json",
+        "bytes": 14234,
+        "sha256": "d834dc92f277ece88efaaf66dd552c9275376f9a1134362b146e15f3bb01ca5a",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_side_signconv_results.json",
+        "bytes": 8191,
+        "sha256": "85ecbdc178ecfd79bd9770a4ae3322010af8dcc3bbb6e94d98a650b70c5a0870",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "join_nolookahead_results.json",
+        "bytes": 5890,
+        "sha256": "5c9574cb098854fb4eb12cf6ddadbffb2f81800c294cc329451982f388a060d4",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "run_all_checks_results.json",
+        "bytes": 23999,
+        "sha256": "b70084ef4e2496b2f810f89b8a0f7f338a401d5c0b30549d287bac2616b100c9",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "check_first_results.json",
+        "bytes": 7646,
+        "sha256": "17f57a6b1558615d523ff8467215faf27d0091be432403ee38ca1b4f5e095088",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "d1_book_shape_figure_results.json",
+        "bytes": 43820,
+        "sha256": "eaf766e1e5b2fb5e06a4ba8db3c620e0f9294f744c378a47370baf4859f6b0a4",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "d2_fill_tape_figure_results.json",
+        "bytes": 15621,
+        "sha256": "2bb09ccecf4b0740862a56b33360cf86bdca7ef23794522569a38d0ff0418747",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "i4_midmarkout_results.json",
+        "bytes": 7739,
+        "sha256": "d14945ddff3f45fd83f18e32815c1388bf28cc2ad19a67cd7801be81298c6103",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "panel_persistence_results.json",
+        "bytes": 147352,
+        "sha256": "bad3063761cf799b37cb167c1f64a9b3f855cc9ab3c8d73368a7b2806a3654b5",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "panel_v2_manifest.json",
+        "bytes": 12027,
+        "sha256": "a2337351124ba62cdbc92099fc7555475a8cf9b0d1b27ee28bb87990159ea6c6",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "quickwin_pass_summary.json",
+        "bytes": 16018,
+        "sha256": "0d2de79e7b8d23ac6fd786c4ba8e2d4c4bf3758801587098a8a0a8cea4bea242",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "toxicity_frame_results.json",
+        "bytes": 3539,
+        "sha256": "e6ce5c1253466144fe3e02b933043453a4aad4599b5f60655a4185cf871ef8dd",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "data_register_results.json",
+        "bytes": 406769,
+        "sha256": "d00e9910e3527def152d53b6b11e3f866381f7e148e216baa1c0487123eb31ed",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "follow_the_informed_oos_results.json",
+        "bytes": 16672,
+        "sha256": "eee86fc7360a32348aab0a975b6420af312a73b40bb2cf04854756617bd8c991",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "i3_book_nonrecoverability_results.json",
+        "bytes": 52350,
+        "sha256": "f8ecb1492fccdf59d708a453a6b58d62e9e03baa6f227c3e2886943f89060a6b",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "i3_depth_control_results.json",
+        "bytes": 24085,
+        "sha256": "eb8f755b1f01c140d127c0c549adc1605e3b67fd63a5e218d54c451dacad2840",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "i3_nonrecoverability_mid_results.json",
+        "bytes": 18825,
+        "sha256": "cd46b8995e84a60eab81e91150b525cb94b85b36d370ad5a76f9801d7ad6384a",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "i3_pretrade_vs_identity_figure_results.json",
+        "bytes": 26577,
+        "sha256": "37e2dbbc1855e11f454382bf833970045853b98624f464bfeb031fe0402f9238",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "i3_results.json",
+        "bytes": 19513,
+        "sha256": "8c311342f7b4b9d6eed8dacae1f2dcbc3bf84247ebe50dc22648453f541c7521",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "i5_exclusion_results.json",
+        "bytes": 30055,
+        "sha256": "1cebe417a170a21928b3f683c00f7726feb27a54f5381d80786508e3f25fc0ad",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "own_size_control_results.json",
+        "bytes": 136936,
+        "sha256": "27bd97e175ef01b1a7cfdf18a2d775559d4894052bd67d3a2d5d34890eaca158",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "confound_asymmetry_results.json",
+        "bytes": 45687,
+        "sha256": "7790f00055a12d0b09036096f673ce2d3bbb2768920a31b3919d5aa923866f07",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "m2_figure_results.json",
+        "bytes": 5779,
+        "sha256": "4b210e44842ba164e7760e4eaec39bb436c892695b88e89333e88db0fd5f74bc",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "m5_termstructure_results.json",
+        "bytes": 7837,
+        "sha256": "aaa6a874d2bbe169d46b4779241d61e30f0b4ecaaaf20382815458ba131b783f",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "m6_inventory_results.json",
+        "bytes": 6408,
+        "sha256": "61ed00f827c43b577c5da7f16675dba9cdb8b86ceaf190973d3f7c53cd746c28",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "temp_perm_results.json",
+        "bytes": 30115,
+        "sha256": "7b4de024602971f5114d061c09dece59645fdb301334d63144d56fa94461057e",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "ws1_horizon_results.json",
+        "bytes": 97230,
+        "sha256": "ee6d8a6923c1355e962179b87e11124b89d40fbec42c447e72ec30b8f57bb1ef",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "ws1_markout_curve_figure_results.json",
+        "bytes": 6598,
+        "sha256": "35f49713cbab897aa58cd8855abefe2f8df842eb51e5680a4434baa16c493dea",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "m11_results.json",
+        "bytes": 59444,
+        "sha256": "eac983999103c728363077f16d0a826c3578763a1e3d9903b9db1c77d4da88c1",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "m4_realizedpnl_results.json",
+        "bytes": 10456,
+        "sha256": "fb9552e73c076bbfe18737a50b0ac04742e34c4cfd45d6ffc421325e261888ee",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "m7_size_results.json",
+        "bytes": 14609,
+        "sha256": "a5132345ed9ee89fd73546736a1632bc6710dcdac003cdfac6f2ce6cfc5270b2",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "m8_makerside_results.json",
+        "bytes": 78204,
+        "sha256": "6934a66776c612c02398d4936931b6634b7c4b62656e23838246d9dcfbf2c4e8",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "m9_decile_economics_figure_results.json",
+        "bytes": 63040,
+        "sha256": "6965eb0a8f696b213354216201b3bacf31d04fb47e576b088a2e0cff89e6528e",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "maker_econ_b2_results.json",
+        "bytes": 837634,
+        "sha256": "72ce906ad22d925a4ec51ce97a876dc344a8a52fa1b1d19f043d98e47a957f7e",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "maker_econ_results.json",
+        "bytes": 390743,
+        "sha256": "bf99080efb3b421003f613c7c49aec0bbbf5e392ab9fb1bdab839cc592fbbe0c",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "sensitivity_rollup_results.json",
+        "bytes": 333196,
+        "sha256": "e1ed40ff580a8d19b151d1268836b4cd9a67a3c011fdf7657bd9777866efb07c",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "t3_results.json",
+        "bytes": 25756,
+        "sha256": "62c3d5c26b443e962b48ab68f983673d526140055f0da127ebaa0f63e67757fd",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "notebook_book_meta.json",
+        "bytes": 5358,
+        "sha256": "4c623b6f53935e19bf54f348d86a73072fd9c46f5fb9eed071d4b7a1ba7318ca",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "notebook_data_meta.json",
+        "bytes": 4360,
+        "sha256": "57cb9d74193a50ac8f9fbd6a439647d28e2259e546d379a89863e2a99af295e6",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "notebook_expected.json",
+        "bytes": 61503,
+        "sha256": "e8b66be0f5d9e9aabd1d71c86f323758242136be7270ad22c9d722de82a155ca",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "notebook_fills_meta.json",
+        "bytes": 3962,
+        "sha256": "f54912eec7f7b73266023f85c26c3280cea01d46eb0d0cd63e3a5050b82946a0",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "forward_toxicity_results.json",
+        "bytes": 8253,
+        "sha256": "1989c24fac43ad0d43a4145b38640373a25f1b684e5a124064a0f1b7f76dc642",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "i2_walletfe_results.json",
+        "bytes": 41784,
+        "sha256": "4706a22ab5993ebced54fe5e492241769aeaab4dd69a41cef0b392d820abdefe",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "ks2_multiday_results.json",
+        "bytes": 18676,
+        "sha256": "902a41f2693b90e818741c4abcb45eaee621ec6dc500af14c5704675de9aa9d9",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "ks2_persistence_10day_results.json",
+        "bytes": 29318,
+        "sha256": "77a8371b34f6eea6e356dde5d6ba12537b8a81b30ccdd865b274c8bfef434dab",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "ks2_persistence_mid_results.json",
+        "bytes": 24490,
+        "sha256": "397e94b25a8865913cb7c698cea89f59b92113c985b679578ab61b059c66ce0e",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "m9_crossasset_results.json",
+        "bytes": 25029,
+        "sha256": "114a83036d33122db486e5e07d4a9d80d5d064b4f7e659bf6021ee8c2df1b897",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "panel_analyze_results.json",
+        "bytes": 69536,
+        "sha256": "6cc445af88e9e7e1a789df3fc21715cf0f909a9aa5e68a6a8495de34e93a26b8",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "panel_common_idio_results.json",
+        "bytes": 54508,
+        "sha256": "1d7a7360e6d1c9b9d803d4dfb67125544212638d218915a4db5534615ea50763",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "panel_extended_results_h10_all.json",
+        "bytes": 1302294,
+        "sha256": "ec9575ea660ea2104ab4a03efa46e6cbf8560d4c63547bc70d45a61acfa6fd3f",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "panel_extended_results_h10_canonical.json",
+        "bytes": 148121,
+        "sha256": "986fcdbd17d903470a7cd09b716a7e0e9da423576ebb48d2c14c709097821015",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "panel_extended_results_h1_all.json",
+        "bytes": 1301775,
+        "sha256": "0ace746737748c8dd25b82b95eeb0b12fc92c943a7308f2d639ebc9c32d932e6",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "panel_extended_results_h1_canonical.json",
+        "bytes": 147949,
+        "sha256": "e48862480ea8d87d997949e8561dedd41e5b16752c55ea4e27f35b12a4dc68f1",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "panel_extended_results_h60_all.json",
+        "bytes": 1303330,
+        "sha256": "6164bdd670d214a66d3a973795411945e12d7b865aa0f6f6f1229d2e9e780085",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "panel_extended_results_h60_canonical.json",
+        "bytes": 148185,
+        "sha256": "748fc699415b5e3b30d0961cf79f1d912b5f049007ef3279b6e3e9387f7e7d35",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "panel_extended_results_h60_canonical_REPEAT.json",
+        "bytes": 148191,
+        "sha256": "19786b304f193a9ddd1c8247d9c9031ed51b41f33a897ea3cd193a76e7975344",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "three_coin_persistence_results.json",
+        "bytes": 28028,
+        "sha256": "953dcaed0837078c396565c3a7296046d565c771ad904ffce97514c971178476",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "ws2_hard_classifier_results.json",
+        "bytes": 5147,
+        "sha256": "aefb15d3678d73a201c9b1b914209e944bdc24973be5cb7e5eb851212f020542",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "ws3_taker_pnl_results.json",
+        "bytes": 11584,
+        "sha256": "04b645277ef5c7818aea9d0318ac946d04c733fcd6f72c39f60a9ff9ed3f78b6",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "c2_bookstate_control_results.json",
+        "bytes": 2951,
+        "sha256": "e4db0e26154ddfb93376aee909dc626d9519f20308d0026c96a31ef35aae61d7",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "c_matched_precision_results.json",
+        "bytes": 3167,
+        "sha256": "d7c937428478eaf9b77b3c7095fd16618aabe526df9fb9361b0a491104a0e8f2",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "calib_print_vs_mid_results.json",
+        "bytes": 13025,
+        "sha256": "40c6621b0ab83eca1d48c09ce67c7e877695e2865a20b154ac8e8f36607c7aff",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "connected_set_b1_results.json",
+        "bytes": 28119,
+        "sha256": "4fc5c44bc6755b6951a9166d9206a0bafb3ef35bbd171fcca648afcbc24ceb8a",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "decay_curve_results.json",
+        "bytes": 26154,
+        "sha256": "84855f8cb68717283a922763ae747b8dea7d1d05e6939b388bea176af2639c16",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "decile_overlap_results.json",
+        "bytes": 30418,
+        "sha256": "08d9d89a80df453d048164c6f2e51ba0c5c9ac34ca3642b04464106bcc1a839d",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "eb_scoring_results.json",
+        "bytes": 4451,
+        "sha256": "c867464bdad9da78f59005d060f98c5d8e09f5827c25d31e3585e705de4b8221",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "flat_surcharge_control_results.json",
+        "bytes": 25254,
+        "sha256": "dffeb88cd9d324e3e5e44b3d754d701de2a1374fa601098e1d52dbd18c84c6f4",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "kss_decomp_c_bookmid_results.json",
+        "bytes": 4726,
+        "sha256": "80e1ef5cbb98f52f3c64f3a4b491815cba474e2b5342e343a5caf677d9bba4b1",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "kss_decomp_c_results.json",
+        "bytes": 4874,
+        "sha256": "d9b0585b1b14066888dec2d0f8af9fb572295b5164e9b9a8dbaed46fd60d56d8",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "persistence_crosswindow_results.json",
+        "bytes": 7565,
+        "sha256": "d0522db3d5fcb35d8099d5880faad1b76a78a0038747d40eca9801b0792f6795",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "probe_D_funding_results.json",
+        "bytes": 19065,
+        "sha256": "3b300a91c84d8e16671c1bfc3f4b31cc1f8a8b7ee03626876530105462f7f43e",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "probe_E_lag_resolution_results.json",
+        "bytes": 123378,
+        "sha256": "050e2630b8acf208b755226fd979405d140a98eb899c3b902dbf3a0ee34aab65",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "probe_E_leadlag_results.json",
+        "bytes": 47968,
+        "sha256": "dda28a74146a48f3c3022848c0f2a587721382a11e85bfcad047aa9a1b21dc41",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "probe_F_hlp_liq_results.json",
+        "bytes": 25862,
+        "sha256": "c9e782650113b431211efc1679792998766e099b0b97d23fa0aa7e176beff50d",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "probe_G_horizon_results.json",
+        "bytes": 19546,
+        "sha256": "6a15a89609c0af2684fe51c671cbe1584e0e6a4323c561cb1311b84822958218",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "survivorship_census_results.json",
+        "bytes": 34936,
+        "sha256": "f302685ada7e3c9427f4df9f47a3faeb254db2cb7aeae7842c850af6cb94941b",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "as_quoter_results.json",
+        "bytes": 16164,
+        "sha256": "be2050ec3acbc68fed4c682c1e651447b4936c0a3de057e716b321c600b23aad",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "gm_quoter_results.json",
+        "bytes": 18042,
+        "sha256": "8528f79812aecfff12f537a4c6fd580ba9048306f95a0c7ce038a76d3f3d802b",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "mm_bakeoff_reference_figure_results.json",
+        "bytes": 23162,
+        "sha256": "b6d5499724897321b2746863e8ffad9c4b787f5badd0f2797da6c7c726e54f01",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "mm_bakeoff_results.json",
+        "bytes": 953782,
+        "sha256": "45035be1920bedb3c921b11517c4f0b233b726053497e19cba1a97ebdf8d02c2",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "t1_backtest_results.json",
+        "bytes": 228736,
+        "sha256": "c79b36e003c2851c9f3c3e21fa43aee64292231bb33870cfd02d37935fa6cb50",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": ".gitignore",
+        "bytes": 1850,
+        "sha256": "c83aaab87582284c048ff4957d92e8c37fd915737fc35c16dde8648e756d4242",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "106 .json files on disk under this repository that git would track, excluding this gate's own output",
+      "window": "n/a: this gate reads the repository as it stands now, not a period of market data",
+      "coins": "n/a: this gate counts properties of files and touches no market data"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "population_files": [
+      "build_diagram_results.json",
+      "build_results.json",
+      "checks/NEUTRAL_EDITS.json",
+      "checks/chk_academic_header_results.json",
+      "checks/chk_book_orientation_results.json",
+      "checks/chk_build_selftest_results.json",
+      "checks/chk_closedpnl_results.json",
+      "checks/chk_contrast_hygiene_results.json",
+      "checks/chk_decision_lookahead_results.json",
+      "checks/chk_dir_vs_startpos_results.json",
+      "checks/chk_expensive_edits_results.json",
+      "checks/chk_field_hygiene_results.json",
+      "checks/chk_headline_horizon_results.json",
+      "checks/chk_input_freshness_results.json",
+      "checks/chk_liquidation_field_results.json",
+      "checks/chk_maker_attribution_results.json",
+      "checks/chk_no_abs_paths_results.json",
+      "checks/chk_notebook_expectations_results.json",
+      "checks/chk_notebook_pointer_table_results.json",
+      "checks/chk_pinned_versions_results.json",
+      "checks/chk_producer_committed_results.json",
+      "checks/chk_prose_numbers_results.json",
+      "checks/chk_requirements_census_results.json",
+      "checks/chk_rowcounts_determinism_results.json",
+      "checks/chk_run_happened_results.json",
+      "checks/chk_settings_home_results.json",
+      "checks/chk_side_signconv_results.json",
+      "checks/join_nolookahead_results.json",
+      "checks/run_all_checks_results.json",
+      "data/check_first_results.json",
+      "data/d1_book_shape_figure_results.json",
+      "data/d2_fill_tape_figure_results.json",
+      "data/i4_midmarkout_results.json",
+      "data/panel_persistence_results.json",
+      "data/panel_v2_manifest.json",
+      "data/quickwin_pass_summary.json",
+      "data/toxicity_frame_results.json",
+      "data_register_results.json",
+      "identity/follow_the_informed_oos_results.json",
+      "identity/i3_book_nonrecoverability_results.json",
+      "identity/i3_depth_control_results.json",
+      "identity/i3_nonrecoverability_mid_results.json",
+      "identity/i3_pretrade_vs_identity_figure_results.json",
+      "identity/i3_results.json",
+      "identity/i5_exclusion_results.json",
+      "identity/own_size_control_results.json",
+      "markout/confound_asymmetry_results.json",
+      "markout/m2_figure_results.json",
+      "markout/m5_termstructure_results.json",
+      "markout/m6_inventory_results.json",
+      "markout/temp_perm_results.json",
+      "markout/ws1_horizon_results.json",
+      "markout/ws1_markout_curve_figure_results.json",
+      "money/m11_results.json",
+      "money/m4_realizedpnl_results.json",
+      "money/m7_size_results.json",
+      "money/m8_makerside_results.json",
+      "money/m9_decile_economics_figure_results.json",
+      "money/maker_econ_b2_results.json",
+      "money/maker_econ_results.json",
+      "money/sensitivity_rollup_results.json",
+      "money/t3_results.json",
+      "notebooks/notebook_book_meta.json",
+      "notebooks/notebook_data_meta.json",
+      "notebooks/notebook_expected.json",
+      "notebooks/notebook_fills_meta.json",
+      "persistence/forward_toxicity_results.json",
+      "persistence/i2_walletfe_results.json",
+      "persistence/ks2_multiday_results.json",
+      "persistence/ks2_persistence_10day_results.json",
+      "persistence/ks2_persistence_mid_results.json",
+      "persistence/m9_crossasset_results.json",
+      "persistence/panel_analyze_results.json",
+      "persistence/panel_common_idio_results.json",
+      "persistence/panel_extended_results_h10_all.json",
+      "persistence/panel_extended_results_h10_canonical.json",
+      "persistence/panel_extended_results_h1_all.json",
+      "persistence/panel_extended_results_h1_canonical.json",
+      "persistence/panel_extended_results_h60_all.json",
+      "persistence/panel_extended_results_h60_canonical.json",
+      "persistence/panel_extended_results_h60_canonical_REPEAT.json",
+      "persistence/three_coin_persistence_results.json",
+      "persistence/ws2_hard_classifier_results.json",
+      "persistence/ws3_taker_pnl_results.json",
+      "probes/c2_bookstate_control_results.json",
+      "probes/c_matched_precision_results.json",
+      "probes/calib_print_vs_mid_results.json",
+      "probes/connected_set_b1_results.json",
+      "probes/decay_curve_results.json",
+      "probes/decile_overlap_results.json",
+      "probes/eb_scoring_results.json",
+      "probes/flat_surcharge_control_results.json",
+      "probes/kss_decomp_c_bookmid_results.json",
+      "probes/kss_decomp_c_results.json",
+      "probes/persistence_crosswindow_results.json",
+      "probes/probe_D_funding_results.json",
+      "probes/probe_E_lag_resolution_results.json",
+      "probes/probe_E_leadlag_results.json",
+      "probes/probe_F_hlp_liq_results.json",
+      "probes/probe_G_horizon_results.json",
+      "probes/survivorship_census_results.json",
+      "quoters/as_quoter_results.json",
+      "quoters/gm_quoter_results.json",
+      "quoters/mm_bakeoff_reference_figure_results.json",
+      "quoters/mm_bakeoff_results.json",
+      "quoters/t1_backtest_results.json"
+    ],
+    "search_depth": 7,
+    "left_out_of_population": [
+      {
+        "file": "checks/chk_artifact_provenance_results.json",
+        "rule": "this gate's own output"
+      }
+    ],
+    "canonical_predicate": "artifact.describe",
+    "partial_signature": [
+      "reliability_seed",
+      "fdr_alpha",
+      "whale_drop_k",
+      "persistence_floor_fills"
+    ],
+    "not_caught": [
+      "whether a claimed producer actually wrote the file; only that a script of that name exists in the tree",
+      "whether an artifact is older than its producing script; staleness is a separate gate",
+      "the tree moves while this runs: a producing script was seen changing between two runs three minutes apart, so every count here is a snapshot of the moment it was taken"
+    ],
+    "run": {
+      "runtime_s": 0.168,
+      "finished_utc": "2026-10-22T09:37:36Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {}
+    }
+  },
+  "verdict": "PASS",
+  "failed": [],
+  "properties": {
+    "producer": {
+      "asks": "which script wrote this file",
+      "spellings": [
+        "script",
+        "source_script"
+      ],
+      "n_anywhere": 105,
+      "n_in_meta": 105,
+      "n_canonical": 105,
+      "n_occurrences": 159,
+      "n_missing_anywhere": 0,
+      "n_missing_canonical": 0,
+      "baseline_missing_anywhere": 0,
+      "baseline_missing_canonical": 0,
+      "state_anywhere": "PASS",
+      "state_canonical": "PASS",
+      "files_missing_anywhere": [],
+      "files_missing_canonical": [],
+      "n_excused_by_kind": 1,
+      "files_excused_by_kind": [
+        "checks/NEUTRAL_EDITS.json"
+      ]
+    },
+    "inputs": {
+      "asks": "what this file was computed from, with size and hash",
+      "spellings": [
+        "inputs",
+        "source_files"
+      ],
+      "n_anywhere": 105,
+      "n_in_meta": 105,
+      "n_canonical": 105,
+      "n_occurrences": 105,
+      "n_missing_anywhere": 0,
+      "n_missing_canonical": 0,
+      "baseline_missing_anywhere": 0,
+      "baseline_missing_canonical": 0,
+      "state_anywhere": "PASS",
+      "state_canonical": "PASS",
+      "files_missing_anywhere": [],
+      "files_missing_canonical": [],
+      "n_excused_by_kind": 1,
+      "files_excused_by_kind": [
+        "checks/NEUTRAL_EDITS.json"
+      ]
+    },
+    "run": {
+      "asks": "how long the computation took, so a rerun can be budgeted",
+      "spellings": [
+        "runtime_s",
+        "seconds"
+      ],
+      "n_anywhere": 105,
+      "n_in_meta": 105,
+      "n_canonical": 105,
+      "n_occurrences": 152,
+      "n_missing_anywhere": 0,
+      "n_missing_canonical": 0,
+      "baseline_missing_anywhere": 0,
+      "baseline_missing_canonical": 0,
+      "state_anywhere": "PASS",
+      "state_canonical": "PASS",
+      "files_missing_anywhere": [],
+      "files_missing_canonical": [],
+      "n_excused_by_kind": 1,
+      "files_excused_by_kind": [
+        "checks/NEUTRAL_EDITS.json"
+      ]
+    },
+    "scope": {
+      "asks": "over what population, window and coins the numbers hold",
+      "spellings": [
+        "scope",
+        "coverage"
+      ],
+      "n_anywhere": 105,
+      "n_in_meta": 105,
+      "n_canonical": 105,
+      "n_occurrences": 186,
+      "n_missing_anywhere": 0,
+      "n_missing_canonical": 0,
+      "baseline_missing_anywhere": 0,
+      "baseline_missing_canonical": 0,
+      "state_anywhere": "PASS",
+      "state_canonical": "PASS",
+      "files_missing_anywhere": [],
+      "files_missing_canonical": [],
+      "n_excused_by_kind": 1,
+      "files_excused_by_kind": [
+        "checks/NEUTRAL_EDITS.json"
+      ]
+    },
+    "settings_fingerprint": {
+      "asks": "under which settings declaration the numbers were made",
+      "spellings": [
+        "settings_fingerprint",
+        "settings_module"
+      ],
+      "n_anywhere": 105,
+      "n_in_meta": 105,
+      "n_canonical": 105,
+      "n_occurrences": 113,
+      "n_missing_anywhere": 0,
+      "n_missing_canonical": 0,
+      "baseline_missing_anywhere": 0,
+      "baseline_missing_canonical": 0,
+      "state_anywhere": "PASS",
+      "state_canonical": "PASS",
+      "files_missing_anywhere": [],
+      "files_missing_canonical": [],
+      "n_excused_by_kind": 1,
+      "files_excused_by_kind": [
+        "checks/NEUTRAL_EDITS.json"
+      ]
+    },
+    "meta_block": {
+      "asks": "whether the file carries a self-description block at all",
+      "spellings": [
+        "recognised by content, see artifact.describe"
+      ],
+      "n_anywhere": 106,
+      "n_in_meta": 106,
+      "n_canonical": 106,
+      "n_occurrences": 107,
+      "n_missing_anywhere": 0,
+      "n_missing_canonical": 0,
+      "baseline_missing_anywhere": 0,
+      "baseline_missing_canonical": 0,
+      "state_anywhere": "PASS",
+      "state_canonical": "PASS",
+      "files_missing_anywhere": [],
+      "files_missing_canonical": [],
+      "n_excused_by_kind": 0,
+      "files_excused_by_kind": []
+    }
+  },
+  "fingerprint_placement": {
+    "asks": "whether the fingerprint sits in one place across the tree",
+    "counts": {
+      "nested": 105,
+      "None": 1
+    },
+    "note": "four counts of one property, each correct about its own question: 38 blocks, 32 files carrying a block anywhere, 24 files with a key literally named settings_fingerprint, 20 files with the block in the canonical position"
+  },
+  "census_exemption_by_kind": {
+    "asks": "which files the census does not hold to the records that presuppose a producer, because they declare in their own _meta that no program wrote them",
+    "n": 1,
+    "of_population": 106,
+    "files": {
+      "checks/NEUTRAL_EDITS.json": {
+        "kind": "hand_register",
+        "excused_from": [
+          "producer",
+          "inputs",
+          "run",
+          "scope",
+          "settings_fingerprint"
+        ],
+        "still_owed": [
+          "meta_block"
+        ],
+        "this_gate_says": "the file is maintained by hand and no program writes it, so it has no producer to name and no hash to compare; asking which script wrote it has no answer rather than a missing one",
+        "the_file_says": "This file is written and revised by a person, entry by entry, and no program produces it. It therefore names no producer script and carries no producer hash, and the two freshness gates of this tree reported it for months as an artifact of unknown origin. That count was answering the wrong question about it: there is no run to have made this file, so 'which code wrote it' has no answer rather than a missing one. The declared kind is read by checks/chk_artifact_provenance.py, which owns the vocabulary of kinds and decides what each one means; this file only states which kind it is."
+      }
+    },
+    "field": "record_kind",
+    "excuses_these_records": [
+      "producer",
+      "inputs",
+      "run",
+      "scope",
+      "settings_fingerprint"
+    ],
+    "never_excuses": [
+      "meta_block"
+    ],
+    "vocabulary": {
+      "run_journal": "the file records that a run HAPPENED rather than what a quantity is, so its producer hash is right for the run it describes and goes stale on the next edit to that producer by construction",
+      "hand_register": "the file is maintained by hand and no program writes it, so it has no producer to name and no hash to compare; asking which script wrote it has no answer rather than a missing one"
+    },
+    "admitted_to_this_census": [
+      "hand_register"
+    ],
+    "whose_right_it_is": "the artifact supplies one word about what kind of record it is; what that word is worth is decided by this gate and nowhere else. The vocabulary is this gate's, the reason beside each kind is this gate's, and which kinds reach which column is this gate's, so no file can excuse itself by inventing a word or widen an existing one by writing it somewhere new. The vocabulary therefore stays small and every entry carries its reason",
+    "not_removed_from_the_population": "the excused file is counted in the population, in the three columns and in this results file exactly as before. Only the debt changes. Dropping a file from a population is how an instrument stops seeing things",
+    "worth_on_this_tree": {
+      "asks": "how much debt the declared word actually moves here, run through the same calculation with an empty exemption map",
+      "debt_without_the_exemption": 5,
+      "per_property": {
+        "producer": 1,
+        "inputs": 1,
+        "run": 1,
+        "scope": 1,
+        "settings_fingerprint": 1,
+        "meta_block": 0
+      },
+      "producer_row_would_read": "FAIL",
+      "measured_not_asserted": "an assertion that this stays five would empty itself the day the register is migrated or removed; the must-fire case therefore lives on fabricated documents, where no repair can reach it"
+    },
+    "why_added_2026_08_12": "the freshness column read the declared kind and this census did not, so one file was excused by one column of this gate and counted as debt by the other, and the top verdict could not reach PASS however much work was done. Both columns now call producerless_kind(), and that they agree is measured on the live tree rather than assumed"
+  },
+  "ceiling_room": {
+    "asks": "how many artifacts could lose a record with this gate still green, which is the whole of what a ceiling standing above its debt buys",
+    "gated": false,
+    "why_not_gated": "lowering a ceiling is a declaration a person makes and names the artifacts for, so a gate that reddened whenever room appeared would be demanding that declaration from whoever happened to run the battery. It is printed on every run instead, so that the room cannot grow unseen the way it did between 2026-07-30 and 2026-08-12",
+    "per_property": {
+      "producer": {
+        "anywhere": 0,
+        "canonical": 0
+      },
+      "inputs": {
+        "anywhere": 0,
+        "canonical": 0
+      },
+      "run": {
+        "anywhere": 0,
+        "canonical": 0
+      },
+      "scope": {
+        "anywhere": 0,
+        "canonical": 0
+      },
+      "settings_fingerprint": {
+        "anywhere": 0,
+        "canonical": 0
+      },
+      "meta_block": {
+        "anywhere": 0,
+        "canonical": 0
+      }
+    },
+    "widest": 0,
+    "measured_2026_07_30_to_08_12": "the debt on the producer record fell from 61 to 1 and no ceiling moved, leaving the settings fingerprint room for 41 artifacts to lose their record without a red run"
+  },
+  "third_form_partial_settings": {
+    "asks": "which files carry settings values without stating a declaration",
+    "detail": "settings values a script wrote down because it used them; counting these as fingerprints would report 40 files where the measured number is 32",
+    "n_files": 0,
+    "files": []
+  },
+  "freshness": {
+    "asks": "whether the artifact still matches the script it names as its producer, by comparing the recorded producer hash against the script on disk",
+    "n_determinable": 41,
+    "n_matches": 41,
+    "n_stale": 0,
+    "n_undeterminable": 0,
+    "n_no_producer": 0,
+    "n_neutral_by_certificate": 64,
+    "n_hash_recorded": 105,
+    "baseline_stale": 0,
+    "state": "PASS",
+    "not_answerable_by_kind": {
+      "asks": "which artifacts declare, in their own _meta, that they are a record of a run rather than of a quantity, so that comparing them against their producer's hash answers nothing",
+      "n": 1,
+      "of_population": 106,
+      "files": [
+        "checks/NEUTRAL_EDITS.json"
+      ],
+      "detail": [
+        {
+          "file": "checks/NEUTRAL_EDITS.json",
+          "producer": null,
+          "record_kind": "hand_register",
+          "record_kind_why": "This file is written and revised by a person, entry by entry, and no program produces it. It therefore names no producer script and carries no producer hash, and the two freshness gates of this tree reported it for months as an artifact of unknown origin. That count was answering the wrong question about it: there is no run to have made this file, so 'which code wrote it' has no answer rather than a missing one. The declared kind is read by checks/chk_artifact_provenance.py, which owns the vocabulary of kinds and decides what each one means; this file only states which kind it is.",
+          "not_answerable_because": "the file is maintained by hand and no program writes it, so it has no producer to name and no hash to compare; asking which script wrote it has no answer rather than a missing one",
+          "producer_path": null,
+          "recorded_sha256": null,
+          "current_sha256": null
+        }
+      ],
+      "field": "record_kind",
+      "vocabulary": {
+        "run_journal": "the file records that a run HAPPENED rather than what a quantity is, so its producer hash is right for the run it describes and goes stale on the next edit to that producer by construction",
+        "hand_register": "the file is maintained by hand and no program writes it, so it has no producer to name and no hash to compare; asking which script wrote it has no answer rather than a missing one"
+      },
+      "why_not_a_list_of_names": "the kind travels with the file that carries it; a list of file names kept in this gate goes silent the day a file is renamed, which is how two other instruments of this tree stopped firing this week",
+      "size_of_the_exemption": "1 of 106 tracked .json today, so this is a rule declared for one case and not a general allowance",
+      "calibration": "see freshness.calibration, which covers every way this column excuses a file and holds the failures once"
+    },
+    "neutral_by_certificate": {
+      "asks": "which artifacts differ from the producer they name and are excused by a certificate stating that this exact pair of hashes cannot have moved a figure",
+      "n": 64,
+      "of_population": 106,
+      "files": [
+        "checks/chk_field_hygiene_results.json",
+        "data/d1_book_shape_figure_results.json",
+        "data/d2_fill_tape_figure_results.json",
+        "data/i4_midmarkout_results.json",
+        "data/panel_persistence_results.json",
+        "data/panel_v2_manifest.json",
+        "data/quickwin_pass_summary.json",
+        "data/toxicity_frame_results.json",
+        "identity/follow_the_informed_oos_results.json",
+        "identity/i3_book_nonrecoverability_results.json",
+        "identity/i3_depth_control_results.json",
+        "identity/i3_nonrecoverability_mid_results.json",
+        "identity/i3_pretrade_vs_identity_figure_results.json",
+        "identity/i3_results.json",
+        "identity/i5_exclusion_results.json",
+        "markout/confound_asymmetry_results.json",
+        "markout/m2_figure_results.json",
+        "markout/m5_termstructure_results.json",
+        "markout/m6_inventory_results.json",
+        "markout/temp_perm_results.json",
+        "markout/ws1_horizon_results.json",
+        "markout/ws1_markout_curve_figure_results.json",
+        "money/m11_results.json",
+        "money/m4_realizedpnl_results.json",
+        "money/m7_size_results.json",
+        "money/m8_makerside_results.json",
+        "money/m9_decile_economics_figure_results.json",
+        "money/maker_econ_b2_results.json",
+        "money/maker_econ_results.json",
+        "money/t3_results.json",
+        "persistence/forward_toxicity_results.json",
+        "persistence/i2_walletfe_results.json",
+        "persistence/ks2_multiday_results.json",
+        "persistence/ks2_persistence_10day_results.json",
+        "persistence/ks2_persistence_mid_results.json",
+        "persistence/m9_crossasset_results.json",
+        "persistence/panel_analyze_results.json",
+        "persistence/panel_common_idio_results.json",
+        "persistence/panel_extended_results_h10_all.json",
+        "persistence/panel_extended_results_h10_canonical.json",
+        "persistence/panel_extended_results_h1_all.json",
+        "persistence/panel_extended_results_h1_canonical.json",
+        "persistence/panel_extended_results_h60_all.json",
+        "persistence/panel_extended_results_h60_canonical.json",
+        "persistence/panel_extended_results_h60_canonical_REPEAT.json",
+        "persistence/three_coin_persistence_results.json",
+        "persistence/ws2_hard_classifier_results.json",
+        "persistence/ws3_taker_pnl_results.json",
+        "probes/c2_bookstate_control_results.json",
+        "probes/c_matched_precision_results.json",
+        "probes/calib_print_vs_mid_results.json",
+        "probes/connected_set_b1_results.json",
+        "probes/decay_curve_results.json",
+        "probes/decile_overlap_results.json",
+        "probes/eb_scoring_results.json",
+        "probes/kss_decomp_c_bookmid_results.json",
+        "probes/kss_decomp_c_results.json",
+        "probes/persistence_crosswindow_results.json",
+        "probes/probe_E_lag_resolution_results.json",
+        "probes/probe_E_leadlag_results.json",
+        "probes/probe_F_hlp_liq_results.json",
+        "probes/probe_G_horizon_results.json",
+        "quoters/as_quoter_results.json",
+        "quoters/gm_quoter_results.json"
+      ],
+      "detail": [
+        {
+          "file": "checks/chk_field_hygiene_results.json",
+          "producer": [
+            "chk_field_hygiene.py"
+          ],
+          "producer_path": "checks/chk_field_hygiene.py",
+          "recorded_sha256": "80094a002c7049a12a96d321244c3f349d46d92c34e6a23b1e47da8974f2b65f",
+          "current_sha256": "a904d0cd4e0e29439989fa7923eb3ad38d20a65d7a945bde3f45c4317fee8f92",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "data/d1_book_shape_figure_results.json",
+          "producer": [
+            "d1_book_shape_figure.py"
+          ],
+          "producer_path": "data/d1_book_shape_figure.py",
+          "recorded_sha256": "3d61852aad408ebe22e36ddf0ffe150ddd3961ed3e6bb6b9b091e38115d44423",
+          "current_sha256": "cb1d01fe379ea9243ea59fd216d63774c194a00d23c6e63bb7e55bead1ed6f6e",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "data/d2_fill_tape_figure_results.json",
+          "producer": [
+            "d2_fill_tape_figure.py"
+          ],
+          "producer_path": "data/d2_fill_tape_figure.py",
+          "recorded_sha256": "1330d5042f5a1b05ff3c44f46dbf31afd8f96ffe811fb90b0b74e624e000c66e",
+          "current_sha256": "231729a52eff36ca748a114146c6cf5a98bc26d1ee8a9940330869e510b72b26",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "data/i4_midmarkout_results.json",
+          "producer": [
+            "i4_midmarkout.py"
+          ],
+          "producer_path": "data/i4_midmarkout.py",
+          "recorded_sha256": "51f4da06d83c454969c071892fcbaf0f85b71932bae618de4a958f6c3f22cc31",
+          "current_sha256": "d1926d619fadd4e17a8d068b26c5016ef614e763c32b45f5d2816f444703b18f",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "data/panel_persistence_results.json",
+          "producer": [
+            "panel_persistence.py"
+          ],
+          "producer_path": "data/panel_persistence.py",
+          "recorded_sha256": "678b57e536c1063bb972f19d59049ce034be2f2fbbf9d133a4e158a79ab7410b",
+          "current_sha256": "96f014e8116acdca7a7063211708eceb3ae7e4f18e25b770fd230954094e6133",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "data/panel_v2_manifest.json",
+          "producer": [
+            "panel_rebuild_v2.py"
+          ],
+          "producer_path": "data/panel_rebuild_v2.py",
+          "recorded_sha256": "ed30258d90b69f3a0120e762867bd534de86f39551453689f699c3100cc1c4c8",
+          "current_sha256": "32a535c1487af98af1e1412382fd278afe4f1bcca96ecdee8b17d7d08c1a42ff",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "data/quickwin_pass_summary.json",
+          "producer": [
+            "build_quickwin_markouts.py"
+          ],
+          "producer_path": "data/build_quickwin_markouts.py",
+          "recorded_sha256": "7a77a582d2432e34a1eed21e3775d9102c1f18ca415126f0fc294b93c52afa7a",
+          "current_sha256": "4e52b09780010c19b258dc093e8a2485fbeec38365402e40186a674977c2f8e7",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "data/toxicity_frame_results.json",
+          "producer": [
+            "build_toxicity_frame.py"
+          ],
+          "producer_path": "data/build_toxicity_frame.py",
+          "recorded_sha256": "ec43af9db750fd5880d0f1826c602c9f6ba207e35b5ebb32e4171a5b61c1147c",
+          "current_sha256": "3e9bc721c8d7b5addcfb0e5d343ee57d283d4a89c2061b11a82f79dc29ded319",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "identity/follow_the_informed_oos_results.json",
+          "producer": [
+            "follow_the_informed_oos.py"
+          ],
+          "producer_path": "identity/follow_the_informed_oos.py",
+          "recorded_sha256": "4ccf3b10f4dbb894f3486a493ad246f477ef06c4f244b07238d5a56c1b352595",
+          "current_sha256": "3aac88175f1f62230121d64f2431a615a6244f5045313b1eaf53df680e74bc53",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "identity/i3_book_nonrecoverability_results.json",
+          "producer": [
+            "i3_book_comparator.py"
+          ],
+          "producer_path": "identity/i3_book_comparator.py",
+          "recorded_sha256": "4a59c8df075f366dd81110578fe47cc748af2c96b0d818bd74ae8f3bf6c87890",
+          "current_sha256": "439c5b318f50575c6fd2c9e13152273995a328825c25341cdd976fc9709fb367",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "identity/i3_depth_control_results.json",
+          "producer": [
+            "i3_depth_control.py"
+          ],
+          "producer_path": "identity/i3_depth_control.py",
+          "recorded_sha256": "5bc76bf9b7e5166cc95b26a4d9f1485a6bff984f7381e438b3a5a225b875bb33",
+          "current_sha256": "f9f58d26edf6955bc9575595597f1ac19699df49bd333255a0931008ba7e2094",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "identity/i3_nonrecoverability_mid_results.json",
+          "producer": [
+            "i3_nonrecoverability_oos.py"
+          ],
+          "producer_path": "identity/i3_nonrecoverability_oos.py",
+          "recorded_sha256": "ba540f4d82aee1df65f50782d3ef23d7029d69a78d104649c047305eee25f08d",
+          "current_sha256": "c085c9662f7b7d1f351b540e74a7d4840faddb1882354984802add36af1eacdb",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "identity/i3_pretrade_vs_identity_figure_results.json",
+          "producer": [
+            "i3_pretrade_vs_identity_figure.py"
+          ],
+          "producer_path": "identity/i3_pretrade_vs_identity_figure.py",
+          "recorded_sha256": "257b4e98808340c792a8e143922d54b07a2abb8ddbbf911bb14d71215b8db06e",
+          "current_sha256": "bea813a9a93105433e3a06111513602794b2d86aa945d123620f5839e505d85c",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "identity/i3_results.json",
+          "producer": [
+            "i3_nonrecoverability_oos.py"
+          ],
+          "producer_path": "identity/i3_nonrecoverability_oos.py",
+          "recorded_sha256": "499f060ce98f6b0bfcc582ea635c769c6c554134f602793ee6da0dd542e9a62d",
+          "current_sha256": "c085c9662f7b7d1f351b540e74a7d4840faddb1882354984802add36af1eacdb",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "identity/i5_exclusion_results.json",
+          "producer": [
+            "i5_exclusion.py"
+          ],
+          "producer_path": "identity/i5_exclusion.py",
+          "recorded_sha256": "073d1059915a2bf71b17ac8a94b6f3be2d82586ca5949d465fb8cccbc2ce3ce2",
+          "current_sha256": "10fc694c772c27f629c4ae7593468a7f92a70a2a59ce26371d5770764bc57fdf",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "markout/confound_asymmetry_results.json",
+          "producer": [
+            "confound_asymmetry.py"
+          ],
+          "producer_path": "markout/confound_asymmetry.py",
+          "recorded_sha256": "6f815ea2bd30e2c7a91ca5b231a5bcd03800978eebaf3d0acb81cbca482170b0",
+          "current_sha256": "51be7bcfa705d7ee0b41c67138b82a9a8c2f13835dbafaece73e5dd723031ec4",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "markout/m2_figure_results.json",
+          "producer": [
+            "m2_figure.py"
+          ],
+          "producer_path": "markout/m2_figure.py",
+          "recorded_sha256": "0bfed9d36d80a86de6d11baf6121bc0462f82b140c8aaaff8be3ff5e47ef6754",
+          "current_sha256": "6cb9a19b21594df85f30449d64b41597b3edc2618e50eeca0d5499c3161f5d93",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "markout/m5_termstructure_results.json",
+          "producer": [
+            "m5_termstructure.py"
+          ],
+          "producer_path": "markout/m5_termstructure.py",
+          "recorded_sha256": "a2c609914960cd125aa6c139821537bfe62ccf9165299063a3ca59ec6e5408d0",
+          "current_sha256": "0da6d46f1c97cb6c0bea243739eeafcfe1f0a71faf4008a2cb681e894eacb75b",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "markout/m6_inventory_results.json",
+          "producer": [
+            "m6_inventory.py"
+          ],
+          "producer_path": "markout/m6_inventory.py",
+          "recorded_sha256": "f93455d16a69a3da29a00ddefc8c49a7940f84f6a9d63d8c89de4db6547f2f80",
+          "current_sha256": "2e5319cc0029c9f3c11657348f1046606904e608bc499f76d7fd1bfdbcf3e5f8",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "markout/temp_perm_results.json",
+          "producer": [
+            "temp_perm_decomp.py"
+          ],
+          "producer_path": "markout/temp_perm_decomp.py",
+          "recorded_sha256": "708c5e809f040fc0c43c603d7b605698d7ab026433ea28ab6d63716e2c22f142",
+          "current_sha256": "b9f7399bcc9110efb4a464f1199dd155d292286d481a438ff2f0405302051b99",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "markout/ws1_horizon_results.json",
+          "producer": [
+            "ws1_horizon_persistence.py"
+          ],
+          "producer_path": "markout/ws1_horizon_persistence.py",
+          "recorded_sha256": "21010a5970a13927a90b79a32f834a9e05b99c05702d4095f4e36a1d4869a63a",
+          "current_sha256": "f09c353a32a61f68e6badbfe062c28aeaa4a6eec2ae0d9238903e3b1f0815bf5",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "markout/ws1_markout_curve_figure_results.json",
+          "producer": [
+            "ws1_markout_curve_figure.py"
+          ],
+          "producer_path": "markout/ws1_markout_curve_figure.py",
+          "recorded_sha256": "06ac6ea0e10432372336be0f12394c952043872cc0ac898c6075d2f362168b8d",
+          "current_sha256": "a066921bf2cbc57410dd20a95d2798aefb45121c6742d1740582d9781b13e351",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "money/m11_results.json",
+          "producer": [
+            "m11_concentration.py"
+          ],
+          "producer_path": "money/m11_concentration.py",
+          "recorded_sha256": "57de3f7c7b5fee6332964af808e3313271df978c476e0abe9c28d722a660fa07",
+          "current_sha256": "a430e9e89e2cce9fededc1547a2f264bdba181cc197b3dc96eb3e13b957bf7d8",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "money/m4_realizedpnl_results.json",
+          "producer": [
+            "m4_realizedpnl.py"
+          ],
+          "producer_path": "money/m4_realizedpnl.py",
+          "recorded_sha256": "10d1c088f0c6d73c5d4696fe769a487ff095d20c5c6cf017e122162e37a3ed55",
+          "current_sha256": "29931409c59b26d583b41fb6a1a6d0e16ec2d3a0a134fd6536c85b885de4efc7",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "money/m7_size_results.json",
+          "producer": [
+            "m7_size.py"
+          ],
+          "producer_path": "money/m7_size.py",
+          "recorded_sha256": "78ec040ed22b0f3fb20fbc2a1539265b843b90e11a6c7fa25406e1d02b411cb1",
+          "current_sha256": "bfcea028cd4fbaa4a48f4e5b61969c34c7f5b24487efa66ebaefc4f022c09fe3",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "money/m8_makerside_results.json",
+          "producer": [
+            "m8_makerside.py"
+          ],
+          "producer_path": "money/m8_makerside.py",
+          "recorded_sha256": "64c42e33bac4fdd748445d2200241b1cbf465c2e2120b1aae1040519da996c38",
+          "current_sha256": "18ed97beecfea6eac83917786882f83b706269390b685cb26f27fa22dda87f68",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "money/m9_decile_economics_figure_results.json",
+          "producer": [
+            "m9_decile_economics_figure.py"
+          ],
+          "producer_path": "money/m9_decile_economics_figure.py",
+          "recorded_sha256": "9297253dca36ce1dfa9a64322bc4101dd814a09a9a2ee3c2879b3bf9fc92ef7c",
+          "current_sha256": "abbd30a9080bbf3c2084a6771a3c5e888a82f2273ab177fa7454b2f2f2c8b2dd",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "money/maker_econ_b2_results.json",
+          "producer": [
+            "maker_econ_b2.py"
+          ],
+          "producer_path": "money/maker_econ_b2.py",
+          "recorded_sha256": "1acf6c1960331efe12b1a45753693605f8e82b5c7cb1828d8a69e3571d469600",
+          "current_sha256": "c4bf6312f1e8cbe80ffaaa6f2343dfd9cd49238688ef32ef4c3d7bec8f6c10ce",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "money/maker_econ_results.json",
+          "producer": [
+            "maker_econ.py"
+          ],
+          "producer_path": "money/maker_econ.py",
+          "recorded_sha256": "af08b379e48bce71f733607e95799738ba101544a84645caad7e7936723b0984",
+          "current_sha256": "68baa4c9df90def4189648a2396cc6a82079e87ba5662b7f48555bd0a77a0eb2",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "money/t3_results.json",
+          "producer": [
+            "t3_capacity.py"
+          ],
+          "producer_path": "money/t3_capacity.py",
+          "recorded_sha256": "94506df942db4c45d44386c7354cd856e5188bb56c08abfb78edb70009df578c",
+          "current_sha256": "7153ef9913c1393e32a3e92d0a1fb42767f633ad370aeecf919acd0a1f9bb872",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/forward_toxicity_results.json",
+          "producer": [
+            "forward_toxicity.py"
+          ],
+          "producer_path": "persistence/forward_toxicity.py",
+          "recorded_sha256": "6f87afe3577e18ab864c2bb766a8b82af15a35a982af6c443e7f98392bbb241d",
+          "current_sha256": "93a73d853ead7bbe7547e50e21924a65a1dddc0981c039c43cf4e502e0b679c8",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/i2_walletfe_results.json",
+          "producer": [
+            "i2_walletfe.py"
+          ],
+          "producer_path": "persistence/i2_walletfe.py",
+          "recorded_sha256": "8d3105a9c1bf124841978c3fef797ef3f97583a5c7b2920630d09d37b4e9ede6",
+          "current_sha256": "550b7b3592f640da0185b6bf3840a99f3d6b2ad2d902632a012e9a6fb543dbfa",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/ks2_multiday_results.json",
+          "producer": [
+            "ks2_markout_multiday.py"
+          ],
+          "producer_path": "persistence/ks2_markout_multiday.py",
+          "recorded_sha256": "ac4b16973a82c7b104b9bee3a9ddf0f3dc7d9be23ea10cf46eca08a4a8dcca94",
+          "current_sha256": "41227c39d7b32fbc88b07003c33c403af0a5029a48cd0c4fe55ea20f0135f615",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/ks2_persistence_10day_results.json",
+          "producer": [
+            "ks2_persistence_10day.py"
+          ],
+          "producer_path": "persistence/ks2_persistence_10day.py",
+          "recorded_sha256": "4742b40dceae6c9167f00f16e63d3d91382c42166ff6c1e781654f0826ac5f54",
+          "current_sha256": "65f6376a76c1d13628bf3cdc4cbb2671894c68136db6fcec48190f6c21bbe6ac",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/ks2_persistence_mid_results.json",
+          "producer": [
+            "ks2_persistence_10day.py"
+          ],
+          "producer_path": "persistence/ks2_persistence_10day.py",
+          "recorded_sha256": "b6ff5e6cee58b7ef3eaecab7b69ba4d1c318e12c2e349d8fd0aa4aff9bd9c5cb",
+          "current_sha256": "65f6376a76c1d13628bf3cdc4cbb2671894c68136db6fcec48190f6c21bbe6ac",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/m9_crossasset_results.json",
+          "producer": [
+            "m9_crossasset.py"
+          ],
+          "producer_path": "persistence/m9_crossasset.py",
+          "recorded_sha256": "7d544fabed0c0c6cfa360f9fdcecabdada41797766e1c118b607efada5c2f3bd",
+          "current_sha256": "3907acb5c27d61ff6e51cd35991a5d01670e2c9256ae2276270505365dab524e",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/panel_analyze_results.json",
+          "producer": [
+            "panel_analyze.py"
+          ],
+          "producer_path": "persistence/panel_analyze.py",
+          "recorded_sha256": "257eeb65c1b08b6167d8f15eed0d40840330f21c48b51327e4345e9a111ef175",
+          "current_sha256": "6f65a217563bc9f68b323afbb4767a758f8d94d2e5c794dec7b0d8fec2857260",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/panel_common_idio_results.json",
+          "producer": [
+            "panel_common_idio.py"
+          ],
+          "producer_path": "persistence/panel_common_idio.py",
+          "recorded_sha256": "b1994b9f2c1f9f0380eea96ce330d313737e190d6e2000fd2f923af7f875edb0",
+          "current_sha256": "1d2cd011ec8243aba7f5770d545fec980fa94de9bf8f910b0319c75f6967303c",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/panel_extended_results_h10_all.json",
+          "producer": [
+            "panel_persistence.py"
+          ],
+          "producer_path": "data/panel_persistence.py",
+          "recorded_sha256": "678b57e536c1063bb972f19d59049ce034be2f2fbbf9d133a4e158a79ab7410b",
+          "current_sha256": "96f014e8116acdca7a7063211708eceb3ae7e4f18e25b770fd230954094e6133",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/panel_extended_results_h10_canonical.json",
+          "producer": [
+            "panel_persistence.py"
+          ],
+          "producer_path": "data/panel_persistence.py",
+          "recorded_sha256": "678b57e536c1063bb972f19d59049ce034be2f2fbbf9d133a4e158a79ab7410b",
+          "current_sha256": "96f014e8116acdca7a7063211708eceb3ae7e4f18e25b770fd230954094e6133",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/panel_extended_results_h1_all.json",
+          "producer": [
+            "panel_persistence.py"
+          ],
+          "producer_path": "data/panel_persistence.py",
+          "recorded_sha256": "678b57e536c1063bb972f19d59049ce034be2f2fbbf9d133a4e158a79ab7410b",
+          "current_sha256": "96f014e8116acdca7a7063211708eceb3ae7e4f18e25b770fd230954094e6133",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/panel_extended_results_h1_canonical.json",
+          "producer": [
+            "panel_persistence.py"
+          ],
+          "producer_path": "data/panel_persistence.py",
+          "recorded_sha256": "678b57e536c1063bb972f19d59049ce034be2f2fbbf9d133a4e158a79ab7410b",
+          "current_sha256": "96f014e8116acdca7a7063211708eceb3ae7e4f18e25b770fd230954094e6133",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/panel_extended_results_h60_all.json",
+          "producer": [
+            "panel_persistence.py"
+          ],
+          "producer_path": "data/panel_persistence.py",
+          "recorded_sha256": "678b57e536c1063bb972f19d59049ce034be2f2fbbf9d133a4e158a79ab7410b",
+          "current_sha256": "96f014e8116acdca7a7063211708eceb3ae7e4f18e25b770fd230954094e6133",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/panel_extended_results_h60_canonical.json",
+          "producer": [
+            "panel_persistence.py"
+          ],
+          "producer_path": "data/panel_persistence.py",
+          "recorded_sha256": "678b57e536c1063bb972f19d59049ce034be2f2fbbf9d133a4e158a79ab7410b",
+          "current_sha256": "96f014e8116acdca7a7063211708eceb3ae7e4f18e25b770fd230954094e6133",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/panel_extended_results_h60_canonical_REPEAT.json",
+          "producer": [
+            "panel_persistence.py"
+          ],
+          "producer_path": "data/panel_persistence.py",
+          "recorded_sha256": "678b57e536c1063bb972f19d59049ce034be2f2fbbf9d133a4e158a79ab7410b",
+          "current_sha256": "96f014e8116acdca7a7063211708eceb3ae7e4f18e25b770fd230954094e6133",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/three_coin_persistence_results.json",
+          "producer": [
+            "three_coin_persistence.py"
+          ],
+          "producer_path": "persistence/three_coin_persistence.py",
+          "recorded_sha256": "496e303bede62e0e498abe8fbb4b213b86ab8c5a22b203f03eb9068603176fec",
+          "current_sha256": "2d5c50a5b605a015608ddddc7db37bab9b6ac83036aac8e066aeb894a8fc13b0",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/ws2_hard_classifier_results.json",
+          "producer": [
+            "ws2_hard_classifier.py"
+          ],
+          "producer_path": "persistence/ws2_hard_classifier.py",
+          "recorded_sha256": "2aece70fd60f626cd30732db26e4b017ca39b11e58b4a511bb918cedf35b096e",
+          "current_sha256": "e1927a44e6dba9e54f6a2725d0fe94203d5c4e9bdb97795b5e7298d8dd611866",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "persistence/ws3_taker_pnl_results.json",
+          "producer": [
+            "ws3_taker_pnl.py"
+          ],
+          "producer_path": "persistence/ws3_taker_pnl.py",
+          "recorded_sha256": "72c8f1b7a4c48ef79e27ca92b7edea217fbe3707b925352d8f80c6664c786f48",
+          "current_sha256": "cb85c990ffa52652f818e74309c2d7bffb97cd83a090e2a0d34eecd4a696bcff",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "probes/c2_bookstate_control_results.json",
+          "producer": [
+            "c2_bookstate_control.py"
+          ],
+          "producer_path": "probes/c2_bookstate_control.py",
+          "recorded_sha256": "19a9a4463747ae892df916e4b4ad06b6c40cd1403a4101d3f78acc35affbec25",
+          "current_sha256": "13da96b7b38c5bc580b422f50bf05fb911b641fefa4379665c3638cca0abb015",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "probes/c_matched_precision_results.json",
+          "producer": [
+            "c_matched_precision.py"
+          ],
+          "producer_path": "probes/c_matched_precision.py",
+          "recorded_sha256": "79513a8d0e81460eb339913fb0d97da7afaf5b5b33152672070711f7bdc5d505",
+          "current_sha256": "235ed042e817bf06f209654cf91d47820c72a9374d1c46630920b69eaffc1fcd",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "probes/calib_print_vs_mid_results.json",
+          "producer": [
+            "calib_print_vs_mid.py"
+          ],
+          "producer_path": "probes/calib_print_vs_mid.py",
+          "recorded_sha256": "5e64583d8f7f7f0b6183403db5b1ea027d18fc84a976f1829b460684076aa4e6",
+          "current_sha256": "55114e273a8d3665278ff12d62703e45a88163a775bf61d046578bdb78233cfc",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "probes/connected_set_b1_results.json",
+          "producer": [
+            "connected_set_b1.py"
+          ],
+          "producer_path": "probes/connected_set_b1.py",
+          "recorded_sha256": "b87bc0435a4a47ebda75e9be68b94eb6ea52c1026cb185017f2afe48bd513640",
+          "current_sha256": "9b561557299eedfbf2aab62f91bc7f664599aa314bf51800f3d102050bb762c9",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "probes/decay_curve_results.json",
+          "producer": [
+            "decay_curve.py"
+          ],
+          "producer_path": "probes/decay_curve.py",
+          "recorded_sha256": "080351d7b148c87c698ecc42ac265712a2a171d46f9ab9abfd0a5a53a7beabd0",
+          "current_sha256": "a8b82a62502bf932f3b0935edffadf32fc4063193cb84b33091fb7efa8f03bf6",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "probes/decile_overlap_results.json",
+          "producer": [
+            "decile_overlap.py"
+          ],
+          "producer_path": "probes/decile_overlap.py",
+          "recorded_sha256": "7726bcf6cb712d28d8624a7d1c3de5c5a84500715e4cbcd81cf7a2e393128ff7",
+          "current_sha256": "1c044325bc2abd608f7d18556ef6d04c8e963c87af912a6b4d98159af4c8d346",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "probes/eb_scoring_results.json",
+          "producer": [
+            "eb_scoring.py"
+          ],
+          "producer_path": "probes/eb_scoring.py",
+          "recorded_sha256": "2286365211bdd349b018d2bbb66c49ef2744ddb393dae3e70181cf8b5f527ba9",
+          "current_sha256": "f8bb9ca49293232033248ead1c1c6e8a26ef8fe7747f162a67c2313cc5ee8e86",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "probes/kss_decomp_c_bookmid_results.json",
+          "producer": [
+            "kss_decomp_c_bookmid.py"
+          ],
+          "producer_path": "probes/kss_decomp_c_bookmid.py",
+          "recorded_sha256": "925964ae53b71787375f64d59059146b0e2e606a81a161dff1df86e61a37ad11",
+          "current_sha256": "2ac98473b0636c1eb2cfd56a20cdc17cd05b56eadd785913d4ce03ead56845b5",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "probes/kss_decomp_c_results.json",
+          "producer": [
+            "kss_decomp_c.py"
+          ],
+          "producer_path": "probes/kss_decomp_c.py",
+          "recorded_sha256": "87cd3696394c3f18822bd2c48f7e6ede37d4197a508b61c3af24e50d245ff4c3",
+          "current_sha256": "1a9c935e76316d34d3f77c69b90053b9b10f4a3fc8a133b61170325f56234fe5",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "probes/persistence_crosswindow_results.json",
+          "producer": [
+            "persistence_crosswindow.py"
+          ],
+          "producer_path": "probes/persistence_crosswindow.py",
+          "recorded_sha256": "8892abd5a53b5afa82e089f37d983c4ac70097140ce1916857c0f570f3c5365b",
+          "current_sha256": "b8bed06d87f6d7c03830d4bd25b16df645ba14f1188b35ca13ccb7c13a83bc6d",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "probes/probe_E_lag_resolution_results.json",
+          "producer": [
+            "probe_E_lag_resolution.py"
+          ],
+          "producer_path": "probes/probe_E_lag_resolution.py",
+          "recorded_sha256": "3bcba99557e5e8b36f7f01e5ad9ba94bfc60f2d458094764f64de7ccee95e667",
+          "current_sha256": "dc2a2de1c8e0bfebd9ff09ca6859abf8fab5fa3d325b4b84299ab83eeb716092",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "probes/probe_E_leadlag_results.json",
+          "producer": [
+            "probe_E_leadlag.py"
+          ],
+          "producer_path": "probes/probe_E_leadlag.py",
+          "recorded_sha256": "726fbd231d4ccbbc7e0d5ade70fdba818281e86e658cc55c4803ad4e35507914",
+          "current_sha256": "efe90a63acd187a86660daafa563e9fe17c6032e230e69a1e87cbb3163dc3b2c",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "probes/probe_F_hlp_liq_results.json",
+          "producer": [
+            "probe_F_hlp_liq.py"
+          ],
+          "producer_path": "probes/probe_F_hlp_liq.py",
+          "recorded_sha256": "f43afe800bb360c405f1d2a6278731fa1a684446738ff78e4978e07e013cff74",
+          "current_sha256": "5f0b3105109222a8adffd9fa70034fab5b482fbdcc06259726536ba386aef405",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "probes/probe_G_horizon_results.json",
+          "producer": [
+            "probe_G_horizon.py"
+          ],
+          "producer_path": "probes/probe_G_horizon.py",
+          "recorded_sha256": "bfe2471a8ae762fc707d0240606b6baea94f91609fc801d0bbcbb83791866b75",
+          "current_sha256": "0a6a143e5afc50d8caf41eb20622e22192056c6625722523c1b4fbb8f84f49a7",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "quoters/as_quoter_results.json",
+          "producer": [
+            "as_quoter.py"
+          ],
+          "producer_path": "quoters/as_quoter.py",
+          "recorded_sha256": "ebd2eebbd6a65ed8d2c0927a2df309801e8492658df997d642a4fde2ef45a64d",
+          "current_sha256": "69ff7a618087fc42fb70d91b5fd4bf9aa09c996b91ef72ea28678ac3d3efa970",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        },
+        {
+          "file": "quoters/gm_quoter_results.json",
+          "producer": [
+            "gm_quoter.py"
+          ],
+          "producer_path": "quoters/gm_quoter.py",
+          "recorded_sha256": "61e983c1157dff948302df0f4b49c1fb49d9e3b30aced53e8f7eecded649b3e7",
+          "current_sha256": "9740a288417609ccd298ece49d7ec3d2647df3fdb8073b0952a704e84aa392e2",
+          "neutral_certificate": {
+            "issued_utc": "2026-08-01T00:00:00Z",
+            "evidence": "scripts/equiv (parent repository), run 2026-07-31: 17 sites, 4284 cases, zero disagreements on any null carrying numbers. The renaming comparator is calibrated, as of 2026-08-02, on thirteen fixtures cut from one live file of this tree, seven owed a pass and six owed a refusal, thirteen correct; and on a second pass of six further fixtures over three residues, three owed a firing and three owed silence, six correct. The bench is scripts/equiv/bench_c_rename.py and it exits non-zero on any calibration failure."
+          }
+        }
+      ],
+      "register": "checks/NEUTRAL_EDITS.json",
+      "why_never_folded_into_matches": "a reader has to be able to see how much of a green tree rests on a proof rather than on a run, and the register itself names what carries each entry and what it refuses to cover",
+      "bound_to": "the artifact path AND both hashes. Edit the producer again and the pair stops describing reality, so the artifact is stale once more until a new proof or a real run",
+      "why_it_was_missing_until_2026_08_12": "the count was printed to the screen and never written into this file, which is where every reader of the census looks"
+    },
+    "decomposition": {
+      "asks": "where every file of the population went, so that no outcome can be left out of the results file the way neutral_by_certificate was",
+      "counts": {
+        "matches": 41,
+        "stale": 0,
+        "neutral": 64,
+        "kind_with_hash": 0,
+        "kind_without_hash": 1,
+        "undeterminable": 0,
+        "no_producer": 0
+      },
+      "unreadable": 0,
+      "accounted": 106,
+      "population": 106,
+      "holds": true,
+      "second_count": {
+        "asks": "the same quantity by a second route: how many files carry _meta.producer.sha256, read out of the document rather than decided by the verdict",
+        "n_hash_recorded": 105,
+        "n_from_buckets": 105
+      },
+      "gated_on": {
+        "n": 41,
+        "means": "matches plus stale. The certificate and kind buckets are not gated, so this is smaller than the number of files carrying a hash, and n_determinable has always meant this"
+      }
+    },
+    "calibration": {
+      "asks": "whether each way this column excuses a file has been seen to fire and seen to refuse, and whether the sentence about the counts says opposite things about an empty column and a full one",
+      "n_failed": 0,
+      "failures": [],
+      "cases": [
+        "a moved hash under a declared run_journal is set aside",
+        "the same moved hash with no record_kind is still stale",
+        "a run_journal whose producer has not moved reads matches",
+        "an unknown record_kind is judged exactly as before",
+        "a producerless file declaring hand_register is set aside",
+        "the same file with no declared kind still reads no_producer",
+        "a kind not in KIND_ASKED_BEFORE_PRODUCER cannot exempt a producerless file",
+        "a moved hash covered by a certificate for this file and this pair reads neutral_by_certificate",
+        "the same moved hash with an empty register is still stale",
+        "a certificate for another artifact cannot excuse this one",
+        "a certificate for another pair of hashes cannot excuse this one",
+        "a file declaring the hand-register kind owes none of the five records that presuppose a producer",
+        "the same file without the declared kind owes all five and fails the run at a ceiling of zero",
+        "the exemption stops at the sixth record, which both files owe",
+        "a kind the vocabulary does not hold cannot excuse anything",
+        "a kind the vocabulary holds but this census does not admit cannot excuse anything either",
+        "with no recorded hash the derived sentence says the property is answerable for none of the population",
+        "with hashes recorded it names how many and never says the column is empty",
+        "counts that do not sum to the population produce no statement"
+      ],
+      "where": "artifacts built in a temporary directory and counts made up on the spot; no case names a file of this tree or a live count, so no repair and no recompute can empty one"
+    },
+    "limit": "105 of 106 files record a producer hash, and this run compared every one of them against the script of that name on disk: 41 match it, 0 are older than it, 64 differ under a certificate proving the difference moved no figure, and 0 are set aside by a declared record_kind. The remaining 1 record no hash, so the question cannot be put to them: 0 name a producer without one, 0 name no producer at all, and 1 declare a kind for which no producer exists to be named; the count of answerable files is reported beside the verdict so that an empty check cannot be read as a clean one",
+    "limit_is_derived": "built by freshness_limit() out of the counts beside it and calibrated on an empty column and a full one. The typed sentence it replaced said the property was answerable for none of the population, and went on saying it for the eleven days after the migration onto artifact.write() made it false",
+    "files_stale": [],
+    "files_matches": [
+      "build_diagram_results.json",
+      "build_results.json",
+      "checks/chk_academic_header_results.json",
+      "checks/chk_book_orientation_results.json",
+      "checks/chk_build_selftest_results.json",
+      "checks/chk_closedpnl_results.json",
+      "checks/chk_contrast_hygiene_results.json",
+      "checks/chk_decision_lookahead_results.json",
+      "checks/chk_dir_vs_startpos_results.json",
+      "checks/chk_expensive_edits_results.json",
+      "checks/chk_headline_horizon_results.json",
+      "checks/chk_input_freshness_results.json",
+      "checks/chk_liquidation_field_results.json",
+      "checks/chk_maker_attribution_results.json",
+      "checks/chk_no_abs_paths_results.json",
+      "checks/chk_notebook_expectations_results.json",
+      "checks/chk_notebook_pointer_table_results.json",
+      "checks/chk_pinned_versions_results.json",
+      "checks/chk_producer_committed_results.json",
+      "checks/chk_prose_numbers_results.json",
+      "checks/chk_requirements_census_results.json",
+      "checks/chk_rowcounts_determinism_results.json",
+      "checks/chk_run_happened_results.json",
+      "checks/chk_settings_home_results.json",
+      "checks/chk_side_signconv_results.json",
+      "checks/join_nolookahead_results.json",
+      "checks/run_all_checks_results.json",
+      "data/check_first_results.json",
+      "data_register_results.json",
+      "identity/own_size_control_results.json",
+      "money/sensitivity_rollup_results.json",
+      "notebooks/notebook_book_meta.json",
+      "notebooks/notebook_data_meta.json",
+      "notebooks/notebook_expected.json",
+      "notebooks/notebook_fills_meta.json",
+      "probes/flat_surcharge_control_results.json",
+      "probes/probe_D_funding_results.json",
+      "probes/survivorship_census_results.json",
+      "quoters/mm_bakeoff_reference_figure_results.json",
+      "quoters/mm_bakeoff_results.json",
+      "quoters/t1_backtest_results.json"
+    ],
+    "files_undeterminable": [],
+    "stale_detail": []
+  },
+  "freshness_by_file_date": {
+    "asks": "a lower bound on the same debt while no hash is recorded: is the artifact's file date older than its producer's",
+    "gated": false,
+    "why_not_gated": "it moves for reasons that are not staleness. Rewriting an artifact without changing it makes a stale file look fresh; editing a comment in a producer makes a correct artifact look stale",
+    "n_comparable": 105,
+    "n_artifact_older": 65,
+    "rows": [
+      {
+        "file": "build_diagram_results.json",
+        "producer": "build_diagram.py",
+        "artifact_older": false,
+        "behind_hours": -0.62
+      },
+      {
+        "file": "build_results.json",
+        "producer": "data_register.py",
+        "artifact_older": false,
+        "behind_hours": -0.25
+      },
+      {
+        "file": "checks/chk_academic_header_results.json",
+        "producer": "checks/chk_academic_header.py",
+        "artifact_older": false,
+        "behind_hours": -16.04
+      },
+      {
+        "file": "checks/chk_book_orientation_results.json",
+        "producer": "checks/chk_book_orientation.py",
+        "artifact_older": false,
+        "behind_hours": -15.92
+      },
+      {
+        "file": "checks/chk_build_selftest_results.json",
+        "producer": "checks/chk_build_selftest.py",
+        "artifact_older": false,
+        "behind_hours": -16.01
+      },
+      {
+        "file": "checks/chk_closedpnl_results.json",
+        "producer": "checks/chk_closedpnl.py",
+        "artifact_older": false,
+        "behind_hours": -15.92
+      },
+      {
+        "file": "checks/chk_contrast_hygiene_results.json",
+        "producer": "checks/chk_contrast_hygiene.py",
+        "artifact_older": false,
+        "behind_hours": -16.01
+      },
+      {
+        "file": "checks/chk_decision_lookahead_results.json",
+        "producer": "checks/chk_decision_lookahead.py",
+        "artifact_older": false,
+        "behind_hours": -16.02
+      },
+      {
+        "file": "checks/chk_dir_vs_startpos_results.json",
+        "producer": "checks/chk_dir_vs_startpos.py",
+        "artifact_older": false,
+        "behind_hours": -16.02
+      },
+      {
+        "file": "checks/chk_expensive_edits_results.json",
+        "producer": "probes/probe_F_hlp_liq.py",
+        "artifact_older": false,
+        "behind_hours": -15.95
+      },
+      {
+        "file": "checks/chk_field_hygiene_results.json",
+        "producer": "checks/chk_field_hygiene.py",
+        "artifact_older": true,
+        "behind_hours": 1246.59
+      },
+      {
+        "file": "checks/chk_headline_horizon_results.json",
+        "producer": "checks/chk_headline_horizon.py",
+        "artifact_older": false,
+        "behind_hours": -15.98
+      },
+      {
+        "file": "checks/chk_input_freshness_results.json",
+        "producer": "checks/chk_input_freshness.py",
+        "artifact_older": false,
+        "behind_hours": -0.73
+      },
+      {
+        "file": "checks/chk_liquidation_field_results.json",
+        "producer": "checks/chk_liquidation_field.py",
+        "artifact_older": false,
+        "behind_hours": -0.99
+      },
+      {
+        "file": "checks/chk_maker_attribution_results.json",
+        "producer": "checks/chk_maker_attribution.py",
+        "artifact_older": false,
+        "behind_hours": -16.04
+      },
+      {
+        "file": "checks/chk_no_abs_paths_results.json",
+        "producer": "checks/chk_no_abs_paths.py",
+        "artifact_older": false,
+        "behind_hours": -0.81
+      },
+      {
+        "file": "checks/chk_notebook_expectations_results.json",
+        "producer": "checks/chk_notebook_expectations.py",
+        "artifact_older": false,
+        "behind_hours": -0.02
+      },
+      {
+        "file": "checks/chk_notebook_pointer_table_results.json",
+        "producer": "checks/chk_notebook_pointer_table.py",
+        "artifact_older": false,
+        "behind_hours": -15.92
+      },
+      {
+        "file": "checks/chk_pinned_versions_results.json",
+        "producer": "checks/chk_pinned_versions.py",
+        "artifact_older": false,
+        "behind_hours": -16.0
+      },
+      {
+        "file": "checks/chk_producer_committed_results.json",
+        "producer": "checks/chk_producer_committed.py",
+        "artifact_older": false,
+        "behind_hours": -15.31
+      },
+      {
+        "file": "checks/chk_prose_numbers_results.json",
+        "producer": "checks/chk_prose_numbers.py",
+        "artifact_older": false,
+        "behind_hours": -15.81
+      },
+      {
+        "file": "checks/chk_requirements_census_results.json",
+        "producer": "checks/chk_requirements_census.py",
+        "artifact_older": false,
+        "behind_hours": -15.66
+      },
+      {
+        "file": "checks/chk_rowcounts_determinism_results.json",
+        "producer": "checks/chk_rowcounts_determinism.py",
+        "artifact_older": false,
+        "behind_hours": -0.79
+      },
+      {
+        "file": "checks/chk_run_happened_results.json",
+        "producer": "checks/chk_run_happened.py",
+        "artifact_older": false,
+        "behind_hours": -16.05
+      },
+      {
+        "file": "checks/chk_settings_home_results.json",
+        "producer": "checks/chk_settings_home.py",
+        "artifact_older": false,
+        "behind_hours": -16.11
+      },
+      {
+        "file": "checks/chk_side_signconv_results.json",
+        "producer": "checks/chk_side_signconv.py",
+        "artifact_older": false,
+        "behind_hours": -0.81
+      },
+      {
+        "file": "checks/join_nolookahead_results.json",
+        "producer": "checks/chk_join_nolookahead.py",
+        "artifact_older": false,
+        "behind_hours": -16.05
+      },
+      {
+        "file": "checks/run_all_checks_results.json",
+        "producer": "checks/chk_notebook_expectations.py",
+        "artifact_older": true,
+        "behind_hours": 0.06
+      },
+      {
+        "file": "data/check_first_results.json",
+        "producer": "data/check_first.py",
+        "artifact_older": false,
+        "behind_hours": -0.0
+      },
+      {
+        "file": "data/d1_book_shape_figure_results.json",
+        "producer": "data/d1_book_shape_figure.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "data/d2_fill_tape_figure_results.json",
+        "producer": "data/d2_fill_tape_figure.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "data/i4_midmarkout_results.json",
+        "producer": "data/i4_midmarkout.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "data/panel_persistence_results.json",
+        "producer": "data/panel_persistence.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "data/panel_v2_manifest.json",
+        "producer": "data/panel_rebuild_v2.py",
+        "artifact_older": true,
+        "behind_hours": 1246.65
+      },
+      {
+        "file": "data/quickwin_pass_summary.json",
+        "producer": "data/build_quickwin_markouts.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "data/toxicity_frame_results.json",
+        "producer": "data/build_toxicity_frame.py",
+        "artifact_older": true,
+        "behind_hours": 0.14
+      },
+      {
+        "file": "data_register_results.json",
+        "producer": "data_register.py",
+        "artifact_older": false,
+        "behind_hours": -0.26
+      },
+      {
+        "file": "identity/follow_the_informed_oos_results.json",
+        "producer": "identity/follow_the_informed_oos.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "identity/i3_book_nonrecoverability_results.json",
+        "producer": "identity/i3_book_comparator.py",
+        "artifact_older": true,
+        "behind_hours": 1246.65
+      },
+      {
+        "file": "identity/i3_depth_control_results.json",
+        "producer": "identity/i3_depth_control.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "identity/i3_nonrecoverability_mid_results.json",
+        "producer": "identity/i3_nonrecoverability_oos.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "identity/i3_pretrade_vs_identity_figure_results.json",
+        "producer": "identity/i3_pretrade_vs_identity_figure.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "identity/i3_results.json",
+        "producer": "identity/i3_nonrecoverability_oos.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "identity/i5_exclusion_results.json",
+        "producer": "identity/i5_exclusion.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "identity/own_size_control_results.json",
+        "producer": "identity/own_size_control.py",
+        "artifact_older": false,
+        "behind_hours": -2.66
+      },
+      {
+        "file": "markout/confound_asymmetry_results.json",
+        "producer": "markout/confound_asymmetry.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "markout/m2_figure_results.json",
+        "producer": "markout/m2_figure.py",
+        "artifact_older": true,
+        "behind_hours": 1247.04
+      },
+      {
+        "file": "markout/m5_termstructure_results.json",
+        "producer": "markout/m5_termstructure.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "markout/m6_inventory_results.json",
+        "producer": "markout/m6_inventory.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "markout/temp_perm_results.json",
+        "producer": "markout/temp_perm_decomp.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "markout/ws1_horizon_results.json",
+        "producer": "markout/ws1_horizon_persistence.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "markout/ws1_markout_curve_figure_results.json",
+        "producer": "markout/ws1_markout_curve_figure.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "money/m11_results.json",
+        "producer": "money/m11_concentration.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "money/m4_realizedpnl_results.json",
+        "producer": "money/m4_realizedpnl.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "money/m7_size_results.json",
+        "producer": "money/m7_size.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "money/m8_makerside_results.json",
+        "producer": "money/m8_makerside.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "money/m9_decile_economics_figure_results.json",
+        "producer": "money/m9_decile_economics_figure.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "money/maker_econ_b2_results.json",
+        "producer": "money/maker_econ_b2.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "money/maker_econ_results.json",
+        "producer": "money/maker_econ.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "money/sensitivity_rollup_results.json",
+        "producer": "money/sensitivity_rollup.py",
+        "artifact_older": false,
+        "behind_hours": -15.92
+      },
+      {
+        "file": "money/t3_results.json",
+        "producer": "money/t3_capacity.py",
+        "artifact_older": true,
+        "behind_hours": 1246.65
+      },
+      {
+        "file": "notebooks/notebook_book_meta.json",
+        "producer": "notebook_build/make_notebook_book.py",
+        "artifact_older": false,
+        "behind_hours": -0.01
+      },
+      {
+        "file": "notebooks/notebook_data_meta.json",
+        "producer": "notebook_build/make_notebook_data.py",
+        "artifact_older": false,
+        "behind_hours": -0.01
+      },
+      {
+        "file": "notebooks/notebook_expected.json",
+        "producer": "notebook_build/make_notebook_data.py",
+        "artifact_older": false,
+        "behind_hours": -0.01
+      },
+      {
+        "file": "notebooks/notebook_fills_meta.json",
+        "producer": "notebook_build/make_notebook_fills.py",
+        "artifact_older": false,
+        "behind_hours": -0.01
+      },
+      {
+        "file": "persistence/forward_toxicity_results.json",
+        "producer": "persistence/forward_toxicity.py",
+        "artifact_older": true,
+        "behind_hours": 1246.65
+      },
+      {
+        "file": "persistence/i2_walletfe_results.json",
+        "producer": "persistence/i2_walletfe.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "persistence/ks2_multiday_results.json",
+        "producer": "persistence/ks2_markout_multiday.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "persistence/ks2_persistence_10day_results.json",
+        "producer": "persistence/ks2_persistence_10day.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "persistence/ks2_persistence_mid_results.json",
+        "producer": "persistence/ks2_persistence_10day.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "persistence/m9_crossasset_results.json",
+        "producer": "persistence/m9_crossasset.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "persistence/panel_analyze_results.json",
+        "producer": "persistence/panel_analyze.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "persistence/panel_common_idio_results.json",
+        "producer": "persistence/panel_common_idio.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "persistence/panel_extended_results_h10_all.json",
+        "producer": "data/panel_persistence.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "persistence/panel_extended_results_h10_canonical.json",
+        "producer": "data/panel_persistence.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "persistence/panel_extended_results_h1_all.json",
+        "producer": "data/panel_persistence.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "persistence/panel_extended_results_h1_canonical.json",
+        "producer": "data/panel_persistence.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "persistence/panel_extended_results_h60_all.json",
+        "producer": "data/panel_persistence.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "persistence/panel_extended_results_h60_canonical.json",
+        "producer": "data/panel_persistence.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "persistence/panel_extended_results_h60_canonical_REPEAT.json",
+        "producer": "data/panel_persistence.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "persistence/three_coin_persistence_results.json",
+        "producer": "persistence/three_coin_persistence.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "persistence/ws2_hard_classifier_results.json",
+        "producer": "persistence/ws2_hard_classifier.py",
+        "artifact_older": true,
+        "behind_hours": 1246.65
+      },
+      {
+        "file": "persistence/ws3_taker_pnl_results.json",
+        "producer": "persistence/ws3_taker_pnl.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "probes/c2_bookstate_control_results.json",
+        "producer": "probes/c2_bookstate_control.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "probes/c_matched_precision_results.json",
+        "producer": "probes/c_matched_precision.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "probes/calib_print_vs_mid_results.json",
+        "producer": "probes/calib_print_vs_mid.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "probes/connected_set_b1_results.json",
+        "producer": "probes/connected_set_b1.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "probes/decay_curve_results.json",
+        "producer": "probes/decay_curve.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "probes/decile_overlap_results.json",
+        "producer": "probes/decile_overlap.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "probes/eb_scoring_results.json",
+        "producer": "probes/eb_scoring.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "probes/flat_surcharge_control_results.json",
+        "producer": "probes/flat_surcharge_control.py",
+        "artifact_older": false,
+        "behind_hours": -15.92
+      },
+      {
+        "file": "probes/kss_decomp_c_bookmid_results.json",
+        "producer": "probes/kss_decomp_c_bookmid.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "probes/kss_decomp_c_results.json",
+        "producer": "probes/kss_decomp_c.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "probes/persistence_crosswindow_results.json",
+        "producer": "probes/persistence_crosswindow.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "probes/probe_D_funding_results.json",
+        "producer": "probes/probe_D_funding.py",
+        "artifact_older": false,
+        "behind_hours": -0.33
+      },
+      {
+        "file": "probes/probe_E_lag_resolution_results.json",
+        "producer": "probes/probe_E_lag_resolution.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "probes/probe_E_leadlag_results.json",
+        "producer": "probes/probe_E_leadlag.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "probes/probe_F_hlp_liq_results.json",
+        "producer": "probes/probe_F_hlp_liq.py",
+        "artifact_older": true,
+        "behind_hours": 1246.65
+      },
+      {
+        "file": "probes/probe_G_horizon_results.json",
+        "producer": "probes/probe_G_horizon.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "probes/survivorship_census_results.json",
+        "producer": "probes/survivorship_census.py",
+        "artifact_older": false,
+        "behind_hours": -0.66
+      },
+      {
+        "file": "quoters/as_quoter_results.json",
+        "producer": "quoters/as_quoter.py",
+        "artifact_older": true,
+        "behind_hours": 1246.6
+      },
+      {
+        "file": "quoters/gm_quoter_results.json",
+        "producer": "quoters/gm_quoter.py",
+        "artifact_older": true,
+        "behind_hours": 1246.8
+      },
+      {
+        "file": "quoters/mm_bakeoff_reference_figure_results.json",
+        "producer": "quoters/mm_bakeoff_reference_figure.py",
+        "artifact_older": false,
+        "behind_hours": -15.91
+      },
+      {
+        "file": "quoters/mm_bakeoff_results.json",
+        "producer": "quoters/mm_bakeoff.py",
+        "artifact_older": false,
+        "behind_hours": -0.29
+      },
+      {
+        "file": "quoters/t1_backtest_results.json",
+        "producer": "quoters/t1_toxicity_skew_backtest.py",
+        "artifact_older": false,
+        "behind_hours": -0.3
+      }
+    ]
+  },
+  "unresolved_producer": {
+    "n_claims": 0,
+    "baseline": 0,
+    "state": "PASS",
+    "claims": []
+  },
+  "unreadable": []
+}

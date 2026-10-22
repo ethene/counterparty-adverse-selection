@@ -1,0 +1,427 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "as_quoter_results.json",
+    "producer": {
+      "script": "as_quoter.py",
+      "sha256": "ebd2eebbd6a65ed8d2c0927a2df309801e8492658df997d642a4fde2ef45a64d",
+      "bytes": 55123
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 collapsed taker fills, read for entry_px and spread_entry_bps only; no wallet floor and no counterparty identity enters this file. The inventory-control block is a separate population: 2,000 simulated fills on no market data at all",
+      "window": "10 days present in the input, day-of-month 4..13; early [4, 5, 6, 7, 8], late [9, 10, 11, 12, 13]. Nothing here masks rows by that split",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": null,
+      "is_headline_horizon": false,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260622,
+      "n_perm": null,
+      "n_boot": null,
+      "rank_floor_fills": null,
+      "early_days": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "late_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "override_reasons": {
+        "horizon_s": "no markout column is read, so this file scores at no window; sigma and k are calibrated per (coin, day) from entry_px and spread_entry_bps",
+        "lens": "neither lens applies for the same reason: there is no markout to measure against a reference price",
+        "master_seed": "the demo inventory simulation is seeded 20260622, not the declared 20260620; adopting it re-draws the illustration",
+        "n_perm": "no permutation test and no bootstrap run in this file",
+        "n_boot": "see n_perm",
+        "rank_floor_fills": "no wallet floor applies: this quoter reads no counterparty identity, so it never gates a per-wallet population"
+      },
+      "overridden": [
+        "early_days",
+        "horizon_s",
+        "is_headline_horizon",
+        "late_days",
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "override_reasons",
+        "rank_floor_fills"
+      ]
+    },
+    "object": "Avellaneda-Stoikov symmetric inventory-only counterparty-blind maker (the baseline for the adverse-selection extension)",
+    "author": "Dmitry Stakhin",
+    "date": "2026-06-22",
+    "track": "11 (Cryptocurrency Markets - Microstructure)",
+    "seed": 20260622,
+    "n_rows": 2480267,
+    "env_slice": {
+      "sliced": false,
+      "days": null,
+      "coins": null
+    },
+    "coin_names": {
+      "0": "BTC",
+      "1": "ETH",
+      "2": "SOL"
+    },
+    "early_days": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "late_days": [
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "split_rule": "The early and late halves are DERIVED from the days present, by settings.split_early_late: first ceil(n/2) days early, the rest late. They used to be the hardcoded day-of-month tuples (4,5,6,7,8) and (9,10,11,12,13), which are correct only for a window opening on the 4th and closing on the 13th. This input does open on the 4th, so the derived split reproduces those tuples exactly and no number moved. Nothing in this file masks rows by the split; it is reported because the bake-off reads this file beside the ones that do.",
+    "closed_form": {
+      "reservation_price": "r = s - q*gamma*sigma^2*(T-t)",
+      "optimal_spread": "delta = gamma*sigma^2*(T-t) + (2/gamma)*ln(1+gamma/k)",
+      "quotes": "bid = r - delta/2 ; ask = r + delta/2",
+      "spread_to_bps": "spread_bps = spread_price/mid*1e4"
+    },
+    "units": "session normalized to T=1, t in [0,1]; sigma in PRICE units per sqrt(session); gamma in 1/(price*units); delta and r in price units; spreads reported in bps for comparison with spread_entry_bps.",
+    "sign_convention": "q=0 => r==s; q>0 (long) => r<s => both quotes shift DOWN; q<0 (short) => r>s => both quotes shift UP.",
+    "honesty": "A-S models INVENTORY risk only and is counterparty-blind; that is the point. Everything here is a baseline characterization, never an alpha, P&L, or Sharpe claim. The toxicity-aware extension adds the adverse-selection axis A-S omits.",
+    "k_grid_sensitivity": [
+      0.5,
+      1.0,
+      2.0,
+      5.0,
+      10.0
+    ],
+    "time_remaining_eval": 1.0,
+    "spread_eval_approach": "A-S level is parameter-dependent (gamma, k unidentified); reported as a single-maker arrival floor 2/k plus a gamma_match scale anchor, with the vol-widening comparative static tested via per-session Spearman.",
+    "no_repull": "computed entirely on-disk from quickwin_markouts_mid.npz.",
+    "run": {
+      "runtime_s": 0.496,
+      "finished_utc": "2026-08-11T12:24:30Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "selftest_flags": {
+    "q0_reservation_equals_mid": true,
+    "q0_quotes_center_on_mid": true,
+    "long_shifts_both_quotes_down": true,
+    "short_shifts_both_quotes_up": true,
+    "delta_increasing_in_gamma_on_grid": true,
+    "delta_increasing_in_sigma": true,
+    "delta_increasing_in_time_remaining": true,
+    "arrival_term_decreasing_in_k": true,
+    "delta_decreasing_in_k": true,
+    "quotes_symmetric_about_reservation": true,
+    "vectorized_quotes_consistent": true,
+    "inventory_skew_mean_reverts": true,
+    "arrival_term_decreasing_in_gamma": true,
+    "all_passed": true
+  },
+  "sigma_estimation": {
+    "method": "per-fill log-return clock within each (coin, day); one (coin, day) = one normalized session T=1; sigma_price = mean_px * sqrt(var_step * n_fills). entry_px (trade print) used as a mid proxy (documented approximation: over-states pure mid vol by a half-spread of noise).",
+    "per_session_sigma_price": {
+      "BTC_d4": 1442.5336636780578,
+      "BTC_d5": 1628.479346206602,
+      "BTC_d6": 755.6186905562184,
+      "BTC_d7": 1475.4962564271807,
+      "BTC_d8": 1393.404501394699,
+      "BTC_d9": 1545.6137012628253,
+      "BTC_d10": 1830.2601275313584,
+      "BTC_d11": 1640.036032461101,
+      "BTC_d12": 1447.4319256582583,
+      "BTC_d13": 433.0321194580571,
+      "ETH_d4": 72.8882630381957,
+      "ETH_d5": 84.12774877348033,
+      "ETH_d6": 40.0239334414287,
+      "ETH_d7": 130.09529758590884,
+      "ETH_d8": 74.4675045179946,
+      "ETH_d9": 90.5733255631841,
+      "ETH_d10": 120.98780503997935,
+      "ETH_d11": 84.8457861507343,
+      "ETH_d12": 86.20134541166664,
+      "ETH_d13": 31.993351536413403
+    },
+    "per_session_meta": {
+      "BTC_d4": {
+        "n_fills": 136265,
+        "mean_px": 92677.28372937799,
+        "var_step_log": 1.7779559627228349e-09
+      },
+      "BTC_d5": {
+        "n_fills": 141255,
+        "mean_px": 90505.82158544604,
+        "var_step_log": 2.291963250992089e-09
+      },
+      "BTC_d6": {
+        "n_fills": 66190,
+        "mean_px": 89511.9120383782,
+        "var_step_log": 1.0765924614668893e-09
+      },
+      "BTC_d7": {
+        "n_fills": 130338,
+        "mean_px": 89703.0765010762,
+        "var_step_log": 2.0758238392507647e-09
+      },
+      "BTC_d8": {
+        "n_fills": 139158,
+        "mean_px": 90914.03054517279,
+        "var_step_log": 1.6880465394552413e-09
+      },
+      "BTC_d9": {
+        "n_fills": 148856,
+        "mean_px": 91845.761408897,
+        "var_step_log": 1.902467890536865e-09
+      },
+      "BTC_d10": {
+        "n_fills": 145596,
+        "mean_px": 92483.9179256169,
+        "var_step_log": 2.689947193400444e-09
+      },
+      "BTC_d11": {
+        "n_fills": 147285,
+        "mean_px": 90775.91485741333,
+        "var_step_log": 2.21619000335769e-09
+      },
+      "BTC_d12": {
+        "n_fills": 104649,
+        "mean_px": 91261.86757785491,
+        "var_step_log": 2.4037124259721044e-09
+      },
+      "BTC_d13": {
+        "n_fills": 41271,
+        "mean_px": 90222.47675246117,
+        "var_step_log": 5.581690341952188e-10
+      },
+      "ETH_d4": {
+        "n_fills": 124235,
+        "mean_px": 3170.9832306251683,
+        "var_step_log": 4.252882135783643e-09
+      },
+      "ETH_d5": {
+        "n_fills": 144432,
+        "mean_px": 3086.3047371906127,
+        "var_step_log": 5.1444328056715095e-09
+      },
+      "ETH_d6": {
+        "n_fills": 58374,
+        "mean_px": 3036.311694144181,
+        "var_step_log": 2.976647289690718e-09
+      },
+      "ETH_d7": {
+        "n_fills": 186816,
+        "mean_px": 3060.4367096210512,
+        "var_step_log": 9.672579846754619e-09
+      },
+      "ETH_d8": {
+        "n_fills": 118427,
+        "mean_px": 3123.31536008695,
+        "var_step_log": 4.800110101293056e-09
+      },
+      "ETH_d9": {
+        "n_fills": 159933,
+        "mean_px": 3235.9239019668476,
+        "var_step_log": 4.8985319418331145e-09
+      },
+      "ETH_d10": {
+        "n_fills": 165341,
+        "mean_px": 3352.6239831868047,
+        "var_step_log": 7.87649389681349e-09
+      },
+      "ETH_d11": {
+        "n_fills": 164122,
+        "mean_px": 3207.9933205581724,
+        "var_step_log": 4.2621314978371106e-09
+      },
+      "ETH_d12": {
+        "n_fills": 119979,
+        "mean_px": 3158.620724592021,
+        "var_step_log": 6.207659533352924e-09
+      },
+      "ETH_d13": {
+        "n_fills": 37745,
+        "mean_px": 3108.2601171189485,
+        "var_step_log": 2.806889619538818e-09
+      }
+    },
+    "per_coin_summary": {
+      "BTC": {
+        "coin_code": 0,
+        "n_sessions": 10,
+        "median_sigma_price": 1461.4640910427195,
+        "mean_sigma_price": 1359.1906364634358,
+        "min_sigma_price": 433.0321194580571,
+        "max_sigma_price": 1830.2601275313584
+      },
+      "ETH": {
+        "coin_code": 1,
+        "n_sessions": 10,
+        "median_sigma_price": 84.48676746210731,
+        "mean_sigma_price": 81.6204361058986,
+        "min_sigma_price": 31.993351536413403,
+        "max_sigma_price": 130.09529758590884
+      }
+    }
+  },
+  "k_calibration": {
+    "method": "k is NOT identified from executed fills alone (no quote->fill arrival map observed). Moment proxy from the realized half-spread distribution: under exponential arrivals mean distance ~ 1/k, so k_hat ~ 1/mean(spread_entry_bps/2). APPROXIMATION; k is also swept over K_GRID and no result rests on the point estimate.",
+    "n_fills_used": 2478215,
+    "mean_half_spread_bps": 0.21777702134144905,
+    "median_half_spread_bps": 0.15074089169502258,
+    "p10_half_spread_bps": 0.054123975336551666,
+    "p90_half_spread_bps": 0.32797637581825256,
+    "k_hat_per_bps": 4.591852684182489,
+    "k_hat_caveat": "k_hat is in 1/bps from the bps half-spread; the closed-form k enters as a dimensionless gamma/k ratio in the swept grid, so the moment estimate is reported as a sanity anchor only.",
+    "k_grid_swept": [
+      0.5,
+      1.0,
+      2.0,
+      5.0,
+      10.0
+    ]
+  },
+  "as_spread_vs_real": {
+    "time_remaining_eval": 1.0,
+    "approach": "A-S spread LEVEL is parameter-dependent (gamma, k not identified from trade data), so it is reported as a single-maker arrival FLOOR (2/k, k in 1/price from the realized half-spread) beside the observed spread, with gamma_match as a risk-aversion scale anchor; the TESTABLE A-S content is the vol-widening comparative static (vol_spread_spearman_rho).",
+    "interpretation": "A-S is a single monopolistic maker; a competitive multi-maker venue quotes INSIDE its arrival floor, so observed < floor is expected. A-S carries no adverse-selection premium -- that omission is the gap the counterparty-aware extension fills. No profit/alpha claim; A-S is the inventory-only baseline.",
+    "per_coin": {
+      "BTC": {
+        "coin_code": 0,
+        "mid_ref_price": 91065.0,
+        "sigma_price_used": 1461.4640910427195,
+        "observed_median_spread_bps": 0.11050395667552948,
+        "mean_half_spread_price": 1.0876762512781875,
+        "k_price_calibrated": 0.9193912240198733,
+        "as_arrival_floor_bps": 0.2388790976287679,
+        "floor_minus_observed_bps": 0.12837514095323843,
+        "gamma_match_inventory_eq_spread": 4.711433032489172e-07,
+        "inventory_term_at_gamma_match_bps": 0.1105039566755295,
+        "arrival_term_at_gamma_match_bps": 0.23887903642182692,
+        "vol_spread_spearman_rho": -0.1393939393939394,
+        "vol_spread_n_sessions": 10
+      },
+      "ETH": {
+        "coin_code": 1,
+        "mid_ref_price": 3142.0,
+        "sigma_price_used": 84.48676746210731,
+        "observed_median_spread_bps": 0.32039472460746765,
+        "mean_half_spread_price": 0.09742165209960371,
+        "k_price_calibrated": 10.264658609747265,
+        "as_arrival_floor_bps": 0.6201250929319142,
+        "floor_minus_observed_bps": 0.29973036832444655,
+        "gamma_match_inventory_eq_spread": 1.410308584680305e-05,
+        "inventory_term_at_gamma_match_bps": 0.32039472460746765,
+        "arrival_term_at_gamma_match_bps": 0.6201246669231328,
+        "vol_spread_spearman_rho": -0.18787878787878787,
+        "vol_spread_n_sessions": 10
+      }
+    }
+  },
+  "inventory_control_sim": {
+    "n_fills": 2000,
+    "gamma_as": 0.05,
+    "k": 1.5,
+    "sigma_demo": 1.0,
+    "time_remaining_const": 1.0,
+    "initial_inventory_shock": 20.0,
+    "as_mean_abs_inventory_whole": 2.207,
+    "null_mean_abs_inventory_whole": 37.639,
+    "as_mean_abs_inventory_late": 1.696,
+    "null_mean_abs_inventory_late": 37.012,
+    "as_peak_abs_inventory": 19.0,
+    "as_terminal_inventory": -2.0,
+    "as_terminal_abs_over_shock": 0.1,
+    "control_ratio_as_over_null": 0.05863598926645234,
+    "mean_reverts": true,
+    "as_inventory_path_head": [
+      19.0,
+      18.0,
+      17.0,
+      16.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      11.0,
+      10.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0
+    ],
+    "as_inventory_path_tail": [
+      1.0,
+      0.0,
+      -1.0,
+      -2.0,
+      -1.0,
+      -2.0,
+      -1.0,
+      -2.0,
+      -3.0,
+      -2.0,
+      -1.0,
+      -2.0,
+      -1.0,
+      0.0,
+      -1.0,
+      -2.0,
+      -3.0,
+      -2.0,
+      -3.0,
+      -2.0
+    ],
+    "note": "ILLUSTRATION of the reservation-price inventory-control mechanism, not a fill model and not a P&L claim. A rolling-horizon A-S maker starting from a long inventory shock under neutral flow uses the skew (p_buy = sigmoid(2*k*skew), skew<0 when long) to sell inventory back toward zero; the gamma=0 null on the same draws wanders off. mean_reverts = A-S mean|inv| < half the null's (control_ratio < 0.5)."
+  },
+  "baseline_mapping_note": {
+    "statement": "The symmetric maker used as the baseline in t1_toxicity_skew_backtest.py and maker_econ.py IS this gamma-driven Avellaneda-Stoikov inventory-only quoter: it conditions on its own inventory through the reservation-price skew and quotes a single symmetric spread to every counterparty, never conditioning on WHO the counterparty is.",
+    "extension": "The counterparty-toxicity skew is the EXTENSION that adds the adverse-selection axis A-S omits: it widens or declines against wallets pre-identified as toxic on an earlier window. A-S models inventory risk ONLY; the toxicity extension adds counterparty-conditioned adverse selection on top of this baseline.",
+    "what_as_is_not": "A-S produces a spread and an inventory-control rule, never an alpha, a P&L, or a Sharpe. It is the baseline the extension is measured against."
+  }
+}

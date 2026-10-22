@@ -1,0 +1,158 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "eb_scoring_results.json",
+    "producer": {
+      "script": "eb_scoring.py",
+      "sha256": "2286365211bdd349b018d2bbb66c49ef2744ddb393dae3e70181cf8b5f527ba9",
+      "bytes": 8751,
+      "bytes_in_object_db": "absent",
+      "object_format": "sha1",
+      "object_id": "84a0c9a2f6e4be2f08dc5920927ad8a8d9dbc0ec",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "panel_markouts.npz",
+        "bytes": 482588572,
+        "sha256": "c6a37132cf1d0c62bdb2169668c89af20a7b6fb8811fd8132cc7c9b0b607a04b",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "26,025,134 panel fills with a finite markout; a wallet enters a cell only with at least 30 fills in BOTH halves, which leaves 27,510 scored wallet-cells summed over the two roles and every coin",
+      "window": "8 monthly windows POOLED, 202508 to 202605, each contributing day-of-month 4-15; early is day <= 8 and late is the rest, taken inside every window at once",
+      "coins": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 60,
+      "is_headline_horizon": false,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "rank_floor_fills": 30,
+      "overridden": [
+        "rank_floor_fills"
+      ]
+    },
+    "run": {
+      "runtime_s": 5.938,
+      "finished_utc": "2026-08-29T17:57:17Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "early_max_day": 8,
+  "kmin": 30,
+  "results": [
+    {
+      "coin": "BTC",
+      "role": "taker",
+      "n_scored": 10729,
+      "tau2": 0.7959,
+      "reliability": 0.7761,
+      "mean_B_shrinkage": 0.8742,
+      "mse_shrunk": 3.0292,
+      "mse_raw": 3.25,
+      "mse_grand": 3.5351,
+      "shrunk_beats_raw": true,
+      "shrunk_beats_grand": true,
+      "fc_slope_late_on_shrunk": 0.162
+    },
+    {
+      "coin": "ETH",
+      "role": "taker",
+      "n_scored": 6227,
+      "tau2": 1.297,
+      "reliability": 0.7921,
+      "mean_B_shrinkage": 0.8998,
+      "mse_shrunk": 3.713,
+      "mse_raw": 4.4264,
+      "mse_grand": 4.1819,
+      "shrunk_beats_raw": true,
+      "shrunk_beats_grand": true,
+      "fc_slope_late_on_shrunk": 0.053
+    },
+    {
+      "coin": "SOL",
+      "role": "taker",
+      "n_scored": 4105,
+      "tau2": 1.7542,
+      "reliability": 0.7734,
+      "mean_B_shrinkage": 0.8896,
+      "mse_shrunk": 9.0451,
+      "mse_raw": 10.1909,
+      "mse_grand": 9.8727,
+      "shrunk_beats_raw": true,
+      "shrunk_beats_grand": true,
+      "fc_slope_late_on_shrunk": 0.239
+    },
+    {
+      "coin": "BTC",
+      "role": "maker",
+      "n_scored": 2874,
+      "tau2": 1.2232,
+      "reliability": 0.9693,
+      "mean_B_shrinkage": 0.9803,
+      "mse_shrunk": 8.3838,
+      "mse_raw": 8.7301,
+      "mse_grand": 7.2504,
+      "shrunk_beats_raw": true,
+      "shrunk_beats_grand": false,
+      "fc_slope_late_on_shrunk": 0.027
+    },
+    {
+      "coin": "ETH",
+      "role": "maker",
+      "n_scored": 2221,
+      "tau2": 4.0349,
+      "reliability": 0.9714,
+      "mean_B_shrinkage": 0.9826,
+      "mse_shrunk": 13.4832,
+      "mse_raw": 15.3242,
+      "mse_grand": 12.8708,
+      "shrunk_beats_raw": true,
+      "shrunk_beats_grand": false,
+      "fc_slope_late_on_shrunk": 0.063
+    },
+    {
+      "coin": "SOL",
+      "role": "maker",
+      "n_scored": 1354,
+      "tau2": 2.9728,
+      "reliability": 0.9615,
+      "mean_B_shrinkage": 0.9766,
+      "mse_shrunk": 17.4457,
+      "mse_raw": 19.0855,
+      "mse_grand": 17.5109,
+      "shrunk_beats_raw": true,
+      "shrunk_beats_grand": true,
+      "fc_slope_late_on_shrunk": 0.136
+    }
+  ]
+}

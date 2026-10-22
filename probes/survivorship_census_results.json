@@ -1,0 +1,932 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "survivorship_census_results.json",
+    "producer": {
+      "script": "survivorship_census.py",
+      "sha256": "207f7adae3a4b4a03204233fe249f17dfd150391395bed40222ed847166ee3e2",
+      "bytes": 58866,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "a616007b8bd85278b0f7859526c7f9a588532797",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "m2_figure_results.json",
+        "bytes": 5779,
+        "sha256": "4b210e44842ba164e7760e4eaec39bb436c892695b88e89333e88db0fd5f74bc",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "ws1_horizon_results.json",
+        "bytes": 97230,
+        "sha256": "ee6d8a6923c1355e962179b87e11124b89d40fbec42c447e72ec30b8f57bb1ef",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "ws2_hard_classifier_results.json",
+        "bytes": 5147,
+        "sha256": "aefb15d3678d73a201c9b1b914209e944bdc24973be5cb7e5eb851212f020542",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "ws3_taker_pnl_results.json",
+        "bytes": 11584,
+        "sha256": "04b645277ef5c7818aea9d0318ac946d04c733fcd6f72c39f60a9ff9ed3f78b6",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "toxicity_frame_results.json",
+        "bytes": 3539,
+        "sha256": "e6ce5c1253466144fe3e02b933043453a4aad4599b5f60655a4185cf871ef8dd",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "the 2,480,267 taker fills of the December window, grouped into the unit each of the five admission sites uses, and counted under three admission rules per site",
+      "window": "days 4-13, split by settings.split_early_late into early [4, 5, 6, 7, 8] and late [9, 10, 11, 12, 13]",
+      "coins": [
+        "BTC",
+        "ETH"
+      ],
+      "early_days": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "late_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "lens": "both: the admission of four sites is on the book-mid column and of one on the trade-print column, and the recomputed separation is reported under both",
+      "horizon_s": 10
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "both",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": null,
+      "persistence_floor_fills": null,
+      "whale_drop_k": null,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "n_perm": 2000,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260620,
+      "n_boot": 2000,
+      "rank_floor_fills": [
+        1,
+        10,
+        50
+      ],
+      "early_late_split": "settings.split_early_late over the days present: early [4, 5, 6, 7, 8], late [9, 10, 11, 12, 13]",
+      "overrides_note": "rank_floor_fills is a LIST here and not a scalar, because this node censuses five sites that apply four different floors and reproducing each site's own floor is the point of it; the floors are read from settings.wallet_fill_floor and from RANK_FLOOR_SENSITIVITY, never typed. n_boot is settings.boot_draws('ws3_taker_pnl'), stated as a CONFIRMATION rather than a deviation: the interval recomputed here is that producer's interval under a different admission, so it draws that producer's budget. whale_drop_k and fdr_alpha are null because nothing here drops a whale or corrects a family",
+      "overridden": [
+        "early_late_split",
+        "fdr_alpha",
+        "master_seed",
+        "n_boot",
+        "overrides_note",
+        "persistence_floor_fills",
+        "rank_floor_fills",
+        "whale_drop_k"
+      ]
+    },
+    "what_this_is": "the price of the two-sided admission rule that five producers apply, counted three ways per site and split into the part the data imposes and the part the threshold imposes",
+    "run": {
+      "runtime_s": 2.137,
+      "finished_utc": "2026-10-21T18:10:40Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "axis": {
+    "what_differs": "the number of fills the LATER window is required to hold. Nothing else differs between the three arms of any comparison in this file",
+    "arms": {
+      "early_only": 0,
+      "as_committed": "the site's own floor",
+      "late_at_least_one": 1
+    },
+    "held_equal": "per site: the two panels and their row order, the ranking column, the lens, the day split, the floor applied to the ranking half, the decile quantile and the resampling budget. Each is recorded under the site's held_equal key and compared across its arms; a difference stops the run",
+    "differs_by_consequence": "the admitted population, the decile threshold taken on it, which wallets fall either side of that threshold, and every quantity measured on them. These follow FROM the axis and are the answer, not a confound"
+  },
+  "arms": {
+    "early_only": "the floor in the ranking half and no requirement at all on the later one. The only arm that consults nothing after the moment of ranking",
+    "as_committed": "the floor in the ranking half and the same floor again in the later one. What the five producers ship",
+    "late_at_least_one": "the floor in the ranking half and one fill in the later one. The loosest rule under which a later measurement exists at all"
+  },
+  "sites": {
+    "m2_figure": {
+      "producer": "m2_figure.py",
+      "admission_expression": "q = (ce >= MIN_FILLS) & (cl >= MIN_FILLS)",
+      "unit": "counterparty wallet, pooled over coins",
+      "floor_source": "settings.wallet_fill_floor('m2_figure', 'both_halves')",
+      "floor_fills": 10,
+      "panel": "quickwin_markouts.npz",
+      "ranking_column": "mo10",
+      "counts_what": "fills with a finite headline trade-print markout",
+      "held_equal": {
+        "early_days": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "late_days": [
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "floor_fills": 10,
+        "ranking_column": "mo10",
+        "unit_rule": "taker_id",
+        "decile_quantile": 0.9,
+        "n_rows": 2480267
+      },
+      "loss_decomposition": {
+        "early_eligible": 9659,
+        "kept_as_committed": 5493,
+        "returned_below_floor": 2262,
+        "never_returned": 1904
+      },
+      "arms": {
+        "early_only": {
+          "late_min_fills": 0,
+          "n_admitted": 9659,
+          "n_toxic_decile": 966,
+          "n_remaining": 8693,
+          "n_toxic_with_late_fills": 804,
+          "n_remaining_with_late_fills": 6951,
+          "decile_threshold_bps": 1.0745770755252158,
+          "vw_markout_bps": {
+            "trade_print": {
+              "1": {
+                "toxic_decile": 0.7407687117825759,
+                "remaining": -0.43526728493344213
+              },
+              "10": {
+                "toxic_decile": 1.8547153245510994,
+                "remaining": -0.1992061878065752
+              },
+              "60": {
+                "toxic_decile": 2.1200487001636197,
+                "remaining": -0.3848466058991214
+              }
+            },
+            "book_mid": {
+              "1": {
+                "toxic_decile": 3.2507896448578677,
+                "remaining": 1.0068815925345227
+              },
+              "10": {
+                "toxic_decile": 3.923466297611674,
+                "remaining": 1.238295421682042
+              },
+              "60": {
+                "toxic_decile": 4.275547715987623,
+                "remaining": 1.0963632274190505
+              }
+            }
+          },
+          "separation_bps": {
+            "trade_print": {
+              "1": 1.1760359967160179,
+              "10": 2.053921512357675,
+              "60": 2.5048953060627412
+            },
+            "book_mid": {
+              "1": 2.243908052323345,
+              "10": 2.6851708759296318,
+              "60": 3.179184488568573
+            }
+          },
+          "headline_separation_bps": {
+            "trade_print": 2.053921512357675,
+            "book_mid": 2.6851708759296318
+          }
+        },
+        "as_committed": {
+          "late_min_fills": 10,
+          "n_admitted": 5493,
+          "n_toxic_decile": 550,
+          "n_remaining": 4943,
+          "n_toxic_with_late_fills": 550,
+          "n_remaining_with_late_fills": 4943,
+          "decile_threshold_bps": 1.0630407350936224,
+          "vw_markout_bps": {
+            "trade_print": {
+              "1": {
+                "toxic_decile": 0.7427401964764678,
+                "remaining": -0.42237234646180316
+              },
+              "10": {
+                "toxic_decile": 1.8580000503068699,
+                "remaining": -0.1764930537393062
+              },
+              "60": {
+                "toxic_decile": 2.1121040443089645,
+                "remaining": -0.3653104935022152
+              }
+            },
+            "book_mid": {
+              "1": {
+                "toxic_decile": 3.2536872699372266,
+                "remaining": 1.0130239145944164
+              },
+              "10": {
+                "toxic_decile": 3.9253775741862342,
+                "remaining": 1.2548396197517357
+              },
+              "60": {
+                "toxic_decile": 4.26809950320427,
+                "remaining": 1.1082930867983118
+              }
+            }
+          },
+          "separation_bps": {
+            "trade_print": {
+              "1": 1.165112542938271,
+              "10": 2.034493104046176,
+              "60": 2.4774145378111796
+            },
+            "book_mid": {
+              "1": 2.24066335534281,
+              "10": 2.6705379544344985,
+              "60": 3.159806416405958
+            }
+          },
+          "headline_separation_bps": {
+            "trade_print": 2.034493104046176,
+            "book_mid": 2.6705379544344985
+          }
+        },
+        "late_at_least_one": {
+          "late_min_fills": 1,
+          "n_admitted": 7755,
+          "n_toxic_decile": 776,
+          "n_remaining": 6979,
+          "n_toxic_with_late_fills": 776,
+          "n_remaining_with_late_fills": 6979,
+          "decile_threshold_bps": 1.1144487130003777,
+          "vw_markout_bps": {
+            "trade_print": {
+              "1": {
+                "toxic_decile": 0.741429654901799,
+                "remaining": -0.43474877704824344
+              },
+              "10": {
+                "toxic_decile": 1.8565647443950155,
+                "remaining": -0.1987887089200298
+              },
+              "60": {
+                "toxic_decile": 2.1220997638863635,
+                "remaining": -0.38419411106277795
+              }
+            },
+            "book_mid": {
+              "1": {
+                "toxic_decile": 3.2532346847900597,
+                "remaining": 1.007043184767977
+              },
+              "10": {
+                "toxic_decile": 3.92637469698114,
+                "remaining": 1.2385017941415108
+              },
+              "60": {
+                "toxic_decile": 4.278748966968521,
+                "remaining": 1.0967747614215622
+              }
+            }
+          },
+          "separation_bps": {
+            "trade_print": {
+              "1": 1.1761784319500426,
+              "10": 2.0553534533150453,
+              "60": 2.5062938749491415
+            },
+            "book_mid": {
+              "1": 2.246191500022083,
+              "10": 2.6878729028396293,
+              "60": 3.1819742055469584
+            }
+          },
+          "headline_separation_bps": {
+            "trade_print": 2.0553534533150453,
+            "book_mid": 2.6878729028396293
+          }
+        }
+      }
+    },
+    "ws1_horizon_persistence": {
+      "producer": "ws1_horizon_persistence.py",
+      "admission_expression": "units = [u for u in early if u in late and early[u][1] >= K and late[u][1] >= K]",
+      "unit": "wallet-coin pair",
+      "floor_source": "min(settings.RANK_FLOOR_SENSITIVITY), the file's K_PRIMARY",
+      "floor_fills": 10,
+      "panel": "quickwin_markouts_mid.npz",
+      "ranking_column": "mo10_mid",
+      "counts_what": "fills with a finite headline book-mid markout",
+      "stand_in_note": "the producer re-marks its own eight-horizon grid from the mid series; this census reads the committed headline mid column, which its reproduction gate asserts is the same quantity at that rung. The calibration below is what makes the stand-in a measured claim rather than an assumption, and it covers the headline rung only",
+      "held_equal": {
+        "early_days": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "late_days": [
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "floor_fills": 10,
+        "ranking_column": "mo10_mid",
+        "unit_rule": "taker_id * 4 + coin",
+        "n_rows": 2480267
+      },
+      "loss_decomposition": {
+        "early_eligible": 10264,
+        "kept_as_committed": 5539,
+        "returned_below_floor": 2517,
+        "never_returned": 2208
+      },
+      "arms": {
+        "early_only": {
+          "late_min_fills": 0,
+          "n_admitted": 10264
+        },
+        "as_committed": {
+          "late_min_fills": 10,
+          "n_admitted": 5539
+        },
+        "late_at_least_one": {
+          "late_min_fills": 1,
+          "n_admitted": 8056
+        }
+      }
+    },
+    "ws2_hard_classifier": {
+      "producer": "ws2_hard_classifier.py",
+      "admission_expression": "elig = (e_cnt >= K) & (l_cnt >= K) & np.isfinite(e_mean) & np.isfinite(l_mean)",
+      "unit": "wallet-coin pair",
+      "floor_source": "settings.wallet_fill_floor('ws2_hard_classifier', 'both_halves')",
+      "floor_fills": 10,
+      "panel": "quickwin_markouts_mid.npz",
+      "ranking_column": "mo10_mid",
+      "counts_what": "fills with a finite headline book-mid markout",
+      "held_equal": {
+        "early_days": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "late_days": [
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "floor_fills": 10,
+        "ranking_column": "mo10_mid",
+        "unit_rule": "taker_id * 4 + coin",
+        "n_rows": 2480267
+      },
+      "loss_decomposition": {
+        "early_eligible": 10264,
+        "kept_as_committed": 5539,
+        "returned_below_floor": 2517,
+        "never_returned": 2208
+      },
+      "arms": {
+        "early_only": {
+          "late_min_fills": 0,
+          "n_admitted": 10264
+        },
+        "as_committed": {
+          "late_min_fills": 10,
+          "n_admitted": 5539
+        },
+        "late_at_least_one": {
+          "late_min_fills": 1,
+          "n_admitted": 8056
+        }
+      }
+    },
+    "ws3_taker_pnl": {
+      "producer": "ws3_taker_pnl.py",
+      "admission_expression": "elig = (ea[\"cnt_mo\"] >= K) & (la[\"cnt\"] >= K) & np.isfinite(ea[\"mean_mo\"])",
+      "unit": "wallet-coin pair",
+      "floor_source": "settings.wallet_fill_floor('ws3_taker_pnl', 'headline')",
+      "floor_fills": 50,
+      "panel": "quickwin_markouts_mid.npz",
+      "ranking_column": "mo10_mid",
+      "counts_what": "the ranking half counts fills with a finite headline book-mid markout; the later half counts FILLS, finite or not, which is this producer's own asymmetry and is reproduced rather than tidied",
+      "held_equal": {
+        "early_days": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "late_days": [
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "floor_fills": 50,
+        "ranking_column": "mo10_mid",
+        "unit_rule": "taker_id * 4 + coin",
+        "decile_quantile": 0.9,
+        "bootstrap_draws": 2000,
+        "n_rows": 2480267
+      },
+      "loss_decomposition": {
+        "early_eligible": 2159,
+        "kept_as_committed": 1213,
+        "returned_below_floor": 645,
+        "never_returned": 301
+      },
+      "arms": {
+        "early_only": {
+          "late_min_fills": 0,
+          "n_admitted": 2159,
+          "n_flagged": 216,
+          "n_rest": 1943,
+          "n_flagged_with_late_pnl": 216,
+          "n_rest_with_late_pnl": 1642,
+          "decile_threshold_bps": 3.3733648886794882,
+          "late_pnl_pd_bps_flag_median": -19.16987745113858,
+          "late_pnl_pd_bps_rest_median": -0.9713661931184954,
+          "late_pnl_pd_bps_flag_mean": -43.424841437583844,
+          "late_pnl_pd_bps_rest_mean": -12.360249855338546,
+          "median_gap_bps": -18.198511258020083,
+          "median_gap_ci": [
+            -31.098457985183053,
+            -11.539688753106743
+          ],
+          "median_gap_ci_excludes_zero": true,
+          "flagged_median_above_rest": false,
+          "bootstrap": {
+            "n_draws": 2000,
+            "budget_source": "settings.boot_draws('ws3_taker_pnl')",
+            "cell": [
+              "survivorship_census",
+              "oos_median_gap",
+              "early_only",
+              50
+            ],
+            "percentiles": [
+              2.5,
+              97.5
+            ]
+          },
+          "bootstrap_note": "the interval of the as_committed arm is close to but not identical with the one ws3_taker_pnl_results.json publishes, and the reason is the stream rather than the data. Every generator in this tree is derived from settings.MASTER_SEED and the NAME of the cell drawing it, so a cell named for this census draws a different resample of the same numbers than a cell named for that producer. The medians the interval is built around reproduce exactly and are calibrated against the published ones; the endpoints are a resampling estimate and are deliberately not calibrated, because requiring two differently named streams to agree bit for bit would be requiring them to be one stream"
+        },
+        "as_committed": {
+          "late_min_fills": 50,
+          "n_admitted": 1213,
+          "n_flagged": 122,
+          "n_rest": 1091,
+          "n_flagged_with_late_pnl": 122,
+          "n_rest_with_late_pnl": 1091,
+          "decile_threshold_bps": 3.857697338273066,
+          "late_pnl_pd_bps_flag_median": 23.998376303093586,
+          "late_pnl_pd_bps_rest_median": -1.0259007074428956,
+          "late_pnl_pd_bps_flag_mean": -9.892576468678527,
+          "late_pnl_pd_bps_rest_mean": -17.39184012244315,
+          "median_gap_bps": 25.024277010536483,
+          "median_gap_ci": [
+            -17.84217986594376,
+            50.17852145492777
+          ],
+          "median_gap_ci_excludes_zero": false,
+          "flagged_median_above_rest": true,
+          "bootstrap": {
+            "n_draws": 2000,
+            "budget_source": "settings.boot_draws('ws3_taker_pnl')",
+            "cell": [
+              "survivorship_census",
+              "oos_median_gap",
+              "as_committed",
+              50
+            ],
+            "percentiles": [
+              2.5,
+              97.5
+            ]
+          },
+          "bootstrap_note": "the interval of the as_committed arm is close to but not identical with the one ws3_taker_pnl_results.json publishes, and the reason is the stream rather than the data. Every generator in this tree is derived from settings.MASTER_SEED and the NAME of the cell drawing it, so a cell named for this census draws a different resample of the same numbers than a cell named for that producer. The medians the interval is built around reproduce exactly and are calibrated against the published ones; the endpoints are a resampling estimate and are deliberately not calibrated, because requiring two differently named streams to agree bit for bit would be requiring them to be one stream"
+        },
+        "late_at_least_one": {
+          "late_min_fills": 1,
+          "n_admitted": 1858,
+          "n_flagged": 186,
+          "n_rest": 1672,
+          "n_flagged_with_late_pnl": 186,
+          "n_rest_with_late_pnl": 1672,
+          "decile_threshold_bps": 3.527982042629206,
+          "late_pnl_pd_bps_flag_median": -14.557116644062528,
+          "late_pnl_pd_bps_rest_median": -1.080034834965553,
+          "late_pnl_pd_bps_flag_mean": -33.685342650066886,
+          "late_pnl_pd_bps_rest_mean": -14.001089880425578,
+          "median_gap_bps": -13.477081809096976,
+          "median_gap_ci": [
+            -21.88184901940506,
+            1.951686026341845
+          ],
+          "median_gap_ci_excludes_zero": false,
+          "flagged_median_above_rest": false,
+          "bootstrap": {
+            "n_draws": 2000,
+            "budget_source": "settings.boot_draws('ws3_taker_pnl')",
+            "cell": [
+              "survivorship_census",
+              "oos_median_gap",
+              "late_at_least_one",
+              50
+            ],
+            "percentiles": [
+              2.5,
+              97.5
+            ]
+          },
+          "bootstrap_note": "the interval of the as_committed arm is close to but not identical with the one ws3_taker_pnl_results.json publishes, and the reason is the stream rather than the data. Every generator in this tree is derived from settings.MASTER_SEED and the NAME of the cell drawing it, so a cell named for this census draws a different resample of the same numbers than a cell named for that producer. The medians the interval is built around reproduce exactly and are calibrated against the published ones; the endpoints are a resampling estimate and are deliberately not calibrated, because requiring two differently named streams to agree bit for bit would be requiring them to be one stream"
+        }
+      }
+    },
+    "build_toxicity_frame": {
+      "producer": "build_toxicity_frame.py",
+      "admission_expression": "if w not in late_by_taker: continue",
+      "unit": "wallet-coin pair, written as one row of the training frame",
+      "floor_source": "structural: membership of the later-window group means, which is one finite score. No constant is declared for it and none is invented here",
+      "floor_fills": 1,
+      "panel": "quickwin_markouts_mid.npz",
+      "ranking_column": "mo10_mid",
+      "counts_what": "fills with a finite headline book-mid markout",
+      "held_equal": {
+        "early_days": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "late_days": [
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "floor_fills": 1,
+        "ranking_column": "mo10_mid",
+        "unit_rule": "taker_id * 4 + coin",
+        "n_rows": 2480267
+      },
+      "loss_decomposition": {
+        "early_eligible": 40568,
+        "kept_as_committed": 23243,
+        "returned_below_floor": 0,
+        "never_returned": 17325
+      },
+      "arms": {
+        "early_only": {
+          "late_min_fills": 0,
+          "n_admitted": 40568
+        },
+        "as_committed": {
+          "late_min_fills": 1,
+          "n_admitted": 23243
+        },
+        "late_at_least_one": {
+          "late_min_fills": 1,
+          "n_admitted": 23243
+        }
+      }
+    }
+  },
+  "totals": {
+    "n_sites": 5,
+    "n_sites_with_floor_above_one": 4,
+    "loss_by_site": {
+      "m2_figure": {
+        "early_eligible": 9659,
+        "kept_as_committed": 5493,
+        "returned_below_floor": 2262,
+        "never_returned": 1904
+      },
+      "ws1_horizon_persistence": {
+        "early_eligible": 10264,
+        "kept_as_committed": 5539,
+        "returned_below_floor": 2517,
+        "never_returned": 2208
+      },
+      "ws2_hard_classifier": {
+        "early_eligible": 10264,
+        "kept_as_committed": 5539,
+        "returned_below_floor": 2517,
+        "never_returned": 2208
+      },
+      "ws3_taker_pnl": {
+        "early_eligible": 2159,
+        "kept_as_committed": 1213,
+        "returned_below_floor": 645,
+        "never_returned": 301
+      },
+      "build_toxicity_frame": {
+        "early_eligible": 40568,
+        "kept_as_committed": 23243,
+        "returned_below_floor": 0,
+        "never_returned": 17325
+      }
+    }
+  },
+  "predicate_calibration": {
+    "must_fire": [
+      {
+        "site": "m2_figure",
+        "producer": "m2_figure.py",
+        "returned_below_floor": 2262
+      },
+      {
+        "site": "ws1_horizon_persistence",
+        "producer": "ws1_horizon_persistence.py",
+        "returned_below_floor": 2517
+      },
+      {
+        "site": "ws2_hard_classifier",
+        "producer": "ws2_hard_classifier.py",
+        "returned_below_floor": 2517
+      },
+      {
+        "site": "ws3_taker_pnl",
+        "producer": "ws3_taker_pnl.py",
+        "returned_below_floor": 645
+      }
+    ],
+    "must_stay_silent": [
+      {
+        "site": "build_toxicity_frame",
+        "producer": "build_toxicity_frame.py",
+        "returned_below_floor": 0
+      }
+    ],
+    "findings": [],
+    "passed": true
+  },
+  "addressability": {
+    "rule": "no key of this artifact holds a dot, because an address is split on the dot and a key holding one cannot be descended into",
+    "calibration": {
+      "must_fire": {
+        "fixture": "sites -> 'm2_figure.py'",
+        "found": [
+          "sites.m2_figure.py"
+        ],
+        "fired": true
+      },
+      "must_stay_silent": {
+        "population": "every key of this run's payload",
+        "found": [],
+        "silent": true
+      },
+      "passed": true
+    },
+    "n_keys_holding_a_dot": 0,
+    "keys_holding_a_dot": [],
+    "passed": true
+  },
+  "calibration": {
+    "why": "the as_committed arm re-implements five published admission expressions; until it returns their published populations and quantities it has reproduced nothing, and a counterfactual measured against a baseline that was never reproduced is a difference between two unknowns",
+    "n_measurements": 16,
+    "n_agreeing": 16,
+    "all_agree": true,
+    "measurements": [
+      {
+        "measurement": "m2_figure toxic-decile wallet count",
+        "anchor_source": "m2_figure_results.json n_wallets.toxic_decile",
+        "anchor": 550,
+        "recomputed": 550,
+        "comparison": "exact",
+        "tolerance": null,
+        "agrees": true
+      },
+      {
+        "measurement": "m2_figure remaining wallet count",
+        "anchor_source": "m2_figure_results.json n_wallets.remaining",
+        "anchor": 4943,
+        "recomputed": 4943,
+        "comparison": "exact",
+        "tolerance": null,
+        "agrees": true
+      },
+      {
+        "measurement": "m2_figure decile threshold (bps)",
+        "anchor_source": "m2_figure_results.json labelling.threshold_bps",
+        "anchor": 1.0630407350936224,
+        "recomputed": 1.0630407350936224,
+        "comparison": "relative",
+        "tolerance": 1e-09,
+        "relative_gap": 0.0,
+        "agrees": true
+      },
+      {
+        "measurement": "m2_figure separation, trade_print, 1s",
+        "anchor_source": "m2_figure_results.json separation_bps.trade_print.1",
+        "anchor": 1.165112542938271,
+        "recomputed": 1.165112542938271,
+        "comparison": "relative",
+        "tolerance": 1e-09,
+        "relative_gap": 0.0,
+        "agrees": true
+      },
+      {
+        "measurement": "m2_figure separation, trade_print, 10s",
+        "anchor_source": "m2_figure_results.json separation_bps.trade_print.10",
+        "anchor": 2.034493104046176,
+        "recomputed": 2.034493104046176,
+        "comparison": "relative",
+        "tolerance": 1e-09,
+        "relative_gap": 0.0,
+        "agrees": true
+      },
+      {
+        "measurement": "m2_figure separation, trade_print, 60s",
+        "anchor_source": "m2_figure_results.json separation_bps.trade_print.60",
+        "anchor": 2.4774145378111796,
+        "recomputed": 2.4774145378111796,
+        "comparison": "relative",
+        "tolerance": 1e-09,
+        "relative_gap": 0.0,
+        "agrees": true
+      },
+      {
+        "measurement": "m2_figure separation, book_mid, 1s",
+        "anchor_source": "m2_figure_results.json separation_bps.book_mid.1",
+        "anchor": 2.24066335534281,
+        "recomputed": 2.24066335534281,
+        "comparison": "relative",
+        "tolerance": 1e-09,
+        "relative_gap": 0.0,
+        "agrees": true
+      },
+      {
+        "measurement": "m2_figure separation, book_mid, 10s",
+        "anchor_source": "m2_figure_results.json separation_bps.book_mid.10",
+        "anchor": 2.6705379544344985,
+        "recomputed": 2.6705379544344985,
+        "comparison": "relative",
+        "tolerance": 1e-09,
+        "relative_gap": 0.0,
+        "agrees": true
+      },
+      {
+        "measurement": "m2_figure separation, book_mid, 60s",
+        "anchor_source": "m2_figure_results.json separation_bps.book_mid.60",
+        "anchor": 3.159806416405958,
+        "recomputed": 3.159806416405958,
+        "comparison": "relative",
+        "tolerance": 1e-09,
+        "relative_gap": 0.0,
+        "agrees": true
+      },
+      {
+        "measurement": "ws1_horizon_persistence pooled unit count at the headline rung",
+        "anchor_source": "ws1_horizon_results.json pooled.10.n_units",
+        "anchor": 5539,
+        "recomputed": 5539,
+        "comparison": "exact",
+        "tolerance": null,
+        "agrees": true
+      },
+      {
+        "measurement": "ws2_hard_classifier eligible unit count",
+        "anchor_source": "ws2_hard_classifier_results.json n_eligible",
+        "anchor": 5539,
+        "recomputed": 5539,
+        "comparison": "exact",
+        "tolerance": null,
+        "agrees": true
+      },
+      {
+        "measurement": "ws3_taker_pnl flagged unit count",
+        "anchor_source": "ws3_taker_pnl_results.json oos_validation.n_flag",
+        "anchor": 122,
+        "recomputed": 122,
+        "comparison": "exact",
+        "tolerance": null,
+        "agrees": true
+      },
+      {
+        "measurement": "ws3_taker_pnl remaining unit count",
+        "anchor_source": "ws3_taker_pnl_results.json oos_validation.n_rest",
+        "anchor": 1091,
+        "recomputed": 1091,
+        "comparison": "exact",
+        "tolerance": null,
+        "agrees": true
+      },
+      {
+        "measurement": "ws3_taker_pnl late PnL/$ median, flagged",
+        "anchor_source": "ws3_taker_pnl_results.json oos_validation.late_pnl_pd_bps_flag_median",
+        "anchor": 23.998376303093586,
+        "recomputed": 23.998376303093586,
+        "comparison": "relative",
+        "tolerance": 1e-09,
+        "relative_gap": 0.0,
+        "agrees": true
+      },
+      {
+        "measurement": "ws3_taker_pnl late PnL/$ median, remaining",
+        "anchor_source": "ws3_taker_pnl_results.json oos_validation.late_pnl_pd_bps_rest_median",
+        "anchor": -1.0259007074428956,
+        "recomputed": -1.0259007074428956,
+        "comparison": "relative",
+        "tolerance": 1e-09,
+        "relative_gap": 0.0,
+        "agrees": true
+      },
+      {
+        "measurement": "build_toxicity_frame row count",
+        "anchor_source": "toxicity_frame_results.json n_rows",
+        "anchor": 23243,
+        "recomputed": 23243,
+        "comparison": "exact",
+        "tolerance": null,
+        "agrees": true
+      }
+    ]
+  },
+  "headline_finding": {
+    "quantity": "the later realized profit per dollar of the flagged counterparties against the rest, at ws3_taker_pnl.py",
+    "arms_where_flagged_earn_more": [
+      "as_committed"
+    ],
+    "arms_where_flagged_earn_less": [
+      "early_only",
+      "late_at_least_one"
+    ],
+    "order_depends_on_admission": true,
+    "arms_whose_interval_excludes_zero": [
+      "early_only"
+    ],
+    "median_gap_bps_by_arm": {
+      "early_only": -18.198511258020083,
+      "as_committed": 25.024277010536483,
+      "late_at_least_one": -13.477081809096976
+    },
+    "what_it_means": "the direction of this comparison is a property of the admission rule and not only of the counterparties. Both lists above are non-empty, so the sign of the gap turns over between the arms; and the arm whose interval clears zero is the one that asks nothing about the later window, which is also the only arm free of the selection. A report may state the committed figure, but it may not state it without this one beside it"
+  },
+  "deliberate_lookahead": {
+    "what": "this producer CONTAINS the defect it measures, on purpose, and says so here rather than leaving a reader to find it. In the as_committed arm of every site, the admitted set is built from a reduction over later-half rows and then a threshold is taken over that set: at the ws3 site the expression is np.quantile(mean_e[elig], TOXIC_Q) with elig carrying the later count. That is the same shape checks/chk_decision_lookahead.py names in the five producers, and it is here because reproducing the rule is the only way to price it",
+    "why_it_is_not_the_same_fault": "the five producers take a DECISION under that population -- a decile cut whose members are then reported as a finding about counterparties. This node takes no decision under it: the population is the object of measurement, and the two arms beside it exist precisely to say what the rule costs. A static reading cannot tell an auditor of a rule from a user of it, so the distinction is declared here in words and the gate is left to fire",
+    "how_to_read_a_finding_against_this_file": "a lookahead finding naming survivorship_census.py is expected and is not a regression. What would be a regression is the early_only arm acquiring a later-half term, because that arm's whole claim is that it consults nothing after the ranking; the axis gate above compares the three arms' later-window floors on every run and stops the run if that arm ever demands more than zero"
+  },
+  "what_this_licenses": "a statement that the five producers rank counterparties whose return to the later window is already known, together with the size of that selection and the share of it the threshold rather than the data imposes. It does NOT license a claim that any published number is wrong: the committed arm reproduces every published anchor it was calibrated on, and the counterfactuals are what those numbers become under a different admission rule, not corrections to them"
+}

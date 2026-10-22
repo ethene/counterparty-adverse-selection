@@ -1,0 +1,65 @@
+# Raw and large intermediate data — regenerate from source (see README / CONFIG.md)
+*.npz
+quickwin_taker_map.json
+*.lz4
+*.tar
+*.gz
+*.parquet
+raw/
+
+# Python
+__pycache__/
+*.pyc
+
+# Local scratch / OS
+/tmp/
+.DS_Store
+maker_map.json
+
+# Large per-wallet taker maps (~16MB each) — regenerate from source
+panel_taker_map*.json
+
+# Run logs and completion markers
+*.log
+*_DONE
+
+# Checkpoint shard dirs (npz already ignored; exclude the dirs wholesale)
+panel_ckpt/
+panel_ckpt_v2/
+panel_cells/
+
+# Notebook-generated figures (embedded inline in the .ipynb; regenerate on run)
+notebooks/fig_*.png
+
+# notebooks/wallet_toxicity_frame.csv is tracked on purpose. It has a producer,
+# data/build_toxicity_frame.py, but rebuilding it needs the book panel, which needs the
+# raw archive and credentials a reader may not have. It holds counterparty-level
+# aggregates keyed by an integer index, not by address.
+# wallet_toxicity_frame.csv  -- deliberately NOT ignored
+
+# Scratch notebook execution copies (determinism / clean-run checks)
+notebooks/_nb_*.ipynb
+
+# Local exploration and scratch harnesses
+probes/probe_battery*
+probes/round2_battery*
+probes/round3_battery*
+
+# Credentials. None are committed today, and these lines are here so that an accident
+# cannot make one: rebuilding the intermediates from the live archives reads two
+# requester-pays buckets, so that route needs AWS keys, and they belong in the
+# environment or in a profile outside this tree rather than in any file inside it.
+# CONFIG.md, section "AWS access", states the rule in prose and names `.env*`; this is
+# what enforces it. None of the names carries a slash, on purpose: a pattern without
+# one matches at every depth, so an environment file dropped in a subdirectory is
+# excluded as surely as one at the root.
+.env*
+*.env
+credentials
+.aws/
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519

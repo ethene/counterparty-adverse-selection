@@ -1,0 +1,199 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_expensive_edits_results.json",
+    "producer": {
+      "script": "chk_expensive_edits.py",
+      "sha256": "37764a17beab6a0a46aa35926d637d1b2c3fd5a3c53ef1647449c1f76eaf3e42",
+      "bytes": 30732,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "0039d53e49be054c9ee99554467672ea468de9fa",
+      "unasked_because": null
+    },
+    "inputs": [],
+    "scope": {
+      "population": "tracked results files with a recorded producer and runtime",
+      "predicate": "recorded producer hash vs the script on disk, the script found by resolving its recorded NAME against every tracked script in the tree; on a difference, syntax trees compared with docstrings and pure-output statements removed",
+      "window": "n/a: this check reads source text and recorded metadata, never a market window",
+      "coins": "n/a: nothing here is measured per coin; the population is producers, not fills"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "run": {
+      "runtime_s": 0.365,
+      "finished_utc": "2026-10-22T09:37:39Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {}
+    }
+  },
+  "check": "expensive_edits",
+  "verdict": "PASS",
+  "expensive_seconds": 90,
+  "population": "tracked results files with a recorded producer and runtime",
+  "predicate": "recorded producer hash vs the script on disk, the script found by resolving its recorded NAME against every tracked script in the tree; on a difference, syntax trees compared with docstrings and pure-output statements removed",
+  "counts": {
+    "tracked_results_files": 107,
+    "declaring_producer_and_runtime": 106,
+    "expensive_nodes": 27,
+    "up_to_date": 4,
+    "substantive": 0,
+    "cosmetic": 0,
+    "certified": 0,
+    "deferred": 0,
+    "undeterminable": 23,
+    "unresolved": 0,
+    "ambiguous": 0,
+    "tracked_scripts": 127,
+    "distinct_script_names": 127
+  },
+  "cosmetic": [],
+  "certified": [],
+  "substantive": [],
+  "undeterminable": [
+    {
+      "script": "data/d1_book_shape_figure.py",
+      "artifact": "data/d1_book_shape_figure_results.json",
+      "runtime_s": 193.067
+    },
+    {
+      "script": "data/i4_midmarkout.py",
+      "artifact": "data/i4_midmarkout_results.json",
+      "runtime_s": 202.858
+    },
+    {
+      "script": "data/panel_rebuild_v2.py",
+      "artifact": "data/panel_v2_manifest.json",
+      "runtime_s": 119.262
+    },
+    {
+      "script": "data/build_quickwin_markouts.py",
+      "artifact": "data/quickwin_pass_summary.json",
+      "runtime_s": 175.355
+    },
+    {
+      "script": "identity/i3_book_comparator.py",
+      "artifact": "identity/i3_book_nonrecoverability_results.json",
+      "runtime_s": 162.144
+    },
+    {
+      "script": "identity/i3_depth_control.py",
+      "artifact": "identity/i3_depth_control_results.json",
+      "runtime_s": 239.542
+    },
+    {
+      "script": "identity/i5_exclusion.py",
+      "artifact": "identity/i5_exclusion_results.json",
+      "runtime_s": 236.666
+    },
+    {
+      "script": "markout/ws1_horizon_persistence.py",
+      "artifact": "markout/ws1_horizon_results.json",
+      "runtime_s": 320.006
+    },
+    {
+      "script": "money/m4_realizedpnl.py",
+      "artifact": "money/m4_realizedpnl_results.json",
+      "runtime_s": 100.871
+    },
+    {
+      "script": "money/maker_econ_b2.py",
+      "artifact": "money/maker_econ_b2_results.json",
+      "runtime_s": 695.61
+    },
+    {
+      "script": "money/maker_econ.py",
+      "artifact": "money/maker_econ_results.json",
+      "runtime_s": 2130.143
+    },
+    {
+      "script": "persistence/i2_walletfe.py",
+      "artifact": "persistence/i2_walletfe_results.json",
+      "runtime_s": 722.301
+    },
+    {
+      "script": "persistence/ks2_persistence_10day.py",
+      "artifact": "persistence/ks2_persistence_10day_results.json",
+      "runtime_s": 196.78
+    },
+    {
+      "script": "persistence/panel_common_idio.py",
+      "artifact": "persistence/panel_common_idio_results.json",
+      "runtime_s": 1614.416
+    },
+    {
+      "script": "data/panel_persistence.py",
+      "artifact": "persistence/panel_extended_results_h10_all.json",
+      "runtime_s": 349.173
+    },
+    {
+      "script": "data/panel_persistence.py",
+      "artifact": "persistence/panel_extended_results_h1_all.json",
+      "runtime_s": 364.259
+    },
+    {
+      "script": "data/panel_persistence.py",
+      "artifact": "persistence/panel_extended_results_h60_all.json",
+      "runtime_s": 308.079
+    },
+    {
+      "script": "persistence/three_coin_persistence.py",
+      "artifact": "persistence/three_coin_persistence_results.json",
+      "runtime_s": 166.705
+    },
+    {
+      "script": "probes/kss_decomp_c.py",
+      "artifact": "probes/kss_decomp_c_results.json",
+      "runtime_s": 354.324
+    },
+    {
+      "script": "probes/probe_E_lag_resolution.py",
+      "artifact": "probes/probe_E_lag_resolution_results.json",
+      "runtime_s": 137.831
+    },
+    {
+      "script": "probes/probe_E_leadlag.py",
+      "artifact": "probes/probe_E_leadlag_results.json",
+      "runtime_s": 462.358
+    },
+    {
+      "script": "probes/probe_F_hlp_liq.py",
+      "artifact": "probes/probe_F_hlp_liq_results.json",
+      "runtime_s": 1409.824
+    },
+    {
+      "script": "probes/probe_G_horizon.py",
+      "artifact": "probes/probe_G_horizon_results.json",
+      "runtime_s": 1307.892
+    }
+  ],
+  "unresolved": [],
+  "ambiguous": [],
+  "deferred_declared": [
+    "data/panel_rebuild_v2.py"
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_maker_attribution_results.json",
+    "producer": {
+      "script": "chk_maker_attribution.py",
+      "sha256": "9f891842bfbdfb268002fe9761581b6aa0f7d1b5242287aafcf1b7d2035904e9",
+      "bytes": 22135,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "86b08e3844a5e727ccbc54d826ef5e9cece57b84",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "https://zenodo.org/api/records/18184441/files/book_diffs_202512.tar/content",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "trades_2025_12.tar",
+        "bytes": 6694522880,
+        "sha256": "f2fbb81f1e9056280629907d17c1cbb9c32e3066b84ccb2528131bf471f350cc",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "5,012,656 book-diff records of one hourly member, 1,450 distinct resting owners in it",
+      "window": "ONE HOUR: member 20251201/ex22.gz. The verdict is about that hour, not about the whole archive",
+      "coins": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "check": "raw maker/resting-order owner-attribution byte-verify (can an outsider see the resting-order owner on Hyperliquid L4?)",
+    "author": "Dmitry Stakhin",
+    "first_written": "2026-06-22",
+    "book_diff_source": "https://zenodo.org/api/records/18184441/files/book_diffs_202512.tar/content",
+    "book_diff_member": "20251201/ex22.gz",
+    "trades_source": "trades_2025_12.tar",
+    "independent": "raw tar-member re-walk; does NOT import the project parser or the Zenodo read_data.py",
+    "expected_keys": [
+      "coin",
+      "oid",
+      "px",
+      "raw_book_diff",
+      "side",
+      "user"
+    ],
+    "schema_ref": "Zenodo 18184441 SCHEMA.md Section 4: 'user = Ethereum address of the order owner'",
+    "run": {
+      "runtime_s": 43.28,
+      "finished_utc": "2026-10-22T09:39:17Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {}
+    }
+  },
+  "verdict": "ALL_PASS",
+  "counts": {
+    "records_in_hour": 5012656,
+    "user_field_present": 5012656,
+    "user_hex_valid": 5012656,
+    "distinct_resting_owners": 1450,
+    "diff_types": {
+      "new": 2480952,
+      "remove": 2481537,
+      "update": 50167
+    },
+    "coins": {
+      "ETH": 1651468,
+      "BTC": 2491042,
+      "SOL": 870146
+    },
+    "new_orders": 2480952,
+    "new_orders_owner_tagged": 2480952,
+    "bad_keysets": {},
+    "cross_stream": {
+      "performed": true,
+      "resting_oid_joins_to_trade_side_info": 50483,
+      "trade_side_info_no_resting_oid_taker_or_same_block": 248209,
+      "owner_address_matches_on_join": 50483
+    }
+  },
+  "verdicts": {
+    "every_record_has_user": true,
+    "user_is_hex_owner_address": true,
+    "keyset_is_user_oid_coin_side_px_rawdiff": true,
+    "difftypes_are_new_remove_update": true,
+    "new_resting_orders_are_owner_tagged": true,
+    "book_is_many_owner_not_aggregate": true,
+    "cross_stream_oid_owner_match": "PASS",
+    "OUTSIDER_CAN_SEE_RESTING_ORDER_OWNER": true,
+    "OVERALL": "ALL_PASS"
+  },
+  "samples": {
+    "new": "{\"user\":\"0x0631897de2f668ff8dfe5bfe23d63d5634035ce5\",\"oid\":254938217700,\"coin\":\"ETH\",\"side\":\"A\",\"px\":\"2792.3\",\"raw_book_diff\":{\"new\":{\"sz\":\"0.3581\"}}}",
+    "remove": "{\"user\":\"0x6ba889db7f923622d3548f621ecc2054b80c1817\",\"oid\":254938183676,\"coin\":\"BTC\",\"side\":\"B\",\"px\":\"86381.0\",\"raw_book_diff\":\"remove\"}",
+    "update": "{\"user\":\"0x25ad068ba92b61ce2217c41270a9a69c247679af\",\"oid\":254938219145,\"coin\":\"ETH\",\"side\":\"A\",\"px\":\"2791.4\",\"raw_book_diff\":{\"update\":{\"origSz\":\"3.3589\",\"newSz\":\"0.0\"}}}"
+  }
+}

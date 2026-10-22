@@ -1,0 +1,100 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "toxicity_frame_results.json",
+    "producer": {
+      "script": "build_toxicity_frame.py",
+      "sha256": "ec43af9db750fd5880d0f1826c602c9f6ba207e35b5ebb32e4171a5b61c1147c",
+      "bytes": 10465
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "one row per (counterparty, coin) with at least one finite score in each half of the day range",
+      "window": "features on days 4-8, label on days 9-13; the two halves are disjoint so no fill feeds both",
+      "early_days": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "late_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "coins": [
+        "BTC",
+        "ETH"
+      ],
+      "lens": "mid",
+      "horizon_s": 10
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "run": {
+      "runtime_s": 1.039,
+      "finished_utc": "2026-08-11T12:24:30Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "n_rows": 23243,
+  "columns": [
+    "wallet",
+    "coin",
+    "fills_early",
+    "mean_mo10_mid_early",
+    "std_mo10_mid_early",
+    "mean_notional_early",
+    "mean_imb_early",
+    "mean_start_pos_early",
+    "label_mo10_mid_late",
+    "label_toxic_late"
+  ],
+  "score_column_in_panel": "mo10_mid",
+  "positive_label_rate": 0.5250182850750764,
+  "by_coin": {
+    "BTC": 14468,
+    "ETH": 8775
+  },
+  "label_definition": "label_toxic_late = 1 when the counterparty's mean mo10_mid over the late half of the days is above zero. Cost-blind by construction: it counts wallets, not dollars, so a wallet doing one harmful fill and a wallet doing a thousand weigh the same. The continuous label in the column beside it is the economically meaningful target and is kept for that reason.",
+  "leakage_note": "The day halves are disjoint, so no fill feeds both a feature and the label. That blocks label leakage and NOT counterparty leakage: a wallet appears in both halves by design, which is the whole point of the question, so any held-out evaluation must split on the wallet or on the coin.",
+  "why_this_window": "Named from settings.headline_mid_col(), so the column names move with the declaration and cannot hold one window under another window's name. The frame this replaces carried the 60 s TRADE-PRINT markout under names ending mo60, which is a different quantity from the 10 s book mid this work reports on."
+}

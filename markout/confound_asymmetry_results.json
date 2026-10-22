@@ -1,0 +1,1329 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "confound_asymmetry_results.json",
+    "producer": {
+      "script": "confound_asymmetry.py",
+      "sha256": "6f815ea2bd30e2c7a91ca5b231a5bcd03800978eebaf3d0acb81cbca482170b0",
+      "bytes": 27297
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 rows of the trade-print panel, partitioned by aggressor side; the unit of analysis is the fill, so no wallet fill floor gates this file",
+      "window": "10 days present in the input, day-of-month 4-13; the within-day control demeans by day, so the day count is what that control has to work with",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": null,
+      "persistence_floor_fills": null,
+      "whale_drop_k": null,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260619,
+      "n_perm": null,
+      "n_boot": 2000,
+      "rank_floor_fills": null,
+      "horizons_scored_s": [
+        1,
+        10,
+        60
+      ],
+      "overrides_note": "master_seed 20260619 not settings.MASTER_SEED 20260620; n_boot 2000 matches the declaration and is used only as the small-n fallback, since a group above the CLT threshold gets an analytic interval; no permutation test, no wallet floor, no whale-drop arm and no FDR family run here, so those declarations do not apply and are recorded as null rather than inherited; no window is selected -- every rung of the ladder is reported side by side, which is the object",
+      "overridden": [
+        "fdr_alpha",
+        "horizons_scored_s",
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "overrides_note",
+        "persistence_floor_fills",
+        "rank_floor_fills",
+        "whale_drop_k"
+      ]
+    },
+    "object": "CONFOUND - directional-drift vs adverse-selection asymmetry",
+    "window_days": 10,
+    "horizons_s": {
+      "mo1": 1,
+      "mo10": 10,
+      "mo60": 60
+    },
+    "markout_sign": "signed taker markout bps; positive = taker profited = maker adverse-selected",
+    "side_codes": {
+      "buy_aggressor": 1,
+      "sell_aggressor": 0
+    },
+    "gap_definition": "buy_aggressor_mean minus sell_aggressor_mean (bps)",
+    "ci_method": {
+      "seed": 20260619,
+      "ci": "95%",
+      "large_n": "analytic CLT: mean +/- 1.96*std/sqrt(n) for a side mean; gap +/- 1.96*sqrt(std_buy^2/n_buy + std_sell^2/n_sell)",
+      "small_n_fallback": "vectorized percentile bootstrap, n_resamples=2000, used only when a group has n <= 2000",
+      "big_n_threshold": 2000
+    },
+    "drift_neutralized_definition": "per-day: subtract that day's overall (both-sides) mean markout from every row, then recompute the pooled buy/sell gap; removes a constant per-day drift",
+    "verdict_thresholds": {
+      "demean_survive_frac": 0.5,
+      "day_sign_stable_frac": 0.7
+    },
+    "verdict_note": "Verdict is a writeup flag, not a test statistic. The signed-markout convention cannot fully separate adverse selection from directional drift; this only checks whether the buy/sell asymmetry survives two standard drift controls (per-day sign stability and per-day de-meaning). Surviving both is necessary, not sufficient, for the asymmetry to be a real feature.",
+    "run": {
+      "runtime_s": 1.668,
+      "finished_utc": "2026-08-11T12:24:25Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "BTC": {
+    "n_rows": 1200863,
+    "n_buy": 598146,
+    "n_sell": 602717,
+    "horizons": {
+      "mo1": {
+        "buy": {
+          "n": 598140,
+          "mean": 0.2273181242110583,
+          "median": 0.0,
+          "notional_weighted_mean": 0.061725400045305114,
+          "mean_ci95": [
+            0.22423792836331632,
+            0.23039832005880026
+          ]
+        },
+        "sell": {
+          "n": 602701,
+          "mean": 0.2580873970232839,
+          "median": 0.0,
+          "notional_weighted_mean": 0.06411924490606731,
+          "mean_ci95": [
+            0.25468092957468014,
+            0.2614938644718877
+          ]
+        },
+        "gap_buy_minus_sell": {
+          "point": -0.030769272812225634,
+          "ci95": [
+            -0.03536183494450473,
+            -0.026176710679946532
+          ]
+        },
+        "within_day_control": {
+          "per_day": [
+            {
+              "day": 4,
+              "n_buy": 67885,
+              "n_sell": 68379,
+              "buy_mean": 0.21503258657334715,
+              "sell_mean": 0.2720580972954611,
+              "gap_buy_minus_sell": -0.05702551072211395,
+              "day_overall_mean": 0.24364870967018445
+            },
+            {
+              "day": 5,
+              "n_buy": 69777,
+              "n_sell": 71477,
+              "buy_mean": 0.2005929251798768,
+              "sell_mean": 0.26639951923190885,
+              "gap_buy_minus_sell": -0.06580659405203204,
+              "day_overall_mean": 0.23389221527472082
+            },
+            {
+              "day": 6,
+              "n_buy": 34012,
+              "n_sell": 32173,
+              "buy_mean": 0.14453166095767095,
+              "sell_mean": 0.2589746747591051,
+              "gap_buy_minus_sell": -0.11444301380143412,
+              "day_overall_mean": 0.20016322525522387
+            },
+            {
+              "day": 7,
+              "n_buy": 68941,
+              "n_sell": 61394,
+              "buy_mean": 0.262780706634156,
+              "sell_mean": 0.1891199951877532,
+              "gap_buy_minus_sell": 0.0736607114464028,
+              "day_overall_mean": 0.22808299904570734
+            },
+            {
+              "day": 8,
+              "n_buy": 68503,
+              "n_sell": 70653,
+              "buy_mean": 0.22836114286281156,
+              "sell_mean": 0.3311282728073899,
+              "gap_buy_minus_sell": -0.10276712994457832,
+              "day_overall_mean": 0.2805385986101332
+            },
+            {
+              "day": 9,
+              "n_buy": 70077,
+              "n_sell": 78776,
+              "buy_mean": 0.3050304616356554,
+              "sell_mean": 0.21957001109851143,
+              "gap_buy_minus_sell": 0.08546045053714396,
+              "day_overall_mean": 0.25980307319528767
+            },
+            {
+              "day": 10,
+              "n_buy": 72281,
+              "n_sell": 73313,
+              "buy_mean": 0.255773704206026,
+              "sell_mean": 0.3408409607369313,
+              "gap_buy_minus_sell": -0.0850672565309053,
+              "day_overall_mean": 0.2986088195133207
+            },
+            {
+              "day": 11,
+              "n_buy": 72859,
+              "n_sell": 74424,
+              "buy_mean": 0.2397427340356929,
+              "sell_mean": 0.22409231045208702,
+              "gap_buy_minus_sell": 0.015650423583605882,
+              "day_overall_mean": 0.23183437309256788
+            },
+            {
+              "day": 12,
+              "n_buy": 53182,
+              "n_sell": 51465,
+              "buy_mean": 0.18901401841392662,
+              "sell_mean": 0.2709541731331887,
+              "gap_buy_minus_sell": -0.08194015471926208,
+              "day_overall_mean": 0.22931187752720097
+            },
+            {
+              "day": 13,
+              "n_buy": 20623,
+              "n_sell": 20647,
+              "buy_mean": 0.06378538804015084,
+              "sell_mean": 0.08037869742790647,
+              "gap_buy_minus_sell": -0.016593309387755634,
+              "day_overall_mean": 0.0720868675392783
+            }
+          ],
+          "n_days_usable": 10,
+          "n_days_gap_sign_matches_pooled": 7,
+          "gap_sign_stable_frac": 0.7,
+          "demeaned_gap_buy_minus_sell": -0.02999734521998964
+        },
+        "drift_neutralized": {
+          "demeaned_gap_buy_minus_sell": -0.02999734521998964,
+          "raw_gap_buy_minus_sell": -0.030769272812225634,
+          "demeaned_over_raw": 0.974912387531977
+        },
+        "verdict": "stable_feature",
+        "verdict_reason": "survives de-meaning (keeps 0.97 of raw gap, same sign) and per-day sign stable on 0.70 of days"
+      },
+      "mo10": {
+        "buy": {
+          "n": 598115,
+          "mean": 0.4976806582089137,
+          "median": 3.1158415691318053e-12,
+          "notional_weighted_mean": 0.4207364380829588,
+          "mean_ci95": [
+            0.4874667797070942,
+            0.5078945367107333
+          ]
+        },
+        "sell": {
+          "n": 602664,
+          "mean": 0.42216665577164275,
+          "median": 0.10759687796235085,
+          "notional_weighted_mean": 0.42301479929862373,
+          "mean_ci95": [
+            0.4118236101962038,
+            0.4325097013470817
+          ]
+        },
+        "gap_buy_minus_sell": {
+          "point": 0.07551400243727097,
+          "ci95": [
+            0.06097777507851175,
+            0.09005022979603018
+          ]
+        },
+        "within_day_control": {
+          "per_day": [
+            {
+              "day": 4,
+              "n_buy": 67885,
+              "n_sell": 68377,
+              "buy_mean": 0.4727348785689451,
+              "sell_mean": 0.48801863323846956,
+              "gap_buy_minus_sell": -0.015283754669524474,
+              "day_overall_mean": 0.48040434836271056
+            },
+            {
+              "day": 5,
+              "n_buy": 69777,
+              "n_sell": 71472,
+              "buy_mean": 0.4301423311250781,
+              "sell_mean": 0.37007239246192847,
+              "gap_buy_minus_sell": 0.060069938663149636,
+              "day_overall_mean": 0.3997469396098629
+            },
+            {
+              "day": 6,
+              "n_buy": 34010,
+              "n_sell": 32170,
+              "buy_mean": 0.3790945515702393,
+              "sell_mean": 0.520008016507248,
+              "gap_buy_minus_sell": -0.14091346493700874,
+              "day_overall_mean": 0.4475923782100636
+            },
+            {
+              "day": 7,
+              "n_buy": 68937,
+              "n_sell": 61390,
+              "buy_mean": 0.4764564779579673,
+              "sell_mean": 0.22964051113980755,
+              "gap_buy_minus_sell": 0.24681596681815976,
+              "day_overall_mean": 0.36019482685752896
+            },
+            {
+              "day": 8,
+              "n_buy": 68501,
+              "n_sell": 70652,
+              "buy_mean": 0.48773883560493914,
+              "sell_mean": 0.5784642919332247,
+              "gap_buy_minus_sell": -0.09072545632828555,
+              "day_overall_mean": 0.5338027719951429
+            },
+            {
+              "day": 9,
+              "n_buy": 70073,
+              "n_sell": 78762,
+              "buy_mean": 0.7889735019788809,
+              "sell_mean": 0.2551769756649816,
+              "gap_buy_minus_sell": 0.5337965263138993,
+              "day_overall_mean": 0.5064936954445621
+            },
+            {
+              "day": 10,
+              "n_buy": 72278,
+              "n_sell": 73310,
+              "buy_mean": 0.6166692590176877,
+              "sell_mean": 0.5723014335593767,
+              "gap_buy_minus_sell": 0.04436782545831097,
+              "day_overall_mean": 0.5943280957051291
+            },
+            {
+              "day": 11,
+              "n_buy": 72851,
+              "n_sell": 74424,
+              "buy_mean": 0.5742672509841233,
+              "sell_mean": 0.3648875697729909,
+              "gap_buy_minus_sell": 0.20937968121113243,
+              "day_overall_mean": 0.4684592496637544
+            },
+            {
+              "day": 12,
+              "n_buy": 53180,
+              "n_sell": 51463,
+              "buy_mean": 0.21501968416959846,
+              "sell_mean": 0.585181875619354,
+              "gap_buy_minus_sell": -0.3701621914497555,
+              "day_overall_mean": 0.39706393804782036
+            },
+            {
+              "day": 13,
+              "n_buy": 20623,
+              "n_sell": 20644,
+              "buy_mean": 0.15940857796444052,
+              "sell_mean": 0.17362714987654204,
+              "gap_buy_minus_sell": -0.014218571912101519,
+              "day_overall_mean": 0.166521481702377
+            }
+          ],
+          "n_days_usable": 10,
+          "n_days_gap_sign_matches_pooled": 5,
+          "gap_sign_stable_frac": 0.5,
+          "demeaned_gap_buy_minus_sell": 0.07801496860447951
+        },
+        "drift_neutralized": {
+          "demeaned_gap_buy_minus_sell": 0.07801496860447951,
+          "raw_gap_buy_minus_sell": 0.07551400243727097,
+          "demeaned_over_raw": 1.0331192373134517
+        },
+        "verdict": "likely_drift_artifact",
+        "verdict_reason": "per-day gap sign matches pooled on only 0.50 of days"
+      },
+      "mo60": {
+        "buy": {
+          "n": 597879,
+          "mean": 0.3617585503987536,
+          "median": 0.1800491213798523,
+          "notional_weighted_mean": 0.5532086922951721,
+          "mean_ci95": [
+            0.33819290098529536,
+            0.38532419981221183
+          ]
+        },
+        "sell": {
+          "n": 602423,
+          "mean": 0.41988793323503476,
+          "median": 0.21757103502750397,
+          "notional_weighted_mean": 0.5254067919075358,
+          "mean_ci95": [
+            0.3961144966583634,
+            0.4436613698117061
+          ]
+        },
+        "gap_buy_minus_sell": {
+          "point": -0.05812938283628116,
+          "ci95": [
+            -0.0916034940110837,
+            -0.024655271661478635
+          ]
+        },
+        "within_day_control": {
+          "per_day": [
+            {
+              "day": 4,
+              "n_buy": 67876,
+              "n_sell": 68356,
+              "buy_mean": 0.09477058326061752,
+              "sell_mean": 0.8587967429778661,
+              "gap_buy_minus_sell": -0.7640261597172486,
+              "day_overall_mean": 0.47812964848488376
+            },
+            {
+              "day": 5,
+              "n_buy": 69769,
+              "n_sell": 71441,
+              "buy_mean": 0.1872364713074177,
+              "sell_mean": 0.2907920982926917,
+              "gap_buy_minus_sell": -0.10355562698527401,
+              "day_overall_mean": 0.23962736109889823
+            },
+            {
+              "day": 6,
+              "n_buy": 33966,
+              "n_sell": 32141,
+              "buy_mean": 0.36339595890544085,
+              "sell_mean": 0.37532698527039776,
+              "gap_buy_minus_sell": -0.01193102636495691,
+              "day_overall_mean": 0.3691967836047327
+            },
+            {
+              "day": 7,
+              "n_buy": 68877,
+              "n_sell": 61325,
+              "buy_mean": 0.30833676091826856,
+              "sell_mean": 0.36387445348300496,
+              "gap_buy_minus_sell": -0.055537692564736396,
+              "day_overall_mean": 0.33449495354612724
+            },
+            {
+              "day": 8,
+              "n_buy": 68492,
+              "n_sell": 70641,
+              "buy_mean": 0.23346293745929855,
+              "sell_mean": 0.6946539194726751,
+              "gap_buy_minus_sell": -0.4611909820133765,
+              "day_overall_mean": 0.4676201263390534
+            },
+            {
+              "day": 9,
+              "n_buy": 70032,
+              "n_sell": 78732,
+              "buy_mean": 1.131565588388555,
+              "sell_mean": -0.16646390137990622,
+              "gap_buy_minus_sell": 1.2980294897684612,
+              "day_overall_mean": 0.4445952340793773
+            },
+            {
+              "day": 10,
+              "n_buy": 72254,
+              "n_sell": 73289,
+              "buy_mean": 0.04697000593706357,
+              "sell_mean": 0.6715874129733551,
+              "gap_buy_minus_sell": -0.6246174070362915,
+              "day_overall_mean": 0.3614996304760849
+            },
+            {
+              "day": 11,
+              "n_buy": 72834,
+              "n_sell": 74414,
+              "buy_mean": 0.8735973199217825,
+              "sell_mean": 0.06482338888386509,
+              "gap_buy_minus_sell": 0.8087739310379174,
+              "day_overall_mean": 0.4648712027300001
+            },
+            {
+              "day": 12,
+              "n_buy": 53163,
+              "n_sell": 51454,
+              "buy_mean": -0.08259587065195169,
+              "sell_mean": 0.9179311054990157,
+              "gap_buy_minus_sell": -1.0005269761509674,
+              "day_overall_mean": 0.4094954245569711
+            },
+            {
+              "day": 13,
+              "n_buy": 20616,
+              "n_sell": 20630,
+              "buy_mean": 0.2592653337544678,
+              "sell_mean": 0.08985933778594364,
+              "gap_buy_minus_sell": 0.16940599596852418,
+              "day_overall_mean": 0.1745335852981168
+            }
+          ],
+          "n_days_usable": 10,
+          "n_days_gap_sign_matches_pooled": 7,
+          "gap_sign_stable_frac": 0.7,
+          "demeaned_gap_buy_minus_sell": -0.056566375511457975
+        },
+        "drift_neutralized": {
+          "demeaned_gap_buy_minus_sell": -0.056566375511457975,
+          "raw_gap_buy_minus_sell": -0.05812938283628116,
+          "demeaned_over_raw": 0.9731115788855813
+        },
+        "verdict": "stable_feature",
+        "verdict_reason": "survives de-meaning (keeps 0.97 of raw gap, same sign) and per-day sign stable on 0.70 of days"
+      }
+    }
+  },
+  "ETH": {
+    "n_rows": 1279404,
+    "n_buy": 597844,
+    "n_sell": 681560,
+    "horizons": {
+      "mo1": {
+        "buy": {
+          "n": 597839,
+          "mean": 0.5134427493393806,
+          "median": 0.0,
+          "notional_weighted_mean": 0.18153104187320068,
+          "mean_ci95": [
+            0.5071548988396781,
+            0.5197305998390831
+          ]
+        },
+        "sell": {
+          "n": 681551,
+          "mean": 0.4017128671690574,
+          "median": 0.0,
+          "notional_weighted_mean": -0.14010714829310422,
+          "mean_ci95": [
+            0.3950382473554893,
+            0.4083874869826255
+          ]
+        },
+        "gap_buy_minus_sell": {
+          "point": 0.1117298821703232,
+          "ci95": [
+            0.10255995231441453,
+            0.12089981202623187
+          ]
+        },
+        "within_day_control": {
+          "per_day": [
+            {
+              "day": 4,
+              "n_buy": 62635,
+              "n_sell": 61598,
+              "buy_mean": 0.5471422310856585,
+              "sell_mean": 0.6336373433205654,
+              "gap_buy_minus_sell": -0.08649511223490691,
+              "day_overall_mean": 0.590028790401185
+            },
+            {
+              "day": 5,
+              "n_buy": 78843,
+              "n_sell": 65588,
+              "buy_mean": 0.5216641857297606,
+              "sell_mean": 0.37561523039302186,
+              "gap_buy_minus_sell": 0.14604895533673873,
+              "day_overall_mean": 0.4553414511185898
+            },
+            {
+              "day": 6,
+              "n_buy": 26286,
+              "n_sell": 32086,
+              "buy_mean": 0.27975897702610664,
+              "sell_mean": 0.37211217365700094,
+              "gap_buy_minus_sell": -0.09235319663089431,
+              "day_overall_mean": 0.33052380720322705
+            },
+            {
+              "day": 7,
+              "n_buy": 53115,
+              "n_sell": 133700,
+              "buy_mean": 0.40556442720502084,
+              "sell_mean": 0.2902384425741391,
+              "gap_buy_minus_sell": 0.11532598463088173,
+              "day_overall_mean": 0.3230277778719968
+            },
+            {
+              "day": 8,
+              "n_buy": 58835,
+              "n_sell": 59591,
+              "buy_mean": 0.6760913457338831,
+              "sell_mean": 0.4062872859386436,
+              "gap_buy_minus_sell": 0.26980405979523947,
+              "day_overall_mean": 0.5403281372555243
+            },
+            {
+              "day": 9,
+              "n_buy": 98582,
+              "n_sell": 61350,
+              "buy_mean": 0.7351718883994325,
+              "sell_mean": 0.2994041902100815,
+              "gap_buy_minus_sell": 0.43576769818935096,
+              "day_overall_mean": 0.568011168318919
+            },
+            {
+              "day": 10,
+              "n_buy": 77237,
+              "n_sell": 88102,
+              "buy_mean": 0.45180390104528473,
+              "sell_mean": 0.5799662512847286,
+              "gap_buy_minus_sell": -0.12816235023944383,
+              "day_overall_mean": 0.5200960727700168
+            },
+            {
+              "day": 11,
+              "n_buy": 71657,
+              "n_sell": 92463,
+              "buy_mean": 0.47003012095746527,
+              "sell_mean": 0.4511308316454432,
+              "gap_buy_minus_sell": 0.01889928931202206,
+              "day_overall_mean": 0.45938251562199434
+            },
+            {
+              "day": 12,
+              "n_buy": 51543,
+              "n_sell": 68435,
+              "buy_mean": 0.33985295030126306,
+              "sell_mean": 0.306966361186025,
+              "gap_buy_minus_sell": 0.03288658911523806,
+              "day_overall_mean": 0.32109456354618027
+            },
+            {
+              "day": 13,
+              "n_buy": 19106,
+              "n_sell": 18638,
+              "buy_mean": 0.2258170958522794,
+              "sell_mean": 0.15993336947612485,
+              "gap_buy_minus_sell": 0.06588372637615456,
+              "day_overall_mean": 0.1932836894248004
+            }
+          ],
+          "n_days_usable": 10,
+          "n_days_gap_sign_matches_pooled": 7,
+          "gap_sign_stable_frac": 0.7,
+          "demeaned_gap_buy_minus_sell": 0.08520464984143734
+        },
+        "drift_neutralized": {
+          "demeaned_gap_buy_minus_sell": 0.08520464984143734,
+          "raw_gap_buy_minus_sell": 0.1117298821703232,
+          "demeaned_over_raw": 0.7625950031125042
+        },
+        "verdict": "stable_feature",
+        "verdict_reason": "survives de-meaning (keeps 0.76 of raw gap, same sign) and per-day sign stable on 0.70 of days"
+      },
+      "mo10": {
+        "buy": {
+          "n": 597779,
+          "mean": 0.5782613811384122,
+          "median": 0.0,
+          "notional_weighted_mean": 0.7645275474076854,
+          "mean_ci95": [
+            0.5592161630181706,
+            0.5973065992586538
+          ]
+        },
+        "sell": {
+          "n": 681534,
+          "mean": 0.5927109035499828,
+          "median": 1.337492182978961e-12,
+          "notional_weighted_mean": 0.5924833067132803,
+          "mean_ci95": [
+            0.5743860781987402,
+            0.6110357289012254
+          ]
+        },
+        "gap_buy_minus_sell": {
+          "point": -0.014449522411570603,
+          "ci95": [
+            -0.04087904297856389,
+            0.011979998155422677
+          ]
+        },
+        "within_day_control": {
+          "per_day": [
+            {
+              "day": 4,
+              "n_buy": 62635,
+              "n_sell": 61598,
+              "buy_mean": 0.5227502937512464,
+              "sell_mean": 0.7785684990579645,
+              "gap_buy_minus_sell": -0.25581820530671817,
+              "day_overall_mean": 0.6495917111724085
+            },
+            {
+              "day": 5,
+              "n_buy": 78842,
+              "n_sell": 65587,
+              "buy_mean": 0.38402870795217137,
+              "sell_mean": 0.32605987431822747,
+              "gap_buy_minus_sell": 0.057968833633943895,
+              "day_overall_mean": 0.35770434171305404
+            },
+            {
+              "day": 6,
+              "n_buy": 26284,
+              "n_sell": 32085,
+              "buy_mean": 0.6513847211375238,
+              "sell_mean": 0.9155176954616164,
+              "gap_buy_minus_sell": -0.26413297432409266,
+              "day_overall_mean": 0.7965766291912598
+            },
+            {
+              "day": 7,
+              "n_buy": 53107,
+              "n_sell": 133697,
+              "buy_mean": 0.22404532408997452,
+              "sell_mean": 0.5901174904568935,
+              "gap_buy_minus_sell": -0.366072166366919,
+              "day_overall_mean": 0.48604587240134883
+            },
+            {
+              "day": 8,
+              "n_buy": 58835,
+              "n_sell": 59591,
+              "buy_mean": 0.6902192099644698,
+              "sell_mean": 0.3895733907040224,
+              "gap_buy_minus_sell": 0.3006458192604474,
+              "day_overall_mean": 0.538936678970015
+            },
+            {
+              "day": 9,
+              "n_buy": 98581,
+              "n_sell": 61344,
+              "buy_mean": 1.0779629562937179,
+              "sell_mean": 0.27373368161664435,
+              "gap_buy_minus_sell": 0.8042292746770735,
+              "day_overall_mean": 0.7694768495199779
+            },
+            {
+              "day": 10,
+              "n_buy": 77193,
+              "n_sell": 88101,
+              "buy_mean": 0.6904894267256975,
+              "sell_mean": 0.708950622175839,
+              "gap_buy_minus_sell": -0.018461195450141576,
+              "day_overall_mean": 0.70032916549633
+            },
+            {
+              "day": 11,
+              "n_buy": 71654,
+              "n_sell": 92462,
+              "buy_mean": 0.4011001258932654,
+              "sell_mean": 0.7949852812754146,
+              "gap_buy_minus_sell": -0.3938851553821492,
+              "day_overall_mean": 0.623012731836283
+            },
+            {
+              "day": 12,
+              "n_buy": 51543,
+              "n_sell": 68433,
+              "buy_mean": 0.2859729744871599,
+              "sell_mean": 0.6857274185879011,
+              "gap_buy_minus_sell": -0.3997544441007412,
+              "day_overall_mean": 0.5139885432104547
+            },
+            {
+              "day": 13,
+              "n_buy": 19105,
+              "n_sell": 18636,
+              "buy_mean": 0.5221714683383639,
+              "sell_mean": 0.18454598676158868,
+              "gap_buy_minus_sell": 0.33762548157677524,
+              "day_overall_mean": 0.3554565303487828
+            }
+          ],
+          "n_days_usable": 10,
+          "n_days_gap_sign_matches_pooled": 6,
+          "gap_sign_stable_frac": 0.6,
+          "demeaned_gap_buy_minus_sell": -0.029881419048898537
+        },
+        "drift_neutralized": {
+          "demeaned_gap_buy_minus_sell": -0.029881419048898537,
+          "raw_gap_buy_minus_sell": -0.014449522411570603,
+          "demeaned_over_raw": 2.0679866225177577
+        },
+        "verdict": "likely_drift_artifact",
+        "verdict_reason": "per-day gap sign matches pooled on only 0.60 of days"
+      },
+      "mo60": {
+        "buy": {
+          "n": 597471,
+          "mean": 0.31755961100810876,
+          "median": 0.0,
+          "notional_weighted_mean": -0.1247800927992727,
+          "mean_ci95": [
+            0.2757683030276594,
+            0.3593509189885581
+          ]
+        },
+        "sell": {
+          "n": 681243,
+          "mean": 1.079559144571058,
+          "median": 0.3177831470966339,
+          "notional_weighted_mean": 1.2424974607123545,
+          "mean_ci95": [
+            1.0407022071958267,
+            1.1184160819462892
+          ]
+        },
+        "gap_buy_minus_sell": {
+          "point": -0.7619995335629492,
+          "ci95": [
+            -0.8190641899178194,
+            -0.7049348772080791
+          ]
+        },
+        "within_day_control": {
+          "per_day": [
+            {
+              "day": 4,
+              "n_buy": 62628,
+              "n_sell": 61593,
+              "buy_mean": 0.22586505105783936,
+              "sell_mean": 1.5906151295446551,
+              "gap_buy_minus_sell": -1.3647500784868158,
+              "day_overall_mean": 0.9025545929568615
+            },
+            {
+              "day": 5,
+              "n_buy": 78824,
+              "n_sell": 65574,
+              "buy_mean": -0.14637637131884723,
+              "sell_mean": 0.10978115677316946,
+              "gap_buy_minus_sell": -0.2561575280920167,
+              "day_overall_mean": -0.03005014971532146
+            },
+            {
+              "day": 6,
+              "n_buy": 26284,
+              "n_sell": 32080,
+              "buy_mean": 0.36997947489188215,
+              "sell_mean": 0.8738880516766206,
+              "gap_buy_minus_sell": -0.5039085767847384,
+              "day_overall_mean": 0.6469547874690602
+            },
+            {
+              "day": 7,
+              "n_buy": 53019,
+              "n_sell": 133534,
+              "buy_mean": -0.38699147401093936,
+              "sell_mean": 2.10519452077968,
+              "gap_buy_minus_sell": -2.4921859947906193,
+              "day_overall_mean": 1.396906745949986
+            },
+            {
+              "day": 8,
+              "n_buy": 58830,
+              "n_sell": 59584,
+              "buy_mean": 1.0846278255845512,
+              "sell_mean": 0.05220796516400717,
+              "gap_buy_minus_sell": 1.032419860420544,
+              "day_overall_mean": 0.5651309336351391
+            },
+            {
+              "day": 9,
+              "n_buy": 98575,
+              "n_sell": 61329,
+              "buy_mean": 1.9230067546322425,
+              "sell_mean": -0.4510490802489366,
+              "gap_buy_minus_sell": 2.374055834881179,
+              "day_overall_mean": 1.012469993216469
+            },
+            {
+              "day": 10,
+              "n_buy": 77032,
+              "n_sell": 88044,
+              "buy_mean": -0.766440233836585,
+              "sell_mean": 1.148676847857489,
+              "gap_buy_minus_sell": -1.915117081694074,
+              "day_overall_mean": 0.25499576134547086
+            },
+            {
+              "day": 11,
+              "n_buy": 71652,
+              "n_sell": 92446,
+              "buy_mean": 0.8641676219019879,
+              "sell_mean": 0.9352457238158882,
+              "gap_buy_minus_sell": -0.0710781019139003,
+              "day_overall_mean": 0.904210073422009
+            },
+            {
+              "day": 12,
+              "n_buy": 51526,
+              "n_sell": 68426,
+              "buy_mean": -1.562240589784776,
+              "sell_mean": 2.30982429388409,
+              "gap_buy_minus_sell": -3.872064883668866,
+              "day_overall_mean": 0.6465588610782843
+            },
+            {
+              "day": 13,
+              "n_buy": 19101,
+              "n_sell": 18633,
+              "buy_mean": 1.160492221713861,
+              "sell_mean": 0.0015537582486720998,
+              "gap_buy_minus_sell": 1.1589384634651887,
+              "day_overall_mean": 0.5882099195527631
+            }
+          ],
+          "n_days_usable": 10,
+          "n_days_gap_sign_matches_pooled": 7,
+          "gap_sign_stable_frac": 0.7,
+          "demeaned_gap_buy_minus_sell": -0.6833765689334512
+        },
+        "drift_neutralized": {
+          "demeaned_gap_buy_minus_sell": -0.6833765689334512,
+          "raw_gap_buy_minus_sell": -0.7619995335629492,
+          "demeaned_over_raw": 0.8968201932330935
+        },
+        "verdict": "stable_feature",
+        "verdict_reason": "survives de-meaning (keeps 0.90 of raw gap, same sign) and per-day sign stable on 0.70 of days"
+      }
+    }
+  },
+  "pooled": {
+    "n_rows": 2480267,
+    "n_buy": 1195990,
+    "n_sell": 1284277,
+    "horizons": {
+      "mo1": {
+        "buy": {
+          "n": 1195979,
+          "mean": 0.3703444313302393,
+          "median": 0.0,
+          "notional_weighted_mean": 0.10763839133250505,
+          "mean_ci95": [
+            0.36683471399118744,
+            0.3738541486692912
+          ]
+        },
+        "sell": {
+          "n": 1284252,
+          "mean": 0.33430926220497886,
+          "median": 0.0,
+          "notional_weighted_mean": -0.017370270061013514,
+          "mean_ci95": [
+            0.33042103132536427,
+            0.33819749308459346
+          ]
+        },
+        "gap_buy_minus_sell": {
+          "point": 0.03603516912526045,
+          "ci95": [
+            0.03079718714999271,
+            0.041273151100528184
+          ]
+        },
+        "within_day_control": {
+          "per_day": [
+            {
+              "day": 4,
+              "n_buy": 130520,
+              "n_sell": 129977,
+              "buy_mean": 0.37440806607096155,
+              "sell_mean": 0.443415786707083,
+              "gap_buy_minus_sell": -0.06900772063612143,
+              "day_overall_mean": 0.4088400038864494
+            },
+            {
+              "day": 5,
+              "n_buy": 148620,
+              "n_sell": 137065,
+              "buy_mean": 0.3709214233331165,
+              "sell_mean": 0.31866114739106755,
+              "gap_buy_minus_sell": 0.05226027594204896,
+              "day_overall_mean": 0.34584816179681976
+            },
+            {
+              "day": 6,
+              "n_buy": 60298,
+              "n_sell": 64259,
+              "buy_mean": 0.20348196163389404,
+              "sell_mean": 0.3154668360071464,
+              "gap_buy_minus_sell": -0.11198487437325239,
+              "day_overall_mean": 0.2612549976122078
+            },
+            {
+              "day": 7,
+              "n_buy": 122056,
+              "n_sell": 195094,
+              "buy_mean": 0.32491577019613965,
+              "sell_mean": 0.2584175461916784,
+              "gap_buy_minus_sell": 0.06649822400446126,
+              "day_overall_mean": 0.28400956015695833
+            },
+            {
+              "day": 8,
+              "n_buy": 127338,
+              "n_sell": 130244,
+              "buy_mean": 0.43522952846584834,
+              "sell_mean": 0.36551604308091146,
+              "gap_buy_minus_sell": 0.06971348538493688,
+              "day_overall_mean": 0.3999795374320194
+            },
+            {
+              "day": 9,
+              "n_buy": 168659,
+              "n_sell": 140126,
+              "buy_mean": 0.5564502028485564,
+              "sell_mean": 0.25452303115542324,
+              "gap_buy_minus_sell": 0.30192717169313316,
+              "day_overall_mean": 0.41943627127587
+            },
+            {
+              "day": 10,
+              "n_buy": 149518,
+              "n_sell": 161415,
+              "buy_mean": 0.3570376611428084,
+              "sell_mean": 0.47135805238171047,
+              "gap_buy_minus_sell": -0.11432039123890209,
+              "day_overall_mean": 0.41638493515948516
+            },
+            {
+              "day": 11,
+              "n_buy": 144516,
+              "n_sell": 166887,
+              "buy_mean": 0.35392872925181734,
+              "sell_mean": 0.3498819932020993,
+              "gap_buy_minus_sell": 0.004046736049718058,
+              "day_overall_mean": 0.3517600037124703
+            },
+            {
+              "day": 12,
+              "n_buy": 104725,
+              "n_sell": 119900,
+              "buy_mean": 0.263253131006612,
+              "sell_mean": 0.2915087526944551,
+              "gap_buy_minus_sell": -0.02825562168784307,
+              "day_overall_mean": 0.27833537492591043
+            },
+            {
+              "day": 13,
+              "n_buy": 39729,
+              "n_sell": 39285,
+              "buy_mean": 0.1417077573285429,
+              "sell_mean": 0.1181218558251241,
+              "gap_buy_minus_sell": 0.0235859015034188,
+              "day_overall_mean": 0.12998107420198549
+            }
+          ],
+          "n_days_usable": 10,
+          "n_days_gap_sign_matches_pooled": 6,
+          "gap_sign_stable_frac": 0.6,
+          "demeaned_gap_buy_minus_sell": 0.030140550303318095
+        },
+        "drift_neutralized": {
+          "demeaned_gap_buy_minus_sell": 0.030140550303318095,
+          "raw_gap_buy_minus_sell": 0.03603516912526045,
+          "demeaned_over_raw": 0.8364203924934472
+        },
+        "verdict": "likely_drift_artifact",
+        "verdict_reason": "per-day gap sign matches pooled on only 0.60 of days"
+      },
+      "mo10": {
+        "buy": {
+          "n": 1195894,
+          "mean": 0.5379596996390678,
+          "median": 1.4929818449235799e-12,
+          "notional_weighted_mean": 0.5525106482345419,
+          "mean_ci95": [
+            0.5271555458989667,
+            0.5487638533791688
+          ]
+        },
+        "sell": {
+          "n": 1284198,
+          "mean": 0.5126758322112286,
+          "median": 1.6280223696929497e-12,
+          "notional_weighted_mean": 0.49063485915835986,
+          "mean_ci95": [
+            0.5018056821724614,
+            0.5235459822499958
+          ]
+        },
+        "gap_buy_minus_sell": {
+          "point": 0.02528386742783917,
+          "ci95": [
+            0.009957749200934795,
+            0.04060998565474354
+          ]
+        },
+        "within_day_control": {
+          "per_day": [
+            {
+              "day": 4,
+              "n_buy": 130520,
+              "n_sell": 129975,
+              "buy_mean": 0.49673668311953845,
+              "sell_mean": 0.6257165800340014,
+              "gap_buy_minus_sell": -0.128979896914463,
+              "day_overall_mean": 0.5610917075977715
+            },
+            {
+              "day": 5,
+              "n_buy": 148619,
+              "n_sell": 137059,
+              "buy_mean": 0.4056791717834171,
+              "sell_mean": 0.3490110318253346,
+              "gap_buy_minus_sell": 0.05666813995808251,
+              "day_overall_mean": 0.3784916438865723
+            },
+            {
+              "day": 6,
+              "n_buy": 60294,
+              "n_sell": 64255,
+              "buy_mean": 0.4977941703864815,
+              "sell_mean": 0.71750125515406,
+              "gap_buy_minus_sell": -0.21970708476757855,
+              "day_overall_mean": 0.6111413568893098
+            },
+            {
+              "day": 7,
+              "n_buy": 122044,
+              "n_sell": 195087,
+              "buy_mean": 0.36662068800952663,
+              "sell_mean": 0.47668255240220053,
+              "gap_buy_minus_sell": -0.1100618643926739,
+              "day_overall_mean": 0.4343265853792998
+            },
+            {
+              "day": 8,
+              "n_buy": 127336,
+              "n_sell": 130243,
+              "buy_mean": 0.5812939404098882,
+              "sell_mean": 0.49203970331695046,
+              "gap_buy_minus_sell": 0.08925423709293778,
+              "day_overall_mean": 0.5361631665436356
+            },
+            {
+              "day": 9,
+              "n_buy": 168654,
+              "n_sell": 140106,
+              "buy_mean": 0.957892527888797,
+              "sell_mean": 0.26330184233663595,
+              "gap_buy_minus_sell": 0.6945906855521611,
+              "day_overall_mean": 0.6427081691960548
+            },
+            {
+              "day": 10,
+              "n_buy": 149471,
+              "n_sell": 161411,
+              "buy_mean": 0.654793043603891,
+              "sell_mean": 0.6468869956728569,
+              "gap_buy_minus_sell": 0.00790604793103411,
+              "day_overall_mean": 0.6506881964187978
+            },
+            {
+              "day": 11,
+              "n_buy": 144505,
+              "n_sell": 166886,
+              "buy_mean": 0.4884008990844635,
+              "sell_mean": 0.6031801443504694,
+              "gap_buy_minus_sell": -0.11477924526600591,
+              "day_overall_mean": 0.5499153588005845
+            },
+            {
+              "day": 12,
+              "n_buy": 104723,
+              "n_sell": 119896,
+              "buy_mean": 0.24994176855257136,
+              "sell_mean": 0.6425702217023475,
+              "gap_buy_minus_sell": -0.3926284531497761,
+              "day_overall_mean": 0.4595170093774595
+            },
+            {
+              "day": 13,
+              "n_buy": 39728,
+              "n_sell": 39280,
+              "buy_mean": 0.3338594695420132,
+              "sell_mean": 0.17880748195876528,
+              "gap_buy_minus_sell": 0.1550519875832479,
+              "day_overall_mean": 0.2567730723129987
+            }
+          ],
+          "n_days_usable": 10,
+          "n_days_gap_sign_matches_pooled": 5,
+          "gap_sign_stable_frac": 0.5,
+          "demeaned_gap_buy_minus_sell": 0.019842380372788557
+        },
+        "drift_neutralized": {
+          "demeaned_gap_buy_minus_sell": 0.019842380372788557,
+          "raw_gap_buy_minus_sell": 0.02528386742783917,
+          "demeaned_over_raw": 0.7847842277064313
+        },
+        "verdict": "likely_drift_artifact",
+        "verdict_reason": "per-day gap sign matches pooled on only 0.50 of days"
+      },
+      "mo60": {
+        "buy": {
+          "n": 1195350,
+          "mean": 0.3396666237524424,
+          "median": 0.11059805750846863,
+          "notional_weighted_mean": 0.29330899814185574,
+          "mean_ci95": [
+            0.3156820207405626,
+            0.36365122676432216
+          ]
+        },
+        "sell": {
+          "n": 1283666,
+          "mean": 0.7699761921935072,
+          "median": 0.30092382431030273,
+          "notional_weighted_mean": 0.8115319439137113,
+          "mean_ci95": [
+            0.7465232145844148,
+            0.7934291698025996
+          ]
+        },
+        "gap_buy_minus_sell": {
+          "point": -0.4303095684410648,
+          "ci95": [
+            -0.46385510973003585,
+            -0.3967640271520938
+          ]
+        },
+        "within_day_control": {
+          "per_day": [
+            {
+              "day": 4,
+              "n_buy": 130504,
+              "n_sell": 129949,
+              "buy_mean": 0.15768194482198275,
+              "sell_mean": 1.2056627433611564,
+              "gap_buy_minus_sell": -1.0479807985391736,
+              "day_overall_mean": 0.6805557715368491
+            },
+            {
+              "day": 5,
+              "n_buy": 148593,
+              "n_sell": 137015,
+              "buy_mean": 0.010265155652085968,
+              "sell_mean": 0.2041620834826261,
+              "gap_buy_minus_sell": -0.19389692783054013,
+              "day_overall_mean": 0.10328351496520552
+            },
+            {
+              "day": 6,
+              "n_buy": 60250,
+              "n_sell": 64221,
+              "buy_mean": 0.36626801092515254,
+              "sell_mean": 0.6243707405889327,
+              "gap_buy_minus_sell": -0.2581027296637802,
+              "day_overall_mean": 0.49943650319835375
+            },
+            {
+              "day": 7,
+              "n_buy": 121896,
+              "n_sell": 194859,
+              "buy_mean": 0.005901835344733137,
+              "sell_mean": 1.5571754242690308,
+              "gap_buy_minus_sell": -1.5512735889242977,
+              "day_overall_mean": 0.9602028574728753
+            },
+            {
+              "day": 8,
+              "n_buy": 127322,
+              "n_sell": 130225,
+              "buy_mean": 0.626749489417394,
+              "sell_mean": 0.40070498692110923,
+              "gap_buy_minus_sell": 0.22604450249628472,
+              "day_overall_mean": 0.5124532819772813
+            },
+            {
+              "day": 9,
+              "n_buy": 168607,
+              "n_sell": 140061,
+              "buy_mean": 1.5942765847438158,
+              "sell_mean": -0.2910762091233807,
+              "gap_buy_minus_sell": 1.8853527938671966,
+              "day_overall_mean": 0.7387800717854482
+            },
+            {
+              "day": 10,
+              "n_buy": 149286,
+              "n_sell": 161333,
+              "buy_mean": -0.37275198802247517,
+              "sell_mean": 0.9319486670561445,
+              "gap_buy_minus_sell": -1.3047006550786198,
+              "day_overall_mean": 0.3048989952908411
+            },
+            {
+              "day": 11,
+              "n_buy": 144486,
+              "n_sell": 166860,
+              "buy_mean": 0.8689210417874698,
+              "sell_mean": 0.5470663660810712,
+              "gap_buy_minus_sell": 0.3218546757063986,
+              "day_overall_mean": 0.6964291158004017
+            },
+            {
+              "day": 12,
+              "n_buy": 104689,
+              "n_sell": 119880,
+              "buy_mean": -0.810849782696559,
+              "sell_mean": 1.7124062749053979,
+              "gap_buy_minus_sell": -2.523256057601957,
+              "day_overall_mean": 0.5361212426244896
+            },
+            {
+              "day": 13,
+              "n_buy": 39717,
+              "n_sell": 39263,
+              "buy_mean": 0.6926901842444939,
+              "sell_mean": 0.0479522531638317,
+              "gap_buy_minus_sell": 0.6447379310806622,
+              "day_overall_mean": 0.3721742892328449
+            }
+          ],
+          "n_days_usable": 10,
+          "n_days_gap_sign_matches_pooled": 6,
+          "gap_sign_stable_frac": 0.6,
+          "demeaned_gap_buy_minus_sell": -0.40735102555614044
+        },
+        "drift_neutralized": {
+          "demeaned_gap_buy_minus_sell": -0.40735102555614044,
+          "raw_gap_buy_minus_sell": -0.4303095684410648,
+          "demeaned_over_raw": 0.9466464504424127
+        },
+        "verdict": "likely_drift_artifact",
+        "verdict_reason": "per-day gap sign matches pooled on only 0.60 of days"
+      }
+    }
+  }
+}

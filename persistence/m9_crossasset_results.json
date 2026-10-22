@@ -1,0 +1,667 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "m9_crossasset_results.json",
+    "producer": {
+      "script": "m9_crossasset.py",
+      "sha256": "7d544fabed0c0c6cfa360f9fdcecabdada41797766e1c118b607efada5c2f3bd",
+      "bytes": 33288
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 fills of the trade-print panel reduced to per-wallet mean markouts; a wallet enters a cell only when it clears that cell's per-coin fill floor in BOTH coins, and the pre-registered cell floors at K=50",
+      "window": "10 days present in the input, day-of-month 4-13; the calendar dates of the window are declared by its producer, build_quickwin_markouts.py",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260619,
+      "n_perm": 2000,
+      "rank_floor_fills": 50,
+      "overridden": [
+        "master_seed",
+        "n_perm",
+        "rank_floor_fills"
+      ]
+    },
+    "object": "M9 cross-asset toxicity portability (BTC <-> ETH)",
+    "n_trades_total": 2480267,
+    "n_trades_btc": 1200863,
+    "n_trades_eth": 1279404,
+    "headline": "Spearman rank correlation of per-wallet mean markout, BTC vs ETH, over wallets active in both coins; the pre-registered headline cell is mo10 at K=50, with the rest of the K-sweep read as a monotonicity check, not as independent confirmations",
+    "headline_horizon": "mo10",
+    "headline_K": 50,
+    "pre_registered_cell": "mo10_K50",
+    "magnitude_caveat": "the cross-coin Spearman is NOT a stable magnitude: it rises monotonically with K (mo10 ~0.16 @K10 -> 0.24 -> 0.52 -> 0.72 -> 0.77 @K200) as per-wallet means are averaged over more fills (noise-averaging). Read the full K-curve and the qualitative sign, not any single cell such as 0.52",
+    "toxicity_measure": "per-wallet mean signed taker markout (bps); positive = taker profited = maker adverse-selected",
+    "horizons": [
+      "mo10",
+      "mo60"
+    ],
+    "K_values": [
+      10,
+      20,
+      50,
+      100,
+      200
+    ],
+    "seed": 20260619,
+    "n_shuffles": 2000,
+    "n_whales_dropped": 10,
+    "whale_drop_criterion": "fill_count",
+    "horizons_reported_s": [
+      10,
+      60
+    ],
+    "rank_floor_note": "the pre-registered cell floors at K=50 fills PER COIN, which is the declared wallet floor; the other cells of the K-sweep are a monotonicity check at [10, 20, 50, 100, 200] and are not the headline",
+    "run": {
+      "runtime_s": 1.401,
+      "finished_utc": "2026-08-11T12:24:28Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "results": {
+    "mo10_K10": {
+      "horizon": "mo10",
+      "K": 10,
+      "n_dual_coin_wallets": 3156,
+      "spearman": 0.1601914251433444,
+      "pearson": 0.13589840870008316,
+      "btc_toxicity_mean_bps": -0.015954107858759517,
+      "eth_toxicity_mean_bps": -0.18646810861165575,
+      "placebo": {
+        "n_shuffles": 2000,
+        "seed": 20260619,
+        "p_value": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "null_spearman_mean": 0.0006632231105898277,
+        "null_spearman_std": 0.0178763105990674,
+        "procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "m9_crossasset",
+            "portability_placebo"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.1601914251433444,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": 0.0006632231105898277,
+          "null_sd": 0.0178763105990674,
+          "null_p95": 0.03041206584701488
+        }
+      },
+      "placebo_p": 0.0004997501249375312,
+      "placebo_p_floor": 0.0004997501249375312,
+      "whale_robust": {
+        "n_whales_dropped": 10,
+        "n_kept": 3146,
+        "spearman_after_drop": 0.15791429622478292,
+        "sign_holds": true
+      },
+      "bh_fdr_q": 0.0005552779165972568,
+      "bh_fdr_reject_0p05": true
+    },
+    "mo10_K20": {
+      "horizon": "mo10",
+      "K": 20,
+      "n_dual_coin_wallets": 1675,
+      "spearman": 0.2431503707627592,
+      "pearson": 0.2209801077312707,
+      "btc_toxicity_mean_bps": 0.06220604770154082,
+      "eth_toxicity_mean_bps": -0.08142770968272141,
+      "placebo": {
+        "n_shuffles": 2000,
+        "seed": 20260619,
+        "p_value": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "null_spearman_mean": -0.0005665940462187227,
+        "null_spearman_std": 0.024648500183653037,
+        "procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "m9_crossasset",
+            "portability_placebo"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.2431503707627592,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": -0.0005665940462187227,
+          "null_sd": 0.024648500183653037,
+          "null_p95": 0.03900257814783194
+        }
+      },
+      "placebo_p": 0.0004997501249375312,
+      "placebo_p_floor": 0.0004997501249375312,
+      "whale_robust": {
+        "n_whales_dropped": 10,
+        "n_kept": 1665,
+        "spearman_after_drop": 0.2390301208841125,
+        "sign_holds": true
+      },
+      "bh_fdr_q": 0.0005552779165972568,
+      "bh_fdr_reject_0p05": true
+    },
+    "mo10_K50": {
+      "horizon": "mo10",
+      "K": 50,
+      "n_dual_coin_wallets": 711,
+      "spearman": 0.5165374268080393,
+      "pearson": 0.49172151897092464,
+      "btc_toxicity_mean_bps": 0.20333406960490677,
+      "eth_toxicity_mean_bps": 0.04101408316353566,
+      "placebo": {
+        "n_shuffles": 2000,
+        "seed": 20260619,
+        "p_value": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "null_spearman_mean": -0.0004883121060788472,
+        "null_spearman_std": 0.03807927029413457,
+        "procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "m9_crossasset",
+            "portability_placebo"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.5165374268080393,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": -0.0004883121060788472,
+          "null_sd": 0.03807927029413457,
+          "null_p95": 0.06354289821801906
+        }
+      },
+      "placebo_p": 0.0004997501249375312,
+      "placebo_p_floor": 0.0004997501249375312,
+      "whale_robust": {
+        "n_whales_dropped": 10,
+        "n_kept": 701,
+        "spearman_after_drop": 0.510444420059256,
+        "sign_holds": true
+      },
+      "bh_fdr_q": 0.0005552779165972568,
+      "bh_fdr_reject_0p05": true
+    },
+    "mo10_K100": {
+      "horizon": "mo10",
+      "K": 100,
+      "n_dual_coin_wallets": 409,
+      "spearman": 0.7153188832334174,
+      "pearson": 0.6966518245719171,
+      "btc_toxicity_mean_bps": 0.3831205370349019,
+      "eth_toxicity_mean_bps": 0.18383945699319923,
+      "placebo": {
+        "n_shuffles": 2000,
+        "seed": 20260619,
+        "p_value": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "null_spearman_mean": 0.0021161054361514414,
+        "null_spearman_std": 0.0482864908734658,
+        "procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "m9_crossasset",
+            "portability_placebo"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.7153188832334174,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": 0.0021161054361514414,
+          "null_sd": 0.0482864908734658,
+          "null_p95": 0.07808160541335027
+        }
+      },
+      "placebo_p": 0.0004997501249375312,
+      "placebo_p_floor": 0.0004997501249375312,
+      "whale_robust": {
+        "n_whales_dropped": 10,
+        "n_kept": 399,
+        "spearman_after_drop": 0.7097338194733064,
+        "sign_holds": true
+      },
+      "bh_fdr_q": 0.0005552779165972568,
+      "bh_fdr_reject_0p05": true
+    },
+    "mo10_K200": {
+      "horizon": "mo10",
+      "K": 200,
+      "n_dual_coin_wallets": 265,
+      "spearman": 0.7694663330710997,
+      "pearson": 0.7054249794796175,
+      "btc_toxicity_mean_bps": 0.5524700371251263,
+      "eth_toxicity_mean_bps": 0.33731943888056665,
+      "placebo": {
+        "n_shuffles": 2000,
+        "seed": 20260619,
+        "p_value": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "null_spearman_mean": -5.8509911141489736e-05,
+        "null_spearman_std": 0.06084880022316267,
+        "procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "m9_crossasset",
+            "portability_placebo"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.7694663330710997,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": -5.8509911141489736e-05,
+          "null_sd": 0.06084880022316267,
+          "null_p95": 0.09679445182424327
+        }
+      },
+      "placebo_p": 0.0004997501249375312,
+      "placebo_p_floor": 0.0004997501249375312,
+      "whale_robust": {
+        "n_whales_dropped": 10,
+        "n_kept": 255,
+        "spearman_after_drop": 0.7584508163501621,
+        "sign_holds": true
+      },
+      "bh_fdr_q": 0.0005552779165972568,
+      "bh_fdr_reject_0p05": true
+    },
+    "mo60_K10": {
+      "horizon": "mo60",
+      "K": 10,
+      "n_dual_coin_wallets": 3156,
+      "spearman": 0.06410367254032512,
+      "pearson": 0.08029592054429105,
+      "btc_toxicity_mean_bps": -0.09052467404064078,
+      "eth_toxicity_mean_bps": -0.19122015091630368,
+      "placebo": {
+        "n_shuffles": 2000,
+        "seed": 20260619,
+        "p_value": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "null_spearman_mean": 0.0013474428934536137,
+        "null_spearman_std": 0.01816587788333449,
+        "procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "m9_crossasset",
+            "portability_placebo"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.06410367254032512,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": 0.0013474428934536137,
+          "null_sd": 0.01816587788333449,
+          "null_p95": 0.030386790478196025
+        }
+      },
+      "placebo_p": 0.0004997501249375312,
+      "placebo_p_floor": 0.0004997501249375312,
+      "whale_robust": {
+        "n_whales_dropped": 10,
+        "n_kept": 3146,
+        "spearman_after_drop": 0.06315453084415631,
+        "sign_holds": true
+      },
+      "bh_fdr_q": 0.0005552779165972568,
+      "bh_fdr_reject_0p05": true
+    },
+    "mo60_K20": {
+      "horizon": "mo60",
+      "K": 20,
+      "n_dual_coin_wallets": 1674,
+      "spearman": 0.05877291904628565,
+      "pearson": 0.0729376222025047,
+      "btc_toxicity_mean_bps": -0.03255591575584164,
+      "eth_toxicity_mean_bps": -0.10674622519408467,
+      "placebo": {
+        "n_shuffles": 2000,
+        "seed": 20260619,
+        "p_value": 0.014492753623188406,
+        "p_floor": 0.0004997501249375312,
+        "null_spearman_mean": 0.0012507359135269923,
+        "null_spearman_std": 0.02418411060714056,
+        "procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "m9_crossasset",
+            "portability_placebo"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.05877291904628565,
+          "p": 0.014492753623188406,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": false,
+          "n_at_least_as_extreme": 28,
+          "null_mean": 0.0012507359135269923,
+          "null_sd": 0.02418411060714056,
+          "null_p95": 0.04084749113695353
+        }
+      },
+      "placebo_p": 0.014492753623188406,
+      "placebo_p_floor": 0.0004997501249375312,
+      "whale_robust": {
+        "n_whales_dropped": 10,
+        "n_kept": 1664,
+        "spearman_after_drop": 0.05651695684768445,
+        "sign_holds": true
+      },
+      "bh_fdr_q": 0.014492753623188406,
+      "bh_fdr_reject_0p05": true
+    },
+    "mo60_K50": {
+      "horizon": "mo60",
+      "K": 50,
+      "n_dual_coin_wallets": 711,
+      "spearman": 0.1725813850533152,
+      "pearson": 0.07000246177036769,
+      "btc_toxicity_mean_bps": 8.560739323653144e-05,
+      "eth_toxicity_mean_bps": 0.0695909265069366,
+      "placebo": {
+        "n_shuffles": 2000,
+        "seed": 20260619,
+        "p_value": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "null_spearman_mean": 0.0008619296969891221,
+        "null_spearman_std": 0.03706223747946522,
+        "procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "m9_crossasset",
+            "portability_placebo"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.1725813850533152,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": 0.0008619296969891221,
+          "null_sd": 0.03706223747946522,
+          "null_p95": 0.0601935559691053
+        }
+      },
+      "placebo_p": 0.0004997501249375312,
+      "placebo_p_floor": 0.0004997501249375312,
+      "whale_robust": {
+        "n_whales_dropped": 10,
+        "n_kept": 701,
+        "spearman_after_drop": 0.16783715571162075,
+        "sign_holds": true
+      },
+      "bh_fdr_q": 0.0005552779165972568,
+      "bh_fdr_reject_0p05": true
+    },
+    "mo60_K100": {
+      "horizon": "mo60",
+      "K": 100,
+      "n_dual_coin_wallets": 409,
+      "spearman": 0.2192608559912724,
+      "pearson": 0.004732154343514086,
+      "btc_toxicity_mean_bps": 0.08179827124660885,
+      "eth_toxicity_mean_bps": 0.2572745544176714,
+      "placebo": {
+        "n_shuffles": 2000,
+        "seed": 20260619,
+        "p_value": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "null_spearman_mean": 5.61619304529013e-05,
+        "null_spearman_std": 0.049669594993106504,
+        "procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "m9_crossasset",
+            "portability_placebo"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.2192608559912724,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": 5.61619304529013e-05,
+          "null_sd": 0.049669594993106504,
+          "null_p95": 0.08348720327775692
+        }
+      },
+      "placebo_p": 0.0004997501249375312,
+      "placebo_p_floor": 0.0004997501249375312,
+      "whale_robust": {
+        "n_whales_dropped": 10,
+        "n_kept": 399,
+        "spearman_after_drop": 0.2121732723769222,
+        "sign_holds": true
+      },
+      "bh_fdr_q": 0.0005552779165972568,
+      "bh_fdr_reject_0p05": true
+    },
+    "mo60_K200": {
+      "horizon": "mo60",
+      "K": 200,
+      "n_dual_coin_wallets": 265,
+      "spearman": 0.32439740001805545,
+      "pearson": 0.13502423964724702,
+      "btc_toxicity_mean_bps": 0.17119103170991204,
+      "eth_toxicity_mean_bps": 0.41781102294467426,
+      "placebo": {
+        "n_shuffles": 2000,
+        "seed": 20260619,
+        "p_value": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "null_spearman_mean": 0.0005936228865474152,
+        "null_spearman_std": 0.06324883681791882,
+        "procedure": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "m9_crossasset",
+            "portability_placebo"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.32439740001805545,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": 0.0005936228865474152,
+          "null_sd": 0.06324883681791882,
+          "null_p95": 0.10224335495686039
+        }
+      },
+      "placebo_p": 0.0004997501249375312,
+      "placebo_p_floor": 0.0004997501249375312,
+      "whale_robust": {
+        "n_whales_dropped": 10,
+        "n_kept": 255,
+        "spearman_after_drop": 0.3194628589624826,
+        "sign_holds": true
+      },
+      "bh_fdr_q": 0.0005552779165972568,
+      "bh_fdr_reject_0p05": true
+    }
+  },
+  "bh_fdr": {
+    "method": "Benjamini-Hochberg step-up over placebo p-values",
+    "procedure": "Benjamini-Hochberg step-up FDR",
+    "procedure_note": "sort ascending, q_(i) = p_(i) * m / i, running minimum from the largest p downward, clipped to 1; NaN p-values are carried through and excluded from the family size",
+    "n_cells": 10,
+    "alpha": 0.05,
+    "family": "cross-asset portability cells: horizon x wallet-fill floor",
+    "family_size": 10,
+    "n_not_testable": 0,
+    "threshold": 0.05,
+    "threshold_meaning": "the p-value cutoff actually applied: the largest rank k with p_(k) <= k*alpha/m, times alpha/m. With no rejection it is the rank-one bar the best cell failed",
+    "rank1_threshold": 0.005,
+    "n_reject_at_0p05": 10,
+    "cells": {
+      "mo10_K10": {
+        "placebo_p": 0.0004997501249375312,
+        "bh_fdr_q": 0.0005552779165972568,
+        "reject_at_0p05": true
+      },
+      "mo10_K20": {
+        "placebo_p": 0.0004997501249375312,
+        "bh_fdr_q": 0.0005552779165972568,
+        "reject_at_0p05": true
+      },
+      "mo10_K50": {
+        "placebo_p": 0.0004997501249375312,
+        "bh_fdr_q": 0.0005552779165972568,
+        "reject_at_0p05": true
+      },
+      "mo10_K100": {
+        "placebo_p": 0.0004997501249375312,
+        "bh_fdr_q": 0.0005552779165972568,
+        "reject_at_0p05": true
+      },
+      "mo10_K200": {
+        "placebo_p": 0.0004997501249375312,
+        "bh_fdr_q": 0.0005552779165972568,
+        "reject_at_0p05": true
+      },
+      "mo60_K10": {
+        "placebo_p": 0.0004997501249375312,
+        "bh_fdr_q": 0.0005552779165972568,
+        "reject_at_0p05": true
+      },
+      "mo60_K20": {
+        "placebo_p": 0.014492753623188406,
+        "bh_fdr_q": 0.014492753623188406,
+        "reject_at_0p05": true
+      },
+      "mo60_K50": {
+        "placebo_p": 0.0004997501249375312,
+        "bh_fdr_q": 0.0005552779165972568,
+        "reject_at_0p05": true
+      },
+      "mo60_K100": {
+        "placebo_p": 0.0004997501249375312,
+        "bh_fdr_q": 0.0005552779165972568,
+        "reject_at_0p05": true
+      },
+      "mo60_K200": {
+        "placebo_p": 0.0004997501249375312,
+        "bh_fdr_q": 0.0005552779165972568,
+        "reject_at_0p05": true
+      }
+    },
+    "pre_registered_cell": "mo10_K50",
+    "interpretation_note": "The K-cells are CORRELATED NESTED THRESHOLDS on the SAME wallets (higher K is a strict subsample of lower K), so 'all cells reject the null after BH' is NOT independent confirmation. The cells re-ask one question on deeply overlapping samples, and the placebo p-values are floored at 1/(N_SHUFFLES+1); the joint rejection conveys roughly ONE cell of evidence, not one per cell. Lead with the pre-registered mo10_K50 cell and treat the K-sweep as a monotonicity / noise-averaging check (the Spearman RISES with K), not as cells to be summed."
+  }
+}

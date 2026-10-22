@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_no_abs_paths_results.json",
+    "producer": {
+      "script": "chk_no_abs_paths.py",
+      "sha256": "32ce3464b464ffe7cfad1c1e0c79b8a71cb4483630ee72323d743db371450142",
+      "bytes": 14611,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "f45afab1e44e68572963590fb3cc91bcf0ec3f96",
+      "unasked_because": null
+    },
+    "inputs": [],
+    "scope": {
+      "population": "250 shipped text files scanned, 15 binaries skipped",
+      "window": "n/a: this gate reads the repository as it stands now, not a period of market data",
+      "coins": "n/a: this gate reads file text and touches no market data"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "n_files_scanned": 250,
+    "n_files_skipped_binary": 15,
+    "allow_list": {},
+    "conventional_home_dirs": {
+      ".aws": "the shared credentials directory the AWS SDK defines for itself, in the same place under every user's home. Naming it tells a reader where their own credentials go and records nothing about the machine this ran on"
+    },
+    "run": {
+      "runtime_s": 0.294,
+      "finished_utc": "2026-10-22T09:37:33Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {}
+    }
+  },
+  "verdict": "PASS",
+  "n_findings": 0,
+  "findings": []
+}

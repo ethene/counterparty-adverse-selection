@@ -1,0 +1,681 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "build_results.json",
+    "producer": {
+      "script": "build.py",
+      "sha256": "552762fbad319ac5cbba235cb1ecfddd8584ee7f49d80ac6d4a0b65f82ead04b",
+      "bytes": 221494,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "c5a5bb8b949713ff06a0cbde32a572caa27f8b87",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "*-aggTrades-*.csv",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "*_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "NEUTRAL_EDITS.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "as_quoter_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "binance_funding.parquet",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "binance_spot_klines.parquet",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "book_feats_*.npz",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "counterparty_adverse_selection.ipynb",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "flat_surcharge_control_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "follow_the_informed_oos_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "hl_funding.parquet",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "hl_print_series_*.npz",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "i3_book_nonrecoverability_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "i3_depth_control_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "i4_midmarkout_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "ks2_persistence_10day_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "ks2_persistence_mid_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "m11_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "m2_figure_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "m4_realizedpnl_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "maker_econ_b2_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "maker_econ_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "maker_map.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "mid_series_*.npz",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "mm_bakeoff_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "notebook_expected.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "notebook_fills.npz",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "panel_markouts.npz",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "panel_markouts_v2.npz",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "quickwin_pass_summary.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "quickwin_taker_map.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "registry.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "survivorship_census_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "t1_backtest_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "t3_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "three_coin_persistence_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "toxicity_frame_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "ws1_horizon_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "ws2_hard_classifier_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      },
+      {
+        "name": "ws3_taker_pnl_results.json",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "absent"
+      }
+    ],
+    "scope": {
+      "population": "105 producer scripts of this repository",
+      "window": "the tree as it stands at the moment of the run",
+      "coins": "n/a: this file records a build, not a measurement"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "record_kind": "run_journal",
+    "record_kind_why": "a journal of one build, not a computed quantity. Its producer hash is correct for the run it records and goes stale on the next edit to build.py by construction, because the thing it describes is a run and not a number. Freshness against the producer is therefore not answerable for this file, and a reader wanting a current plan runs the build again rather than treating this file as out of date",
+    "run": {
+      "runtime_s": 5.982,
+      "finished_utc": "2026-10-21T18:12:14Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {}
+    }
+  },
+  "planned": [
+    {
+      "script": "data_register.py",
+      "stage": "tape",
+      "verdict": "unknown",
+      "scheduled": true,
+      "reasons": [],
+      "unknown": [
+        {
+          "output": "data_register_results.json",
+          "why": "not a zip archive, so its columns cannot be read without loading it",
+          "cause": "no_record_at_all"
+        },
+        {
+          "output": "data_register_results.json",
+          "why": "this node walks the raw tape, and the parser deletes each day's hourly directory as soon as it has parsed it, so the input did not exist by the time the artifact was written and no hash of it was ever recorded. Whether this node is current cannot be established from the tree: that is neither proof it is current nor a reason to walk the tape again",
+          "detail": {
+            "node": "data_register.py"
+          },
+          "cause": "raw_tape_gone"
+        }
+      ],
+      "unknown_causes": {
+        "no_record_at_all": 1,
+        "raw_tape_gone": 1
+      }
+    }
+  ],
+  "skipped": {
+    "predicate": "verdict is up_to_date and the node is not in the plan",
+    "population": "105 producer nodes of this repository",
+    "nodes_skipped": 10,
+    "nodes_skipped_with_a_recorded_runtime": 10,
+    "recorded_seconds_not_spent": 27.0,
+    "is_a_lower_bound": false,
+    "nodes": [
+      "build_diagram.py",
+      "checks/chk_academic_header.py",
+      "checks/chk_expensive_edits.py",
+      "checks/chk_headline_horizon.py",
+      "checks/chk_no_abs_paths.py",
+      "checks/chk_producer_committed.py",
+      "checks/chk_requirements_census.py",
+      "checks/chk_run_happened.py",
+      "checks/chk_settings_home.py",
+      "money/sensitivity_rollup.py"
+    ]
+  },
+  "stood_aside": [],
+  "ran": [
+    {
+      "script": "data_register.py",
+      "argv": [],
+      "verdict": "NEEDS_ARGV",
+      "flags": [
+        "--full-local-census",
+        "--selftest",
+        "--stdout"
+      ],
+      "read_by": [
+        "argparse"
+      ],
+      "why": "this producer reads its command line, so running it bare would silently pick its default arm. Pass --argv"
+    }
+  ],
+  "graph": {
+    "scripts_scanned": 126,
+    "producer_nodes": 105,
+    "artifacts_produced": 144,
+    "tape_nodes": 19,
+    "analysis_nodes": 86,
+    "artifacts_with_two_producers": 0,
+    "artifacts_read_with_no_producer": 9,
+    "cycles": 0,
+    "scripts_with_unresolved_io": 6,
+    "unresolved_io_calls": 8,
+    "io_declared_by_hand": 71,
+    "io_folded_but_not_an_artifact": 45,
+    "io_into_a_checkpoint_dir": 12,
+    "scripts_mentioning_the_tape": 35,
+    "modules_loaded_by_path": 0,
+    "dynamic_imports_not_named": 1,
+    "writes_redirected_through_another_module": 2,
+    "tape_stages_refused_to_an_importer": 3,
+    "nodes_reading_the_command_line": 38,
+    "nodes_reading_it_through_sys_argv": 13,
+    "nodes_reading_it_through_argparse": 25
+  },
+  "verdicts_after": {
+    "up_to_date": 10,
+    "must_run": 78,
+    "unknown": 17
+  },
+  "cache_policy": {
+    "cached": "parsed panels and the maps beside them -- the .npz markout files and the per-wallet taker maps. They are what every analysis node reads, they are deterministic given the tape, and they are what a rebuild is trying to avoid.",
+    "raw_days": "the raw tape, deleted by default. Each day arrives as 24 hourly compressed files and is parsed; whether the day's directory then survives is decided by CAP_KEEP_RAW, and CAP_RAW_CACHE says where it lives. A day already in that directory with a full complement of hourly files is reused instead of refetched. No build node stands for a raw day either way, kept or deleted, so nothing in this graph can ask for one directly.",
+    "why": "the system volume cannot hold thirty days of the tape at once, so deleting is what a long unattended run wants and is the default. Writing the rule here is what makes it a build property instead of six independent habits.",
+    "raw_day_disposal": "deletion is the DEFAULT, not the wired-in action, and the key that turns it off is declared rather than implied. Three reasons, and the first is about proof rather than disk. An input deleted before the artifact is written cannot be hashed, so a node that walks the tape can never be PROVEN unchanged, only assumed -- and reproducibility with a missing input is not checked at all. Three nodes here walk the same ten days, so without a kept day one recompute batch pays three fetches for identical bytes. And the volume is still the scarce thing, which is why keeping is the setting and deleting is what happens when nobody sets it."
+  },
+  "parsers": [
+    {
+      "parser": "ks2_persistence_10day.py",
+      "script": "persistence/ks2_persistence_10day.py",
+      "present": true,
+      "disposes": true,
+      "via": "shutil.rmtree",
+      "through": null,
+      "calls": [
+        {
+          "call": "shutil.rmtree",
+          "line": 239,
+          "gated_on": []
+        },
+        {
+          "call": "shutil.rmtree",
+          "line": 273,
+          "gated_on": []
+        },
+        {
+          "call": "shutil.rmtree",
+          "line": 287,
+          "gated_on": []
+        },
+        {
+          "call": "shutil.rmtree",
+          "line": 376,
+          "gated_on": [
+            "CAP_KEEP_RAW"
+          ]
+        }
+      ],
+      "gated_on": [
+        "CAP_KEEP_RAW"
+      ],
+      "disposal": "by_setting",
+      "reads_settings": []
+    },
+    {
+      "parser": "ks2_markout_multiday.py",
+      "script": "persistence/ks2_markout_multiday.py",
+      "present": true,
+      "disposes": true,
+      "via": "os.remove",
+      "through": null,
+      "calls": [
+        {
+          "call": "os.remove",
+          "line": 259,
+          "gated_on": []
+        },
+        {
+          "call": "os.remove",
+          "line": 296,
+          "gated_on": [
+            "CAP_KEEP_RAW"
+          ]
+        }
+      ],
+      "gated_on": [
+        "CAP_KEEP_RAW"
+      ],
+      "disposal": "by_setting",
+      "reads_settings": []
+    },
+    {
+      "parser": "build_quickwin_markouts.py",
+      "script": "data/build_quickwin_markouts.py",
+      "present": true,
+      "disposes": true,
+      "via": "shutil.rmtree",
+      "through": null,
+      "calls": [
+        {
+          "call": "shutil.rmtree",
+          "line": 232,
+          "gated_on": []
+        },
+        {
+          "call": "shutil.rmtree",
+          "line": 266,
+          "gated_on": []
+        },
+        {
+          "call": "shutil.rmtree",
+          "line": 280,
+          "gated_on": []
+        },
+        {
+          "call": "shutil.rmtree",
+          "line": 444,
+          "gated_on": [
+            "CAP_KEEP_RAW"
+          ]
+        }
+      ],
+      "gated_on": [
+        "CAP_KEEP_RAW"
+      ],
+      "disposal": "by_setting",
+      "reads_settings": [
+        "CAP_KEEP_RAW",
+        "CAP_RAW_CACHE"
+      ]
+    },
+    {
+      "parser": "panel_build.py",
+      "script": "data/panel_build.py",
+      "present": true,
+      "disposes": true,
+      "via": "shutil.rmtree",
+      "through": "build_quickwin_markouts",
+      "calls": [
+        {
+          "call": "shutil.rmtree",
+          "line": 232,
+          "gated_on": []
+        },
+        {
+          "call": "shutil.rmtree",
+          "line": 266,
+          "gated_on": []
+        },
+        {
+          "call": "shutil.rmtree",
+          "line": 280,
+          "gated_on": []
+        },
+        {
+          "call": "shutil.rmtree",
+          "line": 444,
+          "gated_on": [
+            "CAP_KEEP_RAW"
+          ]
+        }
+      ],
+      "gated_on": [
+        "CAP_KEEP_RAW"
+      ],
+      "disposal": "by_setting",
+      "reads_settings": []
+    },
+    {
+      "parser": "panel_rebuild_v2.py",
+      "script": "data/panel_rebuild_v2.py",
+      "present": true,
+      "disposes": true,
+      "via": "shutil.rmtree",
+      "through": null,
+      "calls": [
+        {
+          "call": "shutil.rmtree",
+          "line": 500,
+          "gated_on": [
+            "CAP_KEEP_RAW"
+          ]
+        }
+      ],
+      "gated_on": [
+        "CAP_KEEP_RAW"
+      ],
+      "disposal": "by_setting",
+      "reads_settings": []
+    },
+    {
+      "parser": "chk_field_hygiene.py",
+      "script": "checks/chk_field_hygiene.py",
+      "present": true,
+      "disposes": true,
+      "via": "os.remove",
+      "through": null,
+      "calls": [
+        {
+          "call": "os.remove",
+          "line": 419,
+          "gated_on": [
+            "CAP_KEEP_RAW"
+          ]
+        }
+      ],
+      "gated_on": [
+        "CAP_KEEP_RAW"
+      ],
+      "disposal": "by_setting",
+      "reads_settings": []
+    },
+    {
+      "parser": "chk_liquidation_field.py",
+      "script": "checks/chk_liquidation_field.py",
+      "present": true,
+      "disposes": true,
+      "via": "os.remove",
+      "through": null,
+      "calls": [
+        {
+          "call": "os.remove",
+          "line": 146,
+          "gated_on": []
+        },
+        {
+          "call": "os.remove",
+          "line": 407,
+          "gated_on": [
+            "CAP_KEEP_RAW"
+          ]
+        }
+      ],
+      "gated_on": [
+        "CAP_KEEP_RAW"
+      ],
+      "disposal": "by_setting",
+      "reads_settings": []
+    }
+  ],
+  "declarations": {
+    "walker": 32,
+    "own_output": 5,
+    "raw_tape": 4,
+    "fixture": 5,
+    "command_line": 4,
+    "reads": 10,
+    "internal": 1,
+    "arms": 6
+  },
+  "stale_declarations": [],
+  "disk": {
+    "stage": "tape",
+    "free_gb": 38.01,
+    "allowance_gb": 2.0,
+    "ok": true,
+    "note": "the raw tape, deleted by default. Each day arrives as 24 hourly compressed files and is parsed; whether the day's directory then survives is decided by CAP_KEEP_RAW, and CAP_RAW_CACHE says where it lives. A day already in that directory with a full complement of hourly files is reused instead of refetched. No build node stands for a raw day either way, kept or deleted, so nothing in this graph can ask for one directly."
+  }
+}

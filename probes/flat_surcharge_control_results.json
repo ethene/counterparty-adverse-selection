@@ -1,0 +1,566 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "flat_surcharge_control_results.json",
+    "producer": {
+      "script": "flat_surcharge_control.py",
+      "sha256": "9158f89897a5c185ec51f7f37036e6befc0e44027e08f45a4d52b9e6bc438c59",
+      "bytes": 55785,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "707f579c404a10a78c3090340a021b9f3b6929dd",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "mm_bakeoff_results.json",
+        "bytes": 953782,
+        "sha256": "45035be1920bedb3c921b11517c4f0b233b726053497e19cba1a97ebdf8d02c2",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "late-half fills with a finite 10s book-mid markout and positive notional; the premium each wallet is charged is estimated on the disjoint early half",
+      "window": {
+        "early": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "late": [
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      },
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "mid",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "n_perm": 2000,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "rank_floor_fills": [
+        50
+      ],
+      "n_boot": 2000,
+      "master_seed": 20260620,
+      "override_reasons": {
+        "n_boot": "the run drew 2000 resamples, which IS the declared 2000: stated as a confirmation and not as a deviation. settings.boot_draws() has no entry for this file because it needs no budget of its own, and its own message names this route",
+        "master_seed": "every stream is derived from the declared 20260620 through settings.rng and the cell identity, so the seed is confirmed rather than overridden; no literal seed stands in this file"
+      },
+      "overridden": [
+        "master_seed",
+        "n_boot",
+        "override_reasons",
+        "rank_floor_fills"
+      ]
+    },
+    "object": "flat-surcharge control: what the counterparty-resolved premium buys over a flat premium of the same notional-weighted width",
+    "supersedes": "a scratch script held outside this repository with the audit trail of 2026-07-29, whose numbers were fitted to the width the study published before the entry-price repair of 2026-08-02 and are not comparable to these",
+    "run": {
+      "runtime_s": 48.756,
+      "finished_utc": "2026-10-22T09:26:06Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "reproduction": {
+    "published": 0.5231306509738953,
+    "published_address": "mm_bakeoff_results.json#adverse_selection_term_value.K50.pooled.base.as_toxicity_minus_as_symmetric_delta_net_vw_bps",
+    "recomputed": {
+      "no_rank_floor": 0.5231306509738956,
+      "rank_floor_50": 0.31342014565428655
+    },
+    "relative_gap": {
+      "no_rank_floor": 4.2445344105083135e-16,
+      "rank_floor_50": 0.40087596650893526
+    },
+    "rtol": 1e-06,
+    "reproduced": true,
+    "construction_that_reproduces": "no_rank_floor",
+    "n_wallets_scored": {
+      "no_rank_floor": 32578,
+      "rank_floor_50": 2069
+    },
+    "means": "A residual below is a comparison against this recomputed value. If reproduced is false the control has no baseline and its numbers are not to be quoted."
+  },
+  "pooled": {
+    "true_gain_bps": 0.5231306509738956,
+    "one_global_constant": {
+      "width_bps": 1.7394448033862846,
+      "flat_same_width_gain_bps": 0.4837896580476124,
+      "identity_residual_bps": 0.039340992926283125,
+      "width_share_pct": 92.47970027123372,
+      "identity_share_pct": 7.520299728766276
+    },
+    "per_coin_constants": {
+      "width_bps": {
+        "BTC": 1.3361849745819248,
+        "ETH": 2.3358794797073754
+      },
+      "flat_same_width_gain_bps": 0.4855818581546314,
+      "identity_residual_bps": 0.037548792819264154,
+      "width_share_pct": 92.82229157298262,
+      "identity_share_pct": 7.177708427017375
+    }
+  },
+  "by_coin": {
+    "BTC": {
+      "width_bps": 1.3361849745819248,
+      "true_gain_bps": 0.3905022737454898,
+      "flat_same_width_gain_bps": 0.37938352855074453,
+      "identity_residual_bps": 0.011118745194745261,
+      "identity_share_pct": 2.8472933302283185
+    },
+    "ETH": {
+      "width_bps": 2.3358794797073754,
+      "true_gain_bps": 0.7192924245821287,
+      "flat_same_width_gain_bps": 0.6426527137638671,
+      "identity_residual_bps": 0.0766397108182616,
+      "identity_share_pct": 10.65487529119819
+    }
+  },
+  "pooled_at_rank_floor": {
+    "rank_floor_fills": 50,
+    "n_wallets_scored": 2069,
+    "true_gain_bps": 0.31342014565428655,
+    "one_global_constant": {
+      "width_bps": 1.0420370224355948,
+      "flat_same_width_gain_bps": 0.30780340492723207,
+      "identity_residual_bps": 0.005616740727054481,
+      "width_share_pct": 98.20791968706123,
+      "identity_share_pct": 1.7920803129387681
+    },
+    "means": "The counterparty premium restricted to wallets with at least 50 early fills, split the same way as the block above. This is NOT the published quoter, which reads no floor; it is what the published quoter would buy if it were confined to the counterparties this study claims to be able to rank."
+  },
+  "reporting_rule": "Report the flat counterfactual as the LEADING number and the residual beside it, never the residual alone: the finding is that most of the gain is width and only the remainder is identity. Both the one-constant and the per-coin variants are published because they answer slightly different questions and a reader who sees one will ask for the other.",
+  "identity_residual_uncertainty": {
+    "object": "a 95 per cent interval around each published identity residual, resampled at the level the premium varies -- the counterparty -- with the flat counterfactual refitted inside every draw",
+    "procedure": {
+      "estimator": "the ratio of summed per-wallet partial sums on every draw: the resolved arm's booked offset over the notional of the drawn wallets, minus the flat arm's booked offset at the width those same drawn wallets imply",
+      "cluster_level": "taker wallet (taker_id). The premium is a property of the counterparty and one counterparty carries many correlated fills, so a fill-resampled band would count those fills as independent evidence",
+      "resample": "m wallets out of m, with replacement",
+      "n_boot": 2000,
+      "interval": "95 per cent percentile",
+      "tail_mass_per_side": 0.025,
+      "draws_per_tail": 50.0,
+      "seed": "settings.rng -- settings.MASTER_SEED flattened with the cell identity by settings.cell_key. No literal seed stands in this file and no value is read from the environment",
+      "master_seed": 20260620,
+      "predicate_finite": "the population is the file's own booked rows: late half, finite book-mid markout, finite and strictly positive notional. The resampler adds no predicate of its own, and how many draws it dropped for not being finite is printed beside every interval",
+      "premium_refit_inside_draw": false,
+      "premium_means": "the per-wallet premium is estimated on the disjoint EARLY half and held still, the way the bake-off holds its quoter still: what is measured is the spread of the late-half outcome under a fixed quoting rule, not the spread of the rule",
+      "width_refit_inside_draw": true,
+      "width_means": "the flat width is not a constant chosen by this study but the notional-weighted average premium of the rows the residual is taken over, so it is a function of the sample. A draw holding different wallets has a different average premium and has to meet the flat arm at THAT width; equality of width is the one thing this comparison holds fixed, and a draw that breaks it is a draw of some other comparison",
+      "width_held_fixed_is_published_too": "under ci95_wallet_clustered_width_held_fixed, and it is WIDER rather than narrower -- measured, and the opposite of what was expected of it. Freezing the width meets most draws at a width they do not have, so that difference carries the width gap along with identity. It is published as the comparison this file does not lead with"
+    },
+    "calibration": {
+      "why": "an interval never shown to exclude zero and never shown to contain it says nothing when it does either, and one case cannot tell a band that is too wide from one that is too narrow",
+      "n_boot": 2000,
+      "both_cases_share_one_stream": true,
+      "must_contain_zero": {
+        "case": "the flat arm against itself: the per-wallet premium replaced by the constant this file fits, the width still refitted inside every draw, everything else untouched",
+        "expected": "zero on every draw, because the refitted width of a constant premium is that constant and the two arms are one arm",
+        "catches": "a resolved arm and a flat arm drawn on different resamples, and a width refitted in one arm but frozen in the other",
+        "ci95_bps": [
+          -7.771561172376096e-16,
+          1.27675647831893e-15
+        ],
+        "max_abs_over_draws_bps": 2.3314683517128287e-15,
+        "tolerance_bps": 1e-09,
+        "n_draws_dropped_non_finite": 0,
+        "level_ci95_bps_same_draws": [
+          0.4602064947174965,
+          0.508313838745033
+        ],
+        "level_means": "the flat arm's own level across the SAME draws; it moves, which is what makes a difference of zero evidence rather than a resampling that never resampled",
+        "passed": true
+      },
+      "must_exclude_zero": {
+        "case": "the booked gain of the resolved quoter over the same population, the same wallet universe and the same draws",
+        "expected": "an interval entirely above zero: the per-fill term RECOVER_FRAC * min(premium, max(a_mid, 0)) is non-negative by construction and strictly positive on a majority of fills",
+        "catches": "a band too wide to say anything, and a draw that never varies",
+        "ci95_bps": [
+          0.37154726434884294,
+          0.7049440667097099
+        ],
+        "n_draws_dropped_non_finite": 0,
+        "passed": true
+      },
+      "both_passed": true
+    },
+    "endpoint_reliability": {
+      "why": "the headline interval's lower endpoint sits within a thousandth of a basis point of zero, so whether it EXCLUDES zero can be a property of the stream rather than of the data. Measured rather than assumed, on streams that differ in nothing but their declared cell identity",
+      "address": "pooled.one_global_constant.identity_residual_bps",
+      "n_streams": 7,
+      "n_streams_excluding_zero": 3,
+      "verdict_is_stable_across_streams": false,
+      "lower_endpoint_bps": {
+        "mean": -0.0003885511164813614,
+        "sd": 0.0007839497930562016,
+        "min": -0.0015862764721095628,
+        "max": 0.0005176409497264935
+      },
+      "frac_draws_at_or_below_zero": {
+        "min": 0.024,
+        "max": 0.031
+      },
+      "streams": [
+        {
+          "stream_cell": [
+            "flat_surcharge_control",
+            "identity_residual_ci",
+            "pooled",
+            "one_global_constant"
+          ],
+          "ci95_bps": [
+            0.0004292404361888069,
+            0.08546367762488305
+          ],
+          "excludes_zero": true,
+          "frac_draws_at_or_below_zero": 0.025,
+          "declared": true
+        },
+        {
+          "stream_cell": [
+            "flat_surcharge_control",
+            "identity_residual_ci_seed_sweep",
+            "pooled",
+            "one_global_constant",
+            0
+          ],
+          "ci95_bps": [
+            0.00045190782504827783,
+            0.08697523600261908
+          ],
+          "excludes_zero": true,
+          "frac_draws_at_or_below_zero": 0.025,
+          "declared": false
+        },
+        {
+          "stream_cell": [
+            "flat_surcharge_control",
+            "identity_residual_ci_seed_sweep",
+            "pooled",
+            "one_global_constant",
+            1
+          ],
+          "ci95_bps": [
+            -0.0009032353440760379,
+            0.08451302644756575
+          ],
+          "excludes_zero": false,
+          "frac_draws_at_or_below_zero": 0.028,
+          "declared": false
+        },
+        {
+          "stream_cell": [
+            "flat_surcharge_control",
+            "identity_residual_ci_seed_sweep",
+            "pooled",
+            "one_global_constant",
+            2
+          ],
+          "ci95_bps": [
+            -0.0015862764721095628,
+            0.08415141844942717
+          ],
+          "excludes_zero": false,
+          "frac_draws_at_or_below_zero": 0.031,
+          "declared": false
+        },
+        {
+          "stream_cell": [
+            "flat_surcharge_control",
+            "identity_residual_ci_seed_sweep",
+            "pooled",
+            "one_global_constant",
+            3
+          ],
+          "ci95_bps": [
+            -0.0006674678929707925,
+            0.08802763824667922
+          ],
+          "excludes_zero": false,
+          "frac_draws_at_or_below_zero": 0.0265,
+          "declared": false
+        },
+        {
+          "stream_cell": [
+            "flat_surcharge_control",
+            "identity_residual_ci_seed_sweep",
+            "pooled",
+            "one_global_constant",
+            4
+          ],
+          "ci95_bps": [
+            0.0005176409497264935,
+            0.08622161855256674
+          ],
+          "excludes_zero": true,
+          "frac_draws_at_or_below_zero": 0.024,
+          "declared": false
+        },
+        {
+          "stream_cell": [
+            "flat_surcharge_control",
+            "identity_residual_ci_seed_sweep",
+            "pooled",
+            "one_global_constant",
+            5
+          ],
+          "ci95_bps": [
+            -0.0009616673171767147,
+            0.08744107119575252
+          ],
+          "excludes_zero": false,
+          "frac_draws_at_or_below_zero": 0.0285,
+          "declared": false
+        }
+      ],
+      "means": "the quantity to report is frac_draws_at_or_below_zero, which is a share and moves smoothly, and NOT the binary flag, which is a percentile landing on one side of zero or the other. Quoting the flag would be quoting the seed",
+      "applies_to_the_other_four": "the sweep is run on the headline residual only. The other four share this estimator, this budget and this wallet universe, so the spread measured here is the order their endpoints would move by as well -- but that is an inference from a shared construction and NOT a measurement on each of them, and it is written down as such rather than left to be read as one. What is measured for all five is frac_draws_at_or_below_zero, which needs no sweep to read"
+    },
+    "by_residual": [
+      {
+        "address": "pooled.one_global_constant.identity_residual_bps",
+        "published_residual_bps": 0.039340992926283125,
+        "resampler_point_bps": 0.03934099292628268,
+        "relative_gap_against_published": 1.1288205426898956e-14,
+        "agrees_with_published": true,
+        "n_wallets_resampled": 33352,
+        "n_rows": 1232286,
+        "ci95_wallet_clustered_width_refit": [
+          0.0004292404361888069,
+          0.08546367762488305
+        ],
+        "ci_excludes_zero": true,
+        "ci_excludes_zero_read_with": "identity_residual_uncertainty.endpoint_reliability, which measures whether this flag changes hands between streams. It is a percentile landing on one side of zero or the other, and lifted on its own it reads as a settled verdict; frac_draws_at_or_below_zero beside it is the quantity that moves smoothly and is the one to quote",
+        "frac_draws_at_or_below_zero": 0.025,
+        "sd_over_draws_bps": 0.021948477800991094,
+        "n_draws_dropped_non_finite": 0,
+        "ci95_wallet_clustered_width_held_fixed": [
+          -0.10443544425738656,
+          0.19228349658199012
+        ],
+        "sd_over_draws_width_held_fixed_bps": 0.07553359327881637,
+        "width_refit_inside_draw": {
+          "pooled": {
+            "full_sample_bps": 1.7394448033862855,
+            "mean_over_draws_bps": 1.722440553890955,
+            "sd_over_draws_bps": 0.2391119156560051,
+            "min_over_draws_bps": 1.0794793928082218,
+            "max_over_draws_bps": 2.6646641790391774
+          }
+        },
+        "stream_cell": [
+          "flat_surcharge_control",
+          "identity_residual_ci",
+          "pooled",
+          "one_global_constant"
+        ]
+      },
+      {
+        "address": "pooled.per_coin_constants.identity_residual_bps",
+        "published_residual_bps": 0.037548792819264154,
+        "resampler_point_bps": 0.03754879281926393,
+        "relative_gap_against_published": 5.913495168641289e-15,
+        "agrees_with_published": true,
+        "n_wallets_resampled": 33352,
+        "n_rows": 1232286,
+        "ci95_wallet_clustered_width_refit": [
+          -0.000680184568093424,
+          0.07945014628990453
+        ],
+        "ci_excludes_zero": false,
+        "ci_excludes_zero_read_with": "identity_residual_uncertainty.endpoint_reliability, which measures whether this flag changes hands between streams. It is a percentile landing on one side of zero or the other, and lifted on its own it reads as a settled verdict; frac_draws_at_or_below_zero beside it is the quantity that moves smoothly and is the one to quote",
+        "frac_draws_at_or_below_zero": 0.026,
+        "sd_over_draws_bps": 0.020725981217472943,
+        "n_draws_dropped_non_finite": 0,
+        "ci95_wallet_clustered_width_held_fixed": [
+          -0.09450965655681653,
+          0.18836688355267836
+        ],
+        "sd_over_draws_width_held_fixed_bps": 0.07183872904048816,
+        "width_refit_inside_draw": {
+          "BTC": {
+            "full_sample_bps": 1.336184974581924,
+            "mean_over_draws_bps": 1.328546558221578,
+            "sd_over_draws_bps": 0.17934491635916938,
+            "min_over_draws_bps": 0.7201661996503838,
+            "max_over_draws_bps": 1.868565961174249
+          },
+          "ETH": {
+            "full_sample_bps": 2.3358794797073763,
+            "mean_over_draws_bps": 2.330378156016678,
+            "sd_over_draws_bps": 0.39224049352213175,
+            "min_over_draws_bps": 1.148654622138536,
+            "max_over_draws_bps": 3.659386769820357
+          }
+        },
+        "stream_cell": [
+          "flat_surcharge_control",
+          "identity_residual_ci",
+          "pooled",
+          "per_coin_constants"
+        ]
+      },
+      {
+        "address": "pooled_at_rank_floor.one_global_constant.identity_residual_bps",
+        "published_residual_bps": 0.005616740727054481,
+        "resampler_point_bps": 0.005616740727054537,
+        "relative_gap_against_published": 9.883160702767362e-15,
+        "agrees_with_published": true,
+        "n_wallets_resampled": 33352,
+        "n_rows": 1232286,
+        "ci95_wallet_clustered_width_refit": [
+          -0.01848983368526533,
+          0.036686291950051984
+        ],
+        "ci_excludes_zero": false,
+        "ci_excludes_zero_read_with": "identity_residual_uncertainty.endpoint_reliability, which measures whether this flag changes hands between streams. It is a percentile landing on one side of zero or the other, and lifted on its own it reads as a settled verdict; frac_draws_at_or_below_zero beside it is the quantity that moves smoothly and is the one to quote",
+        "frac_draws_at_or_below_zero": 0.3615,
+        "sd_over_draws_bps": 0.014294681444599756,
+        "n_draws_dropped_non_finite": 0,
+        "ci95_wallet_clustered_width_held_fixed": [
+          -0.10374784182555732,
+          0.11635538252910647
+        ],
+        "sd_over_draws_width_held_fixed_bps": 0.05548981039569603,
+        "width_refit_inside_draw": {
+          "pooled": {
+            "full_sample_bps": 1.042037022435595,
+            "mean_over_draws_bps": 1.0315380578169637,
+            "sd_over_draws_bps": 0.1740187935294688,
+            "min_over_draws_bps": 0.38341593584959255,
+            "max_over_draws_bps": 1.7173669648925296
+          }
+        },
+        "stream_cell": [
+          "flat_surcharge_control",
+          "identity_residual_ci",
+          "pooled_at_rank_floor",
+          "one_global_constant"
+        ]
+      },
+      {
+        "address": "by_coin.BTC.identity_residual_bps",
+        "published_residual_bps": 0.011118745194745261,
+        "resampler_point_bps": 0.011118745194745427,
+        "relative_gap_against_published": 1.4977720127310544e-14,
+        "agrees_with_published": true,
+        "n_wallets_resampled": 24820,
+        "n_rows": 586539,
+        "ci95_wallet_clustered_width_refit": [
+          -0.010272510626950844,
+          0.03493558957107671
+        ],
+        "ci_excludes_zero": false,
+        "ci_excludes_zero_read_with": "identity_residual_uncertainty.endpoint_reliability, which measures whether this flag changes hands between streams. It is a percentile landing on one side of zero or the other, and lifted on its own it reads as a settled verdict; frac_draws_at_or_below_zero beside it is the quantity that moves smoothly and is the one to quote",
+        "frac_draws_at_or_below_zero": 0.1785,
+        "sd_over_draws_bps": 0.011741818438102835,
+        "n_draws_dropped_non_finite": 0,
+        "ci95_wallet_clustered_width_held_fixed": [
+          -0.09324795282539941,
+          0.10944719309549458
+        ],
+        "sd_over_draws_width_held_fixed_bps": 0.05120782739340118,
+        "width_refit_inside_draw": {
+          "BTC": {
+            "full_sample_bps": 1.3361849745819252,
+            "mean_over_draws_bps": 1.3240688568137216,
+            "sd_over_draws_bps": 0.1802099068726333,
+            "min_over_draws_bps": 0.7807394241727756,
+            "max_over_draws_bps": 1.9272082211353168
+          }
+        },
+        "stream_cell": [
+          "flat_surcharge_control",
+          "identity_residual_ci",
+          "by_coin",
+          "BTC"
+        ]
+      },
+      {
+        "address": "by_coin.ETH.identity_residual_bps",
+        "published_residual_bps": 0.0766397108182616,
+        "resampler_point_bps": 0.07663971081826104,
+        "relative_gap_against_published": 7.243131613960985e-15,
+        "agrees_with_published": true,
+        "n_wallets_resampled": 17263,
+        "n_rows": 645747,
+        "ci95_wallet_clustered_width_refit": [
+          -0.004479379020317811,
+          0.1616215754816712
+        ],
+        "ci_excludes_zero": false,
+        "ci_excludes_zero_read_with": "identity_residual_uncertainty.endpoint_reliability, which measures whether this flag changes hands between streams. It is a percentile landing on one side of zero or the other, and lifted on its own it reads as a settled verdict; frac_draws_at_or_below_zero beside it is the quantity that moves smoothly and is the one to quote",
+        "frac_draws_at_or_below_zero": 0.0325,
+        "sd_over_draws_bps": 0.04240492698978597,
+        "n_draws_dropped_non_finite": 0,
+        "ci95_wallet_clustered_width_held_fixed": [
+          -0.15403992483106582,
+          0.3266280107959331
+        ],
+        "sd_over_draws_width_held_fixed_bps": 0.12817078307119045,
+        "width_refit_inside_draw": {
+          "ETH": {
+            "full_sample_bps": 2.335879479707377,
+            "mean_over_draws_bps": 2.318949126427853,
+            "sd_over_draws_bps": 0.38576125060831506,
+            "min_over_draws_bps": 1.1580623809951303,
+            "max_over_draws_bps": 3.8189996436676816
+          }
+        },
+        "stream_cell": [
+          "flat_surcharge_control",
+          "identity_residual_ci",
+          "by_coin",
+          "ETH"
+        ]
+      }
+    ],
+    "reporting_rule": "Report the interval WITH the residual, never the residual alone, and report the share of draws at or below zero rather than the binary verdict where the sweep shows that verdict changing hands between streams. The finding this uncertainty carries is not that the residual is large or small but that it is barely separable from zero, which is the same direction as the point estimate: most of the gain is width.",
+    "stream_audit": {
+      "n_streams_opened": 12,
+      "n_distinct_cells": 12,
+      "colliding_groups": [],
+      "no_two_cells_share_a_stream": true,
+      "means": "two blocks given one cell identity resample the same wallets while reporting independent bands, and that is invisible in every number they print"
+    }
+  }
+}

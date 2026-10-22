@@ -1,0 +1,104 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "c2_bookstate_control_results.json",
+    "producer": {
+      "script": "c2_bookstate_control.py",
+      "sha256": "19a9a4463747ae892df916e4b4ad06b6c40cd1403a4101d3f78acc35affbec25",
+      "bytes": 8006
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,477,062 book-mid fills carrying a finite markout AND a finite entry spread, imbalance and microprice deviation, out of 2,480,267 rows in the input; 45,839 takers and 9,363 makers, no fill floor",
+      "window": "10 days present in the input, day-of-month 4-13; the calendar dates are declared by the input's producer, build_quickwin_markouts.py",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 60,
+      "is_headline_horizon": false,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "mid",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 690,
+      "overridden": [
+        "master_seed"
+      ]
+    },
+    "run": {
+      "runtime_s": 4.007,
+      "finished_utc": "2026-08-04T15:46:45Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "n_fills": 2477062,
+  "book_state_r2": 0.0049,
+  "baseline": {
+    "coverage_fills": 0.9903,
+    "var_alpha_debiased": 1.7422,
+    "var_psi_debiased": 7.3716,
+    "cov_debiased": 0.5669,
+    "share_taker_alpha": 0.0094,
+    "share_maker_psi": 0.0399,
+    "share_2cov": 0.0061,
+    "iters": [
+      32,
+      34
+    ],
+    "deltas": [
+      7e-06,
+      9e-06
+    ]
+  },
+  "controlled": {
+    "coverage_fills": 0.9903,
+    "var_alpha_debiased": 1.3981,
+    "var_psi_debiased": 7.127,
+    "cov_debiased": 0.4197,
+    "share_taker_alpha": 0.0076,
+    "share_maker_psi": 0.0388,
+    "share_2cov": 0.0046,
+    "iters": [
+      32,
+      34
+    ],
+    "deltas": [
+      7e-06,
+      9e-06
+    ]
+  },
+  "maker_var_reduction": 0.0332,
+  "taker_var_reduction": 0.1975,
+  "verdict": "maker effect SURVIVES book-state control (real, beyond observable style)"
+}

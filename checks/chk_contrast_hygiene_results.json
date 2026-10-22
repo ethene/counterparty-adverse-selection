@@ -1,0 +1,4114 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_contrast_hygiene_results.json",
+    "producer": {
+      "script": "chk_contrast_hygiene.py",
+      "sha256": "69f867e8593217ba5e5f65bf4121aa644db08229d5385fc0afae9eef545566a2",
+      "bytes": 97620,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "bca265bc45ad0cc6d0f1b40c16a46907ba98a184",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "mm_bakeoff_results.json",
+        "bytes": 953782,
+        "sha256": "45035be1920bedb3c921b11517c4f0b233b726053497e19cba1a97ebdf8d02c2",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "contrast_declarations.py",
+        "bytes": 13997,
+        "sha256": "780fc9db855b52deca6be2083bfa09eeabb4137826f6d8fa44b4abfee5114459",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "72 pairs of arms over 2 containers declared in checks/contrast_declarations.py, judged on 44248 leaf comparisons",
+      "window": "n/a: this gate compares leaves of a results file against each other and reads no market data; the window is whatever the artifact under test declares",
+      "coins": "n/a: whatever the artifact under test declares"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "not_caught": [
+      "a confound the manifest does not name. This gate re-measures the held-equal list it is given and nothing else, so an axis declared carelessly is checked carelessly",
+      "a held-equal quantity whose address is not relative to an arm. The recapture fraction, the headline horizon and the eligible-wallet count are shared by both arms by construction and no walk of the two arms reaches them; they are named unreachable and not counted as checked",
+      "a middle-state pair that should have been a claim. Moving a pair there is a decision written by hand, and this gate checks that somebody wrote it, never that they were right to",
+      "a measurement the artifact does not print. Two arms differing in something neither records have no leaf to differ at",
+      "a confound entering through a shared input rather than through the arms: two arms reading one stale column agree perfectly, and that is chk_input_freshness's question"
+    ],
+    "run": {
+      "runtime_s": 0.169,
+      "finished_utc": "2026-10-22T09:38:09Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {}
+    }
+  },
+  "verdict": "PASS",
+  "asks": "whether the two arms of each published difference differ along the one axis their manifest names, and before that, whether anybody has said which pairs are claims at all. Neither is asked by the freshness, provenance or register gates: each of those asks whether it is the same NUMBER, and none asks whether the comparison is a comparison",
+  "does_not_ask": "whether any contrast is sound. This gate sorts nothing into axis, consequence and confound, and prints no word that could be read as approval: an instrument certifying a contrast would report success where there may be none, which is the direction of error that passes a review",
+  "states": {
+    "predicate": {
+      "declared_a_comparison": "a manifest at the declared address names both arms and the delta block marks the difference published",
+      "declared_not_a_comparison": "both arms are named in the hand-written ranking-only list and no manifest publishes the pair, or the producer refused the manifest",
+      "not_declared": "everything else, which is the finding"
+    },
+    "counts": {
+      "declared_a_comparison": 6,
+      "declared_not_a_comparison": 66,
+      "not_declared": 0
+    },
+    "population": "72 pairs over 2 containers, being every pair of arms each container holds"
+  },
+  "read_from_the_artifact_not_restated": {
+    "axis_and_held_equal": "declared_axis_comparisons.manifests",
+    "what_is_published": "declared_axis_comparisons.deltas",
+    "grounds_for_the_middle_state": "declared_axis_comparisons.why",
+    "grounds_text_this_run": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+    "why": "a check that retypes the rule it checks goes on asserting the old rule after the rule is fixed, and its disagreement then looks like a finding without being one. The producer's own `holds` fields are the exception: those are compared, never read"
+  },
+  "decided_by_hand": {
+    "ranking_only_arms": [
+      "naive_at_book",
+      "naive_const",
+      "as_symmetric",
+      "gm_vpin",
+      "bbgl",
+      "as_toxicity",
+      "as_toxicity_ew",
+      "bbgl_flat",
+      "as_toxicity_plus_global"
+    ],
+    "reason": "the work publishes a difference for the pairs its manifests name, and an ordering over every arm. Those are different claims. A difference is made only where the arms were built to be equal on everything but one axis, which for this bake-off means a solved equal-width construction, and the producer solves it for the pairs it publishes and no others. Any other pair differs in realised quote width as well as in rule, and since the recapture books a printed fill to the arm whatever the arm quoted, standing wider is free and such a difference would be confounded. The work does not make it, so this gate does not ask what its axis was. The grounds are the producer's own and are read at grounds_at.",
+    "decided": "2026-08-03",
+    "why_named_one_by_one": "written as 'everything else' the third state could never fire, and a rule that cannot fire is not a rule"
+  },
+  "n_pairs_judged": 72,
+  "undeclared_pairs": [],
+  "breaching_pairs": [],
+  "disagreements_with_the_producer": [],
+  "frozen_debt": {
+    "pairs": [],
+    "n": 0,
+    "was": 28,
+    "why_empty": "the 28 were pairs of a six-arm bake-off differing in realised quote width under published cost differences. The bake-off was recomputed with three arms solved onto one target width, and the 0.636 bps figure this gate was written for is no longer a published difference",
+    "outside_the_debt": [],
+    "declared_and_now_repaid": []
+  },
+  "calibration": {
+    "coverage_must_stay_silent": {
+      "declaration": "quoter_bakeoff",
+      "container": "quoters.K50",
+      "left": "as_toxicity_ew",
+      "right": "naive_const",
+      "expect_state": "declared_not_a_comparison",
+      "why": "both arms stand in the ordering the bake-off publishes and no manifest names the pair, so the work makes no claim about their difference. Before the three states existed this pair was reported as a missing declaration, and 36 such reports on one run is how a gate teaches people to stop reading it"
+    },
+    "coverage_must_fire": {
+      "injected": true,
+      "what": "an arm placed in a fixture container that appears in no manifest and in no ranking_only_arms list",
+      "expect_state": "not_declared",
+      "why": "taken from the live tree this case would empty the day the arm is declared, leaving a gate that reports nothing and cannot be shown able to report anything. Two instruments of this project failed that way on 2026-08-03, which is why it is injected"
+    },
+    "held_equal_must_stay_silent": {
+      "declaration": "quoter_bakeoff",
+      "container": "quoters.K50",
+      "left": "as_toxicity_plus_global",
+      "right": "bbgl",
+      "expect_breaches": 0,
+      "expect_held_equal_addresses": 3,
+      "why": "the equal-width solve lands as_toxicity_plus_global's pooled mean extra half spread at 6.364595937112404 against bbgl's 6.364595937112405, a relative gap of 1.4e-16 against the 1e-09 the producer declares, and the late-fill count and the finite-extra count agree exactly at 1234777. Three of its seven declared held-equal quantities are addressable under an arm and are the three re-measured here; the other four -- the shared global leg, the wallet count carrying a wallet-specific premium, the recapture fraction and the headline horizon -- are settings and solve fields shared by both arms by construction, which no walk of the arms can reach and which this gate reports as unreachable rather than counting as checked. 400 leaves under both arms do differ, so the silence is a measured agreement on the declared list and not an empty comparison"
+    },
+    "held_equal_must_fire": {
+      "injected": true,
+      "what": "a fixture manifest whose declared held-equal address carries a different value in the two arms, once inside the declared tolerance and once outside it",
+      "expect_breaches": 1,
+      "why": "all three published differences hold today, so there is no live case. The pair of injections also calibrates the TOLERANCE, which a single case cannot: the producer declares rtol 1e-09 on the solved width and 0.0 on the counts, and one published difference lands at 2.9e-16 relative. A comparator demanding exact equality would call that a breach, and one ignoring the declared tolerance would pass a real one"
+    },
+    "n_assertions": 49,
+    "n_failed": 0,
+    "failures": [],
+    "not_answered": []
+  },
+  "unresolved": [],
+  "pairs": [
+    {
+      "id": "quoter_bakeoff quoters.K10 as_symmetric vs as_toxicity",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_symmetric",
+      "right": "as_toxicity",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 404,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 7,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_symmetric vs as_toxicity_ew",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_symmetric",
+      "right": "as_toxicity_ew",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 404,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 7,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_symmetric vs as_toxicity_plus_global",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_symmetric",
+      "right": "as_toxicity_plus_global",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 407,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_symmetric vs bbgl",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_symmetric",
+      "right": "bbgl",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 406,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_symmetric vs bbgl_flat",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_symmetric",
+      "right": "bbgl_flat",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 414,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_symmetric vs gm_vpin",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_symmetric",
+      "right": "gm_vpin",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 414,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_symmetric vs naive_at_book",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_symmetric",
+      "right": "naive_at_book",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 153,
+      "outside_by_block": {
+        "net_by_coin": 144,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_symmetric vs naive_const",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_symmetric",
+      "right": "naive_const",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 414,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity vs as_toxicity_ew",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity",
+      "right": "as_toxicity_ew",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 404,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 7,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity vs as_toxicity_plus_global",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity",
+      "right": "as_toxicity_plus_global",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 407,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity vs bbgl",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity",
+      "right": "bbgl",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 407,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity vs bbgl_flat",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity",
+      "right": "bbgl_flat",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 415,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity vs gm_vpin",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity",
+      "right": "gm_vpin",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 415,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity vs naive_at_book",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity",
+      "right": "naive_at_book",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 412,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "inventory_control_sim": 8,
+        "extra_half_spread_summary": 7,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity vs naive_const",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity",
+      "right": "naive_const",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 415,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity_ew vs as_toxicity_plus_global",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity_ew",
+      "right": "as_toxicity_plus_global",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 407,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity_ew vs bbgl",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity_ew",
+      "right": "bbgl",
+      "state": "declared_a_comparison",
+      "grounds": "HOW a fixed budget of defensive width is allocated: per counterparty wallet, from that wallet's own early adverse-selection estimate (arm a), against per coin plus per toxicity decile (arm b)",
+      "arms_not_in_the_ranking_only_list": [],
+      "manifest": "as_toxicity_ew_minus_bbgl",
+      "arm_a_of_the_manifest": "as_toxicity_ew",
+      "arm_b_of_the_manifest": "bbgl",
+      "axis": "HOW a fixed budget of defensive width is allocated: per counterparty wallet, from that wallet's own early adverse-selection estimate (arm a), against per coin plus per toxicity decile (arm b)",
+      "consequence_of_the_axis": "the share of fills widened and the floor of the widening. An allocation that spends the whole budget on wallets with a positive score necessarily widens on fewer fills and reaches zero on the rest, while one that carries a market-wide leg widens on every fill and never goes below that leg. These follow from the axis and are reported, not held equal -- holding them equal would delete the axis.",
+      "manifest_not_held_equal": [
+        {
+          "quantity": "frac_fills_widened_pooled",
+          "arm_a": 0.5498693286318096,
+          "arm_b": 1.0,
+          "classified": "consequence of the axis"
+        },
+        {
+          "quantity": "min_extra_half_spread_bps_pooled",
+          "arm_a": 0.0,
+          "arm_b": 3.440275496189839,
+          "classified": "consequence of the axis"
+        },
+        {
+          "quantity": "mean_extra_half_spread_bps_by_coin",
+          "arm_a": {
+            "BTC": 4.179392700455952,
+            "ETH": 8.349003741605888
+          },
+          "arm_b": {
+            "BTC": 4.54132394606314,
+            "ETH": 8.020329878953236
+          },
+          "classified": "CONFOUND on the per-coin rows and held equal on the pooled row only. The pass-through is one scalar per wallet and a wallet trades both coins, so a per-coin solve would quote one counterparty two unrelated prices. The pooled difference is the equal-width finding; the per-coin rows are reported for shape and are NOT it."
+        }
+      ],
+      "producer_says_all_hold": true,
+      "held_equal_remeasured": [
+        {
+          "quantity": "mean_extra_half_spread_bps_pooled",
+          "measured_by": "quoters.<K>.<arm>.extra_half_spread_summary.by_coin.pooled.mean_extra_half_spread_bps",
+          "rtol": 1e-09,
+          "producer_says_holds": true,
+          "arm_relative_path": "extra_half_spread_summary.by_coin.pooled.mean_extra_half_spread_bps",
+          "left": 6.215745308345628,
+          "right": 6.215745308345628,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "relative gap 0.000e+00 against the declared rtol 1.000e-09"
+        },
+        {
+          "quantity": "n_late_fills_pooled",
+          "measured_by": "quoters.<K>.<arm>.net_by_coin.pooled.n_late_fills",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "arm_relative_path": "net_by_coin.pooled.n_late_fills",
+          "left": 1234777,
+          "right": 1234777,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "relative gap 0.000e+00 against the declared rtol 0.000e+00"
+        },
+        {
+          "quantity": "n_extra_finite_pooled",
+          "measured_by": "quoters.<K>.<arm>.extra_half_spread_summary.by_coin.pooled.n_extra_finite",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "arm_relative_path": "extra_half_spread_summary.by_coin.pooled.n_extra_finite",
+          "left": 1234777,
+          "right": 1234777,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "relative gap 0.000e+00 against the declared rtol 0.000e+00"
+        }
+      ],
+      "held_equal_rechecked_from_recorded_values": [
+        {
+          "quantity": "n_wallets_carrying_a_wallet_specific_premium",
+          "measured_by": "equal_width_solve.n_wallets_floor_eligible, which is len(labels.eligible_mask_taker) -- the set decile_of_taker is filled for and the set the solved arms' term is built over",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 2069.0,
+          "recorded_right": 2069.0,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 2069.0 against 2069.0, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        },
+        {
+          "quantity": "recapture_fraction",
+          "measured_by": "RECOVER_FRAC, applied by the same line of evaluate_quoter to both arms; the offset cap min(extra, max(a_mid,0)) is that same line",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 0.5,
+          "recorded_right": 0.5,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 0.5 against 0.5, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        },
+        {
+          "quantity": "headline_horizon_s",
+          "measured_by": "HEADLINE_HORIZON, the rung every published difference is read at",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 10.0,
+          "recorded_right": 10.0,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 10.0 against 10.0, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        }
+      ],
+      "n_held_equal_declared": 6,
+      "n_held_equal_remeasured": 3,
+      "n_held_equal_rechecked": 3,
+      "how_each_was_judged": {
+        "re-measured from the leaves of both arms": 3,
+        "re-compared from the values the producer recorded, because the address is not relative to an arm": 3,
+        "taken on the producer's word": 0
+      },
+      "n_breaches": 0,
+      "breaches": [],
+      "n_disagreements_with_the_producer": 0,
+      "disagreements_with_the_producer": [],
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 406,
+      "n_outside_the_manifest": 406,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "spec": 1
+      },
+      "outside": [
+        {
+          "path": "extra_half_spread_summary.by_coin.BTC.frac_fills_widened",
+          "kind": "differs",
+          "left": 0.5456516301175686,
+          "right": 1.0,
+          "relative_gap": 0.45434836988243144
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.BTC.mean_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 4.198154650722138,
+          "right": 4.448923525354397,
+          "relative_gap": 0.05636619132766121
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.BTC.min_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 0.0,
+          "right": 3.440275496189839,
+          "relative_gap": 1.0
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.ETH.frac_fills_widened",
+          "kind": "differs",
+          "left": 0.6623207442205464,
+          "right": 1.0,
+          "relative_gap": 0.33767925577945357
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.ETH.mean_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 8.047942231771033,
+          "right": 7.820216177005657,
+          "relative_gap": 0.02829618406881423
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.ETH.min_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 0.0,
+          "right": 6.253579872042331,
+          "relative_gap": 1.0
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.pooled.frac_fills_widened",
+          "kind": "differs",
+          "left": 0.6067953970635993,
+          "right": 1.0,
+          "relative_gap": 0.3932046029364007
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.pooled.min_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 0.0,
+          "right": 3.440275496189839,
+          "relative_gap": 1.0
+        },
+        {
+          "path": "extra_half_spread_summary.lambda_tox",
+          "kind": "differs",
+          "left": 4.602268001002021,
+          "right": 0.0,
+          "relative_gap": 1.0
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.720096384696771,
+          "right": -1.6389031596484602,
+          "relative_gap": 0.04720271827245539
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -2.276998733100061,
+          "right": -2.0905510339925053,
+          "relative_gap": 0.08188309303699659
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate1.net_ew_bps",
+          "kind": "differs",
+          "left": -0.12009638469677078,
+          "right": -0.03890315964846015,
+          "relative_gap": 0.6760671876452731
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate1.net_vw_bps",
+          "kind": "differs",
+          "left": -0.6769987331000606,
+          "right": -0.4905510339925053,
+          "relative_gap": 0.27540332055539946
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate2.net_ew_bps",
+          "kind": "differs",
+          "left": -0.020096384696770768,
+          "right": 0.061096840351539866,
+          "relative_gap": 1.3289267428747529
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate2.net_vw_bps",
+          "kind": "differs",
+          "left": -0.5769987331000604,
+          "right": -0.3905510339925053,
+          "relative_gap": 0.3231336368900177
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate3.net_ew_bps",
+          "kind": "differs",
+          "left": 0.0799036153032292,
+          "right": 0.16109684035153982,
+          "relative_gap": 0.5040025916779847
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate3.net_vw_bps",
+          "kind": "differs",
+          "left": -0.4769987331000606,
+          "right": -0.2905510339925053,
+          "relative_gap": 0.39087671762944476
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t3.net_ew_bps",
+          "kind": "differs",
+          "left": -0.6200963846967709,
+          "right": -0.5389031596484601,
+          "relative_gap": 0.1309364593183598
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t3.net_vw_bps",
+          "kind": "differs",
+          "left": -1.1769987331000606,
+          "right": -0.9905510339925052,
+          "relative_gap": 0.15840943058322296
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t4_0fee.net_ew_bps",
+          "kind": "differs",
+          "left": -0.22009638469677079,
+          "right": -0.13890315964846014,
+          "relative_gap": 0.36889849490336446
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t4_0fee.net_vw_bps",
+          "kind": "differs",
+          "left": -0.7769987331000606,
+          "right": -0.5905510339925053,
+          "relative_gap": 0.23995881996315288
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.gross_prefee_ew_bps",
+          "kind": "differs",
+          "left": -0.22009638469677079,
+          "right": -0.13890315964846014,
+          "relative_gap": 0.36889849490336446
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.gross_prefee_vw_bps",
+          "kind": "differs",
+          "left": -0.7769987331000606,
+          "right": -0.5905510339925053,
+          "relative_gap": 0.23995881996315288
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.3908911180355932,
+          "right": -1.3096974778196588,
+          "relative_gap": 0.05837526687970163
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -0.9682400110095047,
+          "right": -0.7817923088448124,
+          "relative_gap": 0.1925635173558863
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate1.net_ew_bps",
+          "kind": "differs",
+          "left": 0.2091088819644069,
+          "right": 0.2903025221803412,
+          "relative_gap": 0.2796863065677925
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate1.net_vw_bps",
+          "kind": "differs",
+          "left": 0.6317599889904953,
+          "right": 0.8182076911551877,
+          "relative_gap": 0.22787331893868643
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate2.net_ew_bps",
+          "kind": "differs",
+          "left": 0.30910888196440695,
+          "right": 0.3903025221803412,
+          "relative_gap": 0.20802745460716843
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate2.net_vw_bps",
+          "kind": "differs",
+          "left": 0.7317599889904953,
+          "right": 0.9182076911551877,
+          "relative_gap": 0.2030561320283916
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate3.net_ew_bps",
+          "kind": "differs",
+          "left": 0.40910888196440687,
+          "right": 0.49030252218034115,
+          "relative_gap": 0.16559906699005306
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate3.net_vw_bps",
+          "kind": "differs",
+          "left": 0.8317599889904954,
+          "right": 1.0182076911551878,
+          "relative_gap": 0.18311362581946497
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t3.net_ew_bps",
+          "kind": "differs",
+          "left": -0.2908911180355931,
+          "right": -0.20969747781965878,
+          "relative_gap": 0.27912038278872287
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t3.net_vw_bps",
+          "kind": "differs",
+          "left": 0.13175998899049535,
+          "right": 0.3182076911551877,
+          "relative_gap": 0.5859308475160743
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t4_0fee.net_ew_bps",
+          "kind": "differs",
+          "left": 0.10910888196440689,
+          "right": 0.19030252218034122,
+          "relative_gap": 0.4266556180426801
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t4_0fee.net_vw_bps",
+          "kind": "differs",
+          "left": 0.5317599889904954,
+          "right": 0.7182076911551878,
+          "relative_gap": 0.2596013722225727
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.gross_prefee_ew_bps",
+          "kind": "differs",
+          "left": 0.10910888196440689,
+          "right": 0.19030252218034122,
+          "relative_gap": 0.4266556180426801
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.gross_prefee_vw_bps",
+          "kind": "differs",
+          "left": 0.5317599889904954,
+          "right": 0.7182076911551878,
+          "relative_gap": 0.2596013722225727
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.7198608736728072,
+          "right": -1.5624880882268277,
+          "relative_gap": 0.09150320694830728
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -2.4157693107664087,
+          "right": -2.2176019071036874,
+          "relative_gap": 0.08203076460138163
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_vw_ci95.[0]",
+          "kind": "differs",
+          "left": -2.679713727418531,
+          "right": -2.483633070835698,
+          "relative_gap": 0.07317224021975105
+        }
+      ],
+      "n_outside_kept": 40
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity_ew vs bbgl_flat",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity_ew",
+      "right": "bbgl_flat",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 414,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity_ew vs gm_vpin",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity_ew",
+      "right": "gm_vpin",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 415,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity_ew vs naive_at_book",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity_ew",
+      "right": "naive_at_book",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 412,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "inventory_control_sim": 8,
+        "extra_half_spread_summary": 7,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity_ew vs naive_const",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity_ew",
+      "right": "naive_const",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 415,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity_plus_global vs bbgl",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity_plus_global",
+      "right": "bbgl",
+      "state": "declared_a_comparison",
+      "grounds": "which SECOND term rides on the shared market-wide global term: the counterparty-resolved one (arm a) against the per-tier one (arm b)",
+      "arms_not_in_the_ranking_only_list": [],
+      "manifest": "as_toxicity_plus_global_minus_bbgl",
+      "arm_a_of_the_manifest": "as_toxicity_plus_global",
+      "arm_b_of_the_manifest": "bbgl",
+      "axis": "which SECOND term rides on the shared market-wide global term: the counterparty-resolved one (arm a) against the per-tier one (arm b)",
+      "consequence_of_the_axis": "the share of fills the second term reaches. Both arms widen every fill, because both carry the global leg; they differ in whether the remainder is spread over deciles or over wallets.",
+      "manifest_not_held_equal": [
+        {
+          "quantity": "frac_fills_widened_pooled",
+          "arm_a": 1.0,
+          "arm_b": 1.0,
+          "classified": "consequence of the axis"
+        },
+        {
+          "quantity": "min_extra_half_spread_bps_pooled",
+          "arm_a": 3.440275496189839,
+          "arm_b": 3.440275496189839,
+          "classified": "consequence of the axis"
+        },
+        {
+          "quantity": "mean_extra_half_spread_bps_by_coin",
+          "arm_a": {
+            "BTC": 4.392389304334201,
+            "ETH": 8.155579113646185
+          },
+          "arm_b": {
+            "BTC": 4.54132394606314,
+            "ETH": 8.020329878953236
+          },
+          "classified": "CONFOUND on the per-coin rows and held equal on the pooled row only. The pass-through is one scalar per wallet and a wallet trades both coins, so a per-coin solve would quote one counterparty two unrelated prices. The pooled difference is the equal-width finding; the per-coin rows are reported for shape and are NOT it."
+        }
+      ],
+      "producer_says_all_hold": true,
+      "held_equal_remeasured": [
+        {
+          "quantity": "mean_extra_half_spread_bps_pooled",
+          "measured_by": "quoters.<K>.<arm>.extra_half_spread_summary.by_coin.pooled.mean_extra_half_spread_bps",
+          "rtol": 1e-09,
+          "producer_says_holds": true,
+          "arm_relative_path": "extra_half_spread_summary.by_coin.pooled.mean_extra_half_spread_bps",
+          "left": 6.215745308345626,
+          "right": 6.215745308345628,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 2.8578340187382007e-16,
+          "why": "relative gap 2.858e-16 against the declared rtol 1.000e-09"
+        },
+        {
+          "quantity": "n_late_fills_pooled",
+          "measured_by": "quoters.<K>.<arm>.net_by_coin.pooled.n_late_fills",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "arm_relative_path": "net_by_coin.pooled.n_late_fills",
+          "left": 1234777,
+          "right": 1234777,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "relative gap 0.000e+00 against the declared rtol 0.000e+00"
+        },
+        {
+          "quantity": "n_extra_finite_pooled",
+          "measured_by": "quoters.<K>.<arm>.extra_half_spread_summary.by_coin.pooled.n_extra_finite",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "arm_relative_path": "extra_half_spread_summary.by_coin.pooled.n_extra_finite",
+          "left": 1234777,
+          "right": 1234777,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "relative gap 0.000e+00 against the declared rtol 0.000e+00"
+        }
+      ],
+      "held_equal_rechecked_from_recorded_values": [
+        {
+          "quantity": "global_leg_mean_extra_bps",
+          "measured_by": "equal_width_solve.target_global_leg_mean_extra_bps -- the same per-fill array enters both arms, arm b inside bbgl_half_spread_bps and arm a as ctx['bbgl_global_per_fill']",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 4.914667655828111,
+          "recorded_right": 4.914667655828111,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 4.914667655828111 against 4.914667655828111, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        },
+        {
+          "quantity": "n_wallets_carrying_a_wallet_specific_premium",
+          "measured_by": "equal_width_solve.n_wallets_floor_eligible, which is len(labels.eligible_mask_taker) -- the set decile_of_taker is filled for and the set the solved arms' term is built over",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 2069.0,
+          "recorded_right": 2069.0,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 2069.0 against 2069.0, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        },
+        {
+          "quantity": "recapture_fraction",
+          "measured_by": "RECOVER_FRAC, applied by the same line of evaluate_quoter to both arms; the offset cap min(extra, max(a_mid,0)) is that same line",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 0.5,
+          "recorded_right": 0.5,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 0.5 against 0.5, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        },
+        {
+          "quantity": "headline_horizon_s",
+          "measured_by": "HEADLINE_HORIZON, the rung every published difference is read at",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 10.0,
+          "recorded_right": 10.0,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 10.0 against 10.0, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        }
+      ],
+      "n_held_equal_declared": 7,
+      "n_held_equal_remeasured": 3,
+      "n_held_equal_rechecked": 4,
+      "how_each_was_judged": {
+        "re-measured from the leaves of both arms": 3,
+        "re-compared from the values the producer recorded, because the address is not relative to an arm": 4,
+        "taken on the producer's word": 0
+      },
+      "n_breaches": 0,
+      "breaches": [],
+      "n_disagreements_with_the_producer": 0,
+      "disagreements_with_the_producer": [],
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 401,
+      "n_outside_the_manifest": 400,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 3,
+        "spec": 1
+      },
+      "outside": [
+        {
+          "path": "extra_half_spread_summary.by_coin.BTC.mean_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 4.319031771890725,
+          "right": 4.448923525354397,
+          "relative_gap": 0.029196220776423573
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.ETH.mean_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 7.9381723492228655,
+          "right": 7.820216177005657,
+          "relative_gap": 0.014859361453490816
+        },
+        {
+          "path": "extra_half_spread_summary.lambda_tox",
+          "kind": "differs",
+          "left": 0.9633451420476443,
+          "right": 0.0,
+          "relative_gap": 1.0
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.637943848538588,
+          "right": -1.6389031596484602,
+          "relative_gap": 0.0005853372752530479
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -2.0903263340547222,
+          "right": -2.0905510339925053,
+          "relative_gap": 0.00010748359362169671
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate1.net_ew_bps",
+          "kind": "differs",
+          "left": -0.03794384853858776,
+          "right": -0.03890315964846015,
+          "relative_gap": 0.024658951060556447
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate1.net_vw_bps",
+          "kind": "differs",
+          "left": -0.4903263340547218,
+          "right": -0.4905510339925053,
+          "relative_gap": 0.00045805619031055874
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate2.net_ew_bps",
+          "kind": "differs",
+          "left": 0.06205615146141224,
+          "right": 0.061096840351539866,
+          "relative_gap": 0.01545875932169096
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate2.net_vw_bps",
+          "kind": "differs",
+          "left": -0.3903263340547219,
+          "right": -0.3905510339925053,
+          "relative_gap": 0.0005753407832168571
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate3.net_ew_bps",
+          "kind": "differs",
+          "left": 0.1620561514614122,
+          "right": 0.16109684035153982,
+          "relative_gap": 0.005919621694217542
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate3.net_vw_bps",
+          "kind": "differs",
+          "left": -0.2903263340547218,
+          "right": -0.2905510339925053,
+          "relative_gap": 0.0007733579010058125
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t3.net_ew_bps",
+          "kind": "differs",
+          "left": -0.5379438485385878,
+          "right": -0.5389031596484601,
+          "relative_gap": 0.001780117805392223
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t3.net_vw_bps",
+          "kind": "differs",
+          "left": -0.9903263340547217,
+          "right": -0.9905510339925052,
+          "relative_gap": 0.00022684337310500705
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t4_0fee.net_ew_bps",
+          "kind": "differs",
+          "left": -0.13794384853858777,
+          "right": -0.13890315964846014,
+          "relative_gap": 0.006906330369303548
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t4_0fee.net_vw_bps",
+          "kind": "differs",
+          "left": -0.5903263340547218,
+          "right": -0.5905510339925053,
+          "relative_gap": 0.0003804919894295944
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.gross_prefee_ew_bps",
+          "kind": "differs",
+          "left": -0.13794384853858777,
+          "right": -0.13890315964846014,
+          "relative_gap": 0.006906330369303548
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.gross_prefee_vw_bps",
+          "kind": "differs",
+          "left": -0.5903263340547218,
+          "right": -0.5905510339925053,
+          "relative_gap": 0.0003804919894295944
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.3087381618045135,
+          "right": -1.3096974778196588,
+          "relative_gap": 0.0007324714534400379
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -0.7815676089033446,
+          "right": -0.7817923088448124,
+          "relative_gap": 0.0002874164134459283
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate1.net_ew_bps",
+          "kind": "differs",
+          "left": 0.29126183819548634,
+          "right": 0.2903025221803412,
+          "relative_gap": 0.0032936550187576794
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate1.net_vw_bps",
+          "kind": "differs",
+          "left": 0.8184323910966556,
+          "right": 0.8182076911551877,
+          "relative_gap": 0.00027454917951965784
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate2.net_ew_bps",
+          "kind": "differs",
+          "left": 0.3912618381954863,
+          "right": 0.3903025221803412,
+          "relative_gap": 0.0024518517307220537
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate2.net_vw_bps",
+          "kind": "differs",
+          "left": 0.9184323910966555,
+          "right": 0.9182076911551877,
+          "relative_gap": 0.000244655941630591
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate3.net_ew_bps",
+          "kind": "differs",
+          "left": 0.49126183819548636,
+          "right": 0.49030252218034115,
+          "relative_gap": 0.0019527590799012329
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate3.net_vw_bps",
+          "kind": "differs",
+          "left": 1.0184323910966555,
+          "right": 1.0182076911551878,
+          "relative_gap": 0.0002206331450492437
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t3.net_ew_bps",
+          "kind": "differs",
+          "left": -0.20873816180451363,
+          "right": -0.20969747781965878,
+          "relative_gap": 0.0045747618193584996
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t3.net_vw_bps",
+          "kind": "differs",
+          "left": 0.3184323910966555,
+          "right": 0.3182076911551877,
+          "relative_gap": 0.0007056441108077573
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t4_0fee.net_ew_bps",
+          "kind": "differs",
+          "left": 0.1912618381954863,
+          "right": 0.19030252218034122,
+          "relative_gap": 0.0050157209833181175
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t4_0fee.net_vw_bps",
+          "kind": "differs",
+          "left": 0.7184323910966555,
+          "right": 0.7182076911551878,
+          "relative_gap": 0.0003127642131010851
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.gross_prefee_ew_bps",
+          "kind": "differs",
+          "left": 0.1912618381954863,
+          "right": 0.19030252218034122,
+          "relative_gap": 0.0050157209833181175
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.gross_prefee_vw_bps",
+          "kind": "differs",
+          "left": 0.7184323910966555,
+          "right": 0.7182076911551878,
+          "relative_gap": 0.0003127642131010851
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.5670486207198306,
+          "right": -1.5624880882268277,
+          "relative_gap": 0.0029102686621861303
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -2.217267202531698,
+          "right": -2.2176019071036874,
+          "relative_gap": 0.00015093086406405364
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_vw_ci95.[0]",
+          "kind": "differs",
+          "left": -2.473172728689659,
+          "right": -2.483633070835698,
+          "relative_gap": 0.004211709961858026
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_vw_ci95.[1]",
+          "kind": "differs",
+          "left": -1.9688122918329998,
+          "right": -1.9657253076990056,
+          "relative_gap": 0.001567942330916769
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.rebate1.net_ew_bps",
+          "kind": "differs",
+          "left": 0.03295137928016951,
+          "right": 0.037511911773172334,
+          "relative_gap": 0.12157558166002123
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.rebate1.net_vw_bps",
+          "kind": "differs",
+          "left": -0.6172672025316984,
+          "right": -0.6176019071036871,
+          "relative_gap": 0.000541942257850744
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.rebate1.net_vw_ci95.[0]",
+          "kind": "differs",
+          "left": -0.8731727286896591,
+          "right": -0.8836330708356979,
+          "relative_gap": 0.011837879874896326
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.rebate1.net_vw_ci95.[1]",
+          "kind": "differs",
+          "left": -0.3688122918329997,
+          "right": -0.36572530769900546,
+          "relative_gap": 0.008370068466676874
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.rebate2.net_ew_bps",
+          "kind": "differs",
+          "left": 0.13295137928016948,
+          "right": 0.13751191177317235,
+          "relative_gap": 0.03316463595186956
+        }
+      ],
+      "n_outside_kept": 40
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity_plus_global vs bbgl_flat",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity_plus_global",
+      "right": "bbgl_flat",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 412,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "inventory_control_sim": 8,
+        "extra_half_spread_summary": 7,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity_plus_global vs gm_vpin",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity_plus_global",
+      "right": "gm_vpin",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 412,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "inventory_control_sim": 8,
+        "extra_half_spread_summary": 7,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity_plus_global vs naive_at_book",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity_plus_global",
+      "right": "naive_at_book",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 415,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 as_toxicity_plus_global vs naive_const",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "as_toxicity_plus_global",
+      "right": "naive_const",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 418,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 13,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 bbgl vs bbgl_flat",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "bbgl",
+      "right": "bbgl_flat",
+      "state": "declared_a_comparison",
+      "grounds": "whether the premium is CONDITIONED on anything at all: a single flat constant to every fill (arm a) against the global-plus-per-tier structure (arm b)",
+      "arms_not_in_the_ranking_only_list": [],
+      "manifest": "bbgl_flat_minus_bbgl",
+      "arm_a_of_the_manifest": "bbgl_flat",
+      "arm_b_of_the_manifest": "bbgl",
+      "axis": "whether the premium is CONDITIONED on anything at all: a single flat constant to every fill (arm a) against the global-plus-per-tier structure (arm b)",
+      "consequence_of_the_axis": "the dispersion of the premium across fills, which is zero for the flat arm by construction. wallet_population is NOT on the held-equal list because the flat arm has none: it reads no counterparty.",
+      "manifest_not_held_equal": [
+        {
+          "quantity": "frac_fills_widened_pooled",
+          "arm_a": 1.0,
+          "arm_b": 1.0,
+          "classified": "consequence of the axis"
+        },
+        {
+          "quantity": "min_extra_half_spread_bps_pooled",
+          "arm_a": 6.364595937112405,
+          "arm_b": 3.440275496189839,
+          "classified": "consequence of the axis"
+        },
+        {
+          "quantity": "mean_extra_half_spread_bps_by_coin",
+          "arm_a": {
+            "BTC": 6.364595937112406,
+            "ETH": 6.364595937112404
+          },
+          "arm_b": {
+            "BTC": 4.54132394606314,
+            "ETH": 8.020329878953236
+          },
+          "classified": "CONFOUND on the per-coin rows and held equal on the pooled row only. The pass-through is one scalar per wallet and a wallet trades both coins, so a per-coin solve would quote one counterparty two unrelated prices. The pooled difference is the equal-width finding; the per-coin rows are reported for shape and are NOT it."
+        }
+      ],
+      "producer_says_all_hold": true,
+      "held_equal_remeasured": [
+        {
+          "quantity": "mean_extra_half_spread_bps_pooled",
+          "measured_by": "quoters.<K>.<arm>.extra_half_spread_summary.by_coin.pooled.mean_extra_half_spread_bps",
+          "rtol": 1e-09,
+          "producer_says_holds": true,
+          "arm_relative_path": "extra_half_spread_summary.by_coin.pooled.mean_extra_half_spread_bps",
+          "left": 6.215745308345628,
+          "right": 6.215745308345628,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "relative gap 0.000e+00 against the declared rtol 1.000e-09"
+        },
+        {
+          "quantity": "n_late_fills_pooled",
+          "measured_by": "quoters.<K>.<arm>.net_by_coin.pooled.n_late_fills",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "arm_relative_path": "net_by_coin.pooled.n_late_fills",
+          "left": 1234777,
+          "right": 1234777,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "relative gap 0.000e+00 against the declared rtol 0.000e+00"
+        },
+        {
+          "quantity": "n_extra_finite_pooled",
+          "measured_by": "quoters.<K>.<arm>.extra_half_spread_summary.by_coin.pooled.n_extra_finite",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "arm_relative_path": "extra_half_spread_summary.by_coin.pooled.n_extra_finite",
+          "left": 1234777,
+          "right": 1234777,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "relative gap 0.000e+00 against the declared rtol 0.000e+00"
+        }
+      ],
+      "held_equal_rechecked_from_recorded_values": [
+        {
+          "quantity": "recapture_fraction",
+          "measured_by": "RECOVER_FRAC, applied by the same line of evaluate_quoter to both arms; the offset cap min(extra, max(a_mid,0)) is that same line",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 0.5,
+          "recorded_right": 0.5,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 0.5 against 0.5, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        },
+        {
+          "quantity": "headline_horizon_s",
+          "measured_by": "HEADLINE_HORIZON, the rung every published difference is read at",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 10.0,
+          "recorded_right": 10.0,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 10.0 against 10.0, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        }
+      ],
+      "n_held_equal_declared": 5,
+      "n_held_equal_remeasured": 3,
+      "n_held_equal_rechecked": 2,
+      "how_each_was_judged": {
+        "re-measured from the leaves of both arms": 3,
+        "re-compared from the values the producer recorded, because the address is not relative to an arm": 2,
+        "taken on the producer's word": 0
+      },
+      "n_breaches": 0,
+      "breaches": [],
+      "n_disagreements_with_the_producer": 0,
+      "disagreements_with_the_producer": [],
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 410,
+      "n_outside_the_manifest": 410,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "inventory_control_sim": 8,
+        "extra_half_spread_summary": 5,
+        "spec": 1
+      },
+      "outside": [
+        {
+          "path": "extra_half_spread_summary.by_coin.BTC.mean_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 4.448923525354397,
+          "right": 6.21574530834563,
+          "relative_gap": 0.28424938528594357
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.BTC.min_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 3.440275496189839,
+          "right": 6.215745308345628,
+          "relative_gap": 0.44652244814942443
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.ETH.mean_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 7.820216177005657,
+          "right": 6.215745308345629,
+          "relative_gap": 0.2051696311641318
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.ETH.min_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 6.253579872042331,
+          "right": 6.215745308345628,
+          "relative_gap": 0.006050064838197478
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.pooled.min_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 3.440275496189839,
+          "right": 6.215745308345628,
+          "relative_gap": 0.44652244814942443
+        },
+        {
+          "path": "inventory_control_sim.control_ratio_as_over_null",
+          "kind": "differs",
+          "left": 0.05863598926645234,
+          "right": "NaN",
+          "relative_gap": null
+        },
+        {
+          "path": "inventory_control_sim.mean_reverts",
+          "kind": "differs",
+          "left": true,
+          "right": false,
+          "relative_gap": null
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.6389031596484602,
+          "right": -1.6297928716540966,
+          "relative_gap": 0.005558771389712722
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -2.0905510339925053,
+          "right": -2.05535291092045,
+          "relative_gap": 0.01683676815333927
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate1.net_ew_bps",
+          "kind": "differs",
+          "left": -0.03890315964846015,
+          "right": -0.029792871654096536,
+          "relative_gap": 0.23417861368296897
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate1.net_vw_bps",
+          "kind": "differs",
+          "left": -0.4905510339925053,
+          "right": -0.45535291092044994,
+          "relative_gap": 0.07175221461788447
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate2.net_ew_bps",
+          "kind": "differs",
+          "left": 0.061096840351539866,
+          "right": 0.07020712834590347,
+          "relative_gap": 0.12976300568053611
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate2.net_vw_bps",
+          "kind": "differs",
+          "left": -0.3905510339925053,
+          "right": -0.3553529109204499,
+          "relative_gap": 0.09012426036165824
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate3.net_ew_bps",
+          "kind": "differs",
+          "left": 0.16109684035153982,
+          "right": 0.17020712834590343,
+          "relative_gap": 0.05352471475724114
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate3.net_vw_bps",
+          "kind": "differs",
+          "left": -0.2905510339925053,
+          "right": -0.2553529109204499,
+          "relative_gap": 0.12114265293911607
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t3.net_ew_bps",
+          "kind": "differs",
+          "left": -0.5389031596484601,
+          "right": -0.5297928716540965,
+          "relative_gap": 0.01690524138011458
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t3.net_vw_bps",
+          "kind": "differs",
+          "left": -0.9905510339925052,
+          "right": -0.95535291092045,
+          "relative_gap": 0.03553388151056282
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t4_0fee.net_ew_bps",
+          "kind": "differs",
+          "left": -0.13890315964846014,
+          "right": -0.12979287165409656,
+          "relative_gap": 0.06558733449563098
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t4_0fee.net_vw_bps",
+          "kind": "differs",
+          "left": -0.5905510339925053,
+          "right": -0.5553529109204499,
+          "relative_gap": 0.05960216991594005
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.gross_prefee_ew_bps",
+          "kind": "differs",
+          "left": -0.13890315964846014,
+          "right": -0.12979287165409656,
+          "relative_gap": 0.06558733449563098
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.gross_prefee_vw_bps",
+          "kind": "differs",
+          "left": -0.5905510339925053,
+          "right": -0.5553529109204499,
+          "relative_gap": 0.05960216991594005
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.3096974778196588,
+          "right": -1.300587143241401,
+          "relative_gap": 0.006956060260133144
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -0.7817923088448124,
+          "right": -0.746594185195622,
+          "relative_gap": 0.04502234577006731
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate1.net_ew_bps",
+          "kind": "differs",
+          "left": 0.2903025221803412,
+          "right": 0.2994128567585992,
+          "relative_gap": 0.030427332603165994
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate1.net_vw_bps",
+          "kind": "differs",
+          "left": 0.8182076911551877,
+          "right": 0.8534058148043779,
+          "relative_gap": 0.04124429789274236
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate2.net_ew_bps",
+          "kind": "differs",
+          "left": 0.3903025221803412,
+          "right": 0.39941285675859917,
+          "relative_gap": 0.022809317286859716
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate2.net_vw_bps",
+          "kind": "differs",
+          "left": 0.9182076911551877,
+          "right": 0.953405814804378,
+          "relative_gap": 0.03691830184234015
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate3.net_ew_bps",
+          "kind": "differs",
+          "left": 0.49030252218034115,
+          "right": 0.49941285675859914,
+          "relative_gap": 0.018242090596922
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate3.net_vw_bps",
+          "kind": "differs",
+          "left": 1.0182076911551878,
+          "right": 1.0534058148043781,
+          "relative_gap": 0.03341364092975576
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t3.net_ew_bps",
+          "kind": "differs",
+          "left": -0.20969747781965878,
+          "right": -0.20058714324140084,
+          "relative_gap": 0.0434451318775178
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t3.net_vw_bps",
+          "kind": "differs",
+          "left": 0.3182076911551877,
+          "right": 0.353405814804378,
+          "relative_gap": 0.09959690014912072
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t4_0fee.net_ew_bps",
+          "kind": "differs",
+          "left": 0.19030252218034122,
+          "right": 0.19941285675859916,
+          "relative_gap": 0.045685793415449275
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t4_0fee.net_vw_bps",
+          "kind": "differs",
+          "left": 0.7182076911551878,
+          "right": 0.7534058148043781,
+          "relative_gap": 0.04671867797878555
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.gross_prefee_ew_bps",
+          "kind": "differs",
+          "left": 0.19030252218034122,
+          "right": 0.19941285675859916,
+          "relative_gap": 0.045685793415449275
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.gross_prefee_vw_bps",
+          "kind": "differs",
+          "left": 0.7182076911551878,
+          "right": 0.7534058148043781,
+          "relative_gap": 0.04671867797878555
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.5624880882268277,
+          "right": -1.4949972926567756,
+          "relative_gap": 0.043194438459139416
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -2.2176019071036874,
+          "right": -2.0880754323389805,
+          "relative_gap": 0.058408352892280725
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_vw_ci95.[0]",
+          "kind": "differs",
+          "left": -2.483633070835698,
+          "right": -2.3413930920087425,
+          "relative_gap": 0.05727093124069824
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_vw_ci95.[1]",
+          "kind": "differs",
+          "left": -1.9657253076990056,
+          "right": -1.8369931713857603,
+          "relative_gap": 0.06548836493534978
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.rebate1.net_ew_bps",
+          "kind": "differs",
+          "left": 0.037511911773172334,
+          "right": 0.10500270734322438,
+          "relative_gap": 0.6427529087363775
+        }
+      ],
+      "n_outside_kept": 40
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 bbgl vs gm_vpin",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "bbgl",
+      "right": "gm_vpin",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 411,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "inventory_control_sim": 8,
+        "extra_half_spread_summary": 6,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 bbgl vs naive_at_book",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "bbgl",
+      "right": "naive_at_book",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 414,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 bbgl vs naive_const",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "bbgl",
+      "right": "naive_const",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 417,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 12,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 bbgl_flat vs gm_vpin",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "bbgl_flat",
+      "right": "gm_vpin",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 614,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 403,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 6,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 bbgl_flat vs naive_at_book",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "bbgl_flat",
+      "right": "naive_at_book",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 614,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 406,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 bbgl_flat vs naive_const",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "bbgl_flat",
+      "right": "naive_const",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 614,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 409,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 12,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 gm_vpin vs naive_at_book",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "gm_vpin",
+      "right": "naive_at_book",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 614,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 406,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 gm_vpin vs naive_const",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "gm_vpin",
+      "right": "naive_const",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 614,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 409,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 12,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K10 naive_at_book vs naive_const",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K10",
+      "left": "naive_at_book",
+      "right": "naive_const",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 614,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 406,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_symmetric vs as_toxicity",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_symmetric",
+      "right": "as_toxicity",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 404,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 7,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_symmetric vs as_toxicity_ew",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_symmetric",
+      "right": "as_toxicity_ew",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 404,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 7,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_symmetric vs as_toxicity_plus_global",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_symmetric",
+      "right": "as_toxicity_plus_global",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 407,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_symmetric vs bbgl",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_symmetric",
+      "right": "bbgl",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 406,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_symmetric vs bbgl_flat",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_symmetric",
+      "right": "bbgl_flat",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 414,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_symmetric vs gm_vpin",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_symmetric",
+      "right": "gm_vpin",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 414,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_symmetric vs naive_at_book",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_symmetric",
+      "right": "naive_at_book",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 153,
+      "outside_by_block": {
+        "net_by_coin": 144,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_symmetric vs naive_const",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_symmetric",
+      "right": "naive_const",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 414,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity vs as_toxicity_ew",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity",
+      "right": "as_toxicity_ew",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 404,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 7,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity vs as_toxicity_plus_global",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity",
+      "right": "as_toxicity_plus_global",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 407,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity vs bbgl",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity",
+      "right": "bbgl",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 407,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity vs bbgl_flat",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity",
+      "right": "bbgl_flat",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 415,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity vs gm_vpin",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity",
+      "right": "gm_vpin",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 415,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity vs naive_at_book",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity",
+      "right": "naive_at_book",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 412,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "inventory_control_sim": 8,
+        "extra_half_spread_summary": 7,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity vs naive_const",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity",
+      "right": "naive_const",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 415,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity_ew vs as_toxicity_plus_global",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity_ew",
+      "right": "as_toxicity_plus_global",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 407,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity_ew vs bbgl",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity_ew",
+      "right": "bbgl",
+      "state": "declared_a_comparison",
+      "grounds": "HOW a fixed budget of defensive width is allocated: per counterparty wallet, from that wallet's own early adverse-selection estimate (arm a), against per coin plus per toxicity decile (arm b)",
+      "arms_not_in_the_ranking_only_list": [],
+      "manifest": "as_toxicity_ew_minus_bbgl",
+      "arm_a_of_the_manifest": "as_toxicity_ew",
+      "arm_b_of_the_manifest": "bbgl",
+      "axis": "HOW a fixed budget of defensive width is allocated: per counterparty wallet, from that wallet's own early adverse-selection estimate (arm a), against per coin plus per toxicity decile (arm b)",
+      "consequence_of_the_axis": "the share of fills widened and the floor of the widening. An allocation that spends the whole budget on wallets with a positive score necessarily widens on fewer fills and reaches zero on the rest, while one that carries a market-wide leg widens on every fill and never goes below that leg. These follow from the axis and are reported, not held equal -- holding them equal would delete the axis.",
+      "manifest_not_held_equal": [
+        {
+          "quantity": "frac_fills_widened_pooled",
+          "arm_a": 0.5498693286318096,
+          "arm_b": 1.0,
+          "classified": "consequence of the axis"
+        },
+        {
+          "quantity": "min_extra_half_spread_bps_pooled",
+          "arm_a": 0.0,
+          "arm_b": 3.440275496189839,
+          "classified": "consequence of the axis"
+        },
+        {
+          "quantity": "mean_extra_half_spread_bps_by_coin",
+          "arm_a": {
+            "BTC": 4.179392700455952,
+            "ETH": 8.349003741605888
+          },
+          "arm_b": {
+            "BTC": 4.54132394606314,
+            "ETH": 8.020329878953236
+          },
+          "classified": "CONFOUND on the per-coin rows and held equal on the pooled row only. The pass-through is one scalar per wallet and a wallet trades both coins, so a per-coin solve would quote one counterparty two unrelated prices. The pooled difference is the equal-width finding; the per-coin rows are reported for shape and are NOT it."
+        }
+      ],
+      "producer_says_all_hold": true,
+      "held_equal_remeasured": [
+        {
+          "quantity": "mean_extra_half_spread_bps_pooled",
+          "measured_by": "quoters.<K>.<arm>.extra_half_spread_summary.by_coin.pooled.mean_extra_half_spread_bps",
+          "rtol": 1e-09,
+          "producer_says_holds": true,
+          "arm_relative_path": "extra_half_spread_summary.by_coin.pooled.mean_extra_half_spread_bps",
+          "left": 6.364595937112405,
+          "right": 6.364595937112405,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "relative gap 0.000e+00 against the declared rtol 1.000e-09"
+        },
+        {
+          "quantity": "n_late_fills_pooled",
+          "measured_by": "quoters.<K>.<arm>.net_by_coin.pooled.n_late_fills",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "arm_relative_path": "net_by_coin.pooled.n_late_fills",
+          "left": 1234777,
+          "right": 1234777,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "relative gap 0.000e+00 against the declared rtol 0.000e+00"
+        },
+        {
+          "quantity": "n_extra_finite_pooled",
+          "measured_by": "quoters.<K>.<arm>.extra_half_spread_summary.by_coin.pooled.n_extra_finite",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "arm_relative_path": "extra_half_spread_summary.by_coin.pooled.n_extra_finite",
+          "left": 1234777,
+          "right": 1234777,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "relative gap 0.000e+00 against the declared rtol 0.000e+00"
+        }
+      ],
+      "held_equal_rechecked_from_recorded_values": [
+        {
+          "quantity": "n_wallets_carrying_a_wallet_specific_premium",
+          "measured_by": "equal_width_solve.n_wallets_floor_eligible, which is len(labels.eligible_mask_taker) -- the set decile_of_taker is filled for and the set the solved arms' term is built over",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 2069.0,
+          "recorded_right": 2069.0,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 2069.0 against 2069.0, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        },
+        {
+          "quantity": "recapture_fraction",
+          "measured_by": "RECOVER_FRAC, applied by the same line of evaluate_quoter to both arms; the offset cap min(extra, max(a_mid,0)) is that same line",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 0.5,
+          "recorded_right": 0.5,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 0.5 against 0.5, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        },
+        {
+          "quantity": "headline_horizon_s",
+          "measured_by": "HEADLINE_HORIZON, the rung every published difference is read at",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 10.0,
+          "recorded_right": 10.0,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 10.0 against 10.0, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        }
+      ],
+      "n_held_equal_declared": 6,
+      "n_held_equal_remeasured": 3,
+      "n_held_equal_rechecked": 3,
+      "how_each_was_judged": {
+        "re-measured from the leaves of both arms": 3,
+        "re-compared from the values the producer recorded, because the address is not relative to an arm": 3,
+        "taken on the producer's word": 0
+      },
+      "n_breaches": 0,
+      "breaches": [],
+      "n_disagreements_with_the_producer": 0,
+      "disagreements_with_the_producer": [],
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 406,
+      "n_outside_the_manifest": 406,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "spec": 1
+      },
+      "outside": [
+        {
+          "path": "extra_half_spread_summary.by_coin.BTC.frac_fills_widened",
+          "kind": "differs",
+          "left": 0.4719368611281751,
+          "right": 1.0,
+          "relative_gap": 0.5280631388718249
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.BTC.mean_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 4.179392700455952,
+          "right": 4.54132394606314,
+          "relative_gap": 0.07969729750746922
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.BTC.min_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 0.0,
+          "right": 3.440275496189839,
+          "relative_gap": 1.0
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.ETH.frac_fills_widened",
+          "kind": "differs",
+          "left": 0.6206406848807022,
+          "right": 1.0,
+          "relative_gap": 0.37935931511929777
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.ETH.mean_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 8.349003741605888,
+          "right": 8.020329878953236,
+          "relative_gap": 0.03936683619085707
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.ETH.min_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 0.0,
+          "right": 6.253579872042331,
+          "relative_gap": 1.0
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.pooled.frac_fills_widened",
+          "kind": "differs",
+          "left": 0.5498693286318096,
+          "right": 1.0,
+          "relative_gap": 0.4501306713681904
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.pooled.min_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 0.0,
+          "right": 3.440275496189839,
+          "relative_gap": 1.0
+        },
+        {
+          "path": "extra_half_spread_summary.lambda_tox",
+          "kind": "differs",
+          "left": 4.9162206446894094,
+          "right": 0.0,
+          "relative_gap": 1.0
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.7334908995851461,
+          "right": -1.636261164001208,
+          "relative_gap": 0.05608897953096088
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -2.4036474418564855,
+          "right": -2.1065592572674925,
+          "relative_gap": 0.12359890199185511
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate1.net_ew_bps",
+          "kind": "differs",
+          "left": -0.13349089958514598,
+          "right": -0.036261164001207796,
+          "relative_gap": 0.7283622770248923
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate1.net_vw_bps",
+          "kind": "differs",
+          "left": -0.8036474418564851,
+          "right": -0.5065592572674924,
+          "relative_gap": 0.3696747716917968
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate2.net_ew_bps",
+          "kind": "differs",
+          "left": -0.03349089958514599,
+          "right": 0.0637388359987922,
+          "relative_gap": 1.5254394602653336
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate2.net_vw_bps",
+          "kind": "differs",
+          "left": -0.7036474418564851,
+          "right": -0.4065592572674924,
+          "relative_gap": 0.4222117027884915
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate3.net_ew_bps",
+          "kind": "differs",
+          "left": 0.06650910041485397,
+          "right": 0.1637388359987922,
+          "relative_gap": 0.5938098618500954
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate3.net_vw_bps",
+          "kind": "differs",
+          "left": -0.6036474418564851,
+          "right": -0.3065592572674924,
+          "relative_gap": 0.4921551289529432
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t3.net_ew_bps",
+          "kind": "differs",
+          "left": -0.6334908995851459,
+          "right": -0.5362611640012078,
+          "relative_gap": 0.15348245041501138
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t3.net_vw_bps",
+          "kind": "differs",
+          "left": -1.3036474418564852,
+          "right": -1.0065592572674924,
+          "relative_gap": 0.22788997626990193
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t4_0fee.net_ew_bps",
+          "kind": "differs",
+          "left": -0.233490899585146,
+          "right": -0.1362611640012078,
+          "relative_gap": 0.41641766662722496
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t4_0fee.net_vw_bps",
+          "kind": "differs",
+          "left": -0.9036474418564852,
+          "right": -0.6065592572674925,
+          "relative_gap": 0.32876559023798513
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.gross_prefee_ew_bps",
+          "kind": "differs",
+          "left": -0.233490899585146,
+          "right": -0.1362611640012078,
+          "relative_gap": 0.41641766662722496
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.gross_prefee_vw_bps",
+          "kind": "differs",
+          "left": -0.9036474418564852,
+          "right": -0.6065592572674925,
+          "relative_gap": 0.32876559023798513
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.4042857014145218,
+          "right": -1.3070554686630151,
+          "relative_gap": 0.06923821317383472
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -1.094888721842557,
+          "right": -0.7978005323822823,
+          "relative_gap": 0.2713409897585879
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate1.net_ew_bps",
+          "kind": "differs",
+          "left": 0.19571429858547829,
+          "right": 0.29294453133698495,
+          "relative_gap": 0.33190663197484005
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate1.net_vw_bps",
+          "kind": "differs",
+          "left": 0.5051112781574432,
+          "right": 0.8021994676177178,
+          "relative_gap": 0.37034204266244886
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate2.net_ew_bps",
+          "kind": "differs",
+          "left": 0.29571429858547826,
+          "right": 0.392944531336985,
+          "relative_gap": 0.247440096495765
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate2.net_vw_bps",
+          "kind": "differs",
+          "left": 0.6051112781574431,
+          "right": 0.9021994676177176,
+          "relative_gap": 0.32929324403697996
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate3.net_ew_bps",
+          "kind": "differs",
+          "left": 0.3957142985854783,
+          "right": 0.49294453133698485,
+          "relative_gap": 0.1972437598360096
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate3.net_vw_bps",
+          "kind": "differs",
+          "left": 0.7051112781574432,
+          "right": 1.002199467617718,
+          "relative_gap": 0.29643618766478624
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t3.net_ew_bps",
+          "kind": "differs",
+          "left": -0.30428570141452166,
+          "right": -0.20705546866301502,
+          "relative_gap": 0.3195359896949349
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t3.net_vw_bps",
+          "kind": "differs",
+          "left": 0.005111278157443117,
+          "right": 0.3021994676177177,
+          "relative_gap": 0.9830864091266075
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t4_0fee.net_ew_bps",
+          "kind": "differs",
+          "left": 0.09571429858547827,
+          "right": 0.19294453133698494,
+          "relative_gap": 0.5039284196227899
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t4_0fee.net_vw_bps",
+          "kind": "differs",
+          "left": 0.4051112781574432,
+          "right": 0.7021994676177179,
+          "relative_gap": 0.42308233366820425
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.gross_prefee_ew_bps",
+          "kind": "differs",
+          "left": 0.09571429858547827,
+          "right": 0.19294453133698494,
+          "relative_gap": 0.5039284196227899
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.gross_prefee_vw_bps",
+          "kind": "differs",
+          "left": 0.4051112781574432,
+          "right": 0.7021994676177179,
+          "relative_gap": 0.42308233366820425
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.7451178215017822,
+          "right": -1.5556786948848194,
+          "relative_gap": 0.1085537745835056
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -2.5913138225563945,
+          "right": -2.2444344700790153,
+          "relative_gap": 0.1338623479170787
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_vw_ci95.[0]",
+          "kind": "differs",
+          "left": -2.879196032825834,
+          "right": -2.525553628052668,
+          "relative_gap": 0.12282678940276177
+        }
+      ],
+      "n_outside_kept": 40
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity_ew vs bbgl_flat",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity_ew",
+      "right": "bbgl_flat",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 414,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity_ew vs gm_vpin",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity_ew",
+      "right": "gm_vpin",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 415,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity_ew vs naive_at_book",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity_ew",
+      "right": "naive_at_book",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 412,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "inventory_control_sim": 8,
+        "extra_half_spread_summary": 7,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity_ew vs naive_const",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity_ew",
+      "right": "naive_const",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 415,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity_plus_global vs bbgl",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity_plus_global",
+      "right": "bbgl",
+      "state": "declared_a_comparison",
+      "grounds": "which SECOND term rides on the shared market-wide global term: the counterparty-resolved one (arm a) against the per-tier one (arm b)",
+      "arms_not_in_the_ranking_only_list": [],
+      "manifest": "as_toxicity_plus_global_minus_bbgl",
+      "arm_a_of_the_manifest": "as_toxicity_plus_global",
+      "arm_b_of_the_manifest": "bbgl",
+      "axis": "which SECOND term rides on the shared market-wide global term: the counterparty-resolved one (arm a) against the per-tier one (arm b)",
+      "consequence_of_the_axis": "the share of fills the second term reaches. Both arms widen every fill, because both carry the global leg; they differ in whether the remainder is spread over deciles or over wallets.",
+      "manifest_not_held_equal": [
+        {
+          "quantity": "frac_fills_widened_pooled",
+          "arm_a": 1.0,
+          "arm_b": 1.0,
+          "classified": "consequence of the axis"
+        },
+        {
+          "quantity": "min_extra_half_spread_bps_pooled",
+          "arm_a": 3.440275496189839,
+          "arm_b": 3.440275496189839,
+          "classified": "consequence of the axis"
+        },
+        {
+          "quantity": "mean_extra_half_spread_bps_by_coin",
+          "arm_a": {
+            "BTC": 4.392389304334201,
+            "ETH": 8.155579113646185
+          },
+          "arm_b": {
+            "BTC": 4.54132394606314,
+            "ETH": 8.020329878953236
+          },
+          "classified": "CONFOUND on the per-coin rows and held equal on the pooled row only. The pass-through is one scalar per wallet and a wallet trades both coins, so a per-coin solve would quote one counterparty two unrelated prices. The pooled difference is the equal-width finding; the per-coin rows are reported for shape and are NOT it."
+        }
+      ],
+      "producer_says_all_hold": true,
+      "held_equal_remeasured": [
+        {
+          "quantity": "mean_extra_half_spread_bps_pooled",
+          "measured_by": "quoters.<K>.<arm>.extra_half_spread_summary.by_coin.pooled.mean_extra_half_spread_bps",
+          "rtol": 1e-09,
+          "producer_says_holds": true,
+          "arm_relative_path": "extra_half_spread_summary.by_coin.pooled.mean_extra_half_spread_bps",
+          "left": 6.364595937112404,
+          "right": 6.364595937112405,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 1.395498517857347e-16,
+          "why": "relative gap 1.395e-16 against the declared rtol 1.000e-09"
+        },
+        {
+          "quantity": "n_late_fills_pooled",
+          "measured_by": "quoters.<K>.<arm>.net_by_coin.pooled.n_late_fills",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "arm_relative_path": "net_by_coin.pooled.n_late_fills",
+          "left": 1234777,
+          "right": 1234777,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "relative gap 0.000e+00 against the declared rtol 0.000e+00"
+        },
+        {
+          "quantity": "n_extra_finite_pooled",
+          "measured_by": "quoters.<K>.<arm>.extra_half_spread_summary.by_coin.pooled.n_extra_finite",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "arm_relative_path": "extra_half_spread_summary.by_coin.pooled.n_extra_finite",
+          "left": 1234777,
+          "right": 1234777,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "relative gap 0.000e+00 against the declared rtol 0.000e+00"
+        }
+      ],
+      "held_equal_rechecked_from_recorded_values": [
+        {
+          "quantity": "global_leg_mean_extra_bps",
+          "measured_by": "equal_width_solve.target_global_leg_mean_extra_bps -- the same per-fill array enters both arms, arm b inside bbgl_half_spread_bps and arm a as ctx['bbgl_global_per_fill']",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 4.914667655828111,
+          "recorded_right": 4.914667655828111,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 4.914667655828111 against 4.914667655828111, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        },
+        {
+          "quantity": "n_wallets_carrying_a_wallet_specific_premium",
+          "measured_by": "equal_width_solve.n_wallets_floor_eligible, which is len(labels.eligible_mask_taker) -- the set decile_of_taker is filled for and the set the solved arms' term is built over",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 2069.0,
+          "recorded_right": 2069.0,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 2069.0 against 2069.0, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        },
+        {
+          "quantity": "recapture_fraction",
+          "measured_by": "RECOVER_FRAC, applied by the same line of evaluate_quoter to both arms; the offset cap min(extra, max(a_mid,0)) is that same line",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 0.5,
+          "recorded_right": 0.5,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 0.5 against 0.5, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        },
+        {
+          "quantity": "headline_horizon_s",
+          "measured_by": "HEADLINE_HORIZON, the rung every published difference is read at",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 10.0,
+          "recorded_right": 10.0,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 10.0 against 10.0, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        }
+      ],
+      "n_held_equal_declared": 7,
+      "n_held_equal_remeasured": 3,
+      "n_held_equal_rechecked": 4,
+      "how_each_was_judged": {
+        "re-measured from the leaves of both arms": 3,
+        "re-compared from the values the producer recorded, because the address is not relative to an arm": 4,
+        "taken on the producer's word": 0
+      },
+      "n_breaches": 0,
+      "breaches": [],
+      "n_disagreements_with_the_producer": 0,
+      "disagreements_with_the_producer": [],
+      "n_leaves_under_both": 618,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 401,
+      "n_outside_the_manifest": 400,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 3,
+        "spec": 1
+      },
+      "outside": [
+        {
+          "path": "extra_half_spread_summary.by_coin.BTC.mean_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 4.392389304334201,
+          "right": 4.54132394606314,
+          "relative_gap": 0.03279542342669697
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.ETH.mean_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 8.155579113646185,
+          "right": 8.020329878953236,
+          "relative_gap": 0.016583645723777723
+        },
+        {
+          "path": "extra_half_spread_summary.lambda_tox",
+          "kind": "differs",
+          "left": 1.119971702870254,
+          "right": 0.0,
+          "relative_gap": 1.0
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.6353254424369863,
+          "right": -1.636261164001208,
+          "relative_gap": 0.0005718656561727964
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -2.1113676368815977,
+          "right": -2.1065592572674925,
+          "relative_gap": 0.0022773767723403026
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate1.net_ew_bps",
+          "kind": "differs",
+          "left": -0.0353254424369861,
+          "right": -0.036261164001207796,
+          "relative_gap": 0.025805061420271294
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate1.net_vw_bps",
+          "kind": "differs",
+          "left": -0.5113676368815977,
+          "right": -0.5065592572674924,
+          "relative_gap": 0.009402979905861017
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate2.net_ew_bps",
+          "kind": "differs",
+          "left": 0.0646745575630139,
+          "right": 0.0637388359987922,
+          "relative_gap": 0.014468155631525063
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate2.net_vw_bps",
+          "kind": "differs",
+          "left": -0.41136763688159766,
+          "right": -0.4065592572674924,
+          "relative_gap": 0.011688764946497766
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate3.net_ew_bps",
+          "kind": "differs",
+          "left": 0.16467455756301386,
+          "right": 0.1637388359987922,
+          "relative_gap": 0.005682247325083048
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate3.net_vw_bps",
+          "kind": "differs",
+          "left": -0.3113676368815977,
+          "right": -0.3065592572674924,
+          "relative_gap": 0.015442772608810837
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t3.net_ew_bps",
+          "kind": "differs",
+          "left": -0.5353254424369861,
+          "right": -0.5362611640012078,
+          "relative_gap": 0.00174489899145413
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t3.net_vw_bps",
+          "kind": "differs",
+          "left": -1.0113676368815978,
+          "right": -1.0065592572674924,
+          "relative_gap": 0.004754334070775028
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t4_0fee.net_ew_bps",
+          "kind": "differs",
+          "left": -0.1353254424369861,
+          "right": -0.1362611640012078,
+          "relative_gap": 0.00686711852992393
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t4_0fee.net_vw_bps",
+          "kind": "differs",
+          "left": -0.6113676368815977,
+          "right": -0.6065592572674925,
+          "relative_gap": 0.00786495608212316
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.gross_prefee_ew_bps",
+          "kind": "differs",
+          "left": -0.1353254424369861,
+          "right": -0.1362611640012078,
+          "relative_gap": 0.00686711852992393
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.gross_prefee_vw_bps",
+          "kind": "differs",
+          "left": -0.6113676368815977,
+          "right": -0.6065592572674925,
+          "relative_gap": 0.00786495608212316
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.3061197423141415,
+          "right": -1.3070554686630151,
+          "relative_gap": 0.0007159040846451414
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -0.8026089120752294,
+          "right": -0.7978005323822823,
+          "relative_gap": 0.00599093733025534
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate1.net_ew_bps",
+          "kind": "differs",
+          "left": 0.2938802576858583,
+          "right": 0.29294453133698495,
+          "relative_gap": 0.0031840395004470983
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate1.net_vw_bps",
+          "kind": "differs",
+          "left": 0.7973910879247705,
+          "right": 0.8021994676177178,
+          "relative_gap": 0.00599399511847922
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate2.net_ew_bps",
+          "kind": "differs",
+          "left": 0.3938802576858583,
+          "right": 0.392944531336985,
+          "relative_gap": 0.002375661969886389
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate2.net_vw_bps",
+          "kind": "differs",
+          "left": 0.8973910879247707,
+          "right": 0.9021994676177176,
+          "relative_gap": 0.005329619297652163
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate3.net_ew_bps",
+          "kind": "differs",
+          "left": 0.49388025768585825,
+          "right": 0.49294453133698485,
+          "relative_gap": 0.0018946421411090023
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate3.net_vw_bps",
+          "kind": "differs",
+          "left": 0.9973910879247708,
+          "right": 1.002199467617718,
+          "relative_gap": 0.004797827027764138
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t3.net_ew_bps",
+          "kind": "differs",
+          "left": -0.2061197423141417,
+          "right": -0.20705546866301502,
+          "relative_gap": 0.004519206157245823
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t3.net_vw_bps",
+          "kind": "differs",
+          "left": 0.29739108792477065,
+          "right": 0.3021994676177177,
+          "relative_gap": 0.015911277841924136
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t4_0fee.net_ew_bps",
+          "kind": "differs",
+          "left": 0.1938802576858583,
+          "right": 0.19294453133698494,
+          "relative_gap": 0.00482631063132529
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t4_0fee.net_vw_bps",
+          "kind": "differs",
+          "left": 0.6973910879247707,
+          "right": 0.7021994676177179,
+          "relative_gap": 0.006847598032593416
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.gross_prefee_ew_bps",
+          "kind": "differs",
+          "left": 0.1938802576858583,
+          "right": 0.19294453133698494,
+          "relative_gap": 0.00482631063132529
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.gross_prefee_vw_bps",
+          "kind": "differs",
+          "left": 0.6973910879247707,
+          "right": 0.7021994676177179,
+          "relative_gap": 0.006847598032593416
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.560092797880176,
+          "right": -1.5556786948848194,
+          "relative_gap": 0.002829384893869393
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -2.2544892356449946,
+          "right": -2.2444344700790153,
+          "relative_gap": 0.0044598862602698046
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_vw_ci95.[0]",
+          "kind": "differs",
+          "left": -2.531174449068865,
+          "right": -2.525553628052668,
+          "relative_gap": 0.0022206375456517735
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_vw_ci95.[1]",
+          "kind": "differs",
+          "left": -1.988273855391442,
+          "right": -1.9874325003046374,
+          "relative_gap": 0.00042315855259238226
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.rebate1.net_ew_bps",
+          "kind": "differs",
+          "left": 0.039907202119824126,
+          "right": 0.04432130511518056,
+          "relative_gap": 0.09959325394153502
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.rebate1.net_vw_bps",
+          "kind": "differs",
+          "left": -0.6544892356449947,
+          "right": -0.6444344700790157,
+          "relative_gap": 0.0153627669003145
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.rebate1.net_vw_ci95.[0]",
+          "kind": "differs",
+          "left": -0.9311744490688646,
+          "right": -0.9255536280526683,
+          "relative_gap": 0.00603627067067498
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.rebate1.net_vw_ci95.[1]",
+          "kind": "differs",
+          "left": -0.388273855391442,
+          "right": -0.3874325003046373,
+          "relative_gap": 0.0021669115113519505
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.rebate2.net_ew_bps",
+          "kind": "differs",
+          "left": 0.13990720211982413,
+          "right": 0.14432130511518054,
+          "relative_gap": 0.030585248600915754
+        }
+      ],
+      "n_outside_kept": 40
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity_plus_global vs bbgl_flat",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity_plus_global",
+      "right": "bbgl_flat",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 412,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "inventory_control_sim": 8,
+        "extra_half_spread_summary": 7,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity_plus_global vs gm_vpin",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity_plus_global",
+      "right": "gm_vpin",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 412,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "inventory_control_sim": 8,
+        "extra_half_spread_summary": 7,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity_plus_global vs naive_at_book",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity_plus_global",
+      "right": "naive_at_book",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 415,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 10,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 as_toxicity_plus_global vs naive_const",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "as_toxicity_plus_global",
+      "right": "naive_const",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 418,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 13,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 bbgl vs bbgl_flat",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "bbgl",
+      "right": "bbgl_flat",
+      "state": "declared_a_comparison",
+      "grounds": "whether the premium is CONDITIONED on anything at all: a single flat constant to every fill (arm a) against the global-plus-per-tier structure (arm b)",
+      "arms_not_in_the_ranking_only_list": [],
+      "manifest": "bbgl_flat_minus_bbgl",
+      "arm_a_of_the_manifest": "bbgl_flat",
+      "arm_b_of_the_manifest": "bbgl",
+      "axis": "whether the premium is CONDITIONED on anything at all: a single flat constant to every fill (arm a) against the global-plus-per-tier structure (arm b)",
+      "consequence_of_the_axis": "the dispersion of the premium across fills, which is zero for the flat arm by construction. wallet_population is NOT on the held-equal list because the flat arm has none: it reads no counterparty.",
+      "manifest_not_held_equal": [
+        {
+          "quantity": "frac_fills_widened_pooled",
+          "arm_a": 1.0,
+          "arm_b": 1.0,
+          "classified": "consequence of the axis"
+        },
+        {
+          "quantity": "min_extra_half_spread_bps_pooled",
+          "arm_a": 6.364595937112405,
+          "arm_b": 3.440275496189839,
+          "classified": "consequence of the axis"
+        },
+        {
+          "quantity": "mean_extra_half_spread_bps_by_coin",
+          "arm_a": {
+            "BTC": 6.364595937112406,
+            "ETH": 6.364595937112404
+          },
+          "arm_b": {
+            "BTC": 4.54132394606314,
+            "ETH": 8.020329878953236
+          },
+          "classified": "CONFOUND on the per-coin rows and held equal on the pooled row only. The pass-through is one scalar per wallet and a wallet trades both coins, so a per-coin solve would quote one counterparty two unrelated prices. The pooled difference is the equal-width finding; the per-coin rows are reported for shape and are NOT it."
+        }
+      ],
+      "producer_says_all_hold": true,
+      "held_equal_remeasured": [
+        {
+          "quantity": "mean_extra_half_spread_bps_pooled",
+          "measured_by": "quoters.<K>.<arm>.extra_half_spread_summary.by_coin.pooled.mean_extra_half_spread_bps",
+          "rtol": 1e-09,
+          "producer_says_holds": true,
+          "arm_relative_path": "extra_half_spread_summary.by_coin.pooled.mean_extra_half_spread_bps",
+          "left": 6.364595937112405,
+          "right": 6.364595937112405,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "relative gap 0.000e+00 against the declared rtol 1.000e-09"
+        },
+        {
+          "quantity": "n_late_fills_pooled",
+          "measured_by": "quoters.<K>.<arm>.net_by_coin.pooled.n_late_fills",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "arm_relative_path": "net_by_coin.pooled.n_late_fills",
+          "left": 1234777,
+          "right": 1234777,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "relative gap 0.000e+00 against the declared rtol 0.000e+00"
+        },
+        {
+          "quantity": "n_extra_finite_pooled",
+          "measured_by": "quoters.<K>.<arm>.extra_half_spread_summary.by_coin.pooled.n_extra_finite",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "arm_relative_path": "extra_half_spread_summary.by_coin.pooled.n_extra_finite",
+          "left": 1234777,
+          "right": 1234777,
+          "found_under_left": true,
+          "found_under_right": true,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "relative gap 0.000e+00 against the declared rtol 0.000e+00"
+        }
+      ],
+      "held_equal_rechecked_from_recorded_values": [
+        {
+          "quantity": "recapture_fraction",
+          "measured_by": "RECOVER_FRAC, applied by the same line of evaluate_quoter to both arms; the offset cap min(extra, max(a_mid,0)) is that same line",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 0.5,
+          "recorded_right": 0.5,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 0.5 against 0.5, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        },
+        {
+          "quantity": "headline_horizon_s",
+          "measured_by": "HEADLINE_HORIZON, the rung every published difference is read at",
+          "rtol": 0.0,
+          "producer_says_holds": true,
+          "why_unreachable": "the address is not relative to an arm, so it names a setting or a solve field shared by both arms rather than a leaf under either. The values the producer recorded are re-checked arithmetically below; what cannot be checked from here is whether it fetched the right ones",
+          "recorded_left": 10.0,
+          "recorded_right": 10.0,
+          "holds": true,
+          "measured_gap": 0.0,
+          "why": "recorded 10.0 against 10.0, relative gap 0.000e+00 against the declared rtol 0.000e+00 -- the producer's own numbers, re-compared",
+          "addresses_not_established": "this gate did not fetch these values, so it cannot tell one address read for both arms from two addresses that happen to agree. Read measured_by for which it is"
+        }
+      ],
+      "n_held_equal_declared": 5,
+      "n_held_equal_remeasured": 3,
+      "n_held_equal_rechecked": 2,
+      "how_each_was_judged": {
+        "re-measured from the leaves of both arms": 3,
+        "re-compared from the values the producer recorded, because the address is not relative to an arm": 2,
+        "taken on the producer's word": 0
+      },
+      "n_breaches": 0,
+      "breaches": [],
+      "n_disagreements_with_the_producer": 0,
+      "disagreements_with_the_producer": [],
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 410,
+      "n_outside_the_manifest": 410,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "inventory_control_sim": 8,
+        "extra_half_spread_summary": 5,
+        "spec": 1
+      },
+      "outside": [
+        {
+          "path": "extra_half_spread_summary.by_coin.BTC.mean_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 4.54132394606314,
+          "right": 6.364595937112406,
+          "relative_gap": 0.286470973030297
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.BTC.min_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 3.440275496189839,
+          "right": 6.364595937112405,
+          "relative_gap": 0.45946678623707254
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.ETH.mean_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 8.020329878953236,
+          "right": 6.364595937112404,
+          "relative_gap": 0.20644212480408947
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.ETH.min_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 6.253579872042331,
+          "right": 6.364595937112405,
+          "relative_gap": 0.017442751459323842
+        },
+        {
+          "path": "extra_half_spread_summary.by_coin.pooled.min_extra_half_spread_bps",
+          "kind": "differs",
+          "left": 3.440275496189839,
+          "right": 6.364595937112405,
+          "relative_gap": 0.45946678623707254
+        },
+        {
+          "path": "inventory_control_sim.control_ratio_as_over_null",
+          "kind": "differs",
+          "left": 0.05863598926645234,
+          "right": "NaN",
+          "relative_gap": null
+        },
+        {
+          "path": "inventory_control_sim.mean_reverts",
+          "kind": "differs",
+          "left": true,
+          "right": false,
+          "relative_gap": null
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.636261164001208,
+          "right": -1.6284133070574711,
+          "relative_gap": 0.0047962129251703026
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -2.1065592572674925,
+          "right": -2.0517388598676876,
+          "relative_gap": 0.026023667366905597
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate1.net_ew_bps",
+          "kind": "differs",
+          "left": -0.036261164001207796,
+          "right": -0.02841330705747123,
+          "relative_gap": 0.21642595211436583
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate1.net_vw_bps",
+          "kind": "differs",
+          "left": -0.5065592572674924,
+          "right": -0.4517388598676874,
+          "relative_gap": 0.10822109479455563
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate2.net_ew_bps",
+          "kind": "differs",
+          "left": 0.0637388359987922,
+          "right": 0.07158669294252877,
+          "relative_gap": 0.10962731509384002
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate2.net_vw_bps",
+          "kind": "differs",
+          "left": -0.4065592572674924,
+          "right": -0.3517388598676874,
+          "relative_gap": 0.13483987000629627
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate3.net_ew_bps",
+          "kind": "differs",
+          "left": 0.1637388359987922,
+          "right": 0.17158669294252873,
+          "relative_gap": 0.04573697883649468
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.rebate3.net_vw_bps",
+          "kind": "differs",
+          "left": -0.3065592572674924,
+          "right": -0.2517388598676874,
+          "relative_gap": 0.1788247984694545
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t3.net_ew_bps",
+          "kind": "differs",
+          "left": -0.5362611640012078,
+          "right": -0.5284133070574712,
+          "relative_gap": 0.014634393595056045
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t3.net_vw_bps",
+          "kind": "differs",
+          "left": -1.0065592572674924,
+          "right": -0.9517388598676875,
+          "relative_gap": 0.05446315952488076
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t4_0fee.net_ew_bps",
+          "kind": "differs",
+          "left": -0.1362611640012078,
+          "right": -0.12841330705747123,
+          "relative_gap": 0.057594230911362336
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.by_fee_tier.t4_0fee.net_vw_bps",
+          "kind": "differs",
+          "left": -0.6065592572674925,
+          "right": -0.5517388598676874,
+          "relative_gap": 0.09037929393208365
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.gross_prefee_ew_bps",
+          "kind": "differs",
+          "left": -0.1362611640012078,
+          "right": -0.12841330705747123,
+          "relative_gap": 0.057594230911362336
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_MID_lower.gross_prefee_vw_bps",
+          "kind": "differs",
+          "left": -0.6065592572674925,
+          "right": -0.5517388598676874,
+          "relative_gap": 0.09037929393208365
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.3070554686630151,
+          "right": -1.2992075715906088,
+          "relative_gap": 0.006004257095862883
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -0.7978005323822823,
+          "right": -0.7429801340836008,
+          "relative_gap": 0.06871441679160634
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate1.net_ew_bps",
+          "kind": "differs",
+          "left": 0.29294453133698495,
+          "right": 0.30079242840939135,
+          "relative_gap": 0.026090740095774896
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate1.net_vw_bps",
+          "kind": "differs",
+          "left": 0.8021994676177178,
+          "right": 0.8570198659163993,
+          "relative_gap": 0.06396630985918032
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate2.net_ew_bps",
+          "kind": "differs",
+          "left": 0.392944531336985,
+          "right": 0.40079242840939133,
+          "relative_gap": 0.019580951425534614
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate2.net_vw_bps",
+          "kind": "differs",
+          "left": 0.9021994676177176,
+          "right": 0.9570198659163992,
+          "relative_gap": 0.05728240368990462
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate3.net_ew_bps",
+          "kind": "differs",
+          "left": 0.49294453133698485,
+          "right": 0.5007924284093913,
+          "relative_gap": 0.01567095792029609
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.rebate3.net_vw_bps",
+          "kind": "differs",
+          "left": 1.002199467617718,
+          "right": 1.0570198659163994,
+          "relative_gap": 0.05186316744496953
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t3.net_ew_bps",
+          "kind": "differs",
+          "left": -0.20705546866301502,
+          "right": -0.19920757159060867,
+          "relative_gap": 0.03790238974648328
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t3.net_vw_bps",
+          "kind": "differs",
+          "left": 0.3021994676177177,
+          "right": 0.3570198659163993,
+          "relative_gap": 0.15354999408217374
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t4_0fee.net_ew_bps",
+          "kind": "differs",
+          "left": 0.19294453133698494,
+          "right": 0.20079242840939132,
+          "relative_gap": 0.039084626519907774
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.by_fee_tier.t4_0fee.net_vw_bps",
+          "kind": "differs",
+          "left": 0.7021994676177179,
+          "right": 0.7570198659163994,
+          "relative_gap": 0.07241606299501721
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.gross_prefee_ew_bps",
+          "kind": "differs",
+          "left": 0.19294453133698494,
+          "right": 0.20079242840939132,
+          "relative_gap": 0.039084626519907774
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h1.net_PRINT.gross_prefee_vw_bps",
+          "kind": "differs",
+          "left": 0.7021994676177179,
+          "right": 0.7570198659163994,
+          "relative_gap": 0.07241606299501721
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_ew_bps",
+          "kind": "differs",
+          "left": -1.5556786948848194,
+          "right": -1.4889038093050366,
+          "relative_gap": 0.042923314306060265
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_vw_bps",
+          "kind": "differs",
+          "left": -2.2444344700790153,
+          "right": -2.0769478966840267,
+          "relative_gap": 0.07462306234723452
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_vw_ci95.[0]",
+          "kind": "differs",
+          "left": -2.525553628052668,
+          "right": -2.341734383711832,
+          "relative_gap": 0.07278374226508517
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.base.net_vw_ci95.[1]",
+          "kind": "differs",
+          "left": -1.9874325003046374,
+          "right": -1.8341956539913682,
+          "relative_gap": 0.0771029186097041
+        },
+        {
+          "path": "net_by_coin.BTC.by_horizon.h10.net_MID_lower.by_fee_tier.rebate1.net_ew_bps",
+          "kind": "differs",
+          "left": 0.04432130511518056,
+          "right": 0.11109619069496345,
+          "relative_gap": 0.6010546820919048
+        }
+      ],
+      "n_outside_kept": 40
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 bbgl vs gm_vpin",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "bbgl",
+      "right": "gm_vpin",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 411,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "inventory_control_sim": 8,
+        "extra_half_spread_summary": 6,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 bbgl vs naive_at_book",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "bbgl",
+      "right": "naive_at_book",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 414,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 bbgl vs naive_const",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "bbgl",
+      "right": "naive_const",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 613,
+      "n_leaves_under_one_arm_only": 6,
+      "n_differing_leaves": 417,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 12,
+        "inventory_control_sim": 8,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 bbgl_flat vs gm_vpin",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "bbgl_flat",
+      "right": "gm_vpin",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 614,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 403,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 6,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 bbgl_flat vs naive_at_book",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "bbgl_flat",
+      "right": "naive_at_book",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 614,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 406,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 bbgl_flat vs naive_const",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "bbgl_flat",
+      "right": "naive_const",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 614,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 409,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 12,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 gm_vpin vs naive_at_book",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "gm_vpin",
+      "right": "naive_at_book",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 614,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 406,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 gm_vpin vs naive_const",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "gm_vpin",
+      "right": "naive_const",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 614,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 409,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 12,
+        "spec": 1
+      }
+    },
+    {
+      "id": "quoter_bakeoff quoters.K50 naive_at_book vs naive_const",
+      "declaration": "quoter_bakeoff",
+      "artifact": "quoters/mm_bakeoff_results.json",
+      "container": "quoters.K50",
+      "left": "naive_at_book",
+      "right": "naive_const",
+      "state": "declared_not_a_comparison",
+      "grounds": "a ranking orders arms on one metric; it does not make any two of them comparable. Every difference below declares the ONE axis its arms are allowed to differ on, lists what is held equal, measures each of those on the published leaves, and is withheld if any of them missed",
+      "arms_not_in_the_ranking_only_list": [],
+      "n_breaches": 0,
+      "n_leaves_under_both": 614,
+      "n_leaves_under_one_arm_only": 0,
+      "n_differing_leaves": 406,
+      "outside_by_block": {
+        "net_by_coin": 396,
+        "extra_half_spread_summary": 9,
+        "spec": 1
+      }
+    }
+  ]
+}

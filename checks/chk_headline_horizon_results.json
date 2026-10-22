@@ -1,0 +1,134 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_headline_horizon_results.json",
+    "producer": {
+      "script": "chk_headline_horizon.py",
+      "sha256": "50133389b8517c884c9df0dafaa309ba16d0210dfbececf236355afe450f65a2",
+      "bytes": 44513,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "e08110d4f552d54a0d5f03b22706da71e3a48325",
+      "unasked_because": null
+    },
+    "inputs": [],
+    "scope": {
+      "population": "128 .py and 1 .ipynb under this repository, walked in full, EXCEPT the directories in scope_excluded, which are not scanned at all and whose contents are therefore NOT covered by the verdict. A notebook finding points at file.ipynb#cellN and a line inside that cell",
+      "window": "n/a: this gate reads source text as it stands now, not a period of market data. The windows it counts are the ones SPELLED in that text",
+      "coins": "n/a: this gate reads source text and touches no market data"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "object": "source-level gate: the scoring horizon is declared, not typed",
+    "scope_excluded": [
+      "__pycache__/",
+      "panel_ckpt_v2/"
+    ],
+    "scope_uncovered_note": "The notebooks are INSIDE this gate as of 2026-07-30: the reproduction notebook is what a reader re-runs, so a window fixed by spelling there costs what one in a script costs. Notebook findings are counted separately in n_violations_notebook and are not folded into the script baseline, because the two debts are worked off by different edits.",
+    "n_violations_py": 0,
+    "n_violations_notebook": 0,
+    "n_violations_untracked_py": 0,
+    "n_violations_untracked_notebook": 0,
+    "untracked_files": [],
+    "untracked_note": "these files match a .gitignore rule, so they are not in the repository a reader clones and their findings are reported outside the gated count. The baseline above is compared against the TRACKED count only. It stood above the debt it gates while it was frozen over both populations at once; since 2026-07-31 it is 0, which is the tracked debt exactly, so the gate now goes red on the first horizon typed into a tracked file rather than on the tenth.",
+    "gated_count": "tracked .py only",
+    "verdict_population": "tracked .py plus tracked notebook cells. PASS means no horizon is typed anywhere in the repository a reader clones; it does NOT speak for the gitignored files counted in n_violations_untracked_py, nor for the directories in scope_excluded, which are not read at all",
+    "baseline_violations_notebook": 0,
+    "baseline_notebook_note": "null means the notebook count is measured and reported and cannot fail the run; set it to the count above to arm it, after which it may only go down.",
+    "notebook_window_mirror": {
+      "SCORE_HORIZON_S": "HEADLINE_HORIZON_S",
+      "COMPANION_HORIZON_S": "COMPANION_HORIZON_S"
+    },
+    "notebook_mirrors_checked": [
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 22,
+        "name": "SCORE_HORIZON_S",
+        "mirrors": "HEADLINE_HORIZON_S",
+        "value": 10,
+        "agrees": true
+      },
+      {
+        "file": "notebooks/counterparty_adverse_selection.ipynb#cell6",
+        "line": 28,
+        "name": "COMPANION_HORIZON_S",
+        "mirrors": "COMPANION_HORIZON_S",
+        "value": 60,
+        "agrees": true
+      }
+    ],
+    "rule_1": "a markout column name may not appear as a bare string literal outside an ALLOW-listed file; it comes from the settings.py accessor that spells that window -- headline_print_col/headline_mid_col, or companion_print_col/companion_mid_col for the long window -- and each finding names the one that returns the string already written there, so acting on it moves no number. UNLESS it sits in a ladder read: mo1, mo10 and mo60 of one family named together within four lines, which fixes no horizon. A lone rung is a choice and is flagged even inside a file whose other lines are ladder reads. Known holes: matches plain literals only, so an f-string, a concatenation or a %-format spelling of the same name passes; and the ALLOW exemption is still per FILE, not per line",
+    "n_ladder_reads_exempted": 102,
+    "rule_2": "no file defines its own horizon constant as an integer literal. Requires HORIZON in the name and a plain int assignment: an annotated assignment, a tuple target, a float, an arithmetic expression, or a name spelled WINDOW instead of HORIZON passes. The notebook may repeat the declarations in notebook_window_mirror, and only while each still equals what settings.py declares",
+    "n_files_scanned": 128,
+    "n_notebooks_scanned": 1,
+    "n_exempt_files": 4,
+    "baseline_violations": 0,
+    "regressed_above_baseline": false,
+    "idle_exemptions": [
+      "data/i4_midmarkout.py",
+      "probes/calib_print_vs_mid.py"
+    ],
+    "idle_exemptions_note": "these files carry a blanket ALLOW entry they no longer need: every literal in them is now recognised as a ladder read. The entry is dead weight and a standing blind spot, because a lone rung added to any of them would be exempted rather than flagged. Delete them as they are confirmed unnecessary.",
+    "unparsable": [],
+    "run": {
+      "runtime_s": 1.287,
+      "finished_utc": "2026-10-22T09:37:39Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {}
+    }
+  },
+  "verdict": "PASS",
+  "n_violations": 0,
+  "violations": [],
+  "exemptions_in_use": [
+    {
+      "file": "identity/follow_the_informed_oos.py",
+      "unit": "identity/follow_the_informed_oos.py",
+      "n_literals": 1,
+      "reason": "HORIZON_LAG is the copycat's HOLDING horizon (enter one lag after the trade is observable, exit at H), a different quantity from adverse-selection harm; the toxicity CLASSIFICATION does use the headline column"
+    },
+    {
+      "file": "checks/chk_side_signconv.py",
+      "unit": "checks/chk_side_signconv.py",
+      "n_literals": 1,
+      "reason": "re-derives a markout to verify the sign convention"
+    },
+    {
+      "file": "notebook_build/make_notebook_data.py",
+      "unit": "notebook_build/make_notebook_data.py",
+      "n_literals": 2,
+      "reason": "producer: packs the ladder into the notebook artifact"
+    },
+    {
+      "file": "data/panel_build.py",
+      "unit": "data/panel_build.py",
+      "n_literals": 1,
+      "reason": "producer: builds panel_markouts.npz across the ladder"
+    }
+  ]
+}

@@ -1,0 +1,381 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "panel_v2_manifest.json",
+    "producer": {
+      "script": "panel_rebuild_v2.py",
+      "sha256": "ed30258d90b69f3a0120e762867bd534de86f39551453689f699c3100cc1c4c8",
+      "bytes": 51175,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "efe315da5290b56b5df8f6b2c336e435829a4f5d",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "shard_BTC_202508.npz",
+        "bytes": 26171811,
+        "sha256": "e8daca1901cd2ff5d5479a4c0784482ad2697559d0025011b402912660541e3e",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_BTC_202509.npz",
+        "bytes": 24072463,
+        "sha256": "54f99d5e7dfdf87bed9a8d4269acbd505dd529952616ec4b51bba7aef97aab12",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_BTC_202510.npz",
+        "bytes": 54887065,
+        "sha256": "99da5dca2c00979e9ea9dae2aef337790b088b4fabbba0d04e6357055ad26de0",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_BTC_202511.npz",
+        "bytes": 62387041,
+        "sha256": "661313616efdf119dbfd0ae872eccfa543d744b725eefe4ba77f3edfa484bc54",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_BTC_202512.npz",
+        "bytes": 40637417,
+        "sha256": "5a85bdecf4d5b3664676bdfc896889cf2d323d7887d391038cc5bba37334810a",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_BTC_202601.npz",
+        "bytes": 35334167,
+        "sha256": "1ab5d8282d1708a19d9b164029bf65af8854f5bb1c99a04024de8df59ce7cc15",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_BTC_202603.npz",
+        "bytes": 68151179,
+        "sha256": "71a753ae4eda7f19e4a66848411253cb9d03e404c3402f53ca0045f1c2fc75bd",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_BTC_202605.npz",
+        "bytes": 48893920,
+        "sha256": "cb306948836ee3c5d438eb60fcccb52f893797a87cecd3a2c7547c1c199bad5c",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_ETH_202508.npz",
+        "bytes": 42984713,
+        "sha256": "906c60e4400d8e61ac25f09aa513df2994f7e0f3f2da134af22003e2f7b2ffe7",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_ETH_202509.npz",
+        "bytes": 28879800,
+        "sha256": "4b7f3df33a6b4056891d9515afe1f21b80e51a0daf2a799c6edb492f5da0db8f",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_ETH_202510.npz",
+        "bytes": 48294727,
+        "sha256": "856e6a28cc210310e354631f62f0efa13a0e551e1e5197bbbbfd5110d7dcbdda",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_ETH_202511.npz",
+        "bytes": 46254984,
+        "sha256": "b9621d063510b58af852400a8e6f39a5554e063c612029ac0f2483f0415d0e02",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_ETH_202512.npz",
+        "bytes": 35916228,
+        "sha256": "82797c01d0f9c55d21f3b9d1f9616cfa63f67a5c64b37cbda9a70c4167240a27",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_ETH_202601.npz",
+        "bytes": 23745893,
+        "sha256": "00971e2d8d776efc331a5e429bc5d8fdf2fed19c088b3a426b7aca55f5700058",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_ETH_202603.npz",
+        "bytes": 27117110,
+        "sha256": "3ff214ed439fa1748e6c3815a359e230b6e3cee8665a8965519c51b078ae92a7",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_ETH_202605.npz",
+        "bytes": 19924310,
+        "sha256": "8669243b33fc6f441a15a22ce8a8c39ae7e1fa28a3cf6127e95ad2652582b0d2",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_SOL_202508.npz",
+        "bytes": 20461732,
+        "sha256": "efc6140035d4514018a02e01dfa32d1ec9f043fc6fbd067f1e55146cbcdb93a3",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_SOL_202509.npz",
+        "bytes": 19777039,
+        "sha256": "f18b372a80556185e63abb08f41dbb41f34a751f11c6ab2521b15a6006099a40",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_SOL_202510.npz",
+        "bytes": 34117332,
+        "sha256": "43f1de8b4db9fa6a1dfdf09eaa53f35aace5c659c313c177988dc0a938e08f39",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_SOL_202511.npz",
+        "bytes": 26246895,
+        "sha256": "90869573c478dbe86e31fac34c97321a02ffba19cf3103ae8bcf7b4ad107f7ae",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_SOL_202512.npz",
+        "bytes": 15889107,
+        "sha256": "f51ebb110fec1c61cf2485ac829d979a410e6328b2c49052bc6329ca3c75883a",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_SOL_202601.npz",
+        "bytes": 15999212,
+        "sha256": "5f05d447f63419a46beabbf46d6bc33a9f6afab0eaac58027da2f97a692f0ae0",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_SOL_202603.npz",
+        "bytes": 19624595,
+        "sha256": "cc65103b1dcdfc3d15f5e5c0f2949643ffa2455bae2e17a46c9e251434d078b5",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_SOL_202605.npz",
+        "bytes": 16599731,
+        "sha256": "ee40540442bef6e6798fd751384faee03dfa0dceaba7019538350ffa26b3b68e",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "26021882 taker fills assembled from 24 per (coin, month) shards",
+      "window": "8 ten-day windows: [202508, 202509, 202510, 202511, 202512, 202601, 202603, 202605]",
+      "coins": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "builder": "panel_rebuild_v2.py (the eight-window panel PLUS block_time_ns and is_liq; writes panel_markouts_v2.npz, never panel_markouts.npz)",
+    "what_this_record_is_for": "the assembled panel is an .npz and can carry no _meta block, so this companion .json holds its hash and the hashes of every shard it was built from",
+    "run": {
+      "runtime_s": 119.262,
+      "finished_utc": "2026-08-29T18:36:00Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "panel": {
+    "file": "panel_markouts_v2.npz",
+    "sha256": "65a410f4779e78b7c42943a85fab99ed668d9c40db440b1df5e5eee848a0ef6a",
+    "bytes": 571855772,
+    "rows": 26021882,
+    "n_takers": 305467,
+    "n_liq": 217073,
+    "periods_assembled": [
+      202508,
+      202509,
+      202510,
+      202511,
+      202512,
+      202601,
+      202603,
+      202605
+    ]
+  },
+  "taker_map": {
+    "file": "panel_taker_map_v2.json",
+    "sha256": "ac042cc97eb5b918e1a202c3d54d8b95d1dc35e022216dbdd84409c90f3aac20",
+    "bytes": 16385166,
+    "why_it_is_not_in_the_census": "matched by the panel_taker_map* ignore rule, so the provenance census drops it; its hash is recorded here instead"
+  },
+  "shards": [
+    {
+      "file": "shard_BTC_202508.npz",
+      "sha256": "e8daca1901cd2ff5d5479a4c0784482ad2697559d0025011b402912660541e3e",
+      "bytes": 26171811
+    },
+    {
+      "file": "shard_BTC_202509.npz",
+      "sha256": "54f99d5e7dfdf87bed9a8d4269acbd505dd529952616ec4b51bba7aef97aab12",
+      "bytes": 24072463
+    },
+    {
+      "file": "shard_BTC_202510.npz",
+      "sha256": "99da5dca2c00979e9ea9dae2aef337790b088b4fabbba0d04e6357055ad26de0",
+      "bytes": 54887065
+    },
+    {
+      "file": "shard_BTC_202511.npz",
+      "sha256": "661313616efdf119dbfd0ae872eccfa543d744b725eefe4ba77f3edfa484bc54",
+      "bytes": 62387041
+    },
+    {
+      "file": "shard_BTC_202512.npz",
+      "sha256": "5a85bdecf4d5b3664676bdfc896889cf2d323d7887d391038cc5bba37334810a",
+      "bytes": 40637417
+    },
+    {
+      "file": "shard_BTC_202601.npz",
+      "sha256": "1ab5d8282d1708a19d9b164029bf65af8854f5bb1c99a04024de8df59ce7cc15",
+      "bytes": 35334167
+    },
+    {
+      "file": "shard_BTC_202603.npz",
+      "sha256": "71a753ae4eda7f19e4a66848411253cb9d03e404c3402f53ca0045f1c2fc75bd",
+      "bytes": 68151179
+    },
+    {
+      "file": "shard_BTC_202605.npz",
+      "sha256": "cb306948836ee3c5d438eb60fcccb52f893797a87cecd3a2c7547c1c199bad5c",
+      "bytes": 48893920
+    },
+    {
+      "file": "shard_ETH_202508.npz",
+      "sha256": "906c60e4400d8e61ac25f09aa513df2994f7e0f3f2da134af22003e2f7b2ffe7",
+      "bytes": 42984713
+    },
+    {
+      "file": "shard_ETH_202509.npz",
+      "sha256": "4b7f3df33a6b4056891d9515afe1f21b80e51a0daf2a799c6edb492f5da0db8f",
+      "bytes": 28879800
+    },
+    {
+      "file": "shard_ETH_202510.npz",
+      "sha256": "856e6a28cc210310e354631f62f0efa13a0e551e1e5197bbbbfd5110d7dcbdda",
+      "bytes": 48294727
+    },
+    {
+      "file": "shard_ETH_202511.npz",
+      "sha256": "b9621d063510b58af852400a8e6f39a5554e063c612029ac0f2483f0415d0e02",
+      "bytes": 46254984
+    },
+    {
+      "file": "shard_ETH_202512.npz",
+      "sha256": "82797c01d0f9c55d21f3b9d1f9616cfa63f67a5c64b37cbda9a70c4167240a27",
+      "bytes": 35916228
+    },
+    {
+      "file": "shard_ETH_202601.npz",
+      "sha256": "00971e2d8d776efc331a5e429bc5d8fdf2fed19c088b3a426b7aca55f5700058",
+      "bytes": 23745893
+    },
+    {
+      "file": "shard_ETH_202603.npz",
+      "sha256": "3ff214ed439fa1748e6c3815a359e230b6e3cee8665a8965519c51b078ae92a7",
+      "bytes": 27117110
+    },
+    {
+      "file": "shard_ETH_202605.npz",
+      "sha256": "8669243b33fc6f441a15a22ce8a8c39ae7e1fa28a3cf6127e95ad2652582b0d2",
+      "bytes": 19924310
+    },
+    {
+      "file": "shard_SOL_202508.npz",
+      "sha256": "efc6140035d4514018a02e01dfa32d1ec9f043fc6fbd067f1e55146cbcdb93a3",
+      "bytes": 20461732
+    },
+    {
+      "file": "shard_SOL_202509.npz",
+      "sha256": "f18b372a80556185e63abb08f41dbb41f34a751f11c6ab2521b15a6006099a40",
+      "bytes": 19777039
+    },
+    {
+      "file": "shard_SOL_202510.npz",
+      "sha256": "43f1de8b4db9fa6a1dfdf09eaa53f35aace5c659c313c177988dc0a938e08f39",
+      "bytes": 34117332
+    },
+    {
+      "file": "shard_SOL_202511.npz",
+      "sha256": "90869573c478dbe86e31fac34c97321a02ffba19cf3103ae8bcf7b4ad107f7ae",
+      "bytes": 26246895
+    },
+    {
+      "file": "shard_SOL_202512.npz",
+      "sha256": "f51ebb110fec1c61cf2485ac829d979a410e6328b2c49052bc6329ca3c75883a",
+      "bytes": 15889107
+    },
+    {
+      "file": "shard_SOL_202601.npz",
+      "sha256": "5f05d447f63419a46beabbf46d6bc33a9f6afab0eaac58027da2f97a692f0ae0",
+      "bytes": 15999212
+    },
+    {
+      "file": "shard_SOL_202603.npz",
+      "sha256": "cc65103b1dcdfc3d15f5e5c0f2949643ffa2455bae2e17a46c9e251434d078b5",
+      "bytes": 19624595
+    },
+    {
+      "file": "shard_SOL_202605.npz",
+      "sha256": "ee40540442bef6e6798fd751384faee03dfa0dceaba7019538350ffa26b3b68e",
+      "bytes": 16599731
+    }
+  ],
+  "issues": [
+    "202511 20251110: 23/24 hours",
+    "202511 20251110: 23/24 hours",
+    "202511 20251110: 23/24 hours"
+  ]
+}

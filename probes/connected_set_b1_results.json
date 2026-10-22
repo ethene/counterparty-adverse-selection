@@ -1,0 +1,942 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "connected_set_b1_results.json",
+    "producer": {
+      "script": "connected_set_b1.py",
+      "sha256": "b87bc0435a4a47ebda75e9be68b94eb6ea52c1026cb185017f2afe48bd513640",
+      "bytes": 11395,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "4f5ae61ac64d6e6fe91f1af9ef1bf75d612fc99d",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "panel_markouts.npz",
+        "bytes": 482588572,
+        "sha256": "c6a37132cf1d0c62bdb2169668c89af20a7b6fb8811fd8132cc7c9b0b607a04b",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "26,035,902 panel fills as edges of the taker x maker graph; 305,481 distinct takers and 63,905 distinct makers, with roles re-factorised inside every cell and no fill floor",
+      "window": "8 monthly windows pooled, 202508 to 202605; the calendar dates of each are declared by the panel's producer, panel_build.py",
+      "coins": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ],
+      "markout_horizon": "none: no markout column is read, so this probe has no scoring horizon. The horizon_s field of the fingerprint block below carries the declared default and is not a property of this run"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "run": {
+      "runtime_s": 48.528,
+      "finished_utc": "2026-08-30T09:37:04Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6",
+        "scipy": "1.18.0"
+      }
+    }
+  },
+  "panel_rows": 26035902,
+  "cells": {
+    "GLOBAL": {
+      "n_fills": 26035902,
+      "n_takers": 305481,
+      "n_makers": 63905,
+      "n_edges_distinct": 6745179,
+      "lcc": {
+        "n_components": 7,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 305475,
+        "makers_in_lcc": 63899,
+        "takers_in_lcc_share": 1.0
+      },
+      "mobility": {
+        "median_makers_per_taker": 6,
+        "p90_makers_per_taker": 49,
+        "mover_share_ge2_makers": 0.9012,
+        "median_takers_per_maker": 5
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0402,
+        "top5_maker_fill_share": 0.1096,
+        "maker_degree_gini": 0.9752,
+        "taker_degree_gini": 0.9104
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.8838,
+        "takers_only_connected_via_hub": 5314,
+        "fragility_drop": 0.0174
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "BTC": {
+      "n_fills": 11205275,
+      "n_takers": 226080,
+      "n_makers": 40519,
+      "n_edges_distinct": 3592210,
+      "lcc": {
+        "n_components": 5,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 226076,
+        "makers_in_lcc": 40515,
+        "takers_in_lcc_share": 1.0
+      },
+      "mobility": {
+        "median_makers_per_taker": 5,
+        "p90_makers_per_taker": 35,
+        "mover_share_ge2_makers": 0.8896,
+        "median_takers_per_maker": 5
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0433,
+        "top5_maker_fill_share": 0.1447,
+        "maker_degree_gini": 0.9706,
+        "taker_degree_gini": 0.8875
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.8773,
+        "takers_only_connected_via_hub": 2761,
+        "fragility_drop": 0.0122
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "ETH": {
+      "n_fills": 9351786,
+      "n_takers": 143537,
+      "n_makers": 29913,
+      "n_edges_distinct": 2210862,
+      "lcc": {
+        "n_components": 8,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 143530,
+        "makers_in_lcc": 29906,
+        "takers_in_lcc_share": 1.0
+      },
+      "mobility": {
+        "median_makers_per_taker": 4,
+        "p90_makers_per_taker": 31,
+        "mover_share_ge2_makers": 0.8698,
+        "median_takers_per_maker": 4
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0467,
+        "top5_maker_fill_share": 0.1637,
+        "maker_degree_gini": 0.9724,
+        "taker_degree_gini": 0.92
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.8483,
+        "takers_only_connected_via_hub": 3089,
+        "fragility_drop": 0.0215
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "SOL": {
+      "n_fills": 5478841,
+      "n_takers": 126871,
+      "n_makers": 22873,
+      "n_edges_distinct": 1383829,
+      "lcc": {
+        "n_components": 9,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 126862,
+        "makers_in_lcc": 22865,
+        "takers_in_lcc_share": 0.9999
+      },
+      "mobility": {
+        "median_makers_per_taker": 4,
+        "p90_makers_per_taker": 24,
+        "mover_share_ge2_makers": 0.8695,
+        "median_takers_per_maker": 3
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0409,
+        "top5_maker_fill_share": 0.1723,
+        "maker_degree_gini": 0.9718,
+        "taker_degree_gini": 0.8952
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.8456,
+        "takers_only_connected_via_hub": 3023,
+        "fragility_drop": 0.0238
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    }
+  },
+  "cells_coin_period": {
+    "BTC_202508": {
+      "n_fills": 814777,
+      "n_takers": 32287,
+      "n_makers": 5474,
+      "n_edges_distinct": 312979,
+      "lcc": {
+        "n_components": 3,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 32285,
+        "makers_in_lcc": 5472,
+        "takers_in_lcc_share": 0.9999
+      },
+      "mobility": {
+        "median_makers_per_taker": 4,
+        "p90_makers_per_taker": 19,
+        "mover_share_ge2_makers": 0.8233,
+        "median_takers_per_maker": 4
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0506,
+        "top5_maker_fill_share": 0.1671,
+        "maker_degree_gini": 0.9488,
+        "taker_degree_gini": 0.8503
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.8084,
+        "takers_only_connected_via_hub": 481,
+        "fragility_drop": 0.0149
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "BTC_202509": {
+      "n_fills": 727516,
+      "n_takers": 31078,
+      "n_makers": 5906,
+      "n_edges_distinct": 314317,
+      "lcc": {
+        "n_components": 6,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 31073,
+        "makers_in_lcc": 5901,
+        "takers_in_lcc_share": 0.9998
+      },
+      "mobility": {
+        "median_makers_per_taker": 4,
+        "p90_makers_per_taker": 21,
+        "mover_share_ge2_makers": 0.8099,
+        "median_takers_per_maker": 4
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0614,
+        "top5_maker_fill_share": 0.1774,
+        "maker_degree_gini": 0.9419,
+        "taker_degree_gini": 0.8389
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.7881,
+        "takers_only_connected_via_hub": 678,
+        "fragility_drop": 0.0218
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "BTC_202510": {
+      "n_fills": 1721332,
+      "n_takers": 56212,
+      "n_makers": 10349,
+      "n_edges_distinct": 631958,
+      "lcc": {
+        "n_components": 8,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 56205,
+        "makers_in_lcc": 10342,
+        "takers_in_lcc_share": 0.9999
+      },
+      "mobility": {
+        "median_makers_per_taker": 4,
+        "p90_makers_per_taker": 23,
+        "mover_share_ge2_makers": 0.848,
+        "median_takers_per_maker": 3
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0527,
+        "top5_maker_fill_share": 0.1959,
+        "maker_degree_gini": 0.9623,
+        "taker_degree_gini": 0.8622
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.829,
+        "takers_only_connected_via_hub": 1072,
+        "fragility_drop": 0.0191
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "BTC_202511": {
+      "n_fills": 2022864,
+      "n_takers": 51991,
+      "n_makers": 8935,
+      "n_edges_distinct": 629768,
+      "lcc": {
+        "n_components": 1,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 51991,
+        "makers_in_lcc": 8935,
+        "takers_in_lcc_share": 1.0
+      },
+      "mobility": {
+        "median_makers_per_taker": 4,
+        "p90_makers_per_taker": 26,
+        "mover_share_ge2_makers": 0.8476,
+        "median_takers_per_maker": 4
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0677,
+        "top5_maker_fill_share": 0.2012,
+        "maker_degree_gini": 0.9583,
+        "taker_degree_gini": 0.8857
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.8414,
+        "takers_only_connected_via_hub": 321,
+        "fragility_drop": 0.0062
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "BTC_202512": {
+      "n_fills": 1200863,
+      "n_takers": 35589,
+      "n_makers": 6480,
+      "n_edges_distinct": 427856,
+      "lcc": {
+        "n_components": 6,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 35584,
+        "makers_in_lcc": 6475,
+        "takers_in_lcc_share": 0.9999
+      },
+      "mobility": {
+        "median_makers_per_taker": 4,
+        "p90_makers_per_taker": 27,
+        "mover_share_ge2_makers": 0.8454,
+        "median_takers_per_maker": 4
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0839,
+        "top5_maker_fill_share": 0.2516,
+        "maker_degree_gini": 0.9566,
+        "taker_degree_gini": 0.8621
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.8385,
+        "takers_only_connected_via_hub": 246,
+        "fragility_drop": 0.0069
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "BTC_202601": {
+      "n_fills": 1118856,
+      "n_takers": 37824,
+      "n_makers": 6484,
+      "n_edges_distinct": 426981,
+      "lcc": {
+        "n_components": 8,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 37817,
+        "makers_in_lcc": 6477,
+        "takers_in_lcc_share": 0.9998
+      },
+      "mobility": {
+        "median_makers_per_taker": 4,
+        "p90_makers_per_taker": 23,
+        "mover_share_ge2_makers": 0.8263,
+        "median_takers_per_maker": 4
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0603,
+        "top5_maker_fill_share": 0.2002,
+        "maker_degree_gini": 0.9522,
+        "taker_degree_gini": 0.8634
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.796,
+        "takers_only_connected_via_hub": 1146,
+        "fragility_drop": 0.0303
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "BTC_202603": {
+      "n_fills": 1947220,
+      "n_takers": 60360,
+      "n_makers": 9579,
+      "n_edges_distinct": 752013,
+      "lcc": {
+        "n_components": 2,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 60359,
+        "makers_in_lcc": 9578,
+        "takers_in_lcc_share": 1.0
+      },
+      "mobility": {
+        "median_makers_per_taker": 3,
+        "p90_makers_per_taker": 28,
+        "mover_share_ge2_makers": 0.8996,
+        "median_takers_per_maker": 4
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0746,
+        "top5_maker_fill_share": 0.1908,
+        "maker_degree_gini": 0.9628,
+        "taker_degree_gini": 0.8762
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.8619,
+        "takers_only_connected_via_hub": 2279,
+        "fragility_drop": 0.0378
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "BTC_202605": {
+      "n_fills": 1651847,
+      "n_takers": 49547,
+      "n_makers": 8556,
+      "n_edges_distinct": 548145,
+      "lcc": {
+        "n_components": 3,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 49545,
+        "makers_in_lcc": 8554,
+        "takers_in_lcc_share": 1.0
+      },
+      "mobility": {
+        "median_makers_per_taker": 4,
+        "p90_makers_per_taker": 25,
+        "mover_share_ge2_makers": 0.8036,
+        "median_takers_per_maker": 4
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0604,
+        "top5_maker_fill_share": 0.1716,
+        "maker_degree_gini": 0.9587,
+        "taker_degree_gini": 0.883
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.7779,
+        "takers_only_connected_via_hub": 1272,
+        "fragility_drop": 0.0257
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "ETH_202508": {
+      "n_fills": 1462641,
+      "n_takers": 35377,
+      "n_makers": 6791,
+      "n_edges_distinct": 440379,
+      "lcc": {
+        "n_components": 3,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 35375,
+        "makers_in_lcc": 6789,
+        "takers_in_lcc_share": 0.9999
+      },
+      "mobility": {
+        "median_makers_per_taker": 4,
+        "p90_makers_per_taker": 24,
+        "mover_share_ge2_makers": 0.844,
+        "median_takers_per_maker": 5
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0603,
+        "top5_maker_fill_share": 0.2222,
+        "maker_degree_gini": 0.9538,
+        "taker_degree_gini": 0.8884
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.8278,
+        "takers_only_connected_via_hub": 573,
+        "fragility_drop": 0.0162
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "ETH_202509": {
+      "n_fills": 1010559,
+      "n_takers": 28762,
+      "n_makers": 5818,
+      "n_edges_distinct": 320041,
+      "lcc": {
+        "n_components": 8,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 28755,
+        "makers_in_lcc": 5810,
+        "takers_in_lcc_share": 0.9998
+      },
+      "mobility": {
+        "median_makers_per_taker": 4,
+        "p90_makers_per_taker": 21,
+        "mover_share_ge2_makers": 0.8081,
+        "median_takers_per_maker": 5
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0882,
+        "top5_maker_fill_share": 0.1926,
+        "maker_degree_gini": 0.947,
+        "taker_degree_gini": 0.8935
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.7789,
+        "takers_only_connected_via_hub": 842,
+        "fragility_drop": 0.0293
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "ETH_202510": {
+      "n_fills": 1614791,
+      "n_takers": 40306,
+      "n_makers": 8477,
+      "n_edges_distinct": 429378,
+      "lcc": {
+        "n_components": 4,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 40303,
+        "makers_in_lcc": 8474,
+        "takers_in_lcc_share": 0.9999
+      },
+      "mobility": {
+        "median_makers_per_taker": 4,
+        "p90_makers_per_taker": 19,
+        "mover_share_ge2_makers": 0.8254,
+        "median_takers_per_maker": 3
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.096,
+        "top5_maker_fill_share": 0.2176,
+        "maker_degree_gini": 0.9669,
+        "taker_degree_gini": 0.9091
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.7836,
+        "takers_only_connected_via_hub": 1686,
+        "fragility_drop": 0.0418
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "ETH_202511": {
+      "n_fills": 1630961,
+      "n_takers": 32314,
+      "n_makers": 5945,
+      "n_edges_distinct": 380108,
+      "lcc": {
+        "n_components": 3,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 32312,
+        "makers_in_lcc": 5943,
+        "takers_in_lcc_share": 0.9999
+      },
+      "mobility": {
+        "median_makers_per_taker": 3,
+        "p90_makers_per_taker": 23,
+        "mover_share_ge2_makers": 0.8162,
+        "median_takers_per_maker": 5
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0724,
+        "top5_maker_fill_share": 0.1906,
+        "maker_degree_gini": 0.9607,
+        "taker_degree_gini": 0.9223
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.785,
+        "takers_only_connected_via_hub": 1007,
+        "fragility_drop": 0.0312
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "ETH_202512": {
+      "n_fills": 1279404,
+      "n_takers": 23838,
+      "n_makers": 5075,
+      "n_edges_distinct": 313713,
+      "lcc": {
+        "n_components": 3,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 23836,
+        "makers_in_lcc": 5073,
+        "takers_in_lcc_share": 0.9999
+      },
+      "mobility": {
+        "median_makers_per_taker": 4,
+        "p90_makers_per_taker": 25,
+        "mover_share_ge2_makers": 0.8317,
+        "median_takers_per_maker": 5
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0674,
+        "top5_maker_fill_share": 0.1994,
+        "maker_degree_gini": 0.956,
+        "taker_degree_gini": 0.9187
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.8043,
+        "takers_only_connected_via_hub": 654,
+        "fragility_drop": 0.0274
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "ETH_202601": {
+      "n_fills": 858925,
+      "n_takers": 20103,
+      "n_makers": 4094,
+      "n_edges_distinct": 218632,
+      "lcc": {
+        "n_components": 3,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 20101,
+        "makers_in_lcc": 4092,
+        "takers_in_lcc_share": 0.9999
+      },
+      "mobility": {
+        "median_makers_per_taker": 3,
+        "p90_makers_per_taker": 19,
+        "mover_share_ge2_makers": 0.7897,
+        "median_takers_per_maker": 4
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0604,
+        "top5_maker_fill_share": 0.1897,
+        "maker_degree_gini": 0.9525,
+        "taker_degree_gini": 0.9172
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.7575,
+        "takers_only_connected_via_hub": 647,
+        "fragility_drop": 0.0322
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "ETH_202603": {
+      "n_fills": 843482,
+      "n_takers": 21067,
+      "n_makers": 4806,
+      "n_edges_distinct": 260290,
+      "lcc": {
+        "n_components": 1,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 21067,
+        "makers_in_lcc": 4806,
+        "takers_in_lcc_share": 1.0
+      },
+      "mobility": {
+        "median_makers_per_taker": 4,
+        "p90_makers_per_taker": 26,
+        "mover_share_ge2_makers": 0.8505,
+        "median_takers_per_maker": 4
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0607,
+        "top5_maker_fill_share": 0.1904,
+        "maker_degree_gini": 0.954,
+        "taker_degree_gini": 0.8896
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.8421,
+        "takers_only_connected_via_hub": 178,
+        "fragility_drop": 0.0084
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "ETH_202605": {
+      "n_fills": 651023,
+      "n_takers": 22627,
+      "n_makers": 4421,
+      "n_edges_distinct": 213386,
+      "lcc": {
+        "n_components": 2,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 22626,
+        "makers_in_lcc": 4420,
+        "takers_in_lcc_share": 1.0
+      },
+      "mobility": {
+        "median_makers_per_taker": 3,
+        "p90_makers_per_taker": 20,
+        "mover_share_ge2_makers": 0.8091,
+        "median_takers_per_maker": 4
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0346,
+        "top5_maker_fill_share": 0.128,
+        "maker_degree_gini": 0.9454,
+        "taker_degree_gini": 0.8838
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.7868,
+        "takers_only_connected_via_hub": 506,
+        "fragility_drop": 0.0224
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "SOL_202508": {
+      "n_fills": 733734,
+      "n_takers": 23371,
+      "n_makers": 4160,
+      "n_edges_distinct": 184885,
+      "lcc": {
+        "n_components": 4,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 23368,
+        "makers_in_lcc": 4157,
+        "takers_in_lcc_share": 0.9999
+      },
+      "mobility": {
+        "median_makers_per_taker": 3,
+        "p90_makers_per_taker": 16,
+        "mover_share_ge2_makers": 0.8189,
+        "median_takers_per_maker": 3
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0482,
+        "top5_maker_fill_share": 0.2085,
+        "maker_degree_gini": 0.9477,
+        "taker_degree_gini": 0.8909
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.7826,
+        "takers_only_connected_via_hub": 850,
+        "fragility_drop": 0.0364
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "SOL_202509": {
+      "n_fills": 635744,
+      "n_takers": 26360,
+      "n_makers": 4938,
+      "n_edges_distinct": 224065,
+      "lcc": {
+        "n_components": 4,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 26357,
+        "makers_in_lcc": 4935,
+        "takers_in_lcc_share": 0.9999
+      },
+      "mobility": {
+        "median_makers_per_taker": 4,
+        "p90_makers_per_taker": 18,
+        "mover_share_ge2_makers": 0.8211,
+        "median_takers_per_maker": 3
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0462,
+        "top5_maker_fill_share": 0.1751,
+        "maker_degree_gini": 0.9447,
+        "taker_degree_gini": 0.853
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.7966,
+        "takers_only_connected_via_hub": 646,
+        "fragility_drop": 0.0245
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "SOL_202510": {
+      "n_fills": 1120170,
+      "n_takers": 35088,
+      "n_makers": 6687,
+      "n_edges_distinct": 285222,
+      "lcc": {
+        "n_components": 3,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 35086,
+        "makers_in_lcc": 6685,
+        "takers_in_lcc_share": 0.9999
+      },
+      "mobility": {
+        "median_makers_per_taker": 3,
+        "p90_makers_per_taker": 18,
+        "mover_share_ge2_makers": 0.8065,
+        "median_takers_per_maker": 2
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0567,
+        "top5_maker_fill_share": 0.1921,
+        "maker_degree_gini": 0.9699,
+        "taker_degree_gini": 0.898
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.8016,
+        "takers_only_connected_via_hub": 171,
+        "fragility_drop": 0.0049
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "SOL_202511": {
+      "n_fills": 862100,
+      "n_takers": 28375,
+      "n_makers": 4277,
+      "n_edges_distinct": 230566,
+      "lcc": {
+        "n_components": 2,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 28374,
+        "makers_in_lcc": 4276,
+        "takers_in_lcc_share": 1.0
+      },
+      "mobility": {
+        "median_makers_per_taker": 4,
+        "p90_makers_per_taker": 18,
+        "mover_share_ge2_makers": 0.8432,
+        "median_takers_per_maker": 3
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0818,
+        "top5_maker_fill_share": 0.2231,
+        "maker_degree_gini": 0.9609,
+        "taker_degree_gini": 0.8857
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.8357,
+        "takers_only_connected_via_hub": 214,
+        "fragility_drop": 0.0075
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "SOL_202512": {
+      "n_fills": 507417,
+      "n_takers": 17846,
+      "n_makers": 3117,
+      "n_edges_distinct": 158166,
+      "lcc": {
+        "n_components": 4,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 17842,
+        "makers_in_lcc": 3114,
+        "takers_in_lcc_share": 0.9998
+      },
+      "mobility": {
+        "median_makers_per_taker": 3,
+        "p90_makers_per_taker": 20,
+        "mover_share_ge2_makers": 0.8266,
+        "median_takers_per_maker": 3
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0623,
+        "top5_maker_fill_share": 0.2565,
+        "maker_degree_gini": 0.953,
+        "taker_degree_gini": 0.8721
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.7892,
+        "takers_only_connected_via_hub": 667,
+        "fragility_drop": 0.0374
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "SOL_202601": {
+      "n_fills": 565922,
+      "n_takers": 19416,
+      "n_makers": 3238,
+      "n_edges_distinct": 161808,
+      "lcc": {
+        "n_components": 9,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 19408,
+        "makers_in_lcc": 3230,
+        "takers_in_lcc_share": 0.9996
+      },
+      "mobility": {
+        "median_makers_per_taker": 3,
+        "p90_makers_per_taker": 18,
+        "mover_share_ge2_makers": 0.8035,
+        "median_takers_per_maker": 3
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0885,
+        "top5_maker_fill_share": 0.2476,
+        "maker_degree_gini": 0.952,
+        "taker_degree_gini": 0.8855
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.7583,
+        "takers_only_connected_via_hub": 877,
+        "fragility_drop": 0.0452
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "SOL_202603": {
+      "n_fills": 559914,
+      "n_takers": 18251,
+      "n_makers": 3550,
+      "n_edges_distinct": 168664,
+      "lcc": {
+        "n_components": 2,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 18250,
+        "makers_in_lcc": 3549,
+        "takers_in_lcc_share": 0.9999
+      },
+      "mobility": {
+        "median_makers_per_taker": 4,
+        "p90_makers_per_taker": 22,
+        "mover_share_ge2_makers": 0.857,
+        "median_takers_per_maker": 3
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.083,
+        "top5_maker_fill_share": 0.2589,
+        "maker_degree_gini": 0.96,
+        "taker_degree_gini": 0.8642
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.8537,
+        "takers_only_connected_via_hub": 61,
+        "fragility_drop": 0.0033
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    },
+    "SOL_202605": {
+      "n_fills": 493840,
+      "n_takers": 21046,
+      "n_makers": 3648,
+      "n_edges_distinct": 152868,
+      "lcc": {
+        "n_components": 1,
+        "lcc_fill_share": 1.0,
+        "takers_in_lcc": 21046,
+        "makers_in_lcc": 3648,
+        "takers_in_lcc_share": 1.0
+      },
+      "mobility": {
+        "median_makers_per_taker": 3,
+        "p90_makers_per_taker": 15,
+        "mover_share_ge2_makers": 0.8124,
+        "median_takers_per_maker": 3
+      },
+      "hub": {
+        "top1_maker_fill_share": 0.0538,
+        "top5_maker_fill_share": 0.2367,
+        "maker_degree_gini": 0.9543,
+        "taker_degree_gini": 0.8647
+      },
+      "mobility_net_of_hub": {
+        "mover_share_ge2_makers_excl_top1": 0.8096,
+        "takers_only_connected_via_hub": 59,
+        "fragility_drop": 0.0028
+      },
+      "verdict": "GO two-way KSS (mobility survives hub removal)"
+    }
+  }
+}

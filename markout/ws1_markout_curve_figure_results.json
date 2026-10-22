@@ -1,0 +1,192 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "ws1_markout_curve_figure_results.json",
+    "producer": {
+      "script": "ws1_markout_curve_figure.py",
+      "sha256": "06ac6ea0e10432372336be0f12394c952043872cc0ac898c6075d2f362168b8d",
+      "bytes": 22594,
+      "bytes_in_object_db": "absent",
+      "object_format": "sha1",
+      "object_id": "6844c2cfae2a8df8966b5f6aa9146269268ef424",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "ws1_horizon_results.json",
+        "bytes": 97230,
+        "sha256": "ee6d8a6923c1355e962179b87e11124b89d40fbec42c447e72ec30b8f57bb1ef",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "every taker fill of the window with a finite book-mid markout at the rung, 2,476,996 to 2,477,478 fills depending on the horizon; NOT the 5,539 wallet-coin units the persistence half of ws1_horizon_results.json stands on",
+      "window": "days 4-13 of the December window, split by settings.split_early_late into early [4, 5, 6, 7, 8] and late [9, 10, 11, 12, 13]",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "mid",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "grid_s": [
+        1,
+        2,
+        5,
+        10,
+        20,
+        30,
+        60,
+        120
+      ],
+      "overrides_note": "this file draws a GRID and selects no window; horizon_s is the rung the study scores at, marked on the figure and read out of the artifact rather than declared here",
+      "overridden": [
+        "grid_s",
+        "overrides_note"
+      ]
+    },
+    "run": {
+      "runtime_s": 0.202,
+      "finished_utc": "2026-08-25T10:59:20Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "figure_file": "ws1_markout_curve.png",
+  "figure_size_in": {
+    "width": 5.53,
+    "height": 3.4,
+    "dpi": 200
+  },
+  "grid_s": [
+    1,
+    2,
+    5,
+    10,
+    20,
+    30,
+    60,
+    120
+  ],
+  "quantity": {
+    "name": "markout of a taker fill against the book mid, in basis points",
+    "reference_price": "the top-of-book mid of the last snapshot STRICTLY EARLIER than the fill; not the trade print, which on the same fills reads about a quarter of this, the difference being the spread the maker earned",
+    "sign": "signed in the taker's favour, so a positive value is the price moving the way the aggressor pointed and therefore the MAKER's adverse-selection cost",
+    "unit": "basis points of the entry mid",
+    "weighting": {
+      "vw": "weighted by the notional of each fill, so it is the cost per dollar traded",
+      "ew": "unweighted mean over fills, so it is the cost of the average fill"
+    }
+  },
+  "series_drawn": {
+    "pooled_vw_bps": {
+      "1": 1.8778635075278964,
+      "2": 2.076000493194515,
+      "5": 2.2045394130563487,
+      "10": 2.238801280246552,
+      "20": 2.2499196432015545,
+      "30": 2.3619609952125082,
+      "60": 2.315038200878411,
+      "120": 2.177918848362435
+    },
+    "pooled_ew_bps": {
+      "1": 1.165495411219112,
+      "2": 1.2171515938328823,
+      "5": 1.2825615916768112,
+      "10": 1.314713178205932,
+      "20": 1.3366659327650598,
+      "30": 1.3803059931347461,
+      "60": 1.3565352144186713,
+      "120": 1.3196577860694907
+    },
+    "per_coin_vw_bps": {
+      "BTC": {
+        "1": 1.4090025955556549,
+        "2": 1.5420250452491922,
+        "5": 1.6503057127337257,
+        "10": 1.662514301012108,
+        "20": 1.6520897123393075,
+        "30": 1.708310517876217,
+        "60": 1.7943449202166641,
+        "120": 1.6599305297108606
+      },
+      "ETH": {
+        "1": 2.607828300245841,
+        "2": 2.9073800337805134,
+        "5": 3.0673821975856526,
+        "10": 3.13614597563732,
+        "20": 3.1807682395091694,
+        "30": 3.379376575763685,
+        "60": 3.125347622888599,
+        "120": 2.9840795394934223
+      }
+    }
+  },
+  "marked": {
+    "scored_horizon_s": 10,
+    "scored_horizon_source": "settings.HEADLINE_HORIZON_S, read back so this file and the declaration cannot drift; the evidence for it is the curve and the two checks below",
+    "plateau_vw_bps": 2.282478922039983
+  },
+  "summaries": {
+    "vw_over_ew_at_scored_horizon": 1.7028819040983811,
+    "vw_over_ew_meaning": "a dollar of notional loses 1.7029 times what the average fill loses at 10 seconds, so the adverse selection is carried by the large fills",
+    "dearer_coin": "ETH",
+    "cheaper_coin": "BTC",
+    "coin_ratio_at_scored_horizon": 1.8863873674518723,
+    "fill_counts_by_horizon": {
+      "1": 2477284,
+      "2": 2477202,
+      "5": 2477097,
+      "10": 2476996,
+      "20": 2477466,
+      "30": 2477478,
+      "60": 2477062,
+      "120": 2477300
+    },
+    "fill_count_spread": 482,
+    "fill_count_spread_fraction": 0.00019455268623979707,
+    "fill_count_meaning": "the population moves by 482 fills across the whole grid, 0.0195 per cent of the largest rung, so the curve rises because the price moves after the fill and not because the sample changes"
+  },
+  "blend_check": {
+    "rule": "the pooled value-weighted mean is a notional-weighted average of the per-coin ones and must lie between them at every rung",
+    "rungs_tested": 8,
+    "rungs_passed": 8,
+    "pooled_nearer": [
+      "BTC",
+      "BTC",
+      "BTC",
+      "BTC",
+      "BTC",
+      "BTC",
+      "BTC",
+      "BTC"
+    ]
+  },
+  "relation_to_ws1_horizon_choice_png": "ws1_plot.py draws the same artifact's pooled value-weighted level as the lower panel of the horizon-choice figure. Nothing here redraws it to settle that question again: the equal-weighted line, the two per-coin lines and the fill counts appear in no figure of the report, and they are what describes the cost rather than the choice of horizon."
+}

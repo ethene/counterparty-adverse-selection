@@ -1,0 +1,696 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "probe_F_hlp_liq_results.json",
+    "producer": {
+      "script": "probe_F_hlp_liq.py",
+      "sha256": "f43afe800bb360c405f1d2a6278731fa1a684446738ff78e4978e07e013cff74",
+      "bytes": 47950
+    },
+    "inputs": [
+      {
+        "name": "shard_BTC_202508.npz",
+        "bytes": 23077405,
+        "sha256": "c6053b1da826c7d4a42da9518f6d5fe6932f8ee4dc00388a10eeb1602ee2939c",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_BTC_202509.npz",
+        "bytes": 21310473,
+        "sha256": "966e283a728abf1a10b3d5b5a0e5e40d3b6206070df254501af662ee84454e14",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_BTC_202510.npz",
+        "bytes": 49421501,
+        "sha256": "370a86e2bf5820eb4ef76eed2a5e057e6b5844e2e218bfb8586d1f14e74c5aec",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_BTC_202511.npz",
+        "bytes": 56215398,
+        "sha256": "71bd3d62605f6ae309643ae02cc0f3cc8e5fdcc6440b052fadfa2d420f551d82",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_BTC_202512.npz",
+        "bytes": 36175784,
+        "sha256": "3c71e9743f0d269af116d991320ad5de7a1365fab55b1d0d01ebc8673c074697",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_BTC_202601.npz",
+        "bytes": 31545675,
+        "sha256": "efa5a0871cff1ebc48db8b11ddc5e678eac38f1f0591f8da23110037dce0b19d",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_BTC_202603.npz",
+        "bytes": 61908209,
+        "sha256": "ddfe22fca4674e75e66cdb58b99a6b24f00d52529ba2778d93f5607476160a7c",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_BTC_202605.npz",
+        "bytes": 42589988,
+        "sha256": "5c956c6821881318f7bef595a4845a602c7832965ee495c8d863edcb73513408",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_ETH_202508.npz",
+        "bytes": 38512998,
+        "sha256": "6a70e753f5163e7840a9d2a8363777a23d4a4d639d3862e3299b1196433b7642",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_ETH_202509.npz",
+        "bytes": 25729070,
+        "sha256": "37fb02e013a623c36936d424e393404b33a12e27b517bbf86006b0c18d978e72",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_ETH_202510.npz",
+        "bytes": 43434590,
+        "sha256": "f790b816d67ae86fe5f8191a814e7fa32687e986b2f6e1fad9dfb0fef33c7a80",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_ETH_202511.npz",
+        "bytes": 41566324,
+        "sha256": "9d62dbd448cb7d1b56eeda5bee7b302c8f02e1a36bb36f62d091d609912d7ade",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_ETH_202512.npz",
+        "bytes": 32043725,
+        "sha256": "3d3af6a7ae9e9dd9907cff42f757db2f2d992a774a48de59623a7a68a3568ebc",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_ETH_202601.npz",
+        "bytes": 21032333,
+        "sha256": "8d46c64424202feb00279a86594ced8a9dd4c337fae7af64f0b503a632370bd4",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_ETH_202603.npz",
+        "bytes": 23856342,
+        "sha256": "6bd65103559fa02cab593199e2bac1ebe803f4d83cfcac300e3e8d3aa3464b5a",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_ETH_202605.npz",
+        "bytes": 17279661,
+        "sha256": "dc2cf080a3da21954bfaa77d2a9f0462c322a809bfc02a90f31231370d5faa3a",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_SOL_202508.npz",
+        "bytes": 17833487,
+        "sha256": "5119feeb7f167384a3a744bf97803e11558d0130bcc14bd1b8a766720ddb2fbc",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_SOL_202509.npz",
+        "bytes": 17318368,
+        "sha256": "8d0d92aa7a4c7bc1f58be92dabce330430efab47de6f54cd932380cf2bee8b41",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_SOL_202510.npz",
+        "bytes": 30121700,
+        "sha256": "7b2df16488f501f1069c542d640af361656e8d05040bbcc9bd2087b0a2bf86de",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_SOL_202511.npz",
+        "bytes": 23101979,
+        "sha256": "b04e7e1c22a4f16589cf6b7030684a351cd6e0e6040d366ec5ea2e61a4339fd3",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_SOL_202512.npz",
+        "bytes": 13661705,
+        "sha256": "cf35fec331593cb7f483953a85b859472bcd50bcd1fe9272da76179a334ae237",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_SOL_202601.npz",
+        "bytes": 13747982,
+        "sha256": "60a598a815f7ba16f89d71b5b553fed9057bd7db08afc5e2a99a3da14be05e5c",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_SOL_202603.npz",
+        "bytes": 17266871,
+        "sha256": "5223131407a9fa146a6d3fce0580dc9037a68b4981927c4b4fe78232e4e20e57",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "shard_SOL_202605.npz",
+        "bytes": 14473112,
+        "sha256": "27cb00c2f5a98c3020a736ab6ec18dad29d80dc18dba9ba1785036b1e463b4db",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "panel_markouts.npz",
+        "bytes": 482588572,
+        "sha256": "c6a37132cf1d0c62bdb2169668c89af20a7b6fb8811fd8132cc7c9b0b607a04b",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "panel_markouts_v2.npz",
+        "bytes": 571855772,
+        "sha256": "65a410f4779e78b7c42943a85fab99ed668d9c40db440b1df5e5eee848a0ef6a",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "maker_map.json",
+        "bytes": 486123,
+        "sha256": "98da5c3d1dbd559af9ed7285d2bff0e9dcda495218e822ca083090424b737582",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "PART 1 on 26,035,902 shard rows carrying a maker, of which 250,419 are HLP-vault fills (0.96%), read from 24 panel shards with 0 maker-less rows dropped; PART 2 status ok: 217,068 liquidation-driven of 26,011,114 finite-markout rows of panel_markouts_v2.npz",
+      "window": "blocks present in this run: ['part1_hlp', 'part2_liquidation']. PART 1 and PART 2 cover every window their input carries, which the panel's producer declares; the Zenodo peek, when present, covers one hour and only that hour",
+      "coins": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 60,
+      "is_headline_horizon": false,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 690,
+      "n_perm": 2000,
+      "rank_floor_fills": 30,
+      "overridden": [
+        "master_seed",
+        "n_perm",
+        "rank_floor_fills"
+      ]
+    },
+    "run": {
+      "runtime_s": 1409.824,
+      "finished_utc": "2026-08-04T04:43:22Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "part1_hlp": {
+    "_meta": {
+      "part": "PART 1 \u2014 HLP-vault-as-counterparty",
+      "source": "panel_ckpt/shard_*.npz (address-resolved HLP)",
+      "n_files": 24,
+      "n_rows_with_maker": 26035902,
+      "n_rows_no_maker_dropped": 0,
+      "n_hlp_maker_rows_total": 250419,
+      "hlp_share_total": 0.009618218719674087,
+      "reference": "trade-print mo60 (execution-cost lens, includes spread); HLP-vs-rest read as a RANKING/contrast, not a level",
+      "sign": "mo60>0 = taker profited = maker adverse-selected",
+      "hlp_addresses": [
+        "0x010461c14e146ac35fe42271bdc1134ee31c703a",
+        "0x31ca8395cf837de08b24da3f660e77761dfb974b"
+      ],
+      "seed": 690,
+      "n_perm": 2000,
+      "whale_k": 5,
+      "p_floor": 0.0004997501249375312,
+      "p_convention": "placebo p = (#{|null gap| >= |observed gap|} + 1) / (n_perm + 1); a value AT the floor means 'no permutation reached the observed gap', not p = 0"
+    },
+    "maker_map_crosscheck": {
+      "maker_map_path": "maker_map.json",
+      "quickwin_code168_addr": "0x010461c14e146ac35fe42271bdc1134ee31c703a",
+      "quickwin_code12_addr": "0x31ca8395cf837de08b24da3f660e77761dfb974b",
+      "quickwin_168_is_hlp_A": true,
+      "quickwin_12_is_hlp_B": true,
+      "panel_code168_rows": 71118,
+      "panel_code12_rows": 109775,
+      "WARNING": "panel maker_id is a separate global re-code; code 168/12 are NOT HLP in the panel space. HLP resolved by ADDRESS from the shards."
+    },
+    "BTC": {
+      "n": 11200854,
+      "n_hlp_fills": 55452,
+      "hlp_mean_mo60_eq": 1.2281756664713643,
+      "rest_mean_mo60_eq": 0.21740010343907362,
+      "hlp_mean_mo60_nw": 0.4495909663592473,
+      "rest_mean_mo60_nw": 0.180034152664521,
+      "gap_eq_bps": 1.0107755630322908,
+      "gap_nw_bps": 0.2695568136947263,
+      "hlp_share_of_all_maker_fills": 0.004950693938158644,
+      "hlp_share_of_dominant_maker_fills": 0.0,
+      "hlp_in_top20_makers_by_notional": false,
+      "placebo_label_shuffle_p": 0.0004997501249375312,
+      "placebo_permutation": {
+        "procedure": "label permutation",
+        "side": "two_sided",
+        "n_draws_requested": 2000,
+        "n_draws_usable": 2000,
+        "n_draws_dropped": 0,
+        "tolerance_absolute": 0.0,
+        "tolerance_relative": null,
+        "tolerance_rule": "absolute, stated by the caller",
+        "cell": [
+          "hlp_vs_rest_gap_eq",
+          "BTC"
+        ],
+        "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+        "observed": 1.0107755630322908,
+        "p": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "p_is_floored": true,
+        "n_at_least_as_extreme": 0,
+        "null_mean": -0.002031237913865426,
+        "null_sd": 0.06968640354939812,
+        "null_p95": 0.1136633415595272
+      },
+      "placebo_null_gap_mean": -0.002031237913865426,
+      "placebo_null_gap_sd": 0.06966897977026607,
+      "whale_drop_top5_nonhlp_gap_eq_bps": 0.993306420001373,
+      "kill_criterion": "PASS"
+    },
+    "ETH": {
+      "n": 9347685,
+      "n_hlp_fills": 123049,
+      "hlp_mean_mo60_eq": 0.949187360704587,
+      "rest_mean_mo60_eq": 0.4198609213128764,
+      "hlp_mean_mo60_nw": 1.1274292041086351,
+      "rest_mean_mo60_nw": -0.2570902748671984,
+      "gap_eq_bps": 0.5293264393917105,
+      "gap_nw_bps": 1.3845194789758335,
+      "hlp_share_of_all_maker_fills": 0.013163580073569017,
+      "hlp_share_of_dominant_maker_fills": 0.0,
+      "hlp_in_top20_makers_by_notional": false,
+      "placebo_label_shuffle_p": 0.0004997501249375312,
+      "placebo_permutation": {
+        "procedure": "label permutation",
+        "side": "two_sided",
+        "n_draws_requested": 2000,
+        "n_draws_usable": 2000,
+        "n_draws_dropped": 0,
+        "tolerance_absolute": 0.0,
+        "tolerance_relative": null,
+        "tolerance_rule": "absolute, stated by the caller",
+        "cell": [
+          "hlp_vs_rest_gap_eq",
+          "ETH"
+        ],
+        "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+        "observed": 0.5293264393917105,
+        "p": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "p_is_floored": true,
+        "n_at_least_as_extreme": 0,
+        "null_mean": 0.0009037699865608902,
+        "null_sd": 0.06727994991272788,
+        "null_p95": 0.11236784490302346
+      },
+      "placebo_null_gap_mean": 0.0009037699865608902,
+      "placebo_null_gap_sd": 0.06726312782222547,
+      "whale_drop_top5_nonhlp_gap_eq_bps": 0.41573012234341244,
+      "kill_criterion": "PASS"
+    },
+    "SOL": {
+      "n": 5476595,
+      "n_hlp_fills": 71827,
+      "hlp_mean_mo60_eq": 1.1275068653635592,
+      "rest_mean_mo60_eq": 0.14996302949148504,
+      "hlp_mean_mo60_nw": 3.7144928155821453,
+      "rest_mean_mo60_nw": -3.528455588826555,
+      "gap_eq_bps": 0.977543835872074,
+      "gap_nw_bps": 7.2429484044087005,
+      "hlp_share_of_all_maker_fills": 0.013115265963614254,
+      "hlp_share_of_dominant_maker_fills": 0.0,
+      "hlp_in_top20_makers_by_notional": false,
+      "placebo_label_shuffle_p": 0.0004997501249375312,
+      "placebo_permutation": {
+        "procedure": "label permutation",
+        "side": "two_sided",
+        "n_draws_requested": 2000,
+        "n_draws_usable": 2000,
+        "n_draws_dropped": 0,
+        "tolerance_absolute": 0.0,
+        "tolerance_relative": null,
+        "tolerance_rule": "absolute, stated by the caller",
+        "cell": [
+          "hlp_vs_rest_gap_eq",
+          "SOL"
+        ],
+        "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+        "observed": 0.977543835872074,
+        "p": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "p_is_floored": true,
+        "n_at_least_as_extreme": 0,
+        "null_mean": 0.00017000306334696714,
+        "null_sd": 0.14091416188723374,
+        "null_p95": 0.22088283758536142
+      },
+      "placebo_null_gap_mean": 0.00017000306334696714,
+      "placebo_null_gap_sd": 0.14087892894209314,
+      "whale_drop_top5_nonhlp_gap_eq_bps": 0.973459447963069,
+      "kill_criterion": "PASS"
+    },
+    "pooled": {
+      "n": 26025134,
+      "n_hlp_fills": 250328,
+      "hlp_mean_mo60_eq": 1.0621536073590536,
+      "rest_mean_mo60_eq": 0.275718509787605,
+      "hlp_mean_mo60_nw": 1.6260699491814092,
+      "rest_mean_mo60_nw": -0.3809174578964864,
+      "gap_eq_bps": 0.7864350975714487,
+      "gap_nw_bps": 2.0069874070778955,
+      "hlp_share_of_all_maker_fills": 0.009618701675080712,
+      "hlp_share_of_dominant_maker_fills": 0.0,
+      "hlp_in_top20_makers_by_notional": false,
+      "placebo_label_shuffle_p": 0.0004997501249375312,
+      "placebo_permutation": {
+        "procedure": "label permutation",
+        "side": "two_sided",
+        "n_draws_requested": 2000,
+        "n_draws_usable": 2000,
+        "n_draws_dropped": 0,
+        "tolerance_absolute": 0.0,
+        "tolerance_relative": null,
+        "tolerance_rule": "absolute, stated by the caller",
+        "cell": [
+          "hlp_vs_rest_gap_eq",
+          "pooled"
+        ],
+        "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+        "observed": 0.7864350975714487,
+        "p": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "p_is_floored": true,
+        "n_at_least_as_extreme": 0,
+        "null_mean": -0.00037315976283041263,
+        "null_sd": 0.050388485196902866,
+        "null_p95": 0.08280272192544483
+      },
+      "placebo_null_gap_mean": -0.00037315976283041263,
+      "placebo_null_gap_sd": 0.0503758865005697,
+      "whale_drop_top5_nonhlp_gap_eq_bps": 0.7725619007191941,
+      "kill_criterion": "PASS"
+    },
+    "maker_variance_contrast": {
+      "BTC": {
+        "n_fills": 11200854,
+        "n_takers": 226053,
+        "n_makers": 40512,
+        "var_y": 271.7994286053811,
+        "share_maker_psi": 0.07501989249581117,
+        "share_taker_alpha": 0.04871478478151279,
+        "frac_fills_hlp": 0.004950693938158644,
+        "mean_maker_effect_hlp_bps": -1.1085423055415897,
+        "mean_maker_effect_rest_bps": -2.15780227198066,
+        "psi_msq_hlp": 1.1601370412380712,
+        "psi_msq_rest": 20.486040547737655,
+        "psi_msq_ratio_hlp_over_rest": 0.05663061334544655,
+        "note": "plug-in psi decomposition with HLP-vs-rest split; +ve mean_maker_effect => that set is structurally adverse-selected"
+      },
+      "ETH": {
+        "n_fills": 9347685,
+        "n_takers": 143532,
+        "n_makers": 29904,
+        "var_y": 548.8483695197308,
+        "share_maker_psi": 0.0722203577852002,
+        "share_taker_alpha": 0.03770199712489963,
+        "frac_fills_hlp": 0.013163580073569017,
+        "mean_maker_effect_hlp_bps": -2.0114635089496122,
+        "mean_maker_effect_rest_bps": -2.4573849676033674,
+        "psi_msq_hlp": 0.2817506063898494,
+        "psi_msq_rest": 40.16300571154995,
+        "psi_msq_ratio_hlp_over_rest": 0.007015177310517486,
+        "note": "plug-in psi decomposition with HLP-vs-rest split; +ve mean_maker_effect => that set is structurally adverse-selected"
+      },
+      "SOL": {
+        "n_fills": 5476595,
+        "n_takers": 126860,
+        "n_makers": 22871,
+        "var_y": 1397.2740072458869,
+        "share_maker_psi": 0.1842933441651921,
+        "share_taker_alpha": 0.07928335388998889,
+        "frac_fills_hlp": 0.013115265963614254,
+        "mean_maker_effect_hlp_bps": 12.556420404308527,
+        "mean_maker_effect_rest_bps": 11.67193901157818,
+        "psi_msq_hlp": 0.8988385750064248,
+        "psi_msq_rest": 260.9185268783174,
+        "psi_msq_ratio_hlp_over_rest": 0.003444901309846845,
+        "note": "plug-in psi decomposition with HLP-vs-rest split; +ve mean_maker_effect => that set is structurally adverse-selected"
+      },
+      "pooled": {
+        "n_fills": 26025134,
+        "n_takers": 305449,
+        "n_makers": 63894,
+        "var_y": 608.1607447619807,
+        "share_maker_psi": 0.09987752532798866,
+        "share_taker_alpha": 0.046194845127711985,
+        "frac_fills_hlp": 0.009618701675080712,
+        "mean_maker_effect_hlp_bps": 2.519236211546144,
+        "mean_maker_effect_rest_bps": 1.7639307391444285,
+        "psi_msq_hlp": 0.6581905265955228,
+        "psi_msq_rest": 61.32512735534992,
+        "psi_msq_ratio_hlp_over_rest": 0.010732803256675229,
+        "note": "plug-in psi decomposition with HLP-vs-rest split; +ve mean_maker_effect => that set is structurally adverse-selected"
+      }
+    },
+    "eb_contrast": {
+      "BTC": {
+        "n_scored": 2874,
+        "nonhlp_prior_bps": 0.2706299549798156,
+        "tau2": 1.2251093291794892,
+        "hlp_makers_scored": 2,
+        "hlp_shrunk_scores_bps": [
+          1.319020560974464,
+          0.9858295761121554
+        ],
+        "hlp_raw_early_bps": [
+          1.3230152211415172,
+          0.9891065972214861
+        ],
+        "hlp_above_prior": [
+          true,
+          true
+        ],
+        "note": "HLP shrunk score above the non-HLP prior => HLP flow is more adverse-selected than ordinary maker flow (OOS-shrunk)"
+      },
+      "ETH": {
+        "n_scored": 2221,
+        "nonhlp_prior_bps": 0.3811491625621558,
+        "tau2": 4.0798848087978055,
+        "hlp_makers_scored": 2,
+        "hlp_shrunk_scores_bps": [
+          1.2696799668784875,
+          0.5247365496555737
+        ],
+        "hlp_raw_early_bps": [
+          1.270773470396305,
+          0.5249516139519247
+        ],
+        "hlp_above_prior": [
+          true,
+          true
+        ],
+        "note": "HLP shrunk score above the non-HLP prior => HLP flow is more adverse-selected than ordinary maker flow (OOS-shrunk)"
+      },
+      "SOL": {
+        "n_scored": 1354,
+        "nonhlp_prior_bps": 0.45546814302571575,
+        "tau2": 3.0090113690126365,
+        "hlp_makers_scored": 2,
+        "hlp_shrunk_scores_bps": [
+          1.0334010852909798,
+          0.11278105018339368
+        ],
+        "hlp_raw_early_bps": [
+          1.035784570481774,
+          0.11128957652403945
+        ],
+        "hlp_above_prior": [
+          true,
+          false
+        ],
+        "note": "HLP shrunk score above the non-HLP prior => HLP flow is more adverse-selected than ordinary maker flow (OOS-shrunk)"
+      },
+      "pooled": {
+        "n_scored": 5578,
+        "nonhlp_prior_bps": 0.36470468123223987,
+        "tau2": 2.154886819562756,
+        "hlp_makers_scored": 2,
+        "hlp_shrunk_scores_bps": [
+          1.2202970397688806,
+          0.5179885426157189
+        ],
+        "hlp_raw_early_bps": [
+          1.2212332808309359,
+          0.5181854723151553
+        ],
+        "hlp_above_prior": [
+          true,
+          true
+        ],
+        "note": "HLP shrunk score above the non-HLP prior => HLP flow is more adverse-selected than ordinary maker flow (OOS-shrunk)"
+      }
+    }
+  },
+  "part2_liquidation": {
+    "status": "ok",
+    "source": "panel_markouts_v2.npz",
+    "liq_column": "is_liq",
+    "n_liq": 217068,
+    "n_total": 26011114,
+    "control": "raw + coin x period x day demeaned; label-shuffle placebo (2000)",
+    "n_perm": 2000,
+    "p_floor": 0.0004997501249375312,
+    "per_coin": {
+      "BTC": {
+        "raw_gap_bps": -6.6854592700301945,
+        "demeaned_gap_bps": -6.217990423466814,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_permutation": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "liq_demeaned_gap",
+            "BTC"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": -6.217990423466814,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": -6.217536604747099e-05,
+          "null_sd": 0.04931315397460655,
+          "null_p95": 0.08108642187618827
+        },
+        "n_liq": 114137,
+        "liq_mean_mo60": -6.394844308607305,
+        "normal_mean_mo60": 0.2906149614228896
+      },
+      "ETH": {
+        "raw_gap_bps": -15.945884199183428,
+        "demeaned_gap_bps": -15.111183642164523,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_permutation": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "liq_demeaned_gap",
+            "ETH"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": -15.111183642164523,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": 0.00057991251228936,
+          "null_sd": 0.10333968114104547,
+          "null_p95": 0.16491754337158643
+        },
+        "n_liq": 53024,
+        "liq_mean_mo60": -15.428714594363246,
+        "normal_mean_mo60": 0.5171696048201827
+      },
+      "SOL": {
+        "raw_gap_bps": -44.10553189748341,
+        "demeaned_gap_bps": -41.517563859020164,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_permutation": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 0.0,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "liq_demeaned_gap",
+            "SOL"
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": -41.517563859020164,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": 0.0009197440209555343,
+          "null_sd": 0.16956537587117992,
+          "null_p95": 0.2828507080158844
+        },
+        "n_liq": 49907,
+        "liq_mean_mo60": -43.540471608648396,
+        "normal_mean_mo60": 0.5650602888350134
+      }
+    },
+    "pooled": {
+      "raw_gap_bps": -17.571805861712203,
+      "demeaned_gap_bps": -16.502641053891484
+    },
+    "interpretation": "Clean control = the coin x period x day DEMEANED gap (removes the confound that liquidations cluster on volatile days where all markout is larger). Demeaned gap near zero / negative => forced liquidations are NOT informationally toxic = a clean negative control for the toxicity construct. A large positive demeaned gap would instead mean liquidation flow is itself toxic (not a clean control)."
+  }
+}

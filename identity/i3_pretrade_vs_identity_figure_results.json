@@ -1,0 +1,507 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "i3_pretrade_vs_identity_figure_results.json",
+    "producer": {
+      "script": "i3_pretrade_vs_identity_figure.py",
+      "sha256": "257b4e98808340c792a8e143922d54b07a2abb8ddbbf911bb14d71215b8db06e",
+      "bytes": 50193,
+      "bytes_in_object_db": "absent",
+      "object_format": "sha1",
+      "object_id": "cf03973f993fb9e50e3a985acb8e191e821c557d",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "i3_depth_control_results.json",
+        "bytes": 24085,
+        "sha256": "eb8f755b1f01c140d127c0c549adc1605e3b67fd63a5e218d54c451dacad2840",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "i3_book_nonrecoverability_results.json",
+        "bytes": 52350,
+        "sha256": "f8ecb1492fccdf59d708a453a6b58d62e9e03baa6f227c3e2886943f89060a6b",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "left panel: 929,184 to 1,123,398 taker fills per cell, belonging to 963 to 2,555 counterparties depending on the fill floor, over three populations (each coin and both together) at two floors. Right panel: 328 to 644 counterparties per cell, each clearing the floor in BOTH halves of the window, two coins at two floors; the pooled cells of that source exist and are excluded on its own instruction",
+      "window": "left panel, quoted from its source rather than restated: 10 days present in the input, day-of-month 4-13; this file makes no early-and-late split, so every day present enters every cell, and the calendar dates are declared by the panel's producer through i4_midmarkout.py. Right panel: days 4-8 carry the counterparty label and the disjoint days 9-13 carry the target",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "mid",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "rank_floor_fills": [
+        50,
+        100
+      ],
+      "master_seed": null,
+      "n_perm": null,
+      "n_boot": null,
+      "early_days": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "late_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "overrides_note": "this file draws and computes no new quantity: every coordinate is read from i3_depth_control_results.json or i3_book_nonrecoverability_results.json, and the only arithmetic performed here is multiplying a fraction by one hundred. No random stream is drawn, so no seed, no permutation count and no bootstrap count applies, and each is stated as not applying rather than left to be read as the declaration. The horizon and the reference price are read from settings.py at run time and are never typed here; the fill floors are read from the artifacts, because they are a property of the runs being drawn",
+      "overridden": [
+        "early_days",
+        "late_days",
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "overrides_note",
+        "rank_floor_fills"
+      ]
+    },
+    "run": {
+      "runtime_s": 0.236,
+      "finished_utc": "2026-08-25T11:19:42Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "object": "I3-PRETRADE-FIGURE - the pre-trade appendix panel: visible book state against counterparty identity, drawn from two committed artifacts and computing no new quantity.",
+  "figure_file": "i3_pretrade_vs_identity.png",
+  "caption": "What is visible before the fill, and what identity adds to it. LEFT: the share of markout scatter that sits between counterparties rather than within them, at two floors on the minimum fills a wallet must have, REPORTED PER COIN because the two coins do not average -- pooling them returns 2.98 per cent at the fifty-fill floor, below both 6.98 for BTC and 3.87 for ETH, since a wallet trading both contributes one mean across two instruments of different scale; the pooled cells are in the results file and not on the page. The first bar is that share as measured; the second and third recompute it after subtracting the entry state of the visible book -- queue imbalance at the best prices; quoted spread in basis points; deviation of the size-weighted price from the mid -- linearly and then through deciles with their pairwise products. The linear fit explains 0.9 per cent of markout variance at most, so the small fall onto the second bar is close to a tautology of that near-zero fit and is not evidence; the third bar rests on a control worth 1.7 to 2.4 per cent of variance and is the meaningful one. These shares are computed IN SAMPLE, with the same rows forming the per-wallet averages and the total, which lifts them by roughly one over the fill floor even when counterparties are identical; that floor is the dashed line, and the pooled fifty-fill cell stands at 2.98 per cent against a floor of 2.0 per cent. THE THREE BARS ARE THEREFORE DESCRIPTIVE AND ARE NOT WHAT THE FINDING RESTS ON: the source puts the weight on a label-permutation null and on the open diamond, which is out of sample. That diamond predicts each fill's markout by the mean of that counterparty's OTHER fills, on the residual after the book control, so no fill enters its own prediction; it runs from 4.1 to 9.2 per cent. It is a fit rather than a variance share, so it is not the bars' arithmetic complement and is placed on this axis only because it is a fraction of the variance of the same fills over the same population. RIGHT: out-of-sample test at the 10-second horizon. A predictor holding the entire public information set -- four trade-tape summaries and 10 order-book features, 14 in all, each averaged over the counterparty's fills in days 4 to 8 -- predicts that counterparty's mean markout over the disjoint days 9 to 13. The bar is what adding one further column, the counterparty's own markout in the early days, adds to that fit, scored five-fold across wallets so the coefficient is learned on other counterparties. Bars are medians over 40 fold splits and whiskers their smallest and largest, as the source instructs; THE WHISKER VARIES ONLY WHICH WALLETS FALL IN WHICH FOLD, so it is neither a confidence interval nor sampling uncertainty, and the open circle is the single split the file stores, which on the ETH fifty-fill cell happens to sit at the 95th percentile of its own spread. The percentage written over each bar is what that same public set reaches WITHOUT the label, and it is read from the stored single split rather than from the median, because the fold sweep records only the increment. Significance here rests on a label-permutation placebo corrected for the 12-cell family, not on the height of a bar, and on 9 of those 12 cells no permutation beat the observed lift, so the reported p is the resolution floor of 2000 draws and is a bound rather than a measured smallness. The anonymous arm is not blind to identity: its features are per-wallet averages, so it is given the flow already separated by counterparty and is denied only that counterparty's past markout. The two panels use different units -- a fill on the left, a wallet on the right -- different holdouts and different quantities, and their heights are not comparable. THEY ALSO HOLD DIFFERENT THINGS CONSTANT, which is the difference most likely to be read past: the left panel removes 3 quantities of the book at the instant of entry, measured on each fill, while the right gives its predictor 14 quantities of the book AND the trade tape, averaged over a counterparty's fills. A wider control on the right is why its bar is the stronger statement and not the larger version of the left one. The per-coin figures are reported separately because the coins differ: the public book leaves ETH toxicity largely unrecovered and recovers much of BTC's, so the pooled cells of the right-hand source are marked diagnostic-only there and are not drawn here. Sources: i3_depth_control_results.json and i3_book_nonrecoverability_results.json.",
+  "units": {
+    "sources_hold": "fractions",
+    "figure_and_caption_show": "per cent and percentage points",
+    "conversion": "every drawn value is the source value times 100, applied once"
+  },
+  "left_panel": {
+    "question": "Does the visible state of the book account for the differences between counterparties, or do those differences survive it?",
+    "source_file": "i3_depth_control_results.json",
+    "unit_of_observation": "one taker fill",
+    "in_sample": true,
+    "controls": [
+      {
+        "column": "imb_entry",
+        "meaning": "queue imbalance at the best prices"
+      },
+      {
+        "column": "spread_entry_bps",
+        "meaning": "quoted spread in basis points"
+      },
+      {
+        "column": "micro_dev_bps",
+        "meaning": "deviation of the size-weighted price from the mid"
+      }
+    ],
+    "nonlinear_control": "per-control deciles + pairwise interactions",
+    "cells_drawn": [
+      {
+        "coin": "BTC",
+        "K": 50,
+        "n_wallets": 2555,
+        "n_obs_eligible": 929184,
+        "raw": 0.06979977049230399,
+        "after_linear": 0.057819838680175796,
+        "after_nonlinear": 0.059326198549810645,
+        "noise_floor": 0.02,
+        "retained_linear": 0.828367174739506,
+        "retained_nonlinear": 0.8499483326575101,
+        "loo_taker_r2_raw": 0.10161414145463998,
+        "loo_taker_r2_residual": 0.08708792177352687,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_p_is_floor": true,
+        "r2_book_linear": 0.009028267585369787,
+        "r2_book_nonlinear": 0.01667879737680944,
+        "raw_pct": 6.979977049230398,
+        "after_linear_pct": 5.78198386801758,
+        "after_nonlinear_pct": 5.9326198549810645,
+        "noise_floor_pct": 2.0
+      },
+      {
+        "coin": "BTC",
+        "K": 100,
+        "n_wallets": 1132,
+        "n_obs_eligible": 831342,
+        "raw": 0.1186364247684272,
+        "after_linear": 0.09436097247977326,
+        "after_nonlinear": 0.09704494748981557,
+        "noise_floor": 0.01,
+        "retained_linear": 0.7953794348064813,
+        "retained_nonlinear": 0.8180029672947647,
+        "loo_taker_r2_raw": 0.10708708147614165,
+        "loo_taker_r2_residual": 0.09161206023037938,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_p_is_floor": true,
+        "r2_book_linear": 0.009028267585369787,
+        "r2_book_nonlinear": 0.01667879737680944,
+        "raw_pct": 11.86364247684272,
+        "after_linear_pct": 9.436097247977326,
+        "after_nonlinear_pct": 9.704494748981556,
+        "noise_floor_pct": 1.0
+      },
+      {
+        "coin": "ETH",
+        "K": 50,
+        "n_wallets": 1780,
+        "n_obs_eligible": 1123398,
+        "raw": 0.0387210264041502,
+        "after_linear": 0.035690403635481524,
+        "after_nonlinear": 0.03268635835970083,
+        "noise_floor": 0.02,
+        "retained_linear": 0.9217318586280077,
+        "retained_nonlinear": 0.8441501012534481,
+        "loo_taker_r2_raw": 0.04689214771701611,
+        "loo_taker_r2_residual": 0.04072931893109444,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_p_is_floor": true,
+        "r2_book_linear": 0.006724554176235631,
+        "r2_book_nonlinear": 0.023925894553847193,
+        "raw_pct": 3.8721026404150196,
+        "after_linear_pct": 3.5690403635481522,
+        "after_nonlinear_pct": 3.268635835970083,
+        "noise_floor_pct": 2.0
+      },
+      {
+        "coin": "ETH",
+        "K": 100,
+        "n_wallets": 963,
+        "n_obs_eligible": 1066785,
+        "raw": 0.053910315994142886,
+        "after_linear": 0.04862671046316202,
+        "after_nonlinear": 0.04316209544185021,
+        "noise_floor": 0.01,
+        "retained_linear": 0.9019926811121844,
+        "retained_nonlinear": 0.8006277582668886,
+        "loo_taker_r2_raw": 0.046616627850907144,
+        "loo_taker_r2_residual": 0.04050463139254035,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_p_is_floor": true,
+        "r2_book_linear": 0.006724554176235631,
+        "r2_book_nonlinear": 0.023925894553847193,
+        "raw_pct": 5.391031599414289,
+        "after_linear_pct": 4.862671046316202,
+        "after_nonlinear_pct": 4.31620954418502,
+        "noise_floor_pct": 1.0
+      }
+    ],
+    "producer_caveats_carried_into_the_caption": {
+      "linear_retain_is_tautological": "Linear book R^2 < 1%, so share_retained_fraction (~0.78-0.91) is largely a TAUTOLOGY of the near-zero R^2 (residualizing on ~0 explained variance can barely move the markout). Do not read it as strong structural evidence that identity is not a book-state proxy.",
+      "between_share_is_in_sample": "between_share_* and share_retained_* are computed IN-SAMPLE (per-wallet means reused in numerator and denominator) and carry a ~1/K upward noise floor (between_share_in_sample_noise_floor); descriptive, not a clean effect size.",
+      "load_bearing_evidence": "Significance rests on the label-permutation null (placebo_residual_p clears the floor) and the OUT-OF-SAMPLE leave-one-out per-taker R^2 (loo_taker_r2_residual ~ 0.03-0.08), NOT the retain ratio.",
+      "nonlinear_control_added": "A NON-LINEAR book-state control (per-control deciles + pairwise interactions, R^2 of 1.9 to 3.4 times the linear fit) is added; the residual share still retains 0.80 to 0.89 of the raw share on it (share_retained_nonlinear) - that retain IS non-tautological."
+    }
+  },
+  "right_panel": {
+    "question": "Over the whole public information set, does one column of counterparty history still add out-of-sample lift?",
+    "source_file": "i3_book_nonrecoverability_results.json",
+    "unit_of_observation": "one counterparty wallet",
+    "out_of_sample": {
+      "label_built_on_days": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "target_measured_on_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_disjoint": true,
+      "scoring": "5-fold across wallets"
+    },
+    "public_information_set": "TRADE TAPE (VPIN / signed-flow imbalance / mean size / trade intensity) PLUS the FULL PUBLIC L2 BOOK features ['ofi', 'micro_dev_bps', 'book_vpin', 'qimb_1', 'qimb_5', 'qimb_10', 'depth_bid_5bps', 'depth_ask_5bps', 'depth_bid_10bps', 'depth_ask_10bps'] (OFI, multi-level queue imbalance, book-VPIN, delta-microprice, depth within k bps). NO counterparty identity in any anonymous predictor.",
+    "book_feature_names": [
+      "ofi",
+      "micro_dev_bps",
+      "book_vpin",
+      "qimb_1",
+      "qimb_5",
+      "qimb_10",
+      "depth_bid_5bps",
+      "depth_ask_5bps",
+      "depth_bid_10bps",
+      "depth_ask_10bps"
+    ],
+    "reporting_rule_obeyed": "quote the median with its range, not the single stored draw; for the coin comparison quote the paired difference",
+    "whisker_is_not": "This sweep varies ONE thing: which wallets land in which fold. The wallet set, the features and the targets are the same in every draw, so these ranges measure sensitivity to the fold split and NOTHING ELSE. They are NOT confidence intervals and NOT sampling uncertainty about a population, because the draws re-split the same data rather than resampling new data. For the same reason a count like 40 out of 40 seeds is not a p-value and must not be reported as one; the draws are not independent evidence. Sampling uncertainty is addressed separately by the label-permutation placebo (placebo_p) and the whale-drop check.",
+    "cells_drawn": [
+      {
+        "coin": "BTC",
+        "K": 50,
+        "horizon_s": 10,
+        "n_wallets": 644,
+        "n_public_features": 14,
+        "oos_r2_public": 0.7033570540219187,
+        "oos_r2_public_plus_fe": 0.7626926736099828,
+        "incremental_stored_single_split": 0.059335619588064104,
+        "stored_percentile_of_own_sweep": 50.0,
+        "incremental_median_over_seeds": 0.05936022902816013,
+        "incremental_min_over_seeds": 0.04335289289204314,
+        "incremental_max_over_seeds": 0.08135760255771196,
+        "n_seeds_positive": 40,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_p_is_floor": true,
+        "bh_qvalue": 0.0006663334999167083,
+        "survives_fdr": true,
+        "oos_r2_public_pct": 70.33570540219188,
+        "oos_r2_public_plus_fe_pct": 76.26926736099828,
+        "incremental_median_over_seeds_pp": 5.9360229028160125,
+        "incremental_min_over_seeds_pp": 4.335289289204313,
+        "incremental_max_over_seeds_pp": 8.135760255771196
+      },
+      {
+        "coin": "BTC",
+        "K": 100,
+        "horizon_s": 10,
+        "n_wallets": 328,
+        "n_public_features": 14,
+        "oos_r2_public": 0.7989255129968773,
+        "oos_r2_public_plus_fe": 0.8923953491969717,
+        "incremental_stored_single_split": 0.09346983620009441,
+        "stored_percentile_of_own_sweep": 92.5,
+        "incremental_median_over_seeds": 0.08369560154470285,
+        "incremental_min_over_seeds": 0.06364512780765985,
+        "incremental_max_over_seeds": 0.10055242531424369,
+        "n_seeds_positive": 40,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_p_is_floor": true,
+        "bh_qvalue": 0.0006663334999167083,
+        "survives_fdr": true,
+        "oos_r2_public_pct": 79.89255129968772,
+        "oos_r2_public_plus_fe_pct": 89.23953491969718,
+        "incremental_median_over_seeds_pp": 8.369560154470285,
+        "incremental_min_over_seeds_pp": 6.364512780765985,
+        "incremental_max_over_seeds_pp": 10.05524253142437
+      },
+      {
+        "coin": "ETH",
+        "K": 50,
+        "horizon_s": 10,
+        "n_wallets": 569,
+        "n_public_features": 14,
+        "oos_r2_public": 0.03247261186569228,
+        "oos_r2_public_plus_fe": 0.5153859197303656,
+        "incremental_stored_single_split": 0.48291330786467335,
+        "stored_percentile_of_own_sweep": 95.0,
+        "incremental_median_over_seeds": 0.4000131560859024,
+        "incremental_min_over_seeds": 0.24475999271898463,
+        "incremental_max_over_seeds": 0.5151758694263402,
+        "n_seeds_positive": 40,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_p_is_floor": true,
+        "bh_qvalue": 0.0006663334999167083,
+        "survives_fdr": true,
+        "oos_r2_public_pct": 3.247261186569228,
+        "oos_r2_public_plus_fe_pct": 51.53859197303656,
+        "incremental_median_over_seeds_pp": 40.00131560859024,
+        "incremental_min_over_seeds_pp": 24.475999271898463,
+        "incremental_max_over_seeds_pp": 51.51758694263402
+      },
+      {
+        "coin": "ETH",
+        "K": 100,
+        "horizon_s": 10,
+        "n_wallets": 338,
+        "n_public_features": 14,
+        "oos_r2_public": 0.3146929509033315,
+        "oos_r2_public_plus_fe": 0.6051370933020483,
+        "incremental_stored_single_split": 0.29044414239871685,
+        "stored_percentile_of_own_sweep": 35.0,
+        "incremental_median_over_seeds": 0.3151338044539984,
+        "incremental_min_over_seeds": 0.2318154540145112,
+        "incremental_max_over_seeds": 0.41789406983845345,
+        "n_seeds_positive": 40,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_p_is_floor": true,
+        "bh_qvalue": 0.0006663334999167083,
+        "survives_fdr": true,
+        "oos_r2_public_pct": 31.469295090333148,
+        "oos_r2_public_plus_fe_pct": 60.51370933020483,
+        "incremental_median_over_seeds_pp": 31.51338044539984,
+        "incremental_min_over_seeds_pp": 23.18154540145112,
+        "incremental_max_over_seeds_pp": 41.789406983845346
+      }
+    ]
+  },
+  "recorded_and_not_drawn": {
+    "companion_horizon_s": 60,
+    "why_the_companion_is_not_drawn": "the source calls 10 s its primary horizon and the 60 s cells answer a different question; its own registry entry forbids reading the two horizons as one quantity",
+    "companion_cells": [
+      {
+        "coin": "BTC",
+        "K": 50,
+        "horizon_s": 60,
+        "incremental_oos_r2_stored": -0.003804398285670696,
+        "incremental_median_over_seeds": -0.007752343647227933,
+        "placebo_p": 0.8570714642678661,
+        "survives_fdr": false,
+        "interpretation": "INCONCLUSIVE/UNDERPOWERED, not a recoverability finding: incremental R^2 -0.0038 <= 0 while incremental Spearman +0.0029 > 0. The positive rank lift means the counterparty FE still orders future toxicity out of sample over the public book; the non-positive R^2 is a level-fit artefact. Do NOT read this cell as the public book recovering toxicity."
+      },
+      {
+        "coin": "BTC",
+        "K": 100,
+        "horizon_s": 60,
+        "incremental_oos_r2_stored": 0.002195398955840866,
+        "incremental_median_over_seeds": -0.001671168425570413,
+        "placebo_p": 0.12493753123438281,
+        "survives_fdr": false,
+        "interpretation": null
+      },
+      {
+        "coin": "ETH",
+        "K": 50,
+        "horizon_s": 60,
+        "incremental_oos_r2_stored": 0.07108359557710098,
+        "incremental_median_over_seeds": 0.06029759529862733,
+        "placebo_p": 0.0004997501249375312,
+        "survives_fdr": true,
+        "interpretation": null
+      },
+      {
+        "coin": "ETH",
+        "K": 100,
+        "horizon_s": 60,
+        "incremental_oos_r2_stored": 0.08291710085603243,
+        "incremental_median_over_seeds": 0.14768302133188344,
+        "placebo_p": 0.0004997501249375312,
+        "survives_fdr": true,
+        "interpretation": null
+      }
+    ],
+    "pooled_cells_of_the_right_hand_source": [
+      {
+        "coin": "POOLED",
+        "K": 50,
+        "horizon_s": 10,
+        "incremental_oos_r2_stored": 0.39195296728638485
+      },
+      {
+        "coin": "POOLED",
+        "K": 100,
+        "horizon_s": 10,
+        "incremental_oos_r2_stored": 0.37931421076587524
+      },
+      {
+        "coin": "POOLED",
+        "K": 50,
+        "horizon_s": 60,
+        "incremental_oos_r2_stored": 0.008820121734780306
+      },
+      {
+        "coin": "POOLED",
+        "K": 100,
+        "horizon_s": 60,
+        "incremental_oos_r2_stored": 0.11721114849820347
+      }
+    ],
+    "why_pooled_is_not_drawn": "POOLED IS A DIAGNOSTIC ONLY - report headline_by_coin. The coins have opposite book-recoverability (ETH book-blind ~0.47, BTC book-recovers ~0.06); pooling averages them into a number describing neither coin. Per reverification: never pool.",
+    "pooled_cells_of_the_left_hand_source": [
+      {
+        "coin": "POOLED",
+        "K": 50,
+        "n_wallets": 4283,
+        "n_obs_eligible": 2115330,
+        "raw": 0.02976813669751152,
+        "after_linear": 0.0270284368458185,
+        "after_nonlinear": 0.02629108994704706,
+        "noise_floor": 0.02,
+        "retained_linear": 0.9079653563965915,
+        "retained_nonlinear": 0.8831956871941156,
+        "loo_taker_r2_raw": 0.06043693378521775,
+        "loo_taker_r2_residual": 0.050188324741476276,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_p_is_floor": true,
+        "r2_book_linear": 0.009019436646463319,
+        "r2_book_nonlinear": 0.022113739262994092,
+        "raw_pct": 2.9768136697511522,
+        "after_linear_pct": 2.70284368458185,
+        "after_nonlinear_pct": 2.6291089947047057,
+        "noise_floor_pct": 2.0
+      },
+      {
+        "coin": "POOLED",
+        "K": 100,
+        "n_wallets": 2014,
+        "n_obs_eligible": 1958218,
+        "raw": 0.04554644901224033,
+        "after_linear": 0.04000165066738292,
+        "after_nonlinear": 0.03764273845592688,
+        "noise_floor": 0.01,
+        "retained_linear": 0.8782605787035719,
+        "retained_nonlinear": 0.8264692258623856,
+        "loo_taker_r2_raw": 0.061083663715984504,
+        "loo_taker_r2_residual": 0.05079366013185438,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_p_is_floor": true,
+        "r2_book_linear": 0.009019436646463319,
+        "r2_book_nonlinear": 0.022113739262994092,
+        "raw_pct": 4.554644901224033,
+        "after_linear_pct": 4.000165066738292,
+        "after_nonlinear_pct": 3.764273845592688,
+        "noise_floor_pct": 1.0
+      }
+    ],
+    "why_the_left_pooled_cells_are_not_drawn": "this source records no prohibition on pooling, unlike the other one, so the question was put to its own numbers instead of carried over by analogy. They answer it: the pooled between-counterparty share is SMALLER THAN EITHER COIN'S at both floors -- at the 50-fill floor 2.98 per cent against 6.98 for BTC and 3.87 for ETH; at the 100-fill floor 4.55 per cent against 11.86 for BTC and 5.39 for ETH. A value below both of the things it averages is not a summary of them. Measured on the panel rather than reasoned about: pooling blends total markout variance to 43.11 from 19.02 on BTC and 62.86 on ETH, while the variance between wallet means FALLS to 1.283 from 1.328 and 2.434, because a wallet trading both coins contributes one mean across two instruments of different scale instead of two separate ones. The producer of this figure refuses to run if the pooled cell ever stops sitting below both coins, so this reason cannot go stale unnoticed"
+  },
+  "significance_does_not_come_from_the_drawn_bars": {
+    "left": "a label-permutation null on the residual between-counterparty share, and a leave-one-out per-counterparty fit; both in the source",
+    "right": "a label-permutation placebo with Benjamini-Hochberg correction over the twelve-cell family; the p of nine cells sits on the resolution floor of 2000 draws and is a bound rather than a measured smallness",
+    "p_floor": 0.0004997501249375312
+  },
+  "registry_entries_covering_the_right_hand_source": [
+    "M50",
+    "M51",
+    "M52",
+    "M53",
+    "M54",
+    "M55",
+    "M56",
+    "M57",
+    "M58",
+    "M59",
+    "M60",
+    "M61",
+    "M62",
+    "M63",
+    "M64",
+    "M72",
+    "M73"
+  ],
+  "registry_entries_covering_the_left_hand_source": [],
+  "registry_note": "the left-hand source has no entry in the value registry, so the caption's qualifications on it are taken from the artifact's own caveats block instead of from a registered forbidden claim"
+}

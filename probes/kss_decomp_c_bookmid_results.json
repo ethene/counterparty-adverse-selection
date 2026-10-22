@@ -1,0 +1,178 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "kss_decomp_c_bookmid_results.json",
+    "producer": {
+      "script": "kss_decomp_c_bookmid.py",
+      "sha256": "925964ae53b71787375f64d59059146b0e2e606a81a161dff1df86e61a37ad11",
+      "bytes": 6750
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 book-mid fills, every row of the input; 45,849 takers and 9,367 makers over 20 coin x day groups, with no fill floor. The de-biased variances are reported at BOTH the 60 s and the 10 s rung, under keys mo60_mid and mo10_mid",
+      "window": "10 days present in the input, day-of-month 4-13; the calendar dates are declared by the input's producer, build_quickwin_markouts.py",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 60,
+      "is_headline_horizon": false,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "mid",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 690,
+      "overridden": [
+        "master_seed"
+      ]
+    },
+    "run": {
+      "runtime_s": 21.392,
+      "finished_utc": "2026-08-12T15:20:09Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "n_fills": 2480267,
+  "n_takers": 45849,
+  "n_makers": 9367,
+  "planted_sim": {
+    "planted": {
+      "Va": 4.0,
+      "Vp": 2.0,
+      "Ve": 80.0
+    },
+    "plugin_var_alpha": 5.4507,
+    "plugin_var_psi": 1.9776,
+    "split_var_alpha": 3.9746,
+    "split_var_psi": 1.6706,
+    "VERDICT": "PASS: split recovers planted (plug-in over-states)"
+  },
+  "mo60_mid": {
+    "plugin": {
+      "var_y": 185.165,
+      "share_common_mu": 0.0002,
+      "share_taker_alpha": 0.027,
+      "share_maker_psi": 0.0423,
+      "share_2cov_alpha_psi": 0.006,
+      "share_residual": 0.9245,
+      "corr_alpha_psi": 0.0885,
+      "_raw": {
+        "var_alpha": 4.9928,
+        "var_psi": 7.8321,
+        "cov": 0.5532,
+        "var_common": 0.0303,
+        "var_resid": 171.1929
+      }
+    },
+    "split": {
+      "coverage_fills": 0.9903,
+      "var_alpha_debiased": 1.753,
+      "var_psi_debiased": 7.3115,
+      "cov_debiased": 0.5747,
+      "share_taker_alpha": 0.0095,
+      "share_maker_psi": 0.0395,
+      "share_2cov": 0.0062,
+      "iters": [
+        32,
+        32
+      ],
+      "deltas": [
+        9e-06,
+        8e-06
+      ]
+    },
+    "placebo_maker": {
+      "plugin_share_maker": 0.0038,
+      "split_share_maker": 0.0
+    },
+    "whale_drop": {
+      "dropped_top_k": 10,
+      "kept_fill_share": 0.6312,
+      "split_share_taker": 0.0087,
+      "split_share_maker": 0.0524
+    },
+    "solver": {
+      "iters": 31,
+      "delta": 9.086064920005299e-06
+    }
+  },
+  "mo10_mid": {
+    "plugin": {
+      "var_y": 42.5804,
+      "share_common_mu": 0.0003,
+      "share_taker_alpha": 0.0494,
+      "share_maker_psi": 0.0561,
+      "share_2cov_alpha_psi": 0.025,
+      "share_residual": 0.871,
+      "corr_alpha_psi": 0.238,
+      "_raw": {
+        "var_alpha": 2.1028,
+        "var_psi": 2.3874,
+        "cov": 0.5332,
+        "var_common": 0.0134,
+        "var_resid": 37.0856
+      }
+    },
+    "split": {
+      "coverage_fills": 0.9904,
+      "var_alpha_debiased": 1.2714,
+      "var_psi_debiased": 2.2706,
+      "cov_debiased": 0.5446,
+      "share_taker_alpha": 0.0299,
+      "share_maker_psi": 0.0533,
+      "share_2cov": 0.0256,
+      "iters": [
+        30,
+        42
+      ],
+      "deltas": [
+        9e-06,
+        9e-06
+      ]
+    },
+    "placebo_maker": {
+      "plugin_share_maker": 0.0036,
+      "split_share_maker": -0.0001
+    },
+    "whale_drop": {
+      "dropped_top_k": 10,
+      "kept_fill_share": 0.6312,
+      "split_share_taker": 0.0286,
+      "split_share_maker": 0.0667
+    },
+    "solver": {
+      "iters": 30,
+      "delta": 7.945849300527996e-06
+    }
+  }
+}

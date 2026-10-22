@@ -1,0 +1,471 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "i3_depth_control_results.json",
+    "producer": {
+      "script": "i3_depth_control.py",
+      "sha256": "5bc76bf9b7e5166cc95b26a4d9f1485a6bff984f7381e438b3a5a225b875bb33",
+      "bytes": 37288
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 rows of the book-mid panel reduced to per-wallet means; a wallet enters a cell at that cell's fill floor, and the cells run over [50, 100] fills",
+      "window": "10 days present in the input, day-of-month 4-13; this file makes no early-and-late split, so every day present enters every cell, and the calendar dates are declared by the panel's producer through i4_midmarkout.py",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "mid",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260620,
+      "n_perm": 2000,
+      "n_boot": null,
+      "rank_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_criterion": null,
+      "p_floor": 0.0004997501249375312,
+      "overrides_note": "n_perm is the declared budget, read from settings.py and no longer typed here; a p at the floor is still a bound and not a measurement, which is what placebo_residual_p_is_floor records; rank_floor_fills (50, 100) not the declared single 50, the second rung being the small-sample check; no bootstrap is drawn, so n_boot does not apply; no whale-drop arm runs here, so no drop criterion applies; the seed is settings.MASTER_SEED unchanged",
+      "overridden": [
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "overrides_note",
+        "p_floor",
+        "rank_floor_fills",
+        "whale_drop_criterion"
+      ]
+    },
+    "rng_seed": 20260620,
+    "run": {
+      "runtime_s": 239.542,
+      "finished_utc": "2026-08-13T10:13:13Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "object": "I3-DEPTH - per-counterparty markout dispersion vs entry-book-state controls. SUPPORTED CLAIM (narrow): entry book state does NOT LINEARLY account for the between-wallet markout dispersion (book R^2 < 1%); identity dispersion survives LINEAR book-state residualization and beats a label-permutation null.",
+  "caveats": {
+    "linear_retain_is_tautological": "Linear book R^2 < 1%, so share_retained_fraction (~0.78-0.91) is largely a TAUTOLOGY of the near-zero R^2 (residualizing on ~0 explained variance can barely move the markout). Do not read it as strong structural evidence that identity is not a book-state proxy.",
+    "between_share_is_in_sample": "between_share_* and share_retained_* are computed IN-SAMPLE (per-wallet means reused in numerator and denominator) and carry a ~1/K upward noise floor (between_share_in_sample_noise_floor); descriptive, not a clean effect size.",
+    "load_bearing_evidence": "Significance rests on the label-permutation null (placebo_residual_p clears the floor) and the OUT-OF-SAMPLE leave-one-out per-taker R^2 (loo_taker_r2_residual ~ 0.03-0.08), NOT the retain ratio.",
+    "nonlinear_control_added": "A NON-LINEAR book-state control (per-control deciles + pairwise interactions, R^2 of 1.9 to 3.4 times the linear fit) is added; the residual share still retains 0.80 to 0.89 of the raw share on it (share_retained_nonlinear) - that retain IS non-tautological."
+  },
+  "scope": {
+    "markout_source": "mid",
+    "input_npz": "quickwin_markouts_mid.npz",
+    "horizon_col": "mo10_mid",
+    "horizon_s": 10,
+    "control_cols": [
+      "imb_entry",
+      "spread_entry_bps",
+      "micro_dev_bps"
+    ],
+    "nonlinear_control": "per-control deciles + pairwise interactions",
+    "n_nl_bins": 10,
+    "K_list": [
+      50,
+      100
+    ],
+    "n_perm": 2000,
+    "p_floor": 0.0004997501249375312,
+    "p_floor_note": "2000 draws cannot express a p below 0.000500; each cell carries placebo_residual_p_is_floor saying which of the two its p is",
+    "rng_seed": 20260620,
+    "question": "Does entry book state (imb_entry, spread_entry_bps, micro_dev_bps) LINEARLY account for the per-counterparty (between-wallet) markout dispersion, and does that dispersion survive linear book-state residualization beyond a label-permutation null? (Answered: book state explains < 1% linearly; the dispersion survives and beats the null.) The earlier strong 'identity is not a book-state proxy' framing is retracted - see caveats.linear_retain_is_tautological.",
+    "verdict_rule": "identity_survives_linear_book_control = residual between-wallet share > 0 AND beats its label-permutation null (p<=0.05) AND the NON-LINEAR retain (share_retained_nonlinear, the non-tautological one) holds >= 50% of the raw share. This asserts only survival of the LINEAR book control + the label null - NOT strong structural exclusion."
+  },
+  "by_coin": [
+    {
+      "coin": "BTC",
+      "n_obs_total": 1200863,
+      "n_obs_used": 1199283,
+      "nan_drop_fraction": 0.0013157204443804164,
+      "ols_book_state": {
+        "predictors": [
+          "intercept",
+          "imb_entry",
+          "spread_entry_bps",
+          "micro_dev_bps"
+        ],
+        "beta": [
+          0.7304881550595441,
+          -0.06323041372940384,
+          0.642191541011763,
+          0.5146422846478056
+        ],
+        "r2_book_state": 0.009028267585369787,
+        "note": "R^2 of entry book-state controls (LINEAR) on the raw markout. This fit explains < 1% of markout variance, so a high share_retained on the linear residual is largely a TAUTOLOGY of the near-zero R^2 (residualizing on ~0 explained variance can barely move the markout) and is NOT strong structural evidence. The supported claim is narrow: entry book state does not LINEARLY account for the between-wallet markout dispersion."
+      },
+      "ols_book_state_nonlinear": {
+        "predictors": [
+          "intercept",
+          "control_deciles(drop-first)x3",
+          "pairwise_control_products x3"
+        ],
+        "n_design_cols": 30,
+        "r2_book_state_nonlinear": 0.01667879737680944,
+        "note": "R^2 of a NON-LINEAR book-state control (per-control deciles + pairwise interactions) on the raw markout. Larger than the linear R^2, so the retain on this residual (share_retained_nonlinear) is a non-tautological statement that identity dispersion survives a real book-state control."
+      },
+      "cells": [
+        {
+          "K": 50,
+          "n_wallets": 2555,
+          "n_obs_eligible": 929184,
+          "between_share_raw": 0.06979977049230399,
+          "between_share_residual": 0.057819838680175796,
+          "between_share_nonlinear_residual": 0.059326198549810645,
+          "share_retained_fraction": 0.828367174739506,
+          "share_retained_nonlinear": 0.8499483326575101,
+          "between_share_in_sample_noise_floor": 0.02,
+          "loo_taker_r2_raw": 0.10161414145463998,
+          "loo_taker_r2_residual": 0.08708792177352687,
+          "placebo_residual_share_mean": 0.01067153202341829,
+          "placebo_residual_p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "placebo_residual_p_is_floor": true,
+          "placebo_procedure": {
+            "procedure": "label permutation",
+            "side": "greater",
+            "n_draws_requested": 2000,
+            "n_draws_usable": 2000,
+            "n_draws_dropped": 0,
+            "tolerance_absolute": 1e-12,
+            "tolerance_relative": null,
+            "tolerance_rule": "absolute, stated by the caller",
+            "cell": [
+              "i3_depth_residual_between_wallet_share",
+              "BTC",
+              50
+            ],
+            "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+            "observed": 0.057819838680175796,
+            "p": 0.0004997501249375312,
+            "p_floor": 0.0004997501249375312,
+            "p_is_floored": true,
+            "n_at_least_as_extreme": 0,
+            "null_mean": 0.01067153202341829,
+            "null_sd": 0.0003449646104677423,
+            "null_p95": 0.011249699353407399
+          },
+          "identity_survives_linear_book_control": true,
+          "disclosure": "between_share_* and share_retained_* are IN-SAMPLE with a ~1/K noise floor (between_share_in_sample_noise_floor); the linear retain is largely a tautology of the < 1% book R^2. Load-bearing evidence = the label-permutation null (placebo_residual_p) and the OUT-OF-SAMPLE leave-one-out per-taker R^2 (loo_taker_r2_residual), NOT the retain ratio. share_retained_nonlinear is the non-tautological retain."
+        },
+        {
+          "K": 100,
+          "n_wallets": 1132,
+          "n_obs_eligible": 831342,
+          "between_share_raw": 0.1186364247684272,
+          "between_share_residual": 0.09436097247977326,
+          "between_share_nonlinear_residual": 0.09704494748981557,
+          "share_retained_fraction": 0.7953794348064813,
+          "share_retained_nonlinear": 0.8180029672947647,
+          "between_share_in_sample_noise_floor": 0.01,
+          "loo_taker_r2_raw": 0.10708708147614165,
+          "loo_taker_r2_residual": 0.09161206023037938,
+          "placebo_residual_share_mean": 0.0050735889129803,
+          "placebo_residual_p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "placebo_residual_p_is_floor": true,
+          "placebo_procedure": {
+            "procedure": "label permutation",
+            "side": "greater",
+            "n_draws_requested": 2000,
+            "n_draws_usable": 2000,
+            "n_draws_dropped": 0,
+            "tolerance_absolute": 1e-12,
+            "tolerance_relative": null,
+            "tolerance_rule": "absolute, stated by the caller",
+            "cell": [
+              "i3_depth_residual_between_wallet_share",
+              "BTC",
+              100
+            ],
+            "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+            "observed": 0.09436097247977326,
+            "p": 0.0004997501249375312,
+            "p_floor": 0.0004997501249375312,
+            "p_is_floored": true,
+            "n_at_least_as_extreme": 0,
+            "null_mean": 0.0050735889129803,
+            "null_sd": 0.00024919154013729053,
+            "null_p95": 0.005495212121227425
+          },
+          "identity_survives_linear_book_control": true,
+          "disclosure": "between_share_* and share_retained_* are IN-SAMPLE with a ~1/K noise floor (between_share_in_sample_noise_floor); the linear retain is largely a tautology of the < 1% book R^2. Load-bearing evidence = the label-permutation null (placebo_residual_p) and the OUT-OF-SAMPLE leave-one-out per-taker R^2 (loo_taker_r2_residual), NOT the retain ratio. share_retained_nonlinear is the non-tautological retain."
+        }
+      ]
+    },
+    {
+      "coin": "ETH",
+      "n_obs_total": 1279404,
+      "n_obs_used": 1277713,
+      "nan_drop_fraction": 0.0013217091708326689,
+      "ols_book_state": {
+        "predictors": [
+          "intercept",
+          "imb_entry",
+          "spread_entry_bps",
+          "micro_dev_bps"
+        ],
+        "beta": [
+          1.3711586272276808,
+          0.008597735829987838,
+          0.5606209576615757,
+          0.0852613984367869
+        ],
+        "r2_book_state": 0.006724554176235631,
+        "note": "R^2 of entry book-state controls (LINEAR) on the raw markout. This fit explains < 1% of markout variance, so a high share_retained on the linear residual is largely a TAUTOLOGY of the near-zero R^2 (residualizing on ~0 explained variance can barely move the markout) and is NOT strong structural evidence. The supported claim is narrow: entry book state does not LINEARLY account for the between-wallet markout dispersion."
+      },
+      "ols_book_state_nonlinear": {
+        "predictors": [
+          "intercept",
+          "control_deciles(drop-first)x3",
+          "pairwise_control_products x3"
+        ],
+        "n_design_cols": 30,
+        "r2_book_state_nonlinear": 0.023925894553847193,
+        "note": "R^2 of a NON-LINEAR book-state control (per-control deciles + pairwise interactions) on the raw markout. Larger than the linear R^2, so the retain on this residual (share_retained_nonlinear) is a non-tautological statement that identity dispersion survives a real book-state control."
+      },
+      "cells": [
+        {
+          "K": 50,
+          "n_wallets": 1780,
+          "n_obs_eligible": 1123398,
+          "between_share_raw": 0.0387210264041502,
+          "between_share_residual": 0.035690403635481524,
+          "between_share_nonlinear_residual": 0.03268635835970083,
+          "share_retained_fraction": 0.9217318586280077,
+          "share_retained_nonlinear": 0.8441501012534481,
+          "between_share_in_sample_noise_floor": 0.02,
+          "loo_taker_r2_raw": 0.04689214771701611,
+          "loo_taker_r2_residual": 0.04072931893109444,
+          "placebo_residual_share_mean": 0.009216124393596778,
+          "placebo_residual_p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "placebo_residual_p_is_floor": true,
+          "placebo_procedure": {
+            "procedure": "label permutation",
+            "side": "greater",
+            "n_draws_requested": 2000,
+            "n_draws_usable": 2000,
+            "n_draws_dropped": 0,
+            "tolerance_absolute": 1e-12,
+            "tolerance_relative": null,
+            "tolerance_rule": "absolute, stated by the caller",
+            "cell": [
+              "i3_depth_residual_between_wallet_share",
+              "ETH",
+              50
+            ],
+            "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+            "observed": 0.035690403635481524,
+            "p": 0.0004997501249375312,
+            "p_floor": 0.0004997501249375312,
+            "p_is_floored": true,
+            "n_at_least_as_extreme": 0,
+            "null_mean": 0.009216124393596778,
+            "null_sd": 0.0004133494809575627,
+            "null_p95": 0.009906627969993899
+          },
+          "identity_survives_linear_book_control": true,
+          "disclosure": "between_share_* and share_retained_* are IN-SAMPLE with a ~1/K noise floor (between_share_in_sample_noise_floor); the linear retain is largely a tautology of the < 1% book R^2. Load-bearing evidence = the label-permutation null (placebo_residual_p) and the OUT-OF-SAMPLE leave-one-out per-taker R^2 (loo_taker_r2_residual), NOT the retain ratio. share_retained_nonlinear is the non-tautological retain."
+        },
+        {
+          "K": 100,
+          "n_wallets": 963,
+          "n_obs_eligible": 1066785,
+          "between_share_raw": 0.053910315994142886,
+          "between_share_residual": 0.04862671046316202,
+          "between_share_nonlinear_residual": 0.04316209544185021,
+          "share_retained_fraction": 0.9019926811121844,
+          "share_retained_nonlinear": 0.8006277582668886,
+          "between_share_in_sample_noise_floor": 0.01,
+          "loo_taker_r2_raw": 0.046616627850907144,
+          "loo_taker_r2_residual": 0.04050463139254035,
+          "placebo_residual_share_mean": 0.004319694735313498,
+          "placebo_residual_p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "placebo_residual_p_is_floor": true,
+          "placebo_procedure": {
+            "procedure": "label permutation",
+            "side": "greater",
+            "n_draws_requested": 2000,
+            "n_draws_usable": 2000,
+            "n_draws_dropped": 0,
+            "tolerance_absolute": 1e-12,
+            "tolerance_relative": null,
+            "tolerance_rule": "absolute, stated by the caller",
+            "cell": [
+              "i3_depth_residual_between_wallet_share",
+              "ETH",
+              100
+            ],
+            "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+            "observed": 0.04862671046316202,
+            "p": 0.0004997501249375312,
+            "p_floor": 0.0004997501249375312,
+            "p_is_floored": true,
+            "n_at_least_as_extreme": 0,
+            "null_mean": 0.004319694735313498,
+            "null_sd": 0.00024748546777162485,
+            "null_p95": 0.004719728214833773
+          },
+          "identity_survives_linear_book_control": true,
+          "disclosure": "between_share_* and share_retained_* are IN-SAMPLE with a ~1/K noise floor (between_share_in_sample_noise_floor); the linear retain is largely a tautology of the < 1% book R^2. Load-bearing evidence = the label-permutation null (placebo_residual_p) and the OUT-OF-SAMPLE leave-one-out per-taker R^2 (loo_taker_r2_residual), NOT the retain ratio. share_retained_nonlinear is the non-tautological retain."
+        }
+      ]
+    }
+  ],
+  "pooled": {
+    "coin": "POOLED",
+    "n_obs_total": 2480267,
+    "n_obs_used": 2476996,
+    "nan_drop_fraction": 0.0013188096281569685,
+    "ols_book_state": {
+      "predictors": [
+        "intercept",
+        "imb_entry",
+        "spread_entry_bps",
+        "micro_dev_bps"
+      ],
+      "beta": [
+        1.036148554470139,
+        -0.008990239785316231,
+        0.6395378726897166,
+        0.1449667705219187
+      ],
+      "r2_book_state": 0.009019436646463319,
+      "note": "R^2 of entry book-state controls (LINEAR) on the raw markout. This fit explains < 1% of markout variance, so a high share_retained on the linear residual is largely a TAUTOLOGY of the near-zero R^2 (residualizing on ~0 explained variance can barely move the markout) and is NOT strong structural evidence. The supported claim is narrow: entry book state does not LINEARLY account for the between-wallet markout dispersion."
+    },
+    "ols_book_state_nonlinear": {
+      "predictors": [
+        "intercept",
+        "control_deciles(drop-first)x3",
+        "pairwise_control_products x3"
+      ],
+      "n_design_cols": 30,
+      "r2_book_state_nonlinear": 0.022113739262994092,
+      "note": "R^2 of a NON-LINEAR book-state control (per-control deciles + pairwise interactions) on the raw markout. Larger than the linear R^2, so the retain on this residual (share_retained_nonlinear) is a non-tautological statement that identity dispersion survives a real book-state control."
+    },
+    "cells": [
+      {
+        "K": 50,
+        "n_wallets": 4283,
+        "n_obs_eligible": 2115330,
+        "between_share_raw": 0.02976813669751152,
+        "between_share_residual": 0.0270284368458185,
+        "between_share_nonlinear_residual": 0.02629108994704706,
+        "share_retained_fraction": 0.9079653563965915,
+        "share_retained_nonlinear": 0.8831956871941156,
+        "between_share_in_sample_noise_floor": 0.02,
+        "loo_taker_r2_raw": 0.06043693378521775,
+        "loo_taker_r2_residual": 0.050188324741476276,
+        "placebo_residual_share_mean": 0.010311426681105526,
+        "placebo_residual_p": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "placebo_residual_p_is_floor": true,
+        "placebo_procedure": {
+          "procedure": "label permutation",
+          "side": "greater",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 1e-12,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "i3_depth_residual_between_wallet_share",
+            "POOLED",
+            50
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.0270284368458185,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": 0.010311426681105526,
+          "null_sd": 0.0002948429550823636,
+          "null_p95": 0.010805051761479315
+        },
+        "identity_survives_linear_book_control": true,
+        "disclosure": "between_share_* and share_retained_* are IN-SAMPLE with a ~1/K noise floor (between_share_in_sample_noise_floor); the linear retain is largely a tautology of the < 1% book R^2. Load-bearing evidence = the label-permutation null (placebo_residual_p) and the OUT-OF-SAMPLE leave-one-out per-taker R^2 (loo_taker_r2_residual), NOT the retain ratio. share_retained_nonlinear is the non-tautological retain."
+      },
+      {
+        "K": 100,
+        "n_wallets": 2014,
+        "n_obs_eligible": 1958218,
+        "between_share_raw": 0.04554644901224033,
+        "between_share_residual": 0.04000165066738292,
+        "between_share_nonlinear_residual": 0.03764273845592688,
+        "share_retained_fraction": 0.8782605787035719,
+        "share_retained_nonlinear": 0.8264692258623856,
+        "between_share_in_sample_noise_floor": 0.01,
+        "loo_taker_r2_raw": 0.061083663715984504,
+        "loo_taker_r2_residual": 0.05079366013185438,
+        "placebo_residual_share_mean": 0.004934377768342586,
+        "placebo_residual_p": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "placebo_residual_p_is_floor": true,
+        "placebo_procedure": {
+          "procedure": "label permutation",
+          "side": "greater",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 1e-12,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "i3_depth_residual_between_wallet_share",
+            "POOLED",
+            100
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.04000165066738292,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": 0.004934377768342586,
+          "null_sd": 0.00019628774025742715,
+          "null_p95": 0.0052683071623746925
+        },
+        "identity_survives_linear_book_control": true,
+        "disclosure": "between_share_* and share_retained_* are IN-SAMPLE with a ~1/K noise floor (between_share_in_sample_noise_floor); the linear retain is largely a tautology of the < 1% book R^2. Load-bearing evidence = the label-permutation null (placebo_residual_p) and the OUT-OF-SAMPLE leave-one-out per-taker R^2 (loo_taker_r2_residual), NOT the retain ratio. share_retained_nonlinear is the non-tautological retain."
+      }
+    ]
+  },
+  "issues": []
+}

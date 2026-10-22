@@ -1,0 +1,238 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "m4_realizedpnl_results.json",
+    "producer": {
+      "script": "m4_realizedpnl.py",
+      "sha256": "10d1c088f0c6d73c5d4696fe769a487ff095d20c5c6cf017e122162e37a3ed55",
+      "bytes": 26601
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 rows of the trade-print panel reduced to per-wallet realized PnL against per-wallet mean markout; a wallet enters on one finite markout trade, with no fill floor applied",
+      "window": "10 days present in the input, day-of-month 4-13; the calendar dates of the window are declared by its producer, build_quickwin_markouts.py",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260619,
+      "n_perm": 2000,
+      "rank_floor_fills": 1,
+      "overridden": [
+        "master_seed",
+        "n_perm",
+        "rank_floor_fills"
+      ]
+    },
+    "object": "M4 realized-PnL vs price-markout cross-method validation",
+    "horizon_s": 10,
+    "markout_column": "mo10",
+    "headline": "Spearman(realized_pnl, mean mo10) per wallet, per coin + pooled",
+    "realized_pnl_def": "sum closed_pnl over wallet's CLOSE trades, close set = is_open == 0 (the COMPLETE close/reduce set, including the dir_code == -1 genuine closes); NOT the literal dir_code in {2,3}",
+    "close_set_bookkeeping": {
+      "n_close_is_open_eq_0": 1213060,
+      "n_close_dir_code_in_2_3": 1169741,
+      "n_dir_code_neg1_closes_added": 43319,
+      "closed_pnl_on_dir_code_neg1_closes_quote": -46889.64150450697,
+      "note": "the dir_code == -1 closes are real closes the literal {2,3} set drops; they sum closed_pnl ~ -46,889.64 and flip the BTC total"
+    },
+    "markout_tox_def": "mean mo10 over wallet's finite-markout trades (bps)",
+    "claim": "a wallet toxic by price-markout should ALSO realize profit; two methodologically distinct measures with no shared reference-price model agreeing in direction hardens the toxicity label (closedPnl and mo10 share the same fills, so this is a cross-method check, not two independent samples)",
+    "rng_seed": 20260619,
+    "n_permutations": 2000,
+    "placebo_floor": 0.0004997501249375312,
+    "n_drop_whales": 10,
+    "whale_drop_criterion": "abs_realized_pnl",
+    "n_trades_total": 2480267,
+    "rank_floor_note": "wallets enter on one finite markout trade, not on the declared 50-fill floor: the statistic is a cross-method agreement over the whole wallet population, and flooring it would restate the population being validated",
+    "run": {
+      "runtime_s": 100.871,
+      "finished_utc": "2026-08-21T15:32:01Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "BTC": {
+    "n_wallets": 35588,
+    "spearman_rho": 0.047273420814925686,
+    "spearman_rho_magnitude": 0.047273420814925686,
+    "placebo_p_value": 0.0004997501249375312,
+    "effect_size_note": "rho is small in magnitude (~0.03); the floored permutation p reflects large N, NOT a strong agreement. Two methodologically distinct measures agree in DIRECTION, weakly.",
+    "interpretation": "positive rho => wallets that look toxic by price-markout also tend to realize profit; two methodologically distinct toxicity measures (no shared reference-price model) agree in direction, weakly",
+    "placebo": {
+      "p_value": 0.0004997501249375312,
+      "n_permutations": 2000,
+      "n_ge_observed": 0,
+      "floor": 0.0004997501249375312,
+      "perm_rho_mean": -5.673904760521987e-07,
+      "perm_rho_std": 0.005324575613958875,
+      "procedure": {
+        "procedure": "label permutation",
+        "side": "two_sided",
+        "n_draws_requested": 2000,
+        "n_draws_usable": 2000,
+        "n_draws_dropped": 0,
+        "tolerance_absolute": 0.0,
+        "tolerance_relative": null,
+        "tolerance_rule": "absolute, stated by the caller",
+        "cell": [
+          "m4_realizedpnl",
+          "rho_placebo"
+        ],
+        "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+        "observed": 0.047273420814925686,
+        "p": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "p_is_floored": true,
+        "n_at_least_as_extreme": 0,
+        "null_mean": -5.673904760521987e-07,
+        "null_sd": 0.005324575613958875,
+        "null_p95": 0.008842763153900977
+      }
+    },
+    "whale_robustness_drop_top10_by_abs_realized_pnl": {
+      "rho": 0.04711743022697437,
+      "n_wallets": 35578,
+      "k_dropped": 10
+    },
+    "frac_wallets_realize_profit": 0.44014836461728674,
+    "frac_wallets_markout_toxic": 0.4306226818028549,
+    "frac_wallets_toxic_and_profitable": 0.20265257952118693,
+    "realized_pnl_total_quote": -3527.36665252503,
+    "realized_pnl_mean_quote": -0.09911674307421126,
+    "markout_tox_mean_bps": -0.20580077327953653
+  },
+  "ETH": {
+    "n_wallets": 23838,
+    "spearman_rho": 0.024740569865744383,
+    "spearman_rho_magnitude": 0.024740569865744383,
+    "placebo_p_value": 0.0004997501249375312,
+    "effect_size_note": "rho is small in magnitude (~0.03); the floored permutation p reflects large N, NOT a strong agreement. Two methodologically distinct measures agree in DIRECTION, weakly.",
+    "interpretation": "positive rho => wallets that look toxic by price-markout also tend to realize profit; two methodologically distinct toxicity measures (no shared reference-price model) agree in direction, weakly",
+    "placebo": {
+      "p_value": 0.0004997501249375312,
+      "n_permutations": 2000,
+      "n_ge_observed": 0,
+      "floor": 0.0004997501249375312,
+      "perm_rho_mean": -6.620873555631593e-05,
+      "perm_rho_std": 0.006459303708466525,
+      "procedure": {
+        "procedure": "label permutation",
+        "side": "two_sided",
+        "n_draws_requested": 2000,
+        "n_draws_usable": 2000,
+        "n_draws_dropped": 0,
+        "tolerance_absolute": 0.0,
+        "tolerance_relative": null,
+        "tolerance_rule": "absolute, stated by the caller",
+        "cell": [
+          "m4_realizedpnl",
+          "rho_placebo"
+        ],
+        "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+        "observed": 0.024740569865744383,
+        "p": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "p_is_floored": true,
+        "n_at_least_as_extreme": 0,
+        "null_mean": -6.620873555631593e-05,
+        "null_sd": 0.006459303708466525,
+        "null_p95": 0.01060736625147173
+      }
+    },
+    "whale_robustness_drop_top10_by_abs_realized_pnl": {
+      "rho": 0.0243665718680035,
+      "n_wallets": 23828,
+      "k_dropped": 10
+    },
+    "frac_wallets_realize_profit": 0.43774645523953354,
+    "frac_wallets_markout_toxic": 0.4262102525379646,
+    "frac_wallets_toxic_and_profitable": 0.1934726067623123,
+    "realized_pnl_total_quote": 10477025.908244006,
+    "realized_pnl_mean_quote": 439.5094348621531,
+    "markout_tox_mean_bps": -0.4404708680490094
+  },
+  "pooled": {
+    "n_wallets": 45848,
+    "spearman_rho": 0.03524429755926732,
+    "spearman_rho_magnitude": 0.03524429755926732,
+    "placebo_p_value": 0.0004997501249375312,
+    "effect_size_note": "rho is small in magnitude (~0.03); the floored permutation p reflects large N, NOT a strong agreement. Two methodologically distinct measures agree in DIRECTION, weakly.",
+    "interpretation": "positive rho => wallets that look toxic by price-markout also tend to realize profit; two methodologically distinct toxicity measures (no shared reference-price model) agree in direction, weakly",
+    "placebo": {
+      "p_value": 0.0004997501249375312,
+      "n_permutations": 2000,
+      "n_ge_observed": 0,
+      "floor": 0.0004997501249375312,
+      "perm_rho_mean": 2.1625034962354698e-05,
+      "perm_rho_std": 0.004615882514132084,
+      "procedure": {
+        "procedure": "label permutation",
+        "side": "two_sided",
+        "n_draws_requested": 2000,
+        "n_draws_usable": 2000,
+        "n_draws_dropped": 0,
+        "tolerance_absolute": 0.0,
+        "tolerance_relative": null,
+        "tolerance_rule": "absolute, stated by the caller",
+        "cell": [
+          "m4_realizedpnl",
+          "rho_placebo"
+        ],
+        "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+        "observed": 0.03524429755926732,
+        "p": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "p_is_floored": true,
+        "n_at_least_as_extreme": 0,
+        "null_mean": 2.1625034962354698e-05,
+        "null_sd": 0.004615882514132084,
+        "null_p95": 0.007835536612349706
+      }
+    },
+    "whale_robustness_drop_top10_by_abs_realized_pnl": {
+      "rho": 0.03519243000149636,
+      "n_wallets": 45838,
+      "k_dropped": 10
+    },
+    "frac_wallets_realize_profit": 0.4356133310068051,
+    "frac_wallets_markout_toxic": 0.4240097714186006,
+    "frac_wallets_toxic_and_profitable": 0.19492671436049555,
+    "realized_pnl_total_quote": 10473498.541591484,
+    "realized_pnl_mean_quote": 228.4395947825747,
+    "markout_tox_mean_bps": -0.29551080384940365
+  }
+}

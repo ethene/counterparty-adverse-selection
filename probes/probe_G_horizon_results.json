@@ -1,0 +1,563 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "probe_G_horizon_results.json",
+    "producer": {
+      "script": "probe_G_horizon.py",
+      "sha256": "bfe2471a8ae762fc707d0240606b6baea94f91609fc801d0bbcbb83791866b75",
+      "bytes": 45261
+    },
+    "inputs": [
+      {
+        "name": "mid_series_BTC.npz",
+        "bytes": 62888304,
+        "sha256": "c0c1890bdcf4f1ada237bfb9ef8122af8ea2418af1ea22a96d76bcdfa8ed7d8c",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "mid_series_ETH.npz",
+        "bytes": 62890344,
+        "sha256": "eb617dff3303dc678d6db75547a92ae612bd02f90d34ea91dec143acbdcbe436",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251204/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251205/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251206/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251207/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251208/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251209/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251210/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251211/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251212/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      },
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251213/",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 book-mid fills carrying a full curve join at every horizon of the grid; a wallet enters the shape split at 50 full-curve fills and the split-half persistence at 20 in EACH half. The placebo budget is 2000 draws, so the smallest p this probe can express is 0.000500",
+      "window": "10 days resolved on the raw tape: ['20251204', '20251205', '20251206', '20251207', '20251208', '20251209', '20251210', '20251211', '20251212', '20251213']; every requested day resolved",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 300,
+      "is_headline_horizon": false,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "mid",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260622,
+      "n_perm": 2000,
+      "rank_floor_fills": 50,
+      "overridden": [
+        "master_seed",
+        "n_perm",
+        "rank_floor_fills"
+      ]
+    },
+    "object": "Probe G - transient vs permanent book-mid markout over a fuller horizon grid + per-counterparty decay-curve shape",
+    "reference_price": "BOOK MID (mid_series_{BTC,ETH}.npz); information lens. Level inflated ~4x by own-spread-crossing -> shape/ranks only, never the level. HL oracle/mark never used (circular).",
+    "horizons_s": [
+      0.1,
+      1.0,
+      5.0,
+      30.0,
+      300.0
+    ],
+    "markout_sign": "positive = taker profited = maker adverse-selected",
+    "no_lookahead_join": "entry=searchsorted right-1 (last at-or-before); horizon=searchsorted left (first at-or-after); per-leg gap tolerance 5000.0 ms",
+    "shape_rule": {
+      "signed_reversion_fraction": "(m(h*)-m(300s))/m(h*), h*=argmax|m|",
+      "permanent_if_<=": 0.25,
+      "transient_if_>=": 0.75,
+      "reading": "~0 permanent/information; ->1 transient/speed edge; >1 over-reverts (sign reversal)"
+    },
+    "k_min": 50,
+    "k_half_min": 20,
+    "seed": 20260622,
+    "n_perm": 2000,
+    "p_floor": 0.0004997501249375312,
+    "n_drop_whales": 5,
+    "kill_criterion": "KILL if (a) the per-counterparty shape split is MAJORITY TRANSIENT (transient_share > permanent_share) in BOTH BTC and ETH (speed edge, not information) OR (b) split-half persistence p>0.05 AND placebo p>0.05 (no per-counterparty shape structure). cond_a reads the sign-correct per-wallet split, NOT the signed pooled mean (which can revert toward 0 by cancellation of heterogeneous-direction permanent wallets; kept as a diagnostic only).",
+    "days_resolved": [
+      "20251204",
+      "20251205",
+      "20251206",
+      "20251207",
+      "20251208",
+      "20251209",
+      "20251210",
+      "20251211",
+      "20251212",
+      "20251213"
+    ],
+    "issues": [],
+    "n_rows_total": 2480267,
+    "kill_verdict": {
+      "condition_a_wallets_majority_transient_both_coins": false,
+      "btc_wallets_majority_transient": false,
+      "eth_wallets_majority_transient": false,
+      "condition_b_no_shape_structure": false,
+      "persistence_beats_null": true,
+      "placebo_beats": false,
+      "KILLED": false,
+      "reading": "survives - permanent/private-information reading holds",
+      "diagnostic_signed_aggregate_impact_reverts": {
+        "btc": false,
+        "eth": false,
+        "note": "signed notional-weighted pooled mean reverting toward 0 at 300s can be cancellation of heterogeneous-direction permanent wallets; NOT a kill trigger -- cond_a uses the sign-correct per-counterparty split."
+      }
+    },
+    "run": {
+      "runtime_s": 1307.892,
+      "finished_utc": "2026-08-13T12:27:17Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "BTC": {
+    "horizons_s": [
+      0.1,
+      1.0,
+      5.0,
+      30.0,
+      300.0
+    ],
+    "n_fills": 1200863,
+    "n_full_curve_fills": 1198294,
+    "pooled_curve_vw_bps": [
+      1.1150677731418162,
+      1.4105268938440862,
+      1.649887829127253,
+      1.7114332086248862,
+      1.892921147277434
+    ],
+    "pooled_reversion_fraction": 0.0,
+    "pooled_shape": "permanent",
+    "per_counterparty": {
+      "k_min": 50,
+      "n_wallets": 2549,
+      "split": {
+        "n": 2549,
+        "permanent_n": 1941,
+        "transient_n": 335,
+        "mixed_n": 273,
+        "permanent_share": 0.7614750882699097,
+        "transient_share": 0.13142408787759907,
+        "mixed_share": 0.10710082385249117,
+        "median_reversion_fraction": 0.0
+      },
+      "between_wallet_reversion_dispersion": 0.46643103374677897,
+      "placebo_random_wallet": {
+        "p_one_sided": 1.0,
+        "null_mean_dispersion": 0.5425640161545041,
+        "null_std_dispersion": 0.009103904009582397,
+        "n_failed_draws": 0,
+        "permutation": {
+          "procedure": "label permutation",
+          "side": "greater",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 1e-12,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "shape_dispersion_random_wallet_placebo",
+            50
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.46643103374677897,
+          "p": 1.0,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": false,
+          "n_at_least_as_extreme": 2000,
+          "null_mean": 0.5425640161545041,
+          "null_sd": 0.009106180839431571,
+          "null_p95": 0.5572475821278606
+        },
+        "p_floor": 0.0004997501249375312,
+        "real_dispersion_beats_placebo": false
+      },
+      "split_half_persistence": {
+        "n_wallets": 3292,
+        "k_half_min": 20,
+        "rank_corr_revA_vs_revB": 0.11510246626740686,
+        "permutation_p_two_sided": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "null_mean": -0.0002808557486602383,
+        "n_failed_draws": 0,
+        "permutation": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 1e-12,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "reversion_fraction_split_half",
+            20
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.11510246626740686,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": -0.0002808557486602383,
+          "null_sd": 0.017602476540277336,
+          "null_p95": 0.02866708077359869
+        }
+      },
+      "persistence_beats_null": true,
+      "whale_drop_top5": {
+        "n_dropped": 5,
+        "pooled_curve_full_bps": [
+          1.1150677731418162,
+          1.4105268938440862,
+          1.649887829127253,
+          1.7114332086248862,
+          1.892921147277434
+        ],
+        "pooled_curve_drop_bps": [
+          1.1083560867912314,
+          1.3825678142902798,
+          1.645964941842803,
+          1.6723934443447614,
+          1.8901772762729219
+        ],
+        "pooled_reversion_fraction_full": 0.0,
+        "pooled_reversion_fraction_drop": 0.0,
+        "permanent_share_full": 0.7614750882699097,
+        "permanent_share_drop": 0.7617924528301887,
+        "reversion_sign_preserved": true
+      },
+      "shape_is_a_counterparty_trait": true
+    }
+  },
+  "ETH": {
+    "horizons_s": [
+      0.1,
+      1.0,
+      5.0,
+      30.0,
+      300.0
+    ],
+    "n_fills": 1279404,
+    "n_full_curve_fills": 1276935,
+    "pooled_curve_vw_bps": [
+      1.9196197304671752,
+      2.609697532111974,
+      3.068814834057317,
+      3.3740498931545493,
+      2.950666863835615
+    ],
+    "pooled_reversion_fraction": 0.12548214837543337,
+    "pooled_shape": "permanent",
+    "per_counterparty": {
+      "k_min": 50,
+      "n_wallets": 1779,
+      "split": {
+        "n": 1779,
+        "permanent_n": 1424,
+        "transient_n": 216,
+        "mixed_n": 139,
+        "permanent_share": 0.8004496908375491,
+        "transient_share": 0.12141652613827993,
+        "mixed_share": 0.07813378302417089,
+        "median_reversion_fraction": 0.0
+      },
+      "between_wallet_reversion_dispersion": 0.46711885239774,
+      "placebo_random_wallet": {
+        "p_one_sided": 0.9710144927536232,
+        "null_mean_dispersion": 0.4888557064293204,
+        "null_std_dispersion": 0.011598602162061943,
+        "n_failed_draws": 0,
+        "permutation": {
+          "procedure": "label permutation",
+          "side": "greater",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 1e-12,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "shape_dispersion_random_wallet_placebo",
+            50
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.46711885239774,
+          "p": 0.9710144927536232,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": false,
+          "n_at_least_as_extreme": 1942,
+          "null_mean": 0.4888557064293204,
+          "null_sd": 0.011601502900424679,
+          "null_p95": 0.5079523666878422
+        },
+        "p_floor": 0.0004997501249375312,
+        "real_dispersion_beats_placebo": false
+      },
+      "split_half_persistence": {
+        "n_wallets": 2146,
+        "k_half_min": 20,
+        "rank_corr_revA_vs_revB": 0.08115019753971743,
+        "permutation_p_two_sided": 0.0009995002498750624,
+        "p_floor": 0.0004997501249375312,
+        "null_mean": -0.00010958480742227539,
+        "n_failed_draws": 0,
+        "permutation": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 1e-12,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "reversion_fraction_split_half",
+            20
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.08115019753971743,
+          "p": 0.0009995002498750624,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": false,
+          "n_at_least_as_extreme": 1,
+          "null_mean": -0.00010958480742227539,
+          "null_sd": 0.021505312264165008,
+          "null_p95": 0.03593372371841572
+        }
+      },
+      "persistence_beats_null": true,
+      "whale_drop_top5": {
+        "n_dropped": 5,
+        "pooled_curve_full_bps": [
+          1.9196197304671752,
+          2.609697532111974,
+          3.068814834057317,
+          3.3740498931545493,
+          2.950666863835615
+        ],
+        "pooled_curve_drop_bps": [
+          1.9795198389830386,
+          2.668817257497804,
+          3.238804627934498,
+          3.5642481293802493,
+          2.4778403950874615
+        ],
+        "pooled_reversion_fraction_full": 0.12548214837543337,
+        "pooled_reversion_fraction_drop": 0.30480698729627786,
+        "permanent_share_full": 0.8004496908375491,
+        "permanent_share_drop": 0.7998872604284104,
+        "reversion_sign_preserved": true
+      },
+      "shape_is_a_counterparty_trait": true
+    }
+  },
+  "pooled": {
+    "horizons_s": [
+      0.1,
+      1.0,
+      5.0,
+      30.0,
+      300.0
+    ],
+    "n_fills": 2480267,
+    "n_full_curve_fills": 2475229,
+    "pooled_curve_vw_bps": [
+      1.4297283311000182,
+      1.879522958907259,
+      2.204830687705992,
+      2.36168318795985,
+      2.3066058749320075
+    ],
+    "pooled_reversion_fraction": 0.023321211459959346,
+    "pooled_shape": "permanent",
+    "per_counterparty": {
+      "k_min": 50,
+      "n_wallets": 4277,
+      "split": {
+        "n": 4277,
+        "permanent_n": 3387,
+        "transient_n": 558,
+        "mixed_n": 332,
+        "permanent_share": 0.7919102174421323,
+        "transient_share": 0.1304652794014496,
+        "mixed_share": 0.07762450315641806,
+        "median_reversion_fraction": 0.0
+      },
+      "between_wallet_reversion_dispersion": 0.4692259576312736,
+      "placebo_random_wallet": {
+        "p_one_sided": 1.0,
+        "null_mean_dispersion": 0.5178567620495442,
+        "null_std_dispersion": 0.007202480609542099,
+        "n_failed_draws": 0,
+        "permutation": {
+          "procedure": "label permutation",
+          "side": "greater",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 1e-12,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "shape_dispersion_random_wallet_placebo",
+            50
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.4692259576312736,
+          "p": 1.0,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": false,
+          "n_at_least_as_extreme": 2000,
+          "null_mean": 0.5178567620495442,
+          "null_sd": 0.007204281905208512,
+          "null_p95": 0.529376214813055
+        },
+        "p_floor": 0.0004997501249375312,
+        "real_dispersion_beats_placebo": false
+      },
+      "split_half_persistence": {
+        "n_wallets": 5334,
+        "k_half_min": 20,
+        "rank_corr_revA_vs_revB": 0.05925694989827082,
+        "permutation_p_two_sided": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "null_mean": -0.0001296064791653689,
+        "n_failed_draws": 0,
+        "permutation": {
+          "procedure": "label permutation",
+          "side": "two_sided",
+          "n_draws_requested": 2000,
+          "n_draws_usable": 2000,
+          "n_draws_dropped": 0,
+          "tolerance_absolute": 1e-12,
+          "tolerance_relative": null,
+          "tolerance_rule": "absolute, stated by the caller",
+          "cell": [
+            "reversion_fraction_split_half",
+            20
+          ],
+          "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+          "observed": 0.05925694989827082,
+          "p": 0.0004997501249375312,
+          "p_floor": 0.0004997501249375312,
+          "p_is_floored": true,
+          "n_at_least_as_extreme": 0,
+          "null_mean": -0.0001296064791653689,
+          "null_sd": 0.013460866324662125,
+          "null_p95": 0.022605595562834098
+        }
+      },
+      "persistence_beats_null": true,
+      "whale_drop_top5": {
+        "n_dropped": 5,
+        "pooled_curve_full_bps": [
+          1.4297283311000182,
+          1.879522958907259,
+          2.204830687705992,
+          2.36168318795985,
+          2.3066058749320075
+        ],
+        "pooled_curve_drop_bps": [
+          1.449048931584929,
+          1.8955120383644186,
+          2.239298806087387,
+          2.380669808526106,
+          2.329772790661638
+        ],
+        "pooled_reversion_fraction_full": 0.023321211459959346,
+        "pooled_reversion_fraction_drop": 0.021379284805556002,
+        "permanent_share_full": 0.7919102174421323,
+        "permanent_share_drop": 0.7919007490636704,
+        "reversion_sign_preserved": true
+      },
+      "shape_is_a_counterparty_trait": true
+    }
+  }
+}

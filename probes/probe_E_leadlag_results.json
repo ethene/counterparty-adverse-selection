@@ -1,0 +1,1977 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "probe_E_leadlag_results.json",
+    "producer": {
+      "script": "probe_E_leadlag.py",
+      "sha256": "726fbd231d4ccbbc7e0d5ade70fdba818281e86e658cc55c4803ad4e35507914",
+      "bytes": 49062
+    },
+    "inputs": [
+      {
+        "name": "binance",
+        "bytes": null,
+        "sha256": null,
+        "present": false
+      },
+      {
+        "name": "mid_series_BTC.npz",
+        "bytes": 62888304,
+        "sha256": "c0c1890bdcf4f1ada237bfb9ef8122af8ea2418af1ea22a96d76bcdfa8ed7d8c",
+        "present": true
+      },
+      {
+        "name": "mid_series_ETH.npz",
+        "bytes": 62890344,
+        "sha256": "eb617dff3303dc678d6db75547a92ae612bd02f90d34ea91dec143acbdcbe436",
+        "present": true
+      },
+      {
+        "name": "hl_print_series_BTC.npz",
+        "bytes": null,
+        "sha256": null,
+        "present": false
+      },
+      {
+        "name": "hl_print_series_ETH.npz",
+        "bytes": null,
+        "sha256": null,
+        "present": false
+      }
+    ],
+    "scope": {
+      "population": "raw asynchronous ticks of both venues over the days below, pre-thinned to a 250 ms minimum gap and capped at 1,000,000 ticks per series for the Hayashi-Yoshida scan, and sampled onto a 1.0 s grid for the vector error-correction model. 2 of 2 coins were scored; skipped: none. The placebo budget is 50 draws, so the smallest p this probe can express is 0.0196. Placebo family: 2 asserted significance(s), 2 at the floor 0.0196; rank-one bar 0.0250; margin 1.275 against a declared 2, NOT met (79 draws would meet it)",
+      "window": "10 UTC days, 2025-12-04 to 2025-12-13; the October cascade days ['2025-10-10', '2025-10-11'] are excluded by construction and dropped again here if they are passed in",
+      "coins": [
+        "BTC",
+        "ETH"
+      ],
+      "markout_horizon": "none: this probe reads price SERIES and no markout column, so it has no scoring horizon. The horizon_s field of the fingerprint block below carries the declared default and is not a property of this run"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 690,
+      "n_perm": 50,
+      "overridden": [
+        "master_seed",
+        "n_perm"
+      ]
+    },
+    "run": {
+      "runtime_s": 462.358,
+      "finished_utc": "2026-08-04T02:13:28Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "window_days": [
+    "2025-12-04",
+    "2025-12-05",
+    "2025-12-06",
+    "2025-12-07",
+    "2025-12-08",
+    "2025-12-09",
+    "2025-12-10",
+    "2025-12-11",
+    "2025-12-12",
+    "2025-12-13"
+  ],
+  "grid_s": 1.0,
+  "hy_max_lag_s": 5.0,
+  "n_placebo": 50,
+  "kill_criterion": "Hasbrouck trade-vs-trade 1s Dec BTC: IS-mid in 0.5+/-0.10 AND HY peak lag in 0+/-1 step AND placebo NOT beaten -> NO LEAD-LAG.",
+  "by_coin": {
+    "BTC": {
+      "regimes": {
+        "2025-12-04": "volatile",
+        "2025-12-05": "volatile",
+        "2025-12-06": "calm",
+        "2025-12-07": "calm",
+        "2025-12-08": "calm",
+        "2025-12-09": "volatile",
+        "2025-12-10": "volatile",
+        "2025-12-11": "volatile",
+        "2025-12-12": "calm",
+        "2025-12-13": "calm"
+      },
+      "pairs": {
+        "HLprint_vs_BNtrade": {
+          "status": "NO_HL_PRINT_SERIES",
+          "note": "build hl_print_series_{coin}.npz from node_fills to run the trade-vs-trade kill-criterion lens."
+        },
+        "HLmid_vs_BNtrade": {
+          "status": "OK",
+          "lens": "HLbookmid-vs-BNtrade",
+          "overlap_hours": 240.0,
+          "n_hl_ticks_raw": 1572177,
+          "n_bn_ticks_raw": 16409039,
+          "n_hl_ticks_hy": 1000000,
+          "n_bn_ticks_hy": 1000000,
+          "hy_min_gap_ms": 250,
+          "hy_max_ticks": 1000000,
+          "vecm": {
+            "n_obs": 863979,
+            "beta": 1.001494,
+            "alpha_ect": [
+              -0.039506,
+              0.001687
+            ],
+            "omega": [
+              [
+                1.648e-09,
+                5.02e-10
+              ],
+              [
+                5.02e-10,
+                4.572e-09
+              ]
+            ],
+            "gg_share_v1": 0.041,
+            "gg_share_v2": 0.959,
+            "is_v1_lower": 0.0006,
+            "is_v1_upper": 0.0431,
+            "is_v1_mid": 0.0219
+          },
+          "hayashi_yoshida": {
+            "best_lag_s": 0.75,
+            "best_corr": 0.9412,
+            "hl_leads_s": -0.75,
+            "curve": [
+              [
+                -5.0,
+                0.0033
+              ],
+              [
+                -4.75,
+                0.0024
+              ],
+              [
+                -4.5,
+                0.006
+              ],
+              [
+                -4.25,
+                0.0083
+              ],
+              [
+                -4.0,
+                0.0107
+              ],
+              [
+                -3.75,
+                0.0139
+              ],
+              [
+                -3.5,
+                0.0167
+              ],
+              [
+                -3.25,
+                0.0199
+              ],
+              [
+                -3.0,
+                0.0253
+              ],
+              [
+                -2.75,
+                0.0321
+              ],
+              [
+                -2.5,
+                0.0373
+              ],
+              [
+                -2.25,
+                0.042
+              ],
+              [
+                -2.0,
+                0.052
+              ],
+              [
+                -1.75,
+                0.0643
+              ],
+              [
+                -1.5,
+                0.0824
+              ],
+              [
+                -1.25,
+                0.1102
+              ],
+              [
+                -1.0,
+                0.1557
+              ],
+              [
+                -0.75,
+                0.2332
+              ],
+              [
+                -0.5,
+                0.338
+              ],
+              [
+                -0.25,
+                0.4798
+              ],
+              [
+                0.0,
+                0.6417
+              ],
+              [
+                0.25,
+                0.7905
+              ],
+              [
+                0.5,
+                0.897
+              ],
+              [
+                0.75,
+                0.9412
+              ],
+              [
+                1.0,
+                0.907
+              ],
+              [
+                1.25,
+                0.8077
+              ],
+              [
+                1.5,
+                0.6779
+              ],
+              [
+                1.75,
+                0.5349
+              ],
+              [
+                2.0,
+                0.4128
+              ],
+              [
+                2.25,
+                0.3187
+              ],
+              [
+                2.5,
+                0.2471
+              ],
+              [
+                2.75,
+                0.1988
+              ],
+              [
+                3.0,
+                0.1637
+              ],
+              [
+                3.25,
+                0.1383
+              ],
+              [
+                3.5,
+                0.1198
+              ],
+              [
+                3.75,
+                0.1052
+              ],
+              [
+                4.0,
+                0.0958
+              ],
+              [
+                4.25,
+                0.0883
+              ],
+              [
+                4.5,
+                0.0819
+              ],
+              [
+                4.75,
+                0.0743
+              ],
+              [
+                5.0,
+                0.0705
+              ]
+            ]
+          },
+          "placebo": {
+            "real_peak_abs_corr": 0.9412,
+            "null_arm": "venue2's log-return series is rotated by numpy.roll through an offset drawn uniformly from 1 to n-2, once per draw, 50 draws. Held identical to the real arm: venue1's times and returns, venue2's TICK TIMES, the lag grid, the thinning and the tick cap that built both series, and the normalisation by the two realised variances. A rotation and not a reshuffle, so venue2 keeps its own marginal distribution and its own serial correlation and loses only its alignment with venue1. The procedure name recorded under permutation.procedure is the family the counting belongs to, not an account of what was moved here",
+            "placebo_p": 0.0196,
+            "placebo_95pct": 0.0064,
+            "beats_placebo": true,
+            "p_floor": 0.0196078431372549,
+            "p_is_floored": true,
+            "permutation": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 50,
+              "n_draws_usable": 50,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "hy_randomised_lag_placebo",
+                "BTC",
+                "HLbookmid-vs-BNtrade"
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 0.9412,
+              "p": 0.0196078431372549,
+              "p_floor": 0.0196078431372549,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": 0.004294840875414086,
+              "null_sd": 0.0012081667455967743,
+              "null_p95": 0.006440410010506826
+            }
+          }
+        },
+        "HLmid_vs_BNbookdepth": {
+          "status": "OK",
+          "lens": "HLbookmid-vs-BNbookdepth(coarse)",
+          "overlap_hours": 239.99,
+          "n_hl_ticks_raw": 1572129,
+          "n_bn_ticks_raw": 28206,
+          "n_hl_ticks_hy": 1000000,
+          "n_bn_ticks_hy": 28206,
+          "hy_min_gap_ms": 250,
+          "hy_max_ticks": 1000000,
+          "vecm": {
+            "n_obs": 863954,
+            "beta": 0.997197,
+            "alpha_ect": [
+              0.000355,
+              0.023853
+            ],
+            "omega": [
+              [
+                3.288e-09,
+                1.6e-11
+              ],
+              [
+                1.6e-11,
+                6.691e-09
+              ]
+            ],
+            "gg_share_v1": 1.0151,
+            "gg_share_v2": -0.0151,
+            "is_v1_lower": 0.9996,
+            "is_v1_upper": 0.9997,
+            "is_v1_mid": 0.9997
+          },
+          "hayashi_yoshida": {
+            "best_lag_s": -3.0,
+            "best_corr": 1.1924,
+            "hl_leads_s": 3.0,
+            "curve": [
+              [
+                -5.0,
+                1.1716
+              ],
+              [
+                -4.75,
+                1.1725
+              ],
+              [
+                -4.5,
+                1.1763
+              ],
+              [
+                -4.25,
+                1.1788
+              ],
+              [
+                -4.0,
+                1.1805
+              ],
+              [
+                -3.75,
+                1.1822
+              ],
+              [
+                -3.5,
+                1.1872
+              ],
+              [
+                -3.25,
+                1.1915
+              ],
+              [
+                -3.0,
+                1.1924
+              ],
+              [
+                -2.75,
+                1.1918
+              ],
+              [
+                -2.5,
+                1.1917
+              ],
+              [
+                -2.25,
+                1.1921
+              ],
+              [
+                -2.0,
+                1.1901
+              ],
+              [
+                -1.75,
+                1.1909
+              ],
+              [
+                -1.5,
+                1.1847
+              ],
+              [
+                -1.25,
+                1.1822
+              ],
+              [
+                -1.0,
+                1.1809
+              ],
+              [
+                -0.75,
+                1.1796
+              ],
+              [
+                -0.5,
+                1.1747
+              ],
+              [
+                -0.25,
+                1.1668
+              ],
+              [
+                0.0,
+                1.1582
+              ],
+              [
+                0.25,
+                1.1524
+              ],
+              [
+                0.5,
+                1.1469
+              ],
+              [
+                0.75,
+                1.1419
+              ],
+              [
+                1.0,
+                1.1341
+              ],
+              [
+                1.25,
+                1.1254
+              ],
+              [
+                1.5,
+                1.1153
+              ],
+              [
+                1.75,
+                1.1028
+              ],
+              [
+                2.0,
+                1.0919
+              ],
+              [
+                2.25,
+                1.0803
+              ],
+              [
+                2.5,
+                1.0692
+              ],
+              [
+                2.75,
+                1.058
+              ],
+              [
+                3.0,
+                1.0453
+              ],
+              [
+                3.25,
+                1.0306
+              ],
+              [
+                3.5,
+                1.0171
+              ],
+              [
+                3.75,
+                1.0059
+              ],
+              [
+                4.0,
+                0.9956
+              ],
+              [
+                4.25,
+                0.9845
+              ],
+              [
+                4.5,
+                0.9716
+              ],
+              [
+                4.75,
+                0.9599
+              ],
+              [
+                5.0,
+                0.9515
+              ]
+            ]
+          },
+          "placebo": {
+            "status": "skipped",
+            "note": "placebo run only on the primary pair (speed)"
+          }
+        },
+        "PRIMARY_calm": {
+          "status": "OK",
+          "lens": "HLmid-vs-BNtrade(noprint)|calm",
+          "overlap_hours": 240.0,
+          "n_hl_ticks_raw": 1572177,
+          "n_bn_ticks_raw": 16409039,
+          "n_hl_ticks_hy": 1000000,
+          "n_bn_ticks_hy": 1000000,
+          "hy_min_gap_ms": 250,
+          "hy_max_ticks": 1000000,
+          "vecm": {
+            "n_obs": 863979,
+            "beta": 1.001494,
+            "alpha_ect": [
+              -0.039506,
+              0.001687
+            ],
+            "omega": [
+              [
+                1.648e-09,
+                5.02e-10
+              ],
+              [
+                5.02e-10,
+                4.572e-09
+              ]
+            ],
+            "gg_share_v1": 0.041,
+            "gg_share_v2": 0.959,
+            "is_v1_lower": 0.0006,
+            "is_v1_upper": 0.0431,
+            "is_v1_mid": 0.0219
+          },
+          "hayashi_yoshida": {
+            "best_lag_s": 0.75,
+            "best_corr": 0.9412,
+            "hl_leads_s": -0.75,
+            "curve": [
+              [
+                -5.0,
+                0.0033
+              ],
+              [
+                -4.75,
+                0.0024
+              ],
+              [
+                -4.5,
+                0.006
+              ],
+              [
+                -4.25,
+                0.0083
+              ],
+              [
+                -4.0,
+                0.0107
+              ],
+              [
+                -3.75,
+                0.0139
+              ],
+              [
+                -3.5,
+                0.0167
+              ],
+              [
+                -3.25,
+                0.0199
+              ],
+              [
+                -3.0,
+                0.0253
+              ],
+              [
+                -2.75,
+                0.0321
+              ],
+              [
+                -2.5,
+                0.0373
+              ],
+              [
+                -2.25,
+                0.042
+              ],
+              [
+                -2.0,
+                0.052
+              ],
+              [
+                -1.75,
+                0.0643
+              ],
+              [
+                -1.5,
+                0.0824
+              ],
+              [
+                -1.25,
+                0.1102
+              ],
+              [
+                -1.0,
+                0.1557
+              ],
+              [
+                -0.75,
+                0.2332
+              ],
+              [
+                -0.5,
+                0.338
+              ],
+              [
+                -0.25,
+                0.4798
+              ],
+              [
+                0.0,
+                0.6417
+              ],
+              [
+                0.25,
+                0.7905
+              ],
+              [
+                0.5,
+                0.897
+              ],
+              [
+                0.75,
+                0.9412
+              ],
+              [
+                1.0,
+                0.907
+              ],
+              [
+                1.25,
+                0.8077
+              ],
+              [
+                1.5,
+                0.6779
+              ],
+              [
+                1.75,
+                0.5349
+              ],
+              [
+                2.0,
+                0.4128
+              ],
+              [
+                2.25,
+                0.3187
+              ],
+              [
+                2.5,
+                0.2471
+              ],
+              [
+                2.75,
+                0.1988
+              ],
+              [
+                3.0,
+                0.1637
+              ],
+              [
+                3.25,
+                0.1383
+              ],
+              [
+                3.5,
+                0.1198
+              ],
+              [
+                3.75,
+                0.1052
+              ],
+              [
+                4.0,
+                0.0958
+              ],
+              [
+                4.25,
+                0.0883
+              ],
+              [
+                4.5,
+                0.0819
+              ],
+              [
+                4.75,
+                0.0743
+              ],
+              [
+                5.0,
+                0.0705
+              ]
+            ]
+          },
+          "placebo": {
+            "status": "skipped",
+            "note": "placebo run only on the primary pair (speed)"
+          }
+        },
+        "PRIMARY_volatile": {
+          "status": "OK",
+          "lens": "HLmid-vs-BNtrade(noprint)|volatile",
+          "overlap_hours": 240.0,
+          "n_hl_ticks_raw": 1572177,
+          "n_bn_ticks_raw": 16409039,
+          "n_hl_ticks_hy": 1000000,
+          "n_bn_ticks_hy": 1000000,
+          "hy_min_gap_ms": 250,
+          "hy_max_ticks": 1000000,
+          "vecm": {
+            "n_obs": 863979,
+            "beta": 1.001494,
+            "alpha_ect": [
+              -0.039506,
+              0.001687
+            ],
+            "omega": [
+              [
+                1.648e-09,
+                5.02e-10
+              ],
+              [
+                5.02e-10,
+                4.572e-09
+              ]
+            ],
+            "gg_share_v1": 0.041,
+            "gg_share_v2": 0.959,
+            "is_v1_lower": 0.0006,
+            "is_v1_upper": 0.0431,
+            "is_v1_mid": 0.0219
+          },
+          "hayashi_yoshida": {
+            "best_lag_s": 0.75,
+            "best_corr": 0.9412,
+            "hl_leads_s": -0.75,
+            "curve": [
+              [
+                -5.0,
+                0.0033
+              ],
+              [
+                -4.75,
+                0.0024
+              ],
+              [
+                -4.5,
+                0.006
+              ],
+              [
+                -4.25,
+                0.0083
+              ],
+              [
+                -4.0,
+                0.0107
+              ],
+              [
+                -3.75,
+                0.0139
+              ],
+              [
+                -3.5,
+                0.0167
+              ],
+              [
+                -3.25,
+                0.0199
+              ],
+              [
+                -3.0,
+                0.0253
+              ],
+              [
+                -2.75,
+                0.0321
+              ],
+              [
+                -2.5,
+                0.0373
+              ],
+              [
+                -2.25,
+                0.042
+              ],
+              [
+                -2.0,
+                0.052
+              ],
+              [
+                -1.75,
+                0.0643
+              ],
+              [
+                -1.5,
+                0.0824
+              ],
+              [
+                -1.25,
+                0.1102
+              ],
+              [
+                -1.0,
+                0.1557
+              ],
+              [
+                -0.75,
+                0.2332
+              ],
+              [
+                -0.5,
+                0.338
+              ],
+              [
+                -0.25,
+                0.4798
+              ],
+              [
+                0.0,
+                0.6417
+              ],
+              [
+                0.25,
+                0.7905
+              ],
+              [
+                0.5,
+                0.897
+              ],
+              [
+                0.75,
+                0.9412
+              ],
+              [
+                1.0,
+                0.907
+              ],
+              [
+                1.25,
+                0.8077
+              ],
+              [
+                1.5,
+                0.6779
+              ],
+              [
+                1.75,
+                0.5349
+              ],
+              [
+                2.0,
+                0.4128
+              ],
+              [
+                2.25,
+                0.3187
+              ],
+              [
+                2.5,
+                0.2471
+              ],
+              [
+                2.75,
+                0.1988
+              ],
+              [
+                3.0,
+                0.1637
+              ],
+              [
+                3.25,
+                0.1383
+              ],
+              [
+                3.5,
+                0.1198
+              ],
+              [
+                3.75,
+                0.1052
+              ],
+              [
+                4.0,
+                0.0958
+              ],
+              [
+                4.25,
+                0.0883
+              ],
+              [
+                4.5,
+                0.0819
+              ],
+              [
+                4.75,
+                0.0743
+              ],
+              [
+                5.0,
+                0.0705
+              ]
+            ]
+          },
+          "placebo": {
+            "status": "skipped",
+            "note": "placebo run only on the primary pair (speed)"
+          }
+        }
+      },
+      "primary_pair": "HLmid_vs_BNtrade",
+      "verdict": {
+        "call": "BINANCE_LEADS",
+        "is_v1_bounds": [
+          0.0006,
+          0.0431
+        ],
+        "hl_leads_s": -0.75,
+        "beats_placebo": true
+      },
+      "primary_lens_used": "HLmid-vs-BNtrade (no HL print series on disk)"
+    },
+    "ETH": {
+      "regimes": {
+        "2025-12-04": "calm",
+        "2025-12-05": "volatile",
+        "2025-12-06": "calm",
+        "2025-12-07": "volatile",
+        "2025-12-08": "calm",
+        "2025-12-09": "volatile",
+        "2025-12-10": "volatile",
+        "2025-12-11": "volatile",
+        "2025-12-12": "calm",
+        "2025-12-13": "calm"
+      },
+      "pairs": {
+        "HLprint_vs_BNtrade": {
+          "status": "NO_HL_PRINT_SERIES",
+          "note": "build hl_print_series_{coin}.npz from node_fills to run the trade-vs-trade kill-criterion lens."
+        },
+        "HLmid_vs_BNtrade": {
+          "status": "OK",
+          "lens": "HLbookmid-vs-BNtrade",
+          "overlap_hours": 240.0,
+          "n_hl_ticks_raw": 1572228,
+          "n_bn_ticks_raw": 22296894,
+          "n_hl_ticks_hy": 1000000,
+          "n_bn_ticks_hy": 1000000,
+          "hy_min_gap_ms": 250,
+          "hy_max_ticks": 1000000,
+          "vecm": {
+            "n_obs": 863980,
+            "beta": 1.002926,
+            "alpha_ect": [
+              -0.006504,
+              0.000447
+            ],
+            "omega": [
+              [
+                4.067e-09,
+                1.628e-09
+              ],
+              [
+                1.628e-09,
+                1.2347e-08
+              ]
+            ],
+            "gg_share_v1": 0.0643,
+            "gg_share_v2": 0.9357,
+            "is_v1_lower": 0.0014,
+            "is_v1_upper": 0.0711,
+            "is_v1_mid": 0.0362
+          },
+          "hayashi_yoshida": {
+            "best_lag_s": 0.75,
+            "best_corr": 0.9405,
+            "hl_leads_s": -0.75,
+            "curve": [
+              [
+                -5.0,
+                -0.008
+              ],
+              [
+                -4.75,
+                -0.0075
+              ],
+              [
+                -4.5,
+                -0.0077
+              ],
+              [
+                -4.25,
+                -0.0058
+              ],
+              [
+                -4.0,
+                0.001
+              ],
+              [
+                -3.75,
+                0.008
+              ],
+              [
+                -3.5,
+                0.0081
+              ],
+              [
+                -3.25,
+                0.0106
+              ],
+              [
+                -3.0,
+                0.0114
+              ],
+              [
+                -2.75,
+                0.0176
+              ],
+              [
+                -2.5,
+                0.0251
+              ],
+              [
+                -2.25,
+                0.0311
+              ],
+              [
+                -2.0,
+                0.0353
+              ],
+              [
+                -1.75,
+                0.0453
+              ],
+              [
+                -1.5,
+                0.0633
+              ],
+              [
+                -1.25,
+                0.088
+              ],
+              [
+                -1.0,
+                0.1328
+              ],
+              [
+                -0.75,
+                0.2099
+              ],
+              [
+                -0.5,
+                0.3293
+              ],
+              [
+                -0.25,
+                0.473
+              ],
+              [
+                0.0,
+                0.6352
+              ],
+              [
+                0.25,
+                0.7894
+              ],
+              [
+                0.5,
+                0.8955
+              ],
+              [
+                0.75,
+                0.9405
+              ],
+              [
+                1.0,
+                0.9014
+              ],
+              [
+                1.25,
+                0.7996
+              ],
+              [
+                1.5,
+                0.6593
+              ],
+              [
+                1.75,
+                0.5076
+              ],
+              [
+                2.0,
+                0.3752
+              ],
+              [
+                2.25,
+                0.2742
+              ],
+              [
+                2.5,
+                0.2022
+              ],
+              [
+                2.75,
+                0.1562
+              ],
+              [
+                3.0,
+                0.1264
+              ],
+              [
+                3.25,
+                0.1037
+              ],
+              [
+                3.5,
+                0.0894
+              ],
+              [
+                3.75,
+                0.0737
+              ],
+              [
+                4.0,
+                0.0646
+              ],
+              [
+                4.25,
+                0.056
+              ],
+              [
+                4.5,
+                0.0485
+              ],
+              [
+                4.75,
+                0.042
+              ],
+              [
+                5.0,
+                0.0369
+              ]
+            ]
+          },
+          "placebo": {
+            "real_peak_abs_corr": 0.9405,
+            "null_arm": "venue2's log-return series is rotated by numpy.roll through an offset drawn uniformly from 1 to n-2, once per draw, 50 draws. Held identical to the real arm: venue1's times and returns, venue2's TICK TIMES, the lag grid, the thinning and the tick cap that built both series, and the normalisation by the two realised variances. A rotation and not a reshuffle, so venue2 keeps its own marginal distribution and its own serial correlation and loses only its alignment with venue1. The procedure name recorded under permutation.procedure is the family the counting belongs to, not an account of what was moved here",
+            "placebo_p": 0.0196,
+            "placebo_95pct": 0.0053,
+            "beats_placebo": true,
+            "p_floor": 0.0196078431372549,
+            "p_is_floored": true,
+            "permutation": {
+              "procedure": "label permutation",
+              "side": "greater",
+              "n_draws_requested": 50,
+              "n_draws_usable": 50,
+              "n_draws_dropped": 0,
+              "tolerance_absolute": 0.0,
+              "tolerance_relative": null,
+              "tolerance_rule": "absolute, stated by the caller",
+              "cell": [
+                "hy_randomised_lag_placebo",
+                "ETH",
+                "HLbookmid-vs-BNtrade"
+              ],
+              "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+              "observed": 0.9405,
+              "p": 0.0196078431372549,
+              "p_floor": 0.0196078431372549,
+              "p_is_floored": true,
+              "n_at_least_as_extreme": 0,
+              "null_mean": 0.003491054592793476,
+              "null_sd": 0.0008993256249587669,
+              "null_p95": 0.005332059370940831
+            }
+          }
+        },
+        "HLmid_vs_BNbookdepth": {
+          "status": "OK",
+          "lens": "HLbookmid-vs-BNbookdepth(coarse)",
+          "overlap_hours": 239.99,
+          "n_hl_ticks_raw": 1572180,
+          "n_bn_ticks_raw": 28206,
+          "n_hl_ticks_hy": 1000000,
+          "n_bn_ticks_hy": 28206,
+          "hy_min_gap_ms": 250,
+          "hy_max_ticks": 1000000,
+          "vecm": {
+            "n_obs": 863954,
+            "beta": 1.001191,
+            "alpha_ect": [
+              6.3e-05,
+              0.026177
+            ],
+            "omega": [
+              [
+                8.613e-09,
+                4.4e-11
+              ],
+              [
+                4.4e-11,
+                1.6284e-08
+              ]
+            ],
+            "gg_share_v1": 1.0024,
+            "gg_share_v2": -0.0024,
+            "is_v1_lower": 1.0,
+            "is_v1_upper": 1.0,
+            "is_v1_mid": 1.0
+          },
+          "hayashi_yoshida": {
+            "best_lag_s": -3.75,
+            "best_corr": 1.1072,
+            "hl_leads_s": 3.75,
+            "curve": [
+              [
+                -5.0,
+                1.0931
+              ],
+              [
+                -4.75,
+                1.0977
+              ],
+              [
+                -4.5,
+                1.1012
+              ],
+              [
+                -4.25,
+                1.1029
+              ],
+              [
+                -4.0,
+                1.1072
+              ],
+              [
+                -3.75,
+                1.1072
+              ],
+              [
+                -3.5,
+                1.1068
+              ],
+              [
+                -3.25,
+                1.1058
+              ],
+              [
+                -3.0,
+                1.1048
+              ],
+              [
+                -2.75,
+                1.1037
+              ],
+              [
+                -2.5,
+                1.1031
+              ],
+              [
+                -2.25,
+                1.1027
+              ],
+              [
+                -2.0,
+                1.1019
+              ],
+              [
+                -1.75,
+                1.0996
+              ],
+              [
+                -1.5,
+                1.0947
+              ],
+              [
+                -1.25,
+                1.0887
+              ],
+              [
+                -1.0,
+                1.0845
+              ],
+              [
+                -0.75,
+                1.0802
+              ],
+              [
+                -0.5,
+                1.0724
+              ],
+              [
+                -0.25,
+                1.0685
+              ],
+              [
+                0.0,
+                1.0589
+              ],
+              [
+                0.25,
+                1.054
+              ],
+              [
+                0.5,
+                1.0467
+              ],
+              [
+                0.75,
+                1.0395
+              ],
+              [
+                1.0,
+                1.0304
+              ],
+              [
+                1.25,
+                1.0223
+              ],
+              [
+                1.5,
+                1.01
+              ],
+              [
+                1.75,
+                0.9982
+              ],
+              [
+                2.0,
+                0.9862
+              ],
+              [
+                2.25,
+                0.9726
+              ],
+              [
+                2.5,
+                0.9569
+              ],
+              [
+                2.75,
+                0.9457
+              ],
+              [
+                3.0,
+                0.9376
+              ],
+              [
+                3.25,
+                0.9278
+              ],
+              [
+                3.5,
+                0.9142
+              ],
+              [
+                3.75,
+                0.9006
+              ],
+              [
+                4.0,
+                0.8884
+              ],
+              [
+                4.25,
+                0.8787
+              ],
+              [
+                4.5,
+                0.866
+              ],
+              [
+                4.75,
+                0.8565
+              ],
+              [
+                5.0,
+                0.8463
+              ]
+            ]
+          },
+          "placebo": {
+            "status": "skipped",
+            "note": "placebo run only on the primary pair (speed)"
+          }
+        },
+        "PRIMARY_calm": {
+          "status": "OK",
+          "lens": "HLmid-vs-BNtrade(noprint)|calm",
+          "overlap_hours": 240.0,
+          "n_hl_ticks_raw": 1572228,
+          "n_bn_ticks_raw": 22296894,
+          "n_hl_ticks_hy": 1000000,
+          "n_bn_ticks_hy": 1000000,
+          "hy_min_gap_ms": 250,
+          "hy_max_ticks": 1000000,
+          "vecm": {
+            "n_obs": 863980,
+            "beta": 1.002926,
+            "alpha_ect": [
+              -0.006504,
+              0.000447
+            ],
+            "omega": [
+              [
+                4.067e-09,
+                1.628e-09
+              ],
+              [
+                1.628e-09,
+                1.2347e-08
+              ]
+            ],
+            "gg_share_v1": 0.0643,
+            "gg_share_v2": 0.9357,
+            "is_v1_lower": 0.0014,
+            "is_v1_upper": 0.0711,
+            "is_v1_mid": 0.0362
+          },
+          "hayashi_yoshida": {
+            "best_lag_s": 0.75,
+            "best_corr": 0.9405,
+            "hl_leads_s": -0.75,
+            "curve": [
+              [
+                -5.0,
+                -0.008
+              ],
+              [
+                -4.75,
+                -0.0075
+              ],
+              [
+                -4.5,
+                -0.0077
+              ],
+              [
+                -4.25,
+                -0.0058
+              ],
+              [
+                -4.0,
+                0.001
+              ],
+              [
+                -3.75,
+                0.008
+              ],
+              [
+                -3.5,
+                0.0081
+              ],
+              [
+                -3.25,
+                0.0106
+              ],
+              [
+                -3.0,
+                0.0114
+              ],
+              [
+                -2.75,
+                0.0176
+              ],
+              [
+                -2.5,
+                0.0251
+              ],
+              [
+                -2.25,
+                0.0311
+              ],
+              [
+                -2.0,
+                0.0353
+              ],
+              [
+                -1.75,
+                0.0453
+              ],
+              [
+                -1.5,
+                0.0633
+              ],
+              [
+                -1.25,
+                0.088
+              ],
+              [
+                -1.0,
+                0.1328
+              ],
+              [
+                -0.75,
+                0.2099
+              ],
+              [
+                -0.5,
+                0.3293
+              ],
+              [
+                -0.25,
+                0.473
+              ],
+              [
+                0.0,
+                0.6352
+              ],
+              [
+                0.25,
+                0.7894
+              ],
+              [
+                0.5,
+                0.8955
+              ],
+              [
+                0.75,
+                0.9405
+              ],
+              [
+                1.0,
+                0.9014
+              ],
+              [
+                1.25,
+                0.7996
+              ],
+              [
+                1.5,
+                0.6593
+              ],
+              [
+                1.75,
+                0.5076
+              ],
+              [
+                2.0,
+                0.3752
+              ],
+              [
+                2.25,
+                0.2742
+              ],
+              [
+                2.5,
+                0.2022
+              ],
+              [
+                2.75,
+                0.1562
+              ],
+              [
+                3.0,
+                0.1264
+              ],
+              [
+                3.25,
+                0.1037
+              ],
+              [
+                3.5,
+                0.0894
+              ],
+              [
+                3.75,
+                0.0737
+              ],
+              [
+                4.0,
+                0.0646
+              ],
+              [
+                4.25,
+                0.056
+              ],
+              [
+                4.5,
+                0.0485
+              ],
+              [
+                4.75,
+                0.042
+              ],
+              [
+                5.0,
+                0.0369
+              ]
+            ]
+          },
+          "placebo": {
+            "status": "skipped",
+            "note": "placebo run only on the primary pair (speed)"
+          }
+        },
+        "PRIMARY_volatile": {
+          "status": "OK",
+          "lens": "HLmid-vs-BNtrade(noprint)|volatile",
+          "overlap_hours": 240.0,
+          "n_hl_ticks_raw": 1572228,
+          "n_bn_ticks_raw": 22296894,
+          "n_hl_ticks_hy": 1000000,
+          "n_bn_ticks_hy": 1000000,
+          "hy_min_gap_ms": 250,
+          "hy_max_ticks": 1000000,
+          "vecm": {
+            "n_obs": 863980,
+            "beta": 1.002926,
+            "alpha_ect": [
+              -0.006504,
+              0.000447
+            ],
+            "omega": [
+              [
+                4.067e-09,
+                1.628e-09
+              ],
+              [
+                1.628e-09,
+                1.2347e-08
+              ]
+            ],
+            "gg_share_v1": 0.0643,
+            "gg_share_v2": 0.9357,
+            "is_v1_lower": 0.0014,
+            "is_v1_upper": 0.0711,
+            "is_v1_mid": 0.0362
+          },
+          "hayashi_yoshida": {
+            "best_lag_s": 0.75,
+            "best_corr": 0.9405,
+            "hl_leads_s": -0.75,
+            "curve": [
+              [
+                -5.0,
+                -0.008
+              ],
+              [
+                -4.75,
+                -0.0075
+              ],
+              [
+                -4.5,
+                -0.0077
+              ],
+              [
+                -4.25,
+                -0.0058
+              ],
+              [
+                -4.0,
+                0.001
+              ],
+              [
+                -3.75,
+                0.008
+              ],
+              [
+                -3.5,
+                0.0081
+              ],
+              [
+                -3.25,
+                0.0106
+              ],
+              [
+                -3.0,
+                0.0114
+              ],
+              [
+                -2.75,
+                0.0176
+              ],
+              [
+                -2.5,
+                0.0251
+              ],
+              [
+                -2.25,
+                0.0311
+              ],
+              [
+                -2.0,
+                0.0353
+              ],
+              [
+                -1.75,
+                0.0453
+              ],
+              [
+                -1.5,
+                0.0633
+              ],
+              [
+                -1.25,
+                0.088
+              ],
+              [
+                -1.0,
+                0.1328
+              ],
+              [
+                -0.75,
+                0.2099
+              ],
+              [
+                -0.5,
+                0.3293
+              ],
+              [
+                -0.25,
+                0.473
+              ],
+              [
+                0.0,
+                0.6352
+              ],
+              [
+                0.25,
+                0.7894
+              ],
+              [
+                0.5,
+                0.8955
+              ],
+              [
+                0.75,
+                0.9405
+              ],
+              [
+                1.0,
+                0.9014
+              ],
+              [
+                1.25,
+                0.7996
+              ],
+              [
+                1.5,
+                0.6593
+              ],
+              [
+                1.75,
+                0.5076
+              ],
+              [
+                2.0,
+                0.3752
+              ],
+              [
+                2.25,
+                0.2742
+              ],
+              [
+                2.5,
+                0.2022
+              ],
+              [
+                2.75,
+                0.1562
+              ],
+              [
+                3.0,
+                0.1264
+              ],
+              [
+                3.25,
+                0.1037
+              ],
+              [
+                3.5,
+                0.0894
+              ],
+              [
+                3.75,
+                0.0737
+              ],
+              [
+                4.0,
+                0.0646
+              ],
+              [
+                4.25,
+                0.056
+              ],
+              [
+                4.5,
+                0.0485
+              ],
+              [
+                4.75,
+                0.042
+              ],
+              [
+                5.0,
+                0.0369
+              ]
+            ]
+          },
+          "placebo": {
+            "status": "skipped",
+            "note": "placebo run only on the primary pair (speed)"
+          }
+        }
+      },
+      "primary_pair": "HLmid_vs_BNtrade",
+      "verdict": {
+        "call": "BINANCE_LEADS",
+        "is_v1_bounds": [
+          0.0014,
+          0.0711
+        ],
+        "hl_leads_s": -0.75,
+        "beats_placebo": true
+      },
+      "primary_lens_used": "HLmid-vs-BNtrade (no HL print series on disk)"
+    }
+  },
+  "headline": "DIRECTIONAL (BINANCE_LEADS) on all coins: {'BTC': 'BINANCE_LEADS', 'ETH': 'BINANCE_LEADS'}",
+  "placebo_family": {
+    "what_the_family_is": "the per-coin placebo significances this probe asserts: one test per coin, taken on the pair the coin's verdict is read off, which is HLprint_vs_BNtrade then HLmid_vs_BNtrade. A placebo drawn on any other pair is reported under placebo_p_values_outside_the_family and is not corrected here, because no verdict is read off it",
+    "members": [
+      {
+        "coin": "BTC",
+        "pair": "HLmid_vs_BNtrade",
+        "lens": "HLbookmid-vs-BNtrade",
+        "placebo_p": 0.0196,
+        "p_is_floored": true
+      },
+      {
+        "coin": "ETH",
+        "pair": "HLmid_vs_BNtrade",
+        "lens": "HLbookmid-vs-BNtrade",
+        "placebo_p": 0.0196,
+        "p_is_floored": true
+      }
+    ],
+    "family_size": 2,
+    "placebo_p_values_outside_the_family": [],
+    "pairs_with_no_placebo_drawn": [
+      {
+        "coin": "BTC",
+        "pair": "HLprint_vs_BNtrade",
+        "reason": "NO_HL_PRINT_SERIES"
+      },
+      {
+        "coin": "BTC",
+        "pair": "HLmid_vs_BNbookdepth",
+        "reason": "placebo run only on the primary pair (speed)"
+      },
+      {
+        "coin": "BTC",
+        "pair": "PRIMARY_calm",
+        "reason": "placebo run only on the primary pair (speed)"
+      },
+      {
+        "coin": "BTC",
+        "pair": "PRIMARY_volatile",
+        "reason": "placebo run only on the primary pair (speed)"
+      },
+      {
+        "coin": "ETH",
+        "pair": "HLprint_vs_BNtrade",
+        "reason": "NO_HL_PRINT_SERIES"
+      },
+      {
+        "coin": "ETH",
+        "pair": "HLmid_vs_BNbookdepth",
+        "reason": "placebo run only on the primary pair (speed)"
+      },
+      {
+        "coin": "ETH",
+        "pair": "PRIMARY_calm",
+        "reason": "placebo run only on the primary pair (speed)"
+      },
+      {
+        "coin": "ETH",
+        "pair": "PRIMARY_volatile",
+        "reason": "placebo run only on the primary pair (speed)"
+      }
+    ],
+    "n_draws": 50,
+    "n_draws_source": "settings.PERM_DRAWS_BY_PURPOSE['leadlag_randomised_lag_placebo']",
+    "p_floor": 0.0196078431372549,
+    "n_members_at_the_floor": 2,
+    "alpha": 0.05,
+    "margin_required": 2,
+    "margin_required_source": "settings.PERM_FLOOR_MARGIN",
+    "rank1_threshold": 0.025,
+    "margin_achieved": 1.2750000000000001,
+    "margin_met": false,
+    "min_draws_for_declared_margin": 79,
+    "statement": "2 significance(s) are asserted, of which 2 sit AT the p-value floor. With 50 draws that floor is 1/51 = 0.0196. The rank-one bar this family has to clear is alpha/m = 0.05/2 = 0.0250, so the floor sits 1.275 times below the bar against the 2 that settings.PERM_FLOOR_MARGIN declares: THE DECLARED MARGIN IS NOT MET. A p at this floor clears the correction, but by a distance the last digit of the correction can decide, which is the position that constant exists to forbid. 79 draws would satisfy it at this family size; the budget stays at 50 because one draw is a Hayashi-Yoshida scan over the raw ticks of both venues across the whole window, so this is a declared debt with its price named and not an oversight",
+    "statement_short": "2 asserted significance(s), 2 at the floor 0.0196; rank-one bar 0.0250; margin 1.275 against a declared 2, NOT met (79 draws would meet it)"
+  }
+}

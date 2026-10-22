@@ -1,0 +1,254 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "ws3_taker_pnl_results.json",
+    "producer": {
+      "script": "ws3_taker_pnl.py",
+      "sha256": "72c8f1b7a4c48ef79e27ca92b7edea217fbe3707b925352d8f80c6664c786f48",
+      "bytes": 31119
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 taker fills of the book-mid panel aggregated to wallet-coin units; a unit enters a rank cell at the 50-fill floor, and the out-of-sample split flags on the early half and measures on the late half",
+      "window": "10 days present in the input, day-of-month 4-13, split early [4, 5, 6, 7, 8] against late [9, 10, 11, 12, 13]",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "mid",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": null,
+      "persistence_floor_fills": null,
+      "whale_drop_k": 5,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260620,
+      "n_perm": 2000,
+      "n_boot": 2000,
+      "rank_floor_fills": 50,
+      "whale_drop_criterion": "abs_realized_pnl",
+      "early_late_split": "settings.split_early_late over the days present: early [4, 5, 6, 7, 8], late [9, 10, 11, 12, 13]",
+      "p_floor": 0.0004997501249375312,
+      "overrides_note": "master_seed is settings.MASTER_SEED, stated as a CONFIRMATION rather than a deviation: this file used to declare 424242 for the permutation and 20260619 for the bootstrap, and now derives every stream from the declared seed and the cell name through settings.rng, so the three scopes no longer re-draw one shared sequence; n_perm is settings.N_PERM and is stated as a CONFIRMATION rather than a deviation, so the floor is 1/(N_PERM+1) and not the 0.00498 the earlier 200-draw artifact reported; n_boot is settings.N_BOOT and is a CONFIRMATION as well, adopted 2026-07-31, so fifty draws decide each endpoint instead of the twelve and a half the earlier 500-draw artifact reported; rank_floor_fills is settings.RANK_FLOOR_FILLS and is a CONFIRMATION too, adopted the same day against the 10 this file used to run, and that one moves the POPULATION rather than a band; the whale check drops the top FIVE units by absolute realized PnL, which is neither settings.WHALE_DROP_K nor a notional criterion; no FDR family applies. The halves are cut by settings.split_early_late over the days present, which on this input returns the same 4-8 / 9-13 the file used to type",
+      "overridden": [
+        "early_late_split",
+        "fdr_alpha",
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "overrides_note",
+        "p_floor",
+        "persistence_floor_fills",
+        "rank_floor_fills",
+        "whale_drop_criterion",
+        "whale_drop_k"
+      ]
+    },
+    "run": {
+      "runtime_s": 47.037,
+      "finished_utc": "2026-08-11T12:24:00Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "score_horizon_s": 10,
+  "score_column": "mo10_mid",
+  "K": 50,
+  "coin_map": {
+    "0": "BTC",
+    "1": "ETH"
+  },
+  "coin_map_source": "settings.COIN_CODES_BY_ARTIFACT['quickwin'], cross-checked against the median entry price",
+  "rank_agreement": {
+    "pooled": {
+      "n": 4335,
+      "rho": -0.0001422985137017209,
+      "placebo_p": 0.9965017491254373,
+      "placebo_p_floor": 0.0004997501249375312,
+      "placebo_p_is_floor": false,
+      "placebo_procedure": {
+        "procedure": "label permutation",
+        "side": "two_sided",
+        "n_draws_requested": 2000,
+        "n_draws_usable": 2000,
+        "n_draws_dropped": 0,
+        "tolerance_absolute": 0.0,
+        "tolerance_relative": null,
+        "tolerance_rule": "absolute, stated by the caller",
+        "cell": [
+          "ws3",
+          "placebo",
+          "pooled",
+          50
+        ],
+        "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+        "observed": -0.0001422985137017209,
+        "p": 0.9965017491254373,
+        "p_floor": 0.0004997501249375312,
+        "p_is_floored": false,
+        "n_at_least_as_extreme": 1993,
+        "null_mean": 0.0001076538293130666,
+        "null_sd": 0.01506510465409599,
+        "null_p95": 0.025475583596155513
+      },
+      "boot_lo": -0.03245562749927527,
+      "boot_hi": 0.03342216297466154,
+      "rho_drop_top5_pnl": -0.001062708005153903
+    },
+    "BTC": {
+      "n": 2555,
+      "rho": 0.1013111282228248,
+      "placebo_p": 0.0004997501249375312,
+      "placebo_p_floor": 0.0004997501249375312,
+      "placebo_p_is_floor": true,
+      "placebo_procedure": {
+        "procedure": "label permutation",
+        "side": "two_sided",
+        "n_draws_requested": 2000,
+        "n_draws_usable": 2000,
+        "n_draws_dropped": 0,
+        "tolerance_absolute": 0.0,
+        "tolerance_relative": null,
+        "tolerance_rule": "absolute, stated by the caller",
+        "cell": [
+          "ws3",
+          "placebo",
+          "BTC",
+          50
+        ],
+        "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+        "observed": 0.1013111282228248,
+        "p": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "p_is_floored": true,
+        "n_at_least_as_extreme": 0,
+        "null_mean": -0.0003354328015291298,
+        "null_sd": 0.020167843591002522,
+        "null_p95": 0.033217384529819406
+      },
+      "boot_lo": 0.057993517760498,
+      "boot_hi": 0.14258129084956495,
+      "rho_drop_top5_pnl": 0.10266779810258758
+    },
+    "ETH": {
+      "n": 1780,
+      "rho": -0.13504275800100063,
+      "placebo_p": 0.0004997501249375312,
+      "placebo_p_floor": 0.0004997501249375312,
+      "placebo_p_is_floor": true,
+      "placebo_procedure": {
+        "procedure": "label permutation",
+        "side": "two_sided",
+        "n_draws_requested": 2000,
+        "n_draws_usable": 2000,
+        "n_draws_dropped": 0,
+        "tolerance_absolute": 0.0,
+        "tolerance_relative": null,
+        "tolerance_rule": "absolute, stated by the caller",
+        "cell": [
+          "ws3",
+          "placebo",
+          "ETH",
+          50
+        ],
+        "method": "permutation p = (draws at least as extreme + 1) / (usable draws + 1); the observed labelling counts as one draw of its own null, so p is floored at 1/(usable + 1) and is never zero",
+        "observed": -0.13504275800100063,
+        "p": 0.0004997501249375312,
+        "p_floor": 0.0004997501249375312,
+        "p_is_floored": true,
+        "n_at_least_as_extreme": 0,
+        "null_mean": 0.0001868177722224846,
+        "null_sd": 0.023957325862000323,
+        "null_p95": 0.04035728090980735
+      },
+      "boot_lo": -0.18468841285195864,
+      "boot_hi": -0.08356913866980759,
+      "rho_drop_top5_pnl": -0.13687614666888476
+    }
+  },
+  "oos_validation": {
+    "n_flag": 122,
+    "n_rest": 1091,
+    "late_pnl_pd_bps_flag_median": 23.998376303093586,
+    "late_pnl_pd_bps_rest_median": -1.0259007074428956,
+    "late_pnl_pd_bps_flag_mean": -9.892576468678527,
+    "late_pnl_pd_bps_rest_mean": -17.39184012244315,
+    "median_gap_ci": [
+      -17.817045628306253,
+      50.680952186374334
+    ],
+    "late_pos_pnl_rate_flag": 0.5081967213114754,
+    "late_pos_pnl_rate_rest": 0.39780018331805683,
+    "late_agg_realized_usd_flag": -1928975.5988222612,
+    "late_agg_realized_usd_rest": -3046771.319147378,
+    "flag_agg_top1_share": -0.025682105884669997,
+    "flag_agg_top5_share": -0.05578371719519708,
+    "flag_agg_excl_top5_usd": -2036581.0281033982,
+    "n_positive_flag": 62,
+    "n_flag_total": 122
+  },
+  "pnl_vs_toxicity_bins": {
+    "n_bins": 10,
+    "bin_centre_toxicity_bps": [
+      -12.23479603918951,
+      -0.4259221318042032,
+      -0.200498932330781,
+      -0.05235966070528362,
+      0.06663483049848203,
+      0.19479384066051486,
+      0.358066966980546,
+      0.6013511913368036,
+      1.1604729062354997,
+      7.742945518872815
+    ],
+    "bin_median_pnl_per_dollar_bps": [
+      -0.4250509459210695,
+      -0.5094837402634123,
+      -0.5628348045027074,
+      -0.2646354375678259,
+      -0.08314762153748992,
+      -0.28894402342200554,
+      -0.10293075662090263,
+      -0.41228733037867005,
+      0.0,
+      -1.7982584633253165
+    ],
+    "bin_n_units": [
+      434,
+      433,
+      434,
+      433,
+      434,
+      434,
+      433,
+      434,
+      433,
+      434
+    ],
+    "n_units_binned": 4335,
+    "what_this_is": "wallet-coin units with at least K aggressor fills, cut into equal-count bins by their own mean markout; the y value is the median realized PnL per dollar inside the bin. This is the left panel of ws3_taker_pnl.png and it is stored so the figure can be redrawn without re-aggregating the panel."
+  },
+  "interpretation": "Over the full window the per-wallet 10s markout, which is the maker's cost, ranks 4,335 wallet-coin units against their own realized PnL per dollar at rho -0.0001, on a bootstrap interval of [-0.0325, +0.0334] that covers zero: pooled, the two rankings agree no better than chance. That pooled figure is not the per-coin picture repeated: BTC at rho +0.1013 on [+0.0580, +0.1426], ETH at rho -0.1350 on [-0.1847, -0.0836]. Both intervals exclude zero and the two disagree in sign, so the pooled near-zero is two opposite effects cancelling rather than the absence of one. Out of sample, flagging on the early-half top decile and measuring on the late half, the 122 flagged units realize a HIGHER median PnL per dollar than the 1,091 others, +23.998 against -1.026 basis points. The gap of +25.024 sits on a bootstrap interval of [-17.817, +50.681], which covers zero, so the direction is not settled by this population. Their positive-PnL rate is higher, 0.5082 against 0.3978, and no interval was drawn on that one. In aggregate dollars the flagged group books -1,928,976 over the late half, a net loss, and dropping its five largest single-unit contributions leaves -2,036,581, the same sign, so the sign is a property of the group and not of a few wallets. 62 of the 122 flagged units end the late half positive. Whichever way that gap points, the two measurements are not one quantity: the maker's markout is a cost booked in the seconds after a fill, and the taker's realized PnL is settled whenever the position is eventually closed. Toxicity is therefore the MAKER's short-term realized adverse-selection cost, booked whether or not the counterparty ultimately profits, and it must NOT be defined by counterparty PnL. CAVEAT: realized PnL is observed only from AGGRESSIVE (taker) closes; passive closes are invisible, so this is a partial view of counterparty profitability."
+}

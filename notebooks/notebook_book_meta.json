@@ -1,0 +1,178 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "notebook_book_meta.json",
+    "producer": {
+      "script": "make_notebook_book.py",
+      "sha256": "c2af513a76778361d66bfd1df3165922cd0f2902ab54e5251a685712ab794e52",
+      "bytes": 9754,
+      "bytes_in_object_db": "absent",
+      "object_format": "sha1",
+      "object_id": "0576f50c1ec8b4443e9a738ddc8b9adf4c86d81b",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "mid_series_BTC.npz",
+        "bytes": 62888304,
+        "sha256": "c0c1890bdcf4f1ada237bfb9ef8122af8ea2418af1ea22a96d76bcdfa8ed7d8c",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "book_feats_BTC.npz",
+        "bytes": 103689800,
+        "sha256": "69382cc25c4be3a5ffea76caf8364dabeb97b9e0415bab6f60481532f463e94f",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "mid_series_ETH.npz",
+        "bytes": 62890344,
+        "sha256": "eb617dff3303dc678d6db75547a92ae612bd02f90d34ea91dec143acbdcbe436",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "book_feats_ETH.npz",
+        "bytes": 102100969,
+        "sha256": "ea5490896b40bdd94dd29daba2ce286bd57b509f80915f8253ffcfdb53989801",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "3,144,405 order-book snapshots across 2 coins, un-resampled",
+      "window": "December 2025",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "run": {
+      "runtime_s": 11.159,
+      "finished_utc": "2026-10-22T09:36:53Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "object": "The order-book series the reproducibility notebook downloads: the L2 mid series unchanged, plus the feature block the identity-versus-book comparison is measured on, on the book clock and un-resampled so the notebook performs its own as-of join.",
+  "author": "Dmitry Stakhin",
+  "companion_files": [
+    "notebook_fills.npz"
+  ],
+  "feature_list_source": "i3_book_comparator.book_feature_names(), imported rather than retyped",
+  "features_declared": [
+    "ofi",
+    "micro_dev_bps",
+    "book_vpin",
+    "qimb_1",
+    "qimb_5",
+    "qimb_10",
+    "depth_bid_5bps",
+    "depth_ask_5bps",
+    "depth_bid_10bps",
+    "depth_ask_10bps"
+  ],
+  "features_shipped": [
+    "ofi",
+    "book_vpin",
+    "qimb_1",
+    "qimb_10",
+    "depth_bid_5bps",
+    "depth_ask_5bps",
+    "depth_bid_10bps",
+    "depth_ask_10bps"
+  ],
+  "features_derived_by_the_notebook": {
+    "micro_dev_bps": "(micro - mid) / mid * 1e4",
+    "qimb_5": "imb"
+  },
+  "derived_identity_max_abs_deviation": {
+    "BTC": {
+      "micro_dev_bps_max_abs": 0.0,
+      "qimb_5_max_abs": 4.440892098500626e-16
+    },
+    "ETH": {
+      "micro_dev_bps_max_abs": 0.0,
+      "qimb_5_max_abs": 4.440892098500626e-16
+    }
+  },
+  "precision": "the eight shipped features are float32; the mid-series columns keep the width they were written at",
+  "coins": {
+    "BTC": {
+      "file": "notebook_book_BTC.npz",
+      "n_snapshots": 1572177,
+      "t_ms_span_days": 10.0,
+      "columns": {
+        "t_ms": "int64",
+        "mid": "float64",
+        "micro": "float64",
+        "spread": "float64",
+        "imb": "float64",
+        "ofi": "float32",
+        "book_vpin": "float32",
+        "qimb_1": "float32",
+        "qimb_10": "float32",
+        "depth_bid_5bps": "float32",
+        "depth_ask_5bps": "float32",
+        "depth_bid_10bps": "float32",
+        "depth_ask_10bps": "float32"
+      },
+      "sha256": "ce45c15dd53a913382336c5365f9cfba7f599137305979842043bc592626a8ff",
+      "size_mb": 68.9
+    },
+    "ETH": {
+      "file": "notebook_book_ETH.npz",
+      "n_snapshots": 1572228,
+      "t_ms_span_days": 10.0,
+      "columns": {
+        "t_ms": "int64",
+        "mid": "float64",
+        "micro": "float64",
+        "spread": "float64",
+        "imb": "float64",
+        "ofi": "float32",
+        "book_vpin": "float32",
+        "qimb_1": "float32",
+        "qimb_10": "float32",
+        "depth_bid_5bps": "float32",
+        "depth_ask_5bps": "float32",
+        "depth_bid_10bps": "float32",
+        "depth_ask_10bps": "float32"
+      },
+      "sha256": "4e6099fbe0a4ced486a377785bd76fa7272cb0518e2de0ffe56158914aae1c8b",
+      "size_mb": 70.3
+    }
+  },
+  "doi": "10.5281/zenodo.23540388",
+  "zenodo_url": "https://zenodo.org/records/23540388/files/notebook_book_{COIN}.npz?download=1"
+}

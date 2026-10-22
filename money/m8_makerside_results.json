@@ -1,0 +1,2028 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "m8_makerside_results.json",
+    "producer": {
+      "script": "m8_makerside.py",
+      "sha256": "64c42e33bac4fdd748445d2200241b1cbf465c2e2120b1aae1040519da996c38",
+      "bytes": 35648
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "maker_map.json",
+        "bytes": 486123,
+        "sha256": "98da5c3d1dbd559af9ed7285d2bff0e9dcda495218e822ca083090424b737582",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 maker-matched fills of 2,480,267 in the trade-print panel, aggregated per maker; the concentration and incidence figures take every matched maker with no fill floor, and only the ranked loser and earner tables floor at 10 fills",
+      "window": "10 days present among the matched rows, day-of-month 4-13; the calendar dates of the window are declared by its producer, build_quickwin_markouts.py",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260619,
+      "rank_floor_fills": 10,
+      "overridden": [
+        "master_seed",
+        "rank_floor_fills"
+      ]
+    },
+    "object": "M8 maker-side adverse-selection incidence",
+    "sign_convention": "mo10 positive = taker profited = MAKER adverse-selected; aggregated per maker as-is",
+    "headline": "per-DOLLAR (notional-normalized) maker-loss concentration; raw dollar-loss Gini is a demoted size-artefact diagnostic, never cited alone",
+    "reference_caveat": "markout is a trade-print VWAP, not a book mid; dollar figures are signed-markout cost, and the adverse-selection interpretation is held pending the book-mid (I4) check",
+    "min_fills_ranked": 10,
+    "top_n_reported": 25,
+    "top_makers_reported": 10,
+    "rng_seed": 20260619,
+    "n_trades_total": 2480267,
+    "n_trades_with_maker": 2480267,
+    "n_trades_no_maker": 0,
+    "hlp_vault_addr_primary": "0xdfc24b077bc1425ad1dea75bcb6f8158e10df303",
+    "hlp_vault_addr_secondary": "0x5078c2fbea2b2ad61bc840bc023e35fce56bedb6",
+    "rank_floor_note": "rank_floor_fills=10 is the floor for entering the ranked maker tables (worst_losers / best_earners); the concentration and incidence figures are over ALL matched makers with no fill floor",
+    "run": {
+      "runtime_s": 1.233,
+      "finished_utc": "2026-08-11T12:59:43Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "accounting_identity": {
+    "label": "accounting identity (sum of signed markout cost is partition-invariant), not an independent validation",
+    "ungrouped_signed_cost_quote": 2376244.053871902,
+    "maker_grouped_signed_cost_quote": 2376244.0538719078,
+    "taker_grouped_signed_cost_quote": 2376244.053871904,
+    "note": "ungrouped == maker-grouped == taker-grouped by construction (each fill's signed cost is counted exactly once under any partition); the equality validates nothing independent"
+  },
+  "BTC": {
+    "n_makers": 6480,
+    "n_rankable_makers": 2338,
+    "mean_markout_faced_bps_equal_weight": {
+      "n": 6480,
+      "mean": 1.5732596687473206,
+      "min": -47.2246036529541,
+      "p25": 0.22294102981686592,
+      "p50": 1.2887854501605034,
+      "p75": 2.5957840010523796,
+      "p99": 12.075330781936646,
+      "max": 28.10551643371582,
+      "frac_positive": 0.7915123456790123
+    },
+    "mean_markout_faced_bps_notional_weight": {
+      "n": 6480,
+      "mean": 1.755682946623661,
+      "min": -49.097693994613564,
+      "p25": 0.33328793942928314,
+      "p50": 1.4574648324971822,
+      "p75": 2.8402161963029973,
+      "p99": 12.54444553310973,
+      "max": 28.323339107584573,
+      "frac_positive": 0.8078703703703703
+    },
+    "per_dollar_loss_concentration": {
+      "measure": "per-maker notional-weighted mean markout faced (dollar loss / dollar notional, bps); size-stripped",
+      "n_makers_with_notional": 6480,
+      "mean_per_dollar_loss_bps": 1.755682946623661,
+      "frac_makers_net_loser": 0.8078703703703703,
+      "n_net_loser_makers": 5235,
+      "per_dollar_loss_gini": 0.4648827086973637,
+      "per_dollar_loss_hhi": 0.0003880036589971023,
+      "per_dollar_top_1pct_share": 0.06836448107818123,
+      "per_dollar_top_10pct_share": 0.3343401956726977,
+      "per_dollar_top10_share": 0.017618259617996422,
+      "headline_note": "this is the HEADLINE: per-dollar (size-stripped) maker-loss concentration is only MODERATE (Gini ~0.55), so the maker-side adverse selection is NOT carried by a tiny handful of makers -- the biggest dollar losers are just the biggest makers (see the size-artefact diagnostic below)"
+    },
+    "dollar_loss_concentration_size_artefact": {
+      "label": "DOLLAR-LOSS concentration is a TRADE-SIZE artefact -- do NOT cite the raw Gini alone",
+      "n_loser_makers": 5235,
+      "total_maker_loss_quote": 1700786.7507606896,
+      "dollar_loss_gini_size_artefact_do_not_cite": 0.9716067760414864,
+      "per_maker_notional_gini": 0.9841219237805869,
+      "size_artefact_note": "dollar_loss_gini_size_artefact_do_not_cite (~0.97) is essentially the per_maker_notional_gini (~0.98): the dollar-loss concentration is pure trade-size inequality, not loss dispersion. Cite the per_dollar_loss_gini in (1) instead, never this raw figure alone",
+      "dollar_loss_hhi": 0.07848150044444371,
+      "dollar_loss_top_1pct_share": 0.7532224606315904,
+      "dollar_loss_top_10pct_share": 0.96977263919982
+    },
+    "net_maker_dollar_pnl_quote": 1171650.9725915603,
+    "net_sign_note": "positive net => makers collectively LOSE (are adverse-selected); negative => makers collectively earn spread",
+    "worst_losers": [
+      {
+        "maker_id": 7918,
+        "maker_addr": "0x753998bd5c477cd006fdeb67c5f402539ae95384",
+        "mean_markout_faced_bps": 17.318435668945312,
+        "mean_markout_faced_bps_notional_wt": 17.318435668945312,
+        "dollar_loss_quote": 156.1376986737433,
+        "n_fills": 23
+      },
+      {
+        "maker_id": 1336,
+        "maker_addr": "0x0d3aa90563afb3acfa92fb095e3a85dcdfaaf824",
+        "mean_markout_faced_bps": 17.07717662387424,
+        "mean_markout_faced_bps_notional_wt": 17.721191986890936,
+        "dollar_loss_quote": 27.893689957964963,
+        "n_fills": 18
+      },
+      {
+        "maker_id": 1503,
+        "maker_addr": "0x288c05dbe04df0a6c5af70f0093a833dd7a49a5e",
+        "mean_markout_faced_bps": 17.031587329777803,
+        "mean_markout_faced_bps_notional_wt": 13.515781919862073,
+        "dollar_loss_quote": 17.974453893339472,
+        "n_fills": 11
+      },
+      {
+        "maker_id": 4374,
+        "maker_addr": "0xd6ef5649200101eb44ce8949f4cfb167b0c5a07a",
+        "mean_markout_faced_bps": 16.3023738861084,
+        "mean_markout_faced_bps_notional_wt": 16.32168689701594,
+        "dollar_loss_quote": 17.980866464313095,
+        "n_fills": 10
+      },
+      {
+        "maker_id": 1280,
+        "maker_addr": "0xd9012a0c82242b04ee09e45e98b24903f982d975",
+        "mean_markout_faced_bps": 16.127963081002235,
+        "mean_markout_faced_bps_notional_wt": 7.791339457384247,
+        "dollar_loss_quote": 136.86644588195327,
+        "n_fills": 32
+      },
+      {
+        "maker_id": 2197,
+        "maker_addr": "0x404a68af7d1afe9a3fa37ffa9c515b266938f721",
+        "mean_markout_faced_bps": 15.650964843907527,
+        "mean_markout_faced_bps_notional_wt": 16.75044950427122,
+        "dollar_loss_quote": 20.962220884891916,
+        "n_fills": 14
+      },
+      {
+        "maker_id": 6428,
+        "maker_addr": "0x8491633e9ec12baf163a04776f6503dd699ae1e5",
+        "mean_markout_faced_bps": 15.277961450464586,
+        "mean_markout_faced_bps_notional_wt": 15.271858823407758,
+        "dollar_loss_quote": 29.698770615827964,
+        "n_fills": 17
+      },
+      {
+        "maker_id": 6712,
+        "maker_addr": "0x9fb470376f12af151c9ce88bf7b4acaa13bad02b",
+        "mean_markout_faced_bps": 14.82797497883439,
+        "mean_markout_faced_bps_notional_wt": 5.324048677713168,
+        "dollar_loss_quote": 35.74614905105027,
+        "n_fills": 20
+      },
+      {
+        "maker_id": 4277,
+        "maker_addr": "0xd08a4557671ca465e7bba41110a93148c90f9931",
+        "mean_markout_faced_bps": 14.809017385755267,
+        "mean_markout_faced_bps_notional_wt": 14.809020180123179,
+        "dollar_loss_quote": 35.90954909055815,
+        "n_fills": 14
+      },
+      {
+        "maker_id": 8111,
+        "maker_addr": "0x9b7130ba44a3cda287ba0fb662f5175c2426327f",
+        "mean_markout_faced_bps": 12.290847145020962,
+        "mean_markout_faced_bps_notional_wt": 8.734832854678466,
+        "dollar_loss_quote": 32.82682127933872,
+        "n_fills": 16
+      },
+      {
+        "maker_id": 2942,
+        "maker_addr": "0x1b0f15fcdbb64b2f0820fd7d75032d352b8dd23e",
+        "mean_markout_faced_bps": 11.899563789367676,
+        "mean_markout_faced_bps_notional_wt": 11.899563789367676,
+        "dollar_loss_quote": 29.724301111589103,
+        "n_fills": 14
+      },
+      {
+        "maker_id": 5628,
+        "maker_addr": "0x91f3acf393de794e7291fbf36dfc408da617cff0",
+        "mean_markout_faced_bps": 11.545969033241272,
+        "mean_markout_faced_bps_notional_wt": 7.770682178977129,
+        "dollar_loss_quote": 98.58121097411097,
+        "n_fills": 15
+      },
+      {
+        "maker_id": 1983,
+        "maker_addr": "0x07fd993f0fa3a185f7207adccd29f7a87404689d",
+        "mean_markout_faced_bps": 11.36457617007769,
+        "mean_markout_faced_bps_notional_wt": 6.861711475309197,
+        "dollar_loss_quote": 14.131484060036763,
+        "n_fills": 13
+      },
+      {
+        "maker_id": 3655,
+        "maker_addr": "0xa7a01b93b889ff0639d5ec02914a77529924a46f",
+        "mean_markout_faced_bps": 11.26267319066184,
+        "mean_markout_faced_bps_notional_wt": 7.958085037057855,
+        "dollar_loss_quote": 16.78232823898104,
+        "n_fills": 14
+      },
+      {
+        "maker_id": 7225,
+        "maker_addr": "0x5f9dd2797a391de4f33d9fe620676dce5be14868",
+        "mean_markout_faced_bps": 11.164768701507931,
+        "mean_markout_faced_bps_notional_wt": 10.944486103482014,
+        "dollar_loss_quote": 44.37032953923146,
+        "n_fills": 21
+      },
+      {
+        "maker_id": 5721,
+        "maker_addr": "0xff07e0055bab8a82c303b18fe6876af096ebcbdd",
+        "mean_markout_faced_bps": 11.01423970813101,
+        "mean_markout_faced_bps_notional_wt": 5.59883036359494,
+        "dollar_loss_quote": 81.9003504134941,
+        "n_fills": 11
+      },
+      {
+        "maker_id": 292,
+        "maker_addr": "0xee8371b59b2ed84507c573d4b4e2b17e6d5db668",
+        "mean_markout_faced_bps": 10.834126060207685,
+        "mean_markout_faced_bps_notional_wt": 1.0039228974525283,
+        "dollar_loss_quote": 23.330073653692118,
+        "n_fills": 30
+      },
+      {
+        "maker_id": 5478,
+        "maker_addr": "0xd338f7d2aaa01745a2f169d311156e57edb3cdb4",
+        "mean_markout_faced_bps": 10.510180063545704,
+        "mean_markout_faced_bps_notional_wt": 6.408152055661555,
+        "dollar_loss_quote": 25.520708327779595,
+        "n_fills": 20
+      },
+      {
+        "maker_id": 6237,
+        "maker_addr": "0x423f6b07c195a2057c1df7040e22f19b60a73b88",
+        "mean_markout_faced_bps": 10.483969402313232,
+        "mean_markout_faced_bps_notional_wt": 10.455932674135957,
+        "dollar_loss_quote": 67.3244205386702,
+        "n_fills": 10
+      },
+      {
+        "maker_id": 3348,
+        "maker_addr": "0x1eb39d46c9814c8f16ea657d9dc1029575f4d651",
+        "mean_markout_faced_bps": 10.44481021804469,
+        "mean_markout_faced_bps_notional_wt": 8.536730168328765,
+        "dollar_loss_quote": 58.872223058431146,
+        "n_fills": 28
+      },
+      {
+        "maker_id": 4920,
+        "maker_addr": "0xa252bbdcb1cf63c1ed3aa7e129c72c76765b39ce",
+        "mean_markout_faced_bps": 10.142292354417885,
+        "mean_markout_faced_bps_notional_wt": 10.142099266615517,
+        "dollar_loss_quote": 22.84093899475399,
+        "n_fills": 23
+      },
+      {
+        "maker_id": 4978,
+        "maker_addr": "0x962fd8d1f86525e3c3143fc45aed42d3e3d40050",
+        "mean_markout_faced_bps": 9.983935771080164,
+        "mean_markout_faced_bps_notional_wt": -1.14127519154815,
+        "dollar_loss_quote": -11.341629921964701,
+        "n_fills": 13
+      },
+      {
+        "maker_id": 2946,
+        "maker_addr": "0x1822f77ea53a9bd252befa16b1a9275ff30685de",
+        "mean_markout_faced_bps": 9.634678103707053,
+        "mean_markout_faced_bps_notional_wt": 5.53549771292357,
+        "dollar_loss_quote": 60.48430854212343,
+        "n_fills": 11
+      },
+      {
+        "maker_id": 3207,
+        "maker_addr": "0x2ffbbc6913fe3d445d07bb30e738e582b6928443",
+        "mean_markout_faced_bps": 9.482123548334295,
+        "mean_markout_faced_bps_notional_wt": 6.47468113500448,
+        "dollar_loss_quote": 40.42558654694117,
+        "n_fills": 11
+      },
+      {
+        "maker_id": 1217,
+        "maker_addr": "0xe4d933fb1e35c6e6a489ccc65561094e39efcb76",
+        "mean_markout_faced_bps": 9.428062705589193,
+        "mean_markout_faced_bps_notional_wt": 7.78540514841088,
+        "dollar_loss_quote": 16.058790201094318,
+        "n_fills": 14
+      }
+    ],
+    "best_earners": [
+      {
+        "maker_id": 2006,
+        "maker_addr": "0x05e2adc55f08b8713fd2325b4b56d234246c5dd7",
+        "mean_markout_faced_bps": -16.152479025033806,
+        "mean_markout_faced_bps_notional_wt": -5.497588356464173,
+        "dollar_loss_quote": -313.91570333005006,
+        "n_fills": 13
+      },
+      {
+        "maker_id": 4287,
+        "maker_addr": "0x283d688524050e240c7cf9326d7cd1b509e58a95",
+        "mean_markout_faced_bps": -15.068237562291324,
+        "mean_markout_faced_bps_notional_wt": -3.4305531053106013,
+        "dollar_loss_quote": -0.3964800316787309,
+        "n_fills": 10
+      },
+      {
+        "maker_id": 3411,
+        "maker_addr": "0x50fb96edf5161d9dc44f6e9c9a833aa881e3bb29",
+        "mean_markout_faced_bps": -14.885347011477448,
+        "mean_markout_faced_bps_notional_wt": -7.602922592589938,
+        "dollar_loss_quote": -366.31720004882004,
+        "n_fills": 43
+      },
+      {
+        "maker_id": 7408,
+        "maker_addr": "0x2be1ee73018f54c754c117ef3de438ee2f66dfb6",
+        "mean_markout_faced_bps": -11.793684833758586,
+        "mean_markout_faced_bps_notional_wt": -6.123304477672141,
+        "dollar_loss_quote": -13.370582467210445,
+        "n_fills": 37
+      },
+      {
+        "maker_id": 3333,
+        "maker_addr": "0x8eff8ff863c1a54ec6697b7ad98fe30aa344bd5e",
+        "mean_markout_faced_bps": -9.920322051173763,
+        "mean_markout_faced_bps_notional_wt": 0.8159914921773137,
+        "dollar_loss_quote": 86.01288466706123,
+        "n_fills": 38
+      },
+      {
+        "maker_id": 7299,
+        "maker_addr": "0x6572bc26edf54a74bef243eff10d3fbe6d461eb7",
+        "mean_markout_faced_bps": -9.723726840019227,
+        "mean_markout_faced_bps_notional_wt": -20.555871993821295,
+        "dollar_loss_quote": -25028.985781955133,
+        "n_fills": 75
+      },
+      {
+        "maker_id": 6968,
+        "maker_addr": "0x8b6f0f09c2d5a0e5df806191cc64d789bdb63018",
+        "mean_markout_faced_bps": -8.677671750386557,
+        "mean_markout_faced_bps_notional_wt": -8.68051581839584,
+        "dollar_loss_quote": -400.01315250042285,
+        "n_fills": 12
+      },
+      {
+        "maker_id": 5064,
+        "maker_addr": "0x8cb7566b1c467b864923ac589566a8d24bfca7b7",
+        "mean_markout_faced_bps": -8.415271688532084,
+        "mean_markout_faced_bps_notional_wt": -7.602184028004829,
+        "dollar_loss_quote": -32.32984727468757,
+        "n_fills": 40
+      },
+      {
+        "maker_id": 3246,
+        "maker_addr": "0xcfcd0e4f4aa0118add21a6881dd2f99edbdd783a",
+        "mean_markout_faced_bps": -8.072080683200918,
+        "mean_markout_faced_bps_notional_wt": -7.920178501575106,
+        "dollar_loss_quote": -68.93369628913244,
+        "n_fills": 47
+      },
+      {
+        "maker_id": 2921,
+        "maker_addr": "0x30f58e4036cafb8609193a6d17baffe29cdfc7c9",
+        "mean_markout_faced_bps": -6.545667457580566,
+        "mean_markout_faced_bps_notional_wt": -9.06976268046822,
+        "dollar_loss_quote": -98.68800967218681,
+        "n_fills": 15
+      },
+      {
+        "maker_id": 6504,
+        "maker_addr": "0x5aa13316231716ea438eb243feabc296a9094b2b",
+        "mean_markout_faced_bps": -6.34852879135697,
+        "mean_markout_faced_bps_notional_wt": -6.32275733693124,
+        "dollar_loss_quote": -1186.2988676216646,
+        "n_fills": 27
+      },
+      {
+        "maker_id": 4812,
+        "maker_addr": "0xc02427f0b937f9905c47ddcc661374e0a49c8f03",
+        "mean_markout_faced_bps": -6.295682221651077,
+        "mean_markout_faced_bps_notional_wt": -3.4183257770778956,
+        "dollar_loss_quote": -33.68141345524688,
+        "n_fills": 25
+      },
+      {
+        "maker_id": 1048,
+        "maker_addr": "0xe67c4c8291a472ffbce683a5d493e485184f866d",
+        "mean_markout_faced_bps": -6.170458518541777,
+        "mean_markout_faced_bps_notional_wt": -4.924734858163452,
+        "dollar_loss_quote": -8.310601102491516,
+        "n_fills": 13
+      },
+      {
+        "maker_id": 6523,
+        "maker_addr": "0xa3f9bb20d0837cbdf102c76ea2454b2484b1ba8e",
+        "mean_markout_faced_bps": -5.518880844116211,
+        "mean_markout_faced_bps_notional_wt": -5.518880844116211,
+        "dollar_loss_quote": -7.9559997615156695,
+        "n_fills": 11
+      },
+      {
+        "maker_id": 4131,
+        "maker_addr": "0xea910d603dc6828b65916284e0e52552b151bb1d",
+        "mean_markout_faced_bps": -5.505166762015399,
+        "mean_markout_faced_bps_notional_wt": -0.4819745691310998,
+        "dollar_loss_quote": -0.6432290585319702,
+        "n_fills": 17
+      },
+      {
+        "maker_id": 4860,
+        "maker_addr": "0x051f1887ddfbf5b381b570dc79d86d078b98b3c4",
+        "mean_markout_faced_bps": -5.21968425065279,
+        "mean_markout_faced_bps_notional_wt": -7.844214950489505,
+        "dollar_loss_quote": -276.8633745927659,
+        "n_fills": 64
+      },
+      {
+        "maker_id": 7451,
+        "maker_addr": "0x4f9669e5ea454183ed03ed286600c83a067c3c77",
+        "mean_markout_faced_bps": -5.163418463298252,
+        "mean_markout_faced_bps_notional_wt": -5.201102644491475,
+        "dollar_loss_quote": -145.07984191025992,
+        "n_fills": 28
+      },
+      {
+        "maker_id": 669,
+        "maker_addr": "0x00f327d80c617f53c87b994599966b417eb42f46",
+        "mean_markout_faced_bps": -4.873469753935933,
+        "mean_markout_faced_bps_notional_wt": 0.4396401780305764,
+        "dollar_loss_quote": 7.397124875320346,
+        "n_fills": 80
+      },
+      {
+        "maker_id": 8739,
+        "maker_addr": "0x51c05f9a6274a26f43112d5bdad745ee3f89dfdb",
+        "mean_markout_faced_bps": -4.835165023803711,
+        "mean_markout_faced_bps_notional_wt": -4.835165023803711,
+        "dollar_loss_quote": -68.08780273974398,
+        "n_fills": 75
+      },
+      {
+        "maker_id": 7394,
+        "maker_addr": "0x0aa0904b9670c1d5729d4e949a0514bed198d239",
+        "mean_markout_faced_bps": -4.775591532389323,
+        "mean_markout_faced_bps_notional_wt": 4.704682032213617,
+        "dollar_loss_quote": 265.1658713945152,
+        "n_fills": 18
+      },
+      {
+        "maker_id": 2026,
+        "maker_addr": "0xf1e54733978e34a19f3b74039f55cee8680602e7",
+        "mean_markout_faced_bps": -4.6930403434916546,
+        "mean_markout_faced_bps_notional_wt": 1.8408294204045295,
+        "dollar_loss_quote": 37.058870494468486,
+        "n_fills": 19
+      },
+      {
+        "maker_id": 1591,
+        "maker_addr": "0x0ab15a1b34d3a21edf49b373b980259d980015fa",
+        "mean_markout_faced_bps": -4.683365391011824,
+        "mean_markout_faced_bps_notional_wt": -0.8928194557990077,
+        "dollar_loss_quote": -100.07658127323856,
+        "n_fills": 57
+      },
+      {
+        "maker_id": 2166,
+        "maker_addr": "0x8f8ce8014e0e41aab563627beede5b6861869fa2",
+        "mean_markout_faced_bps": -4.665580353885889,
+        "mean_markout_faced_bps_notional_wt": -1.567765111427921,
+        "dollar_loss_quote": -1.8446665485417002,
+        "n_fills": 10
+      },
+      {
+        "maker_id": 5796,
+        "maker_addr": "0x1a4154c14f803192a93e3f835b4e9d0b6468e0b1",
+        "mean_markout_faced_bps": -4.566271569993761,
+        "mean_markout_faced_bps_notional_wt": -1.1874152202806076,
+        "dollar_loss_quote": -0.9655535675579737,
+        "n_fills": 18
+      },
+      {
+        "maker_id": 6226,
+        "maker_addr": "0x9d6f1572ab975665e40943398d867f2355c1a498",
+        "mean_markout_faced_bps": -4.345878630876541,
+        "mean_markout_faced_bps_notional_wt": -4.406912387370517,
+        "dollar_loss_quote": -8.450409352603609,
+        "n_fills": 16
+      }
+    ],
+    "top_makers_by_dollar_loss": [
+      {
+        "maker_id": 15,
+        "maker_addr": "0xc6ac58a7a63339898aeda32499a8238a46d88e84",
+        "dollar_loss_quote": 445774.9744636292,
+        "notional_quote": 5668186656.994343,
+        "mean_markout_faced_bps_notional_wt": 0.7864507671312416,
+        "n_fills": 20496,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 88,
+        "maker_addr": "0x50b309f78e774a756a2230e1769729094cac9f20",
+        "dollar_loss_quote": 94701.01150064147,
+        "notional_quote": 169985718.81057924,
+        "mean_markout_faced_bps_notional_wt": 5.571115748033489,
+        "n_fills": 2418,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 2643,
+        "maker_addr": "0xec326a384ae965647d87e1f85db46d2efa15ae82",
+        "dollar_loss_quote": 62582.657758602174,
+        "notional_quote": 261886217.21085817,
+        "mean_markout_faced_bps_notional_wt": 2.3896888666047476,
+        "n_fills": 4512,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 52,
+        "maker_addr": "0x023a3d058020fb76cca98f01b3c48c8938a22355",
+        "dollar_loss_quote": 53265.076521701456,
+        "notional_quote": 1125003940.0852647,
+        "mean_markout_faced_bps_notional_wt": 0.4734656886416313,
+        "n_fills": 35657,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 74,
+        "maker_addr": "0x0ddf9bae2af4b874b96d287a5ad42eb47138a902",
+        "dollar_loss_quote": 39836.569675390514,
+        "notional_quote": 198025826.06425548,
+        "mean_markout_faced_bps_notional_wt": 2.0116855698642175,
+        "n_fills": 4991,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 884,
+        "maker_addr": "0xf517639a8872e756ac98d3c65507d2ebc25cc032",
+        "dollar_loss_quote": 35400.09796500754,
+        "notional_quote": 247424051.40194136,
+        "mean_markout_faced_bps_notional_wt": 1.4307460315367628,
+        "n_fills": 3723,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 3328,
+        "maker_addr": "0x7eca5fac5cb2482ce106592e3b78f6c2138e8d0d",
+        "dollar_loss_quote": 33266.398670753755,
+        "notional_quote": 135883798.31758595,
+        "mean_markout_faced_bps_notional_wt": 2.448150484651883,
+        "n_fills": 1807,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 101,
+        "maker_addr": "0xe0beac8b7449772d85312c326b12b2a55a4a35cd",
+        "dollar_loss_quote": 27856.841470720534,
+        "notional_quote": 101916699.84148163,
+        "mean_markout_faced_bps_notional_wt": 2.733295084519829,
+        "n_fills": 3025,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 322,
+        "maker_addr": "0x76fe28b803eeba445c34afc2f914e6bcb71112fd",
+        "dollar_loss_quote": 26269.843230104783,
+        "notional_quote": 72137762.3918376,
+        "mean_markout_faced_bps_notional_wt": 3.641621580582487,
+        "n_fills": 1350,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 5616,
+        "maker_addr": "0xa8ef95dbd3db55911d3307930a84b27d6e969526",
+        "dollar_loss_quote": 25795.04193218343,
+        "notional_quote": 64960060.25737417,
+        "mean_markout_faced_bps_notional_wt": 3.9709079440478416,
+        "n_fills": 1051,
+        "is_hlp_candidate": false
+      }
+    ],
+    "top_makers_by_notional": [
+      {
+        "maker_id": 15,
+        "maker_addr": "0xc6ac58a7a63339898aeda32499a8238a46d88e84",
+        "dollar_loss_quote": 445774.9744636292,
+        "notional_quote": 5668186656.994343,
+        "mean_markout_faced_bps_notional_wt": 0.7864507671312416,
+        "n_fills": 20496,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 73,
+        "maker_addr": "0x09bc1cf4d9f0b59e1425a8fde4d4b1f7d3c9410d",
+        "dollar_loss_quote": -33967.00798303382,
+        "notional_quote": 1648446648.7871838,
+        "mean_markout_faced_bps_notional_wt": -0.20605463942690702,
+        "n_fills": 9655,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 13,
+        "maker_addr": "0x0fd468a73084daa6ea77a9261e40fdec3e67e0c7",
+        "dollar_loss_quote": -13075.2432218481,
+        "notional_quote": 1359864524.5566719,
+        "mean_markout_faced_bps_notional_wt": -0.09615107229972614,
+        "n_fills": 25843,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 38,
+        "maker_addr": "0xadc9cf23f55c6221a05a8150e5768d7c3289562f",
+        "dollar_loss_quote": -38352.714025009154,
+        "notional_quote": 1321132112.8436985,
+        "mean_markout_faced_bps_notional_wt": -0.2903018831512335,
+        "n_fills": 15895,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 52,
+        "maker_addr": "0x023a3d058020fb76cca98f01b3c48c8938a22355",
+        "dollar_loss_quote": 53265.076521701456,
+        "notional_quote": 1125003940.0852647,
+        "mean_markout_faced_bps_notional_wt": 0.4734656886416313,
+        "n_fills": 35657,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 31,
+        "maker_addr": "0x7ca165f354e3260e2f8d5a7508cc9dd2fa009235",
+        "dollar_loss_quote": -45855.759963302095,
+        "notional_quote": 770427470.165499,
+        "mean_markout_faced_bps_notional_wt": -0.595198921884906,
+        "n_fills": 7395,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 3,
+        "maker_addr": "0x0ab2ff3a85eb341ff9f9307858b94904a42c5b45",
+        "dollar_loss_quote": 25582.024975896053,
+        "notional_quote": 692627249.6269212,
+        "mean_markout_faced_bps_notional_wt": 0.36934765401845854,
+        "n_fills": 5231,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 43,
+        "maker_addr": "0xecb63caa47c7c4e77f60f1ce858cf28dc2b82b00",
+        "dollar_loss_quote": 10002.358031183909,
+        "notional_quote": 678429993.3352257,
+        "mean_markout_faced_bps_notional_wt": 0.1474339007627218,
+        "n_fills": 55005,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 274,
+        "maker_addr": "0x49ba9baa20d355ba042af2be9772d2b2cd892f44",
+        "dollar_loss_quote": -27584.772918497496,
+        "notional_quote": 426808072.1833746,
+        "mean_markout_faced_bps_notional_wt": -0.6463039177629679,
+        "n_fills": 3233,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 906,
+        "maker_addr": "0x162cc7c861ebd0c06b3d72319201150482518185",
+        "dollar_loss_quote": 1940.4314756984224,
+        "notional_quote": 422407151.1694891,
+        "mean_markout_faced_bps_notional_wt": 0.045937467448790195,
+        "n_fills": 84829,
+        "is_hlp_candidate": false
+      }
+    ]
+  },
+  "ETH": {
+    "n_makers": 5075,
+    "n_rankable_makers": 2000,
+    "mean_markout_faced_bps_equal_weight": {
+      "n": 5075,
+      "mean": 2.2430546256752186,
+      "min": -30.200307846069336,
+      "p25": 0.0,
+      "p50": 1.5693659782409668,
+      "p75": 3.57268340247018,
+      "p99": 23.86086374282846,
+      "max": 88.80687713623047,
+      "frac_positive": 0.7479802955665025
+    },
+    "mean_markout_faced_bps_notional_weight": {
+      "n": 5075,
+      "mean": 2.5064103036095338,
+      "min": -30.200307846069336,
+      "p25": 0.25003412510898737,
+      "p50": 1.8082172468319486,
+      "p75": 3.805129635916332,
+      "p99": 23.657579231262236,
+      "max": 88.80687713623047,
+      "frac_positive": 0.7733990147783252
+    },
+    "per_dollar_loss_concentration": {
+      "measure": "per-maker notional-weighted mean markout faced (dollar loss / dollar notional, bps); size-stripped",
+      "n_makers_with_notional": 5075,
+      "mean_per_dollar_loss_bps": 2.5064103036095338,
+      "frac_makers_net_loser": 0.7733990147783252,
+      "n_net_loser_makers": 3925,
+      "per_dollar_loss_gini": 0.5169275885443558,
+      "per_dollar_loss_hhi": 0.0006721719776731673,
+      "per_dollar_top_1pct_share": 0.09093855039801994,
+      "per_dollar_top_10pct_share": 0.39328536603647374,
+      "per_dollar_top10_share": 0.0328455737196836,
+      "headline_note": "this is the HEADLINE: per-dollar (size-stripped) maker-loss concentration is only MODERATE (Gini ~0.55), so the maker-side adverse selection is NOT carried by a tiny handful of makers -- the biggest dollar losers are just the biggest makers (see the size-artefact diagnostic below)"
+    },
+    "dollar_loss_concentration_size_artefact": {
+      "label": "DOLLAR-LOSS concentration is a TRADE-SIZE artefact -- do NOT cite the raw Gini alone",
+      "n_loser_makers": 3925,
+      "total_maker_loss_quote": 1952465.1575432601,
+      "dollar_loss_gini_size_artefact_do_not_cite": 0.976640305425547,
+      "per_maker_notional_gini": 0.9843202251027563,
+      "size_artefact_note": "dollar_loss_gini_size_artefact_do_not_cite (~0.97) is essentially the per_maker_notional_gini (~0.98): the dollar-loss concentration is pure trade-size inequality, not loss dispersion. Cite the per_dollar_loss_gini in (1) instead, never this raw figure alone",
+      "dollar_loss_hhi": 0.12858418222833995,
+      "dollar_loss_top_1pct_share": 0.8031893018454956,
+      "dollar_loss_top_10pct_share": 0.9757066894658942
+    },
+    "net_maker_dollar_pnl_quote": 1204593.081280347,
+    "net_sign_note": "positive net => makers collectively LOSE (are adverse-selected); negative => makers collectively earn spread",
+    "worst_losers": [
+      {
+        "maker_id": 2618,
+        "maker_addr": "0x7a30132d1bd9cfa1866d9b3d4dccb98d53f2727a",
+        "mean_markout_faced_bps": 50.115817687090704,
+        "mean_markout_faced_bps_notional_wt": 24.55797579273538,
+        "dollar_loss_quote": 87.46347205250055,
+        "n_fills": 17
+      },
+      {
+        "maker_id": 2426,
+        "maker_addr": "0x982a264251c98b78eb3a2310b31f5ddedc156a71",
+        "mean_markout_faced_bps": 45.865271761136896,
+        "mean_markout_faced_bps_notional_wt": 40.67879418587009,
+        "dollar_loss_quote": 13281.072043467655,
+        "n_fills": 102
+      },
+      {
+        "maker_id": 6359,
+        "maker_addr": "0x2ed987153c4a948eba8a8eb591b39bbdd47aa774",
+        "mean_markout_faced_bps": 39.37159340911441,
+        "mean_markout_faced_bps_notional_wt": 14.003063246838474,
+        "dollar_loss_quote": 55.67107806049984,
+        "n_fills": 18
+      },
+      {
+        "maker_id": 6867,
+        "maker_addr": "0x11e70c06728598f28c79d6218f31663bde539091",
+        "mean_markout_faced_bps": 38.9065249306815,
+        "mean_markout_faced_bps_notional_wt": 30.546306634161354,
+        "dollar_loss_quote": 192.28089674675826,
+        "n_fills": 28
+      },
+      {
+        "maker_id": 6378,
+        "maker_addr": "0x706393b6618a0d0c86e38ca112a0541597b0805f",
+        "mean_markout_faced_bps": 36.27928924560547,
+        "mean_markout_faced_bps_notional_wt": 36.27928924560547,
+        "dollar_loss_quote": 28.962798660035332,
+        "n_fills": 14
+      },
+      {
+        "maker_id": 7724,
+        "maker_addr": "0x5c5267a02593366f681365ec057e2c5099fa6f88",
+        "mean_markout_faced_bps": 27.357475731589577,
+        "mean_markout_faced_bps_notional_wt": 27.10084666320857,
+        "dollar_loss_quote": 196.1449722962907,
+        "n_fills": 55
+      },
+      {
+        "maker_id": 2483,
+        "maker_addr": "0x61a1c5514581449a021e6eacc84e9e16f7162972",
+        "mean_markout_faced_bps": 27.328840957747484,
+        "mean_markout_faced_bps_notional_wt": 2.599059039299843,
+        "dollar_loss_quote": 8.082413546912559,
+        "n_fills": 18
+      },
+      {
+        "maker_id": 3921,
+        "maker_addr": "0x5a984ea773903850afc5da8bdcd8774352c6633a",
+        "mean_markout_faced_bps": 25.344990921020507,
+        "mean_markout_faced_bps_notional_wt": 22.124227447886714,
+        "dollar_loss_quote": 23.236999152000593,
+        "n_fills": 10
+      },
+      {
+        "maker_id": 6104,
+        "maker_addr": "0x4e2e3642b99bed70abe54b306f0c2c6a428c636b",
+        "mean_markout_faced_bps": 24.74351448615392,
+        "mean_markout_faced_bps_notional_wt": 3.943379710879244,
+        "dollar_loss_quote": 28.18144035158406,
+        "n_fills": 15
+      },
+      {
+        "maker_id": 4565,
+        "maker_addr": "0xdc7bf4d19f98e3082251a75938ce4775224b19bb",
+        "mean_markout_faced_bps": 21.709358986686258,
+        "mean_markout_faced_bps_notional_wt": 21.249828983326502,
+        "dollar_loss_quote": 20.983520079955774,
+        "n_fills": 17
+      },
+      {
+        "maker_id": 2476,
+        "maker_addr": "0x9dfd2ca547f1c5d7f095ea75f839417155cbe416",
+        "mean_markout_faced_bps": 20.508369462768528,
+        "mean_markout_faced_bps_notional_wt": 14.805404606916449,
+        "dollar_loss_quote": 2016.599502983297,
+        "n_fills": 137
+      },
+      {
+        "maker_id": 687,
+        "maker_addr": "0x6a6639f296eaac04db7821c1c4c2c768e8ba6b5a",
+        "mean_markout_faced_bps": 20.038253381848335,
+        "mean_markout_faced_bps_notional_wt": 12.387265390496877,
+        "dollar_loss_quote": 17.01110819447251,
+        "n_fills": 12
+      },
+      {
+        "maker_id": 6624,
+        "maker_addr": "0xb4773a58bfa5eb5f1029334d5dbde2f12cd35d42",
+        "mean_markout_faced_bps": 18.647683663801715,
+        "mean_markout_faced_bps_notional_wt": 19.629597013504625,
+        "dollar_loss_quote": 325.8910340000276,
+        "n_fills": 44
+      },
+      {
+        "maker_id": 8452,
+        "maker_addr": "0x2c8881988fc475354dfa952bdd4a8946e83c33bb",
+        "mean_markout_faced_bps": 17.881364345550537,
+        "mean_markout_faced_bps_notional_wt": 16.918479779953987,
+        "dollar_loss_quote": 19.017639848865162,
+        "n_fills": 10
+      },
+      {
+        "maker_id": 2213,
+        "maker_addr": "0x268f52086f04685965e55a09458e51006c7b024e",
+        "mean_markout_faced_bps": 17.838685926049948,
+        "mean_markout_faced_bps_notional_wt": 7.6884957077785785,
+        "dollar_loss_quote": 487.15053777672676,
+        "n_fills": 64
+      },
+      {
+        "maker_id": 7727,
+        "maker_addr": "0x9ea9f8d0697672dd2a504c3ae4f85eee67c5b4e4",
+        "mean_markout_faced_bps": 17.250887263904918,
+        "mean_markout_faced_bps_notional_wt": 10.445690105065108,
+        "dollar_loss_quote": 472.8170386016073,
+        "n_fills": 22
+      },
+      {
+        "maker_id": 6860,
+        "maker_addr": "0xbde9b08c550a61260fe7b36de1215a05a434fdae",
+        "mean_markout_faced_bps": 16.8149653042064,
+        "mean_markout_faced_bps_notional_wt": 16.81458701973908,
+        "dollar_loss_quote": 13.75594935076153,
+        "n_fills": 17
+      },
+      {
+        "maker_id": 6968,
+        "maker_addr": "0x8b6f0f09c2d5a0e5df806191cc64d789bdb63018",
+        "mean_markout_faced_bps": 16.354444980621338,
+        "mean_markout_faced_bps_notional_wt": 15.81678435681084,
+        "dollar_loss_quote": 1507.0914546777844,
+        "n_fills": 24
+      },
+      {
+        "maker_id": 6887,
+        "maker_addr": "0x16960f45a9bd2f58700aef75125e4104eda019b8",
+        "mean_markout_faced_bps": 15.499865195486281,
+        "mean_markout_faced_bps_notional_wt": 14.224152490103918,
+        "dollar_loss_quote": 33.29216375214483,
+        "n_fills": 45
+      },
+      {
+        "maker_id": 1064,
+        "maker_addr": "0xa9ac99be720210e61693c1426459829350417395",
+        "mean_markout_faced_bps": 15.313866805699137,
+        "mean_markout_faced_bps_notional_wt": 11.063476908637384,
+        "dollar_loss_quote": 92.49980209016013,
+        "n_fills": 18
+      },
+      {
+        "maker_id": 2151,
+        "maker_addr": "0x825714bae8bd60162bb14a04bb2183d00b3d00c9",
+        "mean_markout_faced_bps": 15.206875383853912,
+        "mean_markout_faced_bps_notional_wt": 11.5626262130339,
+        "dollar_loss_quote": 28.783140496437543,
+        "n_fills": 16
+      },
+      {
+        "maker_id": 3815,
+        "maker_addr": "0x3aacead9f97a5399a8130c16113851e7b7edc1b0",
+        "mean_markout_faced_bps": 14.934278698570758,
+        "mean_markout_faced_bps_notional_wt": 7.771254788370319,
+        "dollar_loss_quote": 79.87702238218357,
+        "n_fills": 83
+      },
+      {
+        "maker_id": 9274,
+        "maker_addr": "0xc179e03922afe8fa9533d3f896338b9fb87ce0c8",
+        "mean_markout_faced_bps": 14.86109333449886,
+        "mean_markout_faced_bps_notional_wt": 11.579422614345065,
+        "dollar_loss_quote": 1886.7807812308563,
+        "n_fills": 84
+      },
+      {
+        "maker_id": 6967,
+        "maker_addr": "0xec35fa4072cdccbfcaf541e9d54bc6dc011b6f9b",
+        "mean_markout_faced_bps": 14.81541160057331,
+        "mean_markout_faced_bps_notional_wt": 19.998107420509083,
+        "dollar_loss_quote": 2814.479432499566,
+        "n_fills": 29
+      },
+      {
+        "maker_id": 3931,
+        "maker_addr": "0x61549534dec101179983169644d7929a3d706c97",
+        "mean_markout_faced_bps": 13.741947125226925,
+        "mean_markout_faced_bps_notional_wt": 18.847948852096028,
+        "dollar_loss_quote": 2888.8846010572142,
+        "n_fills": 313
+      }
+    ],
+    "best_earners": [
+      {
+        "maker_id": 5111,
+        "maker_addr": "0x4ea258512c59f12b727fc328c9fa8734d7d9eeae",
+        "mean_markout_faced_bps": -27.95306439399719,
+        "mean_markout_faced_bps_notional_wt": -17.516807318494564,
+        "dollar_loss_quote": -20.311070374839527,
+        "n_fills": 10
+      },
+      {
+        "maker_id": 2661,
+        "maker_addr": "0x7892624922821446e6d5a9db92d9ad3f6ecbcbb3",
+        "mean_markout_faced_bps": -25.110289764404296,
+        "mean_markout_faced_bps_notional_wt": -25.110254788823323,
+        "dollar_loss_quote": -19.53377985771021,
+        "n_fills": 10
+      },
+      {
+        "maker_id": 7728,
+        "maker_addr": "0xcb02837caaee310c178501855b63bf7f4f4b1f8b",
+        "mean_markout_faced_bps": -22.656616797814003,
+        "mean_markout_faced_bps_notional_wt": -22.026600902073852,
+        "dollar_loss_quote": -281.7897488787776,
+        "n_fills": 13
+      },
+      {
+        "maker_id": 2662,
+        "maker_addr": "0x97d9bb97f706b2c8b8cad7dec27561baa5c70960",
+        "mean_markout_faced_bps": -20.218738849124602,
+        "mean_markout_faced_bps_notional_wt": -1.9481321728654455,
+        "dollar_loss_quote": -63.870229581789026,
+        "n_fills": 31
+      },
+      {
+        "maker_id": 4285,
+        "maker_addr": "0x45a5722b15bde0af61aa25ec7a54e1932af68d9e",
+        "mean_markout_faced_bps": -18.823530197143555,
+        "mean_markout_faced_bps_notional_wt": -18.823530197143555,
+        "dollar_loss_quote": -27.587201403785045,
+        "n_fills": 21
+      },
+      {
+        "maker_id": 2626,
+        "maker_addr": "0x8e6ed79c48944265fe5d004010c11cb28aa105b4",
+        "mean_markout_faced_bps": -17.622183677397278,
+        "mean_markout_faced_bps_notional_wt": 1.7197769384109218,
+        "dollar_loss_quote": 79.1535939879211,
+        "n_fills": 19
+      },
+      {
+        "maker_id": 6919,
+        "maker_addr": "0x80eba6761f3fc3359131439fa359b5b44b912d4f",
+        "mean_markout_faced_bps": -16.40476556257768,
+        "mean_markout_faced_bps_notional_wt": -8.366202779481592,
+        "dollar_loss_quote": -138.6359913021857,
+        "n_fills": 55
+      },
+      {
+        "maker_id": 7679,
+        "maker_addr": "0xe4d9d40170e32b062a33081b6d28f2a374604f95",
+        "mean_markout_faced_bps": -12.116949081420898,
+        "mean_markout_faced_bps_notional_wt": -12.114683312350403,
+        "dollar_loss_quote": -50.48929957056423,
+        "n_fills": 63
+      },
+      {
+        "maker_id": 2385,
+        "maker_addr": "0xb28cf8649d1cda2975d290f04ea4cc4db7b3828e",
+        "mean_markout_faced_bps": -11.522482855845306,
+        "mean_markout_faced_bps_notional_wt": -13.996893223949181,
+        "dollar_loss_quote": -3843.135813878534,
+        "n_fills": 118
+      },
+      {
+        "maker_id": 5420,
+        "maker_addr": "0x6926e0a068b13be00607dc032c99775e07a8c4c9",
+        "mean_markout_faced_bps": -11.075047264440483,
+        "mean_markout_faced_bps_notional_wt": -1.5110614036180265,
+        "dollar_loss_quote": -8.514380056611332,
+        "n_fills": 22
+      },
+      {
+        "maker_id": 8458,
+        "maker_addr": "0xfd38c1e85ec5b20bbdd4af39c4be7e4d91e43561",
+        "mean_markout_faced_bps": -10.91687945113785,
+        "mean_markout_faced_bps_notional_wt": -9.674674553301017,
+        "dollar_loss_quote": -77.21946103169181,
+        "n_fills": 87
+      },
+      {
+        "maker_id": 5118,
+        "maker_addr": "0xe79b2e1670f848916fff914ca48502a2907a3da4",
+        "mean_markout_faced_bps": -10.77938992221181,
+        "mean_markout_faced_bps_notional_wt": -8.01599361368235,
+        "dollar_loss_quote": -121.10734493705283,
+        "n_fills": 41
+      },
+      {
+        "maker_id": 8501,
+        "maker_addr": "0x0427453e5fdbc8e49e1a938cde70499dabc8891e",
+        "mean_markout_faced_bps": -10.612191061178843,
+        "mean_markout_faced_bps_notional_wt": -8.178410175339042,
+        "dollar_loss_quote": -60.680569899197145,
+        "n_fills": 24
+      },
+      {
+        "maker_id": 6893,
+        "maker_addr": "0x6d4f26cb2b573542c45bdbcdf5ecd5359cb530f1",
+        "mean_markout_faced_bps": -9.246228564869273,
+        "mean_markout_faced_bps_notional_wt": -2.6076816955258755,
+        "dollar_loss_quote": -132.0314791644103,
+        "n_fills": 11
+      },
+      {
+        "maker_id": 2644,
+        "maker_addr": "0xc67663415662a592bf8144ada2c2310a68c77d1a",
+        "mean_markout_faced_bps": -9.218558110974051,
+        "mean_markout_faced_bps_notional_wt": -1.0970939183624693,
+        "dollar_loss_quote": -9.078180124084962,
+        "n_fills": 11
+      },
+      {
+        "maker_id": 5398,
+        "maker_addr": "0xaded86bf6e6fd72f78dca132af112fa36230809e",
+        "mean_markout_faced_bps": -8.549447451139752,
+        "mean_markout_faced_bps_notional_wt": 6.527590308704679,
+        "dollar_loss_quote": 3757.039078463262,
+        "n_fills": 95
+      },
+      {
+        "maker_id": 7678,
+        "maker_addr": "0x318f967904a2e8d3219e963d63efc5a5d6c4c615",
+        "mean_markout_faced_bps": -8.449888540773976,
+        "mean_markout_faced_bps_notional_wt": -8.401433964649323,
+        "dollar_loss_quote": -22.89447480686079,
+        "n_fills": 49
+      },
+      {
+        "maker_id": 245,
+        "maker_addr": "0x44c924ce83a6723088c16a3b621a1a03f8f76b2f",
+        "mean_markout_faced_bps": -8.076760505706492,
+        "mean_markout_faced_bps_notional_wt": -3.9223526600047425,
+        "dollar_loss_quote": -32.691491358536105,
+        "n_fills": 71
+      },
+      {
+        "maker_id": 5924,
+        "maker_addr": "0x80910105317ec7acbb4eeeac9a30c8520b2a8aa8",
+        "mean_markout_faced_bps": -8.03151586380872,
+        "mean_markout_faced_bps_notional_wt": -5.490388587352315,
+        "dollar_loss_quote": -2.242496957039429,
+        "n_fills": 11
+      },
+      {
+        "maker_id": 6955,
+        "maker_addr": "0xa19a8f542049511d6618054b8e5474e2d036b7f4",
+        "mean_markout_faced_bps": -7.75433030128479,
+        "mean_markout_faced_bps_notional_wt": -7.825957484118594,
+        "dollar_loss_quote": -817.9413257358849,
+        "n_fills": 20
+      },
+      {
+        "maker_id": 5732,
+        "maker_addr": "0xc31141b109a162506c06cd1aaf228b5f005ced23",
+        "mean_markout_faced_bps": -7.714387937025591,
+        "mean_markout_faced_bps_notional_wt": -7.750724299868962,
+        "dollar_loss_quote": -12.305770177955047,
+        "n_fills": 11
+      },
+      {
+        "maker_id": 5994,
+        "maker_addr": "0x06574d6b46cb268ee2238894c6d87e95a9317005",
+        "mean_markout_faced_bps": -7.676630609175739,
+        "mean_markout_faced_bps_notional_wt": -2.090271698303236,
+        "dollar_loss_quote": -42.7351505350964,
+        "n_fills": 34
+      },
+      {
+        "maker_id": 8307,
+        "maker_addr": "0x3f0fbe29803e6ae8bcba412ab9019aa690be3649",
+        "mean_markout_faced_bps": -7.0648205280303955,
+        "mean_markout_faced_bps_notional_wt": -7.064830772398427,
+        "dollar_loss_quote": -4.2643799333597725,
+        "n_fills": 12
+      },
+      {
+        "maker_id": 2935,
+        "maker_addr": "0x03ce7863a2b62f4e227fd98605b79beb32618c76",
+        "mean_markout_faced_bps": -6.997316013682973,
+        "mean_markout_faced_bps_notional_wt": -1.7811668014115436,
+        "dollar_loss_quote": -3.0307504395496343,
+        "n_fills": 11
+      },
+      {
+        "maker_id": 7098,
+        "maker_addr": "0xaa589496d7f24865fe9580a3796fa440a473e7ee",
+        "mean_markout_faced_bps": -6.942185233621037,
+        "mean_markout_faced_bps_notional_wt": 2.86804423039712,
+        "dollar_loss_quote": 9.53853252131136,
+        "n_fills": 17
+      }
+    ],
+    "top_makers_by_dollar_loss": [
+      {
+        "maker_id": 1831,
+        "maker_addr": "0xb8eb97eaed8367079894d2f1bed69bd220ec1dd5",
+        "dollar_loss_quote": 655800.153905466,
+        "notional_quote": 3880936427.692085,
+        "mean_markout_faced_bps_notional_wt": 1.689798753790601,
+        "n_fills": 15628,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 1848,
+        "maker_addr": "0xe3b6e3443c8f2080704e7421bad9340f13950acb",
+        "dollar_loss_quote": 179889.1931746739,
+        "notional_quote": 1455928916.2407255,
+        "mean_markout_faced_bps_notional_wt": 1.2355630221230796,
+        "n_fills": 47921,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 1648,
+        "maker_addr": "0x57dd78cd36e76e2011e8f6dc25cabbaba994494b",
+        "dollar_loss_quote": 77925.54263738367,
+        "notional_quote": 292519622.5230172,
+        "mean_markout_faced_bps_notional_wt": 2.663942403769896,
+        "n_fills": 12112,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 5270,
+        "maker_addr": "0xb317d2bc2d3d2df5fa441b5bae0ab9d8b07283ae",
+        "dollar_loss_quote": 71323.6443103594,
+        "notional_quote": 474109858.2788688,
+        "mean_markout_faced_bps_notional_wt": 1.504369568886028,
+        "n_fills": 13741,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 74,
+        "maker_addr": "0x0ddf9bae2af4b874b96d287a5ad42eb47138a902",
+        "dollar_loss_quote": 68127.6450748664,
+        "notional_quote": 255045525.2323415,
+        "mean_markout_faced_bps_notional_wt": 2.671195466487923,
+        "n_fills": 18855,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 99,
+        "maker_addr": "0x3bcae23e8c380dab4732e9a159c0456f12d866f3",
+        "dollar_loss_quote": 42728.46564745364,
+        "notional_quote": 172805859.28185993,
+        "mean_markout_faced_bps_notional_wt": 2.4726282907896624,
+        "n_fills": 28650,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 5231,
+        "maker_addr": "0xa5b0edf6b55128e0ddae8e51ac538c3188401d41",
+        "dollar_loss_quote": 36364.63494800545,
+        "notional_quote": 123736020.39866671,
+        "mean_markout_faced_bps_notional_wt": 2.938888355293915,
+        "n_fills": 2453,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 223,
+        "maker_addr": "0x34365f472a3af2ff8167970a519931437e2c2094",
+        "dollar_loss_quote": 31235.257310078356,
+        "notional_quote": 72925446.69970268,
+        "mean_markout_faced_bps_notional_wt": 4.283176685732304,
+        "n_fills": 4663,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 5138,
+        "maker_addr": "0xf1c0dab1ff187f1dc13482cb675f54b8be362a5c",
+        "dollar_loss_quote": 31137.717001173405,
+        "notional_quote": 35280613.21482229,
+        "mean_markout_faced_bps_notional_wt": 8.825730100431382,
+        "n_fills": 735,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 2435,
+        "maker_addr": "0xace0a4c087f7f199328fb1e38d8d27bd237b03fd",
+        "dollar_loss_quote": 29586.500536999,
+        "notional_quote": 61084227.56454599,
+        "mean_markout_faced_bps_notional_wt": 4.843558102741975,
+        "n_fills": 8490,
+        "is_hlp_candidate": false
+      }
+    ],
+    "top_makers_by_notional": [
+      {
+        "maker_id": 1831,
+        "maker_addr": "0xb8eb97eaed8367079894d2f1bed69bd220ec1dd5",
+        "dollar_loss_quote": 655800.153905466,
+        "notional_quote": 3880936427.692085,
+        "mean_markout_faced_bps_notional_wt": 1.689798753790601,
+        "n_fills": 15628,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 1836,
+        "maker_addr": "0xd911e53d53b663972254e086450fd6198a25961e",
+        "dollar_loss_quote": -141945.81606499702,
+        "notional_quote": 1639342227.7357032,
+        "mean_markout_faced_bps_notional_wt": -0.86587055261219,
+        "n_fills": 22903,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 1848,
+        "maker_addr": "0xe3b6e3443c8f2080704e7421bad9340f13950acb",
+        "dollar_loss_quote": 179889.1931746739,
+        "notional_quote": 1455928916.2407255,
+        "mean_markout_faced_bps_notional_wt": 1.2355630221230796,
+        "n_fills": 47921,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 43,
+        "maker_addr": "0xecb63caa47c7c4e77f60f1ce858cf28dc2b82b00",
+        "dollar_loss_quote": -24367.971964770222,
+        "notional_quote": 1439820290.8734617,
+        "mean_markout_faced_bps_notional_wt": -0.16924314874037286,
+        "n_fills": 86168,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 5270,
+        "maker_addr": "0xb317d2bc2d3d2df5fa441b5bae0ab9d8b07283ae",
+        "dollar_loss_quote": 71323.6443103594,
+        "notional_quote": 474109858.2788688,
+        "mean_markout_faced_bps_notional_wt": 1.504369568886028,
+        "n_fills": 13741,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 1873,
+        "maker_addr": "0xebcfa0e05df4c406f4a166b1318581134a8537c0",
+        "dollar_loss_quote": -9939.311742124044,
+        "notional_quote": 308502324.4547356,
+        "mean_markout_faced_bps_notional_wt": -0.322179476595234,
+        "n_fills": 6281,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 274,
+        "maker_addr": "0x49ba9baa20d355ba042af2be9772d2b2cd892f44",
+        "dollar_loss_quote": -26467.12625614951,
+        "notional_quote": 295375628.8923837,
+        "mean_markout_faced_bps_notional_wt": -0.8960497640038021,
+        "n_fills": 4483,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 1862,
+        "maker_addr": "0xba5f4f92f396e6de20d3dae5eefa65f4ecca806a",
+        "dollar_loss_quote": -27311.891460115952,
+        "notional_quote": 293516463.3971962,
+        "mean_markout_faced_bps_notional_wt": -0.9305062872455158,
+        "n_fills": 6702,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 1648,
+        "maker_addr": "0x57dd78cd36e76e2011e8f6dc25cabbaba994494b",
+        "dollar_loss_quote": 77925.54263738367,
+        "notional_quote": 292519622.5230172,
+        "mean_markout_faced_bps_notional_wt": 2.663942403769896,
+        "n_fills": 12112,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 268,
+        "maker_addr": "0x39475d17bcd20adc540e647dae6781b153fbf3b1",
+        "dollar_loss_quote": -7591.237111789153,
+        "notional_quote": 282183948.5902064,
+        "mean_markout_faced_bps_notional_wt": -0.26901732539058243,
+        "n_fills": 2265,
+        "is_hlp_candidate": false
+      }
+    ]
+  },
+  "pooled": {
+    "n_makers": 9367,
+    "n_rankable_makers": 3710,
+    "mean_markout_faced_bps_equal_weight": {
+      "n": 9367,
+      "mean": 1.8509093206602976,
+      "min": -47.2246036529541,
+      "p25": 0.17176192939754517,
+      "p50": 1.3820241928100585,
+      "p75": 2.928509031281327,
+      "p99": 17.405296961466473,
+      "max": 61.658607482910156,
+      "frac_positive": 0.7773032988149888
+    },
+    "mean_markout_faced_bps_notional_weight": {
+      "n": 9367,
+      "mean": 2.071610968587595,
+      "min": -49.097693994613564,
+      "p25": 0.3273806766552692,
+      "p50": 1.6032835245132446,
+      "p75": 3.166016636554673,
+      "p99": 18.197511464726027,
+      "max": 77.02492744239706,
+      "frac_positive": 0.7983345788406107
+    },
+    "per_dollar_loss_concentration": {
+      "measure": "per-maker notional-weighted mean markout faced (dollar loss / dollar notional, bps); size-stripped",
+      "n_makers_with_notional": 9367,
+      "mean_per_dollar_loss_bps": 2.071610968587595,
+      "frac_makers_net_loser": 0.7983345788406107,
+      "n_net_loser_makers": 7478,
+      "per_dollar_loss_gini": 0.4973688986628513,
+      "per_dollar_loss_hhi": 0.00033313147675263896,
+      "per_dollar_top_1pct_share": 0.0874266714749982,
+      "per_dollar_top_10pct_share": 0.37557175010157634,
+      "per_dollar_top10_share": 0.01873232682316985,
+      "headline_note": "this is the HEADLINE: per-dollar (size-stripped) maker-loss concentration is only MODERATE (Gini ~0.55), so the maker-side adverse selection is NOT carried by a tiny handful of makers -- the biggest dollar losers are just the biggest makers (see the size-artefact diagnostic below)"
+    },
+    "dollar_loss_concentration_size_artefact": {
+      "label": "DOLLAR-LOSS concentration is a TRADE-SIZE artefact -- do NOT cite the raw Gini alone",
+      "n_loser_makers": 7478,
+      "total_maker_loss_quote": 3609998.3254049425,
+      "dollar_loss_gini_size_artefact_do_not_cite": 0.9757263401028398,
+      "per_maker_notional_gini": 0.9847170731100885,
+      "size_artefact_note": "dollar_loss_gini_size_artefact_do_not_cite (~0.97) is essentially the per_maker_notional_gini (~0.98): the dollar-loss concentration is pure trade-size inequality, not loss dispersion. Cite the per_dollar_loss_gini in (1) instead, never this raw figure alone",
+      "dollar_loss_hhi": 0.0559870959767009,
+      "dollar_loss_top_1pct_share": 0.7857394594523669,
+      "dollar_loss_top_10pct_share": 0.9748466849853882
+    },
+    "net_maker_dollar_pnl_quote": 2376244.0538719078,
+    "net_sign_note": "positive net => makers collectively LOSE (are adverse-selected); negative => makers collectively earn spread",
+    "worst_losers": [
+      {
+        "maker_id": 2618,
+        "maker_addr": "0x7a30132d1bd9cfa1866d9b3d4dccb98d53f2727a",
+        "mean_markout_faced_bps": 50.115817687090704,
+        "mean_markout_faced_bps_notional_wt": 24.55797579273538,
+        "dollar_loss_quote": 87.46347205250055,
+        "n_fills": 17
+      },
+      {
+        "maker_id": 2426,
+        "maker_addr": "0x982a264251c98b78eb3a2310b31f5ddedc156a71",
+        "mean_markout_faced_bps": 45.865271761136896,
+        "mean_markout_faced_bps_notional_wt": 40.67879418587009,
+        "dollar_loss_quote": 13281.072043467655,
+        "n_fills": 102
+      },
+      {
+        "maker_id": 6867,
+        "maker_addr": "0x11e70c06728598f28c79d6218f31663bde539091",
+        "mean_markout_faced_bps": 38.9065249306815,
+        "mean_markout_faced_bps_notional_wt": 30.546306634161354,
+        "dollar_loss_quote": 192.28089674675826,
+        "n_fills": 28
+      },
+      {
+        "maker_id": 7724,
+        "maker_addr": "0x5c5267a02593366f681365ec057e2c5099fa6f88",
+        "mean_markout_faced_bps": 27.357475731589577,
+        "mean_markout_faced_bps_notional_wt": 27.10084666320857,
+        "dollar_loss_quote": 196.1449722962907,
+        "n_fills": 55
+      },
+      {
+        "maker_id": 2483,
+        "maker_addr": "0x61a1c5514581449a021e6eacc84e9e16f7162972",
+        "mean_markout_faced_bps": 27.328840957747484,
+        "mean_markout_faced_bps_notional_wt": 2.599059039299843,
+        "dollar_loss_quote": 8.082413546912559,
+        "n_fills": 18
+      },
+      {
+        "maker_id": 3921,
+        "maker_addr": "0x5a984ea773903850afc5da8bdcd8774352c6633a",
+        "mean_markout_faced_bps": 25.344990921020507,
+        "mean_markout_faced_bps_notional_wt": 22.124227447886714,
+        "dollar_loss_quote": 23.236999152000593,
+        "n_fills": 10
+      },
+      {
+        "maker_id": 6104,
+        "maker_addr": "0x4e2e3642b99bed70abe54b306f0c2c6a428c636b",
+        "mean_markout_faced_bps": 24.74351448615392,
+        "mean_markout_faced_bps_notional_wt": 3.943379710879244,
+        "dollar_loss_quote": 28.18144035158406,
+        "n_fills": 15
+      },
+      {
+        "maker_id": 6378,
+        "maker_addr": "0x706393b6618a0d0c86e38ca112a0541597b0805f",
+        "mean_markout_faced_bps": 22.7559215372259,
+        "mean_markout_faced_bps_notional_wt": 11.25966012946259,
+        "dollar_loss_quote": 24.938578585494568,
+        "n_fills": 22
+      },
+      {
+        "maker_id": 4565,
+        "maker_addr": "0xdc7bf4d19f98e3082251a75938ce4775224b19bb",
+        "mean_markout_faced_bps": 21.709358986686258,
+        "mean_markout_faced_bps_notional_wt": 21.249828983326502,
+        "dollar_loss_quote": 20.983520079955774,
+        "n_fills": 17
+      },
+      {
+        "maker_id": 2476,
+        "maker_addr": "0x9dfd2ca547f1c5d7f095ea75f839417155cbe416",
+        "mean_markout_faced_bps": 20.508369462768528,
+        "mean_markout_faced_bps_notional_wt": 14.805404606916449,
+        "dollar_loss_quote": 2016.599502983297,
+        "n_fills": 137
+      },
+      {
+        "maker_id": 5397,
+        "maker_addr": "0x3b8de4db0cbf0db84e76796808b7a80fa8420c9c",
+        "mean_markout_faced_bps": 19.561110925674438,
+        "mean_markout_faced_bps_notional_wt": 11.438634075168741,
+        "dollar_loss_quote": 26.302189699489716,
+        "n_fills": 10
+      },
+      {
+        "maker_id": 8452,
+        "maker_addr": "0x2c8881988fc475354dfa952bdd4a8946e83c33bb",
+        "mean_markout_faced_bps": 17.881364345550537,
+        "mean_markout_faced_bps_notional_wt": 16.918479779953987,
+        "dollar_loss_quote": 19.017639848865162,
+        "n_fills": 10
+      },
+      {
+        "maker_id": 2213,
+        "maker_addr": "0x268f52086f04685965e55a09458e51006c7b024e",
+        "mean_markout_faced_bps": 17.838685926049948,
+        "mean_markout_faced_bps_notional_wt": 7.6884957077785785,
+        "dollar_loss_quote": 487.15053777672676,
+        "n_fills": 64
+      },
+      {
+        "maker_id": 3299,
+        "maker_addr": "0x8e50ef6fe3d9c1f7579f1b68347fe0e8f275d047",
+        "mean_markout_faced_bps": 17.761792461077373,
+        "mean_markout_faced_bps_notional_wt": 19.766306235275113,
+        "dollar_loss_quote": 1277.6559532999631,
+        "n_fills": 12
+      },
+      {
+        "maker_id": 7918,
+        "maker_addr": "0x753998bd5c477cd006fdeb67c5f402539ae95384",
+        "mean_markout_faced_bps": 17.318435668945312,
+        "mean_markout_faced_bps_notional_wt": 17.318435668945312,
+        "dollar_loss_quote": 156.1376986737433,
+        "n_fills": 23
+      },
+      {
+        "maker_id": 7727,
+        "maker_addr": "0x9ea9f8d0697672dd2a504c3ae4f85eee67c5b4e4",
+        "mean_markout_faced_bps": 17.250887263904918,
+        "mean_markout_faced_bps_notional_wt": 10.445690105065108,
+        "dollar_loss_quote": 472.8170386016073,
+        "n_fills": 22
+      },
+      {
+        "maker_id": 1336,
+        "maker_addr": "0x0d3aa90563afb3acfa92fb095e3a85dcdfaaf824",
+        "mean_markout_faced_bps": 17.07717662387424,
+        "mean_markout_faced_bps_notional_wt": 17.721191986890936,
+        "dollar_loss_quote": 27.893689957964963,
+        "n_fills": 18
+      },
+      {
+        "maker_id": 1503,
+        "maker_addr": "0x288c05dbe04df0a6c5af70f0093a833dd7a49a5e",
+        "mean_markout_faced_bps": 17.031587329777803,
+        "mean_markout_faced_bps_notional_wt": 13.515781919862073,
+        "dollar_loss_quote": 17.974453893339472,
+        "n_fills": 11
+      },
+      {
+        "maker_id": 6860,
+        "maker_addr": "0xbde9b08c550a61260fe7b36de1215a05a434fdae",
+        "mean_markout_faced_bps": 16.8149653042064,
+        "mean_markout_faced_bps_notional_wt": 16.81458701973908,
+        "dollar_loss_quote": 13.75594935076153,
+        "n_fills": 17
+      },
+      {
+        "maker_id": 6624,
+        "maker_addr": "0xb4773a58bfa5eb5f1029334d5dbde2f12cd35d42",
+        "mean_markout_faced_bps": 16.462062329463617,
+        "mean_markout_faced_bps_notional_wt": 12.675858034670533,
+        "dollar_loss_quote": 363.98067516025696,
+        "n_fills": 51
+      },
+      {
+        "maker_id": 1272,
+        "maker_addr": "0x56c28dcd45e735c39b5fbc08564ced413c37268f",
+        "mean_markout_faced_bps": 16.281032538414003,
+        "mean_markout_faced_bps_notional_wt": 11.875447100606564,
+        "dollar_loss_quote": 14.970659675392719,
+        "n_fills": 10
+      },
+      {
+        "maker_id": 1280,
+        "maker_addr": "0xd9012a0c82242b04ee09e45e98b24903f982d975",
+        "mean_markout_faced_bps": 16.127963081002235,
+        "mean_markout_faced_bps_notional_wt": 7.791339457384247,
+        "dollar_loss_quote": 136.86644588195327,
+        "n_fills": 32
+      },
+      {
+        "maker_id": 6887,
+        "maker_addr": "0x16960f45a9bd2f58700aef75125e4104eda019b8",
+        "mean_markout_faced_bps": 15.499865195486281,
+        "mean_markout_faced_bps_notional_wt": 14.224152490103918,
+        "dollar_loss_quote": 33.29216375214483,
+        "n_fills": 45
+      },
+      {
+        "maker_id": 6428,
+        "maker_addr": "0x8491633e9ec12baf163a04776f6503dd699ae1e5",
+        "mean_markout_faced_bps": 15.277961450464586,
+        "mean_markout_faced_bps_notional_wt": 15.271858823407758,
+        "dollar_loss_quote": 29.698770615827964,
+        "n_fills": 17
+      },
+      {
+        "maker_id": 2151,
+        "maker_addr": "0x825714bae8bd60162bb14a04bb2183d00b3d00c9",
+        "mean_markout_faced_bps": 15.206875383853912,
+        "mean_markout_faced_bps_notional_wt": 11.5626262130339,
+        "dollar_loss_quote": 28.783140496437543,
+        "n_fills": 16
+      }
+    ],
+    "best_earners": [
+      {
+        "maker_id": 2661,
+        "maker_addr": "0x7892624922821446e6d5a9db92d9ad3f6ecbcbb3",
+        "mean_markout_faced_bps": -25.110289764404296,
+        "mean_markout_faced_bps_notional_wt": -25.110254788823323,
+        "dollar_loss_quote": -19.53377985771021,
+        "n_fills": 10
+      },
+      {
+        "maker_id": 7728,
+        "maker_addr": "0xcb02837caaee310c178501855b63bf7f4f4b1f8b",
+        "mean_markout_faced_bps": -22.656616797814003,
+        "mean_markout_faced_bps_notional_wt": -22.026600902073852,
+        "dollar_loss_quote": -281.7897488787776,
+        "n_fills": 13
+      },
+      {
+        "maker_id": 5111,
+        "maker_addr": "0x4ea258512c59f12b727fc328c9fa8734d7d9eeae",
+        "mean_markout_faced_bps": -20.99937973703657,
+        "mean_markout_faced_bps_notional_wt": -10.84130876771646,
+        "dollar_loss_quote": -24.231090286853313,
+        "n_fills": 14
+      },
+      {
+        "maker_id": 2662,
+        "maker_addr": "0x97d9bb97f706b2c8b8cad7dec27561baa5c70960",
+        "mean_markout_faced_bps": -20.218738849124602,
+        "mean_markout_faced_bps_notional_wt": -1.9481321728654455,
+        "dollar_loss_quote": -63.870229581789026,
+        "n_fills": 31
+      },
+      {
+        "maker_id": 2626,
+        "maker_addr": "0x8e6ed79c48944265fe5d004010c11cb28aa105b4",
+        "mean_markout_faced_bps": -17.622183677397278,
+        "mean_markout_faced_bps_notional_wt": 1.7197769384109218,
+        "dollar_loss_quote": 79.1535939879211,
+        "n_fills": 19
+      },
+      {
+        "maker_id": 2704,
+        "maker_addr": "0xadcbc1f36213b15399e0497508c50a1cda7bf08f",
+        "mean_markout_faced_bps": -17.24038362999757,
+        "mean_markout_faced_bps_notional_wt": -10.387096659054821,
+        "dollar_loss_quote": -4.840190964599745,
+        "n_fills": 12
+      },
+      {
+        "maker_id": 6919,
+        "maker_addr": "0x80eba6761f3fc3359131439fa359b5b44b912d4f",
+        "mean_markout_faced_bps": -16.40476556257768,
+        "mean_markout_faced_bps_notional_wt": -8.366202779481592,
+        "dollar_loss_quote": -138.6359913021857,
+        "n_fills": 55
+      },
+      {
+        "maker_id": 4287,
+        "maker_addr": "0x283d688524050e240c7cf9326d7cd1b509e58a95",
+        "mean_markout_faced_bps": -15.068237562291324,
+        "mean_markout_faced_bps_notional_wt": -3.4305531053106013,
+        "dollar_loss_quote": -0.3964800316787309,
+        "n_fills": 10
+      },
+      {
+        "maker_id": 4285,
+        "maker_addr": "0x45a5722b15bde0af61aa25ec7a54e1932af68d9e",
+        "mean_markout_faced_bps": -12.990967895303454,
+        "mean_markout_faced_bps_notional_wt": -4.454416905299594,
+        "dollar_loss_quote": -14.898391919062275,
+        "n_fills": 28
+      },
+      {
+        "maker_id": 7679,
+        "maker_addr": "0xe4d9d40170e32b062a33081b6d28f2a374604f95",
+        "mean_markout_faced_bps": -12.116949081420898,
+        "mean_markout_faced_bps_notional_wt": -12.114683312350403,
+        "dollar_loss_quote": -50.48929957056423,
+        "n_fills": 63
+      },
+      {
+        "maker_id": 7408,
+        "maker_addr": "0x2be1ee73018f54c754c117ef3de438ee2f66dfb6",
+        "mean_markout_faced_bps": -11.793684833758586,
+        "mean_markout_faced_bps_notional_wt": -6.123304477672141,
+        "dollar_loss_quote": -13.370582467210445,
+        "n_fills": 37
+      },
+      {
+        "maker_id": 5420,
+        "maker_addr": "0x6926e0a068b13be00607dc032c99775e07a8c4c9",
+        "mean_markout_faced_bps": -11.075047264440483,
+        "mean_markout_faced_bps_notional_wt": -1.5110614036180265,
+        "dollar_loss_quote": -8.514380056611332,
+        "n_fills": 22
+      },
+      {
+        "maker_id": 8501,
+        "maker_addr": "0x0427453e5fdbc8e49e1a938cde70499dabc8891e",
+        "mean_markout_faced_bps": -10.612191061178843,
+        "mean_markout_faced_bps_notional_wt": -8.178410175339042,
+        "dollar_loss_quote": -60.680569899197145,
+        "n_fills": 24
+      },
+      {
+        "maker_id": 3333,
+        "maker_addr": "0x8eff8ff863c1a54ec6697b7ad98fe30aa344bd5e",
+        "mean_markout_faced_bps": -9.920322051173763,
+        "mean_markout_faced_bps_notional_wt": 0.8159914921773137,
+        "dollar_loss_quote": 86.01288466706123,
+        "n_fills": 38
+      },
+      {
+        "maker_id": 7299,
+        "maker_addr": "0x6572bc26edf54a74bef243eff10d3fbe6d461eb7",
+        "mean_markout_faced_bps": -9.723726840019227,
+        "mean_markout_faced_bps_notional_wt": -20.555871993821295,
+        "dollar_loss_quote": -25028.985781955133,
+        "n_fills": 75
+      },
+      {
+        "maker_id": 6893,
+        "maker_addr": "0x6d4f26cb2b573542c45bdbcdf5ecd5359cb530f1",
+        "mean_markout_faced_bps": -9.246228564869273,
+        "mean_markout_faced_bps_notional_wt": -2.6076816955258755,
+        "dollar_loss_quote": -132.0314791644103,
+        "n_fills": 11
+      },
+      {
+        "maker_id": 2644,
+        "maker_addr": "0xc67663415662a592bf8144ada2c2310a68c77d1a",
+        "mean_markout_faced_bps": -9.218558110974051,
+        "mean_markout_faced_bps_notional_wt": -1.0970939183624693,
+        "dollar_loss_quote": -9.078180124084962,
+        "n_fills": 11
+      },
+      {
+        "maker_id": 8458,
+        "maker_addr": "0xfd38c1e85ec5b20bbdd4af39c4be7e4d91e43561",
+        "mean_markout_faced_bps": -8.834239131015426,
+        "mean_markout_faced_bps_notional_wt": 0.5279616865988959,
+        "dollar_loss_quote": 59.88698289917215,
+        "n_fills": 106
+      },
+      {
+        "maker_id": 5398,
+        "maker_addr": "0xaded86bf6e6fd72f78dca132af112fa36230809e",
+        "mean_markout_faced_bps": -8.549447451139752,
+        "mean_markout_faced_bps_notional_wt": 6.527590308704679,
+        "dollar_loss_quote": 3757.039078463262,
+        "n_fills": 95
+      },
+      {
+        "maker_id": 7678,
+        "maker_addr": "0x318f967904a2e8d3219e963d63efc5a5d6c4c615",
+        "mean_markout_faced_bps": -8.449888540773976,
+        "mean_markout_faced_bps_notional_wt": -8.401433964649323,
+        "dollar_loss_quote": -22.89447480686079,
+        "n_fills": 49
+      },
+      {
+        "maker_id": 5064,
+        "maker_addr": "0x8cb7566b1c467b864923ac589566a8d24bfca7b7",
+        "mean_markout_faced_bps": -8.415271688532084,
+        "mean_markout_faced_bps_notional_wt": -7.602184028004829,
+        "dollar_loss_quote": -32.32984727468757,
+        "n_fills": 40
+      },
+      {
+        "maker_id": 2385,
+        "maker_addr": "0xb28cf8649d1cda2975d290f04ea4cc4db7b3828e",
+        "mean_markout_faced_bps": -8.222770823628311,
+        "mean_markout_faced_bps_notional_wt": 0.02047780679281976,
+        "dollar_loss_quote": 21.882001649759086,
+        "n_fills": 149
+      },
+      {
+        "maker_id": 5924,
+        "maker_addr": "0x80910105317ec7acbb4eeeac9a30c8520b2a8aa8",
+        "mean_markout_faced_bps": -8.03151586380872,
+        "mean_markout_faced_bps_notional_wt": -5.490388587352315,
+        "dollar_loss_quote": -2.242496957039429,
+        "n_fills": 11
+      },
+      {
+        "maker_id": 5994,
+        "maker_addr": "0x06574d6b46cb268ee2238894c6d87e95a9317005",
+        "mean_markout_faced_bps": -7.676630609175739,
+        "mean_markout_faced_bps_notional_wt": -2.090271698303236,
+        "dollar_loss_quote": -42.7351505350964,
+        "n_fills": 34
+      },
+      {
+        "maker_id": 8307,
+        "maker_addr": "0x3f0fbe29803e6ae8bcba412ab9019aa690be3649",
+        "mean_markout_faced_bps": -7.0648205280303955,
+        "mean_markout_faced_bps_notional_wt": -7.064830772398427,
+        "dollar_loss_quote": -4.2643799333597725,
+        "n_fills": 12
+      }
+    ],
+    "top_makers_by_dollar_loss": [
+      {
+        "maker_id": 1831,
+        "maker_addr": "0xb8eb97eaed8367079894d2f1bed69bd220ec1dd5",
+        "dollar_loss_quote": 655800.153905466,
+        "notional_quote": 3880936427.692085,
+        "mean_markout_faced_bps_notional_wt": 1.689798753790601,
+        "n_fills": 15628,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 15,
+        "maker_addr": "0xc6ac58a7a63339898aeda32499a8238a46d88e84",
+        "dollar_loss_quote": 445774.9744636292,
+        "notional_quote": 5668186656.994343,
+        "mean_markout_faced_bps_notional_wt": 0.7864507671312416,
+        "n_fills": 20496,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 1848,
+        "maker_addr": "0xe3b6e3443c8f2080704e7421bad9340f13950acb",
+        "dollar_loss_quote": 179889.1931746739,
+        "notional_quote": 1455928916.2407255,
+        "mean_markout_faced_bps_notional_wt": 1.2355630221230796,
+        "n_fills": 47921,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 74,
+        "maker_addr": "0x0ddf9bae2af4b874b96d287a5ad42eb47138a902",
+        "dollar_loss_quote": 107964.21475025809,
+        "notional_quote": 453071351.29659706,
+        "mean_markout_faced_bps_notional_wt": 2.382940665775648,
+        "n_fills": 23846,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 88,
+        "maker_addr": "0x50b309f78e774a756a2230e1769729094cac9f20",
+        "dollar_loss_quote": 94791.03594135438,
+        "notional_quote": 173438536.20226282,
+        "mean_markout_faced_bps_notional_wt": 5.465396446312792,
+        "n_fills": 2500,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 1648,
+        "maker_addr": "0x57dd78cd36e76e2011e8f6dc25cabbaba994494b",
+        "dollar_loss_quote": 77558.46812066616,
+        "notional_quote": 303495644.0321353,
+        "mean_markout_faced_bps_notional_wt": 2.5555051496044965,
+        "n_fills": 12501,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 5270,
+        "maker_addr": "0xb317d2bc2d3d2df5fa441b5bae0ab9d8b07283ae",
+        "dollar_loss_quote": 74755.74302657328,
+        "notional_quote": 500106696.8251878,
+        "mean_markout_faced_bps_notional_wt": 1.4947958805819488,
+        "n_fills": 14030,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 52,
+        "maker_addr": "0x023a3d058020fb76cca98f01b3c48c8938a22355",
+        "dollar_loss_quote": 70562.05039080259,
+        "notional_quote": 1327222412.3141365,
+        "mean_markout_faced_bps_notional_wt": 0.531652040653609,
+        "n_fills": 56401,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 2643,
+        "maker_addr": "0xec326a384ae965647d87e1f85db46d2efa15ae82",
+        "dollar_loss_quote": 62862.63748370189,
+        "notional_quote": 298811805.0944766,
+        "mean_markout_faced_bps_notional_wt": 2.10375348001483,
+        "n_fills": 5130,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 99,
+        "maker_addr": "0x3bcae23e8c380dab4732e9a159c0456f12d866f3",
+        "dollar_loss_quote": 58731.07248898423,
+        "notional_quote": 246865392.1993149,
+        "mean_markout_faced_bps_notional_wt": 2.379072739429058,
+        "n_fills": 34105,
+        "is_hlp_candidate": false
+      }
+    ],
+    "top_makers_by_notional": [
+      {
+        "maker_id": 15,
+        "maker_addr": "0xc6ac58a7a63339898aeda32499a8238a46d88e84",
+        "dollar_loss_quote": 445774.9744636292,
+        "notional_quote": 5668186656.994343,
+        "mean_markout_faced_bps_notional_wt": 0.7864507671312416,
+        "n_fills": 20496,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 1831,
+        "maker_addr": "0xb8eb97eaed8367079894d2f1bed69bd220ec1dd5",
+        "dollar_loss_quote": 655800.153905466,
+        "notional_quote": 3880936427.692085,
+        "mean_markout_faced_bps_notional_wt": 1.689798753790601,
+        "n_fills": 15628,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 43,
+        "maker_addr": "0xecb63caa47c7c4e77f60f1ce858cf28dc2b82b00",
+        "dollar_loss_quote": -14365.613933586807,
+        "notional_quote": 2118250284.2086878,
+        "mean_markout_faced_bps_notional_wt": -0.06781830287327663,
+        "n_fills": 141173,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 73,
+        "maker_addr": "0x09bc1cf4d9f0b59e1425a8fde4d4b1f7d3c9410d",
+        "dollar_loss_quote": -33967.00798303382,
+        "notional_quote": 1648446648.7871838,
+        "mean_markout_faced_bps_notional_wt": -0.20605463942690702,
+        "n_fills": 9655,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 1836,
+        "maker_addr": "0xd911e53d53b663972254e086450fd6198a25961e",
+        "dollar_loss_quote": -141945.81606499702,
+        "notional_quote": 1639342227.7357032,
+        "mean_markout_faced_bps_notional_wt": -0.86587055261219,
+        "n_fills": 22903,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 1848,
+        "maker_addr": "0xe3b6e3443c8f2080704e7421bad9340f13950acb",
+        "dollar_loss_quote": 179889.1931746739,
+        "notional_quote": 1455928916.2407255,
+        "mean_markout_faced_bps_notional_wt": 1.2355630221230796,
+        "n_fills": 47921,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 13,
+        "maker_addr": "0x0fd468a73084daa6ea77a9261e40fdec3e67e0c7",
+        "dollar_loss_quote": -13075.2432218481,
+        "notional_quote": 1359864524.5566719,
+        "mean_markout_faced_bps_notional_wt": -0.09615107229972614,
+        "n_fills": 25843,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 52,
+        "maker_addr": "0x023a3d058020fb76cca98f01b3c48c8938a22355",
+        "dollar_loss_quote": 70562.05039080259,
+        "notional_quote": 1327222412.3141365,
+        "mean_markout_faced_bps_notional_wt": 0.531652040653609,
+        "n_fills": 56401,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 38,
+        "maker_addr": "0xadc9cf23f55c6221a05a8150e5768d7c3289562f",
+        "dollar_loss_quote": -38352.714025009154,
+        "notional_quote": 1321132112.8436985,
+        "mean_markout_faced_bps_notional_wt": -0.2903018831512335,
+        "n_fills": 15895,
+        "is_hlp_candidate": false
+      },
+      {
+        "maker_id": 31,
+        "maker_addr": "0x7ca165f354e3260e2f8d5a7508cc9dd2fa009235",
+        "dollar_loss_quote": -45855.759963302095,
+        "notional_quote": 770427470.165499,
+        "mean_markout_faced_bps_notional_wt": -0.595198921884906,
+        "n_fills": 7395,
+        "is_hlp_candidate": false
+      }
+    ]
+  },
+  "hlp_vault_check": {
+    "primary": {
+      "status": "not_found",
+      "address": "0xdfc24b077bc1425ad1dea75bcb6f8158e10df303",
+      "reason": "address not present in maker_map.json (this HLP candidate was never matched as a maker in this window; see top_makers for cross-validation)"
+    },
+    "secondary": {
+      "status": "not_found",
+      "address": "0x5078c2fbea2b2ad61bc840bc023e35fce56bedb6",
+      "reason": "address not present in maker_map.json (this HLP candidate was never matched as a maker in this window; see top_makers for cross-validation)"
+    },
+    "any_candidate_matched": false,
+    "summary_note": "neither HLP candidate resolves to a maker code; use top_makers_by_* (by dollar loss and by notional) to cross-validate which dominant maker is the protocol vault"
+  }
+}

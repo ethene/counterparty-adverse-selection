@@ -1,0 +1,518 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "i3_results.json",
+    "producer": {
+      "script": "i3_nonrecoverability_oos.py",
+      "sha256": "499f060ce98f6b0bfcc582ea635c769c6c554134f602793ee6da0dd542e9a62d",
+      "bytes": 56095,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "9620147c40a35a18c4205102c526c37f27f07fa9",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "quickwin_taker_map.json",
+        "bytes": 2418975,
+        "sha256": "116ce63018fd37c6219e518901583fdc75859f8199a84f80f344fdabfe394315",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "45,849 mapped counterparties over the fills of the trade-print panel; a wallet enters a cell only when it clears that cell's per-half fill floor in BOTH halves, and the folds are cut over wallets so no wallet is scored on its own rows",
+      "window": "early days [4, 5, 6, 7, 8] against late days [9, 10, 11, 12, 13], resolved from the days actually present in the input rather than the day-of-month tuples requested",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 20260619,
+      "n_perm": 2000,
+      "n_boot": null,
+      "rank_floor_fills": null,
+      "horizons_scored_s": [
+        60,
+        10
+      ],
+      "early_late_split": "settings.split_early_late over the input day span 4-13: early [4, 5, 6, 7, 8], late [9, 10, 11, 12, 13]",
+      "whale_drop_criterion": "notional",
+      "p_floor": 0.0004997501249375312,
+      "overrides_note": "master_seed 20260619 not settings.MASTER_SEED 20260620; n_perm is the declared budget, read from settings.py and no longer typed here, and a p at the floor is still a bound rather than a measurement, which placebo_p_is_floor records; no bootstrap is drawn, so n_boot does not apply; eligibility is the per-half floor settings.PERSISTENCE_FLOOR_FILLS (50, 100), not the ranking-window RANK_FLOOR_FILLS, so that field is not applicable here; the SPAN of days is local because it is a property of the quickwin intermediates and of nothing else, while the CUT inside that span is settings.split_early_late and is no longer a pair of typed tuples; whales are dropped by NOTIONAL, which answers 'is this a volume artifact'; the headline window carries the claim and the long companion is reported beside it, first only in print order",
+      "overridden": [
+        "early_late_split",
+        "horizons_scored_s",
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "overrides_note",
+        "p_floor",
+        "rank_floor_fills",
+        "whale_drop_criterion"
+      ]
+    },
+    "rng_seed": 20260619,
+    "markout_source": "trade",
+    "run": {
+      "runtime_s": 15.308,
+      "finished_utc": "2026-08-29T09:12:37Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "object": "I3 - out-of-sample non-recoverability of per-counterparty toxicity",
+  "scope": {
+    "early_days_requested": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "late_days_requested": [
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "early_days": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "late_days": [
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "horizons_s": [
+      60,
+      10
+    ],
+    "K_list": [
+      50,
+      100
+    ],
+    "n_folds": 5,
+    "n_perm": 2000,
+    "p_floor": 0.0004997501249375312,
+    "p_floor_note": "a budget of 2000 draws cannot express a p below 0.000500; every placebo_p carries placebo_p_is_floor saying whether it is a measurement or the budget's floor",
+    "whale_drop_k": 10,
+    "n_vpin_buckets": 50,
+    "comparator_scope": "TRADE-TAPE-ONLY anonymous metrics (VPIN by bulk-volume classification, rolling signed-flow imbalance, mean size, trade intensity). NO order book. The full OFI/queue/book-VPIN comparator needs book reconstruction (a later heavy step); I3 bounds non-recoverability against the trade-only information set only.",
+    "claim": "history FE (wallet EARLY-half mean markout, observable only via on-chain identity resolution) adds OUT-OF-SAMPLE lift over anonymous trade-flow metrics; placebo (label-shuffled FE) must kill it.",
+    "n_takers_mapped": 45849,
+    "side_source": "taker_side (real aggressor flag from intermediate)",
+    "markout_source": "trade"
+  },
+  "by_coin": [
+    {
+      "coin": "BTC",
+      "horizon_s": 60,
+      "K": 50,
+      "n_wallets": 644,
+      "oos_r2_anon": -0.010024686984544173,
+      "oos_r2_anon_plus_fe": -0.012243690777918648,
+      "incremental_oos_r2": -0.0022190037933744744,
+      "oos_spearman_anon": -0.028674000991578324,
+      "oos_spearman_anon_plus_fe": 0.004359664822265089,
+      "incremental_spearman": 0.03303366581384341,
+      "placebo_p": 0.6466766616691654,
+      "placebo_p_is_floor": false,
+      "incremental_oos_r2_no_whales": NaN,
+      "whale_robust": "n/a",
+      "interpretation": "INCONCLUSIVE/UNDERPOWERED, not a recoverability finding: incremental R^2 -0.0022 <= 0 while incremental Spearman +0.0330 > 0. The positive rank lift means the wallet-history FE still orders future toxicity out of sample; the non-positive R^2 is a level-fit artefact. Do NOT read this cell as evidence that toxicity is recoverable from the anonymous trade tape.",
+      "bh_qvalue": 0.8622355488922204,
+      "bh_qvalue_at_p_floor": false,
+      "survives_fdr": false
+    },
+    {
+      "coin": "BTC",
+      "horizon_s": 60,
+      "K": 100,
+      "n_wallets": 328,
+      "oos_r2_anon": -0.0012638082866660572,
+      "oos_r2_anon_plus_fe": 0.038650358530892825,
+      "incremental_oos_r2": 0.03991416681755888,
+      "oos_spearman_anon": -0.04245287189493852,
+      "oos_spearman_anon_plus_fe": 0.2252525163214879,
+      "incremental_spearman": 0.2677053882164264,
+      "placebo_p": 0.0004997501249375312,
+      "placebo_p_is_floor": true,
+      "incremental_oos_r2_no_whales": 0.0361901378616567,
+      "whale_robust": true,
+      "interpretation": null,
+      "bh_qvalue": 0.0011994002998500749,
+      "bh_qvalue_at_p_floor": false,
+      "survives_fdr": true
+    },
+    {
+      "coin": "BTC",
+      "horizon_s": 10,
+      "K": 50,
+      "n_wallets": 644,
+      "oos_r2_anon": 0.015731627357288724,
+      "oos_r2_anon_plus_fe": 0.29212374099169613,
+      "incremental_oos_r2": 0.2763921136344074,
+      "oos_spearman_anon": 0.2163080263705021,
+      "oos_spearman_anon_plus_fe": 0.5923338909744582,
+      "incremental_spearman": 0.37602586460395615,
+      "placebo_p": 0.0004997501249375312,
+      "placebo_p_is_floor": true,
+      "incremental_oos_r2_no_whales": 0.25706142709361923,
+      "whale_robust": true,
+      "interpretation": null,
+      "bh_qvalue": 0.0011994002998500749,
+      "bh_qvalue_at_p_floor": false,
+      "survives_fdr": true
+    },
+    {
+      "coin": "BTC",
+      "horizon_s": 10,
+      "K": 100,
+      "n_wallets": 328,
+      "oos_r2_anon": -0.07824929176633111,
+      "oos_r2_anon_plus_fe": 0.5036508112270185,
+      "incremental_oos_r2": 0.5819001029933496,
+      "oos_spearman_anon": -0.043304058148637595,
+      "oos_spearman_anon_plus_fe": 0.764628127165798,
+      "incremental_spearman": 0.8079321853144356,
+      "placebo_p": 0.0004997501249375312,
+      "placebo_p_is_floor": true,
+      "incremental_oos_r2_no_whales": 0.5131410695200791,
+      "whale_robust": true,
+      "interpretation": null,
+      "bh_qvalue": 0.0011994002998500749,
+      "bh_qvalue_at_p_floor": false,
+      "survives_fdr": true
+    },
+    {
+      "coin": "ETH",
+      "horizon_s": 60,
+      "K": 50,
+      "n_wallets": 570,
+      "oos_r2_anon": -0.00216141234622369,
+      "oos_r2_anon_plus_fe": 0.004515817394842969,
+      "incremental_oos_r2": 0.006677229741066659,
+      "oos_spearman_anon": 0.2780767334820327,
+      "oos_spearman_anon_plus_fe": 0.3051161324466664,
+      "incremental_spearman": 0.0270393989646337,
+      "placebo_p": 0.005997001499250375,
+      "placebo_p_is_floor": false,
+      "incremental_oos_r2_no_whales": 0.006033088084466565,
+      "whale_robust": true,
+      "interpretation": null,
+      "bh_qvalue": 0.010280573998714928,
+      "bh_qvalue_at_p_floor": false,
+      "survives_fdr": true
+    },
+    {
+      "coin": "ETH",
+      "horizon_s": 60,
+      "K": 100,
+      "n_wallets": 339,
+      "oos_r2_anon": 0.029894544746862373,
+      "oos_r2_anon_plus_fe": 0.014505072038543454,
+      "incremental_oos_r2": -0.015389472708318919,
+      "oos_spearman_anon": 0.33099778530043217,
+      "oos_spearman_anon_plus_fe": 0.3621030713170224,
+      "incremental_spearman": 0.03110528601659024,
+      "placebo_p": 0.7851074462768616,
+      "placebo_p_is_floor": false,
+      "incremental_oos_r2_no_whales": NaN,
+      "whale_robust": "n/a",
+      "interpretation": "INCONCLUSIVE/UNDERPOWERED, not a recoverability finding: incremental R^2 -0.0154 <= 0 while incremental Spearman +0.0311 > 0. The positive rank lift means the wallet-history FE still orders future toxicity out of sample; the non-positive R^2 is a level-fit artefact. Do NOT read this cell as evidence that toxicity is recoverable from the anonymous trade tape.",
+      "bh_qvalue": 0.9421289355322339,
+      "bh_qvalue_at_p_floor": false,
+      "survives_fdr": false
+    },
+    {
+      "coin": "ETH",
+      "horizon_s": 10,
+      "K": 50,
+      "n_wallets": 570,
+      "oos_r2_anon": 0.060026647659685684,
+      "oos_r2_anon_plus_fe": 0.23712586502911015,
+      "incremental_oos_r2": 0.17709921736942447,
+      "oos_spearman_anon": 0.3474466963903438,
+      "oos_spearman_anon_plus_fe": 0.5154064558686335,
+      "incremental_spearman": 0.16795975947828973,
+      "placebo_p": 0.0004997501249375312,
+      "placebo_p_is_floor": true,
+      "incremental_oos_r2_no_whales": 0.1882040011681072,
+      "whale_robust": true,
+      "interpretation": null,
+      "bh_qvalue": 0.0011994002998500749,
+      "bh_qvalue_at_p_floor": false,
+      "survives_fdr": true
+    },
+    {
+      "coin": "ETH",
+      "horizon_s": 10,
+      "K": 100,
+      "n_wallets": 339,
+      "oos_r2_anon": 0.06752292163826479,
+      "oos_r2_anon_plus_fe": -0.430383304018056,
+      "incremental_oos_r2": -0.4979062256563208,
+      "oos_spearman_anon": 0.45292793139667764,
+      "oos_spearman_anon_plus_fe": 0.6394524548050355,
+      "incremental_spearman": 0.1865245234083579,
+      "placebo_p": 1.0,
+      "placebo_p_is_floor": false,
+      "incremental_oos_r2_no_whales": NaN,
+      "whale_robust": "n/a",
+      "interpretation": "INCONCLUSIVE/UNDERPOWERED, not a recoverability finding: incremental R^2 -0.4979 <= 0 while incremental Spearman +0.1865 > 0. The positive rank lift means the wallet-history FE still orders future toxicity out of sample; the non-positive R^2 is a level-fit artefact. Do NOT read this cell as evidence that toxicity is recoverable from the anonymous trade tape.",
+      "bh_qvalue": 1.0,
+      "bh_qvalue_at_p_floor": false,
+      "survives_fdr": false
+    }
+  ],
+  "pooled": [
+    {
+      "coin": "POOLED",
+      "horizon_s": 60,
+      "K": 50,
+      "n_wallets": 1169,
+      "oos_r2_anon": -0.0039255107472324635,
+      "oos_r2_anon_plus_fe": -0.0020042058425679965,
+      "incremental_oos_r2": 0.001921304904664467,
+      "oos_spearman_anon": 0.09832684472992897,
+      "oos_spearman_anon_plus_fe": 0.19692351710848963,
+      "incremental_spearman": 0.09859667237856065,
+      "placebo_p": 0.01999000499750125,
+      "placebo_p_is_floor": false,
+      "incremental_oos_r2_no_whales": 0.0035712976911232985,
+      "whale_robust": true,
+      "interpretation": null,
+      "bh_qvalue": 0.029985007496251874,
+      "bh_qvalue_at_p_floor": false,
+      "survives_fdr": true
+    },
+    {
+      "coin": "POOLED",
+      "horizon_s": 60,
+      "K": 100,
+      "n_wallets": 596,
+      "oos_r2_anon": 0.00431748214930161,
+      "oos_r2_anon_plus_fe": 0.03532365218022804,
+      "incremental_oos_r2": 0.031006170030926428,
+      "oos_spearman_anon": 0.2552598308218097,
+      "oos_spearman_anon_plus_fe": 0.3429811059697563,
+      "incremental_spearman": 0.08772127514794659,
+      "placebo_p": 0.0009995002498750624,
+      "placebo_p_is_floor": false,
+      "incremental_oos_r2_no_whales": 0.024588707755437977,
+      "whale_robust": true,
+      "interpretation": null,
+      "bh_qvalue": 0.001999000499750125,
+      "bh_qvalue_at_p_floor": false,
+      "survives_fdr": true
+    },
+    {
+      "coin": "POOLED",
+      "horizon_s": 10,
+      "K": 50,
+      "n_wallets": 1169,
+      "oos_r2_anon": 0.051248431426384355,
+      "oos_r2_anon_plus_fe": 0.20366913661653174,
+      "incremental_oos_r2": 0.1524207051901474,
+      "oos_spearman_anon": 0.2447696207765111,
+      "oos_spearman_anon_plus_fe": 0.4406038517575717,
+      "incremental_spearman": 0.19583423098106062,
+      "placebo_p": 0.0004997501249375312,
+      "placebo_p_is_floor": true,
+      "incremental_oos_r2_no_whales": 0.1439827840228627,
+      "whale_robust": true,
+      "interpretation": null,
+      "bh_qvalue": 0.0011994002998500749,
+      "bh_qvalue_at_p_floor": false,
+      "survives_fdr": true
+    },
+    {
+      "coin": "POOLED",
+      "horizon_s": 10,
+      "K": 100,
+      "n_wallets": 596,
+      "oos_r2_anon": 0.021497502149797176,
+      "oos_r2_anon_plus_fe": -0.09502560795874304,
+      "incremental_oos_r2": -0.11652311010854022,
+      "oos_spearman_anon": 0.31236760192593443,
+      "oos_spearman_anon_plus_fe": 0.6295445418395343,
+      "incremental_spearman": 0.3171769399135999,
+      "placebo_p": 0.9975012493753124,
+      "placebo_p_is_floor": false,
+      "incremental_oos_r2_no_whales": NaN,
+      "whale_robust": "n/a",
+      "interpretation": "INCONCLUSIVE/UNDERPOWERED, not a recoverability finding: incremental R^2 -0.1165 <= 0 while incremental Spearman +0.3172 > 0. The positive rank lift means the wallet-history FE still orders future toxicity out of sample; the non-positive R^2 is a level-fit artefact. Do NOT read this cell as evidence that toxicity is recoverable from the anonymous trade tape.",
+      "bh_qvalue": 1.0,
+      "bh_qvalue_at_p_floor": false,
+      "survives_fdr": false
+    }
+  ],
+  "issues": [],
+  "family": {
+    "method": "Benjamini-Hochberg FDR over the cell family (coin x horizon x K)",
+    "procedure": "Benjamini-Hochberg step-up FDR",
+    "procedure_note": "sort ascending, q_(i) = p_(i) * m / i, running minimum from the largest p downward, clipped to 1; NaN p-values are carried through and excluded from the family size",
+    "fdr_alpha": 0.05,
+    "threshold": 0.03333333333333333,
+    "threshold_meaning": "the p-value cutoff actually applied: the largest rank k with p_(k) <= k*alpha/m, times alpha/m. With no rejection it is the rank-one bar the best cell failed",
+    "rank1_threshold": 0.004166666666666667,
+    "smallest_p": 0.0004997501249375312,
+    "budget_check": {
+      "n_draws": 2000,
+      "family_size": 12,
+      "alpha": 0.05,
+      "p_floor": 0.0004997501249375312,
+      "rank1_threshold": 0.004166666666666667,
+      "floor_can_clear_rank1": true,
+      "min_draws_for_family": 479,
+      "note": "a budget whose floor sits above the rank-one threshold cannot produce a significant corrected result however strong the effect is"
+    },
+    "n_cells_total": 12,
+    "n_cells_tested": 12,
+    "n_cells_untestable": 0,
+    "n_survivors": 8,
+    "survivors": [
+      {
+        "coin": "BTC",
+        "horizon_s": 60,
+        "K": 100,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_p_is_floor": true,
+        "bh_qvalue": 0.0011994002998500749
+      },
+      {
+        "coin": "BTC",
+        "horizon_s": 10,
+        "K": 50,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_p_is_floor": true,
+        "bh_qvalue": 0.0011994002998500749
+      },
+      {
+        "coin": "BTC",
+        "horizon_s": 10,
+        "K": 100,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_p_is_floor": true,
+        "bh_qvalue": 0.0011994002998500749
+      },
+      {
+        "coin": "ETH",
+        "horizon_s": 60,
+        "K": 50,
+        "placebo_p": 0.005997001499250375,
+        "placebo_p_is_floor": false,
+        "bh_qvalue": 0.010280573998714928
+      },
+      {
+        "coin": "ETH",
+        "horizon_s": 10,
+        "K": 50,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_p_is_floor": true,
+        "bh_qvalue": 0.0011994002998500749
+      },
+      {
+        "coin": "POOLED",
+        "horizon_s": 60,
+        "K": 50,
+        "placebo_p": 0.01999000499750125,
+        "placebo_p_is_floor": false,
+        "bh_qvalue": 0.029985007496251874
+      },
+      {
+        "coin": "POOLED",
+        "horizon_s": 60,
+        "K": 100,
+        "placebo_p": 0.0009995002498750624,
+        "placebo_p_is_floor": false,
+        "bh_qvalue": 0.001999000499750125
+      },
+      {
+        "coin": "POOLED",
+        "horizon_s": 10,
+        "K": 50,
+        "placebo_p": 0.0004997501249375312,
+        "placebo_p_is_floor": true,
+        "bh_qvalue": 0.0011994002998500749
+      }
+    ],
+    "survivors_by_window_and_K": {
+      "h60s_K50": {
+        "n_cells": 3,
+        "n_survivors": 2,
+        "n_p_at_floor": 0
+      },
+      "h60s_K100": {
+        "n_cells": 3,
+        "n_survivors": 2,
+        "n_p_at_floor": 1
+      },
+      "h10s_K50": {
+        "n_cells": 3,
+        "n_survivors": 3,
+        "n_p_at_floor": 3
+      },
+      "h10s_K100": {
+        "n_cells": 3,
+        "n_survivors": 1,
+        "n_p_at_floor": 1
+      }
+    },
+    "n_cells_with_p_at_floor": 5,
+    "note": "Cells with a null/NaN placebo p (too few wallets, or no positive lift) are excluded from the family size m and never 'survive'. Which windows and which K survive is NOT asserted here: read survivors_by_window_and_K, which is counted from the cells of this run. n_cells_with_p_at_floor is how many cells report the 2000-draw floor 0.000500 rather than a measured p; for those cells the p says only that no draw beat the observed lift, and the q inherits that."
+  },
+  "headline": {
+    "pre_registered_cell": {
+      "coin": "POOLED",
+      "horizon_s": 10,
+      "K": 50
+    },
+    "rationale": "Pre-registered BEFORE reading placebo p-values: the pooled 10s K=50 cell is the single cell the non-recoverability claim stands on; the remaining 11 cells are a robustness panel, not independent confirmations.",
+    "found": true,
+    "placebo_p": 0.0004997501249375312,
+    "placebo_p_is_floor": true,
+    "bh_qvalue": 0.0011994002998500749,
+    "survives_fdr": true,
+    "incremental_oos_r2": 0.1524207051901474,
+    "incremental_spearman": 0.19583423098106062
+  }
+}

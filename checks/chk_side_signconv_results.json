@@ -1,0 +1,209 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_side_signconv_results.json",
+    "producer": {
+      "script": "chk_side_signconv.py",
+      "sha256": "7b43d75e2984370b25ff2bce9811fc5cecf67cbc1a5df12ce6e18ef8728838db",
+      "bytes": 32935,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "04389a3bb5143f8b579430113e718fdda761cf8e",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "mid_series_BTC.npz",
+        "bytes": 62888304,
+        "sha256": "c0c1890bdcf4f1ada237bfb9ef8122af8ea2418af1ea22a96d76bcdfa8ed7d8c",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "mid_series_ETH.npz",
+        "bytes": 62890344,
+        "sha256": "eb617dff3303dc678d6db75547a92ae612bd02f90d34ea91dec143acbdcbe436",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "build_quickwin_markouts.py",
+        "bytes": 40621,
+        "sha256": "4e52b09780010c19b258dc093e8a2485fbeec38365402e40186a674977c2f8e7",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "the fills sampled from 2 re-walked day(s) across 2 coin(s), compared against the mid series named in inputs",
+      "window": "2 days: ['20251204', '20251205']",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "run": {
+      "runtime_s": 35.799,
+      "finished_utc": "2026-10-21T18:18:34Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "check": "side_signconv",
+  "mode": "full",
+  "config": {
+    "days_walked": [
+      "20251204",
+      "20251205"
+    ],
+    "coins": [
+      "BTC",
+      "ETH"
+    ],
+    "horizons_s": [
+      1,
+      10,
+      60
+    ],
+    "gap_max_ms": 5000.0,
+    "n_fills_sampled": 546187,
+    "n_entry_joined": 545984
+  },
+  "checks": [
+    {
+      "name": "gold_standard_forward_return_by_side",
+      "assumption": "taker_side==1 is a BUY-aggressor (lifts ask); informed buys push the mid UP, so mean forward mid return for side==1 must exceed that for side==0.",
+      "method": "Re-walked bqm.parse_day for the sample, recovered per-fill entry timestamp (block_time ns//1e6), taker_side, entry_px (same as i4_midmarkout). Joined the SAME mid_series with the SAME no-lookahead as-of joins (entry side='right'-1, horizon side='left') and computed UNSIGNED r_h=(mid(t+h)-mid(t))/mid(t) at 1/10/60s; split mean r_h by taker_side. Independent of the markout formula.",
+      "observed": {
+        "by_horizon": {
+          "1": {
+            "n_buy": 279001,
+            "n_sell": 266977,
+            "mean_fwd_ret_buy": 0.00012644918923893637,
+            "mean_fwd_ret_sell": -0.00012584857231971453,
+            "buy_minus_sell": 0.0002522977615586509,
+            "buy_minus_sell_bps": 2.522977615586509,
+            "buy_above_sell": true
+          },
+          "10": {
+            "n_buy": 279000,
+            "n_sell": 266970,
+            "mean_fwd_ret_buy": 0.00013019042244664413,
+            "mean_fwd_ret_sell": -0.0001325739159687545,
+            "buy_minus_sell": 0.00026276433841539864,
+            "buy_minus_sell_bps": 2.6276433841539864,
+            "buy_above_sell": true
+          },
+          "60": {
+            "n_buy": 278992,
+            "n_sell": 266959,
+            "mean_fwd_ret_buy": 9.497583585381423e-05,
+            "mean_fwd_ret_sell": -0.00015560761369335638,
+            "buy_minus_sell": 0.0002505834495471706,
+            "buy_minus_sell_bps": 2.505834495471706,
+            "buy_above_sell": true
+          }
+        },
+        "summary": "1s buy=+1.264bps sell=-1.258bps gap=+2.523bps; 10s buy=+1.302bps sell=-1.326bps gap=+2.628bps; 60s buy=+0.950bps sell=-1.556bps gap=+2.506bps"
+      },
+      "verdict": "confirmed",
+      "note": "buy-side forward return is above sell-side at every horizon -> side==1 behaves as a buy-aggressor."
+    },
+    {
+      "name": "entry_price_vs_mid_by_side",
+      "assumption": "A buy-aggressor (side==1) crosses up to the ask so entry_px>=mid; a sell-aggressor (side==0) hits the bid so entry_px<=mid.",
+      "method": "On the same re-walked fills, joined the entry mid snapshot (last-at-or-before) and measured the fraction of side==1 fills with entry_px>=mid and side==0 fills with entry_px<=mid.",
+      "observed": {
+        "frac_buy_entry_ge_mid": 0.941986078952839,
+        "frac_sell_entry_le_mid": 0.9459701403090846,
+        "n_buy": 279002,
+        "n_sell": 266982
+      },
+      "verdict": "confirmed",
+      "note": "both directional fractions favour the assumed side (buys at/above mid, sells at/below mid)."
+    },
+    {
+      "name": "markout_sign_reproduction",
+      "assumption": "stored mo*_mid = sign_taker*(mid(t+h)-mid(t))/mid(t)*1e4 with sign_taker=+1 if side==1 else -1; POSITIVE mean = taker profited = maker adverse-selected.",
+      "method": "Re-derived mo10 on the sample as sign_taker*r_10*1e4 from the UNSIGNED return and the assumed taker_dir, and compared the SIGN of its mean to the SIGN of the stored mo10_mid mean in quickwin_markouts_mid.npz over the same coins.",
+      "observed": {
+        "rederived_mo10_mean_bps": 1.3135591004779033,
+        "rederived_mo10_sign": 1,
+        "stored_mo10_mid_mean_bps": 1.3147131780680368,
+        "stored_mo10_mid_sign": 1,
+        "sign_reproduced": true
+      },
+      "verdict": "confirmed",
+      "note": "re-derived markout-sign matches the stored mo10_mid sign."
+    },
+    {
+      "name": "l2_levels_orientation_spread_sign",
+      "assumption": "L2 levels[0]=bids, levels[1]=asks, so spread=ask-bid>0.",
+      "method": "Fraction of mid_series snapshots with spread>0 over the sampled coins.",
+      "observed": {
+        "spread_pos_frac": {
+          "BTC": 1.0,
+          "ETH": 1.0
+        }
+      },
+      "verdict": "confirmed",
+      "note": "spread is positive on ~all snapshots -> bids/asks not swapped."
+    },
+    {
+      "name": "dir_code_vs_taker_side_agreement",
+      "assumption": "dir_code-implied buy/sell (Open Long/Close Short=buy, Open Short/Close Long=sell) must equal taker_side (1=buy, 0=sell). Independent of the forward-return / entry-price legs because it reads a DIFFERENT raw key.",
+      "method": "Loaded quickwin_markouts.npz; mapped dir_code to an implied buy/sell (Open Long 0 / Close Short 3 => buy; Open Short 1 / Close Long 2 => sell), excluded dir_code==-1, and compared the implied direction to taker_side row-by-row, pooled and per coin. Asserts agreement_frac == 1.0.",
+      "observed": {
+        "n_known_dir": 2436948,
+        "n_agree": 2436948,
+        "n_mismatch": 0,
+        "agreement_frac": 1.0,
+        "per_coin": {
+          "BTC": {
+            "n_known": 1177605,
+            "n_agree": 1177605,
+            "n_mismatch": 0,
+            "agreement_frac": 1.0
+          },
+          "ETH": {
+            "n_known": 1259343,
+            "n_agree": 1259343,
+            "n_mismatch": 0,
+            "agreement_frac": 1.0
+          }
+        }
+      },
+      "verdict": "confirmed",
+      "note": "dir_code-implied side equals taker_side on every known-dir fill (zero mismatches) across the coins present -> the buy/sell semantics agree across two independent raw keys, ETH included."
+    }
+  ],
+  "overall_verdict": "confirmed"
+}

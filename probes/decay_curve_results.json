@@ -1,0 +1,1133 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "decay_curve_results.json",
+    "producer": {
+      "script": "decay_curve.py",
+      "sha256": "080351d7b148c87c698ecc42ac265712a2a171d46f9ab9abfd0a5a53a7beabd0",
+      "bytes": 9330
+    },
+    "inputs": [
+      {
+        "name": "panel_markouts.npz",
+        "bytes": 482588572,
+        "sha256": "c6a37132cf1d0c62bdb2169668c89af20a7b6fb8811fd8132cc7c9b0b607a04b",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "26,025,134 panel fills with a finite markout, aggregated to per-wallet means; a wallet enters a pair only with at least 50 fills on BOTH sides of the gap, and a pair is reported only with at least 25 such wallets, which leaves 108 correlation estimates over 10 gap buckets",
+      "window": "8 monthly windows, 202508 to 202605, each contributing day-of-month 4-15; the intra-window gap is early days up to 8 against late days from 9, and the cross-window gaps run 1 to 9 months",
+      "coins": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 60,
+      "is_headline_horizon": false,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": 690,
+      "rank_floor_fills": 50,
+      "overridden": [
+        "master_seed",
+        "rank_floor_fills"
+      ]
+    },
+    "run": {
+      "runtime_s": 33.215,
+      "finished_utc": "2026-08-04T15:48:06Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6",
+        "scipy": "1.18.0"
+      }
+    }
+  },
+  "periods": [
+    202508,
+    202509,
+    202510,
+    202511,
+    202512,
+    202601,
+    202603,
+    202605
+  ],
+  "kmin": 50,
+  "by_gap": {
+    "intra_~5d": {
+      "median_obs": 0.1903,
+      "median_disatt_SB": 0.4251,
+      "median_reliability": 0.497,
+      "n_estimates": 24,
+      "detail": [
+        {
+          "coin": "BTC",
+          "pair": 202508,
+          "obs": 0.2947,
+          "disatt_SB": 0.4239,
+          "relA": 0.711,
+          "relB": 0.68,
+          "n": 437
+        },
+        {
+          "coin": "ETH",
+          "pair": 202508,
+          "obs": 0.3703,
+          "disatt_SB": 0.6597,
+          "relA": 0.623,
+          "relB": 0.506,
+          "n": 650
+        },
+        {
+          "coin": "SOL",
+          "pair": 202508,
+          "obs": 0.3224,
+          "disatt_SB": 0.5266,
+          "relA": 0.661,
+          "relB": 0.567,
+          "n": 228
+        },
+        {
+          "coin": "BTC",
+          "pair": 202509,
+          "obs": 0.2814,
+          "disatt_SB": 0.5533,
+          "relA": 0.509,
+          "relB": 0.509,
+          "n": 462
+        },
+        {
+          "coin": "ETH",
+          "pair": 202509,
+          "obs": 0.2601,
+          "disatt_SB": 0.4976,
+          "relA": 0.554,
+          "relB": 0.493,
+          "n": 454
+        },
+        {
+          "coin": "SOL",
+          "pair": 202509,
+          "obs": 0.0476,
+          "disatt_SB": 0.0957,
+          "relA": 0.526,
+          "relB": 0.471,
+          "n": 238
+        },
+        {
+          "coin": "BTC",
+          "pair": 202510,
+          "obs": -0.0655,
+          "disatt_SB": -0.1438,
+          "relA": 0.591,
+          "relB": 0.351,
+          "n": 518
+        },
+        {
+          "coin": "ETH",
+          "pair": 202510,
+          "obs": 0.0983,
+          "disatt_SB": 0.2011,
+          "relA": 0.626,
+          "relB": 0.382,
+          "n": 509
+        },
+        {
+          "coin": "SOL",
+          "pair": 202510,
+          "obs": 0.0698,
+          "disatt_SB": 0.2214,
+          "relA": 0.461,
+          "relB": 0.215,
+          "n": 237
+        },
+        {
+          "coin": "BTC",
+          "pair": 202511,
+          "obs": 0.2519,
+          "disatt_SB": 0.6068,
+          "relA": 0.364,
+          "relB": 0.473,
+          "n": 865
+        },
+        {
+          "coin": "ETH",
+          "pair": 202511,
+          "obs": 0.0172,
+          "disatt_SB": 0.0384,
+          "relA": 0.4,
+          "relB": 0.503,
+          "n": 624
+        },
+        {
+          "coin": "SOL",
+          "pair": 202511,
+          "obs": 0.0118,
+          "disatt_SB": 0.0464,
+          "relA": 0.27,
+          "relB": 0.24,
+          "n": 306
+        },
+        {
+          "coin": "BTC",
+          "pair": 202512,
+          "obs": 0.16,
+          "disatt_SB": 0.4237,
+          "relA": 0.332,
+          "relB": 0.429,
+          "n": 644
+        },
+        {
+          "coin": "ETH",
+          "pair": 202512,
+          "obs": 0.2442,
+          "disatt_SB": 0.4755,
+          "relA": 0.505,
+          "relB": 0.522,
+          "n": 570
+        },
+        {
+          "coin": "SOL",
+          "pair": 202512,
+          "obs": 0.0948,
+          "disatt_SB": 0.2018,
+          "relA": 0.447,
+          "relB": 0.494,
+          "n": 244
+        },
+        {
+          "coin": "BTC",
+          "pair": 202601,
+          "obs": 0.3228,
+          "disatt_SB": 0.5373,
+          "relA": 0.596,
+          "relB": 0.606,
+          "n": 553
+        },
+        {
+          "coin": "ETH",
+          "pair": 202601,
+          "obs": 0.083,
+          "disatt_SB": 0.1325,
+          "relA": 0.543,
+          "relB": 0.723,
+          "n": 370
+        },
+        {
+          "coin": "SOL",
+          "pair": 202601,
+          "obs": 0.2518,
+          "disatt_SB": 0.4533,
+          "relA": 0.556,
+          "relB": 0.555,
+          "n": 262
+        },
+        {
+          "coin": "BTC",
+          "pair": 202603,
+          "obs": 0.1982,
+          "disatt_SB": 0.9558,
+          "relA": 0.133,
+          "relB": 0.322,
+          "n": 1312
+        },
+        {
+          "coin": "ETH",
+          "pair": 202603,
+          "obs": 0.142,
+          "disatt_SB": 0.3379,
+          "relA": 0.428,
+          "relB": 0.413,
+          "n": 359
+        },
+        {
+          "coin": "SOL",
+          "pair": 202603,
+          "obs": 0.2241,
+          "disatt_SB": 0.6664,
+          "relA": 0.377,
+          "relB": 0.3,
+          "n": 252
+        },
+        {
+          "coin": "BTC",
+          "pair": 202605,
+          "obs": 0.1314,
+          "disatt_SB": 0.4262,
+          "relA": 0.236,
+          "relB": 0.403,
+          "n": 628
+        },
+        {
+          "coin": "ETH",
+          "pair": 202605,
+          "obs": 0.1825,
+          "disatt_SB": 0.3531,
+          "relA": 0.577,
+          "relB": 0.463,
+          "n": 279
+        },
+        {
+          "coin": "SOL",
+          "pair": 202605,
+          "obs": 0.2665,
+          "disatt_SB": 0.4605,
+          "relA": 0.501,
+          "relB": 0.668,
+          "n": 188
+        }
+      ]
+    },
+    "1mo": {
+      "median_obs": 0.1361,
+      "median_disatt_SB": 0.4333,
+      "median_reliability": 0.364,
+      "n_estimates": 15,
+      "detail": [
+        {
+          "coin": "BTC",
+          "pair": "202508->202509",
+          "obs": 0.3359,
+          "disatt_SB": 0.6865,
+          "relA": 0.555,
+          "relB": 0.432,
+          "n": 508
+        },
+        {
+          "coin": "ETH",
+          "pair": "202508->202509",
+          "obs": 0.2578,
+          "disatt_SB": 0.5724,
+          "relA": 0.46,
+          "relB": 0.441,
+          "n": 634
+        },
+        {
+          "coin": "SOL",
+          "pair": "202508->202509",
+          "obs": 0.2128,
+          "disatt_SB": 0.5149,
+          "relA": 0.543,
+          "relB": 0.315,
+          "n": 291
+        },
+        {
+          "coin": "BTC",
+          "pair": "202509->202510",
+          "obs": -0.0246,
+          "disatt_SB": -0.0719,
+          "relA": 0.446,
+          "relB": 0.262,
+          "n": 588
+        },
+        {
+          "coin": "ETH",
+          "pair": "202509->202510",
+          "obs": 0.0771,
+          "disatt_SB": 0.2132,
+          "relA": 0.44,
+          "relB": 0.297,
+          "n": 583
+        },
+        {
+          "coin": "SOL",
+          "pair": "202509->202510",
+          "obs": 0.1528,
+          "disatt_SB": 0.5995,
+          "relA": 0.312,
+          "relB": 0.208,
+          "n": 350
+        },
+        {
+          "coin": "BTC",
+          "pair": "202510->202511",
+          "obs": -0.0237,
+          "disatt_SB": -0.0736,
+          "relA": 0.326,
+          "relB": 0.318,
+          "n": 888
+        },
+        {
+          "coin": "ETH",
+          "pair": "202510->202511",
+          "obs": 0.1361,
+          "disatt_SB": 0.4124,
+          "relA": 0.306,
+          "relB": 0.356,
+          "n": 637
+        },
+        {
+          "coin": "SOL",
+          "pair": "202510->202511",
+          "obs": 0.0774,
+          "disatt_SB": 0.3892,
+          "relA": 0.145,
+          "relB": 0.272,
+          "n": 330
+        },
+        {
+          "coin": "BTC",
+          "pair": "202511->202512",
+          "obs": 0.126,
+          "disatt_SB": 0.4333,
+          "relA": 0.344,
+          "relB": 0.246,
+          "n": 717
+        },
+        {
+          "coin": "ETH",
+          "pair": "202511->202512",
+          "obs": 0.1975,
+          "disatt_SB": 0.4904,
+          "relA": 0.373,
+          "relB": 0.434,
+          "n": 577
+        },
+        {
+          "coin": "SOL",
+          "pair": "202511->202512",
+          "obs": 0.1194,
+          "disatt_SB": 0.3612,
+          "relA": 0.272,
+          "relB": 0.402,
+          "n": 267
+        },
+        {
+          "coin": "BTC",
+          "pair": "202512->202601",
+          "obs": 0.1763,
+          "disatt_SB": 0.5013,
+          "relA": 0.251,
+          "relB": 0.492,
+          "n": 744
+        },
+        {
+          "coin": "ETH",
+          "pair": "202512->202601",
+          "obs": 0.2534,
+          "disatt_SB": 0.4922,
+          "relA": 0.465,
+          "relB": 0.571,
+          "n": 459
+        },
+        {
+          "coin": "SOL",
+          "pair": "202512->202601",
+          "obs": 0.0677,
+          "disatt_SB": 0.1607,
+          "relA": 0.4,
+          "relB": 0.445,
+          "n": 265
+        }
+      ]
+    },
+    "2mo": {
+      "median_obs": 0.1705,
+      "median_disatt_SB": 0.5105,
+      "median_reliability": 0.355,
+      "n_estimates": 18,
+      "detail": [
+        {
+          "coin": "BTC",
+          "pair": "202508->202510",
+          "obs": -0.1432,
+          "disatt_SB": -0.3366,
+          "relA": 0.595,
+          "relB": 0.304,
+          "n": 503
+        },
+        {
+          "coin": "ETH",
+          "pair": "202508->202510",
+          "obs": -0.039,
+          "disatt_SB": -0.0988,
+          "relA": 0.488,
+          "relB": 0.32,
+          "n": 567
+        },
+        {
+          "coin": "SOL",
+          "pair": "202508->202510",
+          "obs": 0.0593,
+          "disatt_SB": 0.1774,
+          "relA": 0.511,
+          "relB": 0.219,
+          "n": 236
+        },
+        {
+          "coin": "BTC",
+          "pair": "202509->202511",
+          "obs": 0.3941,
+          "disatt_SB": 0.9797,
+          "relA": 0.451,
+          "relB": 0.359,
+          "n": 430
+        },
+        {
+          "coin": "ETH",
+          "pair": "202509->202511",
+          "obs": 0.2854,
+          "disatt_SB": 0.7913,
+          "relA": 0.422,
+          "relB": 0.308,
+          "n": 378
+        },
+        {
+          "coin": "SOL",
+          "pair": "202509->202511",
+          "obs": 0.247,
+          "disatt_SB": 0.7785,
+          "relA": 0.352,
+          "relB": 0.286,
+          "n": 166
+        },
+        {
+          "coin": "BTC",
+          "pair": "202510->202512",
+          "obs": 0.011,
+          "disatt_SB": 0.04,
+          "relA": 0.303,
+          "relB": 0.251,
+          "n": 452
+        },
+        {
+          "coin": "ETH",
+          "pair": "202510->202512",
+          "obs": 0.0381,
+          "disatt_SB": 0.0896,
+          "relA": 0.37,
+          "relB": 0.488,
+          "n": 413
+        },
+        {
+          "coin": "SOL",
+          "pair": "202510->202512",
+          "obs": 0.1448,
+          "disatt_SB": 0.5401,
+          "relA": 0.199,
+          "relB": 0.361,
+          "n": 173
+        },
+        {
+          "coin": "BTC",
+          "pair": "202511->202601",
+          "obs": 0.3114,
+          "disatt_SB": 0.8101,
+          "relA": 0.315,
+          "relB": 0.469,
+          "n": 510
+        },
+        {
+          "coin": "ETH",
+          "pair": "202511->202601",
+          "obs": 0.2947,
+          "disatt_SB": 0.6594,
+          "relA": 0.361,
+          "relB": 0.553,
+          "n": 314
+        },
+        {
+          "coin": "SOL",
+          "pair": "202511->202601",
+          "obs": 0.177,
+          "disatt_SB": 0.5532,
+          "relA": 0.281,
+          "relB": 0.365,
+          "n": 181
+        },
+        {
+          "coin": "BTC",
+          "pair": "202601->202603",
+          "obs": 0.164,
+          "disatt_SB": 0.4633,
+          "relA": 0.493,
+          "relB": 0.254,
+          "n": 462
+        },
+        {
+          "coin": "ETH",
+          "pair": "202601->202603",
+          "obs": 0.2887,
+          "disatt_SB": 0.6733,
+          "relA": 0.592,
+          "relB": 0.311,
+          "n": 210
+        },
+        {
+          "coin": "SOL",
+          "pair": "202601->202603",
+          "obs": 0.1496,
+          "disatt_SB": 0.428,
+          "relA": 0.424,
+          "relB": 0.288,
+          "n": 139
+        },
+        {
+          "coin": "BTC",
+          "pair": "202603->202605",
+          "obs": 0.1343,
+          "disatt_SB": 0.4808,
+          "relA": 0.294,
+          "relB": 0.266,
+          "n": 662
+        },
+        {
+          "coin": "ETH",
+          "pair": "202603->202605",
+          "obs": 0.2505,
+          "disatt_SB": 0.6579,
+          "relA": 0.308,
+          "relB": 0.471,
+          "n": 259
+        },
+        {
+          "coin": "SOL",
+          "pair": "202603->202605",
+          "obs": 0.1793,
+          "disatt_SB": 0.4711,
+          "relA": 0.286,
+          "relB": 0.507,
+          "n": 184
+        }
+      ]
+    },
+    "3mo": {
+      "median_obs": 0.1238,
+      "median_disatt_SB": 0.3323,
+      "median_reliability": 0.356,
+      "n_estimates": 12,
+      "detail": [
+        {
+          "coin": "BTC",
+          "pair": "202508->202511",
+          "obs": 0.4014,
+          "disatt_SB": 0.9323,
+          "relA": 0.594,
+          "relB": 0.312,
+          "n": 372
+        },
+        {
+          "coin": "ETH",
+          "pair": "202508->202511",
+          "obs": 0.3173,
+          "disatt_SB": 0.7857,
+          "relA": 0.475,
+          "relB": 0.344,
+          "n": 380
+        },
+        {
+          "coin": "SOL",
+          "pair": "202508->202511",
+          "obs": 0.1478,
+          "disatt_SB": 0.3587,
+          "relA": 0.493,
+          "relB": 0.345,
+          "n": 140
+        },
+        {
+          "coin": "BTC",
+          "pair": "202509->202512",
+          "obs": 0.223,
+          "disatt_SB": 0.6878,
+          "relA": 0.442,
+          "relB": 0.238,
+          "n": 266
+        },
+        {
+          "coin": "ETH",
+          "pair": "202509->202512",
+          "obs": 0.2907,
+          "disatt_SB": 0.6429,
+          "relA": 0.428,
+          "relB": 0.478,
+          "n": 286
+        },
+        {
+          "coin": "SOL",
+          "pair": "202509->202512",
+          "obs": 0.0949,
+          "disatt_SB": 0.2666,
+          "relA": 0.363,
+          "relB": 0.349,
+          "n": 98
+        },
+        {
+          "coin": "BTC",
+          "pair": "202510->202601",
+          "obs": -0.1819,
+          "disatt_SB": -0.4976,
+          "relA": 0.266,
+          "relB": 0.503,
+          "n": 369
+        },
+        {
+          "coin": "ETH",
+          "pair": "202510->202601",
+          "obs": 0.0152,
+          "disatt_SB": 0.0359,
+          "relA": 0.318,
+          "relB": 0.56,
+          "n": 249
+        },
+        {
+          "coin": "SOL",
+          "pair": "202510->202601",
+          "obs": 0.0614,
+          "disatt_SB": 0.245,
+          "relA": 0.151,
+          "relB": 0.416,
+          "n": 138
+        },
+        {
+          "coin": "BTC",
+          "pair": "202512->202603",
+          "obs": 0.0846,
+          "disatt_SB": 0.3058,
+          "relA": 0.244,
+          "relB": 0.313,
+          "n": 391
+        },
+        {
+          "coin": "ETH",
+          "pair": "202512->202603",
+          "obs": 0.2491,
+          "disatt_SB": 0.734,
+          "relA": 0.412,
+          "relB": 0.28,
+          "n": 215
+        },
+        {
+          "coin": "SOL",
+          "pair": "202512->202603",
+          "obs": 0.0998,
+          "disatt_SB": 0.2957,
+          "relA": 0.369,
+          "relB": 0.308,
+          "n": 122
+        }
+      ]
+    },
+    "4mo": {
+      "median_obs": 0.3206,
+      "median_disatt_SB": 0.7903,
+      "median_reliability": 0.412,
+      "n_estimates": 12,
+      "detail": [
+        {
+          "coin": "BTC",
+          "pair": "202508->202512",
+          "obs": 0.3481,
+          "disatt_SB": 0.9303,
+          "relA": 0.585,
+          "relB": 0.239,
+          "n": 243
+        },
+        {
+          "coin": "ETH",
+          "pair": "202508->202512",
+          "obs": 0.3819,
+          "disatt_SB": 0.8464,
+          "relA": 0.485,
+          "relB": 0.42,
+          "n": 318
+        },
+        {
+          "coin": "SOL",
+          "pair": "202508->202512",
+          "obs": 0.1272,
+          "disatt_SB": 0.3085,
+          "relA": 0.509,
+          "relB": 0.334,
+          "n": 90
+        },
+        {
+          "coin": "BTC",
+          "pair": "202509->202601",
+          "obs": 0.4564,
+          "disatt_SB": 0.9709,
+          "relA": 0.45,
+          "relB": 0.491,
+          "n": 247
+        },
+        {
+          "coin": "ETH",
+          "pair": "202509->202601",
+          "obs": 0.3079,
+          "disatt_SB": 0.5891,
+          "relA": 0.495,
+          "relB": 0.552,
+          "n": 198
+        },
+        {
+          "coin": "SOL",
+          "pair": "202509->202601",
+          "obs": 0.3497,
+          "disatt_SB": 0.9208,
+          "relA": 0.404,
+          "relB": 0.357,
+          "n": 92
+        },
+        {
+          "coin": "BTC",
+          "pair": "202511->202603",
+          "obs": 0.1298,
+          "disatt_SB": 0.4223,
+          "relA": 0.337,
+          "relB": 0.28,
+          "n": 361
+        },
+        {
+          "coin": "ETH",
+          "pair": "202511->202603",
+          "obs": 0.2292,
+          "disatt_SB": 0.7341,
+          "relA": 0.331,
+          "relB": 0.294,
+          "n": 177
+        },
+        {
+          "coin": "SOL",
+          "pair": "202511->202603",
+          "obs": 0.3073,
+          "disatt_SB": 0.9752,
+          "relA": 0.304,
+          "relB": 0.327,
+          "n": 102
+        },
+        {
+          "coin": "BTC",
+          "pair": "202601->202605",
+          "obs": 0.2235,
+          "disatt_SB": 0.6632,
+          "relA": 0.488,
+          "relB": 0.233,
+          "n": 247
+        },
+        {
+          "coin": "ETH",
+          "pair": "202601->202605",
+          "obs": 0.3332,
+          "disatt_SB": 0.6295,
+          "relA": 0.567,
+          "relB": 0.494,
+          "n": 137
+        },
+        {
+          "coin": "SOL",
+          "pair": "202601->202605",
+          "obs": 0.3559,
+          "disatt_SB": 0.8517,
+          "relA": 0.363,
+          "relB": 0.481,
+          "n": 110
+        }
+      ]
+    },
+    "5mo": {
+      "median_obs": 0.3241,
+      "median_disatt_SB": 0.7162,
+      "median_reliability": 0.393,
+      "n_estimates": 9,
+      "detail": [
+        {
+          "coin": "BTC",
+          "pair": "202508->202601",
+          "obs": 0.3837,
+          "disatt_SB": 0.697,
+          "relA": 0.611,
+          "relB": 0.496,
+          "n": 236
+        },
+        {
+          "coin": "ETH",
+          "pair": "202508->202601",
+          "obs": 0.4807,
+          "disatt_SB": 0.9077,
+          "relA": 0.502,
+          "relB": 0.559,
+          "n": 205
+        },
+        {
+          "coin": "SOL",
+          "pair": "202508->202601",
+          "obs": 0.465,
+          "disatt_SB": 0.9972,
+          "relA": 0.539,
+          "relB": 0.404,
+          "n": 81
+        },
+        {
+          "coin": "BTC",
+          "pair": "202510->202603",
+          "obs": 0.1231,
+          "disatt_SB": 0.4108,
+          "relA": 0.298,
+          "relB": 0.302,
+          "n": 267
+        },
+        {
+          "coin": "ETH",
+          "pair": "202510->202603",
+          "obs": -0.0278,
+          "disatt_SB": -0.08,
+          "relA": 0.355,
+          "relB": 0.342,
+          "n": 158
+        },
+        {
+          "coin": "SOL",
+          "pair": "202510->202603",
+          "obs": 0.1034,
+          "disatt_SB": 0.5315,
+          "relA": 0.145,
+          "relB": 0.262,
+          "n": 87
+        },
+        {
+          "coin": "BTC",
+          "pair": "202512->202605",
+          "obs": 0.3241,
+          "disatt_SB": 1.0,
+          "relA": 0.21,
+          "relB": 0.26,
+          "n": 201
+        },
+        {
+          "coin": "ETH",
+          "pair": "202512->202605",
+          "obs": 0.3223,
+          "disatt_SB": 0.7162,
+          "relA": 0.478,
+          "relB": 0.424,
+          "n": 133
+        },
+        {
+          "coin": "SOL",
+          "pair": "202512->202605",
+          "obs": 0.3292,
+          "disatt_SB": 0.79,
+          "relA": 0.382,
+          "relB": 0.454,
+          "n": 99
+        }
+      ]
+    },
+    "6mo": {
+      "median_obs": 0.1822,
+      "median_disatt_SB": 0.5868,
+      "median_reliability": 0.306,
+      "n_estimates": 6,
+      "detail": [
+        {
+          "coin": "BTC",
+          "pair": "202509->202603",
+          "obs": 0.1512,
+          "disatt_SB": 0.4018,
+          "relA": 0.483,
+          "relB": 0.293,
+          "n": 159
+        },
+        {
+          "coin": "ETH",
+          "pair": "202509->202603",
+          "obs": 0.1253,
+          "disatt_SB": 0.3634,
+          "relA": 0.476,
+          "relB": 0.249,
+          "n": 116
+        },
+        {
+          "coin": "SOL",
+          "pair": "202509->202603",
+          "obs": 0.3868,
+          "disatt_SB": 1.0,
+          "relA": 0.373,
+          "relB": 0.275,
+          "n": 58
+        },
+        {
+          "coin": "BTC",
+          "pair": "202511->202605",
+          "obs": 0.1901,
+          "disatt_SB": 0.6885,
+          "relA": 0.299,
+          "relB": 0.255,
+          "n": 191
+        },
+        {
+          "coin": "ETH",
+          "pair": "202511->202605",
+          "obs": 0.3135,
+          "disatt_SB": 0.8276,
+          "relA": 0.314,
+          "relB": 0.458,
+          "n": 111
+        },
+        {
+          "coin": "SOL",
+          "pair": "202511->202605",
+          "obs": 0.1743,
+          "disatt_SB": 0.4851,
+          "relA": 0.283,
+          "relB": 0.457,
+          "n": 92
+        }
+      ]
+    },
+    "7mo": {
+      "median_obs": 0.1239,
+      "median_disatt_SB": 0.3226,
+      "median_reliability": 0.329,
+      "n_estimates": 6,
+      "detail": [
+        {
+          "coin": "BTC",
+          "pair": "202508->202603",
+          "obs": 0.1342,
+          "disatt_SB": 0.3213,
+          "relA": 0.575,
+          "relB": 0.303,
+          "n": 147
+        },
+        {
+          "coin": "ETH",
+          "pair": "202508->202603",
+          "obs": 0.1865,
+          "disatt_SB": 0.5617,
+          "relA": 0.459,
+          "relB": 0.24,
+          "n": 108
+        },
+        {
+          "coin": "SOL",
+          "pair": "202508->202603",
+          "obs": 0.1136,
+          "disatt_SB": 0.3063,
+          "relA": 0.536,
+          "relB": 0.257,
+          "n": 50
+        },
+        {
+          "coin": "BTC",
+          "pair": "202510->202605",
+          "obs": 0.0857,
+          "disatt_SB": 0.3239,
+          "relA": 0.279,
+          "relB": 0.252,
+          "n": 163
+        },
+        {
+          "coin": "ETH",
+          "pair": "202510->202605",
+          "obs": 0.0297,
+          "disatt_SB": 0.0789,
+          "relA": 0.355,
+          "relB": 0.398,
+          "n": 109
+        },
+        {
+          "coin": "SOL",
+          "pair": "202510->202605",
+          "obs": 0.1773,
+          "disatt_SB": 0.5719,
+          "relA": 0.2,
+          "relB": 0.481,
+          "n": 67
+        }
+      ]
+    },
+    "8mo": {
+      "median_obs": 0.4197,
+      "median_disatt_SB": 0.8846,
+      "median_reliability": 0.446,
+      "n_estimates": 3,
+      "detail": [
+        {
+          "coin": "BTC",
+          "pair": "202509->202605",
+          "obs": 0.5501,
+          "disatt_SB": 1.0,
+          "relA": 0.437,
+          "relB": 0.261,
+          "n": 108
+        },
+        {
+          "coin": "ETH",
+          "pair": "202509->202605",
+          "obs": 0.4197,
+          "disatt_SB": 0.8846,
+          "relA": 0.464,
+          "relB": 0.485,
+          "n": 88
+        },
+        {
+          "coin": "SOL",
+          "pair": "202509->202605",
+          "obs": 0.2729,
+          "disatt_SB": 0.6625,
+          "relA": 0.455,
+          "relB": 0.373,
+          "n": 65
+        }
+      ]
+    },
+    "9mo": {
+      "median_obs": 0.3155,
+      "median_disatt_SB": 0.8506,
+      "median_reliability": 0.47,
+      "n_estimates": 3,
+      "detail": [
+        {
+          "coin": "BTC",
+          "pair": "202508->202605",
+          "obs": 0.3155,
+          "disatt_SB": 0.8506,
+          "relA": 0.596,
+          "relB": 0.231,
+          "n": 107
+        },
+        {
+          "coin": "ETH",
+          "pair": "202508->202605",
+          "obs": 0.2081,
+          "disatt_SB": 0.443,
+          "relA": 0.471,
+          "relB": 0.468,
+          "n": 89
+        },
+        {
+          "coin": "SOL",
+          "pair": "202508->202605",
+          "obs": 0.4971,
+          "disatt_SB": 1.0,
+          "relA": 0.523,
+          "relB": 0.407,
+          "n": 49
+        }
+      ]
+    }
+  }
+}

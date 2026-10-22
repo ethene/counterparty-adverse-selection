@@ -1,0 +1,426 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "run_all_checks_results.json",
+    "producer": {
+      "script": "run_all_checks.py",
+      "sha256": "4b764708fde4bc0865395f5b32fbafd7be75a56eb42bff9565ee2fed858030f7",
+      "bytes": 56040,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "7b77dbde6b8b8c91641f5f911ff01b2c23f6b23c",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "chk_no_abs_paths.py",
+        "bytes": 14611,
+        "sha256": "32ce3464b464ffe7cfad1c1e0c79b8a71cb4483630ee72323d743db371450142",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_academic_header.py",
+        "bytes": 14214,
+        "sha256": "0df094518ed77dbbb9a1f6e5975e5ab09c8d8918cd19994aa2fa4c4a62db5201",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_settings_home.py",
+        "bytes": 77110,
+        "sha256": "29b91ea4c287adbece9af77fb96749895d893f43e2d9e23594db3a64a7bb3388",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_artifact_provenance.py",
+        "bytes": 121330,
+        "sha256": "86eb1447798bf84f60985d002801670a42a386eed9d4a2facd8c7577bc611244",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_producer_committed.py",
+        "bytes": 30008,
+        "sha256": "744663fbf960b7b30004b04ea77c97e3097f399e0ac871958972ad053b72d3a5",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_pinned_versions.py",
+        "bytes": 50582,
+        "sha256": "e3b23dfff57e2b3803034836b14a1b33dbbbd2e3b107c6a41211b684dc3f315c",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_headline_horizon.py",
+        "bytes": 44513,
+        "sha256": "50133389b8517c884c9df0dafaa309ba16d0210dfbececf236355afe450f65a2",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_expensive_edits.py",
+        "bytes": 30732,
+        "sha256": "37764a17beab6a0a46aa35926d637d1b2c3fd5a3c53ef1647449c1f76eaf3e42",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_build_selftest.py",
+        "bytes": 33615,
+        "sha256": "9bf30a0257fb74381edf03693656a8fd77407267a347f97cdfed76b130e1631d",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_requirements_census.py",
+        "bytes": 48312,
+        "sha256": "668ccba9341b2442125c659ca92b9233bb4f6b6cacc04da4eadbe5d9c74feb3c",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_prose_numbers.py",
+        "bytes": 57757,
+        "sha256": "1e527a5054768cad084cc6e4693bd73999b0b2dd5b44c51026813141d8bb66d4",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_run_happened.py",
+        "bytes": 24426,
+        "sha256": "4db795aed059aa8a96ec661a57fa58b38364642f5b801b605e049494cd2d4512",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_notebook_expectations.py",
+        "bytes": 64739,
+        "sha256": "1a915288869fc0da16c8c8de7363a047ba6ae3d459207764081a00799c30c01f",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_notebook_pointer_table.py",
+        "bytes": 66474,
+        "sha256": "c89a523c6493e5a5e9d3da565e98d1677060c40fa787b5c51fc00b1bc2466c3c",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_contrast_hygiene.py",
+        "bytes": 97620,
+        "sha256": "69f867e8593217ba5e5f65bf4121aa644db08229d5385fc0afae9eef545566a2",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_join_nolookahead.py",
+        "bytes": 18517,
+        "sha256": "78aee27e98fe974872215292563b69cf9be25a0021beea77845f4f9b5c217ce6",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_decision_lookahead.py",
+        "bytes": 115590,
+        "sha256": "d75514ede3621a21c61c7a9e0dde85484f6eddf2bc414d4a4c82b763a293654f",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_dir_vs_startpos.py",
+        "bytes": 18134,
+        "sha256": "18723cac8c8aa747703844c9f08bafb6dc9a5fcb58771ced8e8b274670c76a9a",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_book_orientation.py",
+        "bytes": 27662,
+        "sha256": "59733078bcfc7bd9d4b822b6bda8e760ad33afa079b116f1ca667abf12a82969",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_closedpnl.py",
+        "bytes": 34737,
+        "sha256": "29e5b4d0fa7156abeab69fcb8e3c54ac782380fd41bf629b9fe07ed79c390d25",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_maker_attribution.py",
+        "bytes": 22135,
+        "sha256": "9f891842bfbdfb268002fe9761581b6aa0f7d1b5242287aafcf1b7d2035904e9",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "chk_input_freshness.py",
+        "bytes": 210580,
+        "sha256": "ce2481ead7da59e72283734d13ee56f8978ca2e442f969d5f5e1616769aaaf4c",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "22 of the 26 checks in this directory: abs_paths, academic_header, settings_home, artifact_provenance, producer_committed, pinned_versions, headline_horizon, expensive_edits, build_selftest, requirements_census, prose_numbers, run_happened, notebook_expectations, notebook_pointer_table, contrast_hygiene, join_nolookahead, decision_lookahead, dir_vs_startpos, book_orientation, closedpnl, maker_attribution, input_freshness",
+      "window": "n/a: this runner starts other programs and reads no market data of its own; each check states its own window",
+      "coins": "n/a: this runner reads no market data of its own"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "data_included": true,
+    "network_included": true,
+    "tape_included": false,
+    "n_checks_run": 22,
+    "groups_run": "local plus derived data plus live fetches",
+    "run": {
+      "runtime_s": 120.651,
+      "finished_utc": "2026-10-22T09:39:33Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {}
+    }
+  },
+  "verdict": "FAIL",
+  "failed": [
+    "producer_committed"
+  ],
+  "unanswered": [
+    "run_happened"
+  ],
+  "skipped": [
+    "prose_numbers"
+  ],
+  "n_passed": 19,
+  "checks": [
+    {
+      "name": "abs_paths",
+      "script": "chk_no_abs_paths.py",
+      "verdict": "PASS",
+      "exit": 0,
+      "seconds": 0.5,
+      "enforces": "no absolute home path in any tracked text file",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "academic_header",
+      "script": "chk_academic_header.py",
+      "verdict": "PASS",
+      "exit": 0,
+      "seconds": 0.2,
+      "enforces": "every tracked script and notebook opens by naming the study, its author and its date",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "settings_home",
+      "script": "chk_settings_home.py",
+      "verdict": "PASS",
+      "exit": 0,
+      "seconds": 2.5,
+      "enforces": "one home per setting; no key collision; no stale fingerprint",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "artifact_provenance",
+      "script": "chk_artifact_provenance.py",
+      "verdict": "PASS",
+      "exit": 0,
+      "seconds": 0.4,
+      "enforces": "every results file names its producer, inputs, runtime, scope and settings, and still matches the code that wrote it",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "producer_committed",
+      "script": "chk_producer_committed.py",
+      "verdict": "FAIL",
+      "exit": 1,
+      "seconds": 0.8,
+      "enforces": "every results file records a producer hash that names bytes this repository still holds, so the freshness comparison has two ends and a disagreement can be read as a diff instead of being unanswerable",
+      "results_file_rewritten_by_this_run": true,
+      "output_tail": "      ~ persistence/m9_crossasset_results.json\n      ~ persistence/panel_analyze_results.json\n      ~ persistence/panel_common_idio_results.json\n      ~ persistence/panel_extended_results_h10_all.json\n      ~ persistence/panel_extended_results_h10_canonical.json\n      ~ persistence/panel_extended_results_h1_all.json\n      ~ persistence/panel_extended_results_h1_canonical.json\n      ~ persistence/panel_extended_results_h60_all.json\n      ~ persistence/panel_extended_results_h60_canonical.json\n      ~ persistence/panel_extended_results_h60_canonical_REPEAT.json\n      ~ persistence/three_coin_persistence_results.json\n      ~ persistence/ws2_hard_classifier_results.json\n      ~ persistence/ws3_taker_pnl_results.json\n      ~ probes/c2_bookstate_control_results.json\n      ~ probes/c_matched_precision_results.json\n      ~ probes/calib_print_vs_mid_results.json\n      ~ probes/connected_set_b1_results.json\n      ~ probes/decay_curve_results.json\n      ~ probes/decile_overlap_results.json\n      ~ probes/eb_scoring_results.json\n      ~ probes/kss_decomp_c_bookmid_results.json\n      ~ probes/kss_decomp_c_results.json\n      ~ probes/persistence_crosswindow_results.json\n      ~ probes/probe_E_lag_resolution_results.json\n      ~ probes/probe_E_leadlag_results.json\n      ~ probes/probe_F_hlp_liq_results.json\n      ~ probes/probe_G_horizon_results.json\n      ~ quoters/as_quoter_results.json\n  excused by baseline: 0 of 0 declared\n----------------------------------------------------------------------------\n  VERDICT: FAIL\n------------------------------------------------------------------------------\n\n  REGRESSED: PRODUCER-NEVER-COMMITTED\n      expected  : at most 0 findings. every results file this repository ships was written by a version\n                  of its producer that this repository still holds. When the\n                  recorded hash names bytes that exist nowhere, the freshness\n                  comparison has only one end and cannot be made at all, so the\n                  figure in the file stands on code nobody can read, and the only\n                  repair is to run the producer again\n      measured  : _meta.producer.sha256 of every shipped results file, resolved\n                  against this repository's object database by content-census, the\n                  method chosen by a live probe rather than assumed; calibrated on\n                  three cases, two of them built from a committed producer of this\n                  tree\n      found     : 5, which is 5 more than this gate permits\n      place     :\n                  checks/chk_notebook_expectations_results.json:0  this file was computed by a version of chk_notebook_expectations.py whose bytes this ...\n                  | 1a915288869fc0da16c8c8de7363a047...\n                  notebooks/notebook_book_meta.json:0  this file was computed by a version of make_notebook_book.py whose bytes this reposit...\n                  | c2af513a76778361d66bfd1df3165922...\n                  notebooks/notebook_data_meta.json:0  this file was computed by a version of make_notebook_data.py whose bytes this reposit...\n                  | afb09997b914b4330a65e5c148b20eea...\n                  notebooks/notebook_expected.json:0  this file was computed by a version of make_notebook_data.py whose bytes this reposit...\n                  | afb09997b914b4330a65e5c148b20eea...\n                  notebooks/notebook_fills_meta.json:0  this file was computed by a version of make_notebook_fills.py whose bytes this reposi...\n                  | 93904d41e93dc08d4f38fc09a8f38f5d...\n      means     : run the named producer again so its results file records a version\n                  of the code that exists; a diff cannot settle this, because there\n                  is nothing at the far end to diff against\n      read object database = 450 blobs, resolved by content-census\n\n  VERDICT: FAIL - 1 of 3 rules found more than they permit: PRODUCER-NEVER-COMMITTED\n  full records -> chk_producer_committed_results.json\n"
+    },
+    {
+      "name": "pinned_versions",
+      "script": "chk_pinned_versions.py",
+      "verdict": "PASS",
+      "exit": 0,
+      "seconds": 0.5,
+      "enforces": "every artifact was computed under a library version requirements.txt pins, so a reader who follows the run command gets the numbers the report carries. Violations are counted against a declared debt that names each file, and a violation in a file the declaration does not name fails whatever the total says",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "headline_horizon",
+      "script": "chk_headline_horizon.py",
+      "verdict": "PASS",
+      "exit": 0,
+      "seconds": 1.4,
+      "enforces": "the scoring window is declared, never spelled",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "expensive_edits",
+      "script": "chk_expensive_edits.py",
+      "verdict": "PASS",
+      "exit": 0,
+      "seconds": 0.5,
+      "enforces": "no expensive producer carries an edit that changes no computed figure, because such an edit costs its whole runtime and buys nothing",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "build_selftest",
+      "script": "chk_build_selftest.py",
+      "verdict": "PASS_AT_BASELINE",
+      "exit": 0,
+      "seconds": 11.2,
+      "enforces": "the build's own self-test passes: the graph it derives from the syntax of every script still holds one producer per artifact, no cycle and every file operation accounted for. Failing assertions are counted against a ceiling that is a declared debt and may only be lowered",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "requirements_census",
+      "script": "chk_requirements_census.py",
+      "verdict": "PASS",
+      "exit": 0,
+      "seconds": 6.1,
+      "enforces": "the census inside requirements.txt still agrees with the tree it describes, read twice: once through the census's own comparison and once by reading the counts straight out of the block and asking the tree for the same ones. A finding that differs in nothing but the date the census stamps as it renders reports the calendar rather than the tree, and is counted apart",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "prose_numbers",
+      "script": "chk_prose_numbers.py",
+      "verdict": "SKIPPED_NO_REGISTRY",
+      "exit": 0,
+      "seconds": 0.2,
+      "enforces": "every figure the register declares equals the artifact leaf at the address the register itself writes down, and the check measures its own blindness. The register belongs to the write-up and is not shipped here, so with none named (--registry PATH or PROSE_REGISTRY) the check records that it compared nothing and exits 0",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "run_happened",
+      "script": "chk_run_happened.py",
+      "verdict": "UNCERTAIN",
+      "exit": 0,
+      "seconds": 8.1,
+      "enforces": "before a comparison of numbers is allowed to mean anything, the run that produced them is shown to have happened: a finish time later than the launch and a producer hash equal to the file on disk. Run here with no reference moment, so only the hash leg is judged; pass --since after a recompute to ask the other one",
+      "results_file_rewritten_by_this_run": true,
+      "output_tail": "esults.json\n        - identity/i3_book_nonrecoverability_results.json\n        - identity/i3_depth_control_results.json\n        - identity/i3_nonrecoverability_mid_results.json\n        - identity/i3_pretrade_vs_identity_figure_results.json\n        - identity/i3_results.json\n        - identity/i5_exclusion_results.json\n        - markout/confound_asymmetry_results.json\n        - markout/m2_figure_results.json\n        - markout/m5_termstructure_results.json\n        - markout/m6_inventory_results.json\n        - markout/temp_perm_results.json\n        - markout/ws1_horizon_results.json\n        - markout/ws1_markout_curve_figure_results.json\n        - money/m11_results.json\n        - money/m4_realizedpnl_results.json\n        - money/m7_size_results.json\n        - money/m8_makerside_results.json\n        - money/m9_decile_economics_figure_results.json\n        - money/maker_econ_b2_results.json\n        - money/maker_econ_results.json\n        - money/t3_results.json\n        - persistence/forward_toxicity_results.json\n        - persistence/i2_walletfe_results.json\n        - persistence/ks2_multiday_results.json\n        - persistence/ks2_persistence_10day_results.json\n        - persistence/ks2_persistence_mid_results.json\n        - persistence/m9_crossasset_results.json\n        - persistence/panel_analyze_results.json\n        - persistence/panel_common_idio_results.json\n        - persistence/panel_extended_results_h10_all.json\n        - persistence/panel_extended_results_h10_canonical.json\n        - persistence/panel_extended_results_h1_all.json\n        - persistence/panel_extended_results_h1_canonical.json\n        - persistence/panel_extended_results_h60_all.json\n        - persistence/panel_extended_results_h60_canonical.json\n        - persistence/panel_extended_results_h60_canonical_REPEAT.json\n        - persistence/three_coin_persistence_results.json\n        - persistence/ws2_hard_classifier_results.json\n        - persistence/ws3_taker_pnl_results.json\n        - probes/c2_bookstate_control_results.json\n        - probes/c_matched_precision_results.json\n        - probes/calib_print_vs_mid_results.json\n        - probes/connected_set_b1_results.json\n        - probes/decay_curve_results.json\n        - probes/decile_overlap_results.json\n        - probes/eb_scoring_results.json\n        - probes/kss_decomp_c_bookmid_results.json\n        - probes/kss_decomp_c_results.json\n        - probes/persistence_crosswindow_results.json\n        - probes/probe_E_lag_resolution_results.json\n        - probes/probe_E_leadlag_results.json\n        - probes/probe_F_hlp_liq_results.json\n        - probes/probe_G_horizon_results.json\n        - quoters/as_quoter_results.json\n        - quoters/gm_quoter_results.json\n------------------------------------------------------------------------------\n  WHAT THIS GATE DOES NOT SEE, counted on this tree:\n    artifacts with no finish time recorded : 1\n    artifacts with no producer hash        : 1\n    files with nowhere to keep a record    : 12 (.npz / .png / .csv / .parquet)\n    time discrimination                    : 1 s, no finer\n    modules behind a typical artifact      : 4 imported, 1 hashed (widest: 12 behind notebooks/notebook_data_meta.json)\n      an edit to artifact.py                  moves numbers in 105 artifacts and trips 0 legs\n      an edit to settings.py                  moves numbers in 105 artifacts and trips 0 legs\n      an edit to panel_io.py                  moves numbers in 74 artifacts and trips 0 legs\n      an edit to stats.py                     moves numbers in 47 artifacts and trips 0 legs\n      an edit to checks/evidence.py           moves numbers in 29 artifacts and trips 0 legs\n      an edit to data/build_quickwin_markouts.py moves numbers in 24 artifacts and trips 0 legs\n  results -> chk_run_happened_results.json\n\n  what a green run still permits: a producer that reads a cache and rewrites its own artifact satisfies both legs; this guard proves a run occurred, never that a quantity was recomputed\n"
+    },
+    {
+      "name": "notebook_expectations",
+      "script": "chk_notebook_expectations.py",
+      "verdict": "PASS",
+      "exit": 0,
+      "seconds": 2.6,
+      "enforces": "the figures written into the reproduction notebook are the figures its file of figures holds, and no cell fetches them from anywhere else",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "notebook_pointer_table",
+      "script": "chk_notebook_pointer_table.py",
+      "verdict": "PASS",
+      "exit": 0,
+      "seconds": 1.6,
+      "enforces": "the table of figures the reproduction notebook says it cannot rebuild names none that it does rebuild, and every row of it points at a script and an address a reader can open",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "contrast_hygiene",
+      "script": "chk_contrast_hygiene.py",
+      "verdict": "PASS",
+      "exit": 0,
+      "seconds": 0.3,
+      "enforces": "the arms of every published difference differ only along the axis their declaration names, and every measurement declared to be held equal between them actually is",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "join_nolookahead",
+      "script": "chk_join_nolookahead.py",
+      "verdict": "confirmed",
+      "exit": 0,
+      "seconds": 0.3,
+      "enforces": "no join reaches forward in time",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "decision_lookahead",
+      "script": "chk_decision_lookahead.py",
+      "verdict": "PASS_AT_BASELINE",
+      "exit": 0,
+      "seconds": 19.5,
+      "enforces": "no decision is taken with data from after it: the population, the cutoff and the constant a score is compared with all come from the early half",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "dir_vs_startpos",
+      "script": "chk_dir_vs_startpos.py",
+      "verdict": "confirmed",
+      "exit": 0,
+      "seconds": 0.5,
+      "enforces": "trade direction agrees with the pre-trade position",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "book_orientation",
+      "script": "chk_book_orientation.py",
+      "verdict": "confirmed",
+      "exit": 0,
+      "seconds": 2.4,
+      "enforces": "the order book is the right way up",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "closedpnl",
+      "script": "chk_closedpnl.py",
+      "verdict": "confirmed",
+      "exit": 0,
+      "seconds": 1.6,
+      "enforces": "realized profit agrees with the exchange's own field (reads the ignored quickwin_markouts.npz intermediate)",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "maker_attribution",
+      "script": "chk_maker_attribution.py",
+      "verdict": "ALL_PASS",
+      "exit": 0,
+      "seconds": 43.8,
+      "enforces": "a fill is attributed to the maker that filled it (fetches a byte range from Zenodo)",
+      "results_file_rewritten_by_this_run": true
+    },
+    {
+      "name": "input_freshness",
+      "script": "chk_input_freshness.py",
+      "verdict": "PASS_AT_BASELINE",
+      "exit": 0,
+      "seconds": 15.6,
+      "enforces": "every artifact still stands on the version of each input it recorded reading, which neither freshness gate above can see: both compare an artifact against its producer's hash and so ask only whether the code changed. Runs last, because it hashes the results files of the checks around it",
+      "results_file_rewritten_by_this_run": true
+    }
+  ]
+}

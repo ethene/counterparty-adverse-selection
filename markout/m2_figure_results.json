@@ -1,0 +1,154 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "m2_figure_results.json",
+    "producer": {
+      "script": "m2_figure.py",
+      "sha256": "0bfed9d36d80a86de6d11baf6121bc0462f82b140c8aaaff8be3ff5e47ef6754",
+      "bytes": 28656
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "taker fills of the two markout panels aggregated to wallets; 5493 wallets are eligible, needing at least 10 fills in EACH half of the window, and the top decile by early-half mean markout holds 550 of them against 4943 in the rest. This per-half floor is a DIFFERENT quantity from settings.RANK_FLOOR_FILLS, which is a floor on the whole window",
+      "window": "December 2025, days 4-8 for labelling and the disjoint days 9-13 for measurement, cut by settings.split_early_late over the days the input carries",
+      "coins": "BTC and ETH perpetuals"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print+mid",
+      "headline_lens": "mid",
+      "reliability_seed": null,
+      "fdr_alpha": null,
+      "persistence_floor_fills": null,
+      "whale_drop_k": null,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "min_common_wallets": 30,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "master_seed": null,
+      "n_perm": null,
+      "n_boot": null,
+      "rank_floor_fills": null,
+      "early_late_split": "settings.split_early_late over the days present: early [4, 5, 6, 7, 8], late [9, 10, 11, 12, 13]",
+      "overrides_note": "lens is BOTH references, because the two panels are the same fills scored against the trade print and against the book mid, and asserting either alone would be false about half the figure. The three horizons drawn are settings.LADDER_S and the decile CUT is taken on the headline print column at 10 seconds; horizon_s records that cut and not the ladder. The fill floor is settings.wallet_fill_floor for this file on BOTH HALVES, which is a floor on a HALF and therefore not settings.RANK_FLOOR_FILLS; rank_floor_fills is stated as not applying rather than left to be read as the declaration. No seed, no permutation, no bootstrap and no whale arm run here: the decile cut, the two masks and the four volume-weighted means are deterministic functions of the input arrays, so no random stream is drawn and no FDR family applies.",
+      "overridden": [
+        "early_late_split",
+        "fdr_alpha",
+        "master_seed",
+        "n_boot",
+        "n_perm",
+        "overrides_note",
+        "persistence_floor_fills",
+        "rank_floor_fills",
+        "reliability_seed",
+        "whale_drop_k"
+      ]
+    },
+    "run": {
+      "runtime_s": 0.931,
+      "finished_utc": "2026-08-11T17:49:32Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "headline_horizon_s": 10,
+  "ladder_s": [
+    1,
+    10,
+    60
+  ],
+  "vw_markout_bps": {
+    "trade_print": {
+      "toxic_decile": {
+        "1": 0.7427401964764678,
+        "10": 1.8580000503068699,
+        "60": 2.1121040443089645
+      },
+      "remaining": {
+        "1": -0.42237234646180316,
+        "10": -0.1764930537393062,
+        "60": -0.3653104935022152
+      }
+    },
+    "book_mid": {
+      "toxic_decile": {
+        "1": 3.2536872699372266,
+        "10": 3.9253775741862342,
+        "60": 4.26809950320427
+      },
+      "remaining": {
+        "1": 1.0130239145944164,
+        "10": 1.2548396197517357,
+        "60": 1.1082930867983118
+      }
+    }
+  },
+  "separation_bps": {
+    "trade_print": {
+      "1": 1.165112542938271,
+      "10": 2.034493104046176,
+      "60": 2.4774145378111796
+    },
+    "book_mid": {
+      "1": 2.24066335534281,
+      "10": 2.6705379544344985,
+      "60": 3.159806416405958
+    }
+  },
+  "headline_separation_bps": {
+    "trade_print": 2.034493104046176,
+    "book_mid": 2.6705379544344985
+  },
+  "labelling": {
+    "rank_column": "mo10",
+    "rank_window": "early half",
+    "measurement_window": "late half",
+    "top_quantile": 0.9,
+    "threshold_bps": 1.0630407350936224,
+    "min_fills_per_half": 10,
+    "whole_window_rank_floor_fills": 50,
+    "floor_predicate": "a wallet enters only with at least 10 fills in the early half AND at least 10 in the late half, which is settings.wallet_fill_floor('m2_figure', 'both_halves'). It is NOT settings.RANK_FLOOR_FILLS, which is 50 fills over the whole window and is what the rest of the study scores at",
+    "early_days": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "late_days": [
+      9,
+      10,
+      11,
+      12,
+      13
+    ]
+  },
+  "n_wallets": {
+    "toxic_decile": 550,
+    "remaining": 4943
+  },
+  "interpretation": "A decile of counterparties ranked on the EARLY half of the window stays more costly on the disjoint LATE half, under two reference prices that differ by the taker's own entry spread. The separation, not the level, is what the two lenses agree on: the book-mid level sits higher by that spread throughout."
+}

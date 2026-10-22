@@ -1,0 +1,2958 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_decision_lookahead_results.json",
+    "producer": {
+      "script": "chk_decision_lookahead.py",
+      "sha256": "d75514ede3621a21c61c7a9e0dde85484f6eddf2bc414d4a4c82b763a293654f",
+      "bytes": 115590,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "24d784c44ae2a5664ec556c36feb86b72c8716ff",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "settings.py",
+        "bytes": 120305,
+        "sha256": "38aaaa72180fdfee475ca216204634914db9797f2215ef30d505af4c499ea121",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "build_toxicity_frame.py",
+        "bytes": 10480,
+        "sha256": "3e9bc721c8d7b5addcfb0e5d343ee57d283d4a89c2061b11a82f79dc29ded319",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "d1_book_shape_figure.py",
+        "bytes": 51213,
+        "sha256": "cb1d01fe379ea9243ea59fd216d63774c194a00d23c6e63bb7e55bead1ed6f6e",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "d2_fill_tape_figure.py",
+        "bytes": 38129,
+        "sha256": "231729a52eff36ca748a114146c6cf5a98bc26d1ee8a9940330869e510b72b26",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "i3_book_comparator.py",
+        "bytes": 79963,
+        "sha256": "439c5b318f50575c6fd2c9e13152273995a328825c25341cdd976fc9709fb367",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "i3_nonrecoverability_oos.py",
+        "bytes": 55981,
+        "sha256": "c085c9662f7b7d1f351b540e74a7d4840faddb1882354984802add36af1eacdb",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "m2_figure.py",
+        "bytes": 28563,
+        "sha256": "6cb9a19b21594df85f30449d64b41597b3edc2618e50eeca0d5499c3161f5d93",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "ws1_horizon_persistence.py",
+        "bytes": 40886,
+        "sha256": "f09c353a32a61f68e6badbfe062c28aeaa4a6eec2ae0d9238903e3b1f0815bf5",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "maker_econ.py",
+        "bytes": 89612,
+        "sha256": "68baa4c9df90def4189648a2396cc6a82079e87ba5662b7f48555bd0a77a0eb2",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "maker_econ_b2.py",
+        "bytes": 44814,
+        "sha256": "c4bf6312f1e8cbe80ffaaa6f2343dfd9cd49238688ef32ef4c3d7bec8f6c10ce",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "t3_capacity.py",
+        "bytes": 56370,
+        "sha256": "7153ef9913c1393e32a3e92d0a1fb42767f633ad370aeecf919acd0a1f9bb872",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "ks2_persistence_10day.py",
+        "bytes": 59702,
+        "sha256": "65f6376a76c1d13628bf3cdc4cbb2671894c68136db6fcec48190f6c21bbe6ac",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "three_coin_persistence.py",
+        "bytes": 24395,
+        "sha256": "2d5c50a5b605a015608ddddc7db37bab9b6ac83036aac8e066aeb894a8fc13b0",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "ws2_hard_classifier.py",
+        "bytes": 33708,
+        "sha256": "e1927a44e6dba9e54f6a2725d0fe94203d5c4e9bdb97795b5e7298d8dd611866",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "ws3_taker_pnl.py",
+        "bytes": 31047,
+        "sha256": "cb85c990ffa52652f818e74309c2d7bffb97cd83a090e2a0d34eecd4a696bcff",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "flat_surcharge_control.py",
+        "bytes": 55785,
+        "sha256": "9158f89897a5c185ec51f7f37036e6befc0e44027e08f45a4d52b9e6bc438c59",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "survivorship_census.py",
+        "bytes": 58866,
+        "sha256": "207f7adae3a4b4a03204233fe249f17dfd150391395bed40222ed847166ee3e2",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "as_quoter.py",
+        "bytes": 55054,
+        "sha256": "69ff7a618087fc42fb70d91b5fd4bf9aa09c996b91ef72ea28678ac3d3efa970",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "mm_bakeoff.py",
+        "bytes": 250931,
+        "sha256": "eda802802e8b4b008cff7b8d6d27666f464822f2648a6831ad91366c4aaf8c96",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "t1_toxicity_skew_backtest.py",
+        "bytes": 158181,
+        "sha256": "3c7817ad19c74b7a9d7dc817fde72e7bfad552fc00523569b6df0f79c77c638f",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "127 tracked .py files of this repository are parsed; 19 of them resolve a two-half day cut and are the population the three rules are counted over. A module with no cut is outside the question, not passing it",
+      "window": "n/a: this gate reads source text as it stands and no market data. The cut it labels halves by is settings.split_early_late, probed on days 4-13",
+      "coins": "n/a: this gate reads source text and touches no market data"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "late_slot": 1,
+    "n_modules_with_cut": 19,
+    "n_coverage_gaps": 4,
+    "declared_debt_entries": 14,
+    "run": {
+      "runtime_s": 19.268,
+      "finished_utc": "2026-10-22T09:38:29Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "verdict": "PASS_AT_BASELINE",
+  "split_declaration": {
+    "function": "settings.split_early_late",
+    "probe_days": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "returned": [
+      [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      [
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    ],
+    "late_slot": 1,
+    "measured": "the slot holding the larger day numbers is the future half; this is read off the call, never typed in this file"
+  },
+  "n_tracked_python_scanned": 127,
+  "modules_with_a_resolved_cut": [
+    "data/build_toxicity_frame.py",
+    "data/d1_book_shape_figure.py",
+    "data/d2_fill_tape_figure.py",
+    "identity/i3_book_comparator.py",
+    "identity/i3_nonrecoverability_oos.py",
+    "markout/m2_figure.py",
+    "markout/ws1_horizon_persistence.py",
+    "money/maker_econ.py",
+    "money/maker_econ_b2.py",
+    "money/t3_capacity.py",
+    "persistence/ks2_persistence_10day.py",
+    "persistence/three_coin_persistence.py",
+    "persistence/ws2_hard_classifier.py",
+    "persistence/ws3_taker_pnl.py",
+    "probes/flat_surcharge_control.py",
+    "probes/survivorship_census.py",
+    "quoters/as_quoter.py",
+    "quoters/mm_bakeoff.py",
+    "quoters/t1_toxicity_skew_backtest.py"
+  ],
+  "per_module": [
+    {
+      "file": "data/build_toxicity_frame.py",
+      "split_sites": [
+        {
+          "line": 112,
+          "how": "own tail slice of the sorted days",
+          "scope": "build",
+          "early_binding": "early_days",
+          "late_binding": "late_days"
+        }
+      ],
+      "rule1": [
+        {
+          "file": "data/build_toxicity_frame.py",
+          "line": 145,
+          "binding": "w not in late_by_taker",
+          "index": "w not in late_by_taker",
+          "detail": "the loop drops w when w not in late_by_taker holds, a test built from a reduction over late-half rows: the units that survive are the ones that came back",
+          "source": "RULE 1",
+          "uses": [
+            {
+              "line": 145,
+              "consumer": "w"
+            }
+          ],
+          "n_uses": 1
+        }
+      ],
+      "rule1_near_miss": [],
+      "rule2": [],
+      "selected_on_late": [],
+      "rule3": [],
+      "whole_window_statistics": [
+        "imb_e",
+        "notl_e",
+        "pos_e"
+      ],
+      "rule4": [],
+      "rule4_inputs_resolved": [],
+      "rule4_inputs_unresolved": []
+    },
+    {
+      "file": "data/d1_book_shape_figure.py",
+      "split_sites": [
+        {
+          "line": 647,
+          "how": "settings call",
+          "scope": "<module>",
+          "early_binding": "EARLY_DAYS",
+          "late_binding": "LATE_DAYS"
+        }
+      ],
+      "rule1": [],
+      "rule1_near_miss": [],
+      "rule2": [],
+      "selected_on_late": [],
+      "rule3": [],
+      "whole_window_statistics": [],
+      "rule4": [
+        {
+          "file": "data/d1_book_shape_figure.py",
+          "line": 0,
+          "binding": "book_feats_*.npz",
+          "source": "RULE 4",
+          "index": "identity/i3_book_comparator.py -> identity/i3_book_nonrecoverability_results.json",
+          "detail": "book_feats_*.npz is made by identity/i3_book_comparator.py, which splits its own window and measures on days [9, 10, 11, 12, 13]; this module books its decision on days [9, 10, 11, 12, 13], and the two meet on [9, 10, 11, 12, 13]. The value was fitted against the days it is used to trade over, which nothing inside this file can undo",
+          "producer": "identity/i3_book_comparator.py",
+          "producer_artifact": "identity/i3_book_nonrecoverability_results.json",
+          "days_in_common": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        }
+      ],
+      "rule4_inputs_resolved": [
+        {
+          "file": "data/d1_book_shape_figure.py",
+          "input": "book_feats_*.npz",
+          "producer": "identity/i3_book_comparator.py",
+          "producer_artifact": "identity/i3_book_nonrecoverability_results.json",
+          "producer_resolves_a_cut": true,
+          "label_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        }
+      ],
+      "rule4_inputs_unresolved": [
+        {
+          "file": "data/d1_book_shape_figure.py",
+          "input": "mid_series_*.npz",
+          "producer": "data/i4_l2_mid.py",
+          "why": "its producer names no artifact of this tree"
+        }
+      ]
+    },
+    {
+      "file": "data/d2_fill_tape_figure.py",
+      "split_sites": [
+        {
+          "line": 227,
+          "how": "settings call",
+          "scope": "<module>",
+          "early_binding": "EARLY_DAYS",
+          "late_binding": "LATE_DAYS"
+        }
+      ],
+      "rule1": [],
+      "rule1_near_miss": [],
+      "rule2": [],
+      "selected_on_late": [],
+      "rule3": [],
+      "whole_window_statistics": [
+        "_",
+        "condition",
+        "counts",
+        "q",
+        "what"
+      ],
+      "rule4": [],
+      "rule4_inputs_resolved": [],
+      "rule4_inputs_unresolved": [
+        {
+          "file": "data/d2_fill_tape_figure.py",
+          "input": "quickwin_markouts.npz",
+          "producer": "data/build_quickwin_markouts.py",
+          "why": "its producer names no artifact of this tree"
+        },
+        {
+          "file": "data/d2_fill_tape_figure.py",
+          "input": "quickwin_pass_summary.json",
+          "producer": "data/build_quickwin_markouts.py",
+          "why": "its producer names no artifact of this tree"
+        }
+      ]
+    },
+    {
+      "file": "identity/i3_book_comparator.py",
+      "split_sites": [
+        {
+          "line": 388,
+          "how": "own tail slice of the sorted days",
+          "scope": "_ofi_series",
+          "early_binding": "bp0",
+          "late_binding": "bp1"
+        },
+        {
+          "line": 389,
+          "how": "own tail slice of the sorted days",
+          "scope": "_ofi_series",
+          "early_binding": "bs0",
+          "late_binding": "bs1"
+        },
+        {
+          "line": 390,
+          "how": "own tail slice of the sorted days",
+          "scope": "_ofi_series",
+          "early_binding": "ap0",
+          "late_binding": "ap1"
+        },
+        {
+          "line": 391,
+          "how": "own tail slice of the sorted days",
+          "scope": "_ofi_series",
+          "early_binding": "as0",
+          "late_binding": "as1"
+        }
+      ],
+      "rule1": [],
+      "rule1_near_miss": [],
+      "rule2": [],
+      "selected_on_late": [],
+      "rule3": [],
+      "whole_window_statistics": [
+        "aligned",
+        "all_cells",
+        "book_X",
+        "book_valid",
+        "cached",
+        "cell_wallets",
+        "g_bookV",
+        "g_bookX",
+        "join_issues",
+        "msg",
+        "nan_drop_book",
+        "nd",
+        "p",
+        "q",
+        "r",
+        "results",
+        "row",
+        "stored_by_cell"
+      ],
+      "rule4": [],
+      "rule4_inputs_resolved": [
+        {
+          "file": "identity/i3_book_comparator.py",
+          "input": "quickwin_markouts_mid.npz",
+          "producer": "data/i4_midmarkout.py",
+          "producer_artifact": "data/i4_midmarkout_results.json",
+          "producer_resolves_a_cut": false,
+          "label_days": [],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": []
+        }
+      ],
+      "rule4_inputs_unresolved": [
+        {
+          "file": "identity/i3_book_comparator.py",
+          "input": "notebook_fills.npz",
+          "producer": "notebook_build/make_notebook_fills.py",
+          "why": "its producer names no artifact of this tree"
+        }
+      ]
+    },
+    {
+      "file": "identity/i3_nonrecoverability_oos.py",
+      "split_sites": [
+        {
+          "line": 106,
+          "how": "settings call",
+          "scope": "<module>",
+          "early_binding": "EARLY_DAYS",
+          "late_binding": "LATE_DAYS"
+        }
+      ],
+      "rule1": [],
+      "rule1_near_miss": [],
+      "rule2": [],
+      "selected_on_late": [],
+      "rule3": [],
+      "whole_window_statistics": [],
+      "rule4": [],
+      "rule4_inputs_resolved": [
+        {
+          "file": "identity/i3_nonrecoverability_oos.py",
+          "input": "quickwin_markouts_mid.npz",
+          "producer": "data/i4_midmarkout.py",
+          "producer_artifact": "data/i4_midmarkout_results.json",
+          "producer_resolves_a_cut": false,
+          "label_days": [],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": []
+        }
+      ],
+      "rule4_inputs_unresolved": [
+        {
+          "file": "identity/i3_nonrecoverability_oos.py",
+          "input": "quickwin_taker_map.json",
+          "producer": "data/build_quickwin_markouts.py",
+          "why": "its producer names no artifact of this tree"
+        }
+      ]
+    },
+    {
+      "file": "markout/m2_figure.py",
+      "split_sites": [
+        {
+          "line": 104,
+          "how": "settings call",
+          "scope": "<module>",
+          "early_binding": "EARLY_DAYS",
+          "late_binding": "LATE_DAYS"
+        }
+      ],
+      "rule1": [
+        {
+          "file": "markout/m2_figure.py",
+          "line": 123,
+          "binding": "q",
+          "index": "q",
+          "detail": "the population of se is chosen by q, which is built from a reduction over late-half rows: on the day the decision fires those rows do not exist",
+          "source": "RULE 1",
+          "uses": [
+            {
+              "line": 123,
+              "consumer": "se"
+            },
+            {
+              "line": 123,
+              "consumer": "ce"
+            }
+          ],
+          "n_uses": 2
+        }
+      ],
+      "rule1_near_miss": [],
+      "rule2": [],
+      "selected_on_late": [],
+      "rule3": [],
+      "whole_window_statistics": [],
+      "rule4": [],
+      "rule4_inputs_resolved": [
+        {
+          "file": "markout/m2_figure.py",
+          "input": "quickwin_markouts_mid.npz",
+          "producer": "data/i4_midmarkout.py",
+          "producer_artifact": "data/i4_midmarkout_results.json",
+          "producer_resolves_a_cut": false,
+          "label_days": [],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": []
+        }
+      ],
+      "rule4_inputs_unresolved": [
+        {
+          "file": "markout/m2_figure.py",
+          "input": "quickwin_markouts.npz",
+          "producer": "data/build_quickwin_markouts.py",
+          "why": "its producer names no artifact of this tree"
+        }
+      ]
+    },
+    {
+      "file": "markout/ws1_horizon_persistence.py",
+      "split_sites": [
+        {
+          "line": 297,
+          "how": "settings call",
+          "scope": "persistence_for_horizon",
+          "early_binding": "early_days",
+          "late_binding": "late_days"
+        },
+        {
+          "line": 485,
+          "how": "settings call",
+          "scope": "main",
+          "early_binding": "early_days",
+          "late_binding": "late_days"
+        }
+      ],
+      "rule1": [
+        {
+          "file": "markout/ws1_horizon_persistence.py",
+          "line": 303,
+          "binding": "u",
+          "index": "u",
+          "detail": "the population of early is chosen by u, which is built from a reduction over late-half rows: on the day the decision fires those rows do not exist",
+          "source": "RULE 1",
+          "uses": [
+            {
+              "line": 303,
+              "consumer": "early"
+            },
+            {
+              "line": 307,
+              "consumer": "early"
+            },
+            {
+              "line": 307,
+              "consumer": "early"
+            },
+            {
+              "line": 308,
+              "consumer": "early"
+            },
+            {
+              "line": 308,
+              "consumer": "early"
+            }
+          ],
+          "n_uses": 5
+        }
+      ],
+      "rule1_near_miss": [],
+      "rule2": [],
+      "selected_on_late": [
+        "u",
+        "units"
+      ],
+      "rule3": [],
+      "whole_window_statistics": [
+        "corr",
+        "h_star",
+        "maxdiff",
+        "med",
+        "r",
+        "vw_mine",
+        "vw_stored",
+        "within"
+      ],
+      "rule4": [],
+      "rule4_inputs_resolved": [
+        {
+          "file": "markout/ws1_horizon_persistence.py",
+          "input": "quickwin_markouts_mid.npz",
+          "producer": "data/i4_midmarkout.py",
+          "producer_artifact": "data/i4_midmarkout_results.json",
+          "producer_resolves_a_cut": false,
+          "label_days": [],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": []
+        }
+      ],
+      "rule4_inputs_unresolved": [
+        {
+          "file": "markout/ws1_horizon_persistence.py",
+          "input": "mid_series_*.npz",
+          "producer": "data/i4_l2_mid.py",
+          "why": "its producer names no artifact of this tree"
+        },
+        {
+          "file": "markout/ws1_horizon_persistence.py",
+          "input": "notebook_fills.npz",
+          "producer": "notebook_build/make_notebook_fills.py",
+          "why": "its producer names no artifact of this tree"
+        }
+      ]
+    },
+    {
+      "file": "money/maker_econ.py",
+      "split_sites": [
+        {
+          "line": 711,
+          "how": "wrapper measured to resolve the cut: early_late_days",
+          "scope": "build_toxicity_labels",
+          "early_binding": "early_days",
+          "late_binding": "late_days"
+        },
+        {
+          "line": 1402,
+          "how": "wrapper measured to resolve the cut: early_late_days",
+          "scope": "main",
+          "early_binding": "early_run",
+          "late_binding": "late_run"
+        }
+      ],
+      "rule1": [],
+      "rule1_near_miss": [],
+      "rule2": [],
+      "selected_on_late": [],
+      "rule3": [],
+      "whole_window_statistics": [],
+      "rule4": [],
+      "rule4_inputs_resolved": [
+        {
+          "file": "money/maker_econ.py",
+          "input": "quickwin_markouts_mid.npz",
+          "producer": "data/i4_midmarkout.py",
+          "producer_artifact": "data/i4_midmarkout_results.json",
+          "producer_resolves_a_cut": false,
+          "label_days": [],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": []
+        }
+      ],
+      "rule4_inputs_unresolved": [
+        {
+          "file": "money/maker_econ.py",
+          "input": "quickwin_markouts.npz",
+          "producer": "data/build_quickwin_markouts.py",
+          "why": "its producer names no artifact of this tree"
+        }
+      ]
+    },
+    {
+      "file": "money/maker_econ_b2.py",
+      "split_sites": [
+        {
+          "line": 593,
+          "how": "wrapper measured to resolve the cut: early_late_days",
+          "scope": "main",
+          "early_binding": "early_run",
+          "late_binding": "late_run"
+        }
+      ],
+      "rule1": [],
+      "rule1_near_miss": [],
+      "rule2": [],
+      "selected_on_late": [],
+      "rule3": [],
+      "whole_window_statistics": [],
+      "rule4": [],
+      "rule4_inputs_resolved": [
+        {
+          "file": "money/maker_econ_b2.py",
+          "input": "quickwin_markouts_mid.npz",
+          "producer": "data/i4_midmarkout.py",
+          "producer_artifact": "data/i4_midmarkout_results.json",
+          "producer_resolves_a_cut": false,
+          "label_days": [],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": []
+        }
+      ],
+      "rule4_inputs_unresolved": [
+        {
+          "file": "money/maker_econ_b2.py",
+          "input": "quickwin_markouts.npz",
+          "producer": "data/build_quickwin_markouts.py",
+          "why": "its producer names no artifact of this tree"
+        }
+      ]
+    },
+    {
+      "file": "money/t3_capacity.py",
+      "split_sites": [
+        {
+          "line": 365,
+          "how": "wrapper measured to resolve the cut: _resolve_split",
+          "scope": "_per_wallet_cost",
+          "early_binding": "early_res",
+          "late_binding": "late_res"
+        },
+        {
+          "line": 793,
+          "how": "wrapper measured to resolve the cut: _resolve_split",
+          "scope": "main",
+          "early_binding": "early_run",
+          "late_binding": "late_run"
+        }
+      ],
+      "rule1": [],
+      "rule1_near_miss": [],
+      "rule2": [],
+      "selected_on_late": [],
+      "rule3": [],
+      "whole_window_statistics": [],
+      "rule4": [],
+      "rule4_inputs_resolved": [],
+      "rule4_inputs_unresolved": [
+        {
+          "file": "money/t3_capacity.py",
+          "input": "quickwin_markouts.npz",
+          "producer": "data/build_quickwin_markouts.py",
+          "why": "its producer names no artifact of this tree"
+        }
+      ]
+    },
+    {
+      "file": "persistence/ks2_persistence_10day.py",
+      "split_sites": [
+        {
+          "line": 842,
+          "how": "own tail slice of the sorted days",
+          "scope": "main",
+          "early_binding": "early",
+          "late_binding": "late"
+        },
+        {
+          "line": 1050,
+          "how": "own tail slice of the sorted days",
+          "scope": "main_mid",
+          "early_binding": "early",
+          "late_binding": "late"
+        }
+      ],
+      "rule1": [],
+      "rule1_near_miss": [],
+      "rule2": [],
+      "selected_on_late": [],
+      "rule3": [],
+      "whole_window_statistics": [
+        "n_geK",
+        "ratio"
+      ],
+      "rule4": [],
+      "rule4_inputs_resolved": [
+        {
+          "file": "persistence/ks2_persistence_10day.py",
+          "input": "quickwin_markouts_mid.npz",
+          "producer": "data/i4_midmarkout.py",
+          "producer_artifact": "data/i4_midmarkout_results.json",
+          "producer_resolves_a_cut": false,
+          "label_days": [],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": []
+        }
+      ],
+      "rule4_inputs_unresolved": []
+    },
+    {
+      "file": "persistence/three_coin_persistence.py",
+      "split_sites": [
+        {
+          "line": 179,
+          "how": "settings call",
+          "scope": "_day_split",
+          "early_binding": "early",
+          "late_binding": "late"
+        }
+      ],
+      "rule1": [],
+      "rule1_near_miss": [],
+      "rule2": [],
+      "selected_on_late": [],
+      "rule3": [],
+      "whole_window_statistics": [
+        "row",
+        "tm"
+      ],
+      "rule4": [],
+      "rule4_inputs_resolved": [
+        {
+          "file": "persistence/three_coin_persistence.py",
+          "input": "quickwin_markouts_mid.npz",
+          "producer": "data/i4_midmarkout.py",
+          "producer_artifact": "data/i4_midmarkout_results.json",
+          "producer_resolves_a_cut": false,
+          "label_days": [],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": []
+        }
+      ],
+      "rule4_inputs_unresolved": [
+        {
+          "file": "persistence/three_coin_persistence.py",
+          "input": "mid_series_*_*.npz",
+          "producer": "data/i4_l2_mid.py",
+          "why": "its producer names no artifact of this tree"
+        },
+        {
+          "file": "persistence/three_coin_persistence.py",
+          "input": "panel_markouts_v2.npz",
+          "producer": "data/panel_rebuild_v2.py",
+          "why": "its producer names no artifact of this tree"
+        },
+        {
+          "file": "persistence/three_coin_persistence.py",
+          "input": "quickwin_markouts.npz",
+          "producer": "data/build_quickwin_markouts.py",
+          "why": "its producer names no artifact of this tree"
+        }
+      ]
+    },
+    {
+      "file": "persistence/ws2_hard_classifier.py",
+      "split_sites": [
+        {
+          "line": 124,
+          "how": "settings call",
+          "scope": "main",
+          "early_binding": "early_days",
+          "late_binding": "late_days"
+        }
+      ],
+      "rule1": [
+        {
+          "file": "persistence/ws2_hard_classifier.py",
+          "line": 145,
+          "binding": "idx",
+          "index": "idx",
+          "detail": "the population of e_mean is chosen by idx, which is built from a reduction over late-half rows: on the day the decision fires those rows do not exist",
+          "source": "RULE 1",
+          "uses": [
+            {
+              "line": 145,
+              "consumer": "e_mean"
+            },
+            {
+              "line": 145,
+              "consumer": "e_var"
+            },
+            {
+              "line": 145,
+              "consumer": "e_cnt"
+            }
+          ],
+          "n_uses": 3
+        }
+      ],
+      "rule1_near_miss": [],
+      "rule2": [
+        {
+          "line": 214,
+          "cutoff": "thr_youden",
+          "score": "tau_star",
+          "file": "persistence/ws2_hard_classifier.py",
+          "binding": "thr_youden",
+          "detail": "thr_youden is chosen by a search that maximises against late-half data and is then applied as a cutoff to tau_star, an early-half score: the threshold carries the answer it is later scored against",
+          "source": "RULE 2",
+          "uses": [
+            {
+              "line": 214,
+              "consumer": "thr_youden"
+            }
+          ],
+          "n_uses": 1
+        }
+      ],
+      "selected_on_late": [
+        "best_j",
+        "thr_youden"
+      ],
+      "rule3": [],
+      "whole_window_statistics": [
+        "cnt",
+        "cost",
+        "mean",
+        "s1",
+        "s2",
+        "snt",
+        "var"
+      ],
+      "rule4": [],
+      "rule4_inputs_resolved": [
+        {
+          "file": "persistence/ws2_hard_classifier.py",
+          "input": "quickwin_markouts_mid.npz",
+          "producer": "data/i4_midmarkout.py",
+          "producer_artifact": "data/i4_midmarkout_results.json",
+          "producer_resolves_a_cut": false,
+          "label_days": [],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": []
+        }
+      ],
+      "rule4_inputs_unresolved": []
+    },
+    {
+      "file": "persistence/ws3_taker_pnl.py",
+      "split_sites": [
+        {
+          "line": 328,
+          "how": "settings call",
+          "scope": "main",
+          "early_binding": "early_days",
+          "late_binding": "late_days"
+        }
+      ],
+      "rule1": [
+        {
+          "file": "persistence/ws3_taker_pnl.py",
+          "line": 423,
+          "binding": "elig",
+          "index": "elig",
+          "detail": "the population of ea['mean_mo'] is chosen by elig, which is built from a reduction over late-half rows: on the day the decision fires those rows do not exist",
+          "source": "RULE 1",
+          "uses": [
+            {
+              "line": 423,
+              "consumer": "ea['mean_mo']"
+            }
+          ],
+          "n_uses": 1
+        }
+      ],
+      "rule1_near_miss": [],
+      "rule2": [],
+      "selected_on_late": [],
+      "rule3": [],
+      "whole_window_statistics": [
+        "a",
+        "a_full",
+        "bin_x",
+        "cnt_mo",
+        "keep",
+        "m",
+        "mean_mo",
+        "pnl_pd",
+        "price_check",
+        "qs",
+        "r",
+        "x_tox",
+        "y_pnl"
+      ],
+      "rule4": [],
+      "rule4_inputs_resolved": [
+        {
+          "file": "persistence/ws3_taker_pnl.py",
+          "input": "quickwin_markouts_mid.npz",
+          "producer": "data/i4_midmarkout.py",
+          "producer_artifact": "data/i4_midmarkout_results.json",
+          "producer_resolves_a_cut": false,
+          "label_days": [],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": []
+        }
+      ],
+      "rule4_inputs_unresolved": []
+    },
+    {
+      "file": "probes/flat_surcharge_control.py",
+      "split_sites": [
+        {
+          "line": 536,
+          "how": "settings call",
+          "scope": "main",
+          "early_binding": "early_days",
+          "late_binding": "late_days"
+        }
+      ],
+      "rule1": [],
+      "rule1_near_miss": [
+        {
+          "file": "probes/flat_surcharge_control.py",
+          "line": 604,
+          "binding": "premium",
+          "index": "booked_rows",
+          "detail": "late knowledge reaches this subscript at ROW grade only, which is the measurement step and is correct"
+        },
+        {
+          "file": "probes/flat_surcharge_control.py",
+          "line": 667,
+          "binding": "premium_floored",
+          "index": "booked_rows",
+          "detail": "late knowledge reaches this subscript at ROW grade only, which is the measurement step and is correct"
+        },
+        {
+          "file": "probes/flat_surcharge_control.py",
+          "line": 614,
+          "binding": "premium",
+          "index": "sel",
+          "detail": "late knowledge reaches this subscript at ROW grade only, which is the measurement step and is correct"
+        },
+        {
+          "file": "probes/flat_surcharge_control.py",
+          "line": 627,
+          "binding": "premium",
+          "index": "sel",
+          "detail": "late knowledge reaches this subscript at ROW grade only, which is the measurement step and is correct"
+        },
+        {
+          "file": "probes/flat_surcharge_control.py",
+          "line": 628,
+          "binding": "premium",
+          "index": "sel",
+          "detail": "late knowledge reaches this subscript at ROW grade only, which is the measurement step and is correct"
+        },
+        {
+          "file": "probes/flat_surcharge_control.py",
+          "line": 612,
+          "binding": "code",
+          "index": "not sel.any()",
+          "detail": "a late-derived test skips an iteration without naming the unit being iterated, which is an empty cell rather than a counterparty dropped for its own future"
+        },
+        {
+          "file": "probes/flat_surcharge_control.py",
+          "line": 623,
+          "binding": "code",
+          "index": "not sel.any()",
+          "detail": "a late-derived test skips an iteration without naming the unit being iterated, which is an empty cell rather than a counterparty dropped for its own future"
+        }
+      ],
+      "rule2": [],
+      "selected_on_late": [
+        "matching"
+      ],
+      "rule3": [],
+      "whole_window_statistics": [],
+      "rule4": [
+        {
+          "file": "probes/flat_surcharge_control.py",
+          "line": 141,
+          "binding": "mm_bakeoff_results.json",
+          "source": "RULE 4",
+          "index": "quoters/mm_bakeoff.py -> quoters/mm_bakeoff_results.json",
+          "detail": "mm_bakeoff_results.json is made by quoters/mm_bakeoff.py, which splits its own window and measures on days [9, 10, 11, 12, 13]; this module books its decision on days [9, 10, 11, 12, 13], and the two meet on [9, 10, 11, 12, 13]. The value was fitted against the days it is used to trade over, which nothing inside this file can undo",
+          "producer": "quoters/mm_bakeoff.py",
+          "producer_artifact": "quoters/mm_bakeoff_results.json",
+          "days_in_common": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        }
+      ],
+      "rule4_inputs_resolved": [
+        {
+          "file": "probes/flat_surcharge_control.py",
+          "input": "mm_bakeoff_results.json",
+          "producer": "quoters/mm_bakeoff.py",
+          "producer_artifact": "quoters/mm_bakeoff_results.json",
+          "producer_resolves_a_cut": true,
+          "label_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        },
+        {
+          "file": "probes/flat_surcharge_control.py",
+          "input": "quickwin_markouts_mid.npz",
+          "producer": "data/i4_midmarkout.py",
+          "producer_artifact": "data/i4_midmarkout_results.json",
+          "producer_resolves_a_cut": false,
+          "label_days": [],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": []
+        }
+      ],
+      "rule4_inputs_unresolved": []
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "split_sites": [
+        {
+          "line": 316,
+          "how": "settings call",
+          "scope": "site_m2",
+          "early_binding": "early_days",
+          "late_binding": "late_days"
+        },
+        {
+          "line": 439,
+          "how": "settings call",
+          "scope": "site_ws1",
+          "early_binding": "early_days",
+          "late_binding": "late_days"
+        },
+        {
+          "line": 505,
+          "how": "settings call",
+          "scope": "site_ws2",
+          "early_binding": "early_days",
+          "late_binding": "late_days"
+        },
+        {
+          "line": 577,
+          "how": "settings call",
+          "scope": "site_ws3",
+          "early_binding": "early_days",
+          "late_binding": "late_days"
+        },
+        {
+          "line": 720,
+          "how": "settings call",
+          "scope": "site_frame",
+          "early_binding": "early_days",
+          "late_binding": "late_days"
+        },
+        {
+          "line": 1021,
+          "how": "settings call",
+          "scope": "main",
+          "early_binding": "early_days",
+          "late_binding": "late_days"
+        }
+      ],
+      "rule1": [
+        {
+          "file": "probes/survivorship_census.py",
+          "line": 598,
+          "binding": "elig",
+          "index": "elig",
+          "detail": "the population of mean_e is chosen by elig, which is built from a reduction over late-half rows: on the day the decision fires those rows do not exist",
+          "source": "RULE 1",
+          "uses": [
+            {
+              "line": 598,
+              "consumer": "mean_e"
+            }
+          ],
+          "n_uses": 1
+        }
+      ],
+      "rule1_near_miss": [],
+      "rule2": [],
+      "selected_on_late": [],
+      "rule3": [],
+      "whole_window_statistics": [
+        "addressable",
+        "axis_findings",
+        "decomp",
+        "f",
+        "name",
+        "out",
+        "payload",
+        "s",
+        "sites"
+      ],
+      "rule4": [
+        {
+          "file": "probes/survivorship_census.py",
+          "line": 123,
+          "binding": "m2_figure_results.json",
+          "source": "RULE 4",
+          "index": "markout/m2_figure.py -> markout/m2_figure_results.json",
+          "detail": "m2_figure_results.json is made by markout/m2_figure.py, which splits its own window and measures on days [9, 10, 11, 12, 13]; this module books its decision on days [9, 10, 11, 12, 13], and the two meet on [9, 10, 11, 12, 13]. The value was fitted against the days it is used to trade over, which nothing inside this file can undo",
+          "producer": "markout/m2_figure.py",
+          "producer_artifact": "markout/m2_figure_results.json",
+          "days_in_common": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        },
+        {
+          "file": "probes/survivorship_census.py",
+          "line": 127,
+          "binding": "toxicity_frame_results.json",
+          "source": "RULE 4",
+          "index": "data/build_toxicity_frame.py -> data/toxicity_frame_results.json",
+          "detail": "toxicity_frame_results.json is made by data/build_toxicity_frame.py, which splits its own window and measures on days [9, 10, 11, 12, 13]; this module books its decision on days [9, 10, 11, 12, 13], and the two meet on [9, 10, 11, 12, 13]. The value was fitted against the days it is used to trade over, which nothing inside this file can undo",
+          "producer": "data/build_toxicity_frame.py",
+          "producer_artifact": "data/toxicity_frame_results.json",
+          "days_in_common": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        },
+        {
+          "file": "probes/survivorship_census.py",
+          "line": 124,
+          "binding": "ws1_horizon_results.json",
+          "source": "RULE 4",
+          "index": "markout/ws1_horizon_persistence.py -> markout/ws1_horizon_results.json",
+          "detail": "ws1_horizon_results.json is made by markout/ws1_horizon_persistence.py, which splits its own window and measures on days [9, 10, 11, 12, 13]; this module books its decision on days [9, 10, 11, 12, 13], and the two meet on [9, 10, 11, 12, 13]. The value was fitted against the days it is used to trade over, which nothing inside this file can undo",
+          "producer": "markout/ws1_horizon_persistence.py",
+          "producer_artifact": "markout/ws1_horizon_results.json",
+          "days_in_common": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        },
+        {
+          "file": "probes/survivorship_census.py",
+          "line": 125,
+          "binding": "ws2_hard_classifier_results.json",
+          "source": "RULE 4",
+          "index": "persistence/ws2_hard_classifier.py -> persistence/ws2_hard_classifier_results.json",
+          "detail": "ws2_hard_classifier_results.json is made by persistence/ws2_hard_classifier.py, which splits its own window and measures on days [9, 10, 11, 12, 13]; this module books its decision on days [9, 10, 11, 12, 13], and the two meet on [9, 10, 11, 12, 13]. The value was fitted against the days it is used to trade over, which nothing inside this file can undo",
+          "producer": "persistence/ws2_hard_classifier.py",
+          "producer_artifact": "persistence/ws2_hard_classifier_results.json",
+          "days_in_common": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        },
+        {
+          "file": "probes/survivorship_census.py",
+          "line": 126,
+          "binding": "ws3_taker_pnl_results.json",
+          "source": "RULE 4",
+          "index": "persistence/ws3_taker_pnl.py -> persistence/ws3_taker_pnl_results.json",
+          "detail": "ws3_taker_pnl_results.json is made by persistence/ws3_taker_pnl.py, which splits its own window and measures on days [9, 10, 11, 12, 13]; this module books its decision on days [9, 10, 11, 12, 13], and the two meet on [9, 10, 11, 12, 13]. The value was fitted against the days it is used to trade over, which nothing inside this file can undo",
+          "producer": "persistence/ws3_taker_pnl.py",
+          "producer_artifact": "persistence/ws3_taker_pnl_results.json",
+          "days_in_common": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        }
+      ],
+      "rule4_inputs_resolved": [
+        {
+          "file": "probes/survivorship_census.py",
+          "input": "m2_figure_results.json",
+          "producer": "markout/m2_figure.py",
+          "producer_artifact": "markout/m2_figure_results.json",
+          "producer_resolves_a_cut": true,
+          "label_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        },
+        {
+          "file": "probes/survivorship_census.py",
+          "input": "quickwin_markouts_mid.npz",
+          "producer": "data/i4_midmarkout.py",
+          "producer_artifact": "data/i4_midmarkout_results.json",
+          "producer_resolves_a_cut": false,
+          "label_days": [],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": []
+        },
+        {
+          "file": "probes/survivorship_census.py",
+          "input": "toxicity_frame_results.json",
+          "producer": "data/build_toxicity_frame.py",
+          "producer_artifact": "data/toxicity_frame_results.json",
+          "producer_resolves_a_cut": true,
+          "label_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        },
+        {
+          "file": "probes/survivorship_census.py",
+          "input": "ws1_horizon_results.json",
+          "producer": "markout/ws1_horizon_persistence.py",
+          "producer_artifact": "markout/ws1_horizon_results.json",
+          "producer_resolves_a_cut": true,
+          "label_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        },
+        {
+          "file": "probes/survivorship_census.py",
+          "input": "ws2_hard_classifier_results.json",
+          "producer": "persistence/ws2_hard_classifier.py",
+          "producer_artifact": "persistence/ws2_hard_classifier_results.json",
+          "producer_resolves_a_cut": true,
+          "label_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        },
+        {
+          "file": "probes/survivorship_census.py",
+          "input": "ws3_taker_pnl_results.json",
+          "producer": "persistence/ws3_taker_pnl.py",
+          "producer_artifact": "persistence/ws3_taker_pnl_results.json",
+          "producer_resolves_a_cut": true,
+          "label_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        }
+      ],
+      "rule4_inputs_unresolved": [
+        {
+          "file": "probes/survivorship_census.py",
+          "input": "quickwin_markouts.npz",
+          "producer": "data/build_quickwin_markouts.py",
+          "why": "its producer names no artifact of this tree"
+        }
+      ]
+    },
+    {
+      "file": "quoters/as_quoter.py",
+      "split_sites": [
+        {
+          "line": 838,
+          "how": "wrapper measured to resolve the cut: early_late_days",
+          "scope": "main",
+          "early_binding": "early_run",
+          "late_binding": "late_run"
+        }
+      ],
+      "rule1": [],
+      "rule1_near_miss": [],
+      "rule2": [],
+      "selected_on_late": [],
+      "rule3": [],
+      "whole_window_statistics": [],
+      "rule4": [],
+      "rule4_inputs_resolved": [
+        {
+          "file": "quoters/as_quoter.py",
+          "input": "quickwin_markouts_mid.npz",
+          "producer": "data/i4_midmarkout.py",
+          "producer_artifact": "data/i4_midmarkout_results.json",
+          "producer_resolves_a_cut": false,
+          "label_days": [],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": []
+        }
+      ],
+      "rule4_inputs_unresolved": []
+    },
+    {
+      "file": "quoters/mm_bakeoff.py",
+      "split_sites": [
+        {
+          "line": 3661,
+          "how": "wrapper measured to resolve the cut: early_late_days",
+          "scope": "main",
+          "early_binding": "early_run",
+          "late_binding": "late_run"
+        }
+      ],
+      "rule1": [],
+      "rule1_near_miss": [],
+      "rule2": [],
+      "selected_on_late": [],
+      "rule3": [],
+      "whole_window_statistics": [],
+      "rule4": [],
+      "rule4_inputs_resolved": [
+        {
+          "file": "quoters/mm_bakeoff.py",
+          "input": "quickwin_markouts_mid.npz",
+          "producer": "data/i4_midmarkout.py",
+          "producer_artifact": "data/i4_midmarkout_results.json",
+          "producer_resolves_a_cut": false,
+          "label_days": [],
+          "booking_days": [
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "days_in_common": []
+        }
+      ],
+      "rule4_inputs_unresolved": [
+        {
+          "file": "quoters/mm_bakeoff.py",
+          "input": "quickwin_markouts.npz",
+          "producer": "data/build_quickwin_markouts.py",
+          "why": "its producer names no artifact of this tree"
+        },
+        {
+          "file": "quoters/mm_bakeoff.py",
+          "input": "quickwin_taker_map.json",
+          "producer": "data/build_quickwin_markouts.py",
+          "why": "its producer names no artifact of this tree"
+        }
+      ]
+    },
+    {
+      "file": "quoters/t1_toxicity_skew_backtest.py",
+      "split_sites": [
+        {
+          "line": 422,
+          "how": "wrapper measured to resolve the cut: _early_late_days",
+          "scope": "_early_late_masks",
+          "early_binding": "early_days",
+          "late_binding": "late_days"
+        },
+        {
+          "line": 2202,
+          "how": "wrapper measured to resolve the cut: _early_late_days",
+          "scope": "main",
+          "early_binding": "early_present",
+          "late_binding": "late_present"
+        }
+      ],
+      "rule1": [],
+      "rule1_near_miss": [
+        {
+          "file": "quoters/t1_toxicity_skew_backtest.py",
+          "line": 2437,
+          "binding": "_blk",
+          "index": "_nm.startswith('_') or not isinstance(_blk, dict)",
+          "detail": "a late-derived test skips an iteration without naming the unit being iterated, which is an empty cell rather than a counterparty dropped for its own future"
+        },
+        {
+          "file": "quoters/t1_toxicity_skew_backtest.py",
+          "line": 2440,
+          "binding": "_blk",
+          "index": "_g is None",
+          "detail": "a late-derived test skips an iteration without naming the unit being iterated, which is an empty cell rather than a counterparty dropped for its own future"
+        }
+      ],
+      "rule2": [],
+      "selected_on_late": [],
+      "rule3": [],
+      "whole_window_statistics": [],
+      "rule4": [],
+      "rule4_inputs_resolved": [],
+      "rule4_inputs_unresolved": [
+        {
+          "file": "quoters/t1_toxicity_skew_backtest.py",
+          "input": "quickwin_markouts.npz",
+          "producer": "data/build_quickwin_markouts.py",
+          "why": "its producer names no artifact of this tree"
+        }
+      ]
+    }
+  ],
+  "undeclared_findings": {
+    "RULE 1": [],
+    "RULE 2": [],
+    "RULE 3": [],
+    "RULE 4": []
+  },
+  "declared_debt": [
+    {
+      "file": "persistence/ws2_hard_classifier.py",
+      "rule": "RULE 1",
+      "binding": "idx",
+      "date": "2026-08-05",
+      "reason": "the eligibility mask requires at least K fills in BOTH halves, so the three early per-wallet arrays it subsets are restricted to wallets that traded again after the flag would have fired. The file's own header says the late half is the prediction target only; the mask contradicts it. Left standing rather than repaired in place because the repair moves the eligible count and every figure downstream of it, which is a recompute and a re-reading of the register, not an edit"
+    },
+    {
+      "file": "persistence/ws2_hard_classifier.py",
+      "rule": "RULE 2",
+      "binding": "thr_youden",
+      "date": "2026-08-05",
+      "reason": "the cutoff is the argmax of true-positive minus false-positive rate over sixty candidates, scored against the late-window cost decile, and the flagged fraction reported beside it is measured at that same cutoff on that same half. The number is a fitted value, not an out-of-sample one, whatever it is called"
+    },
+    {
+      "file": "markout/m2_figure.py",
+      "rule": "RULE 1",
+      "binding": "q",
+      "date": "2026-08-05",
+      "reason": "the wallets the headline figure draws are those clearing the fill floor in BOTH halves, and the top-decile cut is taken over that survivor set. Same defect as the classifier's eligibility mask, on the figure the report leads with"
+    },
+    {
+      "file": "markout/ws1_horizon_persistence.py",
+      "rule": "RULE 1",
+      "binding": "u",
+      "date": "2026-08-05",
+      "reason": "the unit list keeps a wallet only when it clears the floor in both halves, which is unavoidable for a persistence correlation -- the quantity being measured is defined on pairs -- but it makes the population a survivor set all the same, and the artifact does not say so. Declared so that the limitation is written down rather than assumed harmless"
+    },
+    {
+      "file": "persistence/ws3_taker_pnl.py",
+      "rule": "RULE 1",
+      "binding": "elig",
+      "date": "2026-08-05",
+      "reason": "the out-of-sample leg flags on the early top decile and measures late realized profit, but the wallets it ranks are those with K fills in both halves, so the flag is taken over a set the flagging moment cannot know"
+    },
+    {
+      "file": "data/build_toxicity_frame.py",
+      "rule": "RULE 1",
+      "binding": "w not in late_by_taker",
+      "date": "2026-08-05",
+      "reason": "a counterparty with no late-half fills gets no row at all, so the feature frame this file writes is a table of wallets that came back. The frame's own leakage note covers label leakage and says nothing about this"
+    },
+    {
+      "file": "probes/flat_surcharge_control.py",
+      "rule": "RULE 4",
+      "binding": "mm_bakeoff_results.json",
+      "date": "2026-08-05",
+      "reason": "the control reads the published delta, which mm_bakeoff.py measures on days 9 to 13, and books its own offset on those same days. What it does with the loaded value is choose which of two constructions of the early premium the published number stands on, and refuse to print a residual unless one of them reproduces it. That choice is made with a quantity from the window the file reports over, and it is the point of the file rather than a defect in it: a control that has not reproduced the published number has no baseline. Declared so that the dependence is written down instead of assumed harmless"
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "rule": "RULE 4",
+      "binding": "m2_figure_results.json",
+      "date": "2026-08-05",
+      "reason": "the census prices the two-sided admission rule by reading what the producers that carry it published, so their late-half quantities are its SUBJECT and not an input to a decision it takes. Same ground as its RULE 1 entry below, and the file says so to its own artifact under deliberate_lookahead"
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "rule": "RULE 4",
+      "binding": "toxicity_frame_results.json",
+      "date": "2026-08-05",
+      "reason": "as the m2_figure entry above: a population read to be priced, not used"
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "rule": "RULE 4",
+      "binding": "ws1_horizon_results.json",
+      "date": "2026-08-05",
+      "reason": "as the m2_figure entry above: a population read to be priced, not used"
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "rule": "RULE 4",
+      "binding": "ws2_hard_classifier_results.json",
+      "date": "2026-08-05",
+      "reason": "as the m2_figure entry above: a population read to be priced, not used"
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "rule": "RULE 4",
+      "binding": "ws3_taker_pnl_results.json",
+      "date": "2026-08-05",
+      "reason": "as the m2_figure entry above: a population read to be priced, not used"
+    },
+    {
+      "file": "data/d1_book_shape_figure.py",
+      "rule": "RULE 4",
+      "binding": "book_feats_*.npz",
+      "date": "2026-08-29",
+      "reason": "this producer draws the appendix figure of the raw material and takes no decision at all, so RULE 4's premise -- that an arm is priced off a quantity fitted on the days it quotes over -- has no arm to attach to here. The days do meet: i3_book_comparator.py measures on days 9 to 13 and this module binds the same late half. What it binds it FOR is the right-hand panel, which draws the boundary between the two halves and prints each half's median quoted spread, so the reader can see that the split this study rests on does not sit on a regime break. That is a description of the window, not a booking across it, and RULE 4 cannot tell the two apart because both bind the same name. What makes this checkable rather than asserted is where the loaded values go: book_feats_{COIN}.npz is opened at exactly two sites and NEITHER of them reaches the picture. check_against_book_feats() recomputes the four depth columns from the raw levels and requires them to equal the committed artifact row by row, which can only stop the run and can never move a number; its result is recorded under against_a_committed_artifact and is not plotted. degeneracy_of_two_rungs() counts how often the two rungs of that file are equal, which is the measurement behind spending two and a half minutes on the raw snapshots instead, and it decides a parsing route rather than a counterparty, a cutoff or a price. Every series on both panels is re-parsed from the raw snapshots by this file. So no value fitted on the late half reaches any published quantity, and a reader can confirm it by opening the artifact and finding those two records and no third. The entry is keyed to this ONE input on purpose: a second fitted input read by the same file is a new finding and this line will not excuse it"
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "rule": "RULE 1",
+      "binding": "elig",
+      "date": "2026-08-05",
+      "reason": "this producer carries the admission rule as the OBJECT of a measurement rather than as the ground of a decision. Its as_committed arm rebuilds the two-sided mask on purpose, so that the price of the rule can be printed beside the two arms that relax it, and the file declares this to its own artifact under the key deliberate_lookahead. Removing the pattern would hide the very expression being priced, which is why the entry stands here instead"
+    }
+  ],
+  "declared_debt_excused": [
+    {
+      "file": "data/build_toxicity_frame.py",
+      "line": 145,
+      "binding": "w not in late_by_taker",
+      "index": "w not in late_by_taker",
+      "detail": "the loop drops w when w not in late_by_taker holds, a test built from a reduction over late-half rows: the units that survive are the ones that came back",
+      "source": "RULE 1",
+      "uses": [
+        {
+          "line": 145,
+          "consumer": "w"
+        }
+      ],
+      "n_uses": 1,
+      "declared_reason": "a counterparty with no late-half fills gets no row at all, so the feature frame this file writes is a table of wallets that came back. The frame's own leakage note covers label leakage and says nothing about this",
+      "declared_on": "2026-08-05"
+    },
+    {
+      "file": "data/d1_book_shape_figure.py",
+      "line": 0,
+      "binding": "book_feats_*.npz",
+      "source": "RULE 4",
+      "index": "identity/i3_book_comparator.py -> identity/i3_book_nonrecoverability_results.json",
+      "detail": "book_feats_*.npz is made by identity/i3_book_comparator.py, which splits its own window and measures on days [9, 10, 11, 12, 13]; this module books its decision on days [9, 10, 11, 12, 13], and the two meet on [9, 10, 11, 12, 13]. The value was fitted against the days it is used to trade over, which nothing inside this file can undo",
+      "producer": "identity/i3_book_comparator.py",
+      "producer_artifact": "identity/i3_book_nonrecoverability_results.json",
+      "days_in_common": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "declared_reason": "this producer draws the appendix figure of the raw material and takes no decision at all, so RULE 4's premise -- that an arm is priced off a quantity fitted on the days it quotes over -- has no arm to attach to here. The days do meet: i3_book_comparator.py measures on days 9 to 13 and this module binds the same late half. What it binds it FOR is the right-hand panel, which draws the boundary between the two halves and prints each half's median quoted spread, so the reader can see that the split this study rests on does not sit on a regime break. That is a description of the window, not a booking across it, and RULE 4 cannot tell the two apart because both bind the same name. What makes this checkable rather than asserted is where the loaded values go: book_feats_{COIN}.npz is opened at exactly two sites and NEITHER of them reaches the picture. check_against_book_feats() recomputes the four depth columns from the raw levels and requires them to equal the committed artifact row by row, which can only stop the run and can never move a number; its result is recorded under against_a_committed_artifact and is not plotted. degeneracy_of_two_rungs() counts how often the two rungs of that file are equal, which is the measurement behind spending two and a half minutes on the raw snapshots instead, and it decides a parsing route rather than a counterparty, a cutoff or a price. Every series on both panels is re-parsed from the raw snapshots by this file. So no value fitted on the late half reaches any published quantity, and a reader can confirm it by opening the artifact and finding those two records and no third. The entry is keyed to this ONE input on purpose: a second fitted input read by the same file is a new finding and this line will not excuse it",
+      "declared_on": "2026-08-29"
+    },
+    {
+      "file": "markout/m2_figure.py",
+      "line": 123,
+      "binding": "q",
+      "index": "q",
+      "detail": "the population of se is chosen by q, which is built from a reduction over late-half rows: on the day the decision fires those rows do not exist",
+      "source": "RULE 1",
+      "uses": [
+        {
+          "line": 123,
+          "consumer": "se"
+        },
+        {
+          "line": 123,
+          "consumer": "ce"
+        }
+      ],
+      "n_uses": 2,
+      "declared_reason": "the wallets the headline figure draws are those clearing the fill floor in BOTH halves, and the top-decile cut is taken over that survivor set. Same defect as the classifier's eligibility mask, on the figure the report leads with",
+      "declared_on": "2026-08-05"
+    },
+    {
+      "file": "markout/ws1_horizon_persistence.py",
+      "line": 303,
+      "binding": "u",
+      "index": "u",
+      "detail": "the population of early is chosen by u, which is built from a reduction over late-half rows: on the day the decision fires those rows do not exist",
+      "source": "RULE 1",
+      "uses": [
+        {
+          "line": 303,
+          "consumer": "early"
+        },
+        {
+          "line": 307,
+          "consumer": "early"
+        },
+        {
+          "line": 307,
+          "consumer": "early"
+        },
+        {
+          "line": 308,
+          "consumer": "early"
+        },
+        {
+          "line": 308,
+          "consumer": "early"
+        }
+      ],
+      "n_uses": 5,
+      "declared_reason": "the unit list keeps a wallet only when it clears the floor in both halves, which is unavoidable for a persistence correlation -- the quantity being measured is defined on pairs -- but it makes the population a survivor set all the same, and the artifact does not say so. Declared so that the limitation is written down rather than assumed harmless",
+      "declared_on": "2026-08-05"
+    },
+    {
+      "file": "persistence/ws2_hard_classifier.py",
+      "line": 145,
+      "binding": "idx",
+      "index": "idx",
+      "detail": "the population of e_mean is chosen by idx, which is built from a reduction over late-half rows: on the day the decision fires those rows do not exist",
+      "source": "RULE 1",
+      "uses": [
+        {
+          "line": 145,
+          "consumer": "e_mean"
+        },
+        {
+          "line": 145,
+          "consumer": "e_var"
+        },
+        {
+          "line": 145,
+          "consumer": "e_cnt"
+        }
+      ],
+      "n_uses": 3,
+      "declared_reason": "the eligibility mask requires at least K fills in BOTH halves, so the three early per-wallet arrays it subsets are restricted to wallets that traded again after the flag would have fired. The file's own header says the late half is the prediction target only; the mask contradicts it. Left standing rather than repaired in place because the repair moves the eligible count and every figure downstream of it, which is a recompute and a re-reading of the register, not an edit",
+      "declared_on": "2026-08-05"
+    },
+    {
+      "line": 214,
+      "cutoff": "thr_youden",
+      "score": "tau_star",
+      "file": "persistence/ws2_hard_classifier.py",
+      "binding": "thr_youden",
+      "detail": "thr_youden is chosen by a search that maximises against late-half data and is then applied as a cutoff to tau_star, an early-half score: the threshold carries the answer it is later scored against",
+      "source": "RULE 2",
+      "uses": [
+        {
+          "line": 214,
+          "consumer": "thr_youden"
+        }
+      ],
+      "n_uses": 1,
+      "declared_reason": "the cutoff is the argmax of true-positive minus false-positive rate over sixty candidates, scored against the late-window cost decile, and the flagged fraction reported beside it is measured at that same cutoff on that same half. The number is a fitted value, not an out-of-sample one, whatever it is called",
+      "declared_on": "2026-08-05"
+    },
+    {
+      "file": "persistence/ws3_taker_pnl.py",
+      "line": 423,
+      "binding": "elig",
+      "index": "elig",
+      "detail": "the population of ea['mean_mo'] is chosen by elig, which is built from a reduction over late-half rows: on the day the decision fires those rows do not exist",
+      "source": "RULE 1",
+      "uses": [
+        {
+          "line": 423,
+          "consumer": "ea['mean_mo']"
+        }
+      ],
+      "n_uses": 1,
+      "declared_reason": "the out-of-sample leg flags on the early top decile and measures late realized profit, but the wallets it ranks are those with K fills in both halves, so the flag is taken over a set the flagging moment cannot know",
+      "declared_on": "2026-08-05"
+    },
+    {
+      "file": "probes/flat_surcharge_control.py",
+      "line": 141,
+      "binding": "mm_bakeoff_results.json",
+      "source": "RULE 4",
+      "index": "quoters/mm_bakeoff.py -> quoters/mm_bakeoff_results.json",
+      "detail": "mm_bakeoff_results.json is made by quoters/mm_bakeoff.py, which splits its own window and measures on days [9, 10, 11, 12, 13]; this module books its decision on days [9, 10, 11, 12, 13], and the two meet on [9, 10, 11, 12, 13]. The value was fitted against the days it is used to trade over, which nothing inside this file can undo",
+      "producer": "quoters/mm_bakeoff.py",
+      "producer_artifact": "quoters/mm_bakeoff_results.json",
+      "days_in_common": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "declared_reason": "the control reads the published delta, which mm_bakeoff.py measures on days 9 to 13, and books its own offset on those same days. What it does with the loaded value is choose which of two constructions of the early premium the published number stands on, and refuse to print a residual unless one of them reproduces it. That choice is made with a quantity from the window the file reports over, and it is the point of the file rather than a defect in it: a control that has not reproduced the published number has no baseline. Declared so that the dependence is written down instead of assumed harmless",
+      "declared_on": "2026-08-05"
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "line": 598,
+      "binding": "elig",
+      "index": "elig",
+      "detail": "the population of mean_e is chosen by elig, which is built from a reduction over late-half rows: on the day the decision fires those rows do not exist",
+      "source": "RULE 1",
+      "uses": [
+        {
+          "line": 598,
+          "consumer": "mean_e"
+        }
+      ],
+      "n_uses": 1,
+      "declared_reason": "this producer carries the admission rule as the OBJECT of a measurement rather than as the ground of a decision. Its as_committed arm rebuilds the two-sided mask on purpose, so that the price of the rule can be printed beside the two arms that relax it, and the file declares this to its own artifact under the key deliberate_lookahead. Removing the pattern would hide the very expression being priced, which is why the entry stands here instead",
+      "declared_on": "2026-08-05"
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "line": 123,
+      "binding": "m2_figure_results.json",
+      "source": "RULE 4",
+      "index": "markout/m2_figure.py -> markout/m2_figure_results.json",
+      "detail": "m2_figure_results.json is made by markout/m2_figure.py, which splits its own window and measures on days [9, 10, 11, 12, 13]; this module books its decision on days [9, 10, 11, 12, 13], and the two meet on [9, 10, 11, 12, 13]. The value was fitted against the days it is used to trade over, which nothing inside this file can undo",
+      "producer": "markout/m2_figure.py",
+      "producer_artifact": "markout/m2_figure_results.json",
+      "days_in_common": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "declared_reason": "the census prices the two-sided admission rule by reading what the producers that carry it published, so their late-half quantities are its SUBJECT and not an input to a decision it takes. Same ground as its RULE 1 entry below, and the file says so to its own artifact under deliberate_lookahead",
+      "declared_on": "2026-08-05"
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "line": 127,
+      "binding": "toxicity_frame_results.json",
+      "source": "RULE 4",
+      "index": "data/build_toxicity_frame.py -> data/toxicity_frame_results.json",
+      "detail": "toxicity_frame_results.json is made by data/build_toxicity_frame.py, which splits its own window and measures on days [9, 10, 11, 12, 13]; this module books its decision on days [9, 10, 11, 12, 13], and the two meet on [9, 10, 11, 12, 13]. The value was fitted against the days it is used to trade over, which nothing inside this file can undo",
+      "producer": "data/build_toxicity_frame.py",
+      "producer_artifact": "data/toxicity_frame_results.json",
+      "days_in_common": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "declared_reason": "as the m2_figure entry above: a population read to be priced, not used",
+      "declared_on": "2026-08-05"
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "line": 124,
+      "binding": "ws1_horizon_results.json",
+      "source": "RULE 4",
+      "index": "markout/ws1_horizon_persistence.py -> markout/ws1_horizon_results.json",
+      "detail": "ws1_horizon_results.json is made by markout/ws1_horizon_persistence.py, which splits its own window and measures on days [9, 10, 11, 12, 13]; this module books its decision on days [9, 10, 11, 12, 13], and the two meet on [9, 10, 11, 12, 13]. The value was fitted against the days it is used to trade over, which nothing inside this file can undo",
+      "producer": "markout/ws1_horizon_persistence.py",
+      "producer_artifact": "markout/ws1_horizon_results.json",
+      "days_in_common": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "declared_reason": "as the m2_figure entry above: a population read to be priced, not used",
+      "declared_on": "2026-08-05"
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "line": 125,
+      "binding": "ws2_hard_classifier_results.json",
+      "source": "RULE 4",
+      "index": "persistence/ws2_hard_classifier.py -> persistence/ws2_hard_classifier_results.json",
+      "detail": "ws2_hard_classifier_results.json is made by persistence/ws2_hard_classifier.py, which splits its own window and measures on days [9, 10, 11, 12, 13]; this module books its decision on days [9, 10, 11, 12, 13], and the two meet on [9, 10, 11, 12, 13]. The value was fitted against the days it is used to trade over, which nothing inside this file can undo",
+      "producer": "persistence/ws2_hard_classifier.py",
+      "producer_artifact": "persistence/ws2_hard_classifier_results.json",
+      "days_in_common": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "declared_reason": "as the m2_figure entry above: a population read to be priced, not used",
+      "declared_on": "2026-08-05"
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "line": 126,
+      "binding": "ws3_taker_pnl_results.json",
+      "source": "RULE 4",
+      "index": "persistence/ws3_taker_pnl.py -> persistence/ws3_taker_pnl_results.json",
+      "detail": "ws3_taker_pnl_results.json is made by persistence/ws3_taker_pnl.py, which splits its own window and measures on days [9, 10, 11, 12, 13]; this module books its decision on days [9, 10, 11, 12, 13], and the two meet on [9, 10, 11, 12, 13]. The value was fitted against the days it is used to trade over, which nothing inside this file can undo",
+      "producer": "persistence/ws3_taker_pnl.py",
+      "producer_artifact": "persistence/ws3_taker_pnl_results.json",
+      "days_in_common": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "declared_reason": "as the m2_figure entry above: a population read to be priced, not used",
+      "declared_on": "2026-08-05"
+    }
+  ],
+  "declared_debt_matching_nothing": [],
+  "cut_reached_but_unresolved": [
+    {
+      "file": "checks/chk_decision_lookahead.py",
+      "line": 339,
+      "detail": "calls the cut directly but never unpacks two halves into two names in this module, so no half can be labelled here",
+      "source": "COVERAGE"
+    },
+    {
+      "file": "checks/chk_settings_home.py",
+      "line": 764,
+      "detail": "calls the cut directly but never unpacks two halves into two names in this module, so no half can be labelled here",
+      "source": "COVERAGE"
+    },
+    {
+      "file": "quoters/gm_quoter.py",
+      "line": 230,
+      "detail": "calls the cut directly but never unpacks two halves into two names in this module, so no half can be labelled here",
+      "source": "COVERAGE"
+    },
+    {
+      "file": "settings.py",
+      "line": 1146,
+      "detail": "calls the cut directly but never unpacks two halves into two names in this module, so no half can be labelled here",
+      "source": "COVERAGE"
+    }
+  ],
+  "cut_resolvers_confirmed": [
+    {
+      "file": "money/maker_econ.py",
+      "function": "early_late_days",
+      "late_slot": 1,
+      "returned": [
+        [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        [
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      ],
+      "probe_days": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "measured": "called on the probe range; the slot holding the larger day numbers is the future half, read off the call"
+    },
+    {
+      "file": "money/t3_capacity.py",
+      "function": "_resolve_split",
+      "late_slot": 1,
+      "returned": [
+        [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        [
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      ],
+      "probe_days": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "measured": "called on the probe range; the slot holding the larger day numbers is the future half, read off the call"
+    },
+    {
+      "file": "quoters/as_quoter.py",
+      "function": "early_late_days",
+      "late_slot": 1,
+      "returned": [
+        [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        [
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      ],
+      "probe_days": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "measured": "called on the probe range; the slot holding the larger day numbers is the future half, read off the call"
+    },
+    {
+      "file": "quoters/t1_toxicity_skew_backtest.py",
+      "function": "_early_late_days",
+      "late_slot": 1,
+      "returned": [
+        [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        [
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      ],
+      "probe_days": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "measured": "called on the probe range; the slot holding the larger day numbers is the future half, read off the call"
+    }
+  ],
+  "cut_resolver_candidates_rejected": [
+    {
+      "file": "checks/chk_settings_home.py",
+      "function": "rule5",
+      "stage": "purity",
+      "why": "calls notebook_cells"
+    },
+    {
+      "file": "quoters/gm_quoter.py",
+      "function": "<module>",
+      "stage": "import",
+      "why": "ModuleNotFoundError: No module named 'as_quoter'"
+    },
+    {
+      "file": "quoters/t1_toxicity_skew_backtest.py",
+      "function": "_early_late_masks",
+      "stage": "call",
+      "why": "returned tuple (array([ True,  True,  True,  True,  True, False, False, Fal, which is not two day sets partitioning the probe"
+    }
+  ],
+  "rule4_inputs_resolved": [
+    {
+      "file": "data/d1_book_shape_figure.py",
+      "input": "book_feats_*.npz",
+      "producer": "identity/i3_book_comparator.py",
+      "producer_artifact": "identity/i3_book_nonrecoverability_results.json",
+      "producer_resolves_a_cut": true,
+      "label_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "file": "identity/i3_book_comparator.py",
+      "input": "quickwin_markouts_mid.npz",
+      "producer": "data/i4_midmarkout.py",
+      "producer_artifact": "data/i4_midmarkout_results.json",
+      "producer_resolves_a_cut": false,
+      "label_days": [],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": []
+    },
+    {
+      "file": "identity/i3_nonrecoverability_oos.py",
+      "input": "quickwin_markouts_mid.npz",
+      "producer": "data/i4_midmarkout.py",
+      "producer_artifact": "data/i4_midmarkout_results.json",
+      "producer_resolves_a_cut": false,
+      "label_days": [],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": []
+    },
+    {
+      "file": "markout/m2_figure.py",
+      "input": "quickwin_markouts_mid.npz",
+      "producer": "data/i4_midmarkout.py",
+      "producer_artifact": "data/i4_midmarkout_results.json",
+      "producer_resolves_a_cut": false,
+      "label_days": [],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": []
+    },
+    {
+      "file": "markout/ws1_horizon_persistence.py",
+      "input": "quickwin_markouts_mid.npz",
+      "producer": "data/i4_midmarkout.py",
+      "producer_artifact": "data/i4_midmarkout_results.json",
+      "producer_resolves_a_cut": false,
+      "label_days": [],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": []
+    },
+    {
+      "file": "money/maker_econ.py",
+      "input": "quickwin_markouts_mid.npz",
+      "producer": "data/i4_midmarkout.py",
+      "producer_artifact": "data/i4_midmarkout_results.json",
+      "producer_resolves_a_cut": false,
+      "label_days": [],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": []
+    },
+    {
+      "file": "money/maker_econ_b2.py",
+      "input": "quickwin_markouts_mid.npz",
+      "producer": "data/i4_midmarkout.py",
+      "producer_artifact": "data/i4_midmarkout_results.json",
+      "producer_resolves_a_cut": false,
+      "label_days": [],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": []
+    },
+    {
+      "file": "persistence/ks2_persistence_10day.py",
+      "input": "quickwin_markouts_mid.npz",
+      "producer": "data/i4_midmarkout.py",
+      "producer_artifact": "data/i4_midmarkout_results.json",
+      "producer_resolves_a_cut": false,
+      "label_days": [],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": []
+    },
+    {
+      "file": "persistence/three_coin_persistence.py",
+      "input": "quickwin_markouts_mid.npz",
+      "producer": "data/i4_midmarkout.py",
+      "producer_artifact": "data/i4_midmarkout_results.json",
+      "producer_resolves_a_cut": false,
+      "label_days": [],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": []
+    },
+    {
+      "file": "persistence/ws2_hard_classifier.py",
+      "input": "quickwin_markouts_mid.npz",
+      "producer": "data/i4_midmarkout.py",
+      "producer_artifact": "data/i4_midmarkout_results.json",
+      "producer_resolves_a_cut": false,
+      "label_days": [],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": []
+    },
+    {
+      "file": "persistence/ws3_taker_pnl.py",
+      "input": "quickwin_markouts_mid.npz",
+      "producer": "data/i4_midmarkout.py",
+      "producer_artifact": "data/i4_midmarkout_results.json",
+      "producer_resolves_a_cut": false,
+      "label_days": [],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": []
+    },
+    {
+      "file": "probes/flat_surcharge_control.py",
+      "input": "mm_bakeoff_results.json",
+      "producer": "quoters/mm_bakeoff.py",
+      "producer_artifact": "quoters/mm_bakeoff_results.json",
+      "producer_resolves_a_cut": true,
+      "label_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "file": "probes/flat_surcharge_control.py",
+      "input": "quickwin_markouts_mid.npz",
+      "producer": "data/i4_midmarkout.py",
+      "producer_artifact": "data/i4_midmarkout_results.json",
+      "producer_resolves_a_cut": false,
+      "label_days": [],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": []
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "input": "m2_figure_results.json",
+      "producer": "markout/m2_figure.py",
+      "producer_artifact": "markout/m2_figure_results.json",
+      "producer_resolves_a_cut": true,
+      "label_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "input": "quickwin_markouts_mid.npz",
+      "producer": "data/i4_midmarkout.py",
+      "producer_artifact": "data/i4_midmarkout_results.json",
+      "producer_resolves_a_cut": false,
+      "label_days": [],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": []
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "input": "toxicity_frame_results.json",
+      "producer": "data/build_toxicity_frame.py",
+      "producer_artifact": "data/toxicity_frame_results.json",
+      "producer_resolves_a_cut": true,
+      "label_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "input": "ws1_horizon_results.json",
+      "producer": "markout/ws1_horizon_persistence.py",
+      "producer_artifact": "markout/ws1_horizon_results.json",
+      "producer_resolves_a_cut": true,
+      "label_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "input": "ws2_hard_classifier_results.json",
+      "producer": "persistence/ws2_hard_classifier.py",
+      "producer_artifact": "persistence/ws2_hard_classifier_results.json",
+      "producer_resolves_a_cut": true,
+      "label_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "input": "ws3_taker_pnl_results.json",
+      "producer": "persistence/ws3_taker_pnl.py",
+      "producer_artifact": "persistence/ws3_taker_pnl_results.json",
+      "producer_resolves_a_cut": true,
+      "label_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "file": "quoters/as_quoter.py",
+      "input": "quickwin_markouts_mid.npz",
+      "producer": "data/i4_midmarkout.py",
+      "producer_artifact": "data/i4_midmarkout_results.json",
+      "producer_resolves_a_cut": false,
+      "label_days": [],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": []
+    },
+    {
+      "file": "quoters/mm_bakeoff.py",
+      "input": "quickwin_markouts_mid.npz",
+      "producer": "data/i4_midmarkout.py",
+      "producer_artifact": "data/i4_midmarkout_results.json",
+      "producer_resolves_a_cut": false,
+      "label_days": [],
+      "booking_days": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "days_in_common": []
+    }
+  ],
+  "rule4_inputs_unresolved": [
+    {
+      "file": "data/d1_book_shape_figure.py",
+      "input": "mid_series_*.npz",
+      "producer": "data/i4_l2_mid.py",
+      "why": "its producer names no artifact of this tree"
+    },
+    {
+      "file": "data/d2_fill_tape_figure.py",
+      "input": "quickwin_markouts.npz",
+      "producer": "data/build_quickwin_markouts.py",
+      "why": "its producer names no artifact of this tree"
+    },
+    {
+      "file": "data/d2_fill_tape_figure.py",
+      "input": "quickwin_pass_summary.json",
+      "producer": "data/build_quickwin_markouts.py",
+      "why": "its producer names no artifact of this tree"
+    },
+    {
+      "file": "identity/i3_book_comparator.py",
+      "input": "notebook_fills.npz",
+      "producer": "notebook_build/make_notebook_fills.py",
+      "why": "its producer names no artifact of this tree"
+    },
+    {
+      "file": "identity/i3_nonrecoverability_oos.py",
+      "input": "quickwin_taker_map.json",
+      "producer": "data/build_quickwin_markouts.py",
+      "why": "its producer names no artifact of this tree"
+    },
+    {
+      "file": "markout/m2_figure.py",
+      "input": "quickwin_markouts.npz",
+      "producer": "data/build_quickwin_markouts.py",
+      "why": "its producer names no artifact of this tree"
+    },
+    {
+      "file": "markout/ws1_horizon_persistence.py",
+      "input": "mid_series_*.npz",
+      "producer": "data/i4_l2_mid.py",
+      "why": "its producer names no artifact of this tree"
+    },
+    {
+      "file": "markout/ws1_horizon_persistence.py",
+      "input": "notebook_fills.npz",
+      "producer": "notebook_build/make_notebook_fills.py",
+      "why": "its producer names no artifact of this tree"
+    },
+    {
+      "file": "money/maker_econ.py",
+      "input": "quickwin_markouts.npz",
+      "producer": "data/build_quickwin_markouts.py",
+      "why": "its producer names no artifact of this tree"
+    },
+    {
+      "file": "money/maker_econ_b2.py",
+      "input": "quickwin_markouts.npz",
+      "producer": "data/build_quickwin_markouts.py",
+      "why": "its producer names no artifact of this tree"
+    },
+    {
+      "file": "money/t3_capacity.py",
+      "input": "quickwin_markouts.npz",
+      "producer": "data/build_quickwin_markouts.py",
+      "why": "its producer names no artifact of this tree"
+    },
+    {
+      "file": "persistence/three_coin_persistence.py",
+      "input": "mid_series_*_*.npz",
+      "producer": "data/i4_l2_mid.py",
+      "why": "its producer names no artifact of this tree"
+    },
+    {
+      "file": "persistence/three_coin_persistence.py",
+      "input": "panel_markouts_v2.npz",
+      "producer": "data/panel_rebuild_v2.py",
+      "why": "its producer names no artifact of this tree"
+    },
+    {
+      "file": "persistence/three_coin_persistence.py",
+      "input": "quickwin_markouts.npz",
+      "producer": "data/build_quickwin_markouts.py",
+      "why": "its producer names no artifact of this tree"
+    },
+    {
+      "file": "probes/survivorship_census.py",
+      "input": "quickwin_markouts.npz",
+      "producer": "data/build_quickwin_markouts.py",
+      "why": "its producer names no artifact of this tree"
+    },
+    {
+      "file": "quoters/mm_bakeoff.py",
+      "input": "quickwin_markouts.npz",
+      "producer": "data/build_quickwin_markouts.py",
+      "why": "its producer names no artifact of this tree"
+    },
+    {
+      "file": "quoters/mm_bakeoff.py",
+      "input": "quickwin_taker_map.json",
+      "producer": "data/build_quickwin_markouts.py",
+      "why": "its producer names no artifact of this tree"
+    },
+    {
+      "file": "quoters/t1_toxicity_skew_backtest.py",
+      "input": "quickwin_markouts.npz",
+      "producer": "data/build_quickwin_markouts.py",
+      "why": "its producer names no artifact of this tree"
+    }
+  ],
+  "calibration": {
+    "on_the_committed_producer": {
+      "file": "persistence/ws2_hard_classifier.py",
+      "findings_per_rule": {
+        "RULE 1": 1,
+        "RULE 2": 1,
+        "RULE 3": 0
+      },
+      "must_fire": [
+        "RULE 1",
+        "RULE 2"
+      ],
+      "must_be_silent_because_repaired": [
+        "RULE 3"
+      ],
+      "why": "a rule under a remove-the-defect edit has a defect standing here and must fire; a rule under an inject-the-defect edit was repaired here and must read zero, which is asserted rather than allowed"
+    },
+    "debt_matching": "one declared site matches its own entry; the same site with a changed binding, a changed file or a changed rule matches none",
+    "silent_on_healthy": {
+      "file": "probes/flat_surcharge_control.py",
+      "rule1_near_misses": 7,
+      "selected_on_late_bindings": 1,
+      "why": "late data reaches this producer at ROW grade and is selected on, and neither reaches a decision, so all three rules must be silent"
+    },
+    "verdict_flips_on_one_line_edit": {
+      "RULE 1": {
+        "direction": "remove",
+        "findings_per_rule": {
+          "RULE 1": 0,
+          "RULE 2": 1,
+          "RULE 3": 0
+        }
+      },
+      "RULE 2": {
+        "direction": "remove",
+        "findings_per_rule": {
+          "RULE 1": 1,
+          "RULE 2": 0,
+          "RULE 3": 0
+        }
+      },
+      "RULE 3": {
+        "direction": "inject",
+        "findings_per_rule": {
+          "RULE 1": 1,
+          "RULE 2": 1,
+          "RULE 3": 1
+        }
+      }
+    },
+    "sentence": "calibration: on persistence/ws2_hard_classifier.py as committed, RULE 1, RULE 2 fire and RULE 3 read zero because the defect there was repaired; all three stay silent on probes/flat_surcharge_control.py, which reaches the same machinery; and each flips its own verdict, and only its own, when the single line carrying it is edited -- removed where the defect stands, injected where it does not",
+    "wrappers": {
+      "must_confirm": {
+        "file": "money/maker_econ.py",
+        "function": "early_late_days",
+        "returned": [
+          [
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          [
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        ],
+        "late_slot": 1
+      },
+      "must_reject": {
+        "file": "quoters/t1_toxicity_skew_backtest.py",
+        "function": "_early_late_masks",
+        "stage": "call",
+        "why": "returned tuple (array([ True,  True,  True,  True,  True, False, False, Fal, which is not two day sets partitioning the probe"
+      },
+      "n_confirmed": 4,
+      "n_rejected": 3,
+      "why": "both functions pass the static filter; the call separates them, which is what keeps this attached to behaviour rather than to a spelling"
+    },
+    "provenance": {
+      "day_reader": {
+        "must_read": {
+          "artifact": "quoters/mm_bakeoff_results.json",
+          "days": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        },
+        "must_stay_empty": {
+          "artifact": "build_diagram_results.json",
+          "days": []
+        }
+      },
+      "rule4_must_fire": {
+        "file": "probes/flat_surcharge_control.py",
+        "input": "mm_bakeoff_results.json",
+        "producer": "quoters/mm_bakeoff.py",
+        "days_in_common": [
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      },
+      "rule4_must_be_silent": {
+        "file": "persistence/ws2_hard_classifier.py",
+        "input": "quickwin_markouts_mid.npz",
+        "producer": "data/i4_midmarkout.py",
+        "producer_artifact": "data/i4_midmarkout_results.json",
+        "producer_resolves_a_cut": false,
+        "label_days": [],
+        "booking_days": [
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "days_in_common": []
+      },
+      "why": "both inputs resolve all the way to a maker and its artifact; the one that stays silent is silenced by its maker declaring no late half, not by the predicate failing to reach it"
+    }
+  }
+}

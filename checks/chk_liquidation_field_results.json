@@ -1,0 +1,199 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_liquidation_field_results.json",
+    "producer": {
+      "script": "chk_liquidation_field.py",
+      "sha256": "446e2e061460ba38a9ca52258712d78412214ae6b813f63043e7a153fa608bab",
+      "bytes": 22041,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "c97aa9829b994bba5c23061ff0976bfdb8817c8f",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251204/23.lz4",
+        "bytes": null,
+        "sha256": null,
+        "present": false,
+        "kind": "uri"
+      }
+    ],
+    "scope": {
+      "population": "133,674 fills of one hourly object, of which 90 legs carry a liquidation",
+      "window": "ONE HOUR: day 20251204, hour 23. This verdict is about that hour and is not a statement about the whole array",
+      "coins": [
+        "FARTCOIN",
+        "MON",
+        "ZEC"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "check": "raw liquidation-object byte-verify (node_fills) for the forced-liquidation negative control",
+    "author": "Dmitry Stakhin",
+    "first_written": "2026-06-22",
+    "s3_key": "s3://hl-mainnet-node-data/node_fills_by_block/hourly/20251204/23.lz4",
+    "independent": "raw re-walk; does NOT import the project parser",
+    "extraction_rule_under_test": "f.get('liquidation') is not None  (== is_liq leg flag in panel_rebuild_v2.py)",
+    "expected_keys": [
+      "liquidatedUser",
+      "markPx",
+      "method"
+    ],
+    "run": {
+      "runtime_s": 6.608,
+      "finished_utc": "2026-10-21T18:29:39Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "verdict": "ALL_PASS",
+  "counts": {
+    "n_fills_scanned": 133674,
+    "n_legs_with_liquidation": 90,
+    "n_distinct_liquidation_hashes": 14,
+    "prevalence_legs_frac": 0.0006732797701871718,
+    "legs_per_liquidation_hash": {
+      "2": 8,
+      "10": 2,
+      "20": 1,
+      "18": 1,
+      "12": 1,
+      "4": 1
+    },
+    "method_counts": {
+      "market": 90
+    },
+    "coins_with_liquidation": {
+      "FARTCOIN": 16,
+      "MON": 66,
+      "ZEC": 8
+    },
+    "markpx_parse_fail": 0,
+    "liquser_not_hex": 0,
+    "liquser_checked": 90,
+    "liquser_is_counterparty": 90
+  },
+  "verdicts": {
+    "object_exists": true,
+    "structure_is_liquidatedUser_markPx_method": true,
+    "method_is_market": true,
+    "markPx_parses_float": true,
+    "liquidatedUser_is_hex_addr": true,
+    "liquidatedUser_is_a_counterparty": true,
+    "prevalence_in_expected_band": true,
+    "extraction_rule_flags_valid_set": true,
+    "ALL_PASS": true
+  },
+  "bad_structure_samples": [],
+  "samples": [
+    {
+      "hash": "0x3812eaacddfa59bb398c0430c32d0a02055d009278fd788ddbdb95ff9cfe33a5",
+      "coin": "FARTCOIN",
+      "addr": "0x39475d17bcd20adc540e647dae6781b153fbf3b1",
+      "liquidatedUser": "0xb62f8855e8931e5e55285ab8506e095cd4639d9f",
+      "markPx": "0.37845",
+      "method": "market",
+      "side": "B",
+      "dir": "Open Long"
+    },
+    {
+      "hash": "0x3812eaacddfa59bb398c0430c32d0a02055d009278fd788ddbdb95ff9cfe33a5",
+      "coin": "FARTCOIN",
+      "addr": "0xb62f8855e8931e5e55285ab8506e095cd4639d9f",
+      "liquidatedUser": "0xb62f8855e8931e5e55285ab8506e095cd4639d9f",
+      "markPx": "0.37845",
+      "method": "market",
+      "side": "A",
+      "dir": "Close Long"
+    },
+    {
+      "hash": "0xd992ef8af893af7cdb0c0430c381180205d100709396ce4e7d5b9addb7978967",
+      "coin": "FARTCOIN",
+      "addr": "0xac7476e14f768e3e67c195e79c2490dd20c70127",
+      "liquidatedUser": "0x95e5cb93bddc5a54db5d1aab6a98fa81d04e89a6",
+      "markPx": "0.37736",
+      "method": "market",
+      "side": "B",
+      "dir": "Open Long"
+    },
+    {
+      "hash": "0xd992ef8af893af7cdb0c0430c381180205d100709396ce4e7d5b9addb7978967",
+      "coin": "FARTCOIN",
+      "addr": "0x95e5cb93bddc5a54db5d1aab6a98fa81d04e89a6",
+      "liquidatedUser": "0x95e5cb93bddc5a54db5d1aab6a98fa81d04e89a6",
+      "markPx": "0.37736",
+      "method": "market",
+      "side": "A",
+      "dir": "Close Long"
+    },
+    {
+      "hash": "0x27362ae4f855837628af0430c3817302022600ca9358a248cafed637b7595d60",
+      "coin": "FARTCOIN",
+      "addr": "0x552b8ac8126aada53497b50bafb3bbfe2f38fbc0",
+      "liquidatedUser": "0x230e0cf9f3b4d60a73bf36e6518761840b8e8756",
+      "markPx": "0.37707",
+      "method": "market",
+      "side": "B",
+      "dir": "Open Long"
+    },
+    {
+      "hash": "0x27362ae4f855837628af0430c3817302022600ca9358a248cafed637b7595d60",
+      "coin": "FARTCOIN",
+      "addr": "0x230e0cf9f3b4d60a73bf36e6518761840b8e8756",
+      "liquidatedUser": "0x230e0cf9f3b4d60a73bf36e6518761840b8e8756",
+      "markPx": "0.37707",
+      "method": "market",
+      "side": "A",
+      "dir": "Close Long"
+    },
+    {
+      "hash": "0x27362ae4f855837628af0430c3817302022600ca9358a248cafed637b7595d60",
+      "coin": "FARTCOIN",
+      "addr": "0xd8727dda96b1375ea5dd936e658d4265cab300a5",
+      "liquidatedUser": "0x230e0cf9f3b4d60a73bf36e6518761840b8e8756",
+      "markPx": "0.37707",
+      "method": "market",
+      "side": "B",
+      "dir": "Close Short"
+    },
+    {
+      "hash": "0x27362ae4f855837628af0430c3817302022600ca9358a248cafed637b7595d60",
+      "coin": "FARTCOIN",
+      "addr": "0x230e0cf9f3b4d60a73bf36e6518761840b8e8756",
+      "liquidatedUser": "0x230e0cf9f3b4d60a73bf36e6518761840b8e8756",
+      "markPx": "0.37707",
+      "method": "market",
+      "side": "A",
+      "dir": "Close Long"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "notebook_data_meta.json",
+    "producer": {
+      "script": "make_notebook_data.py",
+      "sha256": "afb09997b914b4330a65e5c148b20eeac494027f32994e6e4964dfd7e50156fd",
+      "bytes": 73858,
+      "bytes_in_object_db": "absent",
+      "object_format": "sha1",
+      "object_id": "5ae6b74ab24b147c12a473f2f63a79c14c8a38cb",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "quickwin_markouts.npz",
+        "bytes": 46870849,
+        "sha256": "57ccfc6f5e2c2914a12bed59f268abce36113510088a7ce4486580104969a588",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "quickwin_markouts_mid.npz",
+        "bytes": 64861767,
+        "sha256": "cc239b988e4ec4eeb944c34118e1075da67c2a5fdedfcf68a95d1759ea70b2d3",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "2,480,267 fills, 45,849 taker and 9,367 maker pseudonyms; every row of the two aligned intermediates, reduced to the columns the notebook consumes",
+      "window": "December 2025, days 4 to 13",
+      "coins": [
+        "BTC",
+        "ETH"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "run": {
+      "runtime_s": 6.44,
+      "finished_utc": "2026-10-22T09:37:00Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6"
+      }
+    }
+  },
+  "object": "Reduced review dataset for the reproducibility notebook, with pseudonymous wallet codes",
+  "author": "Dmitry Stakhin",
+  "window": {
+    "coins": [
+      "BTC",
+      "ETH"
+    ],
+    "days_dec2025": [
+      4,
+      13
+    ]
+  },
+  "n_rows": 2480267,
+  "n_takers": 45849,
+  "n_makers": 9367,
+  "deidentified": "taker_code and maker_code are pseudonyms, re-indexed contiguous integers; the hex address map is not shipped, so the linkage to on-chain addresses is not distributed here, but a reader holding the public source data can re-derive it, because the Hyperliquid node data the fills were built from, and the open deposit of the same trades by Albers et al. (Zenodo 18184441), carry the same fills with their addresses",
+  "columns": {
+    "taker_code": "int32",
+    "maker_code": "int32",
+    "coin": "int8",
+    "day": "int16",
+    "notional": "float32",
+    "taker_side": "int8",
+    "start_pos": "float32",
+    "is_open": "int8",
+    "mo1": "float32",
+    "mo10": "float32",
+    "mo60": "float32",
+    "mo1_mid": "float32",
+    "mo10_mid": "float32",
+    "mo60_mid": "float32",
+    "imb_entry": "float32",
+    "spread_entry_bps": "float32",
+    "micro_dev_bps": "float32"
+  },
+  "sha256": "39a7f5d5b6913afdeeb70e47d181bf61b0884b813ccad2732193986c341eacac",
+  "size_mb": 56.1,
+  "published": {
+    "current_record": null,
+    "note": "in no current archive record. The notebook reads notebook_fills.npz and notebook_book_{COIN}.npz from record 23540388 and never opens this file",
+    "superseded_copy": {
+      "doi": "10.5281/zenodo.21171473",
+      "url": "https://zenodo.org/records/21171473/files/notebook_data.npz?download=1",
+      "md5": "083fb31f9cd3ff16e05c736d06a712e0",
+      "bytes": 56198506,
+      "checked_utc": "2026-08-13",
+      "matches_this_file": false,
+      "why": "written before i4_midmarkout.join_entry stopped accepting a book snapshot stamped at the fill's own millisecond, on 2026-08-02. Its six book-side columns carry the retired values and its pooled 10 s book-mid markout is +2.0616 bps, the figure that correction retired"
+    }
+  }
+}

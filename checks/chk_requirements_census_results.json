@@ -1,0 +1,151 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "chk_requirements_census_results.json",
+    "producer": {
+      "script": "chk_requirements_census.py",
+      "sha256": "668ccba9341b2442125c659ca92b9233bb4f6b6cacc04da4eadbe5d9c74feb3c",
+      "bytes": 48312,
+      "bytes_in_object_db": "present",
+      "object_format": "sha1",
+      "object_id": "951921e675fd2e2c4e35b53e3627e7178b14eba9",
+      "unasked_because": null
+    },
+    "inputs": [
+      {
+        "name": "build_requirements_census.py",
+        "bytes": 22244,
+        "sha256": "e7eb8f8c7999038d14de41d5cbc8730871ab08637c5f4b5bfd7c127f8c561125",
+        "present": true,
+        "kind": "file"
+      },
+      {
+        "name": "requirements.txt",
+        "bytes": 7076,
+        "sha256": "92185fcb2c021053926208d739010191c82031ac4d8af16c8c8e75799e6fddc6",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "the derived block of requirements.txt against the syntax tree of every shipped .py file of this repository, which the census walked on this run",
+      "window": "n/a: this gate reads a program's output, not a period of market data",
+      "coins": "n/a: this gate reads no market data"
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 10,
+      "is_headline_horizon": true,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": null,
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "rank_floor_fills": 50,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      }
+    },
+    "runtime_seconds_of_census": 0.8,
+    "date_stamp_note": "findings whose two sides are equal once every date in them is blanked are counted apart and never fail this gate. The census renders the block with the date of the run that renders it and then compares the whole line, so the day after a regeneration it reports one such finding with the tree unmoved. Measured on a copy of this tree on 2026-08-30 by moving the stored date back one day: the census exits 1 and names that line. Arming this rule is a decision for the owner of the census, not for this gate; the repair is to render the stamp outside the compared region or to compare each line with its date blanked",
+    "n_calibration_cases": 6,
+    "n_calibration_failed": 0,
+    "run": {
+      "runtime_s": 5.895,
+      "finished_utc": "2026-10-22T09:37:56Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {}
+    }
+  },
+  "verdict": "PASS",
+  "n_findings": 0,
+  "n_stale": 0,
+  "n_date_stamp_only": 0,
+  "stale": [],
+  "date_stamp_only": [],
+  "counts_stated_in_block": {
+    "shipped .py files": 127,
+    "entry points": 9,
+    "standard library modules": 33,
+    "numpy files": 82,
+    "matplotlib files": 11,
+    "scipy files": 6,
+    "lz4 files": 3,
+    "pyarrow files": 2
+  },
+  "counts_held_by_tree": {
+    "shipped .py files": 127,
+    "entry points": 9,
+    "standard library modules": 33,
+    "numpy files": 82,
+    "matplotlib files": 11,
+    "scipy files": 6,
+    "lz4 files": 3,
+    "pyarrow files": 2
+  },
+  "counts_disagreeing": [],
+  "instrument": {
+    "exit_code": 0,
+    "seconds": 0.8,
+    "opening_word": "PASS",
+    "opening_number": 127,
+    "unreadable": [],
+    "disagreements": []
+  },
+  "calibration": [
+    {
+      "predicate": "the mirror is complete",
+      "case": "must copy every shipped file, or the cases under it compare two different trees: 265 shipped",
+      "got": "265",
+      "want": "265",
+      "ok": true
+    },
+    {
+      "predicate": "the mirror reads what the tree reads",
+      "case": "must repeat the live run exactly, or the cases under it are about some other tree: the live run exited 0 with 0 finding(s)",
+      "got": "(0, 0)",
+      "want": "(0, 0)",
+      "ok": true
+    },
+    {
+      "predicate": "the block against the tree",
+      "case": "must stay silent: the copy with its derived block rendered from the copy's own tree by the census's own renderer",
+      "got": "0",
+      "want": "0",
+      "ok": true
+    },
+    {
+      "predicate": "the block against the tree",
+      "case": "must fire: that same freshened copy with one count of the block raised from 127 to 128 and nothing else touched",
+      "got": "(True, 1)",
+      "want": "(True, '>=1')",
+      "ok": true
+    },
+    {
+      "predicate": "a date stamp is not read as tree drift",
+      "case": "must stay silent: that same freshened copy with its stored date moved from 2026-10-22 to 2000-10-22 and nothing else touched reports no finding at all, because the census does not compare the day it stamps",
+      "got": "(0, 0)",
+      "want": "(0, 0)",
+      "ok": true
+    },
+    {
+      "predicate": "only a finding is counted",
+      "case": "must stay silent: the 1 lines of this run that are not part of a finding, the verdict and the repair command among them",
+      "got": "0",
+      "want": "0",
+      "ok": true
+    }
+  ]
+}

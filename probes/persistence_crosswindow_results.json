@@ -1,0 +1,294 @@
+{
+  "_meta": {
+    "artifact_meta_version": 1,
+    "results_file": "persistence_crosswindow_results.json",
+    "producer": {
+      "script": "persistence_crosswindow.py",
+      "sha256": "8892abd5a53b5afa82e089f37d983c4ac70097140ce1916857c0f570f3c5365b",
+      "bytes": 9876
+    },
+    "inputs": [
+      {
+        "name": "panel_markouts.npz",
+        "bytes": 482588572,
+        "sha256": "c6a37132cf1d0c62bdb2169668c89af20a7b6fb8811fd8132cc7c9b0b607a04b",
+        "present": true,
+        "kind": "file"
+      }
+    ],
+    "scope": {
+      "population": "10,450,335 of 26,025,134 finite-markout panel fills: those falling in the training or the test window. A wallet enters a cell only with at least K fills in BOTH, at the two floors [20, 50], which leaves 12 of 12 role-coin-K cells estimable. The audit_per_window block is the exception and covers all 8 windows the panel carries",
+      "window": "train [202508, 202510] against test [202512], months apart and out of time; the panel itself carries 8 windows, 202508 to 202605, and the remaining 5 enter the audit block only",
+      "coins": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ]
+    },
+    "settings_fingerprint": {
+      "settings_module": "settings.py",
+      "horizon_s": 60,
+      "is_headline_horizon": false,
+      "headline_horizon_s": 10,
+      "companion_horizon_s": 60,
+      "lens": "print",
+      "headline_lens": "mid",
+      "reliability_seed": 20240601,
+      "fdr_alpha": 0.05,
+      "persistence_floor_fills": [
+        50,
+        100
+      ],
+      "whale_drop_k": 10,
+      "horizon_source": "settings.py (set by ws1_horizon_results.json final_decision.recommended_score_horizon_s)",
+      "declared_not_confirmed": {
+        "master_seed": 20260620,
+        "min_common_wallets": 30,
+        "n_boot": 2000,
+        "n_perm": 2000,
+        "note": "settings.py declares these; this run did not state what it used, so they are the declaration and not a property of this artifact"
+      },
+      "rank_floor_fills": [
+        20,
+        50
+      ],
+      "overridden": [
+        "rank_floor_fills"
+      ]
+    },
+    "run": {
+      "runtime_s": 9.956,
+      "finished_utc": "2026-08-04T15:47:12Z",
+      "python": "3.12.11",
+      "platform": "macOS-15.7.2-arm64-arm-64bit",
+      "packages": {
+        "numpy": "2.4.6",
+        "scipy": "1.18.0"
+      }
+    }
+  },
+  "audit_per_window": {
+    "202508": {
+      "fills": 3009977,
+      "takers": 55777,
+      "makers": 11470
+    },
+    "202509": {
+      "fills": 2373119,
+      "takers": 54603,
+      "makers": 11747
+    },
+    "202510": {
+      "fills": 4454179,
+      "takers": 85741,
+      "makers": 19184
+    },
+    "202511": {
+      "fills": 4514276,
+      "takers": 74776,
+      "makers": 14171
+    },
+    "202512": {
+      "fills": 2986179,
+      "takers": 52354,
+      "makers": 10726
+    },
+    "202601": {
+      "fills": 2542387,
+      "takers": 53217,
+      "makers": 10292
+    },
+    "202603": {
+      "fills": 3349363,
+      "takers": 73428,
+      "makers": 13491
+    },
+    "202605": {
+      "fills": 2795654,
+      "takers": 64803,
+      "makers": 12782
+    }
+  },
+  "results": [
+    {
+      "coin": "BTC",
+      "role": "taker",
+      "K": 20,
+      "n_both": 1479,
+      "test_fill_coverage": 0.3778,
+      "obs_spearman": 0.0026,
+      "reliab_train": 0.7818,
+      "reliab_test": 0.8152,
+      "disattenuated": 0.0032,
+      "eb_mse_shrunk": 2.2829,
+      "eb_mse_grand": 2.332,
+      "shrunk_beats_grand": true,
+      "fc_slope": -0.008
+    },
+    {
+      "coin": "BTC",
+      "role": "taker",
+      "K": 50,
+      "n_both": 532,
+      "test_fill_coverage": 0.3347,
+      "obs_spearman": 0.0601,
+      "reliab_train": 0.8844,
+      "reliab_test": 0.9031,
+      "disattenuated": 0.0672,
+      "eb_mse_shrunk": 1.9537,
+      "eb_mse_grand": 2.2154,
+      "shrunk_beats_grand": true,
+      "fc_slope": 0.095
+    },
+    {
+      "coin": "ETH",
+      "role": "taker",
+      "K": 20,
+      "n_both": 1030,
+      "test_fill_coverage": 0.5001,
+      "obs_spearman": 0.0703,
+      "reliab_train": 0.8173,
+      "reliab_test": 0.7569,
+      "disattenuated": 0.0894,
+      "eb_mse_shrunk": 2.1897,
+      "eb_mse_grand": 2.0424,
+      "shrunk_beats_grand": false,
+      "fc_slope": 0.266
+    },
+    {
+      "coin": "ETH",
+      "role": "taker",
+      "K": 50,
+      "n_both": 497,
+      "test_fill_coverage": 0.4813,
+      "obs_spearman": 0.1114,
+      "reliab_train": 0.8976,
+      "reliab_test": 0.8317,
+      "disattenuated": 0.129,
+      "eb_mse_shrunk": 1.781,
+      "eb_mse_grand": 1.5888,
+      "shrunk_beats_grand": false,
+      "fc_slope": 0.096
+    },
+    {
+      "coin": "SOL",
+      "role": "taker",
+      "K": 20,
+      "n_both": 530,
+      "test_fill_coverage": 0.3487,
+      "obs_spearman": 0.072,
+      "reliab_train": 0.4853,
+      "reliab_test": 0.7748,
+      "disattenuated": 0.1175,
+      "eb_mse_shrunk": 2.6078,
+      "eb_mse_grand": 3.3064,
+      "shrunk_beats_grand": true,
+      "fc_slope": 0.254
+    },
+    {
+      "coin": "SOL",
+      "role": "taker",
+      "K": 50,
+      "n_both": 208,
+      "test_fill_coverage": 0.3207,
+      "obs_spearman": 0.1089,
+      "reliab_train": 0.7143,
+      "reliab_test": 0.8801,
+      "disattenuated": 0.1374,
+      "eb_mse_shrunk": 1.8614,
+      "eb_mse_grand": 2.5671,
+      "shrunk_beats_grand": true,
+      "fc_slope": 0.185
+    },
+    {
+      "coin": "BTC",
+      "role": "maker",
+      "K": 20,
+      "n_both": 432,
+      "test_fill_coverage": 0.6354,
+      "obs_spearman": 0.0146,
+      "reliab_train": 0.9861,
+      "reliab_test": 0.9693,
+      "disattenuated": 0.015,
+      "eb_mse_shrunk": 4.3957,
+      "eb_mse_grand": 1.9666,
+      "shrunk_beats_grand": false,
+      "fc_slope": -0.054
+    },
+    {
+      "coin": "BTC",
+      "role": "maker",
+      "K": 50,
+      "n_both": 260,
+      "test_fill_coverage": 0.627,
+      "obs_spearman": 0.1172,
+      "reliab_train": 0.9862,
+      "reliab_test": 0.978,
+      "disattenuated": 0.1194,
+      "eb_mse_shrunk": 3.8383,
+      "eb_mse_grand": 1.7356,
+      "shrunk_beats_grand": false,
+      "fc_slope": -0.014
+    },
+    {
+      "coin": "ETH",
+      "role": "maker",
+      "K": 20,
+      "n_both": 519,
+      "test_fill_coverage": 0.752,
+      "obs_spearman": 0.0567,
+      "reliab_train": 0.9806,
+      "reliab_test": 0.9744,
+      "disattenuated": 0.058,
+      "eb_mse_shrunk": 41.3911,
+      "eb_mse_grand": 6.6425,
+      "shrunk_beats_grand": false,
+      "fc_slope": -0.044
+    },
+    {
+      "coin": "ETH",
+      "role": "maker",
+      "K": 50,
+      "n_both": 361,
+      "test_fill_coverage": 0.717,
+      "obs_spearman": 0.0884,
+      "reliab_train": 0.9829,
+      "reliab_test": 0.9794,
+      "disattenuated": 0.0901,
+      "eb_mse_shrunk": 40.949,
+      "eb_mse_grand": 6.3274,
+      "shrunk_beats_grand": false,
+      "fc_slope": -0.074
+    },
+    {
+      "coin": "SOL",
+      "role": "maker",
+      "K": 20,
+      "n_both": 238,
+      "test_fill_coverage": 0.711,
+      "obs_spearman": 0.148,
+      "reliab_train": 0.9715,
+      "reliab_test": 0.9473,
+      "disattenuated": 0.1543,
+      "eb_mse_shrunk": 10.6816,
+      "eb_mse_grand": 2.9938,
+      "shrunk_beats_grand": false,
+      "fc_slope": 0.116
+    },
+    {
+      "coin": "SOL",
+      "role": "maker",
+      "K": 50,
+      "n_both": 164,
+      "test_fill_coverage": 0.7031,
+      "obs_spearman": 0.3122,
+      "reliab_train": 0.9755,
+      "reliab_test": 0.9585,
+      "disattenuated": 0.3229,
+      "eb_mse_shrunk": 10.0098,
+      "eb_mse_grand": 2.6202,
+      "shrunk_beats_grand": false,
+      "fc_slope": 0.286
+    }
+  ]
+}
